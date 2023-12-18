@@ -1,41 +1,33 @@
 // ignore_for_file: non_constant_identifier_names, file_names
 
 import 'package:flutter/cupertino.dart';
+import 'package:hirexpert/view/screen/Menu/Search/Search.dart';
 
 import '../../view/screen/Menu/Home/Home.dart';
 
 class MenuNavigationController with ChangeNotifier {
-  final int _selectindex = 0;
+  int _selectindex = 0;
 
-  final List _item = [
+  final List<Widget> _item = [
     const Home(),
+    const Search(),
   ];
 
   Widget Selectitem(int index) {
     return _item[index];
   }
 
-  int get Selectindex => _selectindex;
+  get Selectindex => _selectindex;
 
-  List get item => _item;
+  List<Widget> get item => _item;
 
-  void SelectIndex_Zero() {
-    _selectindex == 0;
-    notifyListeners();
-  }
-
-  void SelectIndex_One() {
-    _selectindex == 1;
+  void SelectIndex_one() {
+    _selectindex = 0;
     notifyListeners();
   }
 
   void SelectIndex_two() {
-    _selectindex == 2;
-    notifyListeners();
-  }
-
-  void SelectIndex_three() {
-    _selectindex == 2;
+    _selectindex = 1;
     notifyListeners();
   }
 }

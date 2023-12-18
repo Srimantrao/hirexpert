@@ -1,8 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/common/Row/homerow.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -19,7 +23,12 @@ class _HomeState extends State<Home> {
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
         automaticallyImplyLeading: false,
-        title: const Text(My_Jobs_Screen.My_Jobs),
+        title: const Text(
+          My_Jobs_Screen.My_Jobs,
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         actions: [
           const Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
@@ -35,33 +44,14 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.symmetric(
             horizontal: Get.width / 30,
           ),
-          child: Column(
+          child: const Column(
             children: [
-              Container(
-                width: Get.width,
-                height: Get.height / 9,
-                decoration: BoxDecoration(
-                  border: Border(
-                    bottom: BorderSide(
-                      color: AppColor.Menu_Container_color,
-                    )
-                  )
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: Get.width / 6,
-                      height: Get.height / 12,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Get.width / 50,
-                        ),
-                        color: AppColor.Menu_Container_color,
-                      ),
-                    ),
-                  ],
-                ),
-              )
+              Jobrow(icon: AppIcons.Seeved, name: My_Jobs_Screen.Saved),
+              Jobrow(icon: AppIcons.Applid, name: My_Jobs_Screen.Applied),
+              Jobrow(icon: AppIcons.seved, name: My_Jobs_Screen.Interview),
+              Jobrow(icon: AppIcons.rupess, name: My_Jobs_Screen.Offer),
+              Jobrow(icon: AppIcons.Hired, name: My_Jobs_Screen.Hired),
+              Jobrow(icon: AppIcons.Declind, name: My_Jobs_Screen.Declined),
             ],
           ),
         ),

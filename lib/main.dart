@@ -8,6 +8,7 @@ import 'package:provider/provider.dart';
 import 'controller/BottamController/MenuNavigationController.dart';
 import 'controller/LoginControoler/visibility.dart';
 import 'controller/OptionController/SelectButton.dart';
+import 'controller/SearchScreenController/DropdownConroller.dart';
 import 'controller/SignupController/SinupController.dart';
 
 void main() {
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => LoginValidation()),
         ChangeNotifierProvider(create: (_) => SinupController()),
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
+        ChangeNotifierProvider(create: (_) => DropdownController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

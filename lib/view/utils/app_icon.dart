@@ -13,6 +13,7 @@ class AppIcons {
   static const Hired = "assets/icon/body/Hired.svg";
   static const rupess = "assets/icon/body/rupees.svg";
   static const seved = "assets/icon/body/user.svg";
+  static const Seeved = "assets/icon/body/Seved.svg";
 
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";
@@ -20,6 +21,7 @@ class AppIcons {
   static const Profile = "assets/icon/bottam/Profile.svg";
   static const Search = "assets/icon/bottam/Search Job.svg";
   static const open_job  = "assets/icon/bottam/My_Jobs_open.svg";
+  static const Search_job  = "assets/icon/bottam/Search_Job_open.svg";
 
   //buttons
   static const Employee = "assets/icon/button/Employee.svg";

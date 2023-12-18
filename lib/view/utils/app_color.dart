@@ -10,4 +10,9 @@ class AppColor {
   static Color subcolor = const Color(0xff989898);
   static Color offButton_color = const Color(0xffDFDFDF);
   static Color Menu_Container_color = const Color(0x2da864d2);
+  static Color black_all = const Color(0xff000000);
+  static Color ditalis_conatiner = const Color(0xffF3F4FB);
+  static Color Small_container_frist = const Color(0x1b00929e);
+  static Color Small_container_second = const Color(0x356F46B9);
+  static Color Small_container_thrd = const Color(0x28FE7C30);
 }

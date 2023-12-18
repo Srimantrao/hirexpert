@@ -21,36 +21,52 @@ class _BottamState extends State<Bottam> {
     final nav = Provider.of<MenuNavigationController>(context, listen: false);
     return Scaffold(
       bottomNavigationBar: Container(
-          width: Get.width,
-          height: Get.height / 15,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(Get.width / 15),
-              topRight: Radius.circular(Get.width / 15),
-            ),
-            color: AppColor.Bottam_color,
+        width: Get.width,
+        height: Get.height / 15,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(Get.width / 15),
+            topRight: Radius.circular(Get.width / 15),
           ),
-          child: Consumer<MenuNavigationController>(
-            builder: (BuildContext context, value, Widget? child) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      nav.SelectIndex_Zero();
-                    },
-                    child: (nav.Selectindex == 0)
-                        ? SvgPicture.asset(AppIcons.open_job)
-                        : SvgPicture.asset(AppIcons.Jobs),
-                  ),
-                  SvgPicture.asset(AppIcons.Search),
-                  SvgPicture.asset(AppIcons.Profile),
-                  SvgPicture.asset(AppIcons.Messages),
-                ],
-              );
-            },
-          )),
-      body: nav.Selectitem(nav.Selectindex),
+          color: AppColor.Bottam_color,
+        ),
+        child: Consumer<MenuNavigationController>(
+          builder: (BuildContext context, value, Widget? child) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                InkWell(
+                  highlightColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  onTap: () {
+                    nav.SelectIndex_one();
+                  },
+                  child: (nav.Selectindex == 0)
+                      ? SvgPicture.asset(AppIcons.open_job)
+                      : SvgPicture.asset(AppIcons.Jobs),
+                ),
+                InkWell(
+                  highlightColor: Colors.transparent,
+                  focusColor: Colors.transparent,
+                  onTap: () {
+                    nav.SelectIndex_two();
+                  },
+                  child: (nav.Selectindex == 1)
+                      ? SvgPicture.asset(AppIcons.Search_job)
+                      : SvgPicture.asset(AppIcons.Search),
+                ),
+                SvgPicture.asset(AppIcons.Profile),
+                SvgPicture.asset(AppIcons.Messages),
+              ],
+            );
+          },
+        ),
+      ),
+      body: Consumer<MenuNavigationController>(
+        builder: (BuildContext context, value, Widget? child) {
+          return nav.Selectitem(nav.Selectindex);
+        },
+      ),
     );
   }
 }

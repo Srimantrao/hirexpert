@@ -1,5 +1,29 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, file_names
 
+//DropDown Menu
+class DropDownMenu_String {
+  static const Gujarat = "Gujarat";
+  static const Maharastrya = "Maharastrya";
+  static const Aandra_pradesh = "Aandra pradesh";
+  static const Madhya_pradesh = "Madhya pradesh";
+  static const Goa = "Goa";
+  static const Karnatak = "Karnatak";
+  static const Telgana = "Telgana";
+  static const Kasmir = "Kasmir";
+  static const Panjab = "Panjab";
+  static const Hedrabadh = "Hedrabadh";
+  static const Bihar = "Bihar";
+  static const Banaras = "Banaras";
+  static const kashi = "kashi";
+
+  //Last
+  static const all = "All";
+  static const seven = "Last 7 Days";
+  static const tharty = "Last 30 Days";
+  static const mothe = "6 Months";
+  static const one = "Last 1 Year";
+}
+
 class Error_String {
   static const sorry = "So Sorry Sir/Mem App is under-consideration";
   static const both = "Please Select Only & Only One Button";
@@ -18,7 +42,8 @@ class Error_String {
   static const pass = "Input Password !";
   static const cnfpass = "Input ConfirmPasswprd !";
   static const vaild_phone = "Please Input Valid Phone Number !";
-  static const varify_phone = "Not Your Phone Numbres Please Check and Virify !";
+  static const varify_phone =
+      "Not Your Phone Numbres Please Check and Virify !";
 }
 
 //Option Screen
@@ -67,7 +92,7 @@ class Signup_text {
 }
 
 //My_Job Screen
-class My_Jobs_Screen{
+class My_Jobs_Screen {
   static const My_Jobs = "My Jobs";
   static const Saved = "Saved";
   static const Applied = "Applied";
@@ -75,4 +100,23 @@ class My_Jobs_Screen{
   static const Offer = "Offer";
   static const Hired = "Hired";
   static const Declined = "Declined";
+}
+
+//Search Screen
+class Search_text {
+  static const Search_Jobs = "Search Jobs";
+  static const Location = "Location";
+  static const Job = "Job Title, Skills...";
+  static const All = "All";
+  static const Listing = "Search Job Listings";
+  static const Mobile = "Mobile Development";
+  static const React = "React Native Developer";
+  static const SlPATIL = "SlPATIL";
+  static const day = "5 Day Working";
+  static const Surat = "Surat";
+  static const Full = "Full Time";
+  static const Year = "1-3 Year Exp";
+  static const lake = "1.00 - 5.00 Lakh’s";
+  static const Hybrid = "Hybrid";
+  static const Days = "5 Days Ago";
 }
