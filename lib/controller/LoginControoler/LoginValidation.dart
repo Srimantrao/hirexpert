@@ -19,18 +19,19 @@ class LoginValidation with ChangeNotifier {
   get throwErrorEmail => _throwErrorEmail;
 
   get throwErrorPassword => _throwErrorPassword;
-
+  
   void loginvalidation() {
-    if (EmailController.text.isEmpty && PasswordController.text.isEmpty) {
+    if (EmailController.text.isNotEmpty &&
+        PasswordController.text.isNotEmpty &&
+        !isError) {
+      _isError = false;
+      _throwErrorEmail = "";
+      //Navigat to Menu Screen's
+      Get.to(() => const Bottam());
+    } else {
       _isError = true;
       _throwErrorEmail = Error_String.Error_Email;
       _throwErrorPassword = Error_String.Error_Password;
-    } else {
-      _isError = false;
-      _throwErrorEmail = "";
-
-      //Navigat to Menu Screen's
-      Get.to(() => const Bottam());
     }
     notifyListeners();
   }

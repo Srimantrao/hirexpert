@@ -120,3 +120,50 @@ class Search_text {
   static const Hybrid = "Hybrid";
   static const Days = "5 Days Ago";
 }
+
+//Details Screen
+class Details_texts {
+  static const Job_Description = "Job Description";
+  static const Description =
+      "We are looking for React Native developer interested in building performant mobile apps on both the iOS &Android platform. You will responsible for architectingand building these applications, as well coordinatingwith teams responsible for other layers of the productinfrastructure. Building a product is highly collaborativeeffort, and as such, a strong team player commitmentto perfection is required.";
+  static const Requirements = "Requirements";
+  static const req1 =
+      "Build pixel-perfect, buttery smooth UIs across both mobile platforms.";
+  static const req2 =
+      "Leverage native APIs for deep integrations with both platforms.";
+  static const req3 =
+      "Diagnose and fix bugs and performance bottlenecks for performance that feels native.";
+  static const req4 =
+      "Reach out the open source community to encourageand help implement mission-critical software fixes -React Native moves fast and often breaks things";
+  static const req5 = "Maintain code and wirte automated tests to ensure";
+  static const req6 =
+      "Maintain code and wirte automated tests to ensure the product is of the highest quality";
+  static const req7 = "Transition existing React web apps to React Native.";
+  static const req8 = "Add any other relevant responsibilities here";
+  static const Skills = "Skills";
+  static const Skills1 =
+      "Firm grasp of the JavaScript and TypeScript orClojureScript language and its nuances, including ES6+ syntax";
+  static const Skills2 =
+      "Knowledge of functional or object-oriented programming";
+  static const Skills3 =
+      "Ability to write well-documented, clean Javascript code";
+  static const Skills4 =
+      "Rock solid at working with third-party dependencies and debugging dependency conflicts";
+  static const Skills5 =
+      "Familiarity with native build tools, like XCode, Gradle Android Studio, IntelliJ";
+  static const Skills7 =
+      "Understanding of REST APIs, the document request model, and offline storage";
+  static const Skills8 =
+      "Experience with automated testing suites, like Jest or Mocha";
+  static const Skills9 =
+      "Make sure to mention other frameworks, libraries, or other technologies relevant to your project";
+  static const Benefits_Offered = "Benefits Offered:";
+  static const BCA = "BCA";
+  static const Supplement_Pay = "Supplement Pay:";
+  static const AAA = "AAA:";
+  static const BBB = "BBB:";
+  static const Educational_Level_Required = "Educational Level Required:";
+  static const BE = "BE";
+  static const Added_Advantage_Skills = "Added Advantage Skills:";
+  static const API = "API Creation & Integration,Shopify,WordPress";
+}

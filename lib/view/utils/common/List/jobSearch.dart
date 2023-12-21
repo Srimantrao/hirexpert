@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, camel_case_types, file_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -7,26 +9,58 @@ import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 
-class JobSearch extends StatefulWidget {
-  const JobSearch({super.key});
+class JobSearch extends StatelessWidget {
+  final String Icon;
+  final Color Color_container;
+  final String Job_Tital;
+  final String Language;
+  final String Commpany;
+  final String Working;
+  final String Location;
+  final String Job_time;
+  final String Exp;
+  final String lake;
+  final String Hybrid;
+  final String stats;
+  final String saveicon;
+  final BorderSide top;
+  final void Function()? onTap;
+  final void Function()? saveonTap;
 
-  @override
-  State<JobSearch> createState() => _JobSearchState();
-}
+  const JobSearch({
+    super.key,
+    required this.Icon,
+    required this.Color_container,
+    required this.Job_Tital,
+    required this.Language,
+    required this.Commpany,
+    required this.Working,
+    required this.Location,
+    required this.Job_time,
+    required this.Exp,
+    required this.lake,
+    required this.Hybrid,
+    required this.stats,
+    this.onTap,
+    required this.saveicon,
+    required this.top,
+    this.saveonTap,
+  });
 
-class _JobSearchState extends State<JobSearch> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
+    return GestureDetector(
+      onTap: onTap,
+      child: Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: Get.width / 50,
+        ),
+        child: Container(
           height: Get.height / 4.3,
           width: Get.width,
           decoration: BoxDecoration(
             border: Border(
-              top: BorderSide(
-                color: AppColor.Bottam_color,
-              ),
+              top: top,
               bottom: BorderSide(
                 color: AppColor.Bottam_color,
               ),
@@ -49,11 +83,11 @@ class _JobSearchState extends State<JobSearch> {
                         borderRadius: BorderRadius.circular(
                           Get.width / 30,
                         ),
-                        color: AppColor.Small_container_frist,
+                        color: Color_container,
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(15),
-                        child: SvgPicture.asset(AppIcons.pro1),
+                        child: SvgPicture.asset(Icon),
                       ),
                     ),
                   ),
@@ -64,24 +98,27 @@ class _JobSearchState extends State<JobSearch> {
                       Row(
                         children: [
                           Text(
-                            Search_text.Mobile,
+                            Job_Tital,
                             style: TextStyle(
                               color: AppColor.subcolor,
                             ),
                           ),
                           SizedBox(width: Get.width / 3),
-                          SvgPicture.asset(AppIcons.save),
+                          InkWell(
+                            onTap: saveonTap,
+                            child: SvgPicture.asset(saveicon),
+                          ),
                         ],
                       ),
                       Text(
-                        Search_text.React,
+                        Language,
                         style: TextStyle(
                           fontSize: Get.width / 23,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
                       Text(
-                        Search_text.SlPATIL,
+                        Commpany,
                         style: TextStyle(
                           fontSize: Get.width / 26,
                           fontWeight: FontWeight.w400,
@@ -101,13 +138,14 @@ class _JobSearchState extends State<JobSearch> {
                         width: Get.width / 3.2,
                         height: Get.height / 25,
                         decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(Get.width / 60),
+                          borderRadius: BorderRadius.circular(
+                            Get.width / 60,
+                          ),
                           color: AppColor.ditalis_conatiner,
                         ),
                         child: Center(
                           child: Text(
-                            Search_text.day,
+                            Working,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Get.width / 30,
@@ -127,7 +165,7 @@ class _JobSearchState extends State<JobSearch> {
                         ),
                         child: Center(
                           child: Text(
-                            Search_text.Surat,
+                            Location,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Get.width / 30,
@@ -140,13 +178,14 @@ class _JobSearchState extends State<JobSearch> {
                         width: Get.width / 5,
                         height: Get.height / 25,
                         decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(Get.width / 60),
+                          borderRadius: BorderRadius.circular(
+                            Get.width / 60,
+                          ),
                           color: AppColor.ditalis_conatiner,
                         ),
                         child: Center(
                           child: Text(
-                            Search_text.Full,
+                            Job_time,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Get.width / 30,
@@ -159,13 +198,14 @@ class _JobSearchState extends State<JobSearch> {
                         width: Get.width / 5,
                         height: Get.height / 25,
                         decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(Get.width / 60),
+                          borderRadius: BorderRadius.circular(
+                            Get.width / 60,
+                          ),
                           color: AppColor.ditalis_conatiner,
                         ),
                         child: Center(
                           child: Text(
-                            Search_text.Year,
+                            Exp,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Get.width / 35,
@@ -182,13 +222,14 @@ class _JobSearchState extends State<JobSearch> {
                         width: Get.width / 2.5,
                         height: Get.height / 25,
                         decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(Get.width / 60),
+                          borderRadius: BorderRadius.circular(
+                            Get.width / 60,
+                          ),
                           color: AppColor.ditalis_conatiner,
                         ),
                         child: Center(
                           child: Text(
-                            Search_text.lake,
+                            lake,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Get.width / 30,
@@ -201,13 +242,14 @@ class _JobSearchState extends State<JobSearch> {
                         width: Get.width / 5,
                         height: Get.height / 25,
                         decoration: BoxDecoration(
-                          borderRadius:
-                          BorderRadius.circular(Get.width / 60),
+                          borderRadius: BorderRadius.circular(
+                            Get.width / 60,
+                          ),
                           color: AppColor.ditalis_conatiner,
                         ),
                         child: Center(
                           child: Text(
-                            Search_text.Hybrid,
+                            Hybrid,
                             style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: Get.width / 30,
@@ -224,7 +266,7 @@ class _JobSearchState extends State<JobSearch> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
-                    Search_text.Days,
+                    stats,
                     style: TextStyle(
                       color: AppColor.subcolor,
                     ),
@@ -233,8 +275,8 @@ class _JobSearchState extends State<JobSearch> {
               )
             ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

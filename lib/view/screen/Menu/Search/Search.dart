@@ -8,8 +8,10 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/SearchScreenController/DropdownConroller.dart';
+import '../../../../modal/Job/jobSearch_list.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/common/List/jobSearch.dart';
+import 'Details_Search.dart';
 
 class Search extends StatefulWidget {
   const Search({super.key});
@@ -208,11 +210,52 @@ class _SearchState extends State<Search> {
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Get.width / 50,
+        child: Expanded(
+          child: ListView.builder(
+            itemCount: showjob.length,
+            itemBuilder: (BuildContext context, int index) {
+              return JobSearch(
+                onTap: () {
+                  Get.to(
+                    () => Details(
+                      Icon: showjob[index]["Icon"],
+                      Color_container: showjob[index]["Container_color"],
+                      Job_Tital: showjob[index]["Job_tital"],
+                      Language: showjob[index]["Language"],
+                      Commpany: showjob[index]["Company_name"],
+                      Working: showjob[index]["Working"],
+                      Location: showjob[index]["Location"],
+                      Job_time: showjob[index]["job_time"],
+                      Exp: showjob[index]["Exp"],
+                      lake: showjob[index]["Sallary"],
+                      Hybrid: showjob[index]["Hybrid"],
+                      stats: showjob[index]["stats"],
+                      saveicon: AppIcons.save,
+                    ),
+                  );
+                },
+                Icon: showjob[index]["Icon"],
+                Color_container: showjob[index]["Container_color"],
+                Job_Tital: showjob[index]["Job_tital"],
+                Language: showjob[index]["Language"],
+                Commpany: showjob[index]["Company_name"],
+                Working: showjob[index]["Working"],
+                Location: showjob[index]["Location"],
+                Job_time: showjob[index]["job_time"],
+                Exp: showjob[index]["Exp"],
+                lake: showjob[index]["Sallary"],
+                Hybrid: showjob[index]["Hybrid"],
+                stats: showjob[index]["stats"],
+                saveicon: AppIcons.save,
+                saveonTap: (){
+                  saveshowjob.add(showjob);
+                },
+                top: BorderSide(
+                  color: AppColor.Bottam_color,
+                ),
+              );
+            },
           ),
-          child: const JobSearch(),
         ),
       ),
     );
