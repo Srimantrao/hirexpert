@@ -121,6 +121,7 @@ class _LoginState extends State<Login> {
                     SizedBox(height: Get.height / 20),
                     InkWell(
                       onTap: () {
+                        vail.isEmtey();
                         vail.loginvalidation();
                       },
                       child: OnButtons(

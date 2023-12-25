@@ -1,7 +1,12 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:hirexpert/view/screen/collection/login.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 
 class SinupController with ChangeNotifier {
   TextEditingController frist_name = TextEditingController();
@@ -48,6 +53,39 @@ class SinupController with ChangeNotifier {
       _throwPasswordError = Error_String.pass;
       _throwConfirmPasswordError = Error_String.cnfpass;
     } else {
+      pref!.setString("Fristname", frist_name.text);
+      pref!.setString("Lastname", last_name.text);
+      pref!.setString("Email", email.text);
+      pref!.setString("Phone", phone.text);
+      pref!.setString("Password", password.text);
+      pref!.setString("Confirm_Password", confirm_password.text);
+
+      Frist_name = pref!.getString("Fristname")!;
+      Last_name = pref!.getString("Lastname")!;
+      Email = pref!.getString("Email")!;
+      Phone = pref!.getString("Phone")!;
+      Password = pref!.getString("Password")!;
+      Comfarm_password = pref!.getString("Confirm_Password")!;
+
+      if (kDebugMode) {
+        print("Fristname :- $Frist_name");
+      }
+      if (kDebugMode) {
+        print("Lastname :- $Last_name");
+      }
+      if (kDebugMode) {
+        print("Email :- $Email");
+      }
+      if (kDebugMode) {
+        print("Phone :- $Phone");
+      }
+      if (kDebugMode) {
+        print("Password :- $Password");
+      }
+      if (kDebugMode) {
+        print("Confirm Password :- $Comfarm_password");
+      }
+      Get.to(() => const Login());
       _isError = false;
       _throwEmailnameError = "";
       _throwLastnameError = "";

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -49,9 +50,17 @@ class _HomeState extends State<Home> {
           child: Column(
             children: [
               InkWell(
-                child: const Jobrow(
+                child: Jobrow(
                   icon: AppIcons.Seeved,
                   name: My_Jobs_Screen.Saved,
+                  child: (saveshowjob.isEmpty)
+                      ? const SizedBox()
+                      : CircleAvatar(
+                          minRadius: 12,
+                          child: Text(
+                            "${saveshowjob.length}",
+                          ),
+                        ),
                 ),
                 onTap: () {
                   Get.to(

@@ -51,6 +51,8 @@ class _SavedState extends State<Saved> {
                     shrinkWrap: true,
                     itemCount: saveshowjob.length,
                     itemBuilder: (BuildContext context, int index) {
+                      int itemCount = saveshowjob.length ?? 0;
+                      int reversedIndex = itemCount - 1 - index;
                       return Container(
                         height: Get.height / 4.3,
                         width: Get.width,
@@ -81,12 +83,12 @@ class _SavedState extends State<Saved> {
                                       borderRadius: BorderRadius.circular(
                                         Get.width / 30,
                                       ),
-                                      color: showjob[index]["Container_color"],
+                                      color: showjob[reversedIndex]["Container_color"],
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(15),
                                       child: SvgPicture.asset(
-                                          showjob[index]["Icon"]),
+                                          showjob[reversedIndex]["Icon"]),
                                     ),
                                   ),
                                 ),
@@ -97,7 +99,7 @@ class _SavedState extends State<Saved> {
                                     Row(
                                       children: [
                                         Text(
-                                          showjob[index]["Job_tital"],
+                                          showjob[reversedIndex]["Job_tital"],
                                           style: TextStyle(
                                             color: AppColor.subcolor,
                                           ),
@@ -107,14 +109,14 @@ class _SavedState extends State<Saved> {
                                       ],
                                     ),
                                     Text(
-                                      showjob[index]["Language"],
+                                      showjob[reversedIndex]["Language"],
                                       style: TextStyle(
                                         fontSize: Get.width / 23,
                                         fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                     Text(
-                                      showjob[index]["Company_name"],
+                                      showjob[reversedIndex]["Company_name"],
                                       style: TextStyle(
                                         fontSize: Get.width / 26,
                                         fontWeight: FontWeight.w400,
@@ -141,7 +143,7 @@ class _SavedState extends State<Saved> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          showjob[index]["Working"],
+                                          showjob[reversedIndex]["Working"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: Get.width / 30,
@@ -161,7 +163,7 @@ class _SavedState extends State<Saved> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          showjob[index]["Location"],
+                                          showjob[reversedIndex]["Location"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: Get.width / 30,
@@ -181,7 +183,7 @@ class _SavedState extends State<Saved> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          showjob[index]["job_time"],
+                                          showjob[reversedIndex]["job_time"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: Get.width / 30,
@@ -201,7 +203,7 @@ class _SavedState extends State<Saved> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          showjob[index]["Exp"],
+                                          showjob[reversedIndex]["Exp"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: Get.width / 35,
@@ -225,7 +227,7 @@ class _SavedState extends State<Saved> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          showjob[index]["Sallary"],
+                                          showjob[reversedIndex]["Sallary"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: Get.width / 30,
@@ -245,7 +247,7 @@ class _SavedState extends State<Saved> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          showjob[index]["Hybrid"],
+                                          showjob[reversedIndex]["Hybrid"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: Get.width / 30,
@@ -262,7 +264,7 @@ class _SavedState extends State<Saved> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  showjob[index]["stats"],
+                                  showjob[reversedIndex]["stats"],
                                   style: TextStyle(
                                     color: AppColor.subcolor,
                                   ),

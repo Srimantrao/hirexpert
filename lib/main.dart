@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hirexpert/controller/LoginControoler/LoginValidation.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'controller/BottamController/MenuNavigationController.dart';
 import 'controller/LoginControoler/visibility.dart';
@@ -11,7 +15,15 @@ import 'controller/OptionController/SelectButton.dart';
 import 'controller/SearchScreenController/DropdownConroller.dart';
 import 'controller/SignupController/SinupController.dart';
 
-void main() {
+Future<void> main()async {
+  WidgetsFlutterBinding.ensureInitialized();
+  if(Platform.isAndroid){
+    print("yes");
+  }
+  pref = await SharedPreferences.getInstance();
+  islogin = pref!.getBool("login") ?? false;
+  Email = pref!.getString("Email") ?? "em";
+  Password = pref!.getString("Password") ?? "pass";
   runApp(const MyApp());
 }
 

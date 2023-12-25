@@ -10,14 +10,15 @@ import '../../app_icon.dart';
 class Jobrow extends StatelessWidget {
   final String icon;
   final String name;
+  final Widget? child;
   final void Function()? onTap;
 
-  const Jobrow({
-    super.key,
-    required this.icon,
-    required this.name,
-    this.onTap
-  });
+  const Jobrow(
+      {super.key,
+      required this.icon,
+      required this.name,
+      this.onTap,
+      this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -61,6 +62,8 @@ class Jobrow extends StatelessWidget {
                     fontSize: Get.width / 21,
                   ),
                 ),
+                SizedBox(width: Get.width / 50),
+                SizedBox(child: child),
               ],
             ),
             const Icon(
