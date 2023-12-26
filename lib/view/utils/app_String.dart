@@ -167,3 +167,27 @@ class Details_texts {
   static const Added_Advantage_Skills = "Added Advantage Skills:";
   static const API = "API Creation & Integration,Shopify,WordPress";
 }
+
+//Profile Screen
+class Profile_Text {
+  static const Profile = "Profile";
+  static const Archive = "Archive";
+  static const Notification_Setting = "Notification Setting";
+  static const Send_Us_Your_Feedback = "Send Us Your Feedback";
+  static const Manage_Account = "Manage Account";
+  static const Terms_And_Conditions = "Terms And Conditions";
+  static const Privacy_Policy = "Privacy Policy";
+  static const Change_Password = "Change Password";
+  static const Logout = "Logout";
+}
+
+//Edit Profile
+class EditProfile_text {
+  static const Profile = "Profile";
+  static const Additionl = "Additional Details";
+  static const Parsnaol = "Personal Information";
+  static const Certification = "Certifications / Licenses";
+  static const Qution = "Which of these most closely describe your job?";
+  static const Aanwasr = "— Accounts & Finance";
+  static const Edit = "Edit";
+}

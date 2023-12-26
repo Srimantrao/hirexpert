@@ -24,6 +24,7 @@ class JobSearch extends StatelessWidget {
   final String stats;
   final String saveicon;
   final BorderSide top;
+  final Widget? savechild;
   final void Function()? onTap;
   final void Function()? saveonTap;
 
@@ -45,6 +46,7 @@ class JobSearch extends StatelessWidget {
     required this.saveicon,
     required this.top,
     this.saveonTap,
+    this.savechild,
   });
 
   @override

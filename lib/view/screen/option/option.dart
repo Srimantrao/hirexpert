@@ -91,38 +91,7 @@ class _OptionState extends State<Option> {
                   SizedBox(height: Get.height / 50),
                   InkWell(
                     onTap: () {
-                      // select.SelectSecond();
-                      if (Platform.isAndroid) {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return CupertinoAlertDialog(
-                                title: const Text("Cupertino Alert Dialog"),
-                                content: const Text(
-                                    "are you sure you want to open Cupertino Alert Dialog?"),
-                                actions: [
-                                  CupertinoActionSheetAction(onPressed:(){}, child:Text("cancle")),
-                                  CupertinoActionSheetAction(onPressed:(){}, child:Text("ok")),
-                                ],
-                              );
-                            });
-                      } else {
-                        showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text("Alert Dialog"),
-                                content: const Text(
-                                    "are you sure you want to open dialog box ?"),
-                                actions: [
-                                  ElevatedButton(
-                                      onPressed: () {}, child: const Text("cancle")),
-                                  ElevatedButton(
-                                      onPressed: () {}, child: const Text("yes")),
-                                ],
-                              );
-                            });
-                      }
+                      select.SelectSecond();
                     },
                     child: WideButton(
                       Button_color: (select.SelectButtonSecond)

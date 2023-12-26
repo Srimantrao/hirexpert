@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:hirexpert/view/screen/Menu/Search/Search.dart';
 
 import '../../view/screen/Menu/Home/Home.dart';
+import '../../view/screen/Menu/profile/information.dart';
 import '../../view/screen/saving/saved.dart';
 
 class MenuNavigationController with ChangeNotifier {
@@ -12,6 +13,7 @@ class MenuNavigationController with ChangeNotifier {
   final List<Widget> _item = [
     const Home(),
     const Search(),
+    const Profile_info(),
   ];
 
   Widget Selectitem(int index) {
@@ -29,6 +31,11 @@ class MenuNavigationController with ChangeNotifier {
 
   void SelectIndex_two() {
     _selectindex = 1;
+    notifyListeners();
+  }
+
+  void SelectIndex_three() {
+    _selectindex = 2;
     notifyListeners();
   }
 }

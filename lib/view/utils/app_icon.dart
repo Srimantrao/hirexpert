@@ -21,8 +21,9 @@ class AppIcons {
   static const Messages = "assets/icon/bottam/Messages.svg";
   static const Profile = "assets/icon/bottam/Profile.svg";
   static const Search = "assets/icon/bottam/Search Job.svg";
-  static const open_job  = "assets/icon/bottam/My_Jobs_open.svg";
-  static const Search_job  = "assets/icon/bottam/Search_Job_open.svg";
+  static const open_job = "assets/icon/bottam/My_Jobs_open.svg";
+  static const Search_job = "assets/icon/bottam/Search_Job_open.svg";
+  static const profile_open = "assets/icon/bottam/Profile_open.svg";
 
   //buttons
   static const Employee = "assets/icon/button/Employee.svg";

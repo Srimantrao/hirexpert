@@ -23,7 +23,9 @@ class _SavedState extends State<Saved> {
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
+        elevation: 0,
         automaticallyImplyLeading: false,
+
         title: const Text(
           My_Jobs_Screen.My_Jobs,
           style: TextStyle(

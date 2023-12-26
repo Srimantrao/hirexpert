@@ -55,7 +55,14 @@ class _BottamState extends State<Bottam> {
                       ? SvgPicture.asset(AppIcons.Search_job)
                       : SvgPicture.asset(AppIcons.Search),
                 ),
-                SvgPicture.asset(AppIcons.Profile),
+                InkWell(
+                  onTap: () {
+                    nav.SelectIndex_three();
+                  },
+                  child: (nav.Selectindex == 2)
+                      ? SvgPicture.asset(AppIcons.profile_open)
+                      : SvgPicture.asset(AppIcons.Profile),
+                ),
                 SvgPicture.asset(AppIcons.Messages),
               ],
             );
