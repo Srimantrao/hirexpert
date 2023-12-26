@@ -11,27 +11,34 @@ class Additional extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SizedBox(height: Get.height / 30),
-          Text(
-            EditProfile_text.Qution,
-            style: TextStyle(
-              color: AppColor.subcolor,
-              fontWeight: FontWeight.w700,
-              fontSize: Get.width / 25,
+      body: Container(
+        height: Get.height,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: AppColor.Full_body_color,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            SizedBox(height: Get.height / 30),
+            Text(
+              EditProfile_text.Qution,
+              style: TextStyle(
+                color: AppColor.subcolor,
+                fontWeight: FontWeight.w700,
+                fontSize: Get.width / 25,
+              ),
             ),
-          ),
-          Text(
-            EditProfile_text.Aanwasr,
-            style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: Get.width / 25,
+            Text(
+              EditProfile_text.Aanwasr,
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: Get.width / 25,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: Container(
         width: Get.width / 4,

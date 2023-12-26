@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:hirexpert/view/screen/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
@@ -192,6 +193,7 @@ class _SignupState extends State<Signup> {
                     InkWell(
                       onTap: () {
                         vail.SingupValidation();
+                        Get.to(() => const Specialization());
                       },
                       child: OnButtons(
                         Button_Color: AppColor.Button_color,
@@ -208,7 +210,7 @@ class _SignupState extends State<Signup> {
                             fontSize: Get.width / 25,
                           ),
                         ),
-                        SizedBox(width: Get.width/80),
+                        SizedBox(width: Get.width / 80),
                         Text(
                           Signup_text.Sign_In,
                           style: TextStyle(

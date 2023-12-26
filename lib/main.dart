@@ -8,8 +8,8 @@ import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'controller/BottamController/MenuNavigationController.dart';
+import 'controller/DropdownController/Specialization_con.dart';
 import 'controller/LoginControoler/visibility.dart';
 import 'controller/OptionController/SelectButton.dart';
 import 'controller/SearchScreenController/DropdownConroller.dart';
@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SinupController()),
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
+        ChangeNotifierProvider(create: (_) => SpecializationController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

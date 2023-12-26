@@ -191,3 +191,24 @@ class EditProfile_text {
   static const Aanwasr = "— Accounts & Finance";
   static const Edit = "Edit";
 }
+
+//Specialization
+class Specialization_text {
+  static const area = "Select your functional area:";
+  static const interest = "Select your specialization / interest:";
+  static const Skillset = "What is Your Primary Skillset?";
+  static const Collection = "What Is Your Secondary Collection ?";
+
+  //Select your functional area:
+  static const Accounts_Finance = "Accounts & Finance";
+  static const Technology = "Ai / MI Technology";
+  static const Bpo = "Bpo & Kpo";
+  static const Content = "Content Marketing";
+  static const Data = "Data";
+  static const Database_Engineer = "Database Engineer / Administrator";
+  static const Designing_UIUX = "Designing & UI/UX";
+  static const Devops_Engineering = "Devops Engineering";
+  static const Flutter_Devloper = "Flutter Devloper";
+  static const ReactNative_Devloper = "ReactNativ Devloper";
+  static const Web_Devloper = "Web_Devloper";
+}

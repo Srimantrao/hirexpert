@@ -33,4 +33,9 @@ class AppIcons {
   static const Layer_1 = "assets/icon/container/Layer_1.svg";
   static const Layer_2 = "assets/icon/container/Layer_2.svg";
   static const pro1 = "assets/icon/container/pro1.svg";
+
+  //Arrow
+  static const Backarrow = "assets/icon/arrow/Back.svg";
+  static const Rectangle = "assets/icon/arrow/Rectangle.svg";
+  static const Go = "assets/icon/arrow/Go.svg";
 }
