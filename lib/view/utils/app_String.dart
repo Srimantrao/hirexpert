@@ -1,6 +1,8 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, file_names
 
 //DropDown Menu
+import 'package:hirexpert/view/screen/collection/Education.dart';
+
 class DropDownMenu_String {
   static const Gujarat = "Gujarat";
   static const Maharastrya = "Maharastrya";
@@ -190,6 +192,56 @@ class EditProfile_text {
   static const Qution = "Which of these most closely describe your job?";
   static const Aanwasr = "— Accounts & Finance";
   static const Edit = "Edit";
+
+  //Personal Information
+  static const CV = "Upload Your CV";
+  static const Resume_Link = "Resume Link";
+  static const your = "Upload your resume/cv in seconds with autofill option.";
+  static const Upload =
+      "Upload your resume or drag and drop it here Only .doc, .docx, .pdf, .odt, .rtf";
+  static const Job_Title = "Job Title :";
+  static const Enter_Job_Title = "Enter The Job Tital";
+  static const Enter_Email = "Enter Your Email";
+  static const Your_Password = "Enter Your Password";
+  static const Enter_Frist = "Enter Frist Name";
+  static const Enter_Last = "Enter Last Name";
+  static const First_Name = "First Name :";
+  static const Last_Name = "Last Name :";
+  static const Email_Id = "Email Id :";
+  static const Mobile_Number = "Mobile Number :";
+  static const Marital_Status = "Marital Status :";
+  static const Date_Of_Birthday = "Date Of Birthday :";
+  static const Gender = "Gender :";
+  static const Address = "Address :";
+  static const Street_Address = "Street Address :";
+  static const Post_Code = "Post Code :";
+  static const Select_Country = "Select Country :";
+  static const Select_Province = "Select Province :";
+  static const Select_City = "Select City :";
+  static const Educational_Details = "Educational Details :";
+  static const Degree = "Degree :";
+  static const Specialisation = "Specialisation :";
+  static const Institute_Name = "Institute Name :";
+  static const Passing_Yea = "Passing Yea :";
+  static const Work_Experience = "Work Experience :";
+  static const Total_Experience = "Total Experience: :";
+  static const Company_Name = "Company Name :";
+  static const Designation = "Designation :";
+  static const Duration = "Duration :";
+  static const I_currently_work_here = "I currently work here";
+  static const Add_Educational_Details = "Add Educational Details";
+  static const Current_CTC_per_annum = "Current CTC (per annum) :";
+  static const Expected_Salary = "Expected Salary :";
+  static const Current_Working_Location = "Current Working Location :";
+  static const Preffered_Working_Location = "Preffered Working Location :";
+  static const Work_Location = "Work Location :";
+  static const Preffered_Work_Setup = "Preffered Work Setup :";
+  static const Job_Type_Preferrence = "Job Type Preferrence :";
+  static const Notice_Period_days_Optional = "Notice Period (days)(Optional :";
+  static const About_Me = "About Me :";
+  static const Save = "Save";
+  static const AMe =
+      "Front-end developer with proven ability to design anddevelop JavaScript-based applications for web or mobileenvironments. Strong knowledge of React JS, jQuery,Angular, Vue JS, HTML, CSS, and Bootstrap. Experienced in all stages of interface component design, fromconception to final testing and deployment of web -responsive applications.Key SkillsUser Interface (UI) Design | Performance Testing |Troubleshooting and Debugging | Software DevelopmentLifecycle (SDLC) | Root Cause Analysis | Cross-FunctionalCollaboration | Prototyping and Wireframing";
 }
 
 //Specialization
@@ -211,4 +263,54 @@ class Specialization_text {
   static const Flutter_Devloper = "Flutter Devloper";
   static const ReactNative_Devloper = "ReactNativ Devloper";
   static const Web_Devloper = "Web_Devloper";
+
+  //Select your specialization
+  static const Frontend = "Frontend Development";
+  static const Backend = "Backend Development";
+  static const Developmen = "Full Stack Developmen";
+  static const eCommerce = "CMS & eCommerce Platforms";
+  static const Software = "Others Web & Software Development";
+
+  //Skillset
+  static const Angular = "Angular JS";
+  static const Front_End_Developer = "Front End Developer";
+  static const React_JS = "React JS";
+  static const Bootstrap = "Bootstrap";
+  static const JQuery = "JQuery";
+  static const UIUX_Developer = "UI/UX Developer";
+  static const Angular_TS = "Angular TS";
+  static const VueJS = "VueJS";
+  static const Django = "Django";
+
+  //Eduction
+  static const Education = "What is your highest level of Education?";
+  static const graduation = "What is your graduation passing year?";
+  static const Job_Title = "Job Title";
+  static const BCA = "BCA";
+  static const BBA = "BBA";
+  static const year1998 = "1998";
+  static const year1999 = "1999";
+  static const year2000 = "2000";
+  static const year2001 = "2001";
+  static const year2002 = "2002";
+  static const year2003 = "2003";
+  static const year2004 = "2004";
+  static const year2005 = "2005";
+  static const year2006 = "2006";
+  static const year2007 = "2008";
+  static const year2009 = "2009";
+  static const year2010 = "2010";
+  static const year2011 = "2011";
+  static const year2012 = "2012";
+  static const year2013 = "2013";
+  static const year2014 = "2014";
+  static const year2015 = "2015";
+  static const year2016 = "2016";
+  static const year2017 = "2017";
+  static const year2018 = "2018";
+  static const year2019 = "2019";
+  static const year2020 = "2020";
+  static const year2021 = "2021";
+  static const year2022 = "2022";
+  static const year2023 = "2023";
 }

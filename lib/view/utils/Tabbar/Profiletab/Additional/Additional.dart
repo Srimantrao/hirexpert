@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../app_String.dart';
-import '../../app_color.dart';
+import '../../../app_String.dart';
+import '../../../app_color.dart';
 
 class Additional extends StatelessWidget {
   const Additional({super.key});
@@ -17,27 +17,30 @@ class Additional extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(height: Get.height / 30),
-            Text(
-              EditProfile_text.Qution,
-              style: TextStyle(
-                color: AppColor.subcolor,
-                fontWeight: FontWeight.w700,
-                fontSize: Get.width / 25,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Get.width/50),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: Get.height / 30),
+              Text(
+                EditProfile_text.Qution,
+                style: TextStyle(
+                  color: AppColor.subcolor,
+                  fontWeight: FontWeight.w700,
+                  fontSize: Get.width / 25,
+                ),
               ),
-            ),
-            Text(
-              EditProfile_text.Aanwasr,
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: Get.width / 25,
+              Text(
+                EditProfile_text.Aanwasr,
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: Get.width / 25,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: Container(

@@ -1,9 +1,13 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/collection/Education.dart';
+import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/DropdownController/Specialization_con.dart';
 
@@ -37,10 +41,10 @@ class _SpecializationState extends State<Specialization> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: Get.height / 20),
-                const Row(
+                Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircleAvatar(radius: 70),
+                    Image.asset(AppImage.profile, scale: 4),
                   ],
                 ),
                 SizedBox(height: Get.height / 40),
@@ -90,10 +94,11 @@ class _SpecializationState extends State<Specialization> {
                       Widget? child,
                     ) {
                       return DropdownButton<String>(
-                        icon: const Icon(Icons.downloading),
+                        icon: SvgPicture.asset(AppIcons.down),
+                        underline: const SizedBox(),
                         isExpanded: true,
-                        value: Special.Selectitem,
-                        items: Special.item.map((String item) {
+                        value: Special.Functional_area,
+                        items: Special.Functional_item.map((String item) {
                           return DropdownMenuItem<String>(
                             value: item,
                             child: Text(item),
@@ -105,6 +110,107 @@ class _SpecializationState extends State<Specialization> {
                       );
                     },
                   ),
+                ),
+                SizedBox(height: Get.height / 50),
+                Text(
+                  Specialization_text.interest,
+                  style: TextStyle(
+                    fontSize: Get.width / 22,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: AppColor.Bottam_color,
+                      ),
+                    ),
+                  ),
+                  child: Consumer<SpecializationController>(
+                    builder: (
+                      BuildContext context,
+                      value,
+                      Widget? child,
+                    ) {
+                      return DropdownButton<String>(
+                        underline: const SizedBox(),
+                        icon: SvgPicture.asset(AppIcons.down),
+                        isExpanded: true,
+                        value: Special.Select_Speciailzation,
+                        items:
+                            Special.Speciailzation_item.map((String newitem) {
+                          return DropdownMenuItem<String>(
+                            value: newitem,
+                            child: Text(newitem),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          Special.Speciailzation(value!);
+                        },
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: Get.height / 50),
+                Text(
+                  Specialization_text.Skillset,
+                  style: TextStyle(
+                    fontSize: Get.width / 22,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: AppColor.Bottam_color,
+                      ),
+                    ),
+                  ),
+                  child: Consumer<SpecializationController>(
+                    builder: (
+                      BuildContext context,
+                      value,
+                      Widget? child,
+                    ) {
+                      return DropdownButton<String>(
+                        underline: const SizedBox(),
+                        icon: SvgPicture.asset(AppIcons.down),
+                        isExpanded: true,
+                        value: Special.Skillset,
+                        items: Special.Skillset_item.map((String newitem) {
+                          return DropdownMenuItem<String>(
+                            value: newitem,
+                            child: Text(newitem),
+                          );
+                        }).toList(),
+                        onChanged: (value) {
+                          Special.Skillset_fun(value!);
+                        },
+                      );
+                    },
+                  ),
+                ),
+                SizedBox(height: Get.height / 4),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    SvgPicture.asset(AppIcons.Backarrow),
+                    SizedBox(width: Get.width / 30),
+                    SvgPicture.asset(AppIcons.Rectangle),
+                    SizedBox(width: Get.width / 30),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      onTap: () {
+                        Get.to(() => const Education());
+                      },
+                      child: SvgPicture.asset(AppIcons.Go),
+                    ),
+                  ],
                 ),
               ],
             ),

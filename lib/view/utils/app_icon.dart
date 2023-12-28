@@ -38,4 +38,5 @@ class AppIcons {
   static const Backarrow = "assets/icon/arrow/Back.svg";
   static const Rectangle = "assets/icon/arrow/Rectangle.svg";
   static const Go = "assets/icon/arrow/Go.svg";
+  static const down = "assets/icon/arrow/Down.svg";
 }

@@ -72,6 +72,7 @@ class _SearchState extends State<Search> {
                             builder: (BuildContext context,
                                 DropdownController value, Widget? child) {
                               return DropdownButton<String>(
+                                underline: const SizedBox(),
                                 borderRadius:
                                     BorderRadius.circular(Get.width / 20),
                                 value: changDropdown.dropdownvalue,
@@ -165,6 +166,7 @@ class _SearchState extends State<Search> {
                               builder:
                                   (BuildContext context, value, Widget? child) {
                                 return DropdownButton<String>(
+                                  underline: const SizedBox(),
                                   borderRadius: BorderRadius.circular(
                                     Get.width / 20,
                                   ),
