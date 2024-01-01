@@ -71,34 +71,36 @@ class _SearchState extends State<Search> {
                           child: Consumer<DropdownController>(
                             builder: (BuildContext context,
                                 DropdownController value, Widget? child) {
-                              return DropdownButton<String>(
-                                underline: const SizedBox(),
-                                borderRadius:
-                                    BorderRadius.circular(Get.width / 20),
-                                value: changDropdown.dropdownvalue,
-                                items: <String>[
-                                  DropDownMenu_String.Gujarat,
-                                  DropDownMenu_String.Maharastrya,
-                                  DropDownMenu_String.Aandra_pradesh,
-                                  DropDownMenu_String.Madhya_pradesh,
-                                  DropDownMenu_String.Goa,
-                                  DropDownMenu_String.Karnatak,
-                                  DropDownMenu_String.Telgana,
-                                  DropDownMenu_String.Kasmir,
-                                  DropDownMenu_String.Panjab,
-                                  DropDownMenu_String.Hedrabadh,
-                                  DropDownMenu_String.Bihar,
-                                  DropDownMenu_String.Banaras,
-                                  DropDownMenu_String.kashi,
-                                ].map<DropdownMenuItem<String>>((String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value),
-                                  );
-                                }).toList(),
-                                onChanged: (value) {
-                                  changDropdown.Changedopdown_fun(value);
-                                },
+                              return DropdownButtonHideUnderline(
+                                child: DropdownButton<String>(
+                                  underline: const SizedBox(),
+                                  borderRadius:
+                                      BorderRadius.circular(Get.width / 20),
+                                  value: changDropdown.dropdownvalue,
+                                  items: <String>[
+                                    DropDownMenu_String.Gujarat,
+                                    DropDownMenu_String.Maharastrya,
+                                    DropDownMenu_String.Aandra_pradesh,
+                                    DropDownMenu_String.Madhya_pradesh,
+                                    DropDownMenu_String.Goa,
+                                    DropDownMenu_String.Karnatak,
+                                    DropDownMenu_String.Telgana,
+                                    DropDownMenu_String.Kasmir,
+                                    DropDownMenu_String.Panjab,
+                                    DropDownMenu_String.Hedrabadh,
+                                    DropDownMenu_String.Bihar,
+                                    DropDownMenu_String.Banaras,
+                                    DropDownMenu_String.kashi,
+                                  ].map<DropdownMenuItem<String>>((String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                  onChanged: (value) {
+                                    changDropdown.Changedopdown_fun(value);
+                                  },
+                                ),
                               );
                             },
                           ),

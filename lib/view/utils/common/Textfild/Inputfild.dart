@@ -15,15 +15,18 @@ class Inputfild extends StatelessWidget {
   final bool? obscureText;
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
+  final void Function()? onTap;
 
-  const Inputfild({super.key,
+  const Inputfild({
+    super.key,
     required this.labal,
     required this.hint,
     this.suffixIcon,
     required this.controller,
     this.obscureText,
     this.keyboardType,
-    this.onChanged
+    this.onChanged,
+    this.onTap,
   });
 
   @override
@@ -39,6 +42,7 @@ class Inputfild extends StatelessWidget {
           ),
         ),
         TextField(
+          onTap: onTap,
           onChanged: onChanged,
           obscureText: obscureText ?? false,
           keyboardType: keyboardType,

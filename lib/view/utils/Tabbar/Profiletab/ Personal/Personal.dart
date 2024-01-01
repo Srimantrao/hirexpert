@@ -17,7 +17,9 @@ class Personal_information extends StatelessWidget {
       body: Container(
         width: Get.width,
         height: Get.height,
-        decoration: BoxDecoration(color: AppColor.Full_body_color),
+        decoration: BoxDecoration(
+          color: AppColor.Full_body_color,
+         ),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
           child: SingleChildScrollView(

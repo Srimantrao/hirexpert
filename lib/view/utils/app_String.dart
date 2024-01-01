@@ -188,6 +188,8 @@ class EditProfile_text {
   static const Profile = "Profile";
   static const Additionl = "Additional Details";
   static const Parsnaol = "Personal Information";
+  static const Secondary = "What Is Your Secondary Collection ?";
+  static const Enter_Secondary = "Write Your Secondary Collection";
   static const Certification = "Certifications / Licenses";
   static const Qution = "Which of these most closely describe your job?";
   static const Aanwasr = "— Accounts & Finance";
@@ -212,18 +214,19 @@ class EditProfile_text {
   static const Marital_Status = "Marital Status :";
   static const Date_Of_Birthday = "Date Of Birthday :";
   static const Gender = "Gender :";
-  static const Address = "Address :";
+  static const Address = "Address";
   static const Street_Address = "Street Address :";
   static const Post_Code = "Post Code :";
   static const Select_Country = "Select Country :";
   static const Select_Province = "Select Province :";
   static const Select_City = "Select City :";
-  static const Educational_Details = "Educational Details :";
+  static const Educational_Details = "Educational Details";
   static const Degree = "Degree :";
+  static const Salary = "Salary";
   static const Specialisation = "Specialisation :";
   static const Institute_Name = "Institute Name :";
-  static const Passing_Yea = "Passing Yea :";
-  static const Work_Experience = "Work Experience :";
+  static const Passing_Yea = "Passing Year :";
+  static const Work_Experience = "Work Experience";
   static const Total_Experience = "Total Experience: :";
   static const Company_Name = "Company Name :";
   static const Designation = "Designation :";
@@ -234,11 +237,12 @@ class EditProfile_text {
   static const Expected_Salary = "Expected Salary :";
   static const Current_Working_Location = "Current Working Location :";
   static const Preffered_Working_Location = "Preffered Working Location :";
-  static const Work_Location = "Work Location :";
+  static const Work_Location = "Work Location";
   static const Preffered_Work_Setup = "Preffered Work Setup :";
   static const Job_Type_Preferrence = "Job Type Preferrence :";
-  static const Notice_Period_days_Optional = "Notice Period (days)(Optional :";
+  static const Notice_Period_days_Optional = "Notice Period (days)(Optional) :";
   static const About_Me = "About Me :";
+  static const IM = "I'm a fresher";
   static const Save = "Save";
   static const AMe =
       "Front-end developer with proven ability to design anddevelop JavaScript-based applications for web or mobileenvironments. Strong knowledge of React JS, jQuery,Angular, Vue JS, HTML, CSS, and Bootstrap. Experienced in all stages of interface component design, fromconception to final testing and deployment of web -responsive applications.Key SkillsUser Interface (UI) Design | Performance Testing |Troubleshooting and Debugging | Software DevelopmentLifecycle (SDLC) | Root Cause Analysis | Cross-FunctionalCollaboration | Prototyping and Wireframing";
