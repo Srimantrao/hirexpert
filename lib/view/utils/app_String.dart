@@ -318,3 +318,17 @@ class Specialization_text {
   static const year2022 = "2022";
   static const year2023 = "2023";
 }
+
+//Collection
+class Collection_text{
+  static const Javaprograming = "Java Programing";
+  static const Javatutorial = "Java tutorial";
+  static const Javacoding = "Java coding";
+  static const Javaforbeginners = "Java for beginners";
+  static const Javaprojects = "Java projects";
+  static const LearnJava = "Learn Java";
+  static const Javadevelopment = "Java development";
+  static const AdvancedJavaprogramming = "Advanced Java programming";
+  static const Javatipsandtricks = "Java tips and tricks";
+  static const Javabasics = "Java basics";
+}

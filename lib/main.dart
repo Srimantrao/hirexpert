@@ -9,15 +9,16 @@ import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/BottamController/MenuNavigationController.dart';
+import 'controller/CollectionController/Collectiondepartment.dart';
 import 'controller/DropdownController/Specialization_con.dart';
 import 'controller/LoginControoler/visibility.dart';
 import 'controller/OptionController/SelectButton.dart';
 import 'controller/SearchScreenController/DropdownConroller.dart';
 import 'controller/SignupController/SinupController.dart';
 
-Future<void> main()async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  if(Platform.isAndroid){
+  if (Platform.isAndroid) {
     print("yes");
   }
   pref = await SharedPreferences.getInstance();
@@ -42,6 +43,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => SpecializationController()),
+        ChangeNotifierProvider(create: (_) => Collectionpart()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(
