@@ -5,12 +5,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/common/Container/Option.dart';
+import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controller/DropdownController/Specialization_con.dart';
 import '../../utils/aap_image.dart';
 import '../../utils/app_String.dart';
 import '../../utils/app_icon.dart';
+import 'Experience.dart';
 
 class Education extends StatefulWidget {
   const Education({super.key});
@@ -20,6 +23,8 @@ class Education extends StatefulWidget {
 }
 
 class _EducationState extends State<Education> {
+  TextEditingController job = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     final Special = Provider.of<SpecializationController>(
@@ -149,12 +154,18 @@ class _EducationState extends State<Education> {
                   },
                 ),
               ),
-              SizedBox(height: Get.height / 2.5),
+              SizedBox(height: Get.height / 50),
+              Inputfild(
+                labal: Specialization_text.Job_Title,
+                hint: Specialization_text.Job_Title,
+                controller: job,
+              ),
+              SizedBox(height: Get.height / 3.5),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   InkWell(
-                    onTap: (){
+                    onTap: () {
                       Get.back();
                     },
                     overlayColor: const MaterialStatePropertyAll(
@@ -169,7 +180,15 @@ class _EducationState extends State<Education> {
                   SizedBox(width: Get.width / 30),
                   SvgPicture.asset(AppIcons.Rectangle),
                   SizedBox(width: Get.width / 30),
-                  SvgPicture.asset(AppIcons.Go),
+                  InkWell(
+                      splashColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      onTap: () {
+                        Get.to(() => const Experience());
+                      },
+                      child: SvgPicture.asset(AppIcons.Go)),
                 ],
               ),
             ],

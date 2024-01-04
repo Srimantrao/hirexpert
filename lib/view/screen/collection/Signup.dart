@@ -193,7 +193,13 @@ class _SignupState extends State<Signup> {
                     InkWell(
                       onTap: () {
                         vail.SingupValidation();
-                        Get.to(() => const Specialization());
+                        Get.to(
+                          () => Specialization(
+                            text: Collection_text.Javadevelopment,
+                            color: AppColor.Button_color,
+                            textcolor: AppColor.Full_body_color,
+                          ),
+                        );
                       },
                       child: OnButtons(
                         Button_Color: AppColor.Button_color,

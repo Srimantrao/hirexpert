@@ -9,12 +9,23 @@ import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/common/Container/Option.dart';
 import 'package:provider/provider.dart';
+import '../../../controller/CollectionController/Collectiondepartment.dart';
 import '../../../controller/DropdownController/Specialization_con.dart';
 import '../../utils/common/Textfild/Inputfild.dart';
 
 class Specialization extends StatefulWidget {
-  const Specialization({super.key});
+  final String text;
+  final Color color;
+  final Color textcolor;
+
+  const Specialization({
+    super.key,
+    required this.text,
+    required this.color,
+    required this.textcolor,
+  });
 
   @override
   State<Specialization> createState() => _SpecializationState();
@@ -23,12 +34,16 @@ class Specialization extends StatefulWidget {
 class _SpecializationState extends State<Specialization> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController mobile = TextEditingController();
-
     final Special = Provider.of<SpecializationController>(
       context,
       listen: false,
     );
+
+    final Coll = Provider.of<Collectionpart>(
+      context,
+      listen: false,
+    );
+
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -144,13 +159,16 @@ class _SpecializationState extends State<Specialization> {
                           icon: SvgPicture.asset(AppIcons.down),
                           isExpanded: true,
                           value: Special.Select_Speciailzation,
-                          items:
-                              Special.Speciailzation_item.map((String newitem) {
-                            return DropdownMenuItem<String>(
-                              value: newitem,
-                              child: Text(newitem),
-                            );
-                          }).toList(),
+                          items: Special.Speciailzation_item.map(
+                            (
+                              String newitem,
+                            ) {
+                              return DropdownMenuItem<String>(
+                                value: newitem,
+                                child: Text(newitem),
+                              );
+                            },
+                          ).toList(),
                           onChanged: (value) {
                             Special.Speciailzation(value!);
                           },
@@ -185,12 +203,16 @@ class _SpecializationState extends State<Specialization> {
                           icon: SvgPicture.asset(AppIcons.down),
                           isExpanded: true,
                           value: Special.Skillset,
-                          items: Special.Skillset_item.map((String newitem) {
-                            return DropdownMenuItem<String>(
-                              value: newitem,
-                              child: Text(newitem),
-                            );
-                          }).toList(),
+                          items: Special.Skillset_item.map(
+                            (
+                              String newitem,
+                            ) {
+                              return DropdownMenuItem<String>(
+                                value: newitem,
+                                child: Text(newitem),
+                              );
+                            },
+                          ).toList(),
                           onChanged: (value) {
                             Special.Skillset_fun(value!);
                           },
@@ -237,7 +259,26 @@ class _SpecializationState extends State<Specialization> {
                       ),
                     ),
                   ),
-                  SizedBox(height: Get.height / 6),
+                  SizedBox(height: Get.height / 50),
+                  Consumer<Collectionpart>(
+                    builder: (
+                      BuildContext context,
+                      value,
+                      Widget? child,
+                    ) {
+                      if (Coll.istrue) {
+                        return Collec(
+                          text: widget.text,
+                          color: widget.color,
+                          textcolor: widget.textcolor,
+                        );
+                      } else {
+                        const SizedBox();
+                      }
+                      return const SizedBox();
+                    },
+                  ),
+                  SizedBox(height: Get.height / 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

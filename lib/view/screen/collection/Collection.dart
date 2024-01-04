@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/collection/specialization.dart';
 import 'package:hirexpert/view/screen/option/option.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -24,8 +25,6 @@ class Collection extends StatefulWidget {
 class _CollectionState extends State<Collection> {
   TextEditingController collection = TextEditingController();
   Collectiondepartment controller = Get.put(Collectiondepartment());
-
-  bool istrue = false;
 
   @override
   Widget build(BuildContext context) {
@@ -78,18 +77,36 @@ class _CollectionState extends State<Collection> {
                     ],
                   ),
                   SizedBox(height: Get.height / 20),
-                  Consumer(
+                  Consumer<Collectionpart>(
                     builder: (BuildContext context, value, Widget? child) {
                       return Inputfild(
-                        suffixIcon: (change.istrue)
+                        suffixIcon: (controller.isVal_one.value ||
+                                controller.isVal_second.value ||
+                                controller.isVal_thrd.value ||
+                                controller.isVal_fourth.value ||
+                                controller.isVal_fifth.value ||
+                                controller.isVal_sixth.value ||
+                                controller.isVal_seventh.value ||
+                                controller.isVal_Egthe.value ||
+                                controller.isVal_nine.value)
                             ? Padding(
                                 padding: const EdgeInsets.all(15),
-                                child: SvgPicture.asset(AppIcons.Check),
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.back(
+                                      result: Specialization(
+                                        text: Collection_text.Javadevelopment,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      ),
+                                    );
+                                  },
+                                  child: SvgPicture.asset(AppIcons.Check),
+                                ),
                               )
                             : const SizedBox(),
                         onTap: () {
                           change.ismoving();
-                          setState(() {});
                         },
                         labal: EditProfile_text.Secondary,
                         hint: EditProfile_text.Enter_Secondary,
@@ -98,7 +115,7 @@ class _CollectionState extends State<Collection> {
                     },
                   ),
                   SizedBox(height: Get.height / 40),
-                  Consumer(
+                  Consumer<Collectionpart>(
                     builder: (BuildContext context, value, Widget? child) {
                       return (change.istrue)
                           ? Column(

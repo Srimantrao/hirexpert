@@ -332,3 +332,16 @@ class Collection_text{
   static const Javatipsandtricks = "Java tips and tricks";
   static const Javabasics = "Java basics";
 }
+
+//Experience
+class Experience_text{
+  static const IM = "I'm a fresher";
+  static const experience = "How many years of experience do you have?";
+  static const Salary = "Expected Salary (per annum)?";
+  static const company = "Please provide recent company information";
+  static const Company_Name = "Company Name :";
+  static const Designation = "Designation :";
+  static const Duration = "Duration :";
+  static const currently = "I currently work here";
+  static const current = "What is your current CTC (per annum)?";
+}

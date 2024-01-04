@@ -57,9 +57,7 @@ class _HomeState extends State<Home> {
                       ? const SizedBox()
                       : CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            "${saveshowjob.length}",
-                          ),
+                          child: Text("${saveshowjob.length}"),
                         ),
                 ),
                 onTap: () {
