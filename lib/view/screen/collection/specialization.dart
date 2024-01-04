@@ -241,30 +241,51 @@ class _SpecializationState extends State<Specialization> {
                   //Textfild Container
                   Consumer<Collectionpart>(
                     builder: (BuildContext context, value, Widget? child) {
-                      return Inputfild(
-                        suffixIcon: (controller.isVal_one.value ||
-                                controller.isVal_second.value ||
-                                controller.isVal_thrd.value ||
-                                controller.isVal_fourth.value ||
-                                controller.isVal_fifth.value ||
-                                controller.isVal_sixth.value ||
-                                controller.isVal_seventh.value ||
-                                controller.isVal_Egthe.value ||
-                                controller.isVal_nine.value)
-                            ? Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: SvgPicture.asset(AppIcons.Check),
-                              )
-                            : const SizedBox(),
-                        onTap: () {
-                          change.ismoving();
-                          vis = !vis;
-                          setState(() {});
-                        },
-                        labal: EditProfile_text.Secondary,
-                        hint: EditProfile_text.Enter_Secondary,
-                        controller: collection,
-                      );
+                      return (vis)
+                          ? InkWell(
+                              onTap: () {
+                                vis = !vis;
+                                setState(() {});
+                              },
+                              child: Container(
+                                height: Get.height / 25,
+                                width: Get.width,
+                                decoration: BoxDecoration(
+                                  border: Border(
+                                      bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  )),
+                                ),
+                                child: Text(
+                                  EditProfile_text.Enter_Secondary,
+                                  style: TextStyle(
+                                    color: AppColor.subcolor,
+                                  ),
+                                ),
+                              ),
+                            )
+                          : Inputfild(
+                              suffixIcon: (controller.isVal_one.value ||
+                                      controller.isVal_second.value ||
+                                      controller.isVal_thrd.value ||
+                                      controller.isVal_fourth.value ||
+                                      controller.isVal_fifth.value ||
+                                      controller.isVal_sixth.value ||
+                                      controller.isVal_seventh.value ||
+                                      controller.isVal_Egthe.value ||
+                                      controller.isVal_nine.value)
+                                  ? Padding(
+                                      padding: const EdgeInsets.all(15),
+                                      child: SvgPicture.asset(AppIcons.Check),
+                                    )
+                                  : const SizedBox(),
+                              onTap: () {
+                                change.ismoving();
+                              },
+                              labal: EditProfile_text.Secondary,
+                              hint: EditProfile_text.Enter_Secondary,
+                              controller: collection,
+                            );
                     },
                   ),
                   SizedBox(height: Get.height / 40),
