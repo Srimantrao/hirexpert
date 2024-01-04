@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/view/screen/collection/Collection.dart';
 import 'package:hirexpert/view/screen/collection/Education.dart';
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
@@ -33,6 +32,11 @@ class Specialization extends StatefulWidget {
 
 class _SpecializationState extends State<Specialization> {
   @override
+  bool vis = true;
+  TextEditingController collection = TextEditingController();
+  Collectiondepartment controller = Get.put(Collectiondepartment());
+
+  @override
   Widget build(BuildContext context) {
     final Special = Provider.of<SpecializationController>(
       context,
@@ -44,6 +48,10 @@ class _SpecializationState extends State<Specialization> {
       listen: false,
     );
 
+    final change = Provider.of<Collectionpart>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -93,192 +101,351 @@ class _SpecializationState extends State<Specialization> {
                     ],
                   ),
                   SizedBox(height: Get.height / 20),
-                  Text(
-                    Specialization_text.area,
-                    style: TextStyle(
-                      fontSize: Get.width / 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.Bottam_color,
+                  Visibility(
+                    visible: vis,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          Specialization_text.area,
+                          style: TextStyle(
+                            fontSize: Get.width / 22,
+                            fontWeight: FontWeight.w700,
+                          ),
                         ),
-                      ),
-                    ),
-                    child: Consumer<SpecializationController>(
-                      builder: (
-                        BuildContext context,
-                        value,
-                        Widget? child,
-                      ) {
-                        return DropdownButton<String>(
-                          icon: SvgPicture.asset(AppIcons.down),
-                          underline: const SizedBox(),
-                          isExpanded: true,
-                          value: Special.Functional_area,
-                          items: Special.Functional_item.map((String item) {
-                            return DropdownMenuItem<String>(
-                              value: item,
-                              child: Text(item),
-                            );
-                          }).toList(),
-                          onChanged: (value) {
-                            Special.Functional(value!);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(height: Get.height / 50),
-                  Text(
-                    Specialization_text.interest,
-                    style: TextStyle(
-                      fontSize: Get.width / 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                    ),
-                    child: Consumer<SpecializationController>(
-                      builder: (
-                        BuildContext context,
-                        value,
-                        Widget? child,
-                      ) {
-                        return DropdownButton<String>(
-                          underline: const SizedBox(),
-                          icon: SvgPicture.asset(AppIcons.down),
-                          isExpanded: true,
-                          value: Special.Select_Speciailzation,
-                          items: Special.Speciailzation_item.map(
-                            (
-                              String newitem,
-                            ) {
-                              return DropdownMenuItem<String>(
-                                value: newitem,
-                                child: Text(newitem),
-                              );
-                            },
-                          ).toList(),
-                          onChanged: (value) {
-                            Special.Speciailzation(value!);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(height: Get.height / 50),
-                  Text(
-                    Specialization_text.Skillset,
-                    style: TextStyle(
-                      fontSize: Get.width / 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                    ),
-                    child: Consumer<SpecializationController>(
-                      builder: (
-                        BuildContext context,
-                        value,
-                        Widget? child,
-                      ) {
-                        return DropdownButton<String>(
-                          underline: const SizedBox(),
-                          icon: SvgPicture.asset(AppIcons.down),
-                          isExpanded: true,
-                          value: Special.Skillset,
-                          items: Special.Skillset_item.map(
-                            (
-                              String newitem,
-                            ) {
-                              return DropdownMenuItem<String>(
-                                value: newitem,
-                                child: Text(newitem),
-                              );
-                            },
-                          ).toList(),
-                          onChanged: (value) {
-                            Special.Skillset_fun(value!);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                  SizedBox(height: Get.height / 50),
-                  Text(
-                    EditProfile_text.Secondary,
-                    style: TextStyle(
-                      fontSize: Get.width / 22,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      Get.to(
-                        () => const Collection(),
-                        duration: const Duration(milliseconds: 500),
-                        transition: Transition.downToUp,
-                      );
-                    },
-                    child: Container(
-                      width: Get.width,
-                      height: Get.height / 17,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(color: AppColor.Bottam_color),
-                        ),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            EditProfile_text.Enter_Secondary,
-                            style: TextStyle(
-                              color: AppColor.subcolor,
-                              fontSize: Get.width / 25,
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: AppColor.Bottam_color,
+                              ),
                             ),
                           ),
-                        ],
-                      ),
+                          child: Consumer<SpecializationController>(
+                            builder: (
+                              BuildContext context,
+                              value,
+                              Widget? child,
+                            ) {
+                              return DropdownButton<String>(
+                                icon: SvgPicture.asset(AppIcons.down),
+                                underline: const SizedBox(),
+                                isExpanded: true,
+                                value: Special.Functional_area,
+                                items:
+                                    Special.Functional_item.map((String item) {
+                                  return DropdownMenuItem<String>(
+                                    value: item,
+                                    child: Text(item),
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  Special.Functional(value!);
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(height: Get.height / 50),
+                        Text(
+                          Specialization_text.interest,
+                          style: TextStyle(
+                            fontSize: Get.width / 22,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: AppColor.Bottam_color,
+                              ),
+                            ),
+                          ),
+                          child: Consumer<SpecializationController>(
+                            builder: (
+                              BuildContext context,
+                              value,
+                              Widget? child,
+                            ) {
+                              return DropdownButton<String>(
+                                underline: const SizedBox(),
+                                icon: SvgPicture.asset(AppIcons.down),
+                                isExpanded: true,
+                                value: Special.Select_Speciailzation,
+                                items: Special.Speciailzation_item.map(
+                                  (
+                                    String newitem,
+                                  ) {
+                                    return DropdownMenuItem<String>(
+                                      value: newitem,
+                                      child: Text(newitem),
+                                    );
+                                  },
+                                ).toList(),
+                                onChanged: (value) {
+                                  Special.Speciailzation(value!);
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(height: Get.height / 50),
+                        Text(
+                          Specialization_text.Skillset,
+                          style: TextStyle(
+                            fontSize: Get.width / 22,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: AppColor.Bottam_color,
+                              ),
+                            ),
+                          ),
+                          child: Consumer<SpecializationController>(
+                            builder: (
+                              BuildContext context,
+                              value,
+                              Widget? child,
+                            ) {
+                              return DropdownButton<String>(
+                                underline: const SizedBox(),
+                                icon: SvgPicture.asset(AppIcons.down),
+                                isExpanded: true,
+                                value: Special.Skillset,
+                                items: Special.Skillset_item.map(
+                                  (
+                                    String newitem,
+                                  ) {
+                                    return DropdownMenuItem<String>(
+                                      value: newitem,
+                                      child: Text(newitem),
+                                    );
+                                  },
+                                ).toList(),
+                                onChanged: (value) {
+                                  Special.Skillset_fun(value!);
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                        SizedBox(height: Get.height / 50),
+                      ],
                     ),
                   ),
-                  SizedBox(height: Get.height / 50),
+                  //Textfild Container
                   Consumer<Collectionpart>(
-                    builder: (
-                      BuildContext context,
-                      value,
-                      Widget? child,
-                    ) {
-                      if (Coll.istrue) {
-                        return Collec(
-                          text: widget.text,
-                          color: widget.color,
-                          textcolor: widget.textcolor,
-                        );
-                      } else {
-                        const SizedBox();
-                      }
-                      return const SizedBox();
+                    builder: (BuildContext context, value, Widget? child) {
+                      return Inputfild(
+                        suffixIcon: (controller.isVal_one.value ||
+                                controller.isVal_second.value ||
+                                controller.isVal_thrd.value ||
+                                controller.isVal_fourth.value ||
+                                controller.isVal_fifth.value ||
+                                controller.isVal_sixth.value ||
+                                controller.isVal_seventh.value ||
+                                controller.isVal_Egthe.value ||
+                                controller.isVal_nine.value)
+                            ? Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: SvgPicture.asset(AppIcons.Check),
+                              )
+                            : const SizedBox(),
+                        onTap: () {
+                          change.ismoving();
+                          vis = !vis;
+                          setState(() {});
+                        },
+                        labal: EditProfile_text.Secondary,
+                        hint: EditProfile_text.Enter_Secondary,
+                        controller: collection,
+                      );
                     },
                   ),
-                  SizedBox(height: Get.height / 10),
+                  SizedBox(height: Get.height / 40),
+                  Consumer<Collectionpart>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return (change.istrue)
+                          ? Column(
+                              children: [
+                                Obx(
+                                  () => Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_one();
+                                        },
+                                        child: Collec(
+                                          text: Collection_text.Javaprograming,
+                                          color: (controller.isVal_one.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_one.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_second();
+                                        },
+                                        child: Collec(
+                                          text: Collection_text.Javacoding,
+                                          color: (controller.isVal_second.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_second.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_thrd();
+                                        },
+                                        child: Collec(
+                                          text: Collection_text.Javabasics,
+                                          color: (controller.isVal_thrd.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_thrd.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 80),
+                                Obx(
+                                  () => Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        child: Collec(
+                                          text: Collection_text
+                                              .AdvancedJavaprogramming,
+                                          color: (controller.isVal_fourth.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_fourth.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                        onTap: () {
+                                          controller.isValing_fourth();
+                                        },
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_fifth();
+                                        },
+                                        child: Collec(
+                                          text: Collection_text.Javatutorial,
+                                          color: (controller.isVal_fifth.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_fifth.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_sixth();
+                                        },
+                                        child: Collec(
+                                          text:
+                                              Collection_text.Javaforbeginners,
+                                          color: (controller.isVal_sixth.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_sixth.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 80),
+                                Obx(
+                                  () => Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_seventh();
+                                        },
+                                        child: Collec(
+                                          text:
+                                              Collection_text.Javatipsandtricks,
+                                          color:
+                                              (controller.isVal_seventh.value)
+                                                  ? AppColor.Button_color
+                                                  : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_seventh.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_Egthe();
+                                        },
+                                        child: Collec(
+                                          text: Collection_text.Javadevelopment,
+                                          color: (controller.isVal_Egthe.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_Egthe.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                      InkWell(
+                                        onTap: () {
+                                          controller.isValing_nine();
+                                        },
+                                        child: Collec(
+                                          text: Collection_text.LearnJava,
+                                          color: (controller.isVal_nine.value)
+                                              ? AppColor.Button_color
+                                              : AppColor.Bottam_color,
+                                          textcolor:
+                                              (controller.isVal_nine.value)
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            )
+                          : const SizedBox();
+                    },
+                  ),
+                  (vis)
+                      ? SizedBox(height: Get.height / 10)
+                      : SizedBox(height: Get.height / 4.35),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
