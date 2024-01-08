@@ -12,6 +12,8 @@ import 'package:hirexpert/view/utils/common/Container/Option.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/CollectionController/Collectiondepartment.dart';
 import '../../../controller/DropdownController/Specialization_con.dart';
+import '../../../controller/DropdownController/Specialization_con.dart';
+import '../../../controller/DropdownController/Specialization_con.dart';
 import '../../utils/common/Textfild/Inputfild.dart';
 
 class Specialization extends StatefulWidget {
@@ -31,19 +33,13 @@ class Specialization extends StatefulWidget {
 }
 
 class _SpecializationState extends State<Specialization> {
-  @override
-  bool vis = true;
   TextEditingController collection = TextEditingController();
   Collectiondepartment controller = Get.put(Collectiondepartment());
+  bool vis = true;
 
   @override
   Widget build(BuildContext context) {
     final Special = Provider.of<SpecializationController>(
-      context,
-      listen: false,
-    );
-
-    final Coll = Provider.of<Collectionpart>(
       context,
       listen: false,
     );
@@ -247,21 +243,63 @@ class _SpecializationState extends State<Specialization> {
                                 vis = !vis;
                                 setState(() {});
                               },
-                              child: Container(
-                                height: Get.height / 25,
-                                width: Get.width,
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                      bottom: BorderSide(
-                                    color: AppColor.Bottam_color,
-                                  )),
-                                ),
-                                child: Text(
-                                  EditProfile_text.Enter_Secondary,
-                                  style: TextStyle(
-                                    color: AppColor.subcolor,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    EditProfile_text.Secondary,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: Get.width / 22,
+                                    ),
                                   ),
-                                ),
+                                  SizedBox(height: Get.height / 60),
+                                  Container(
+                                    height: Get.height / 25,
+                                    width: Get.width,
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                          bottom: BorderSide(
+                                        color: AppColor.Bottam_color,
+                                      )),
+                                    ),
+                                    child: Text(
+                                      EditProfile_text.Enter_Secondary,
+                                      style: TextStyle(
+                                        color: AppColor.subcolor,
+                                        fontSize: Get.width / 26,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(height: Get.height / 50),
+                                  Row(
+                                    children: [
+                                      (controller.isVal_one.value)
+                                          ? Collec(
+                                              text: widget.text,
+                                              color: widget.color,
+                                              textcolor: widget.textcolor,
+                                            )
+                                          : const SizedBox(),
+                                      SizedBox(width: Get.width / 90),
+                                      (controller.isVal_second.value)
+                                          ? Collec(
+                                              text: Collection_text.Javacoding,
+                                              color: widget.color,
+                                              textcolor: widget.textcolor,
+                                            )
+                                          : const SizedBox(),
+                                      SizedBox(width: Get.width / 90),
+                                      (controller.isVal_thrd.value)
+                                          ? Collec(
+                                              text: Collection_text.Javabasics,
+                                              color: widget.color,
+                                              textcolor: widget.textcolor,
+                                            )
+                                          : const SizedBox(),
+                                    ],
+                                  ),
+                                ],
                               ),
                             )
                           : Inputfild(
@@ -276,7 +314,13 @@ class _SpecializationState extends State<Specialization> {
                                       controller.isVal_nine.value)
                                   ? Padding(
                                       padding: const EdgeInsets.all(15),
-                                      child: SvgPicture.asset(AppIcons.Check),
+                                      child: InkWell(
+                                        onTap: () {
+                                          vis = !vis;
+                                          setState(() {});
+                                        },
+                                        child: SvgPicture.asset(AppIcons.Check),
+                                      ),
                                     )
                                   : const SizedBox(),
                               onTap: () {
@@ -465,8 +509,8 @@ class _SpecializationState extends State<Specialization> {
                     },
                   ),
                   (vis)
-                      ? SizedBox(height: Get.height / 10)
-                      : SizedBox(height: Get.height / 4.35),
+                      ? SizedBox(height: Get.height / 15)
+                      : SizedBox(height: Get.height / 2.35),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
