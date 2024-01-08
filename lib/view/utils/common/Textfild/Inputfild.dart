@@ -34,11 +34,26 @@ class Inputfild extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          labal,
-          style: TextStyle(
-            fontWeight: FontWeight.w600,
-            fontSize: Get.width / 22,
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: labal,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                  fontSize: Get.width / 25,
+                  color: AppColor.subcolor,
+                ),
+              ),
+              TextSpan(
+                text: ' *',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: Get.width / 22,
+                  color: AppColor.Error_color,
+                ),
+              ),
+            ],
           ),
         ),
         TextField(
@@ -51,7 +66,7 @@ class Inputfild extends StatelessWidget {
             suffixIcon: suffixIcon,
             hintText: hint,
             hintStyle: TextStyle(
-              color: AppColor.subcolor,
+              color: AppColor.black_all,
             ),
             focusedBorder: UnderlineInputBorder(
               borderSide: BorderSide(

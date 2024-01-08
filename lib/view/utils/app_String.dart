@@ -74,6 +74,17 @@ class Login_text {
   static const Click_Here = "Click Here";
 }
 
+//Forget Password
+class Forget_Password_text {
+  static const hading = "Forgot Password";
+  static const Submit = "Submit";
+  static const Success = "Success!";
+  static const OK = "OK";
+  static const Sub_Suessess = "We have sent a mail to your registeredemail id. You can reset your password byclicking on the link mentioned in theemail.";
+  static const sub =
+      "Expenses as material breeding insisted buildingto in. Continual so distrusts pronounce by unwillinglistening. Thing do taste on we manor.";
+}
+
 //Sinup Screen
 class Signup_text {
   static const Sign_Up = "Sign Up";
@@ -320,7 +331,7 @@ class Specialization_text {
 }
 
 //Collection
-class Collection_text{
+class Collection_text {
   static const Javaprograming = "Java Programing";
   static const Javatutorial = "Java tutorial";
   static const Javacoding = "Java coding";
@@ -334,7 +345,7 @@ class Collection_text{
 }
 
 //Experience
-class Experience_text{
+class Experience_text {
   static const IM = "I'm a fresher";
   static const experience = "How many years of experience do you have?";
   static const Salary = "Expected Salary (per annum)?";

@@ -12,6 +12,7 @@ import 'package:provider/provider.dart';
 import '../../utils/app_icon.dart';
 import '../../utils/common/Buttons/wideButtons.dart';
 import 'Signup.dart';
+import 'forget_password.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -109,11 +110,16 @@ class _LoginState extends State<Login> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        Text(
-                          Login_text.Forget_Password,
-                          style: TextStyle(
-                            fontSize: Get.width / 25,
-                            fontWeight: FontWeight.w600,
+                        InkWell(
+                          onTap: (){
+                            Get.to(()=>const F_Password());
+                          },
+                          child: Text(
+                            Login_text.Forget_Password,
+                            style: TextStyle(
+                              fontSize: Get.width / 25,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                       ],

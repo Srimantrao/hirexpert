@@ -5,11 +5,18 @@ import 'package:get/get.dart';
 
 class Collectionpart with ChangeNotifier {
   bool _istrue = false;
+  bool _visibility = true;
 
-  get istrue => _istrue;
+  bool get istrue => _istrue;
+  bool get visibility => _visibility;
 
   void ismoving() {
     _istrue = !_istrue;
+    notifyListeners();
+  }
+
+  void Visiblity() {
+    _visibility = !_visibility;
     notifyListeners();
   }
 

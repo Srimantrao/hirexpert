@@ -16,6 +16,7 @@ class AppIcons {
   static const Seeved = "assets/icon/body/Seved.svg";
   static const bookmark = "assets/icon/body/Bookmark.svg";
   static const Check = "assets/icon/body/Check.svg";
+  static const Success = "assets/icon/body/Success.png";
 
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";

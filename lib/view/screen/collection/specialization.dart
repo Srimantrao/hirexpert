@@ -35,7 +35,6 @@ class Specialization extends StatefulWidget {
 class _SpecializationState extends State<Specialization> {
   TextEditingController collection = TextEditingController();
   Collectiondepartment controller = Get.put(Collectiondepartment());
-  bool vis = true;
 
   @override
   Widget build(BuildContext context) {
@@ -97,151 +96,157 @@ class _SpecializationState extends State<Specialization> {
                     ],
                   ),
                   SizedBox(height: Get.height / 20),
-                  Visibility(
-                    visible: vis,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          Specialization_text.area,
-                          style: TextStyle(
-                            fontSize: Get.width / 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: AppColor.Bottam_color,
+                  Consumer<Collectionpart>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return Visibility(
+                        visible: change.visibility,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              Specialization_text.area,
+                              style: TextStyle(
+                                fontSize: Get.width / 25,
+                                fontWeight: FontWeight.w400,
+                                color: AppColor.subcolor,
                               ),
                             ),
-                          ),
-                          child: Consumer<SpecializationController>(
-                            builder: (
-                              BuildContext context,
-                              value,
-                              Widget? child,
-                            ) {
-                              return DropdownButton<String>(
-                                icon: SvgPicture.asset(AppIcons.down),
-                                underline: const SizedBox(),
-                                isExpanded: true,
-                                value: Special.Functional_area,
-                                items:
-                                    Special.Functional_item.map((String item) {
-                                  return DropdownMenuItem<String>(
-                                    value: item,
-                                    child: Text(item),
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                              child: Consumer<SpecializationController>(
+                                builder: (
+                                  BuildContext context,
+                                  value,
+                                  Widget? child,
+                                ) {
+                                  return DropdownButton<String>(
+                                    icon: SvgPicture.asset(AppIcons.down),
+                                    underline: const SizedBox(),
+                                    isExpanded: true,
+                                    value: Special.Functional_area,
+                                    items: Special.Functional_item.map(
+                                        (String item) {
+                                      return DropdownMenuItem<String>(
+                                        value: item,
+                                        child: Text(item),
+                                      );
+                                    }).toList(),
+                                    onChanged: (value) {
+                                      Special.Functional(value!);
+                                    },
                                   );
-                                }).toList(),
-                                onChanged: (value) {
-                                  Special.Functional(value!);
                                 },
-                              );
-                            },
-                          ),
-                        ),
-                        SizedBox(height: Get.height / 50),
-                        Text(
-                          Specialization_text.interest,
-                          style: TextStyle(
-                            fontSize: Get.width / 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: AppColor.Bottam_color,
                               ),
                             ),
-                          ),
-                          child: Consumer<SpecializationController>(
-                            builder: (
-                              BuildContext context,
-                              value,
-                              Widget? child,
-                            ) {
-                              return DropdownButton<String>(
-                                underline: const SizedBox(),
-                                icon: SvgPicture.asset(AppIcons.down),
-                                isExpanded: true,
-                                value: Special.Select_Speciailzation,
-                                items: Special.Speciailzation_item.map(
-                                  (
-                                    String newitem,
-                                  ) {
-                                    return DropdownMenuItem<String>(
-                                      value: newitem,
-                                      child: Text(newitem),
-                                    );
-                                  },
-                                ).toList(),
-                                onChanged: (value) {
-                                  Special.Speciailzation(value!);
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                        SizedBox(height: Get.height / 50),
-                        Text(
-                          Specialization_text.Skillset,
-                          style: TextStyle(
-                            fontSize: Get.width / 22,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(
-                                color: AppColor.Bottam_color,
+                            SizedBox(height: Get.height / 50),
+                            Text(
+                              Specialization_text.interest,
+                              style: TextStyle(
+                                fontSize: Get.width / 25,
+                                fontWeight: FontWeight.w400,
+                                color: AppColor.subcolor,
                               ),
                             ),
-                          ),
-                          child: Consumer<SpecializationController>(
-                            builder: (
-                              BuildContext context,
-                              value,
-                              Widget? child,
-                            ) {
-                              return DropdownButton<String>(
-                                underline: const SizedBox(),
-                                icon: SvgPicture.asset(AppIcons.down),
-                                isExpanded: true,
-                                value: Special.Skillset,
-                                items: Special.Skillset_item.map(
-                                  (
-                                    String newitem,
-                                  ) {
-                                    return DropdownMenuItem<String>(
-                                      value: newitem,
-                                      child: Text(newitem),
-                                    );
-                                  },
-                                ).toList(),
-                                onChanged: (value) {
-                                  Special.Skillset_fun(value!);
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                              child: Consumer<SpecializationController>(
+                                builder: (
+                                  BuildContext context,
+                                  value,
+                                  Widget? child,
+                                ) {
+                                  return DropdownButton<String>(
+                                    underline: const SizedBox(),
+                                    icon: SvgPicture.asset(AppIcons.down),
+                                    isExpanded: true,
+                                    value: Special.Select_Speciailzation,
+                                    items: Special.Speciailzation_item.map(
+                                      (
+                                        String newitem,
+                                      ) {
+                                        return DropdownMenuItem<String>(
+                                          value: newitem,
+                                          child: Text(newitem),
+                                        );
+                                      },
+                                    ).toList(),
+                                    onChanged: (value) {
+                                      Special.Speciailzation(value!);
+                                    },
+                                  );
                                 },
-                              );
-                            },
-                          ),
+                              ),
+                            ),
+                            SizedBox(height: Get.height / 50),
+                            Text(
+                              Specialization_text.Skillset,
+                              style: TextStyle(
+                                fontSize: Get.width / 25,
+                                fontWeight: FontWeight.w400,
+                                color: AppColor.subcolor,
+                              ),
+                            ),
+                            Container(
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                              child: Consumer<SpecializationController>(
+                                builder: (
+                                  BuildContext context,
+                                  value,
+                                  Widget? child,
+                                ) {
+                                  return DropdownButton<String>(
+                                    underline: const SizedBox(),
+                                    icon: SvgPicture.asset(AppIcons.down),
+                                    isExpanded: true,
+                                    value: Special.Skillset,
+                                    items: Special.Skillset_item.map(
+                                      (
+                                        String newitem,
+                                      ) {
+                                        return DropdownMenuItem<String>(
+                                          value: newitem,
+                                          child: Text(newitem),
+                                        );
+                                      },
+                                    ).toList(),
+                                    onChanged: (value) {
+                                      Special.Skillset_fun(value!);
+                                    },
+                                  );
+                                },
+                              ),
+                            ),
+                            SizedBox(height: Get.height / 50),
+                          ],
                         ),
-                        SizedBox(height: Get.height / 50),
-                      ],
-                    ),
+                      );
+                    },
                   ),
                   //Textfild Container
                   Consumer<Collectionpart>(
                     builder: (BuildContext context, value, Widget? child) {
-                      return (vis)
+                      return (change.visibility)
                           ? InkWell(
                               onTap: () {
-                                vis = !vis;
-                                setState(() {});
+                                change.Visiblity();
                               },
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -249,8 +254,9 @@ class _SpecializationState extends State<Specialization> {
                                   Text(
                                     EditProfile_text.Secondary,
                                     style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: Get.width / 22,
+                                      fontSize: Get.width / 25,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColor.subcolor,
                                     ),
                                   ),
                                   SizedBox(height: Get.height / 60),
@@ -266,8 +272,8 @@ class _SpecializationState extends State<Specialization> {
                                     child: Text(
                                       EditProfile_text.Enter_Secondary,
                                       style: TextStyle(
-                                        color: AppColor.subcolor,
-                                        fontSize: Get.width / 26,
+                                        fontSize: Get.width / 25,
+                                        fontWeight: FontWeight.w400
                                       ),
                                     ),
                                   ),
@@ -316,8 +322,7 @@ class _SpecializationState extends State<Specialization> {
                                       padding: const EdgeInsets.all(15),
                                       child: InkWell(
                                         onTap: () {
-                                          vis = !vis;
-                                          setState(() {});
+                                          change.Visiblity();
                                         },
                                         child: SvgPicture.asset(AppIcons.Check),
                                       ),
@@ -508,9 +513,13 @@ class _SpecializationState extends State<Specialization> {
                           : const SizedBox();
                     },
                   ),
-                  (vis)
-                      ? SizedBox(height: Get.height / 15)
-                      : SizedBox(height: Get.height / 2.35),
+                  Consumer<Collectionpart>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return (change.visibility)
+                          ? SizedBox(height: Get.height / 15)
+                          : SizedBox(height: Get.height / 2.35);
+                    },
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
