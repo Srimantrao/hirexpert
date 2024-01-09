@@ -1,13 +1,13 @@
 // ignore_for_file: file_names, non_constant_identifier_names, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import '../../view/utils/app_String.dart';
 
 class SpecializationController with ChangeNotifier {
-  String _Functional_area = Specialization_text.Accounts_Finance;
+  String _Functional_area = Specialization_text.Select_area;
 
   final List<String> _Functional_item = [
+    Specialization_text.Select_area,
     Specialization_text.Accounts_Finance,
     Specialization_text.Bpo,
     Specialization_text.Database_Engineer,
@@ -20,9 +20,10 @@ class SpecializationController with ChangeNotifier {
     Specialization_text.Web_Devloper,
   ];
 
-  String _Select_Speciailzation = Specialization_text.Frontend;
+  String _Select_Speciailzation = Specialization_text.Search_text;
 
   final List<String> _Speciailzation_item = [
+    Specialization_text.Search_text,
     Specialization_text.Backend,
     Specialization_text.Frontend,
     Specialization_text.Software,
@@ -30,9 +31,10 @@ class SpecializationController with ChangeNotifier {
     Specialization_text.Skillset,
   ];
 
-  String _Skillset = Specialization_text.React_JS;
+  String _Skillset = Specialization_text.Select_Skillset;
 
   final List<String> _Skillset_item = [
+    Specialization_text.Select_Skillset,
     Specialization_text.Angular_TS,
     Specialization_text.Angular,
     Specialization_text.Bootstrap,

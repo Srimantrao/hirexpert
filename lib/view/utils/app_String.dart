@@ -1,7 +1,11 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, file_names
 
 //DropDown Menu
-import 'package:hirexpert/view/screen/collection/Education.dart';
+
+class Navigator_text {
+  static const Next = "Next";
+  static const Back = "Back";
+}
 
 class DropDownMenu_String {
   static const Gujarat = "Gujarat";
@@ -80,7 +84,8 @@ class Forget_Password_text {
   static const Submit = "Submit";
   static const Success = "Success!";
   static const OK = "OK";
-  static const Sub_Suessess = "We have sent a mail to your registeredemail id. You can reset your password byclicking on the link mentioned in theemail.";
+  static const Sub_Suessess =
+      "We have sent a mail to your registeredemail id. You can reset your password byclicking on the link mentioned in theemail.";
   static const sub =
       "Expenses as material breeding insisted buildingto in. Continual so distrusts pronounce by unwillinglistening. Thing do taste on we manor.";
 }
@@ -262,8 +267,11 @@ class EditProfile_text {
 //Specialization
 class Specialization_text {
   static const area = "Select your functional area:";
+  static const Select_area = "Select your functional area";
   static const interest = "Select your specialization / interest:";
+  static const Search_text = "Select your specialization / interest";
   static const Skillset = "What is Your Primary Skillset?";
+  static const Select_Skillset = "Select Your Primary Skillset";
   static const Collection = "What Is Your Secondary Collection ?";
 
   //Select your functional area:

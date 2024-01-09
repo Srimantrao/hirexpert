@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/view/screen/collection/Education.dart';
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -11,8 +10,6 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Container/Option.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/CollectionController/Collectiondepartment.dart';
-import '../../../controller/DropdownController/Specialization_con.dart';
-import '../../../controller/DropdownController/Specialization_con.dart';
 import '../../../controller/DropdownController/Specialization_con.dart';
 import '../../utils/common/Textfild/Inputfild.dart';
 
@@ -173,9 +170,7 @@ class _SpecializationState extends State<Specialization> {
                                     isExpanded: true,
                                     value: Special.Select_Speciailzation,
                                     items: Special.Speciailzation_item.map(
-                                      (
-                                        String newitem,
-                                      ) {
+                                      (String newitem) {
                                         return DropdownMenuItem<String>(
                                           value: newitem,
                                           child: Text(newitem),
@@ -218,9 +213,7 @@ class _SpecializationState extends State<Specialization> {
                                     isExpanded: true,
                                     value: Special.Skillset,
                                     items: Special.Skillset_item.map(
-                                      (
-                                        String newitem,
-                                      ) {
+                                      (String newitem) {
                                         return DropdownMenuItem<String>(
                                           value: newitem,
                                           child: Text(newitem),
@@ -265,15 +258,16 @@ class _SpecializationState extends State<Specialization> {
                                     width: Get.width,
                                     decoration: BoxDecoration(
                                       border: Border(
-                                          bottom: BorderSide(
-                                        color: AppColor.Bottam_color,
-                                      )),
+                                        bottom: BorderSide(
+                                          color: AppColor.Bottam_color,
+                                        ),
+                                      ),
                                     ),
                                     child: Text(
                                       EditProfile_text.Enter_Secondary,
                                       style: TextStyle(
-                                        fontSize: Get.width / 25,
-                                        fontWeight: FontWeight.w400
+                                        fontSize: Get.width / 27,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
                                   ),
@@ -520,24 +514,23 @@ class _SpecializationState extends State<Specialization> {
                           : SizedBox(height: Get.height / 2.35);
                     },
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      SvgPicture.asset(AppIcons.Backarrow),
-                      SizedBox(width: Get.width / 30),
-                      SvgPicture.asset(AppIcons.Rectangle),
-                      SizedBox(width: Get.width / 30),
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        onTap: () {
-                          Get.to(() => const Education());
-                        },
-                        child: SvgPicture.asset(AppIcons.Go),
-                      ),
-                    ],
+                  SizedBox(height: Get.height / 20),
+                  InkWell(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          Navigator_text.Next,
+                          style: TextStyle(
+                            color: AppColor.Button_color,
+                            fontWeight: FontWeight.w700,
+                            fontSize: Get.size.width / 24,
+                          ),
+                        ),
+                        SizedBox(width: Get.width / 80),
+                        SvgPicture.asset(AppIcons.Go),
+                      ],
+                    ),
                   ),
                 ],
               ),
