@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/collection/Education.dart';
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -516,6 +517,11 @@ class _SpecializationState extends State<Specialization> {
                   ),
                   SizedBox(height: Get.height / 20),
                   InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => const Education(),
+                      );
+                    },
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [

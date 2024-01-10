@@ -78,8 +78,9 @@ class _EducationState extends State<Education> {
               Text(
                 Specialization_text.Education,
                 style: TextStyle(
-                  fontSize: Get.width / 22,
-                  fontWeight: FontWeight.w700,
+                  fontSize: Get.width / 25,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.subcolor,
                 ),
               ),
               Container(
@@ -118,8 +119,9 @@ class _EducationState extends State<Education> {
               Text(
                 Specialization_text.graduation,
                 style: TextStyle(
-                  fontSize: Get.width / 22,
-                  fontWeight: FontWeight.w700,
+                  fontSize: Get.width / 25,
+                  fontWeight: FontWeight.w400,
+                  color: AppColor.subcolor,
                 ),
               ),
               Container(
