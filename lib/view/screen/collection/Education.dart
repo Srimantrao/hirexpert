@@ -39,7 +39,9 @@ class _EducationState extends State<Education> {
           color: AppColor.Full_body_color,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width / 50,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -183,14 +185,15 @@ class _EducationState extends State<Education> {
                   SvgPicture.asset(AppIcons.Rectangle),
                   SizedBox(width: Get.width / 30),
                   InkWell(
-                      splashColor: Colors.transparent,
-                      highlightColor: Colors.transparent,
-                      hoverColor: Colors.transparent,
-                      focusColor: Colors.transparent,
-                      onTap: () {
-                        Get.to(() => const Experience());
-                      },
-                      child: SvgPicture.asset(AppIcons.Go)),
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    onTap: () {
+                      Get.to(() => const Experience());
+                    },
+                    child: SvgPicture.asset(AppIcons.Go),
+                  ),
                 ],
               ),
             ],
