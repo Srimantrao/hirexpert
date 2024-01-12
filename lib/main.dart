@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/BottamController/MenuNavigationController.dart';
 import 'controller/CollectionController/Collectiondepartment.dart';
+import 'controller/DropdownController/SpecializationController.dart';
 import 'controller/DropdownController/Specialization_con.dart';
 import 'controller/LoginControoler/visibility.dart';
 import 'controller/OptionController/SelectButton.dart';
@@ -47,6 +48,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => SpecializationController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
+        ChangeNotifierProvider(create: (_) => SpecializationController_popup()),
+        ChangeNotifierProvider(create: (_) => SpecializationController_Interest()),
+        ChangeNotifierProvider(create: (_) => SpecializationController_Skillset()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

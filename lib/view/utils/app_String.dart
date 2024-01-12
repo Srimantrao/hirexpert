@@ -267,12 +267,13 @@ class EditProfile_text {
 //Specialization
 class Specialization_text {
   static const area = "Select your functional area:";
-  static const Select_area = "Select your functional area";
-  static const interest = "Select your specialization / interest:";
-  static const Search_text = "Select your specialization / interest";
+  static const Select_area = "Select functional area";
+  static const interest = "Select specialization / interest";
+  static const Search_text = "Select your specialization / interest:";
   static const Skillset = "What is Your Primary Skillset?";
-  static const Select_Skillset = "Select Your Primary Skillset";
+  static const Select_Skillset = "Select Primary Skillset";
   static const Collection = "What Is Your Secondary Collection ?";
+  static const Collection_text = "Write Your Secondary Collection ?";
 
   //Select your functional area:
   static const Accounts_Finance = "Accounts & Finance";

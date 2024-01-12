@@ -194,11 +194,7 @@ class _SignupState extends State<Signup> {
                       onTap: () {
                         vail.SingupValidation();
                         Get.to(
-                          () => Specialization(
-                            text: Collection_text.Javadevelopment,
-                            color: AppColor.Button_color,
-                            textcolor: AppColor.Full_body_color,
-                          ),
+                          () => const Specialization(),
                         );
                       },
                       child: OnButtons(

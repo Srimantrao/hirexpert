@@ -17,6 +17,7 @@ class AppIcons {
   static const bookmark = "assets/icon/body/Bookmark.svg";
   static const Check = "assets/icon/body/Check.svg";
   static const Success = "assets/icon/body/Success.png";
+  static const cancel = "assets/icon/body/cancel.svg";
 
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";
@@ -41,4 +42,5 @@ class AppIcons {
   static const Rectangle = "assets/icon/arrow/Rectangle.svg";
   static const Go = "assets/icon/arrow/Go.svg";
   static const down = "assets/icon/arrow/Down.svg";
+  static const Right = "assets/icon/arrow/Right.svg";
 }
