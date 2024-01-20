@@ -9,6 +9,7 @@ import '../../../../controller/DropdownController/SpecializationController.dart'
 import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
+import '../Container/Option.dart';
 
 class Function_area extends StatelessWidget {
   const Function_area({super.key});
@@ -594,6 +595,314 @@ class Skillset extends StatelessWidget {
               ],
             ),
           ),
+        );
+      },
+    );
+  }
+}
+
+class Collection extends StatelessWidget {
+  const Collection({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Cont = Provider.of<SpecializationController_Collection>(
+      context,
+      listen: false,
+    );
+    return Consumer<SpecializationController_Collection>(
+      builder: (BuildContext context, value, Widget? child) {
+        return InkWell(
+          onTap: () {
+            Cont.Visible_fun();
+          },
+          child: (Cont.visible)
+              ? Column(
+                  children: [
+                    Container(
+                      width: Get.width,
+                      height: Get.height / 20,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            Specialization_text.Collection_text,
+                            style: TextStyle(
+                              fontSize: Get.width / 25,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: Get.height / 50),
+                    Column(
+                      children: [
+                        Row(
+                          children: [
+                            (Cont.CollcetionButtons_one)
+                                ? Collec(
+                                    text: Collection_text.Javadevelopment,
+                                    color: AppColor.Button_color,
+                                    textcolor: AppColor.Full_body_color,
+                                  )
+                                : const SizedBox(),
+                            SizedBox(width: Get.width / 60),
+                            (Cont.CollcetionButtons_two)
+                                ? Collec(
+                                    text: Collection_text.LearnJava,
+                                    color: AppColor.Button_color,
+                                    textcolor: AppColor.Full_body_color,
+                                  )
+                                : const SizedBox(),
+                            SizedBox(width: Get.width / 60),
+                            (Cont.CollcetionButtons_Three)
+                                ? Collec(
+                                    text: Collection_text.Javatipsandtricks,
+                                    color: AppColor.Button_color,
+                                    textcolor: AppColor.Full_body_color,
+                                  )
+                                : const SizedBox(),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    InkWell(
+                      onTap: () {
+                        Cont.Colloction_fun();
+                      },
+                      child: Container(
+                        width: Get.width,
+                        height: Get.height / 20,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            bottom: BorderSide(
+                              color: AppColor.Bottam_color,
+                            ),
+                          ),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  Specialization_text.Collection_text,
+                                  style: TextStyle(
+                                    fontSize: Get.width / 25,
+                                  ),
+                                ),
+                                (Cont.CollcetionButtons_one ||
+                                        Cont.CollcetionButtons_two ||
+                                        Cont.CollcetionButtons_Three ||
+                                        Cont.CollcetionButtons_four ||
+                                        Cont.CollcetionButtons_six ||
+                                        Cont.CollcetionButtons_seven ||
+                                        Cont.CollcetionButtons_Eigth ||
+                                        Cont.CollcetionButtons_nine ||
+                                        Cont.CollcetionButtons_ten)
+                                    ? InkWell(
+                                        onTap: () {
+                                          Cont.Visible_fun_Second();
+                                        },
+                                        child: SvgPicture.asset(
+                                          AppIcons.Check,
+                                        ),
+                                      )
+                                    : const SizedBox()
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: Get.height / 60),
+                    Visibility(
+                      visible: Cont.colloction,
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                child: (Cont.CollcetionButtons_one)
+                                    ? Collec(
+                                        text: Collection_text.Javadevelopment,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javadevelopment,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_one_fun();
+                                },
+                              ),
+                              InkWell(
+                                child: (Cont.CollcetionButtons_two)
+                                    ? Collec(
+                                        text: Collection_text.LearnJava,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.LearnJava,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_two_fun();
+                                },
+                              ),
+                              InkWell(
+                                child: (Cont.CollcetionButtons_Three)
+                                    ? Collec(
+                                        text: Collection_text.Javatipsandtricks,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javatipsandtricks,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_Three_fun();
+                                },
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                child: (Cont.CollcetionButtons_four)
+                                    ? Collec(
+                                        text: Collection_text.Javaforbeginners,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javaforbeginners,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_Three_fun();
+                                },
+                              ),
+                              InkWell(
+                                child: (Cont.CollcetionButtons_six)
+                                    ? Collec(
+                                        text: Collection_text.Javatutorial,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javatutorial,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_four_fun();
+                                },
+                              ),
+                              InkWell(
+                                child: (Cont.CollcetionButtons_seven)
+                                    ? Collec(
+                                        text: Collection_text.Javaprojects,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javaprojects,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_seven_fun();
+                                },
+                              ),
+                            ],
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              InkWell(
+                                child: (Cont.CollcetionButtons_Eigth)
+                                    ? Collec(
+                                        text: Collection_text
+                                            .AdvancedJavaprogramming,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text
+                                            .AdvancedJavaprogramming,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_Eigth_fun();
+                                },
+                              ),
+                              InkWell(
+                                child: (Cont.CollcetionButtons_nine)
+                                    ? Collec(
+                                        text: Collection_text.Javabasics,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javabasics,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_nine_fun();
+                                },
+                              ),
+                              InkWell(
+                                child: (Cont.CollcetionButtons_ten)
+                                    ? Collec(
+                                        text: Collection_text.Javabasics,
+                                        color: AppColor.Button_color,
+                                        textcolor: AppColor.Full_body_color,
+                                      )
+                                    : Collec(
+                                        text: Collection_text.Javabasics,
+                                        color: AppColor.Bottam_color,
+                                        textcolor: AppColor.black_all,
+                                      ),
+                                onTap: () {
+                                  Cont.CollcetionButtons_ten_fun();
+                                },
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
         );
       },
     );

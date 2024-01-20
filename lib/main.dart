@@ -11,8 +11,9 @@ import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/BottamController/MenuNavigationController.dart';
 import 'controller/CollectionController/Collectiondepartment.dart';
+import 'controller/DropdownController/EducationController.dart';
+import 'controller/DropdownController/FresherController.dart';
 import 'controller/DropdownController/SpecializationController.dart';
-import 'controller/DropdownController/Specialization_con.dart';
 import 'controller/LoginControoler/visibility.dart';
 import 'controller/OptionController/SelectButton.dart';
 import 'controller/SearchScreenController/DropdownConroller.dart';
@@ -46,11 +47,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SinupController()),
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
-        ChangeNotifierProvider(create: (_) => SpecializationController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
         ChangeNotifierProvider(create: (_) => SpecializationController_popup()),
         ChangeNotifierProvider(create: (_) => SpecializationController_Interest()),
         ChangeNotifierProvider(create: (_) => SpecializationController_Skillset()),
+        ChangeNotifierProvider(create: (_) => SpecializationController_Collection()),
+        ChangeNotifierProvider(create: (_) => Education_Controller()),
+        ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
+        ChangeNotifierProvider(create: (_) => FreherController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -10,6 +12,7 @@ import 'package:provider/provider.dart';
 import '../../../controller/DropdownController/SpecializationController.dart';
 import '../../utils/app_String.dart';
 import '../../utils/common/Dropdown/Specialization_common.dart';
+import 'Education.dart';
 
 class Specialization extends StatefulWidget {
   const Specialization({super.key});
@@ -19,12 +22,9 @@ class Specialization extends StatefulWidget {
 }
 
 class _SpecializationState extends State<Specialization> {
-
-  bool visible = true;
-
   @override
   Widget build(BuildContext context) {
-    final speciailChang = Provider.of<SpecializationController_popup>(
+    final Cont = Provider.of<SpecializationController_Collection>(
       context,
       listen: false,
     );
@@ -37,104 +37,143 @@ class _SpecializationState extends State<Specialization> {
         ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
+            padding: EdgeInsets.symmetric(
+              horizontal: Get.width / 30,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                SizedBox(height: Get.height / 50),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Column(
                   children: [
-                    Image.asset(AppImage.profile, scale: 6),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                    Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                    Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                  ],
-                ),
-                SizedBox(height: Get.height / 20),
-
-                //Functional Area
-                Visibility(
-                  visible: visible,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        Specialization_text.area,
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          color: AppColor.subcolor,
-                        ),
-                      ),
-                      const Function_area(),
-                      SizedBox(height: Get.height / 50),
-
-                      //Interest
-                      Text(
-                        Specialization_text.Search_text,
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          color: AppColor.subcolor,
-                        ),
-                      ),
-                      const Interest(),
-                      SizedBox(height: Get.height / 50),
-
-                      //Skillset
-                      Text(
-                        Specialization_text.Skillset,
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          color: AppColor.subcolor,
-                        ),
-                      ),
-                      const Skillset(),
-                      SizedBox(height: Get.height / 50),
-                    ],
-                  ),
-                ),
-
-                //Collection
-                Text(
-                  Specialization_text.Collection,
-                  style: TextStyle(
-                    fontSize: Get.width / 25,
-                    color: AppColor.subcolor,
-                  ),
-                ),
-                InkWell(
-                  onTap: (){
-                    visible = false;
-                    setState(() {});
-                  },
-                  child: Container(
-                    width: Get.width,
-                    height: Get.height / 20,
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                    ),
-                    child: Column(
+                    SizedBox(height: Get.height / 50),
+                    Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          Specialization_text.Collection_text,
-                          style: TextStyle(
-                            fontSize: Get.width / 25,
-                          ),
-                        )
+                        Image.asset(AppImage.profile, scale: 5),
                       ],
                     ),
-                  ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                      ],
+                    ),
+                    SizedBox(height: Get.height / 20),
+
+                    //Functional Area
+                    Consumer<SpecializationController_Collection>(
+                      builder: (BuildContext context, value, Widget? child) {
+                        return Visibility(
+                          visible: Cont.visible,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                Specialization_text.area,
+                                style: TextStyle(
+                                  fontSize: Get.width / 25,
+                                  color: AppColor.subcolor,
+                                ),
+                              ),
+                              const Function_area(),
+                              SizedBox(height: Get.height / 50),
+
+                              //Interest
+                              Text(
+                                Specialization_text.Search_text,
+                                style: TextStyle(
+                                  fontSize: Get.width / 25,
+                                  color: AppColor.subcolor,
+                                ),
+                              ),
+                              const Interest(),
+                              SizedBox(height: Get.height / 50),
+
+                              //Skillset
+                              Text(
+                                Specialization_text.Skillset,
+                                style: TextStyle(
+                                  fontSize: Get.width / 25,
+                                  color: AppColor.subcolor,
+                                ),
+                              ),
+                              const Skillset(),
+                              SizedBox(height: Get.height / 50),
+                            ],
+                          ),
+                        );
+                      },
+                    ),
+
+                    //Collection
+                    Consumer<SpecializationController_Collection>(
+                      builder: (BuildContext context, value, Widget? child) {
+                        return Column(
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Specialization_text.Collection,
+                                  style: TextStyle(
+                                    fontSize: Get.width / 25,
+                                    color: AppColor.subcolor,
+                                  ),
+                                ),
+                              ],
+                            ),
+                            const Collection(),
+                          ],
+                        );
+                      },
+                    ),
+                    SizedBox(height: Get.height / 5),
+                  ],
+                ),
+
+                //Next Buttons
+                Consumer<SpecializationController_Collection>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return Column(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            if (Cont.colloction) {
+                              Get.to(() => const Education());
+                            }
+                          },
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              Text(
+                                Navigator_text.Next,
+                                style: TextStyle(
+                                  fontSize: Get.width / 23,
+                                  fontWeight: (Cont.colloction)
+                                      ? FontWeight.w700
+                                      : FontWeight.w400,
+                                  color: (Cont.colloction)
+                                      ? AppColor.Button_color
+                                      : AppColor.Botton_color_hide,
+                                ),
+                              ),
+                              SizedBox(width: Get.width / 90),
+                              SvgPicture.asset(
+                                AppIcons.Go,
+                                color: (Cont.colloction)
+                                    ? AppColor.Button_color
+                                    : AppColor.Botton_color_hide,
+                              ),
+                              SizedBox(height: Get.height / 15),
+                            ],
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 )
               ],
             ),

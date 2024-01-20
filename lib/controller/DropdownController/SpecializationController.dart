@@ -218,3 +218,99 @@ class SpecializationController_Skillset with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class SpecializationController_Collection with ChangeNotifier {
+  bool _visible = true;
+  bool _Colloction = false;
+  bool _CollcetionButtons_one = false;
+  bool _CollcetionButtons_two = false;
+  bool _CollcetionButtons_Three = false;
+  bool _CollcetionButtons_four = false;
+  bool _CollcetionButtons_six = false;
+  bool _CollcetionButtons_seven = false;
+  bool _CollcetionButtons_Eigth = false;
+  bool _CollcetionButtons_nine = false;
+  bool _CollcetionButtons_ten = false;
+
+  bool get visible => _visible;
+
+  bool get colloction => _Colloction;
+
+  bool get CollcetionButtons_one => _CollcetionButtons_one;
+
+  bool get CollcetionButtons_two => _CollcetionButtons_two;
+
+  bool get CollcetionButtons_Three => _CollcetionButtons_Three;
+
+  bool get CollcetionButtons_four => _CollcetionButtons_four;
+
+  bool get CollcetionButtons_six => _CollcetionButtons_six;
+
+  bool get CollcetionButtons_seven => _CollcetionButtons_seven;
+
+  bool get CollcetionButtons_Eigth => _CollcetionButtons_Eigth;
+
+  bool get CollcetionButtons_nine => _CollcetionButtons_nine;
+
+  bool get CollcetionButtons_ten => _CollcetionButtons_ten;
+
+  void Colloction_fun() {
+    _Colloction = true;
+    notifyListeners();
+  }
+
+  void Visible_fun() {
+    _visible = false;
+    notifyListeners();
+  }
+
+  void Visible_fun_Second() {
+    _visible = true;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_one_fun() {
+    _CollcetionButtons_one = !CollcetionButtons_one;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_two_fun() {
+    _CollcetionButtons_two = !CollcetionButtons_two;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_Three_fun() {
+    _CollcetionButtons_Three = !CollcetionButtons_Three;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_four_fun() {
+    _CollcetionButtons_four = !CollcetionButtons_four;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_six_fun() {
+    _CollcetionButtons_six = !CollcetionButtons_six;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_seven_fun() {
+    _CollcetionButtons_seven = !CollcetionButtons_seven;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_Eigth_fun() {
+    _CollcetionButtons_Eigth = !CollcetionButtons_Eigth;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_nine_fun() {
+    _CollcetionButtons_nine = !CollcetionButtons_nine;
+    notifyListeners();
+  }
+
+  void CollcetionButtons_ten_fun() {
+    _CollcetionButtons_ten = !CollcetionButtons_ten;
+    notifyListeners();
+  }
+}

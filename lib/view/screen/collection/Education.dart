@@ -1,10 +1,17 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:provider/provider.dart';
+import '../../../controller/DropdownController/EducationController.dart';
 import '../../utils/aap_image.dart';
+import '../../utils/app_String.dart';
+import '../../utils/common/Dropdown/Education_common.dart';
+import 'Fresher.dart';
 
 class Education extends StatefulWidget {
   const Education({super.key});
@@ -14,10 +21,15 @@ class Education extends StatefulWidget {
 }
 
 class _EducationState extends State<Education> {
-  TextEditingController job = TextEditingController();
+  bool shodrop = false;
+  int Realvalue = 0;
+  String showvalue = "";
+
+  DateTime selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
+    final JobTitle = Provider.of<JobTitle_Controller>(context, listen: false);
     return Scaffold(
       body: Container(
         width: Get.width,
@@ -30,159 +42,224 @@ class _EducationState extends State<Education> {
             horizontal: Get.width / 50,
           ),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(height: Get.height / 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset(AppImage.profile, scale: 4),
+                  SizedBox(height: Get.height / 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(AppImage.profile, scale: 5),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                      Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                      Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                    ],
+                  ),
+                  SizedBox(height: Get.height / 20),
+                  Text(
+                    Specialization_text.Education,
+                    style: TextStyle(
+                      fontSize: Get.width / 25,
+                      color: AppColor.subcolor,
+                    ),
+                  ),
+                  const Education_Comm(),
+                  SizedBox(height: Get.height / 50),
+                  Text(
+                    Specialization_text.graduation,
+                    style: TextStyle(
+                      fontSize: Get.width / 25,
+                      color: AppColor.subcolor,
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () {
+                      setState(() {
+                        shodrop = true;
+                      });
+                      showDatePicker(
+                          initialDate:DateTime.now(),
+                          onDatePickerModeChange: (d){
+
+                          },
+
+                          context: context,
+                          firstDate: DateTime(1990),
+                          lastDate: DateTime(2024));
+                    },
+                    child: Container(
+                      width: Get.width,
+                      height: Get.height / 20,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
+                        ),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              (Realvalue == 0)
+                                  ? Text(
+                                      Specialization_text.Education,
+                                      style: TextStyle(
+                                        fontSize: Get.width / 25,
+                                      ),
+                                    )
+                                  : Text(showvalue),
+                              (shodrop)
+                                  ? SvgPicture.asset(
+                                      AppIcons.Right,
+                                      color: AppColor.Bottam_color,
+                                    )
+                                  : SvgPicture.asset(
+                                      AppIcons.down,
+                                      color: AppColor.Bottam_color,
+                                    ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: Get.height / 50),
+
+                  //Job Title
+                  Text(
+                    Specialization_text.Job_Title,
+                    style: TextStyle(
+                      fontSize: Get.width / 25,
+                      color: AppColor.subcolor,
+                    ),
+                  ),
+                  Consumer<JobTitle_Controller>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return InkWell(
+                        onTap: () {
+                          JobTitle.Selectindex_true();
+                        },
+                        child: Container(
+                          height: Get.height / 25,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: AppColor.Bottam_color,
+                              ),
+                            ),
+                          ),
+                          child: TextField(
+                            onChanged: (value) {
+                              JobTitle.JobOnChang(value);
+                            },
+                            controller: JobTitle.JobTitalController,
+                            decoration: InputDecoration(
+                              hintText: Specialization_text.Job_Title,
+                              hintStyle: TextStyle(
+                                fontSize: Get.width / 25,
+                              ),
+                              contentPadding: EdgeInsets.symmetric(
+                                vertical: Get.width / 45,
+                              ),
+                              focusedBorder: InputBorder.none,
+                              enabledBorder: InputBorder.none,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: Get.width / 50),
+                  Consumer<JobTitle_Controller>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return (JobTitle.showErroring)
+                          ? Text(
+                              JobTitle.showError,
+                              style: TextStyle(
+                                color: AppColor.Error_color,
+                                fontWeight: FontWeight.w600,
+                                fontSize: Get.width / 28,
+                              ),
+                            )
+                          : const SizedBox();
+                    },
+                  ),
                 ],
               ),
-              SizedBox(height: Get.height / 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              Column(
                 children: [
-                  Text(
-                    "HI,",
-                    style: TextStyle(
-                      fontSize: Get.width / 18,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(AppIcons.Backarrow),
+                            SizedBox(width: Get.width / 80),
+                            Text(
+                              Navigator_text.Back,
+                              style: TextStyle(
+                                fontSize: Get.width / 23,
+                                fontWeight: FontWeight.w600,
+                                color: AppColor.Button_color,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Consumer<JobTitle_Controller>(
+                        builder: (BuildContext context, value, Widget? child) {
+                          return InkWell(
+                            onTap: () {
+                              if (JobTitle.SelectIndex) {
+                                Get.to(() => const Fresher());
+                              }
+                              JobTitle.EmptyError();
+                            },
+                            child: Row(
+                              children: [
+                                Text(
+                                  Navigator_text.Next,
+                                  style: TextStyle(
+                                    fontSize: Get.width / 23,
+                                    fontWeight: FontWeight.w600,
+                                    color: (JobTitle.SelectIndex)
+                                        ? AppColor.Button_color
+                                        : AppColor.Botton_color_hide,
+                                  ),
+                                ),
+                                SizedBox(width: Get.width / 80),
+                                SvgPicture.asset(
+                                  AppIcons.Go,
+                                  color: (JobTitle.SelectIndex)
+                                      ? AppColor.Button_color
+                                      : AppColor.Botton_color_hide,
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      )
+                    ],
                   ),
-                  Text(
-                    "HI,",
-                    style: TextStyle(
-                      fontSize: Get.width / 18,
-                    ),
-                  ),
-                  Text(
-                    "HI,",
-                    style: TextStyle(
-                      fontSize: Get.width / 18,
-                    ),
-                  ),
+                  SizedBox(height: Get.height / 60),
                 ],
-              ),
-              // SizedBox(height: Get.height / 20),
-              // Text(
-              //   Specialization_text.Education,
-              //   style: TextStyle(
-              //     fontSize: Get.width / 25,
-              //     fontWeight: FontWeight.w400,
-              //     color: AppColor.subcolor,
-              //   ),
-              // ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //     border: Border(
-              //       bottom: BorderSide(
-              //         color: AppColor.Bottam_color,
-              //       ),
-              //     ),
-              //   ),
-              //   child: Consumer<SpecializationController>(
-              //     builder: (
-              //       BuildContext context,
-              //       value,
-              //       Widget? child,
-              //     ) {
-              //       return DropdownButton<String>(
-              //         icon: SvgPicture.asset(AppIcons.down),
-              //         underline: const SizedBox(),
-              //         isExpanded: true,
-              //         value: Special.Education_drop,
-              //         items: Special.Education_item.map((String item) {
-              //           return DropdownMenuItem<String>(
-              //             value: item,
-              //             child: Text(item),
-              //           );
-              //         }).toList(),
-              //         onChanged: (value) {
-              //           Special.Education_fun(value!);
-              //         },
-              //       );
-              //     },
-              //   ),
-              // ),
-              // SizedBox(height: Get.height / 50),
-              // Text(
-              //   Specialization_text.graduation,
-              //   style: TextStyle(
-              //     fontSize: Get.width / 25,
-              //     fontWeight: FontWeight.w400,
-              //     color: AppColor.subcolor,
-              //   ),
-              // ),
-              // Container(
-              //   decoration: BoxDecoration(
-              //     border: Border(
-              //       bottom: BorderSide(
-              //         color: AppColor.Bottam_color,
-              //       ),
-              //     ),
-              //   ),
-              //   child: Consumer<SpecializationController>(
-              //     builder: (
-              //       BuildContext context,
-              //       value,
-              //       Widget? child,
-              //     ) {
-              //       return DropdownButton<String>(
-              //         icon: SvgPicture.asset(AppIcons.down),
-              //         underline: const SizedBox(),
-              //         isExpanded: true,
-              //         value: Special.Education_drop,
-              //         items: Special.Education_item.map((String item) {
-              //           return DropdownMenuItem<String>(
-              //             value: item,
-              //             child: Text(item),
-              //           );
-              //         }).toList(),
-              //         onChanged: (value) {
-              //           Special.Education_fun(value!);
-              //         },
-              //       );
-              //     },
-              //   ),
-              // ),
-              // SizedBox(height: Get.height / 50),
-              // Inputfild(
-              //   labal: Specialization_text.Job_Title,
-              //   hint: Specialization_text.Job_Title,
-              //   controller: job,
-              // ),
-              // SizedBox(height: Get.height / 3.5),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   children: [
-              //     InkWell(
-              //       onTap: () {
-              //         Get.back();
-              //       },
-              //       overlayColor: const MaterialStatePropertyAll(
-              //         Colors.transparent,
-              //       ),
-              //       splashColor: Colors.transparent,
-              //       highlightColor: Colors.transparent,
-              //       hoverColor: Colors.transparent,
-              //       focusColor: Colors.transparent,
-              //       child: SvgPicture.asset(AppIcons.Backarrow),
-              //     ),
-              //     SizedBox(width: Get.width / 30),
-              //     SvgPicture.asset(AppIcons.Rectangle),
-              //     SizedBox(width: Get.width / 30),
-              //     InkWell(
-              //       splashColor: Colors.transparent,
-              //       highlightColor: Colors.transparent,
-              //       hoverColor: Colors.transparent,
-              //       focusColor: Colors.transparent,
-              //       onTap: () {
-              //         Get.to(() => const Experience());
-              //       },
-              //       child: SvgPicture.asset(AppIcons.Go),
-              //     ),
-              //   ],
-              // ),
+              )
             ],
           ),
         ),

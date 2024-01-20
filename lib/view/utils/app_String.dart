@@ -308,35 +308,14 @@ class Specialization_text {
 
   //Eduction
   static const Education = "What is your highest level of Education?";
+  static const Education_Level = "Select Education Level";
   static const graduation = "What is your graduation passing year?";
   static const Job_Title = "Job Title";
   static const BCA = "BCA";
   static const BBA = "BBA";
-  static const year1998 = "1998";
-  static const year1999 = "1999";
-  static const year2000 = "2000";
-  static const year2001 = "2001";
-  static const year2002 = "2002";
-  static const year2003 = "2003";
-  static const year2004 = "2004";
-  static const year2005 = "2005";
-  static const year2006 = "2006";
-  static const year2007 = "2008";
-  static const year2009 = "2009";
-  static const year2010 = "2010";
-  static const year2011 = "2011";
-  static const year2012 = "2012";
-  static const year2013 = "2013";
-  static const year2014 = "2014";
-  static const year2015 = "2015";
-  static const year2016 = "2016";
-  static const year2017 = "2017";
-  static const year2018 = "2018";
-  static const year2019 = "2019";
-  static const year2020 = "2020";
-  static const year2021 = "2021";
-  static const year2022 = "2022";
-  static const year2023 = "2023";
+
+  //Error Text
+  static const Error_text = "Please Input Your Job Title !";
 }
 
 //Collection
@@ -356,6 +335,9 @@ class Collection_text {
 //Experience
 class Experience_text {
   static const IM = "I'm a fresher";
+  static const of_Experience = "Years Of Experience";
+  static const Year = "0 Year";
+  static const Month = "0 Month";
   static const experience = "How many years of experience do you have?";
   static const Salary = "Expected Salary (per annum)?";
   static const company = "Please provide recent company information";
@@ -364,4 +346,40 @@ class Experience_text {
   static const Duration = "Duration :";
   static const currently = "I currently work here";
   static const current = "What is your current CTC (per annum)?";
+  static const Save = "Save";
+
+  //Year
+  static const year1 = "1 Year";
+  static const year2 = "2 Year";
+  static const year3 = "3 Year";
+  static const year4 = "4 Year";
+  static const year5 = "5 Year";
+  static const year6 = "6 Year";
+  static const year7 = "7 Year";
+  static const year8 = "8 Year";
+  static const year9 = "9 Year";
+  static const year10 = "10 Year";
+  static const year11 = "11 Year";
+  static const year12 = "12 Year";
+  static const year13 = "13 Year";
+  static const year14 = "14 Year";
+  static const year15 = "15 Year";
+  static const year16 = "16 Year";
+  static const year17 = "17 Year";
+  static const year18 = "18 Year";
+  static const year19 = "19 Year";
+  static const year20 = "20 Year";
+
+  //Month
+  static const month1 = "1 Month";
+  static const month2 = "2 Month";
+  static const month3 = "3 Month";
+  static const month4 = "4 Month";
+  static const month5 = "5 Month";
+  static const month6 = "6 Month";
+  static const month7 = "7 Month";
+  static const month8 = "8 Month";
+  static const month9 = "9 Month";
+  static const month10 = "10 Month";
+  static const month11 = "11 Month";
 }

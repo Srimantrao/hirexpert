@@ -4,6 +4,7 @@ import 'dart:ui';
 
 class AppColor {
   static Color Button_color = const Color(0xff8F14DC);
+  static Color Botton_color_hide = const Color(0xffD3A1F3);
   static Color Error_color = const Color(0xffFF0000);
   static Color Full_body_color = const Color(0xffFFFFFF);
   static Color Bottam_color = const Color(0xffE7E7E7);
