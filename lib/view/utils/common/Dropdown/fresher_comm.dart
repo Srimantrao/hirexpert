@@ -12,14 +12,10 @@ import '../../app_color.dart';
 import '../../app_icon.dart';
 import '../Buttons/wideButtons.dart';
 
-class Experience extends StatefulWidget {
+//Experience
+class Experience extends StatelessWidget {
   const Experience({super.key});
 
-  @override
-  State<Experience> createState() => _ExperienceState();
-}
-
-class _ExperienceState extends State<Experience> {
   @override
   Widget build(BuildContext context) {
     final Experience = Provider.of<FreherController>(
@@ -42,6 +38,7 @@ class _ExperienceState extends State<Experience> {
                         btn_name: Experience_text.Save,
                       ),
                       onTap: () {
+                        Experience.Selectnect1_true();
                         Experience.Selectdrop_true();
                         Get.back();
                       },
@@ -191,6 +188,328 @@ class _ExperienceState extends State<Experience> {
                         AppIcons.down,
                         color: AppColor.Bottam_color,
                       ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+//Salary
+class Salary extends StatelessWidget {
+  const Salary({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final Salary = Provider.of<FreherController>(context, listen: false);
+    return Consumer<FreherController>(
+      builder: (BuildContext context, value, Widget? child) {
+        return InkWell(
+          onTap: () {
+            Salary.Selectdroping_true();
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SizedBox(),
+                      Text(
+                        Experience_text.E_Salary,
+                        style: TextStyle(
+                          fontSize: Get.width / 22,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Salary.Selectdroping_false();
+                          Get.back();
+                        },
+                        child: SvgPicture.asset(AppIcons.cancel),
+                      ),
+                    ],
+                  ),
+                  backgroundColor: AppColor.Full_body_color,
+                  elevation: 0,
+                  actions: [
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                        Salary.Selectnect_true();
+                        Salary.Selectdroping_false();
+                      },
+                      child: OnButtons(
+                        Button_Color: AppColor.Button_color,
+                        btn_name: Experience_text.Save,
+                      ),
+                    ),
+                  ],
+                  content: Container(
+                    height: Get.height / 5,
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      color: AppColor.Full_body_color,
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: Get.width / 3,
+                          child: CupertinoPicker(
+                            selectionOverlay: Container(
+                              height: Get.height / 15,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  top: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            itemExtent: 30,
+                            onSelectedItemChanged: (index) {
+                              Salary.onSelectedItemChanged_Lakh(index);
+                            },
+                            children: List.generate(
+                              Lakh_list.length,
+                              (index) => Text(Lakh_list[index]),
+                            ),
+                          ),
+                        ),
+                        SizedBox(
+                          width: Get.width / 3,
+                          child: CupertinoPicker(
+                            selectionOverlay: Container(
+                              height: Get.height / 15,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  top: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            itemExtent: 30,
+                            onSelectedItemChanged: (index) {
+                              Salary.onSelectedItemChanged_Thousand(index);
+                            },
+                            children: List.generate(
+                              Thousand_list.length,
+                              (index) => Text(Thousand_list[index]),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: Container(
+            height: Get.height / 20,
+            width: Get.width,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(
+                  color: AppColor.Bottam_color,
+                ),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      Salary.Lakh,
+                      style: TextStyle(fontSize: Get.width / 25),
+                    ),
+                    SizedBox(width: Get.width / 25),
+                    const Text("|"),
+                    SizedBox(width: Get.width / 25),
+                    Text(
+                      Salary.Thousand,
+                      style: TextStyle(fontSize: Get.width / 25),
+                    ),
+                  ],
+                ),
+                (Salary.droping)
+                    ? SvgPicture.asset(
+                        AppIcons.Right,
+                        color: AppColor.subcolor,
+                      )
+                    : SvgPicture.asset(
+                        AppIcons.down,
+                        color: AppColor.subcolor,
+                      ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+//CTC
+class CTC extends StatelessWidget {
+  const CTC({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final CTC = Provider.of<FreherController>(context, listen: false);
+    return Consumer<FreherController>(
+      builder: (BuildContext context, value, Widget? child) {
+        return InkWell(
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  actions: [
+                    InkWell(
+                      onTap: () {
+                        Get.back();
+                        CTC.Selectnect2_true();
+                      },
+                      child: OnButtons(
+                        Button_Color: AppColor.Button_color,
+                        btn_name: Experience_text.Save,
+                      ),
+                    ),
+                  ],
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SizedBox(),
+                      Text(
+                        Experience_text.E_Salary,
+                        style: TextStyle(
+                          fontSize: Get.width / 24,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: SvgPicture.asset(AppIcons.cancel),
+                      ),
+                    ],
+                  ),
+                  backgroundColor: AppColor.Full_body_color,
+                  elevation: 0,
+                  content: Container(
+                    height: Get.height / 5,
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      color: AppColor.Full_body_color,
+                    ),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: Get.width / 3,
+                          child: CupertinoPicker(
+                            selectionOverlay: Container(
+                              height: Get.height / 20,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  top: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            itemExtent: 30,
+                            children: List.generate(
+                              Lakh_list.length,
+                              (index) => Text(Lakh_list[index]),
+                            ),
+                            onSelectedItemChanged: (index) {
+                              CTC.onSelectedItemChanged_Lakh_CTC(index);
+                            },
+                          ),
+                        ),
+                        SizedBox(
+                          width: Get.width / 3,
+                          child: CupertinoPicker(
+                            selectionOverlay: Container(
+                              height: Get.height / 20,
+                              width: Get.width,
+                              decoration: BoxDecoration(
+                                border: Border(
+                                  top: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                  bottom: BorderSide(
+                                    color: AppColor.Bottam_color,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            itemExtent: 30,
+                            children: List.generate(
+                              Thousand_list.length,
+                              (index) => Text(Thousand_list[index]),
+                            ),
+                            onSelectedItemChanged: (index) {
+                              CTC.onSelectedItemChanged_Thousand_CTC(index);
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+          child: Container(
+            height: Get.height / 17,
+            width: Get.width,
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: BorderSide(color: AppColor.Bottam_color),
+              ),
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Text(
+                      CTC.CTC_Lakh,
+                      style: TextStyle(fontSize: Get.width / 25),
+                    ),
+                    SizedBox(width: Get.width / 25),
+                    const Text("|"),
+                    SizedBox(width: Get.width / 25),
+                    Text(
+                      CTC.CTC_Thousand,
+                      style: TextStyle(fontSize: Get.width / 25),
+                    ),
+                  ],
+                ),
+                SvgPicture.asset(
+                  AppIcons.down,
+                  color: AppColor.subcolor,
+                ),
               ],
             ),
           ),

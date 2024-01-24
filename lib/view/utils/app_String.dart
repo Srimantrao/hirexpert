@@ -335,7 +335,9 @@ class Collection_text {
 //Experience
 class Experience_text {
   static const IM = "I'm a fresher";
+  static const ctc = "What is your current CTC (per annum)?";
   static const of_Experience = "Years Of Experience";
+  static const E_Salary = "Expected Salary";
   static const Year = "0 Year";
   static const Month = "0 Month";
   static const experience = "How many years of experience do you have?";
@@ -344,42 +346,10 @@ class Experience_text {
   static const Company_Name = "Company Name :";
   static const Designation = "Designation :";
   static const Duration = "Duration :";
+  static const Duratio = "Duration";
   static const currently = "I currently work here";
-  static const current = "What is your current CTC (per annum)?";
+  static const current = "Expected Salary (per annum)?";
   static const Save = "Save";
-
-  //Year
-  static const year1 = "1 Year";
-  static const year2 = "2 Year";
-  static const year3 = "3 Year";
-  static const year4 = "4 Year";
-  static const year5 = "5 Year";
-  static const year6 = "6 Year";
-  static const year7 = "7 Year";
-  static const year8 = "8 Year";
-  static const year9 = "9 Year";
-  static const year10 = "10 Year";
-  static const year11 = "11 Year";
-  static const year12 = "12 Year";
-  static const year13 = "13 Year";
-  static const year14 = "14 Year";
-  static const year15 = "15 Year";
-  static const year16 = "16 Year";
-  static const year17 = "17 Year";
-  static const year18 = "18 Year";
-  static const year19 = "19 Year";
-  static const year20 = "20 Year";
-
-  //Month
-  static const month1 = "1 Month";
-  static const month2 = "2 Month";
-  static const month3 = "3 Month";
-  static const month4 = "4 Month";
-  static const month5 = "5 Month";
-  static const month6 = "6 Month";
-  static const month7 = "7 Month";
-  static const month8 = "8 Month";
-  static const month9 = "9 Month";
-  static const month10 = "10 Month";
-  static const month11 = "11 Month";
+  static const Lakh = "0 Lakh";
+  static const Thousand = "0 Thousand";
 }
