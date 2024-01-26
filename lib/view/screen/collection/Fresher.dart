@@ -5,14 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/collection/location.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
 import '../../../controller/DropdownController/FresherController.dart';
-import '../../../modal/Dropdowns/drops.dart';
 import '../../utils/aap_image.dart';
 import '../../utils/app_String.dart';
-import '../../utils/common/Buttons/wideButtons.dart';
 import '../../utils/common/Dropdown/fresher_comm.dart';
 
 class Fresher extends StatefulWidget {
@@ -355,28 +354,36 @@ class _FresherState extends State<Fresher> {
                             ],
                           ),
                         ),
-                        Row(
-                          children: [
-                            Text(
-                              Navigator_text.Next,
-                              style: TextStyle(
-                                fontSize: Get.width / 24,
-                                color: (E_Salary.isnext ||
-                                        E_Salary.isnext1 && E_Salary.isnext2)
+                        InkWell(
+                          onTap: (){
+                            if(E_Salary.isnext ||
+                                E_Salary.isnext1 && E_Salary.isnext2){
+                              Get.to(()=>const Location());
+                            }
+                          },
+                          child: Row(
+                            children: [
+                              Text(
+                                Navigator_text.Next,
+                                style: TextStyle(
+                                  fontSize: Get.width / 24,
+                                  color: (E_Salary.isnext ||
+                                          E_Salary.isnext1 && E_Salary.isnext2)
+                                      ? AppColor.Button_color
+                                      : AppColor.Botton_color_hide,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                              SizedBox(width: Get.width / 60),
+                              SvgPicture.asset(
+                                AppIcons.Go,
+                                color: (E_Salary.isnext||
+                                    E_Salary.isnext1 && E_Salary.isnext2)
                                     ? AppColor.Button_color
                                     : AppColor.Botton_color_hide,
-                                fontWeight: FontWeight.w600,
                               ),
-                            ),
-                            SizedBox(width: Get.width / 60),
-                            SvgPicture.asset(
-                              AppIcons.Go,
-                              color: (E_Salary.isnext||
-                                  E_Salary.isnext1 && E_Salary.isnext2)
-                                  ? AppColor.Button_color
-                                  : AppColor.Botton_color_hide,
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     );

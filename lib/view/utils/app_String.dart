@@ -353,3 +353,29 @@ class Experience_text {
   static const Lakh = "0 Lakh";
   static const Thousand = "0 Thousand";
 }
+
+//Location
+class Location_text {
+  static const preference = "Job type preference";
+  static const Location = "Current working Location?";
+  static const Preffered = "Preffered Work Location?";
+  static const Work = "Your Preferred Work Setup?";
+  static const Select = "Select";
+  static const Full_Time = "Full Time";
+  static const Contract = "Contract";
+  static const Internship = "Internship";
+  static const Part_Time = "Part Time";
+  static const Remote_Work = "Remote Work";
+  static const In_Office = "In-Office";
+  static const Hybrid = "Hybrid";
+  static const Any = "Any";
+  static const Save = "Save";
+}
+
+class Location_State{
+  static const Gujarat = "Gujarat";
+}
+
+class Location_Area{
+  static const Surat = "Surat";
+}
