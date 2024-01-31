@@ -1,7 +1,7 @@
 // ignore_for_file: constant_identifier_names
 
 class AppIcons {
-  static const logo = "assets/icon/logo/hirexpert.png";
+  static const logo = "assets/icon/logo/Update_Logo.png";
 
   //Aapbar
   static const save = "assets/icon/appbar/save.svg";

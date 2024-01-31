@@ -3,7 +3,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/BottamController/MenuNavigationController.dart';
-import 'package:hirexpert/view/screen/Menu/Home/Home.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
@@ -18,17 +17,20 @@ class Bottam extends StatefulWidget {
 class _BottamState extends State<Bottam> {
   @override
   Widget build(BuildContext context) {
-    final nav = Provider.of<MenuNavigationController>(context, listen: false);
+    final nav = Provider.of<MenuNavigationController>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       bottomNavigationBar: Container(
         width: Get.width,
-        height: Get.height / 15,
+        height: Get.height / 17,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(Get.width / 15),
             topRight: Radius.circular(Get.width / 15),
           ),
-          color: AppColor.Bottam_color,
+          color: AppColor.Buttom_color,
         ),
         child: Consumer<MenuNavigationController>(
           builder: (BuildContext context, value, Widget? child) {

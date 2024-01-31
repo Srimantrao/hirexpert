@@ -94,7 +94,7 @@ class _SavedState extends State<Saved> {
                                     ),
                                   ),
                                 ),
-                                SizedBox(width: Get.width / 30),
+                                SizedBox(width: Get.width/50),
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -106,7 +106,7 @@ class _SavedState extends State<Saved> {
                                             color: AppColor.subcolor,
                                           ),
                                         ),
-                                        SizedBox(width: Get.width / 3),
+                                        SizedBox(width: Get.width / 3.4),
                                         SvgPicture.asset(AppIcons.save),
                                       ],
                                     ),

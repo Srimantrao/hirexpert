@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -9,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../../../controller/DropdownController/PreferenceController.dart';
 import '../../utils/aap_image.dart';
 import '../../utils/common/Dropdown/Location_comm.dart';
+import 'choose_file.dart';
 
 class Location extends StatefulWidget {
   const Location({super.key});
@@ -126,7 +129,9 @@ class _LocationState extends State<Location> {
                             ),
                           ),
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Get.to(()=>const Choose());
+                            },
                             child: Row(
                               children: [
                                 Text(

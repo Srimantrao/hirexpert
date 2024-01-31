@@ -67,7 +67,7 @@ class Experience extends StatelessWidget {
                   backgroundColor: AppColor.Full_body_color,
                   elevation: 0,
                   content: Container(
-                    height: Get.height / 5,
+                    height: Get.height / 4,
                     width: Get.width,
                     decoration: BoxDecoration(
                       color: AppColor.Full_body_color,
@@ -76,12 +76,14 @@ class Experience extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          height: Get.height / 5,
+                          height: Get.height / 4,
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               SizedBox(
-                                width: Get.width / 3,
+                                width: Get.width / 3.5,
                                 child: CupertinoPicker(
+                                  diameterRatio: 12,
                                   selectionOverlay: Container(
                                     height: Get.height / 20,
                                     width: Get.width,
@@ -99,8 +101,13 @@ class Experience extends StatelessWidget {
                                   itemExtent: 30,
                                   children: List.generate(
                                     Years.length,
-                                    (index) => Text(
-                                      Years[index],
+                                    (index) => Center(
+                                      child: Text(
+                                        Years[index],
+                                        style: TextStyle(
+                                          fontSize: Get.width / 23,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   onSelectedItemChanged: (index) {
@@ -111,8 +118,9 @@ class Experience extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(
-                                width: Get.width / 3,
+                                width: Get.width / 3.5,
                                 child: CupertinoPicker(
+                                  diameterRatio: 12,
                                   scrollController: FixedExtentScrollController(
                                     initialItem: 0,
                                   ),
@@ -133,8 +141,13 @@ class Experience extends StatelessWidget {
                                   itemExtent: 30,
                                   children: List.generate(
                                     Month.length,
-                                    (index) => Text(
-                                      Month[index],
+                                    (index) => Center(
+                                      child: Text(
+                                        Month[index],
+                                        style: TextStyle(
+                                          fontSize: Get.width / 23,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                   onSelectedItemChanged: (index) {
@@ -249,16 +262,18 @@ class Salary extends StatelessWidget {
                     ),
                   ],
                   content: Container(
-                    height: Get.height / 5,
+                    height: Get.height / 4,
                     width: Get.width,
                     decoration: BoxDecoration(
                       color: AppColor.Full_body_color,
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: Get.width / 3,
+                          width: Get.width / 4,
                           child: CupertinoPicker(
+                            diameterRatio: 12,
                             selectionOverlay: Container(
                               height: Get.height / 15,
                               width: Get.width,
@@ -279,13 +294,21 @@ class Salary extends StatelessWidget {
                             },
                             children: List.generate(
                               Lakh_list.length,
-                              (index) => Text(Lakh_list[index]),
+                              (index) => Center(
+                                child: Text(
+                                  Lakh_list[index],
+                                  style: TextStyle(
+                                    fontSize: Get.width / 23,
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         ),
                         SizedBox(
                           width: Get.width / 3,
                           child: CupertinoPicker(
+                            diameterRatio: 12,
                             selectionOverlay: Container(
                               height: Get.height / 15,
                               width: Get.width,
@@ -306,7 +329,12 @@ class Salary extends StatelessWidget {
                             },
                             children: List.generate(
                               Thousand_list.length,
-                              (index) => Text(Thousand_list[index]),
+                              (index) => Center(
+                                child: Text(
+                                  Thousand_list[index],
+                                  style: TextStyle(fontSize: Get.width / 23),
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -418,10 +446,12 @@ class CTC extends StatelessWidget {
                       color: AppColor.Full_body_color,
                     ),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         SizedBox(
-                          width: Get.width / 3,
+                          width: Get.width / 4,
                           child: CupertinoPicker(
+                            diameterRatio: 12,
                             selectionOverlay: Container(
                               height: Get.height / 20,
                               width: Get.width,
@@ -439,7 +469,12 @@ class CTC extends StatelessWidget {
                             itemExtent: 30,
                             children: List.generate(
                               Lakh_list.length,
-                              (index) => Text(Lakh_list[index]),
+                              (index) => Center(
+                                child: Text(
+                                  Lakh_list[index],
+                                  style: TextStyle(fontSize: Get.width / 23),
+                                ),
+                              ),
                             ),
                             onSelectedItemChanged: (index) {
                               CTC.onSelectedItemChanged_Lakh_CTC(index);
@@ -449,6 +484,7 @@ class CTC extends StatelessWidget {
                         SizedBox(
                           width: Get.width / 3,
                           child: CupertinoPicker(
+                            diameterRatio: 12,
                             selectionOverlay: Container(
                               height: Get.height / 20,
                               width: Get.width,
@@ -466,7 +502,12 @@ class CTC extends StatelessWidget {
                             itemExtent: 30,
                             children: List.generate(
                               Thousand_list.length,
-                              (index) => Text(Thousand_list[index]),
+                              (index) => Center(
+                                child: Text(
+                                  Thousand_list[index],
+                                  style: TextStyle(fontSize: Get.width / 23),
+                                ),
+                              ),
                             ),
                             onSelectedItemChanged: (index) {
                               CTC.onSelectedItemChanged_Thousand_CTC(index);

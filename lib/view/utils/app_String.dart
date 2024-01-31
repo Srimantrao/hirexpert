@@ -122,7 +122,8 @@ class My_Jobs_Screen {
 
 //Search Screen
 class Search_text {
-  static const Search_Jobs = "Search Jobs";
+  static const Search_Jobs = "Search Job Listings";
+  static const Search_Jobss = "Search Job";
   static const Location = "Location";
   static const Job = "Job Title, Skills...";
   static const All = "All";
@@ -137,6 +138,9 @@ class Search_text {
   static const lake = "1.00 - 5.00 Lakh’s";
   static const Hybrid = "Hybrid";
   static const Days = "5 Days Ago";
+  static const cancel = "Cancle";
+  static const Keyword = "Job Title, Keyword or Company";
+  static const Select_Location = "Select Location";
 }
 
 //Details Screen
@@ -378,4 +382,14 @@ class Location_State{
 
 class Location_Area{
   static const Surat = "Surat";
+}
+
+//Choose
+class Choose_text{
+  static const tell ="Tell your employer more about you.";
+  static const resume_CV ="Add Your Resume / CV with and Option to skip for now";
+  static const Drop ="Drop file here, ";
+  static const or ="or ";
+  static const it ="choose it from disk ";
+  static const form ="choose it from Files ";
 }

@@ -38,29 +38,19 @@ class _LogoState extends State<Logo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: Get.width / 1.5,
-              ),
-              child: Center(
-                child: Image.asset(AppIcons.logo, scale: 4),
-              ),
+            const SizedBox(),
+            Center(
+              child: Image.asset(AppIcons.logo, scale: 4),
             ),
-            Padding(
-              padding: EdgeInsets.only(
-                bottom: Get.width / 20,
-                left: Get.width / 15,
-              ),
-              child: AnimatedSmoothIndicator(
-                activeIndex: 3,
-                count: 3,
-                curve: Curves.linear,
-                effect: ExpandingDotsEffect(
-                  activeDotColor: AppColor.Button_color,
-                  dotColor: AppColor.Bottam_color,
-                  dotHeight: 15,
-                  dotWidth: 15,
-                ),
+            AnimatedSmoothIndicator(
+              activeIndex: 3,
+              count: 3,
+              curve: Curves.linear,
+              effect: ExpandingDotsEffect(
+                activeDotColor: AppColor.Button_color,
+                dotColor: AppColor.Bottam_color,
+                dotHeight: 15,
+                dotWidth: 15,
               ),
             )
           ],

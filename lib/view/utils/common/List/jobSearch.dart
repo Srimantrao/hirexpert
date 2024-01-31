@@ -93,7 +93,7 @@ class JobSearch extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(width: Get.width / 30),
+                  SizedBox(width: Get.width/50),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -105,7 +105,7 @@ class JobSearch extends StatelessWidget {
                               color: AppColor.subcolor,
                             ),
                           ),
-                          SizedBox(width: Get.width / 3),
+                          SizedBox(width: Get.width / 3.4),
                           InkWell(
                             onTap: saveonTap,
                             child: SvgPicture.asset(saveicon),
