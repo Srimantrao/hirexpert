@@ -127,6 +127,7 @@ class Search_text {
   static const Location = "Location";
   static const Job = "Job Title, Skills...";
   static const All = "All";
+  static const Button_name = "Search";
   static const Listing = "Search Job Listings";
   static const Mobile = "Mobile Development";
   static const React = "React Native Developer";
@@ -376,20 +377,70 @@ class Location_text {
   static const Save = "Save";
 }
 
-class Location_State{
+class Location_State {
   static const Gujarat = "Gujarat";
 }
 
-class Location_Area{
+class Location_Area {
   static const Surat = "Surat";
 }
 
 //Choose
-class Choose_text{
-  static const tell ="Tell your employer more about you.";
-  static const resume_CV ="Add Your Resume / CV with and Option to skip for now";
-  static const Drop ="Drop file here, ";
-  static const or ="or ";
-  static const it ="choose it from disk ";
-  static const form ="choose it from Files ";
+class Choose_text {
+  static const tell = "Tell your employer more about you.";
+  static const resume_CV =
+      "Add Your Resume / CV with and Option to skip for now";
+  static const Drop = "Drop file here, ";
+  static const or = "or ";
+  static const it = "choose it from disk ";
+  static const form = "choose it from Files ";
+}
+
+//Search Job
+class Searchjob_text {
+  //Buttons
+  static const Save = "Save";
+
+  //Drop
+  static const Filtter = "Filtter";
+  static const Experience = "Experience";
+  static const Education = "Education";
+  static const CTC = "CTC";
+  static const Job_Type = "Job Type";
+  static const Work_Setup = "Work Setup";
+
+  //Experience
+  static const Fresher = "Fresher";
+  static const Year1 = "0-1 Year";
+  static const Year2 = "1-2 Year";
+  static const Year3 = "2-3 Year";
+  static const Year4 = "3-4 Year";
+  static const Year5 = "4-5 Year";
+  static const Year6 = "5-6 Year";
+  static const Year7 = "6-7 Year";
+  static const Year8 = "7-8 Year";
+  static const Year9 = "8-9 Year";
+  static const Year10 = "10+ Year";
+
+  //Education
+  static const BCA = "BCA";
+  static const BBA = "BBA";
+  static const BE = "BE";
+  static const MBA = "MBA";
+  static const M_Tech = "M.Tech";
+  static const B_Tech = "B.Tech";
+  static const M_Com = "M.com";
+  static const B_Com = "B.com";
+
+  //Job Type
+  static const Full_Time = "Full Time";
+  static const Contract = "Contract";
+  static const Internship = "Internship";
+  static const Part_Time = "Part-Time";
+
+  //Work Setup
+  static const Remote_Work = "Remote Work";
+  static const In_Office = "In-Office";
+  static const Hybrid = "Hybrid";
+  static const Any = "Any";
 }

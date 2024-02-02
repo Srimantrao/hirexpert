@@ -8,8 +8,11 @@ import 'package:hirexpert/controller/LoginControoler/LoginValidation.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
+import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/BottamController/MenuNavigationController.dart';
+import 'controller/ButtonsController/SearchButtonsController.dart';
+import 'controller/ButtonsController/SearchJobController.dart';
 import 'controller/CollectionController/Collectiondepartment.dart';
 import 'controller/DropdownController/EducationController.dart';
 import 'controller/DropdownController/FresherController.dart';
@@ -61,6 +64,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => FreherController()),
         ChangeNotifierProvider(create: (_) => PreferenceController()),
         ChangeNotifierProvider(create: (_) => SetupController()),
+        ChangeNotifierProvider(create: (_) => SearchJobController()),
+        ChangeNotifierProvider(create: (_) => SearchButtonsController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

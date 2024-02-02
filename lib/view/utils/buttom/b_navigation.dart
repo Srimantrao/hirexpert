@@ -24,7 +24,7 @@ class _BottamState extends State<Bottam> {
     return Scaffold(
       bottomNavigationBar: Container(
         width: Get.width,
-        height: Get.height / 17,
+        height: Get.height / 15,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.only(
             topLeft: Radius.circular(Get.width / 15),
@@ -44,8 +44,16 @@ class _BottamState extends State<Bottam> {
                     nav.SelectIndex_one();
                   },
                   child: (nav.Selectindex == 0)
-                      ? SvgPicture.asset(AppIcons.open_job)
-                      : SvgPicture.asset(AppIcons.Jobs),
+                      ? SvgPicture.asset(
+                          AppIcons.open_job,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        )
+                      : SvgPicture.asset(
+                          AppIcons.Jobs,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        ),
                 ),
                 InkWell(
                   highlightColor: Colors.transparent,
@@ -54,18 +62,38 @@ class _BottamState extends State<Bottam> {
                     nav.SelectIndex_two();
                   },
                   child: (nav.Selectindex == 1)
-                      ? SvgPicture.asset(AppIcons.Search_job)
-                      : SvgPicture.asset(AppIcons.Search),
+                      ? SvgPicture.asset(
+                          AppIcons.Search_job,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        )
+                      : SvgPicture.asset(
+                          AppIcons.Search,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        ),
                 ),
                 InkWell(
                   onTap: () {
                     nav.SelectIndex_three();
                   },
                   child: (nav.Selectindex == 2)
-                      ? SvgPicture.asset(AppIcons.profile_open)
-                      : SvgPicture.asset(AppIcons.Profile),
+                      ? SvgPicture.asset(
+                          AppIcons.profile_open,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        )
+                      : SvgPicture.asset(
+                          AppIcons.Profile,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        ),
                 ),
-                SvgPicture.asset(AppIcons.Messages),
+                SvgPicture.asset(
+                  AppIcons.Messages,
+                  height: Get.height / 32,
+                  width: Get.width / 32,
+                ),
               ],
             );
           },

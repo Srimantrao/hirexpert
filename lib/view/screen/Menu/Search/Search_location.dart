@@ -1,15 +1,16 @@
 // ignore_for_file: camel_case_types, file_names, non_constant_identifier_names
 
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
+import '../../../../controller/ButtonsController/SearchButtonsController.dart';
 import '../../../../modal/bottamsheet/Location_list.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/app_color.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
+import 'Search_find.dart';
 
 class Search_location extends StatefulWidget {
   const Search_location({super.key});
@@ -26,7 +27,7 @@ class _Search_locationState extends State<Search_location> {
 
   ValueNotifier<bool> selectboll = ValueNotifier<bool>(false);
 
-  void selectboll_fun(){
+  void selectboll_fun() {
     selectboll.value = true;
   }
 
@@ -297,6 +298,10 @@ class _Search_locationState extends State<Search_location> {
 
   @override
   Widget build(BuildContext context) {
+    final Buttingchang = Provider.of<SearchButtonsController>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
@@ -334,70 +339,101 @@ class _Search_locationState extends State<Search_location> {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextField(
-                decoration: InputDecoration(
-                  hintText: Search_text.Keyword,
-                  hintStyle: TextStyle(
-                    color: AppColor.subcolor,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: AppColor.subcolor,
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Bottam_color,
-                    ),
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Bottam_color,
-                    ),
-                  ),
-                ),
-              ),
-              SizedBox(height: Get.height / 50),
-              InkWell(
-                onTap: () {
-                  showbottming();
-                },
-                child: Container(
-                  height: Get.height / 15,
-                  width: Get.width,
-                  decoration: BoxDecoration(
-                    border: Border(
-                        bottom: BorderSide(
-                      color: AppColor.Bottam_color,
-                    )),
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(width: Get.width / 40),
-                      Icon(
-                        Icons.location_on_outlined,
+              Column(
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: Search_text.Keyword,
+                      hintStyle: TextStyle(
                         color: AppColor.subcolor,
                       ),
-                      SizedBox(width: Get.width / 40),
-
-                      ValueListenableBuilder(
-                        valueListenable: selectboll,
-                        builder: (
-                            BuildContext context,
-                            value, Widget? child) {
-                        return (value)
-                            ? Text(select)
-                            : Text(
-                          Search_text.Select_Location,
-                          style: TextStyle(
-                            color: AppColor.subcolor,
-                            fontSize: Get.width / 24,
-                          ),
-                        );
-                      },)
-                    ],
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: AppColor.subcolor,
+                      ),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColor.Bottam_color,
+                        ),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(
+                          color: AppColor.Bottam_color,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
+                  SizedBox(height: Get.height / 50),
+                  Consumer<SearchButtonsController>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return InkWell(
+                        onTap: () {
+                          showbottming();
+                          Buttingchang.Savebuttons_fun();
+                          setState(() {});
+                        },
+                        child: Container(
+                          height: Get.height / 15,
+                          width: Get.width,
+                          decoration: BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: AppColor.Bottam_color,
+                              ),
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              SizedBox(width: Get.width / 30),
+                              Icon(
+                                Icons.location_on_outlined,
+                                color: AppColor.subcolor,
+                              ),
+                              SizedBox(width: Get.width / 40),
+                              ValueListenableBuilder(
+                                valueListenable: selectboll,
+                                builder: (BuildContext context, value,
+                                    Widget? child) {
+                                  return (value)
+                                      ? Text(select)
+                                      : Text(
+                                          Search_text.Select_Location,
+                                          style: TextStyle(
+                                            color: AppColor.subcolor,
+                                            fontSize: Get.width / 24,
+                                          ),
+                                        );
+                                },
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                ],
+              ),
+              Consumer<SearchButtonsController>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return Column(
+                    children: [
+                      (Buttingchang.Savebutton)
+                          ? InkWell(
+                              onTap: () {
+                                Get.to(() => const Search_find());
+                              },
+                              child: OnButtons(
+                                Button_Color: AppColor.Button_color,
+                                btn_name: Search_text.Button_name,
+                              ),
+                            )
+                          : const SizedBox(),
+                      SizedBox(height: Get.height / 50),
+                    ],
+                  );
+                },
               )
             ],
           ),
