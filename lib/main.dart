@@ -8,7 +8,6 @@ import 'package:hirexpert/controller/LoginControoler/LoginValidation.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
-import 'package:responsive_builder/responsive_builder.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/BottamController/MenuNavigationController.dart';
 import 'controller/ButtonsController/SearchButtonsController.dart';
@@ -22,6 +21,7 @@ import 'controller/LoginControoler/visibility.dart';
 import 'controller/OptionController/SelectButton.dart';
 import 'controller/SearchScreenController/DropdownConroller.dart';
 import 'controller/SignupController/SinupController.dart';
+import 'controller/TabbarController/Tabcontroller.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -66,6 +66,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SetupController()),
         ChangeNotifierProvider(create: (_) => SearchJobController()),
         ChangeNotifierProvider(create: (_) => SearchButtonsController()),
+        ChangeNotifierProvider(create: (_) => TabbarController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

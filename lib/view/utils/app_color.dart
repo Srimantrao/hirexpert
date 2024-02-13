@@ -3,6 +3,8 @@
 import 'dart:ui';
 
 class AppColor {
+  static Color select_check_color = const Color(0xffCDCDCD);
+  static Color Tabbar_color = const Color(0xffF7F7F7);
   static Color Buttom_color = const Color(0xffF8F8F8);
   static Color Button_color = const Color(0xff8F14DC);
   static Color Botton_color_hide = const Color(0xffD3A1F3);

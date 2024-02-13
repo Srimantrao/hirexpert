@@ -203,6 +203,105 @@ class Profile_Text {
   static const Privacy_Policy = "Privacy Policy";
   static const Change_Password = "Change Password";
   static const Logout = "Logout";
+  static const Upload_Your_CV = "Upload Your CV";
+  static const Personal_Information = "Personal Information";
+  static const Address = "Address";
+  static const Educational_Details = "Educational Details";
+  static const Work_Experience = "Work Experience";
+  static const Salary = "Salary";
+  static const Work_Location = "Work Location";
+  static const About_Me = "About Me";
+  static const Save = "Save";
+  static const Extra_Info = "Extra Info";
+  static const specializationss = "Select your specialization / interest:";
+  static const Company = "Company Management";
+  static const management = "Any management Positions";
+  static const What = "What is Your Primary Skillset?";
+  static const My_Profile = "My Profile";
+  static const Document = "Document";
+  static const Moust = "Which of these most closely describe your job?";
+  static const Moust_hint = "Describe your job !";
+  static const Change = "Change";
+
+  //My Profile
+  //Upload your CV
+  static const Upload = "Upload your resume/cv with autofill option.";
+  static const Resume_Link = "Resume Link";
+  static const resume =
+      "Upload your resume or drag and drop it hereOnly .doc, .docx, .pdf, .odt, .rtf";
+
+  //Parsnoal Information
+  static const Job_Title = "Job itle";
+  static const Enter_Tital_job = "Enter the Job Title";
+  static const First_Name = "First Name:";
+  static const Enter_The_Frist_Name = "Enter The Frist Name";
+  static const Last_Name = "Last Name:";
+  static const Enter_The_Last_Name = "Enter The Last Name";
+  static const Email_Id = "Email Id:";
+  static const Enter_Email_Id = "Enter Your Email Address";
+  static const Mobile_Number = "Mobile Number:";
+  static const Enter_Mobile_Number = "Enter the Mobile Number:";
+  static const Date_OF_Bithday = "Enter the Your Date of Bith:";
+  static const Gender = "Gender:";
+  static const Male = "Male";
+  static const Female = "Female";
+  static const PreferNot_tosay = "Prefer Not to say";
+  static const Date_Of_Birthday = "Date Of Birthday:";
+  static const Buttion_name = "Save";
+
+  //Adress
+  static const Street_Address = "Street Address";
+  static const Post_Code = "Post Code";
+  static const Select_Country = "Select Country";
+  static const Select_Province = "Select Province";
+  static const Select_City = "Select City";
+  static const Addresss = "Address";
+
+  //Educational Details
+  static const Degree = "Degree";
+  static const Specialisation = "Specialisation";
+  static const Institute_Name = "Institute Name";
+  static const Passing_Year = "Passing Year";
+  static const Add_Educational_Details = "+ Add Educational Details";
+  static const Educational_Detailss = "Educational Details";
+
+  //Work Experience
+  static const fresher = "I'm a fresher";
+  static const Total_Experience = "Total Experience:";
+  static const Company_Name = "Company Name";
+  static const Designation = "Designation";
+  static const Duration = "Duration";
+  static const I_currently_work_here = "I currently work here";
+  static const Add_Work_Experience = "+ Add Work Experience";
+  static const E_Year = "Year";
+  static const E_Month = "Month";
+  static const Enter_Year = "Enter Year";
+  static const Enter_Month = "Enter Month";
+  static const Enter_The_Comppany_name = "Enter The Commpany Name";
+  static const Enter_The_Designation = "Enter The Designation";
+  static const Starting_date = "Starting date";
+  static const Ending_date = "Ending date";
+
+  //Salary
+  static const CTC = "Current CTC (per annum)";
+  static const Enter_CTC = "Enter The CTC";
+  static const Salarys = "Salary";
+  static const Expected_Salary = "Expected Salary";
+  static const Enter_Expected = "Enter Expected";
+
+  //Work Location
+  static const Work_Locations = "Work Location";
+  static const Enter_Work_location = "Enter Work location";
+  static const Current_CTC_per_annum = "Current CTC (per annum)";
+  static const Enter_the_Current_CTC = "Enter The Current CTC";
+  static const Preffered_Working_Location = "Preffered Working Location)";
+  static const Enter_Preffered_Working_location = "Enter Preffered Working location";
+  static const Preffered_Work_Setup = "Preffered Work Setup";
+  static const Enter_the_Preffered_Work_Setup = "Enter the Preffered Work Setup";
+  static const Job_Type_Preferrence = "Job Type Preferrence";
+  static const Enter_the_Preferrence = "Enter the Preferrence";
+  static const Notice_Period_days_Optional = "Notice Period (days)(Optional)";
+  static const Enter_Notice_Period = "Enter Notice Period";
 }
 
 //Edit Profile
@@ -444,4 +543,30 @@ class Searchjob_text {
   static const In_Office = "In-Office";
   static const Hybrid = "Hybrid";
   static const Any = "Any";
+}
+
+class My_Archive_text {
+  static const titele = "My Archive";
+  static const Body_tital = "My Archive Listings";
+  static const No_Job = "No jobs saved yet-Jobs you save appear here.";
+  static const Search_Job = "Search Job.";
+  static const Feedback = "Feedback";
+  static const Send_Us = "Send Us Your Feedback";
+  static const Issues = "Issues";
+  static const Suggestions = "Suggestions";
+  static const T_Feedback = "Type Your Feedback";
+  static const Add_Screenshot = "Add Screenshot";
+  static const Cancel = "Cancel";
+  static const Submit = "Submit";
+  static const Manage_Account = "Manage Account";
+  static const Hide_my = "Hide my details from hirers?";
+  static const Remove = "Remove me and my details from Hirexpert";
+  static const Remove_buttons = "Remove";
+  static const Change_Password = "Change Password";
+  static const Old_Password = "Old Password:";
+  static const Enter_Old_Password = "Enter Old Password";
+  static const Enter_New_Password = "Enter New Password";
+  static const Enter_Confirm_Password = "Enter Confirm Password";
+  static const New_Password = "New Password:";
+  static const Confirm_Password = "Confirm Password:";
 }

@@ -18,6 +18,7 @@ class AppIcons {
   static const Check = "assets/icon/body/Check.svg";
   static const Success = "assets/icon/body/Success.png";
   static const cancel = "assets/icon/body/cancel.svg";
+  static const Select_check = "assets/icon/body/Select.svg";
 
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";

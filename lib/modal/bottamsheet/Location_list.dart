@@ -1,6 +1,6 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
-List State_list = [
+List<String> State_list = [
   "Gujarat",
   "Maharashtra",
   "Andra Pradesh",
@@ -12,7 +12,7 @@ List State_list = [
   "Kasmir",
 ];
 
-List Area_Gujarat = [
+List<String> Area_Gujarat = [
   "Suart",
   "Rajkot",
   "Vadodra",
@@ -20,7 +20,7 @@ List Area_Gujarat = [
   "Bhavnager",
 ];
 
-List Area_Maharashtra = [
+List<String> Area_Maharashtra = [
   "Dhuliya",
   "Jalgao",
   "Amlnerr",

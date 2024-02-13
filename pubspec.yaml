@@ -44,6 +44,8 @@ dependencies:
   dotted_border: ^2.1.0
   flutter_switch: ^0.3.2
   responsive_builder: ^0.7.0
+  flutter_multi_select_items: ^0.4.2
+  open_settings: ^2.0.2
 
 dev_dependencies:
   flutter_test:

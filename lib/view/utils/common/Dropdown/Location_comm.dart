@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../../../../controller/DropdownController/PreferenceController.dart';
 import '../../../../modal/bottamsheet/Location_list.dart';
 
-//Preference
+//Job type Preference?
 class Preference extends StatefulWidget {
   const Preference({super.key});
 
@@ -164,7 +164,7 @@ class _PreferenceState extends State<Preference> {
   }
 }
 
-//Location
+//Current Working Location?
 class Location_fild extends StatefulWidget {
   const Location_fild({super.key});
 
@@ -176,604 +176,286 @@ class _Location_fildState extends State<Location_fild> {
   int Gujarat = -1;
   int Maharastrya = -1;
 
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: Get.height,
-                width: Get.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Get.width / 30),
-                    topRight: Radius.circular(Get.width / 30),
-                  ),
-                  color: AppColor.Full_body_color,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Get.width / 30,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: Get.height / 15,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: AppColor.Bottam_color,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const SizedBox(),
-                            Text(
-                              Location_text.Location,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: Get.width / 23,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: SvgPicture.asset(AppIcons.cancel),
-                            ),
-                          ],
+  String ontext = "";
+
+  ValueNotifier<bool> isState = ValueNotifier<bool>(false);
+
+  void ValueNotif() {
+    isState.value = true;
+  }
+
+  void Showbottem() async {
+    await showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            height: Get.height,
+            width: Get.width,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Get.width / 30),
+                topRight: Radius.circular(Get.width / 30),
+              ),
+              color: AppColor.Full_body_color,
+            ),
+            child: Padding(
+              padding: EdgeInsets.symmetric(
+                horizontal: Get.width / 30,
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: Get.height / 15,
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: AppColor.Bottam_color,
                         ),
                       ),
-                      SizedBox(height: Get.height / 50),
-                      StatefulBuilder(
-                        builder: (BuildContext context,
-                            void Function(void Function()) setState) {
-                          return Column(
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const SizedBox(),
+                        Text(
+                          Location_text.Location,
+                          style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: Get.width / 23,
+                          ),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            Get.back();
+                          },
+                          child: SvgPicture.asset(AppIcons.cancel),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: Get.height / 50),
+                  StatefulBuilder(
+                    builder: (BuildContext context,
+                        void Function(void Function()) setState) {
+                      return Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  //State List
-                                  SizedBox(
-                                    height: Get.height / 2.5,
-                                    width: Get.width / 4,
-                                    child: ListView.builder(
-                                      itemCount: State_list.length,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              State = index;
-                                            });
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.symmetric(
-                                              vertical: Get.width / 60,
-                                            ),
-                                            width: Get.width / 4,
-                                            height: Get.height / 20,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                Get.width / 50,
-                                              ),
+                              //State List
+                              SizedBox(
+                                height: Get.height / 2.5,
+                                width: Get.width / 4,
+                                child: ListView.builder(
+                                  itemCount: State_list.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return InkWell(
+                                      onTap: () {
+                                        State = index;
+                                        setState(() {});
+                                      },
+                                      child: Container(
+                                        margin: EdgeInsets.symmetric(
+                                          vertical: Get.width / 60,
+                                        ),
+                                        width: Get.width / 4,
+                                        height: Get.height / 20,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(
+                                            Get.width / 50,
+                                          ),
+                                          color: (State == index)
+                                              ? AppColor.Button_color
+                                              : AppColor.Full_body_color,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            textAlign: TextAlign.center,
+                                            State_list[index],
+                                            style: TextStyle(
+                                              fontSize: Get.width / 28,
                                               color: (State == index)
-                                                  ? AppColor.Button_color
-                                                  : AppColor.Full_body_color,
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                State_list[index],
-                                                style: TextStyle(
-                                                  fontSize: Get.width / 28,
-                                                  color: (State == index)
-                                                      ? AppColor.Full_body_color
-                                                      : AppColor.black_all,
-                                                ),
-                                              ),
+                                                  ? AppColor.Full_body_color
+                                                  : AppColor.black_all,
                                             ),
                                           ),
-                                        );
-                                      },
-                                    ),
-                                  ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
 
-                                  //Aria List
-                                  (State == 0 || State == 1)
-                                      ? Row(
-                                          children: [
-                                            (State == 0)
-                                                ? SizedBox(
-                                                    height: Get.height / 3,
-                                                    width: Get.width / 4,
-                                                    child: ListView.builder(
-                                                      itemCount:
-                                                          Area_Gujarat.length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        return InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              Gujarat = index;
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            margin: EdgeInsets
-                                                                .symmetric(
-                                                              vertical:
+                              //Aria List
+                              (State == 0 || State == 1)
+                                  ? Row(
+                                      children: [
+                                        (State == 0)
+                                            ? SizedBox(
+                                                height: Get.height / 3,
+                                                width: Get.width / 4,
+                                                child: ListView.builder(
+                                                  itemCount:
+                                                      Area_Gujarat.length,
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index) {
+                                                    return InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          Gujarat = index;
+                                                          ValueNotif();
+                                                          ontext = Area_Gujarat[
+                                                              index];
+                                                        });
+                                                      },
+                                                      child: Container(
+                                                        margin: EdgeInsets
+                                                            .symmetric(
+                                                          vertical:
+                                                              Get.width / 60,
+                                                        ),
+                                                        width: Get.width / 4,
+                                                        height: Get.height / 20,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            Get.width / 50,
+                                                          ),
+                                                          color: (Gujarat ==
+                                                                  index)
+                                                              ? AppColor
+                                                                  .Button_color
+                                                              : AppColor
+                                                                  .Full_body_color,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            Area_Gujarat[index],
+                                                            style: TextStyle(
+                                                              fontSize:
                                                                   Get.width /
-                                                                      60,
-                                                            ),
-                                                            width:
-                                                                Get.width / 4,
-                                                            height:
-                                                                Get.height / 20,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                Get.width / 50,
-                                                              ),
+                                                                      28,
                                                               color: (Gujarat ==
                                                                       index)
                                                                   ? AppColor
-                                                                      .Button_color
+                                                                      .Full_body_color
                                                                   : AppColor
-                                                                      .Full_body_color,
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                Area_Gujarat[
-                                                                    index],
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      Get.width /
-                                                                          28,
-                                                                  color: (Gujarat ==
-                                                                          index)
-                                                                      ? AppColor
-                                                                          .Full_body_color
-                                                                      : AppColor
-                                                                          .black_all,
-                                                                ),
-                                                              ),
+                                                                      .black_all,
                                                             ),
                                                           ),
-                                                        );
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              )
+                                            : const SizedBox(),
+                                        (State == 1)
+                                            ? SizedBox(
+                                                height: Get.height / 3,
+                                                width: Get.width / 4,
+                                                child: ListView.builder(
+                                                  itemCount:
+                                                      Area_Maharashtra.length,
+                                                  itemBuilder:
+                                                      (BuildContext context,
+                                                          int index) {
+                                                    return InkWell(
+                                                      onTap: () {
+                                                        setState(() {
+                                                          Maharastrya = index;
+                                                          ValueNotif();
+                                                          ontext =
+                                                              Area_Maharashtra[
+                                                                  index];
+                                                        });
                                                       },
-                                                    ),
-                                                  )
-                                                : const SizedBox(),
-                                            (State == 1)
-                                                ? SizedBox(
-                                                    height: Get.height / 3,
-                                                    width: Get.width / 4,
-                                                    child: ListView.builder(
-                                                      itemCount:
-                                                          Area_Maharashtra
-                                                              .length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        return InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              Maharastrya =
-                                                                  index;
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            margin: EdgeInsets
-                                                                .symmetric(
-                                                              vertical:
+                                                      child: Container(
+                                                        margin: EdgeInsets
+                                                            .symmetric(
+                                                          vertical:
+                                                              Get.width / 60,
+                                                        ),
+                                                        width: Get.width / 4,
+                                                        height: Get.height / 20,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                            Get.width / 50,
+                                                          ),
+                                                          color: (Maharastrya ==
+                                                                  index)
+                                                              ? AppColor
+                                                                  .Button_color
+                                                              : AppColor
+                                                                  .Full_body_color,
+                                                        ),
+                                                        child: Center(
+                                                          child: Text(
+                                                            Area_Maharashtra[
+                                                                index],
+                                                            style: TextStyle(
+                                                              fontSize:
                                                                   Get.width /
-                                                                      60,
-                                                            ),
-                                                            width:
-                                                                Get.width / 4,
-                                                            height:
-                                                                Get.height / 20,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                Get.width / 50,
-                                                              ),
+                                                                      28,
                                                               color: (Maharastrya ==
                                                                       index)
                                                                   ? AppColor
-                                                                      .Button_color
+                                                                      .Full_body_color
                                                                   : AppColor
-                                                                      .Full_body_color,
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                Area_Maharashtra[
-                                                                    index],
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      Get.width /
-                                                                          28,
-                                                                  color: (Maharastrya ==
-                                                                          index)
-                                                                      ? AppColor
-                                                                          .Full_body_color
-                                                                      : AppColor
-                                                                          .black_all,
-                                                                ),
-                                                              ),
+                                                                      .black_all,
                                                             ),
                                                           ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  )
-                                                : const SizedBox(),
-                                          ],
-                                        )
-                                      : const SizedBox(),
-                                ],
-                              ),
-                              (State == 0 ||
-                                      State == 1 ||
-                                      State == 2 ||
-                                      State == 3)
-                                  ? InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          Gujarat = 0;
-                                          Get.back();
-                                        });
-                                      },
-                                      child: OnButtons(
-                                        Button_Color: AppColor.Button_color,
-                                        btn_name: Location_text.Save,
-                                      ),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
+                                              )
+                                            : const SizedBox(),
+                                      ],
                                     )
                                   : const SizedBox(),
                             ],
-                          );
-                        },
-                      ),
-                    ],
+                          ),
+                          (State == 0 || State == 1 || State == 2 || State == 3)
+                              ? InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      Gujarat = 0;
+                                      Get.back();
+                                    });
+                                  },
+                                  child: OnButtons(
+                                    Button_Color: AppColor.Button_color,
+                                    btn_name: Location_text.Save,
+                                  ),
+                                )
+                              : const SizedBox(),
+                        ],
+                      );
+                    },
                   ),
-                ),
-              );
-            });
-      },
-      child: Container(
-          height: Get.height / 17,
-          width: Get.width,
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: BorderSide(
-                color: AppColor.Bottam_color,
+                ],
               ),
             ),
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              (Gujarat == 0)
-                  ? Text(Gujarat.toString())
-                  : Text(
-                Location_text.Select,
-                style: TextStyle(
-                  fontSize: Get.width / 23,
-                ),
-              ),
-              SvgPicture.asset(
-                AppIcons.down,
-                color: AppColor.Bottam_color,
-              ),
-            ],
-          ),),
-    );
+          );
+        });
   }
-}
-
-//Preffered
-class Preffered extends StatefulWidget {
-  const Preffered({super.key});
-
-  @override
-  State<Preffered> createState() => _PrefferedState();
-}
-class _PrefferedState extends State<Preffered> {
-  int State = -1;
-  int Gujarat = -1;
-  int Maharastrya = -1;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        showModalBottomSheet(
-            context: context,
-            builder: (BuildContext context) {
-              return Container(
-                height: Get.height,
-                width: Get.width,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(Get.width / 30),
-                    topRight: Radius.circular(Get.width / 30),
-                  ),
-                  color: AppColor.Full_body_color,
-                ),
-                child: Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Get.width / 30,
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: Get.height / 15,
-                        width: Get.width,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: AppColor.Bottam_color,
-                            ),
-                          ),
-                        ),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            const SizedBox(),
-                            Text(
-                              Location_text.Location,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: Get.width / 23,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                              },
-                              child: SvgPicture.asset(AppIcons.cancel),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: Get.height / 50),
-                      StatefulBuilder(
-                        builder: (BuildContext context,
-                            void Function(void Function()) setState) {
-                          return Column(
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: [
-                                  //State List
-                                  SizedBox(
-                                    height: Get.height / 2.5,
-                                    width: Get.width / 4,
-                                    child: ListView.builder(
-                                      itemCount: State_list.length,
-                                      itemBuilder:
-                                          (BuildContext context, int index) {
-                                        return InkWell(
-                                          onTap: () {
-                                            setState(() {
-                                              State = index;
-                                            });
-                                          },
-                                          child: Container(
-                                            margin: EdgeInsets.symmetric(
-                                              vertical: Get.width / 60,
-                                            ),
-                                            width: Get.width / 4,
-                                            height: Get.height / 20,
-                                            decoration: BoxDecoration(
-                                              borderRadius:
-                                                  BorderRadius.circular(
-                                                Get.width / 50,
-                                              ),
-                                              color: (State == index)
-                                                  ? AppColor.Button_color
-                                                  : AppColor.Full_body_color,
-                                            ),
-                                            child: Center(
-                                              child: Text(
-                                                State_list[index],
-                                                style: TextStyle(
-                                                  fontSize: Get.width / 28,
-                                                  color: (State == index)
-                                                      ? AppColor.Full_body_color
-                                                      : AppColor.black_all,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                        );
-                                      },
-                                    ),
-                                  ),
-
-                                  //Aria List
-                                  (State == 0 || State == 1)
-                                      ? Row(
-                                          children: [
-                                            (State == 0)
-                                                ? SizedBox(
-                                                    height: Get.height / 3,
-                                                    width: Get.width / 4,
-                                                    child: ListView.builder(
-                                                      itemCount:
-                                                          Area_Gujarat.length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        return InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              Gujarat = index;
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            margin: EdgeInsets
-                                                                .symmetric(
-                                                              vertical:
-                                                                  Get.width /
-                                                                      60,
-                                                            ),
-                                                            width:
-                                                                Get.width / 4,
-                                                            height:
-                                                                Get.height / 20,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                Get.width / 50,
-                                                              ),
-                                                              color: (Gujarat ==
-                                                                      index)
-                                                                  ? AppColor
-                                                                      .Button_color
-                                                                  : AppColor
-                                                                      .Full_body_color,
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                Area_Gujarat[
-                                                                    index],
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      Get.width /
-                                                                          28,
-                                                                  color: (Gujarat ==
-                                                                          index)
-                                                                      ? AppColor
-                                                                          .Full_body_color
-                                                                      : AppColor
-                                                                          .black_all,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  )
-                                                : const SizedBox(),
-                                            (State == 1)
-                                                ? SizedBox(
-                                                    height: Get.height / 3,
-                                                    width: Get.width / 4,
-                                                    child: ListView.builder(
-                                                      itemCount:
-                                                          Area_Maharashtra
-                                                              .length,
-                                                      itemBuilder:
-                                                          (BuildContext context,
-                                                              int index) {
-                                                        return InkWell(
-                                                          onTap: () {
-                                                            setState(() {
-                                                              Maharastrya =
-                                                                  index;
-                                                            });
-                                                          },
-                                                          child: Container(
-                                                            margin: EdgeInsets
-                                                                .symmetric(
-                                                              vertical:
-                                                                  Get.width /
-                                                                      60,
-                                                            ),
-                                                            width:
-                                                                Get.width / 4,
-                                                            height:
-                                                                Get.height / 20,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                Get.width / 50,
-                                                              ),
-                                                              color: (Maharastrya ==
-                                                                      index)
-                                                                  ? AppColor
-                                                                      .Button_color
-                                                                  : AppColor
-                                                                      .Full_body_color,
-                                                            ),
-                                                            child: Center(
-                                                              child: Text(
-                                                                Area_Maharashtra[
-                                                                    index],
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontSize:
-                                                                      Get.width /
-                                                                          28,
-                                                                  color: (Maharastrya ==
-                                                                          index)
-                                                                      ? AppColor
-                                                                          .Full_body_color
-                                                                      : AppColor
-                                                                          .black_all,
-                                                                ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                                  )
-                                                : const SizedBox(),
-                                          ],
-                                        )
-                                      : const SizedBox(),
-                                ],
-                              ),
-                              (State == 0 ||
-                                      State == 1 ||
-                                      State == 2 ||
-                                      State == 3)
-                                  ? InkWell(
-                                      onTap: () {
-                                        setState(() {
-                                          Gujarat = 0;
-                                          Get.back();
-                                        });
-                                      },
-                                      child: OnButtons(
-                                        Button_Color: AppColor.Button_color,
-                                        btn_name: Location_text.Save,
-                                      ),
-                                    )
-                                  : const SizedBox(),
-                            ],
-                          );
-                        },
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            });
+        Showbottem();
       },
       child: Container(
         height: Get.height / 17,
@@ -785,29 +467,454 @@ class _PrefferedState extends State<Preffered> {
             ),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            (Gujarat == 0)
-                ? Text(Gujarat.toString())
-                : Text(
-                    Location_text.Select,
-                    style: TextStyle(
-                      fontSize: Get.width / 23,
-                    ),
-                  ),
-            SvgPicture.asset(
-              AppIcons.down,
-              color: AppColor.Bottam_color,
-            ),
-          ],
+        child: ValueListenableBuilder(
+          valueListenable: isState,
+          builder: (BuildContext context, value, Widget? child) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                (value)
+                    ? Text(
+                        ontext,
+                        style: TextStyle(
+                          fontSize: Get.width / 23,
+                        ),
+                      )
+                    : Text(
+                        Location_text.Select,
+                        style: TextStyle(
+                          fontSize: Get.width / 23,
+                        ),
+                      ),
+                SvgPicture.asset(
+                  AppIcons.down,
+                  color: AppColor.Bottam_color,
+                ),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 }
 
-//Setup
+//Preffered Work Preffered?
+class Preffered extends StatefulWidget {
+  const Preffered({super.key});
+
+  @override
+  State<Preffered> createState() => _PrefferedState();
+}
+class _PrefferedState extends State<Preffered> {
+  int State = -1;
+
+  int Gujarat = -1;
+  List<bool> selectedGujaratAreas =
+      List.generate(Area_Gujarat.length, (index) => false);
+
+  int Maharastrya = -1;
+  List<bool> selectedMaharashtraAreas =
+      List.generate(Area_Maharashtra.length, (index) => false);
+
+  String ontext = "";
+  String ontext2 = "";
+
+  ValueNotifier<bool> isArea = ValueNotifier<bool>(false);
+
+  void isArea_fun() {
+    isArea.value = true;
+  }
+
+  void ShowBottam() async {
+    await showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+          height: Get.height,
+          width: Get.width,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(Get.width / 30),
+              topRight: Radius.circular(Get.width / 30),
+            ),
+            color: AppColor.Full_body_color,
+          ),
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: Get.width / 30,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: Get.height / 15,
+                  width: Get.width,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: AppColor.Bottam_color,
+                      ),
+                    ),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const SizedBox(),
+                      Text(
+                        Location_text.Location,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w600,
+                          fontSize: Get.width / 23,
+                        ),
+                      ),
+                      InkWell(
+                        onTap: () {
+                          Get.back();
+                        },
+                        child: SvgPicture.asset(AppIcons.cancel),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: Get.height / 50),
+                StatefulBuilder(
+                  builder: (BuildContext context,
+                      void Function(void Function()) setState) {
+                    return Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            //State List
+                            SizedBox(
+                              height: Get.height / 2.5,
+                              width: Get.width / 4,
+                              child: ListView.builder(
+                                itemCount: State_list.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        State = index;
+                                      });
+                                    },
+                                    child: Container(
+                                      margin: EdgeInsets.symmetric(
+                                        vertical: Get.width / 60,
+                                      ),
+                                      width: Get.width / 4,
+                                      height: Get.height / 20,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          Get.width / 50,
+                                        ),
+                                        color: (State == index)
+                                            ? AppColor.Button_color
+                                            : AppColor.Full_body_color,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          textAlign: TextAlign.center,
+                                          State_list[index],
+                                          style: TextStyle(
+                                            fontSize: Get.width / 28,
+                                            color: (State == index)
+                                                ? AppColor.Full_body_color
+                                                : AppColor.black_all,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                },
+                              ),
+                            ),
+
+                            //Aria List
+                            (State == 0 || State == 1)
+                                ? Row(
+                                    children: [
+                                      (State == 0)
+                                          ? SizedBox(
+                                              height: Get.height / 3,
+                                              width: Get.width / 4,
+                                              child: ListView.builder(
+                                                itemCount: Area_Gujarat.length,
+                                                itemBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        if (State == 0) {
+                                                          selectedGujaratAreas[
+                                                                  index] =
+                                                              !selectedGujaratAreas[
+                                                                  index];
+                                                          isArea_fun();
+                                                          ontext = Area_Gujarat[
+                                                              index];
+                                                          ontext2 = Area_Gujarat[
+                                                          index];
+                                                        }
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                        vertical:
+                                                            Get.width / 60,
+                                                      ),
+                                                      width: Get.width / 4,
+                                                      height: Get.height / 20,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          Get.width / 50,
+                                                        ),
+                                                        color: (selectedGujaratAreas[
+                                                                index])
+                                                            ? AppColor
+                                                                .Button_color
+                                                            : AppColor
+                                                                .Full_body_color,
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(
+                                                          textAlign:
+                                                              TextAlign.center,
+                                                          Area_Gujarat[index],
+                                                          style: TextStyle(
+                                                            fontSize:
+                                                                Get.width / 28,
+                                                            color: (selectedGujaratAreas[
+                                                                    index])
+                                                                ? AppColor
+                                                                    .Full_body_color
+                                                                : AppColor
+                                                                    .black_all,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          : const SizedBox(),
+                                      (State == 1)
+                                          ? SizedBox(
+                                              height: Get.height / 3,
+                                              width: Get.width / 4,
+                                              child: ListView.builder(
+                                                itemCount:
+                                                    Area_Maharashtra.length,
+                                                itemBuilder:
+                                                    (BuildContext context,
+                                                        int index) {
+                                                  return InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        isArea_fun();
+                                                        ontext =
+                                                            Area_Maharashtra[
+                                                                index];
+                                                        if (State == 1) {
+                                                          selectedMaharashtraAreas[
+                                                                  index] =
+                                                              !selectedMaharashtraAreas[
+                                                                  index];
+                                                        }
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      margin:
+                                                          EdgeInsets.symmetric(
+                                                        vertical:
+                                                            Get.width / 60,
+                                                      ),
+                                                      width: Get.width / 4,
+                                                      height: Get.height / 20,
+                                                      decoration: BoxDecoration(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(
+                                                          Get.width / 50,
+                                                        ),
+                                                        color: (selectedMaharashtraAreas[
+                                                                index])
+                                                            ? AppColor
+                                                                .Button_color
+                                                            : AppColor
+                                                                .Full_body_color,
+                                                      ),
+                                                      child: Center(
+                                                        child: Text(
+                                                          Area_Maharashtra[
+                                                              index],
+                                                          style: TextStyle(
+                                                            fontSize:
+                                                                Get.width / 28,
+                                                            color: (selectedMaharashtraAreas[
+                                                                    index])
+                                                                ? AppColor
+                                                                    .Full_body_color
+                                                                : AppColor
+                                                                    .black_all,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  );
+                                                },
+                                              ),
+                                            )
+                                          : const SizedBox(),
+                                    ],
+                                  )
+                                : const SizedBox(),
+                          ],
+                        ),
+                        (State == 0 || State == 1 || State == 2 || State == 3)
+                            ? InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selectedGujaratAreas[0];
+                                    Get.back();
+                                  });
+                                },
+                                child: OnButtons(
+                                  Button_Color: AppColor.Button_color,
+                                  btn_name: Location_text.Save,
+                                ),
+                              )
+                            : const SizedBox(),
+                      ],
+                    );
+                  },
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        ShowBottam();
+      },
+      child: Container(
+        height: Get.height / 17,
+        width: Get.width,
+        decoration: BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: AppColor.Bottam_color,
+            ),
+          ),
+        ),
+        child: ValueListenableBuilder(
+          valueListenable: isArea,
+          builder: (BuildContext context, value, Widget? child) {
+            return Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                (value)
+                    ? Row(
+                        children: [
+                          Container(
+                            width: Get.width / 4,
+                            height: Get.height / 20,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                Get.width / 60,
+                              ),
+                              color: AppColor.Button_color,
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    ontext,
+                                    style: TextStyle(
+                                      color: AppColor.Full_body_color,
+                                      fontSize: Get.width / 28,
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: SvgPicture.asset(
+                                      AppIcons.cancel,
+                                      color: AppColor.Full_body_color,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: Get.width / 50),
+                          Container(
+                            width: Get.width / 4,
+                            height: Get.height / 20,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(
+                                Get.width / 60,
+                              ),
+                              color: AppColor.Button_color,
+                            ),
+                            child: Center(
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  Text(
+                                    ontext2,
+                                    style: TextStyle(
+                                      color: AppColor.Full_body_color,
+                                      fontSize: Get.width / 28,
+                                    ),
+                                  ),
+                                  InkWell(
+                                    onTap: () {},
+                                    child: SvgPicture.asset(
+                                      AppIcons.cancel,
+                                      color: AppColor.Full_body_color,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    : Text(
+                        Location_text.Select,
+                        style: TextStyle(
+                          fontSize: Get.width / 23,
+                        ),
+                      ),
+                SvgPicture.asset(
+                  AppIcons.down,
+                  color: AppColor.Bottam_color,
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+//Your Perferred Setup?
 class Setup extends StatefulWidget {
   const Setup({super.key});
 

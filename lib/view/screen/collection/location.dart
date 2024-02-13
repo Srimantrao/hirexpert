@@ -160,7 +160,7 @@ class _LocationState extends State<Location> {
                     ],
                   );
                 },
-              )
+              ),
             ],
           ),
         ),
