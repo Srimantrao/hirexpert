@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
@@ -9,8 +8,8 @@ import 'package:hirexpert/view/screen/Menu/Search/Details_Search.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../utils/app_String.dart';
-import '../../../utils/common/Dropdown/Search_Job(Conatiner).dart';
 import '../../../utils/common/List/jobSearch.dart';
+import '../../../utils/common/Popup/Search_Job(Conatiner).dart';
 
 class Search_find extends StatefulWidget {
   const Search_find({super.key});

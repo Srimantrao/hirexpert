@@ -8,8 +8,8 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
-
-import 'My_Archive.dart';
+import 'Setting_Screen/My_Archive.dart';
+import 'Setting_Screen/Notification_Setting.dart';
 
 class Setting extends StatefulWidget {
   const Setting({super.key});
@@ -19,7 +19,6 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
-
   //Check box
   bool value1 = false;
   bool value2 = false;
@@ -108,7 +107,18 @@ class _SettingState extends State<Setting> {
                     },
                     child: const Info_Setting(info: Profile_Text.Archive),
                   ),
-                  const Info_Setting(info: Profile_Text.Notification_Setting),
+
+                  //Notification Setting
+                  InkWell(
+                    onTap: () {
+                      Get.to(() => const Notification_setting());
+                    },
+                    child: const Info_Setting(
+                      info: Profile_Text.Notification_Setting,
+                    ),
+                  ),
+
+                  //Send Us Your Feedback
                   InkWell(
                     onTap: () {
                       showDialog(
@@ -305,6 +315,8 @@ class _SettingState extends State<Setting> {
                       info: Profile_Text.Send_Us_Your_Feedback,
                     ),
                   ),
+
+                  //Manage_Account
                   InkWell(
                     splashColor: Colors.transparent,
                     hoverColor: Colors.transparent,
@@ -497,9 +509,7 @@ class _SettingState extends State<Setting> {
                                             ),
                                           ),
                                           TextField(
-                                            onTap: (){
-
-                                            },
+                                            onTap: () {},
                                             onChanged: (String val) {
                                               if (!val.contains("@")) {
                                                 Old_passing = true;
@@ -699,21 +709,22 @@ class _SettingState extends State<Setting> {
                                             Old_passing = false;
                                             Olding = "";
                                           }
-                                          if(new_pass.text.isEmpty){
+                                          if (new_pass.text.isEmpty) {
                                             Old_passing = true;
                                             Newing = "Plese Input Old Password";
-                                          }else{
+                                          } else {
                                             Old_passing = false;
                                             Newing = "";
                                           }
-                                          if(conf_pass.text.isEmpty){
+                                          if (conf_pass.text.isEmpty) {
                                             Old_passing = true;
-                                            Confarm_Newing = "Plese Input Old Password";
-                                          }else{
+                                            Confarm_Newing =
+                                                "Plese Input Old Password";
+                                          } else {
                                             Old_passing = false;
                                             Confarm_Newing = "";
                                           }
-                                            setState((){});
+                                          setState(() {});
                                         },
                                         child: OnButtons(
                                           Button_Color: AppColor.Button_color,

@@ -266,7 +266,7 @@ class Profile_Text {
   static const Educational_Detailss = "Educational Details";
 
   //Work Experience
-  static const fresher = "I'm a fresher";
+  static const fresher = "I'm not a fresher";
   static const Total_Experience = "Total Experience:";
   static const Company_Name = "Company Name";
   static const Designation = "Designation";
@@ -302,6 +302,25 @@ class Profile_Text {
   static const Enter_the_Preferrence = "Enter the Preferrence";
   static const Notice_Period_days_Optional = "Notice Period (days)(Optional)";
   static const Enter_Notice_Period = "Enter Notice Period";
+
+  //Document
+  static const Hedding_Critifaction = "Add Certificates You Have Got";
+  static const Certificate = "Certificate";
+  static const Certificate_Name = "Certificate Name";
+  static const Date_issued = "Date issued";
+  static const This_certificate = "This certificate / License does not expire";
+  static const Description = "Description";
+  static const Write_anything_here = "Write anything here..";
+  static const Image_Type = "Image Type";
+  static const Image = "Image";
+  static const Image_URL = "Image URL";
+  static const Choose_File = "Choose File";
+  static const Submit = "Submit";
+
+  //When as a Empty Document
+  static const Add_New = "+ Add New";
+  static const Candidate_certificate_list_not_found = "Candidate certificate list not found";
+
 }
 
 //Edit Profile
@@ -545,6 +564,7 @@ class Searchjob_text {
   static const Any = "Any";
 }
 
+//My Arechive
 class My_Archive_text {
   static const titele = "My Archive";
   static const Body_tital = "My Archive Listings";
@@ -569,4 +589,21 @@ class My_Archive_text {
   static const Enter_Confirm_Password = "Enter Confirm Password";
   static const New_Password = "New Password:";
   static const Confirm_Password = "Confirm Password:";
+}
+
+//My Notification
+class Notification_text{
+  static const Hedding = "Notification Setting";
+  static const subheding = "Airopply can notify you when you have a job match what's your preference?";
+  static const Update_me_once_per_week = "Update me once per week";
+  static const Update_me_every_2_weeks = "Update me every 2 weeks";
+  static const Update_me_once_a_month = "Update me once a month";
+  static const Id_prefer_no_job_match_notifications = "I'd prefer no job match notifications";
+  static const Update_me_immediately_when_new_job_available = "Update me immediately when new job available";
+  static const suhdding_2 = "Employers can message you directly, should wenotify you when they do?";
+  static const Yes = "Yes";
+  static const no = "No";
+  static const Save = "Save";
+  static const Reset = "Reset";
+  static const suhdding_3 = "Would you like to be notified on new resources available through airopply?";
 }

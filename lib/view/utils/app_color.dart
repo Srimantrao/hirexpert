@@ -19,4 +19,5 @@ class AppColor {
   static Color Small_container_frist = const Color(0x1b00929e);
   static Color Small_container_second = const Color(0x356F46B9);
   static Color Small_container_thrd = const Color(0x28FE7C30);
+  static Color Textfild_color = const Color(0x28F7F7F7);
 }

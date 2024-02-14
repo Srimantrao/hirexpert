@@ -1,6 +1,5 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
@@ -12,7 +11,7 @@ import 'package:provider/provider.dart';
 import '../../../controller/DropdownController/FresherController.dart';
 import '../../utils/aap_image.dart';
 import '../../utils/app_String.dart';
-import '../../utils/common/Dropdown/fresher_comm.dart';
+import '../../utils/common/Popup/fresher_comm.dart';
 
 class Fresher extends StatefulWidget {
   const Fresher({super.key});

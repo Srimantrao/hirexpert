@@ -5,9 +5,9 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/screen/collection/specialization.dart';
 
-import '../../../app_String.dart';
-import '../../../app_color.dart';
-import '../../../app_icon.dart';
+import '../../../../app_String.dart';
+import '../../../../app_color.dart';
+import '../../../../app_icon.dart';
 
 class Extra_info extends StatefulWidget {
   const Extra_info({super.key});

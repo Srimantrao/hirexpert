@@ -11,7 +11,7 @@ import 'package:provider/provider.dart';
 
 import '../../../controller/DropdownController/SpecializationController.dart';
 import '../../utils/app_String.dart';
-import '../../utils/common/Dropdown/Specialization_common.dart';
+import '../../utils/common/Popup/Specialization_common.dart';
 import 'Education.dart';
 
 class Specialization extends StatefulWidget {

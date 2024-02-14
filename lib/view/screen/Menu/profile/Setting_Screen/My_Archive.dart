@@ -26,10 +26,12 @@ class _My_ArchiveState extends State<My_Archive> {
             height: Get.height / 20,
             width: Get.width,
             decoration: BoxDecoration(
-                border: Border(
-                    bottom: BorderSide(
-              color: AppColor.Buttom_color,
-            ))),
+              border: Border(
+                bottom: BorderSide(
+                  color: AppColor.Buttom_color,
+                ),
+              ),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -63,7 +65,7 @@ class _My_ArchiveState extends State<My_Archive> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: Get.height/50),
+                  SizedBox(height: Get.height / 50),
                   Text(
                     My_Archive_text.Body_tital,
                     style: TextStyle(
@@ -85,7 +87,7 @@ class _My_ArchiveState extends State<My_Archive> {
                     Button_Color: AppColor.Button_color,
                     btn_name: My_Archive_text.Search_Job,
                   ),
-                  SizedBox(height: Get.height/50),
+                  SizedBox(height: Get.height / 50),
                 ],
               )
             ],

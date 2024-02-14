@@ -11,7 +11,7 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 
-import '../../Container/profile_Info.dart';
+import '../../../Container/profile_Info.dart';
 
 class MY_Profile extends StatefulWidget {
   const MY_Profile({super.key});
@@ -31,7 +31,7 @@ class _MY_ProfileState extends State<MY_Profile> {
   bool Work_Location = false;
 
   //Switch
-  bool fresher = true;
+  bool fresher = false;
 
   //Check Box
   bool male = false;
@@ -98,7 +98,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -164,7 +164,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -217,8 +217,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               child: TextField(
                                 controller: Frist_Name_Profile,
                                 decoration: InputDecoration(
-                                    hintText:
-                                        Profile_Text.Enter_The_Frist_Name,
+                                    hintText: Profile_Text.Enter_The_Frist_Name,
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: AppColor.select_check_color,
@@ -248,8 +247,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               child: TextField(
                                 controller: Last_Name_Profile,
                                 decoration: InputDecoration(
-                                    hintText:
-                                        Profile_Text.Enter_The_Last_Name,
+                                    hintText: Profile_Text.Enter_The_Last_Name,
                                     focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: AppColor.select_check_color,
@@ -436,7 +434,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -575,7 +573,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -726,12 +724,10 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       decoration: BoxDecoration(
                                         border: Border(
                                           bottom: BorderSide(
-                                            color:
-                                                AppColor.select_check_color,
+                                            color: AppColor.select_check_color,
                                           ),
                                           top: BorderSide(
-                                            color:
-                                                AppColor.select_check_color,
+                                            color: AppColor.select_check_color,
                                           ),
                                         ),
                                       ),
@@ -800,7 +796,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -835,11 +831,12 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 materialTapTargetSize:
                                     MaterialTapTargetSize.padded,
                                 thumbColor: MaterialStatePropertyAll(
-                                    AppColor.Full_body_color),
+                                  AppColor.Full_body_color,
+                                ),
                                 activeColor: AppColor.Button_color,
                                 value: fresher,
                                 onChanged: (val) {
-                                  fresher = val;
+                                  fresher =  val;
                                   setState(() {});
                                 })
                           ],
@@ -861,8 +858,7 @@ class _MY_ProfileState extends State<MY_Profile> {
 
                             //Total Experience
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
                                   width: Get.width / 2.5,
@@ -881,8 +877,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                 decoration: BoxDecoration(
                                                     border: Border(
                                                   bottom: BorderSide(
-                                                    color: AppColor
-                                                        .Bottam_color,
+                                                    color:
+                                                        AppColor.Bottam_color,
                                                   ),
                                                 )),
                                                 child: Row(
@@ -904,9 +900,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                         onTap: () {
                                                           Get.back();
                                                         },
-                                                        child: SvgPicture
-                                                            .asset(AppIcons
-                                                                .cancel))
+                                                        child: SvgPicture.asset(
+                                                            AppIcons.cancel))
                                                   ],
                                                 ),
                                               ),
@@ -914,12 +909,11 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                 height: Get.height / 5,
                                                 width: Get.width,
                                                 decoration: BoxDecoration(
-                                                  color: AppColor
-                                                      .Full_body_color,
+                                                  color:
+                                                      AppColor.Full_body_color,
                                                 ),
                                                 child: CupertinoPicker(
-                                                  selectionOverlay:
-                                                      Container(
+                                                  selectionOverlay: Container(
                                                     height: Get.height / 15,
                                                     width: Get.width,
                                                     decoration: BoxDecoration(
@@ -939,44 +933,44 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                   children: [
                                                     const Text("1 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("2 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("3 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("4 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("5 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("6 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("7 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("10 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("11 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("12 Year"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("13 Year"),
                                                   ],
                                                 ),
@@ -990,8 +984,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       decoration: BoxDecoration(
                                         border: Border(
                                           bottom: BorderSide(
-                                            color:
-                                                AppColor.select_check_color,
+                                            color: AppColor.select_check_color,
                                           ),
                                         ),
                                       ),
@@ -1024,8 +1017,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                 decoration: BoxDecoration(
                                                     border: Border(
                                                   bottom: BorderSide(
-                                                    color: AppColor
-                                                        .Bottam_color,
+                                                    color:
+                                                        AppColor.Bottam_color,
                                                   ),
                                                 )),
                                                 child: Row(
@@ -1047,9 +1040,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                         onTap: () {
                                                           Get.back();
                                                         },
-                                                        child: SvgPicture
-                                                            .asset(AppIcons
-                                                                .cancel))
+                                                        child: SvgPicture.asset(
+                                                            AppIcons.cancel))
                                                   ],
                                                 ),
                                               ),
@@ -1057,12 +1049,11 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                 height: Get.height / 5,
                                                 width: Get.width,
                                                 decoration: BoxDecoration(
-                                                  color: AppColor
-                                                      .Full_body_color,
+                                                  color:
+                                                      AppColor.Full_body_color,
                                                 ),
                                                 child: CupertinoPicker(
-                                                  selectionOverlay:
-                                                      Container(
+                                                  selectionOverlay: Container(
                                                     height: Get.height / 15,
                                                     width: Get.width,
                                                     decoration: BoxDecoration(
@@ -1082,36 +1073,36 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                   children: [
                                                     const Text("1 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("2 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("3 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("4 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("5 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("6 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("7 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("10 Month"),
                                                     SizedBox(
-                                                        height: Get.height /
-                                                            50),
+                                                        height:
+                                                            Get.height / 50),
                                                     const Text("11 Month"),
                                                   ],
                                                 ),
@@ -1125,8 +1116,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       decoration: BoxDecoration(
                                         border: Border(
                                           bottom: BorderSide(
-                                            color:
-                                                AppColor.select_check_color,
+                                            color: AppColor.select_check_color,
                                           ),
                                         ),
                                       ),
@@ -1156,8 +1146,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                             TextField(
                               controller: Enter_The_Comppany_name,
                               decoration: InputDecoration(
-                                hintText:
-                                    Profile_Text.Enter_The_Comppany_name,
+                                hintText: Profile_Text.Enter_The_Comppany_name,
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: AppColor.select_check_color,
@@ -1182,8 +1171,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                             TextField(
                               controller: Designation,
                               decoration: InputDecoration(
-                                hintText:
-                                    Profile_Text.Enter_The_Designation,
+                                hintText: Profile_Text.Enter_The_Designation,
                                 focusedBorder: UnderlineInputBorder(
                                   borderSide: BorderSide(
                                     color: AppColor.select_check_color,
@@ -1206,8 +1194,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                   color: AppColor.select_check_color),
                             ),
                             Row(
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 SizedBox(
                                   width: Get.width / 2.5,
@@ -1250,9 +1237,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                         onTap: () {
                                                           Get.back();
                                                         },
-                                                        child: SvgPicture
-                                                            .asset(AppIcons
-                                                                .cancel))
+                                                        child: SvgPicture.asset(
+                                                            AppIcons.cancel))
                                                   ],
                                                 ),
                                               ),
@@ -1260,11 +1246,10 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                 height: Get.height / 2,
                                                 width: Get.width,
                                                 decoration: BoxDecoration(
-                                                  color: AppColor
-                                                      .Full_body_color,
+                                                  color:
+                                                      AppColor.Full_body_color,
                                                 ),
-                                                child:
-                                                    DateRangePickerDialog(
+                                                child: DateRangePickerDialog(
                                                   firstDate: DateTime(1990),
                                                   lastDate: DateTime(2030),
                                                 ),
@@ -1282,14 +1267,12 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       hintText: Profile_Text.Enter_Year,
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color:
-                                              AppColor.select_check_color,
+                                          color: AppColor.select_check_color,
                                         ),
                                       ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color:
-                                              AppColor.select_check_color,
+                                          color: AppColor.select_check_color,
                                         ),
                                       ),
                                     ),
@@ -1323,11 +1306,9 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                 children: [
                                                   const SizedBox(),
                                                   Text(
-                                                    Profile_Text
-                                                        .Starting_date,
+                                                    Profile_Text.Starting_date,
                                                     style: TextStyle(
-                                                      fontSize:
-                                                          Get.width / 23,
+                                                      fontSize: Get.width / 23,
                                                       fontWeight:
                                                           FontWeight.w600,
                                                     ),
@@ -1336,10 +1317,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                       onTap: () {
                                                         Get.back();
                                                       },
-                                                      child:
-                                                          SvgPicture.asset(
-                                                              AppIcons
-                                                                  .cancel))
+                                                      child: SvgPicture.asset(
+                                                          AppIcons.cancel))
                                                 ],
                                               ),
                                             ),
@@ -1347,8 +1326,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                               height: Get.height / 2,
                                               width: Get.width,
                                               decoration: BoxDecoration(
-                                                color: AppColor
-                                                    .Full_body_color,
+                                                color: AppColor.Full_body_color,
                                               ),
                                               child: DateRangePickerDialog(
                                                 firstDate: DateTime(1990),
@@ -1362,18 +1340,16 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     controller: Designation,
                                     readOnly: true,
                                     decoration: InputDecoration(
-                                      hintText: Profile_Text
-                                          .Enter_The_Designation,
+                                      hintText:
+                                          Profile_Text.Enter_The_Designation,
                                       focusedBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color:
-                                              AppColor.select_check_color,
+                                          color: AppColor.select_check_color,
                                         ),
                                       ),
                                       enabledBorder: UnderlineInputBorder(
                                         borderSide: BorderSide(
-                                          color:
-                                              AppColor.select_check_color,
+                                          color: AppColor.select_check_color,
                                         ),
                                       ),
                                     ),
@@ -1434,7 +1410,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -1518,7 +1494,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           size: 31,
                         )
                       : Icon(
-                          Icons.arrow_downward,
+                          Icons.keyboard_arrow_down,
                           color: AppColor.select_check_color,
                           size: 31,
                         ),
@@ -1544,12 +1520,12 @@ class _MY_ProfileState extends State<MY_Profile> {
                       decoration: InputDecoration(
                         hintText: Profile_Text.Enter_CTC,
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                       ),
                     ),
@@ -1566,15 +1542,14 @@ class _MY_ProfileState extends State<MY_Profile> {
                     TextField(
                       controller: Preffered_Working_Location,
                       decoration: InputDecoration(
-                        hintText:
-                            Profile_Text.Enter_Preffered_Working_location,
+                        hintText: Profile_Text.Enter_Preffered_Working_location,
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                       ),
                     ),
@@ -1591,15 +1566,14 @@ class _MY_ProfileState extends State<MY_Profile> {
                     TextField(
                       controller: Preffered_Work_Setup,
                       decoration: InputDecoration(
-                        hintText:
-                            Profile_Text.Enter_the_Preffered_Work_Setup,
+                        hintText: Profile_Text.Enter_the_Preffered_Work_Setup,
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                       ),
                     ),
@@ -1618,12 +1592,12 @@ class _MY_ProfileState extends State<MY_Profile> {
                       decoration: InputDecoration(
                         hintText: Profile_Text.Job_Type_Preferrence,
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                       ),
                     ),
@@ -1642,12 +1616,12 @@ class _MY_ProfileState extends State<MY_Profile> {
                       decoration: InputDecoration(
                         hintText: Profile_Text.Enter_Notice_Period,
                         enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                         focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(
-                              color: AppColor.select_check_color),
+                          borderSide:
+                              BorderSide(color: AppColor.select_check_color),
                         ),
                       ),
                     ),
@@ -1655,8 +1629,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                   ],
                 ),
               ),
-              SizedBox(height: Get.height/10),
-
+              SizedBox(height: Get.height / 10),
 
               //Buttons
               OnButtons(

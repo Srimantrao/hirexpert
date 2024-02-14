@@ -7,8 +7,10 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/TabbarController/Tabcontroller.dart';
-import '../../../utils/common/Tabbar/Profile/Extra_Info.dart';
-import '../../../utils/common/Tabbar/Profile/My_Profile.dart';
+import '../../../utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
+import '../../../utils/common/Tabbar/Profile/Tabbarviwe/Document_profile.dart';
+import '../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
+import '../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile.dart';
 
 class Profile_info extends StatefulWidget {
   const Profile_info({super.key});
@@ -120,59 +122,17 @@ class _Profile_infoState extends State<Profile_info> {
                                 color: AppColor.Full_body_color,
                               ),
                               tabs: [
-                                Container(
-                                  height: Get.height / 18,
-                                  width: Get.width / 3.8,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      Get.width / 50,
-                                    ),
-                                    color: Tabb.tabColor,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      Profile_Text.Extra_Info,
-                                      style: TextStyle(
-                                        fontSize: Get.width / 27,
-                                      ),
-                                    ),
-                                  ),
+                                Container_tab(
+                                  text: Profile_Text.Extra_Info,
+                                  tabcolor: Tabb.tabColor
                                 ),
-                                Container(
-                                  height: Get.height / 18,
-                                  width: Get.width / 3.8,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      Get.width / 50,
-                                    ),
-                                    color: Tabb.tabColor2,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      Profile_Text.My_Profile,
-                                      style: TextStyle(
-                                        fontSize: Get.width / 27,
-                                      ),
-                                    ),
-                                  ),
+                                Container_tab(
+                                  text: Profile_Text.My_Profile,
+                                  tabcolor: Tabb.tabColor2,
                                 ),
-                                Container(
-                                  height: Get.height / 18,
-                                  width: Get.width / 3.8,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(
-                                      Get.width / 50,
-                                    ),
-                                    color: Tabb.tabColor3,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      Profile_Text.Document,
-                                      style: TextStyle(
-                                        fontSize: Get.width / 27,
-                                      ),
-                                    ),
-                                  ),
+                                Container_tab(
+                                  text: Profile_Text.Document,
+                                  tabcolor: Tabb.tabColor3,
                                 ),
                               ],
                             ),
@@ -183,9 +143,7 @@ class _Profile_infoState extends State<Profile_info> {
                                 children: [
                                   Extra_info(),
                                   MY_Profile(),
-                                  Center(
-                                    child: Text("hell3"),
-                                  ),
+                                  Documant_Profile(),
                                 ],
                               ),
                             )

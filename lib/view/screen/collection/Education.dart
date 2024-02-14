@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 import '../../../controller/DropdownController/EducationController.dart';
 import '../../utils/aap_image.dart';
 import '../../utils/app_String.dart';
-import '../../utils/common/Dropdown/Education_common.dart';
+import '../../utils/common/Popup/Education_common.dart';
 import 'Fresher.dart';
 
 class Education extends StatefulWidget {
