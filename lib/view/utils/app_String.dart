@@ -226,7 +226,7 @@ class Profile_Text {
   //My Profile
   //Upload your CV
   static const Upload = "Upload your resume/cv with autofill option.";
-  static const Resume_Link = "Resume Link";
+  static const Resume_Link = "Resume Link :";
   static const resume =
       "Upload your resume or drag and drop it hereOnly .doc, .docx, .pdf, .odt, .rtf";
 

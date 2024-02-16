@@ -10,7 +10,7 @@ import '../../../../controller/TabbarController/Tabcontroller.dart';
 import '../../../utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 import '../../../utils/common/Tabbar/Profile/Tabbarviwe/Document_profile.dart';
 import '../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
-import '../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile.dart';
+import '../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile.dart';
 
 class Profile_info extends StatefulWidget {
   const Profile_info({super.key});

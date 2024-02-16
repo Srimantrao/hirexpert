@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/utils/app_GIF.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -42,17 +43,16 @@ class _LogoState extends State<Logo> {
             Center(
               child: Image.asset(AppIcons.logo, scale: 4),
             ),
-            AnimatedSmoothIndicator(
-              activeIndex: 3,
-              count: 3,
-              curve: Curves.linear,
-              effect: ExpandingDotsEffect(
-                activeDotColor: AppColor.Button_color,
-                dotColor: AppColor.Bottam_color,
-                dotHeight: 15,
-                dotWidth: 15,
-              ),
-            )
+            Column(
+              children: [
+                Image.asset(
+                  App_GIF.Loding,
+                  height: Get.width / 10,
+                  width: Get.width / 10,
+                ),
+                SizedBox(height: Get.height/50),
+              ],
+            ),
           ],
         ),
       ),

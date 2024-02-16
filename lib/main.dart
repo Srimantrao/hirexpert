@@ -19,6 +19,7 @@ import 'controller/DropdownController/FresherController.dart';
 import 'controller/DropdownController/PreferenceController.dart';
 import 'controller/DropdownController/SpecializationController.dart';
 import 'controller/LoginControoler/visibility.dart';
+import 'controller/MY_ProfileController/My_ProfileController.dart';
 import 'controller/OptionController/SelectButton.dart';
 import 'controller/SearchScreenController/DropdownConroller.dart';
 import 'controller/SignupController/SinupController.dart';
@@ -69,6 +70,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SearchButtonsController()),
         ChangeNotifierProvider(create: (_) => TabbarController()),
         ChangeNotifierProvider(create: (_) => Notification_Controller()),
+        ChangeNotifierProvider(create: (_) => My_ProfileController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

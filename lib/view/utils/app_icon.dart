@@ -17,8 +17,11 @@ class AppIcons {
   static const bookmark = "assets/icon/body/Bookmark.svg";
   static const Check = "assets/icon/body/Check.svg";
   static const Success = "assets/icon/body/Success.png";
+  static const Unselect = "assets/icon/body/Unselect_circal.svg";
+  static const select = "assets/icon/body/select_circal.svg";
   static const cancel = "assets/icon/body/cancel.svg";
   static const Select_check = "assets/icon/body/Select.svg";
+  static const PDF_Icon = "assets/icon/body/PDF_ICon.svg";
 
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";

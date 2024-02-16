@@ -9,13 +9,14 @@ import '../../app_icon.dart';
 //My Profile
 class Info extends StatelessWidget {
   final String info;
-  final Color CircleAvatar_color;
-  final Icon dropicons;
+  final Widget? CircleAvatar_color;
+  final Widget dropicons;
+
   const Info({
     super.key,
     required this.info,
-    required this.CircleAvatar_color,
-    required this.dropicons
+    this.CircleAvatar_color,
+    required this.dropicons,
   });
 
   @override
@@ -35,12 +36,13 @@ class Info extends StatelessWidget {
         children: [
           Row(
             children: [
-              CircleAvatar(
-                radius: 15,
-                backgroundColor: CircleAvatar_color,
-                child: SvgPicture.asset(AppIcons.Select_check),
-              ),
-              SizedBox(width: Get.width/50),
+              CircleAvatar_color ??
+                  SvgPicture.asset(
+                    AppIcons.Unselect,
+                    height: Get.height / 33,
+                    width: Get.width / 33,
+                  ),
+              SizedBox(width: Get.width / 50),
               Text(
                 info,
                 style: TextStyle(
@@ -60,6 +62,7 @@ class Info extends StatelessWidget {
 //Setting
 class Info_Setting extends StatelessWidget {
   final String info;
+
   const Info_Setting({super.key, required this.info});
 
   @override
@@ -79,7 +82,7 @@ class Info_Setting extends StatelessWidget {
         children: [
           Row(
             children: [
-              SizedBox(width: Get.width/50),
+              SizedBox(width: Get.width / 50),
               Text(
                 info,
                 style: TextStyle(

@@ -38,7 +38,7 @@ class _OptionState extends State<Option> {
             scrollDirection: Axis.vertical,
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: Get.width / 50,
+                horizontal: Get.width / 20,
               ),
               child: Consumer<SelectButtonsController>(
                 builder: (BuildContext context, value, Widget? child) {

@@ -13,32 +13,40 @@ class OnButtons_short extends StatelessWidget {
   final Color Border_color;
   final Color btn_color;
   final Color text_color;
+  final void Function()? onTap;
+
   const OnButtons_short({
     super.key,
     required this.btn_name,
     required this.Border_color,
     required this.btn_color,
-    required this.text_color
+    required this.text_color,
+    this.onTap
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Get.height / 16,
-      width: Get.width / 2.5,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: Border_color,
+    return InkWell(
+      onTap: (){
+
+      },
+      child: Container(
+        height: Get.height / 16,
+        width: Get.width / 2.5,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: Border_color,
+          ),
+          borderRadius: BorderRadius.circular(Get.width / 30),
+          color: btn_color,
         ),
-        borderRadius: BorderRadius.circular(Get.width / 30),
-        color: btn_color,
-      ),
-      child: Center(
-        child: Text(
-          btn_name,
-          style: TextStyle(
-            fontSize: Get.width / 25,
-            color: text_color,
+        child: Center(
+          child: Text(
+            btn_name,
+            style: TextStyle(
+              fontSize: Get.width / 25,
+              color: text_color,
+            ),
           ),
         ),
       ),
