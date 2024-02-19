@@ -10,6 +10,7 @@ import '../../../../../../../controller/MY_ProfileController/My_ProfileControlle
 import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
 import '../../../../Container/profile_Info.dart';
+import '../../../../Textfild/Inputfild.dart';
 
 class Parsonal_Information extends StatelessWidget {
   const Parsonal_Information({super.key});
@@ -48,36 +49,18 @@ class Parsonal_Information extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: Get.height / 60),
-                  Text(
-                    Profile_Text.Job_Title,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+                  //Job Title
+                  Inputfild(
                     onTap: () {
                       myProfile.P_Job_Title_fun();
                     },
                     onChanged: (val) {
                       myProfile.JobTitle_validation(val);
                     },
+                    labal: Profile_Text.Job_Title,
+                    hint: Profile_Text.Enter_Tital_job,
                     controller: myProfile.Job_Titales,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Enter_Tital_job,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
-                  //Error
                   MyProfile_Error(
                     throww: myProfile.onthrowError,
                     Error: myProfile.JobTitle,
@@ -86,148 +69,88 @@ class Parsonal_Information extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+
+                      //First Name
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            Profile_Text.First_Name,
-                            style: TextStyle(
-                              fontSize: Get.width / 24,
-                              color: AppColor.select_check_color,
-                            ),
-                          ),
                           SizedBox(
                             width: Get.width / 2.5,
-                            child: TextField(
+                            child: Inputfild(
                               onTap: () {
                                 myProfile.P_Frist_Name_fun();
                               },
                               onChanged: (val) {
                                 myProfile.FristName_validation(val);
                               },
+                              labal: Profile_Text.First_Name,
+                              hint: Profile_Text.Enter_The_Frist_Name,
                               controller: myProfile.Frist_Name_Profile,
-                              decoration: InputDecoration(
-                                hintText: Profile_Text.Enter_The_Frist_Name,
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: AppColor.select_check_color,
-                                  ),
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: AppColor.select_check_color,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          //Error
-                          MyProfile_Error(
-                            throww: myProfile.onthrowError,
-                            Error: myProfile.FristName,
-                          ),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            Profile_Text.Last_Name,
-                            style: TextStyle(
-                              fontSize: Get.width / 24,
-                              color: AppColor.select_check_color,
                             ),
                           ),
                           SizedBox(
                             width: Get.width / 2.5,
-                            child: TextField(
+                            child: MyProfile_Error(
+                              throww: myProfile.onthrowError,
+                              Error: myProfile.FristName,
+                            ),
+                          ),
+                        ],
+                      ),
+
+                      //Last Name
+                      Column(
+                        children: [
+                          SizedBox(
+                            width: Get.width / 2.5,
+                            child: Inputfild(
                               onTap: () {
                                 myProfile.P_Last_Name_fun();
                               },
                               onChanged: (val) {
                                 myProfile.LastName_validation(val);
                               },
+                              labal: Profile_Text.Last_Name,
+                              hint: Profile_Text.Enter_The_Last_Name,
                               controller: myProfile.Last_Name_Profile,
-                              decoration: InputDecoration(
-                                hintText: Profile_Text.Enter_The_Last_Name,
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: AppColor.select_check_color,
-                                  ),
-                                ),
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                    color: AppColor.select_check_color,
-                                  ),
-                                ),
-                              ),
                             ),
                           ),
-                          //Error
-                          MyProfile_Error(
-                            throww: myProfile.onthrowError,
-                            Error: myProfile.LastName,
+                          SizedBox(
+                            width: Get.width / 2.5,
+                            child: MyProfile_Error(
+                              throww: myProfile.onthrowError,
+                              Error: myProfile.LastName,
+                            ),
                           ),
                         ],
                       ),
                     ],
                   ),
                   SizedBox(height: Get.height / 60),
-                  Text(
-                    Profile_Text.Email_Id,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+
+                  //Email ID
+                  Inputfild(
+                    labal: Profile_Text.Email_Id,
+                    hint: Profile_Text.Enter_Email_Id,
+                    controller: myProfile.Email_id_Profile,
                     onTap: () {
                       myProfile.P_Email_ID_fun();
                     },
-                    controller: myProfile.Email_id_Profile,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Enter_Email_Id,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 60),
-                  Text(
-                    Profile_Text.Mobile_Number,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+
+                  //Mobile Numbres
+                  Inputfild(
+                    keyboardType: TextInputType.number,
+                    labal: Profile_Text.Mobile_Number,
+                    hint: Profile_Text.Enter_Mobile_Number,
+                    controller: myProfile.Mobile_Numbres,
                     onTap: () {
                       myProfile.P_Mobile_Numbres_fun();
                     },
-                    keyboardType: TextInputType.number,
-                    controller: myProfile.Mobile_Numbres,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Enter_Mobile_Number,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 60),
+
+                  //Gender
                   Text(
                     Profile_Text.Gender,
                     style: TextStyle(
@@ -301,36 +224,16 @@ class Parsonal_Information extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Column(
-                    children: [
-                      Text(
-                        Profile_Text.Date_Of_Birthday,
-                        style: TextStyle(
-                          fontSize: Get.width / 24,
-                          color: AppColor.select_check_color,
-                        ),
-                      )
-                    ],
-                  ),
-                  TextField(
+                  SizedBox(height: Get.height / 60),
+
+                  //Date Of Birthday
+                  Inputfild(
+                    labal: Profile_Text.Date_Of_Birthday,
+                    hint: Profile_Text.Date_OF_Bithday,
+                    controller: myProfile.BirthDay,
                     onTap: () {
                       myProfile.P_Birthday_fun();
                     },
-                    keyboardType: TextInputType.number,
-                    controller: myProfile.BirthDay,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Date_OF_Bithday,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
                 ],
               ),

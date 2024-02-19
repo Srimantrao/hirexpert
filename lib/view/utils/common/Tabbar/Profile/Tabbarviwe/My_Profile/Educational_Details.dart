@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/modal/Dropdowns/drops.dart';
+import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
 import '../../../../../../../controller/MY_ProfileController/My_ProfileController.dart';
@@ -11,6 +13,7 @@ import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
 import '../../../../../app_icon.dart';
 import '../../../../Container/profile_Info.dart';
+import '../../../../Selection/Information_Selection.dart';
 
 class Educational_Details extends StatefulWidget {
   const Educational_Details({super.key});
@@ -54,188 +57,50 @@ class _Educational_DetailsState extends State<Educational_Details> {
                   SizedBox(height: Get.height / 50),
 
                   //Degree
-                  Text(
-                    EditProfile_text.Degree,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+                  Inputfild(
+                    labal: EditProfile_text.Degree,
+                    hint: Profile_Text.Degree,
                     controller: Degree,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Degree,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 50),
 
                   //Specialisation
-                  Text(
-                    EditProfile_text.Specialisation,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+                  Inputfild(
+                    labal: EditProfile_text.Specialisation,
+                    hint: Profile_Text.Specialisation,
                     controller: Specialisation,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Specialisation,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 50),
 
                   //Institute Name
-                  Text(
-                    EditProfile_text.Institute_Name,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+                  Inputfild(
+                    labal: EditProfile_text.Institute_Name,
+                    hint: Profile_Text.Institute_Name,
                     controller: Institute_Name,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Institute_Name,
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 50),
 
                   //Passing Year
-                  Text(
-                    EditProfile_text.Passing_Yea,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
+                  Infromation_Selection(
+                    name: EditProfile_text.Passing_Yea,
+                    Hadline: Profile_Text.Select_City,
+                    Selectedtext: myProfile.selectedYear,
+                    children: List.generate(
+                      Years.length,
+                      (index) => Text(
+                        Years[index],
+                        style: TextStyle(
+                          fontSize: Get.width / 20,
+                        ),
+                      ),
                     ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) {
-                          return AlertDialog(
-                            backgroundColor: AppColor.Full_body_color,
-                            elevation: 0,
-                            title: Container(
-                              height: Get.height / 20,
-                              width: Get.width,
-                              decoration: BoxDecoration(
-                                border: Border(
-                                  bottom: BorderSide(
-                                    color: AppColor.Bottam_color,
-                                  ),
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  const SizedBox(),
-                                  Text(
-                                    Profile_Text.Select_City,
-                                    style: TextStyle(
-                                      fontSize: Get.width / 23,
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      Get.back();
-                                    },
-                                    child: SvgPicture.asset(AppIcons.cancel),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            content: Container(
-                              height: Get.height / 5,
-                              width: Get.width,
-                              decoration: BoxDecoration(
-                                color: AppColor.Full_body_color,
-                              ),
-                              child: CupertinoPicker(
-                                selectionOverlay: Container(
-                                  height: Get.height / 15,
-                                  width: Get.width,
-                                  decoration: BoxDecoration(
-                                    border: Border(
-                                      bottom: BorderSide(
-                                        color: AppColor.select_check_color,
-                                      ),
-                                      top: BorderSide(
-                                        color: AppColor.select_check_color,
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                itemExtent: 30,
-                                onSelectedItemChanged: (int value) {},
-                                children: [
-                                  const Text("2021"),
-                                  SizedBox(height: Get.height / 50),
-                                  const Text("2022"),
-                                  SizedBox(height: Get.height / 50),
-                                  const Text("2023"),
-                                  SizedBox(height: Get.height / 50),
-                                  const Text("2024"),
-                                ],
-                              ),
-                            ),
-                          );
-                        },
-                      );
+                    onSelectedItemChanged: (int index) {
+                      myProfile.onSelectedItemChanged(index);
                     },
-                    child: Container(
-                      height: Get.height / 20,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                          border: Border(
-                              bottom: BorderSide(
-                        color: AppColor.select_check_color,
-                      ))),
-                      child: const Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(Profile_Text.Select_City),
-                        ],
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 50),
 
-                  //Passing Year
+                  //Add Education Details
                   Text(
                     Profile_Text.Add_Educational_Details,
                     style: TextStyle(

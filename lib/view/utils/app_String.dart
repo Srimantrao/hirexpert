@@ -240,7 +240,7 @@ class Profile_Text {
   static const Email_Id = "Email Id:";
   static const Enter_Email_Id = "Enter Your Email Address";
   static const Mobile_Number = "Mobile Number:";
-  static const Enter_Mobile_Number = "Enter the Mobile Number:";
+  static const Enter_Mobile_Number = "Enter the Mobile Number";
   static const Date_OF_Bithday = "Enter the Your Date of Bith:";
   static const Gender = "Gender:";
   static const Male = "Male";

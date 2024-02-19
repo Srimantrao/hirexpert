@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +7,7 @@ import 'package:get/get_core/src/get_main.dart';
 import '../../app_String.dart';
 import '../../app_color.dart';
 
+//With Leble
 class Inputfild extends StatelessWidget {
   final String labal;
   final String hint;
@@ -84,3 +85,4 @@ class Inputfild extends StatelessWidget {
     );
   }
 }
+

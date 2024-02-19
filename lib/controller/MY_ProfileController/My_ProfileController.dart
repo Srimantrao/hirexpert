@@ -4,6 +4,8 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:open_app_file/open_app_file.dart';
 
+import '../../modal/Dropdowns/drops.dart';
+
 class My_ProfileController with ChangeNotifier {
   //Personal Information
   TextEditingController Job_Titales = TextEditingController();
@@ -49,6 +51,9 @@ class My_ProfileController with ChangeNotifier {
   String _Frist_name = "";
   String _Last_name = "";
   bool _onthrowError = false;
+
+  //List Pass
+  String _selectedYear = "";
 
   //Personal Information
   int get P_Job_Title => _P_Job_Title;
@@ -96,6 +101,9 @@ class My_ProfileController with ChangeNotifier {
 
   //Check Box
   int get selectedCheckboxIndex => _selectedCheckboxIndex;
+
+  //List Passing
+  String get selectedYear => _selectedYear;
 
   //Visibility
   void Upload_lock_fun() {
@@ -220,6 +228,11 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _Last_name = "";
     }
+    notifyListeners();
+  }
+
+  void onSelectedItemChanged(int index){
+    _selectedYear = Years[index];
     notifyListeners();
   }
 }

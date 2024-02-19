@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
 import '../../../../../../../controller/MY_ProfileController/My_ProfileController.dart';
@@ -18,7 +19,6 @@ class Salary_Profile extends StatefulWidget {
 }
 
 class _Salary_ProfileState extends State<Salary_Profile> {
-
   TextEditingController CTC = TextEditingController();
   TextEditingController Expanded = TextEditingController();
 
@@ -51,54 +51,18 @@ class _Salary_ProfileState extends State<Salary_Profile> {
                   SizedBox(height: Get.height / 50),
 
                   //CTC
-                  Text(
-                    Profile_Text.CTC,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+                  Inputfild(
+                    labal: Profile_Text.CTC,
+                    hint: Profile_Text.Enter_CTC,
                     controller: CTC,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Enter_CTC,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 50),
 
                   //Expected
-                  Text(
-                    Profile_Text.CTC,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
-                    ),
-                  ),
-                  TextField(
+                  Inputfild(
+                    labal: Profile_Text.CTC,
+                    hint: Profile_Text.Enter_Expected,
                     controller: Expanded,
-                    decoration: InputDecoration(
-                      hintText: Profile_Text.Enter_Expected,
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
-                    ),
                   ),
                   SizedBox(height: Get.height / 50),
                 ],

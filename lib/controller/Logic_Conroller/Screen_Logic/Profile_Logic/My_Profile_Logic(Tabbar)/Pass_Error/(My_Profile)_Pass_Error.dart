@@ -10,7 +10,11 @@ class MyProfile_Error extends StatelessWidget {
   final bool throww;
   final String Error;
 
-  const MyProfile_Error({super.key, required this.throww, required this.Error});
+  const MyProfile_Error({
+    super.key,
+    required this.throww,
+    required this.Error,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,4 +29,3 @@ class MyProfile_Error extends StatelessWidget {
           );
   }
 }
-
