@@ -1,17 +1,16 @@
 // ignore_for_file: camel_case_types, file_names, non_constant_identifier_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Pass_Error/(My_Profile)_Pass_Error.dart';
 import 'package:hirexpert/modal/Dropdowns/drops.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
+import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
 import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
 import '../../../../../../../controller/MY_ProfileController/My_ProfileController.dart';
 import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
-import '../../../../../app_icon.dart';
 import '../../../../Container/profile_Info.dart';
 import '../../../../Selection/Information_Selection.dart';
 
@@ -23,11 +22,6 @@ class Educational_Details extends StatefulWidget {
 }
 
 class _Educational_DetailsState extends State<Educational_Details> {
-  TextEditingController Degree = TextEditingController();
-  TextEditingController Specialisation = TextEditingController();
-  TextEditingController Institute_Name = TextEditingController();
-  TextEditingController Passing_Year = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final myProfile = Provider.of<My_ProfileController>(
@@ -43,6 +37,11 @@ class _Educational_DetailsState extends State<Educational_Details> {
                 myProfile.Education_Details_fun();
               },
               child: Info(
+                CircleAvatar_color: Change_Circle(
+                    Condition: myProfile.P_Degree == 0 &&
+                        myProfile.P_Specialisation == 1 &&
+                        myProfile.P_Instiute_name == 2 &&
+                        myProfile.P_Passing_Year == 3),
                 info: Profile_Text.Educational_Detailss,
                 dropicons: DropIcons(
                   conditional_name: myProfile.Education_Details,
@@ -60,7 +59,17 @@ class _Educational_DetailsState extends State<Educational_Details> {
                   Inputfild(
                     labal: EditProfile_text.Degree,
                     hint: Profile_Text.Degree,
-                    controller: Degree,
+                    controller: myProfile.Degree,
+                    onTap: () {
+                      myProfile.P_Degree_fun();
+                    },
+                    onChanged: (val) {
+                      myProfile.Degree_validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Degrees,
                   ),
                   SizedBox(height: Get.height / 50),
 
@@ -68,7 +77,17 @@ class _Educational_DetailsState extends State<Educational_Details> {
                   Inputfild(
                     labal: EditProfile_text.Specialisation,
                     hint: Profile_Text.Specialisation,
-                    controller: Specialisation,
+                    controller: myProfile.Specialisation,
+                    onTap: () {
+                      myProfile.P_Specialisation_fun();
+                    },
+                    onChanged: (val) {
+                      myProfile.Specialisation_validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Specialisations,
                   ),
                   SizedBox(height: Get.height / 50),
 
@@ -76,7 +95,17 @@ class _Educational_DetailsState extends State<Educational_Details> {
                   Inputfild(
                     labal: EditProfile_text.Institute_Name,
                     hint: Profile_Text.Institute_Name,
-                    controller: Institute_Name,
+                    controller: myProfile.Institute_Name,
+                    onTap: () {
+                      myProfile.P_Instiute_name_fun();
+                    },
+                    onChanged: (val) {
+                      myProfile.Institute_name_validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Institute_names,
                   ),
                   SizedBox(height: Get.height / 50),
 
@@ -96,6 +125,10 @@ class _Educational_DetailsState extends State<Educational_Details> {
                     ),
                     onSelectedItemChanged: (int index) {
                       myProfile.onSelectedItemChanged(index);
+                    },
+                    SelectonTap_Button: () {
+                      myProfile.P_Passing_Year_fun();
+                      Get.back();
                     },
                   ),
                   SizedBox(height: Get.height / 50),

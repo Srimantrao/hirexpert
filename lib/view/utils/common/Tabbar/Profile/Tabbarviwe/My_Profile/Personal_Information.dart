@@ -32,12 +32,13 @@ class Parsonal_Information extends StatelessWidget {
               child: Info(
                 info: Profile_Text.Personal_Information,
                 CircleAvatar_color: Change_Circle(
-                    Condition: myProfile.P_Job_Title == 0 &&
-                        myProfile.P_Frist_Name == 1 &&
-                        myProfile.P_Last_Name == 2 &&
-                        myProfile.P_Email_Id == 3 &&
-                        myProfile.P_Mobile_Numbres == 4 &&
-                        myProfile.P_Birthday == 5),
+                  Condition: myProfile.P_Job_Title == 0 &&
+                      myProfile.P_Frist_Name == 1 &&
+                      myProfile.P_Last_Name == 2 &&
+                      myProfile.P_Email_Id == 3 &&
+                      myProfile.P_Mobile_Numbres == 4 &&
+                      myProfile.P_Birthday == 5,
+                ),
                 dropicons: DropIcons(
                   conditional_name: myProfile.Personal_Information,
                 ),
@@ -69,7 +70,6 @@ class Parsonal_Information extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-
                       //First Name
                       Column(
                         children: [
@@ -135,6 +135,14 @@ class Parsonal_Information extends StatelessWidget {
                     onTap: () {
                       myProfile.P_Email_ID_fun();
                     },
+                    onChanged: (val) {
+                      myProfile.Email_ID_validation(val);
+                    },
+                  ),
+                  //Error
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Email_Id,
                   ),
                   SizedBox(height: Get.height / 60),
 
@@ -147,6 +155,13 @@ class Parsonal_Information extends StatelessWidget {
                     onTap: () {
                       myProfile.P_Mobile_Numbres_fun();
                     },
+                    onChanged: (val) {
+                      myProfile.Mobile_Numbress_validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Mobile_Numbress,
                   ),
                   SizedBox(height: Get.height / 60),
 
@@ -234,6 +249,13 @@ class Parsonal_Information extends StatelessWidget {
                     onTap: () {
                       myProfile.P_Birthday_fun();
                     },
+                    onChanged: (val) {
+                      myProfile.Date_OF_Bithday_validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Date_Of_Birth,
                   ),
                 ],
               ),

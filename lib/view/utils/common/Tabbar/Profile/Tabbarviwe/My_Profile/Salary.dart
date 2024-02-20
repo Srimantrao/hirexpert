@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Pass_Error/(My_Profile)_Pass_Error.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
+import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
 import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
 import '../../../../../../../controller/MY_ProfileController/My_ProfileController.dart';
 import '../../../../../app_String.dart';
@@ -19,9 +21,6 @@ class Salary_Profile extends StatefulWidget {
 }
 
 class _Salary_ProfileState extends State<Salary_Profile> {
-  TextEditingController CTC = TextEditingController();
-  TextEditingController Expanded = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     final myProfile = Provider.of<My_ProfileController>(
@@ -37,6 +36,9 @@ class _Salary_ProfileState extends State<Salary_Profile> {
                 myProfile.Salary_fun();
               },
               child: Info(
+                CircleAvatar_color: Change_Circle(
+                  Condition: myProfile.CTC == 0 && myProfile.Expected == 1,
+                ),
                 info: Profile_Text.Salarys,
                 dropicons: DropIcons(
                   conditional_name: myProfile.Salary,
@@ -54,7 +56,17 @@ class _Salary_ProfileState extends State<Salary_Profile> {
                   Inputfild(
                     labal: Profile_Text.CTC,
                     hint: Profile_Text.Enter_CTC,
-                    controller: CTC,
+                    controller: myProfile.CTCss,
+                    onTap: () {
+                      myProfile.CTC_Fun();
+                    },
+                    onChanged: (val) {
+                      myProfile.CTCs_Validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.CTCS,
                   ),
                   SizedBox(height: Get.height / 50),
 
@@ -62,7 +74,17 @@ class _Salary_ProfileState extends State<Salary_Profile> {
                   Inputfild(
                     labal: Profile_Text.CTC,
                     hint: Profile_Text.Enter_Expected,
-                    controller: Expanded,
+                    controller: myProfile.Expanded,
+                    onTap: () {
+                      myProfile.Expected_Fun();
+                    },
+                    onChanged: (val) {
+                      myProfile.Expected_Validation(val);
+                    },
+                  ),
+                  MyProfile_Error(
+                    throww: myProfile.onthrowError,
+                    Error: myProfile.Expecteds,
                   ),
                   SizedBox(height: Get.height / 50),
                 ],

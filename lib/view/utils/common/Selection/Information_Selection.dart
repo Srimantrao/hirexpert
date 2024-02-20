@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
@@ -14,6 +15,7 @@ class Infromation_Selection extends StatefulWidget {
   final String Hadline;
   final String Selectedtext;
   final List<Widget>? children;
+  final void Function()? SelectonTap_Button;
   final void Function(int index)? onSelectedItemChanged;
 
   const Infromation_Selection({
@@ -23,6 +25,7 @@ class Infromation_Selection extends StatefulWidget {
     required this.Selectedtext,
     this.children,
     this.onSelectedItemChanged,
+    this.SelectonTap_Button,
   });
 
   @override
@@ -46,7 +49,7 @@ class _Infromation_SelectionState extends State<Infromation_Selection> {
                   color: AppColor.select_check_color,
                 ),
               ),
-        InkWell(
+        GestureDetector(
           onTap: () {
             showDialog(
               context: context,
@@ -122,14 +125,12 @@ class _Infromation_SelectionState extends State<Infromation_Selection> {
                     ),
                   ),
                   actions: [
-                    InkWell(
+                    GestureDetector(
+                      onTap: widget.SelectonTap_Button,
                       child: OnButtons(
                         Button_Color: AppColor.Button_color,
                         btn_name: Profile_Text.Save,
                       ),
-                      onTap: () {
-                        Get.back();
-                      },
                     ),
                   ],
                 );

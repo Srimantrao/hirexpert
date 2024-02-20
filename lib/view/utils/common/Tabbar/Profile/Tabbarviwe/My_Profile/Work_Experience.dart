@@ -1,9 +1,9 @@
 // ignore_for_file: camel_case_types, file_names, non_constant_identifier_names
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
+import 'package:hirexpert/controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Pass_Error/(My_Profile)_Pass_Error.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
@@ -11,7 +11,6 @@ import '../../../../../../../controller/MY_ProfileController/My_ProfileControlle
 import '../../../../../../../modal/Dropdowns/drops.dart';
 import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
-import '../../../../../app_icon.dart';
 import '../../../../Container/profile_Info.dart';
 import '../../../../Selection/Information_Date.dart';
 import '../../../../Selection/Information_Selection.dart';
@@ -24,14 +23,6 @@ class Work_Experience extends StatefulWidget {
 }
 
 class _Work_ExperienceState extends State<Work_Experience> {
-  bool onthrowError = false;
-
-  bool I_currently_workhere = false;
-
-  TextEditingController Enter_The_Comppany_name = TextEditingController();
-  TextEditingController Designation = TextEditingController();
-  TextEditingController Year = TextEditingController();
-
   String SelectdYear = "";
   String Selectdmonth = "";
 
@@ -50,6 +41,13 @@ class _Work_ExperienceState extends State<Work_Experience> {
                 myProfile.Work_Experience_fun();
               },
               child: Info(
+                CircleAvatar_color: Change_Circle(
+                  Condition: myProfile.P_fresher == 6 ||
+                      myProfile.P_Years_Selection == 0 &&
+                          myProfile.P_Month_Selection == 1 &&
+                          myProfile.P_Company_Name == 2 &&
+                          myProfile.P_Designation == 3,
+                ),
                 info: Profile_Text.Work_Experience,
                 dropicons: DropIcons(
                   conditional_name: myProfile.Work_Experience,
@@ -62,6 +60,8 @@ class _Work_ExperienceState extends State<Work_Experience> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: Get.height / 50),
+
+                  //I'm Not a Fresher
                   Container(
                     height: Get.height / 20,
                     width: Get.width,
@@ -81,16 +81,21 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             fontSize: Get.width / 24,
                           ),
                         ),
-                        Switch(
-                          materialTapTargetSize: MaterialTapTargetSize.padded,
-                          thumbColor: MaterialStatePropertyAll(
-                            AppColor.Full_body_color,
-                          ),
-                          activeColor: AppColor.Button_color,
-                          value: myProfile.fresher,
-                          onChanged: (val) {
-                            myProfile.Fresher_fun(val);
+                        GestureDetector(
+                          onTap: () {
+                            myProfile.Freshers_fun();
                           },
+                          child: Switch(
+                            materialTapTargetSize: MaterialTapTargetSize.padded,
+                            thumbColor: MaterialStatePropertyAll(
+                              AppColor.Full_body_color,
+                            ),
+                            activeColor: AppColor.Button_color,
+                            value: myProfile.fresher,
+                            onChanged: (val) {
+                              myProfile.Fresher_fun(val);
+                            },
+                          ),
                         )
                       ],
                     ),
@@ -116,6 +121,10 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             SizedBox(
                               width: Get.width / 2.5,
                               child: Infromation_Selection(
+                                SelectonTap_Button: () {
+                                  myProfile.P_Years_Selection_fun();
+                                  Get.back();
+                                },
                                 Hadline: Profile_Text.Enter_Year,
                                 Selectedtext: SelectdYear,
                                 onSelectedItemChanged: (int index) {
@@ -136,6 +145,10 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             SizedBox(
                               width: Get.width / 2.5,
                               child: Infromation_Selection(
+                                SelectonTap_Button: () {
+                                  myProfile.P_Month_Selection_fun();
+                                  Get.back();
+                                },
                                 Hadline: Profile_Text.Enter_Month,
                                 Selectedtext: Selectdmonth,
                                 onSelectedItemChanged: (int index) {
@@ -161,7 +174,17 @@ class _Work_ExperienceState extends State<Work_Experience> {
                         Inputfild(
                           labal: Profile_Text.Company_Name,
                           hint: Profile_Text.Enter_The_Comppany_name,
-                          controller: Enter_The_Comppany_name,
+                          controller:  myProfile.Enter_The_Comppany_name,
+                          onTap: () {
+                            myProfile.P_Company_Name_fun();
+                          },
+                          onChanged: (val){
+                            myProfile.Companys_names_validation(val);
+                          },
+                        ),
+                        MyProfile_Error(
+                          throww: myProfile.onthrowError,
+                          Error: myProfile.Companys_names,
                         ),
                         SizedBox(height: Get.height / 50),
 
@@ -169,7 +192,17 @@ class _Work_ExperienceState extends State<Work_Experience> {
                         Inputfild(
                           labal: Profile_Text.Designation,
                           hint: Profile_Text.Enter_The_Designation,
-                          controller: Designation,
+                          controller:  myProfile.Designation,
+                          onTap: () {
+                            myProfile.P_Designation_fun();
+                          },
+                          onChanged: (val){
+                            myProfile.Designations_validation(val);
+                          },
+                        ),
+                        MyProfile_Error(
+                          throww: myProfile.onthrowError,
+                          Error: myProfile.Designations,
                         ),
                         SizedBox(height: Get.height / 50),
 
@@ -181,23 +214,24 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             color: AppColor.select_check_color,
                           ),
                         ),
+                        SizedBox(height: Get.height / 50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
                               width: Get.width / 2.5,
-                              child: Date_time(
-                                controller: Designation,
-                                hintString: Profile_Text.Enter_Year,
+                              child: DatePickerWidget(
+                                initialDate: DateTime.now(),
+                                onDateSelected: (DateTime selectedDate) {},
                               ),
                             ),
                             SizedBox(
                               width: Get.width / 2.5,
-                              child: Date_time(
-                                controller: Designation,
-                                hintString: Profile_Text.Enter_Year,
+                              child: DatePickerWidget(
+                                initialDate: DateTime.now(),
+                                onDateSelected: (DateTime selectedDate) {},
                               ),
-                            ),
+                            )
                           ],
                         ),
                         SizedBox(height: Get.height / 50),
@@ -206,11 +240,11 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             Row(
                               children: [
                                 Checkbox(
-                                    value: I_currently_workhere,
-                                    onChanged: (val) {
-                                      I_currently_workhere = val!;
-                                      setState(() {});
-                                    }),
+                                  value: myProfile.I_currently_workhere,
+                                  onChanged: (val) {
+                                    myProfile.Work_Check(val);
+                                  },
+                                ),
                                 Text(
                                   Profile_Text.I_currently_work_here,
                                   style: TextStyle(
