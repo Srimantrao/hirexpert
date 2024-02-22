@@ -2,14 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 
-class JobSearch extends StatelessWidget {
+class JobSearch extends StatefulWidget {
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -22,11 +18,11 @@ class JobSearch extends StatelessWidget {
   final String lake;
   final String Hybrid;
   final String stats;
-  final String saveicon;
   final BorderSide top;
-  final Widget? savechild;
+  final BorderSide? bottam;
   final void Function()? onTap;
   final void Function()? saveonTap;
+  final Widget? savechild;
 
   const JobSearch({
     super.key,
@@ -43,239 +39,256 @@ class JobSearch extends StatelessWidget {
     required this.Hybrid,
     required this.stats,
     this.onTap,
-    required this.saveicon,
     required this.top,
     this.saveonTap,
+    this.bottam,
     this.savechild,
   });
 
   @override
+  State<JobSearch> createState() => _JobSearchState();
+}
+
+class _JobSearchState extends State<JobSearch> {
+
+  bool isSeved = false;
+
+  @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: Get.width / 50,
-        ),
-        child: Container(
-          height: Get.height / 4.3,
-          width: Get.width,
-          decoration: BoxDecoration(
-            border: Border(
-              top: top,
-              bottom: BorderSide(
-                color: AppColor.Bottam_color,
-              ),
-            ),
-            color: AppColor.Full_body_color,
+    final size = MediaQuery.of(context).size;
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: size.width / 40,
+      ),
+      child: GestureDetector(
+        onTap: widget.onTap,
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: size.width / 50,
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      vertical: Get.width / 40,
+          child: Container(
+            height: size.height / 3.9,
+            width: size.width,
+            decoration: BoxDecoration(
+              border: Border(
+                top: widget.top,
+                bottom: widget.bottam ??
+                    BorderSide(
+                      color: AppColor.Full_body_color,
                     ),
-                    child: Container(
-                      width: Get.width / 5.5,
-                      height: Get.height / 12,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Get.width / 30,
-                        ),
-                        color: Color_container,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: SvgPicture.asset(Icon),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: Get.width/50),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            Job_Tital,
-                            style: TextStyle(
-                              color: AppColor.subcolor,
-                            ),
-                          ),
-                          SizedBox(width: Get.width / 3.4),
-                          InkWell(
-                            onTap: saveonTap,
-                            child: SvgPicture.asset(saveicon),
-                          ),
-                        ],
-                      ),
-                      Text(
-                        Language,
-                        style: TextStyle(
-                          fontSize: Get.width / 23,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      Text(
-                        Commpany,
-                        style: TextStyle(
-                          fontSize: Get.width / 26,
-                          fontWeight: FontWeight.w400,
-                          color: AppColor.Button_color,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: Get.width / 3.2,
-                        height: Get.height / 25,
+              color: AppColor.Full_body_color,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: size.width / 40,
+                      ),
+                      child: Container(
+                        width: size.width / 5.5,
+                        height: size.height / 12,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(
-                            Get.width / 60,
+                            size.width / 30,
                           ),
-                          color: AppColor.ditalis_conatiner,
+                          color: widget.Color_container,
                         ),
-                        child: Center(
-                          child: Text(
-                            Working,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: Get.width / 30,
-                            ),
-                          ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(15),
+                          child: SvgPicture.asset(widget.Icon),
                         ),
                       ),
-                      SizedBox(width: Get.width / 40),
-                      Container(
-                        width: Get.width / 7,
-                        height: Get.height / 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            Get.width / 60,
-                          ),
-                          color: AppColor.ditalis_conatiner,
-                        ),
-                        child: Center(
-                          child: Text(
-                            Location,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: Get.width / 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: Get.width / 40),
-                      Container(
-                        width: Get.width / 5,
-                        height: Get.height / 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            Get.width / 60,
-                          ),
-                          color: AppColor.ditalis_conatiner,
-                        ),
-                        child: Center(
-                          child: Text(
-                            Job_time,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: Get.width / 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: Get.width / 40),
-                      Container(
-                        width: Get.width / 5,
-                        height: Get.height / 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            Get.width / 60,
-                          ),
-                          color: AppColor.ditalis_conatiner,
-                        ),
-                        child: Center(
-                          child: Text(
-                            Exp,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: Get.width / 35,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: Get.height / 80),
-                  Row(
-                    children: [
-                      Container(
-                        width: Get.width / 2.5,
-                        height: Get.height / 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            Get.width / 60,
-                          ),
-                          color: AppColor.ditalis_conatiner,
-                        ),
-                        child: Center(
-                          child: Text(
-                            lake,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: Get.width / 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: Get.width / 40),
-                      Container(
-                        width: Get.width / 5,
-                        height: Get.height / 25,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            Get.width / 60,
-                          ),
-                          color: AppColor.ditalis_conatiner,
-                        ),
-                        child: Center(
-                          child: Text(
-                            Hybrid,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: Get.width / 30,
-                            ),
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: Get.width / 40),
-                    ],
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    stats,
-                    style: TextStyle(
-                      color: AppColor.subcolor,
                     ),
-                  ),
-                ],
-              )
-            ],
+                    SizedBox(width: size.width / 50),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              widget.Job_Tital,
+                              style: TextStyle(
+                                color: AppColor.subcolor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          widget.Language,
+                          style: TextStyle(
+                            fontSize: size.width / 23,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        Text(
+                          widget.Commpany,
+                          style: TextStyle(
+                            fontSize: size.width / 26,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.Button_color,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(width: size.width/7),
+                    GestureDetector(
+                      onTap: widget.saveonTap,
+                      child: widget.savechild,
+                    ),
+                  ],
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          width: size.width / 3.2,
+                          height: size.height / 25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              size.width / 60,
+                            ),
+                            color: AppColor.ditalis_conatiner,
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.Working,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: size.width / 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: size.width / 40),
+                        Container(
+                          width: size.width / 7,
+                          height: size.height / 25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              size.width / 60,
+                            ),
+                            color: AppColor.ditalis_conatiner,
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.Location,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: size.width / 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: size.width / 40),
+                        Container(
+                          width: size.width / 5,
+                          height: size.height / 25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              size.width / 60,
+                            ),
+                            color: AppColor.ditalis_conatiner,
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.Job_time,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: size.width / 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: size.width / 40),
+                      ],
+                    ),
+                    SizedBox(height: size.height / 80),
+                    Row(
+                      children: [
+                        Container(
+                          width: size.width / 5,
+                          height: size.height / 25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              size.width / 60,
+                            ),
+                            color: AppColor.ditalis_conatiner,
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.Exp,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: size.width / 35,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: size.width / 40),
+                        Container(
+                          width: size.width / 2.5,
+                          height: size.height / 25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              size.width / 60,
+                            ),
+                            color: AppColor.ditalis_conatiner,
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.lake,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: size.width / 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: size.width / 40),
+                        Container(
+                          width: size.width / 5,
+                          height: size.height / 25,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(
+                              size.width / 60,
+                            ),
+                            color: AppColor.ditalis_conatiner,
+                          ),
+                          child: Center(
+                            child: Text(
+                              widget.Hybrid,
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: size.width / 30,
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: size.width / 40),
+                      ],
+                    ),
+                  ],
+                ),
+                SizedBox(height: size.height/70),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    Text(
+                      widget.stats,
+                      style: TextStyle(
+                        color: AppColor.subcolor,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

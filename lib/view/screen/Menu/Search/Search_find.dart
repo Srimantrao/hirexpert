@@ -80,7 +80,6 @@ class _Search_findState extends State<Search_find> {
                           lake: showjob[index]["Sallary"],
                           Hybrid: showjob[index]["Hybrid"],
                           stats: showjob[index]["stats"],
-                          saveicon: AppIcons.save,
                         ),
                       );
                     },
@@ -100,7 +99,6 @@ class _Search_findState extends State<Search_find> {
                       lake: showjob[index]["Sallary"],
                       Hybrid: showjob[index]["Hybrid"],
                       stats: showjob[index]["stats"],
-                      saveicon: AppIcons.save,
                       top: BorderSide(color: AppColor.Full_body_color),
                     ),
                   );

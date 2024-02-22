@@ -5,6 +5,7 @@
 class Navigator_text {
   static const Next = "Next";
   static const Back = "Back";
+  static const Done = "Done";
 }
 
 class DropDownMenu_String {

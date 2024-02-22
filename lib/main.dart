@@ -13,6 +13,7 @@ import 'controller/BottamController/MenuNavigationController.dart';
 import 'controller/ButtonsController/SearchButtonsController.dart';
 import 'controller/ButtonsController/SearchJobController.dart';
 import 'controller/CheckMarkController/Notification_Controller.dart';
+import 'controller/ChoseFileController/ChosefileController.dart';
 import 'controller/CollectionController/Collectiondepartment.dart';
 import 'controller/DropdownController/EducationController.dart';
 import 'controller/DropdownController/FresherController.dart';
@@ -71,6 +72,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => TabbarController()),
         ChangeNotifierProvider(create: (_) => Notification_Controller()),
         ChangeNotifierProvider(create: (_) => My_ProfileController()),
+        ChangeNotifierProvider(create: (_) => ChosefileController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

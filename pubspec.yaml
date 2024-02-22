@@ -48,6 +48,7 @@ dependencies:
   open_settings: ^2.0.2
   file_picker: ^5.2.10
   open_app_file: ^4.0.2
+  path: ^1.9.0
 
 dev_dependencies:
   flutter_test:

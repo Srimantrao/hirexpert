@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/view/screen/Menu/Search/Search_location.dart';
@@ -21,9 +22,11 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  
+  List<bool> isSeved = List.generate(showjob.length, (index) => false);
+
   @override
   Widget build(BuildContext context) {
-    final changDropdown = Provider.of<DropdownController>(context);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
@@ -37,8 +40,8 @@ class _SearchState extends State<Search> {
         ),
         actions: [
           InkWell(
-            onTap: (){
-              Get.to(()=>const Search_location());
+            onTap: () {
+              Get.to(() => const Serch_location());
             },
             child: Icon(
               Icons.search,
@@ -87,7 +90,6 @@ class _SearchState extends State<Search> {
                       lake: showjob[index]["Sallary"],
                       Hybrid: showjob[index]["Hybrid"],
                       stats: showjob[index]["stats"],
-                      saveicon: AppIcons.save,
                     ),
                   );
                 },
@@ -103,10 +105,14 @@ class _SearchState extends State<Search> {
                 lake: showjob[index]["Sallary"],
                 Hybrid: showjob[index]["Hybrid"],
                 stats: showjob[index]["stats"],
-                saveicon: AppIcons.save,
                 saveonTap: () {
+                  isSeved[index] = !isSeved[index];
+                  setState(() {});
                   saveshowjob.add(showjob);
                 },
+                savechild: (isSeved[index])
+                    ? SvgPicture.asset(AppIcons.bookmark)
+                    : SvgPicture.asset(AppIcons.save),
                 top: BorderSide(
                   color: AppColor.Bottam_color,
                 ),
