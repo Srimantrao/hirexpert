@@ -26,12 +26,12 @@ class ShowContainer extends StatelessWidget {
         ),
       ),
       child: ValueListenableBuilder(
-        valueListenable: isState,
+        valueListenable: ValueIsState.isState.reactive,
         builder: (BuildContext context, value, Widget? child) {
           return Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              (value) != null
+              (ValueIsState.isState.value)
                   ? Text(
                       Selecttext,
                       style: TextStyle(

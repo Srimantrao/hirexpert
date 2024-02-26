@@ -12,9 +12,14 @@ import '../../../utils/common/Selection/showbottomsheet/shoBottmsheet_Container.
 import '../../../utils/common/Selection/showbottomsheet/showbottomsheet_common.dart';
 import 'Search_find.dart';
 
-class Serch_location extends StatelessWidget {
+class Serch_location extends StatefulWidget {
   const Serch_location({super.key});
 
+  @override
+  State<Serch_location> createState() => _Serch_locationState();
+}
+
+class _Serch_locationState extends State<Serch_location> {
   @override
   Widget build(BuildContext context) {
     final Buttingchang = Provider.of<SearchButtonsController>(
@@ -56,7 +61,9 @@ class Serch_location extends StatelessWidget {
           color: AppColor.Full_body_color,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width / 50,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -76,10 +83,12 @@ class Serch_location extends StatelessWidget {
                     builder: (BuildContext context, value, Widget? child) {
                       return InkWell(
                         onTap: () {
-                          Bottomsheet.appModalBottomSheet(context);
-                          Buttingchang.Savebuttons_fun();
+                          setState(() {
+                            Bottomsheet.appModalBottomSheet(context);
+                            Buttingchang.Savebuttons_fun();
+                          });
                         },
-                        child: ShowContainer(Selecttext: ontext),
+                        child: ShowContainer(Selecttext: ontexts.ontext),
                       );
                     },
                   )

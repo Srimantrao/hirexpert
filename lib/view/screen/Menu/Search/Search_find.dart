@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
@@ -19,6 +20,8 @@ class Search_find extends StatefulWidget {
 }
 
 class _Search_findState extends State<Search_find> {
+  List<bool> isSeved = List.generate(showjob.length, (index) => false);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -59,7 +62,7 @@ class _Search_findState extends State<Search_find> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Searching(),
-            SizedBox(height: Get.height/150),
+            SizedBox(height: Get.height / 150),
             Expanded(
               child: ListView.builder(
                 itemCount: showjob.length,
@@ -85,8 +88,16 @@ class _Search_findState extends State<Search_find> {
                     },
                     child: JobSearch(
                       saveonTap: () {
+                        isSeved[index] = !isSeved[index];
+                        setState(() {});
                         saveshowjob.add(showjob);
                       },
+                      savechild: (isSeved[index])
+                          ? SvgPicture.asset(AppIcons.bookmark)
+                          : SvgPicture.asset(AppIcons.save),
+                      top: BorderSide(
+                        color: AppColor.Bottam_color,
+                      ),
                       Icon: showjob[index]["Icon"],
                       Color_container: showjob[index]["Container_color"],
                       Job_Tital: showjob[index]["Job_tital"],
@@ -99,7 +110,6 @@ class _Search_findState extends State<Search_find> {
                       lake: showjob[index]["Sallary"],
                       Hybrid: showjob[index]["Hybrid"],
                       stats: showjob[index]["stats"],
-                      top: BorderSide(color: AppColor.Full_body_color),
                     ),
                   );
                 },
