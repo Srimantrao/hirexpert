@@ -13,6 +13,7 @@ class OnButtons_short extends StatelessWidget {
   final Color Border_color;
   final Color btn_color;
   final Color text_color;
+  final double? width;
   final void Function()? onTap;
 
   const OnButtons_short({
@@ -21,7 +22,8 @@ class OnButtons_short extends StatelessWidget {
     required this.Border_color,
     required this.btn_color,
     required this.text_color,
-    this.onTap
+    this.onTap,
+    this.width
   });
 
   @override
@@ -32,7 +34,7 @@ class OnButtons_short extends StatelessWidget {
       },
       child: Container(
         height: Get.height / 16,
-        width: Get.width / 2.5,
+        width: width ?? Get.width / 2.5,
         decoration: BoxDecoration(
           border: Border.all(
             color: Border_color,

@@ -22,6 +22,8 @@ class AppIcons {
   static const cancel = "assets/icon/body/cancel.svg";
   static const Select_check = "assets/icon/body/Select.svg";
   static const PDF_Icon = "assets/icon/body/PDF_ICon.svg";
+  static const interviwe_png = "assets/icon/body/interviwe_png.svg";
+  static const AlertDialog = "assets/icon/body/AlertDialog_img.svg";
 
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";

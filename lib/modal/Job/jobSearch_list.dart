@@ -92,3 +92,4 @@ List showjob = [
 ];
 
 List saveshowjob = [];
+List appliedjob = [];

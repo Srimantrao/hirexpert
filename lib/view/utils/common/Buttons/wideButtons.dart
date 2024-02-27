@@ -62,41 +62,46 @@ class WideButton extends StatelessWidget {
 class OnButtons extends StatelessWidget {
   final Color Button_Color;
   final String btn_name;
+  final void Function()? onTap;
 
   const OnButtons({
     super.key,
     required this.Button_Color,
     required this.btn_name,
+    this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: Get.height / 15,
-      width: Get.width,
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: AppColor.Button_color,
-          width: 2,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: Get.height / 15,
+        width: Get.width,
+        decoration: BoxDecoration(
+          border: Border.all(
+            color: AppColor.Button_color,
+            width: 2,
+          ),
+          borderRadius: BorderRadius.circular(
+            Get.width / 45,
+          ),
+          color: Button_Color,
         ),
-        borderRadius: BorderRadius.circular(
-          Get.width / 45,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(width: Get.width / 30),
+            Text(
+              btn_name,
+              style: TextStyle(
+                fontSize: Get.width / 26,
+                fontWeight: FontWeight.w600,
+                color: AppColor.Full_body_color,
+              ),
+            )
+          ],
         ),
-        color: Button_Color,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(width: Get.width / 30),
-          Text(
-            btn_name,
-            style: TextStyle(
-              fontSize: Get.width / 26,
-              fontWeight: FontWeight.w600,
-              color: AppColor.Full_body_color,
-            ),
-          )
-        ],
       ),
     );
   }

@@ -191,6 +191,30 @@ class Details_texts {
   static const BE = "BE";
   static const Added_Advantage_Skills = "Added Advantage Skills:";
   static const API = "API Creation & Integration,Shopify,WordPress";
+  static const Secondary_Skillset = "Secondary Skillset";
+  static const Marketing = "Marketing";
+  static const Field_Sales = "Field Sales";
+  static const Sales = "Sales";
+  static const Second_Interview = "Second Interview";
+  static const Second_link =
+      "https://weingenious.in/gohire/member/job/ApplyCandidate/Mw";
+  static const interviwe_time =
+      "Face to face interview on 31st Jan 2024 03:35 PM IST +05:30";
+  static const Message = "Message";
+  static const Decline = "Decline";
+  static const Cancle = "Cancle";
+  static const Re_arranges = "Re-arranges";
+  static const Accept = "Accept";
+  static const Decline_Interview = "Decline Interview ?";
+  static const Are_you = "Are you sure you want to decline this interview ?";
+  static const HI = "HI ";
+  static const when_would = "when would you like to re-arrange for ? ";
+  static const Face_to_Face_Interview = "Face to Face Interview";
+  static const Date_Time = "Date & Time";
+  static const Yes_re_arrange = "Yes, re-arrange";
+  static const Accept_Interview = "Accept Interview?";
+  static const Are_you_sure = "Are you sure you want to accept this interview?";
+
 }
 
 //Profile Screen
@@ -296,9 +320,11 @@ class Profile_Text {
   static const Current_CTC_per_annum = "Current CTC (per annum)";
   static const Enter_the_Current_CTC = "Enter The Current CTC";
   static const Preffered_Working_Location = "Preffered Working Location)";
-  static const Enter_Preffered_Working_location = "Enter Preffered Working location";
+  static const Enter_Preffered_Working_location =
+      "Enter Preffered Working location";
   static const Preffered_Work_Setup = "Preffered Work Setup";
-  static const Enter_the_Preffered_Work_Setup = "Enter the Preffered Work Setup";
+  static const Enter_the_Preffered_Work_Setup =
+      "Enter the Preffered Work Setup";
   static const Job_Type_Preferrence = "Job Type Preferrence";
   static const Enter_the_Preferrence = "Enter the Preferrence";
   static const Notice_Period_days_Optional = "Notice Period (days)(Optional)";
@@ -320,8 +346,8 @@ class Profile_Text {
 
   //When as a Empty Document
   static const Add_New = "+ Add New";
-  static const Candidate_certificate_list_not_found = "Candidate certificate list not found";
-
+  static const Candidate_certificate_list_not_found =
+      "Candidate certificate list not found";
 }
 
 //Edit Profile
@@ -593,18 +619,23 @@ class My_Archive_text {
 }
 
 //My Notification
-class Notification_text{
+class Notification_text {
   static const Hedding = "Notification Setting";
-  static const subheding = "Airopply can notify you when you have a job match what's your preference?";
+  static const subheding =
+      "Airopply can notify you when you have a job match what's your preference?";
   static const Update_me_once_per_week = "Update me once per week";
   static const Update_me_every_2_weeks = "Update me every 2 weeks";
   static const Update_me_once_a_month = "Update me once a month";
-  static const Id_prefer_no_job_match_notifications = "I'd prefer no job match notifications";
-  static const Update_me_immediately_when_new_job_available = "Update me immediately when new job available";
-  static const suhdding_2 = "Employers can message you directly, should wenotify you when they do?";
+  static const Id_prefer_no_job_match_notifications =
+      "I'd prefer no job match notifications";
+  static const Update_me_immediately_when_new_job_available =
+      "Update me immediately when new job available";
+  static const suhdding_2 =
+      "Employers can message you directly, should wenotify you when they do?";
   static const Yes = "Yes";
   static const no = "No";
   static const Save = "Save";
   static const Reset = "Reset";
-  static const suhdding_3 = "Would you like to be notified on new resources available through airopply?";
+  static const suhdding_3 =
+      "Would you like to be notified on new resources available through airopply?";
 }

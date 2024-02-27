@@ -41,7 +41,7 @@ class _SearchState extends State<Search> {
         actions: [
           InkWell(
             onTap: () {
-              Get.to(() => const Serch_location());
+              Get.to(() => const Search_location());
             },
             child: Icon(
               Icons.search,

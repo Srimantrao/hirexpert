@@ -1,6 +1,8 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
@@ -9,6 +11,9 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Row/homerow.dart';
+
+import 'Applied/Show_Applied.dart';
+import 'Interviwe/Show_Interview.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -43,7 +48,12 @@ class Home extends StatelessWidget {
           ),
           child: Column(
             children: [
-              InkWell(
+              GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => const Saved(),
+                  );
+                },
                 child: Jobrow(
                   icon: AppIcons.Seeved,
                   name: My_Jobs_Screen.Saved,
@@ -54,19 +64,30 @@ class Home extends StatelessWidget {
                           child: Text("${saveshowjob.length}"),
                         ),
                 ),
+              ),
+              GestureDetector(
                 onTap: () {
-                  Get.to(
-                    () => const Saved(),
-                  );
+                  Get.to(() => const Show_Applied());
                 },
+                child: Jobrow(
+                  icon: AppIcons.Applid,
+                  name: My_Jobs_Screen.Applied,
+                  child: (appliedjob.isEmpty)
+                      ? const SizedBox()
+                      : CircleAvatar(
+                          minRadius: 12,
+                          child: Text("${appliedjob.length}"),
+                        ),
+                ),
               ),
-              const Jobrow(
-                icon: AppIcons.Applid,
-                name: My_Jobs_Screen.Applied,
-              ),
-              const Jobrow(
-                icon: AppIcons.seved,
-                name: My_Jobs_Screen.Interview,
+              GestureDetector(
+                onTap: (){
+                  Get.to(()=>const Show_Interviwe());
+                },
+                child: const Jobrow(
+                  icon: AppIcons.seved,
+                  name: My_Jobs_Screen.Interview,
+                ),
               ),
               const Jobrow(
                 icon: AppIcons.rupess,

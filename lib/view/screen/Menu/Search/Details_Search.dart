@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
 import '../../../../modal/Job/Search_list.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/app_icon.dart';
+import '../Home/Applied/Show_Applied.dart';
 
 class Details extends StatefulWidget {
   final String Icon;
@@ -393,6 +395,9 @@ class _DetailsState extends State<Details> {
                     right: 5,
                     bottom: 10,
                     child: OnButtons(
+                      onTap: () {
+                        appliedjob.add(showjob);
+                      },
                       Button_Color: AppColor.Button_color,
                       btn_name: Details_texts.Apply_Now,
                     ),

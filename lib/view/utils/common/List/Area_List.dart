@@ -2,10 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../../../modal/bottamsheet/Location_list.dart';
-import '../../app_color.dart';
-import '../../app_constance.dart';
-import '../Selection/showbottomsheet/showbottomsheet_common.dart';
 
 //Listing
 

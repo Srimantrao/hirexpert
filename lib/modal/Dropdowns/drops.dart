@@ -135,3 +135,13 @@ List<String> Thousand_list = [
   '69 Thousand',
   '70 Thousand',
 ];
+
+//Metting
+List<String> Mettings = [
+  'Face to Face',
+  'Google Meet',
+  'Zoom',
+  'Microsoft Teams',
+  'Skype',
+  'Telephonic Interview',
+];
