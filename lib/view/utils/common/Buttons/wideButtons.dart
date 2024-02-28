@@ -61,6 +61,7 @@ class WideButton extends StatelessWidget {
 
 class OnButtons extends StatelessWidget {
   final Color Button_Color;
+  final Color? Boder_Button_Color;
   final String btn_name;
   final void Function()? onTap;
 
@@ -69,6 +70,7 @@ class OnButtons extends StatelessWidget {
     required this.Button_Color,
     required this.btn_name,
     this.onTap,
+    this.Boder_Button_Color,
   });
 
   @override
@@ -80,7 +82,7 @@ class OnButtons extends StatelessWidget {
         width: Get.width,
         decoration: BoxDecoration(
           border: Border.all(
-            color: AppColor.Button_color,
+            color: Boder_Button_Color ?? AppColor.Button_color,
             width: 2,
           ),
           borderRadius: BorderRadius.circular(

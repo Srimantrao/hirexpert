@@ -6,8 +6,6 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
-import 'package:provider/provider.dart';
-import '../../../../../../../controller/MY_ProfileController/My_ProfileController.dart';
 import 'Address.dart';
 import 'Educational_Details.dart';
 import 'Personal_Information.dart';

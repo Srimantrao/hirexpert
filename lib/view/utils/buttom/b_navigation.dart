@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:hirexpert/controller/BottamController/MenuNavigationController.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
+
+import '../../../controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 
 class Bottam extends StatefulWidget {
   const Bottam({super.key});

@@ -214,7 +214,21 @@ class Details_texts {
   static const Yes_re_arrange = "Yes, re-arrange";
   static const Accept_Interview = "Accept Interview?";
   static const Are_you_sure = "Are you sure you want to accept this interview?";
-
+  static const Success = "Success";
+  static const Job_Interview  = "Job Interview schedule changed successfully";
+  static const Ok  = "Ok";
+  static const Offered = "Offered";
+  static const Offered_CTC = "Offered CTC :";
+  static const Jobs_Type = "Jobs Type :";
+  static const Offer_Letter = "Offer Letter :";
+  static const Notes = "Notes :";
+  static const Status = "Status :";
+  static const Per_Monthly = " Per Monthly";
+  static const FullTime = " FullTime";
+  static const Click_Here = " Click Here";
+  static const Test_Description = "Test Description";
+  static const Accepted = "Accepted";
+  static const Application_Declined = "Application Declined";
 }
 
 //Profile Screen

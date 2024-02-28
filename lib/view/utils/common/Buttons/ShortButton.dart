@@ -29,9 +29,7 @@ class OnButtons_short extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){
-
-      },
+      onTap: onTap,
       child: Container(
         height: Get.height / 16,
         width: width ?? Get.width / 2.5,

@@ -5,17 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/modal/Dropdowns/drops.dart';
-import 'package:hirexpert/modal/bottamsheet/Location_list.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
-import 'package:hirexpert/view/utils/common/List/Area_List.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/ButtonsController/SearchJobController.dart';
+import '../../../../controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
 import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 
 class Searching extends StatefulWidget {
-  const Searching({super.key});
+  final String OnString;
+  const Searching({super.key, required this.OnString});
 
   @override
   State<Searching> createState() => _SearchingState();
@@ -69,7 +68,7 @@ class _SearchingState extends State<Searching> {
                           ),
                           SizedBox(width: Get.width / 100),
                           Text(
-                            "Surat",
+                            widget.OnString,
                             style: TextStyle(
                               color: (Buttonschang.SelectButtons)
                                   ? AppColor.Full_body_color

@@ -4,13 +4,11 @@ import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import 'package:hirexpert/controller/MY_ProfileController/My_ProfileController.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
-import '../../../../../../../controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
+import '../../../../../../../controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
+import '../../../../../../../controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
+import '../../../../../../../controller/Candidate_Controller/MY_ProfileController/My_ProfileController.dart';
 import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
 import '../../../../../app_icon.dart';

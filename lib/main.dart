@@ -4,27 +4,30 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hirexpert/controller/LoginControoler/LoginValidation.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
+import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'controller/BottamController/MenuNavigationController.dart';
-import 'controller/ButtonsController/SearchButtonsController.dart';
-import 'controller/ButtonsController/SearchJobController.dart';
-import 'controller/CheckMarkController/Notification_Controller.dart';
-import 'controller/ChoseFileController/ChosefileController.dart';
-import 'controller/CollectionController/Collectiondepartment.dart';
-import 'controller/DropdownController/EducationController.dart';
-import 'controller/DropdownController/FresherController.dart';
-import 'controller/DropdownController/PreferenceController.dart';
-import 'controller/DropdownController/SpecializationController.dart';
-import 'controller/LoginControoler/visibility.dart';
-import 'controller/MY_ProfileController/My_ProfileController.dart';
-import 'controller/OptionController/SelectButton.dart';
-import 'controller/SearchScreenController/DropdownConroller.dart';
-import 'controller/SignupController/SinupController.dart';
-import 'controller/TabbarController/Tabcontroller.dart';
+
+import 'controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
+import 'controller/Candidate_Controller/ButtonsController/SearchButtonsController.dart';
+import 'controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
+import 'controller/Candidate_Controller/CheckMarkController/Notification_Controller.dart';
+import 'controller/Candidate_Controller/ChoseFileController/ChosefileController.dart';
+import 'controller/Candidate_Controller/CollectionController/Collectiondepartment.dart';
+import 'controller/Candidate_Controller/DropdownController/EducationController.dart';
+import 'controller/Candidate_Controller/DropdownController/FresherController.dart';
+import 'controller/Candidate_Controller/DropdownController/PreferenceController.dart';
+import 'controller/Candidate_Controller/DropdownController/SpecializationController.dart';
+import 'controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
+import 'controller/Candidate_Controller/LoginControoler/visibility.dart';
+import 'controller/Candidate_Controller/MY_ProfileController/My_ProfileController.dart';
+import 'controller/Candidate_Controller/OptionController/SelectButton.dart';
+import 'controller/Candidate_Controller/SearchScreenController/DropdownConroller.dart';
+import 'controller/Candidate_Controller/SignupController/SinupController.dart';
+import 'controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -80,6 +83,11 @@ class MyApp extends StatelessWidget {
             bodyMedium: GoogleFonts.inter(
               textStyle: textTheme.bodyMedium,
             ),
+          ),
+          scrollbarTheme: ScrollbarThemeData(
+            thumbColor: MaterialStateProperty.all<Color>(
+              AppColor.Full_body_color,
+            ), // Change this to your desired color
           ),
         ),
         debugShowCheckedModeBanner: false,

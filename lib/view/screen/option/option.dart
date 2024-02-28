@@ -1,16 +1,16 @@
 // ignore_for_file: non_constant_identifier_names
 
-import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/OptionController/SelectButton.dart';
+
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
+
+import '../../../controller/Candidate_Controller/OptionController/SelectButton.dart';
 
 class Option extends StatefulWidget {
   const Option({super.key});
