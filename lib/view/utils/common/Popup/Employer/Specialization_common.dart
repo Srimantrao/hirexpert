@@ -1,209 +1,211 @@
-// ignore_for_file: camel_case_types, file_names
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/DropdownController/SpecializationController.dart';
-import '../../app_String.dart';
-import '../../app_color.dart';
-import '../../app_icon.dart';
-import '../Container/Option.dart';
+import '../../../../../controller/Candidate_Controller/DropdownController/SpecializationController.dart';
+import '../../../../../controller/Employer_Controller/DropdownController/SpecializationController.dart';
+import '../../../app_String.dart';
+import '../../../app_color.dart';
+import '../../../app_icon.dart';
+import '../../Container/Option.dart';
 
-class Function_area extends StatelessWidget {
-  const Function_area({super.key});
+class Employer_Function_area extends StatelessWidget {
+  const Employer_Function_area({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final speciailChang = Provider.of<SpecializationController_popup>(
+    final speciailChang = Provider.of<Employer_SpecializationController_popup>(
       context,
       listen: false,
     );
-    return Consumer<SpecializationController_popup>(
+    return Consumer<Candidate_SpecializationController_popup>(
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {
             speciailChang.Showingdrop();
             showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+              context: context,
+              builder: (BuildContext context) {
+                return AlertDialog(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  title: Container(
+                    height: Get.height / 18,
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          color: AppColor.Bottam_color,
+                        ),
+                      ),
                     ),
-                    title: Container(
-                      height: Get.height / 18,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: AppColor.Bottam_color,
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          SizedBox(width: Get.width / 50),
+                          Text(
+                            Specialization_text.Select_area,
+                            style: TextStyle(
+                              fontSize: Get.width / 24,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
+                          InkWell(
+                            onTap: () {
+                              Get.back();
+                              speciailChang.Showingdrop();
+                            },
+                            child: SvgPicture.asset(AppIcons.cancel),
+                          ),
+                        ],
                       ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(width: Get.width / 50),
-                            Text(
-                              Specialization_text.Select_area,
+                    ),
+                  ),
+                  backgroundColor: AppColor.Full_body_color,
+                  elevation: 0,
+                  content: Container(
+                    height: Get.height / 3,
+                    width: Get.width,
+                    decoration: BoxDecoration(
+                      color: AppColor.Full_body_color,
+                    ),
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.vertical,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          InkWell(
+                            child: Text(
+                              Specialization_text.Accounts_Finance,
                               style: TextStyle(
-                                fontSize: Get.width / 24,
-                                fontWeight: FontWeight.w600,
+                                fontSize: Get.width / 26,
                               ),
                             ),
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                                speciailChang.Showingdrop();
-                              },
-                              child: SvgPicture.asset(AppIcons.cancel),
+                            onTap: () {
+                              speciailChang.Function_SelectOne();
+                            },
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectTwo();
+                            },
+                            child: Text(
+                              Specialization_text.Bpo,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
                             ),
-                          ],
-                        ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectThrre();
+                            },
+                            child: Text(
+                              Specialization_text.Database_Engineer,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectFouth();
+                            },
+                            child: Text(
+                              Specialization_text.Designing_UIUX,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectFifth();
+                            },
+                            child: Text(
+                              Specialization_text.Devops_Engineering,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectSixth();
+                            },
+                            child: Text(
+                              Specialization_text.ReactNative_Devloper,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectSeven();
+                            },
+                            child: Text(
+                              Specialization_text.Flutter_Devloper,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: Get.height / 60,
+                          ),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectEigth();
+                            },
+                            child: Text(
+                              Specialization_text.Collection,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_Selectnigth();
+                            },
+                            child: Text(
+                              Specialization_text.Content,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: Get.height / 60),
+                          InkWell(
+                            onTap: () {
+                              speciailChang.Function_SelectThen();
+                            },
+                            child: Text(
+                              Specialization_text.Web_Devloper,
+                              style: TextStyle(
+                                fontSize: Get.width / 26,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    backgroundColor: AppColor.Full_body_color,
-                    elevation: 0,
-                    content: Container(
-                      height: Get.height / 3,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        color: AppColor.Full_body_color,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Accounts_Finance,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.Function_SelectOne();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectTwo();
-                              },
-                              child: Text(
-                                Specialization_text.Bpo,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectThrre();
-                              },
-                              child: Text(
-                                Specialization_text.Database_Engineer,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectFouth();
-                              },
-                              child: Text(
-                                Specialization_text.Designing_UIUX,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectFifth();
-                              },
-                              child: Text(
-                                Specialization_text.Devops_Engineering,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectSixth();
-                              },
-                              child: Text(
-                                Specialization_text.ReactNative_Devloper,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectSeven();
-                              },
-                              child: Text(
-                                Specialization_text.Flutter_Devloper,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: Get.height / 60,
-                            ),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectEigth();
-                              },
-                              child: Text(
-                                Specialization_text.Collection,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_Selectnigth();
-                              },
-                              child: Text(
-                                Specialization_text.Content,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              onTap: () {
-                                speciailChang.Function_SelectThen();
-                              },
-                              child: Text(
-                                Specialization_text.Web_Devloper,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
-                });
+                  ),
+                );
+              },
+            );
           },
           child: Container(
             height: Get.height / 20,
@@ -246,19 +248,19 @@ class Function_area extends StatelessWidget {
     );
   }
 }
-
-class Interest extends StatelessWidget {
-  const Interest({super.key});
+class Employer_Interest extends StatelessWidget {
+  const Employer_Interest({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final speciailChang = Provider.of<SpecializationController_Interest>(
+    final speciailChang =
+        Provider.of<Employer_SpecializationController_Interest>(
       context,
       listen: false,
     );
-    return Consumer<SpecializationController_Interest>(
-      builder: (BuildContext context, SpecializationController_Interest value,
-          Widget? child) {
+    return Consumer<Employer_SpecializationController_Interest>(
+      builder: (BuildContext context,
+          Employer_SpecializationController_Interest value, Widget? child) {
         return InkWell(
           onTap: () {
             speciailChang.Showingdrop();
@@ -411,17 +413,17 @@ class Interest extends StatelessWidget {
     );
   }
 }
-
-class Skillset extends StatelessWidget {
-  const Skillset({super.key});
+class Employer_Skillset extends StatelessWidget {
+  const Employer_Skillset({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final speciailChang = Provider.of<SpecializationController_Skillset>(
+    final speciailChang =
+        Provider.of<Employer_SpecializationController_Skillset>(
       context,
       listen: false,
     );
-    return Consumer<SpecializationController_Skillset>(
+    return Consumer<Employer_SpecializationController_Skillset>(
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {
@@ -599,17 +601,16 @@ class Skillset extends StatelessWidget {
     );
   }
 }
-
-class Collection extends StatelessWidget {
-  const Collection({super.key});
+class Employer_Collection extends StatelessWidget {
+  const Employer_Collection({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final Cont = Provider.of<SpecializationController_Collection>(
+    final Cont = Provider.of<Employer_SpecializationController_Collection>(
       context,
       listen: false,
     );
-    return Consumer<SpecializationController_Collection>(
+    return Consumer<Employer_SpecializationController_Collection>(
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {

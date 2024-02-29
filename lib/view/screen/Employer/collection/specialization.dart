@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+// ignore_for_file: camel_case_types, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,22 +8,21 @@ import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/DropdownController/SpecializationController.dart';
+import '../../../../controller/Employer_Controller/DropdownController/SpecializationController.dart';
 import '../../../utils/app_String.dart';
-import '../../../utils/common/Popup/Candidate/Specialization_common.dart';
-import 'Education.dart';
+import '../../../utils/common/Popup/Employer/Specialization_common.dart';
 
-class Candidate_Specialization extends StatefulWidget {
-  const Candidate_Specialization({super.key});
+class Employer_Specialization extends StatefulWidget {
+  const Employer_Specialization({super.key});
 
   @override
-  State<Candidate_Specialization> createState() => _Candidate_SpecializationState();
+  State<Employer_Specialization> createState() => _Employer_SpecializationState();
 }
 
-class _Candidate_SpecializationState extends State<Candidate_Specialization> {
+class _Employer_SpecializationState extends State<Employer_Specialization> {
   @override
   Widget build(BuildContext context) {
-    final Cont = Provider.of<Candidate_SpecializationController_Collection>(
+    final Cont = Provider.of<Employer_SpecializationController_Collection>(
       context,
       listen: false,
     );
@@ -63,7 +62,7 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                     SizedBox(height: Get.height / 20),
 
                     //Functional Area
-                    Consumer<Candidate_SpecializationController_Collection>(
+                    Consumer<Employer_SpecializationController_Collection>(
                       builder: (BuildContext context, value, Widget? child) {
                         return Visibility(
                           visible: Cont.visible,
@@ -77,7 +76,7 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                                   color: AppColor.subcolor,
                                 ),
                               ),
-                              const Candidate_Function_area(),
+                              const Employer_Function_area(),
                               SizedBox(height: Get.height / 50),
 
                               //Interest
@@ -88,10 +87,10 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                                   color: AppColor.subcolor,
                                 ),
                               ),
-                              const Candidate_Interest(),
+                              const Employer_Interest(),
                               SizedBox(height: Get.height / 50),
 
-                              //Skillset
+                              //Skilled
                               Text(
                                 Specialization_text.Skillset,
                                 style: TextStyle(
@@ -99,7 +98,7 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                                   color: AppColor.subcolor,
                                 ),
                               ),
-                              const Candidate_Skillset(),
+                              const Employer_Skillset(),
                               SizedBox(height: Get.height / 50),
                             ],
                           ),
@@ -108,7 +107,7 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                     ),
 
                     //Collection
-                    Consumer<Candidate_SpecializationController_Collection>(
+                    Consumer<Employer_SpecializationController_Collection>(
                       builder: (BuildContext context, value, Widget? child) {
                         return Column(
                           children: [
@@ -124,7 +123,7 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                                 ),
                               ],
                             ),
-                            const Candidate_Collection(),
+                            const Employer_Collection(),
                           ],
                         );
                       },
@@ -134,14 +133,14 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                 ),
 
                 //Next Buttons
-                Consumer<Candidate_SpecializationController_Collection>(
+                Consumer<Employer_SpecializationController_Collection>(
                   builder: (BuildContext context, value, Widget? child) {
                     return Column(
                       children: [
                         InkWell(
                           onTap: () {
                             if (Cont.colloction) {
-                              Get.to(() => const Education());
+                              // Get.to(() => const Education());
                             }
                           },
                           child: Row(

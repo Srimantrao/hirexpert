@@ -3,14 +3,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/Candidate_Controller/OptionController/SelectButton.dart';
+import '../../../controller/Option_Controller/SelectButton.dart';
 
 class Option extends StatefulWidget {
   const Option({super.key});
@@ -72,6 +71,8 @@ class _OptionState extends State<Option> {
                         ),
                       ),
                       SizedBox(height: Get.height / 20),
+
+                      //Employer
                       InkWell(
                         onTap: () {
                           select.Select();
@@ -94,6 +95,8 @@ class _OptionState extends State<Option> {
                         ),
                       ),
                       SizedBox(height: Get.height / 50),
+
+                      //Candidate
                       InkWell(
                         onTap: () {
                           select.SelectSecond();

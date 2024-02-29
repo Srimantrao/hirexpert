@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/DropdownController/EducationController.dart';
-import '../../app_String.dart';
-import '../../app_color.dart';
-import '../../app_icon.dart';
+import '../../../../../controller/Candidate_Controller/DropdownController/EducationController.dart';
+import '../../../app_String.dart';
+import '../../../app_color.dart';
+import '../../../app_icon.dart';
 
 class Education_Comm extends StatelessWidget {
   const Education_Comm({super.key});

@@ -5,7 +5,8 @@ import 'package:get/get.dart';
 
 import '../../../view/utils/app_String.dart';
 
-class Candidate_SpecializationController_popup with ChangeNotifier {
+
+class Employer_SpecializationController_popup with ChangeNotifier {
   int _SelectIndex = 0;
   String _throwdrop = "";
   bool _showdrop = false;
@@ -102,8 +103,7 @@ class Candidate_SpecializationController_popup with ChangeNotifier {
     notifyListeners();
   }
 }
-
-class Candidate_SpecializationController_Interest with ChangeNotifier {
+class Employer_SpecializationController_Interest with ChangeNotifier {
   int _SelectIndex = 0;
   String _throwdrop = "";
   bool _showdrop = false;
@@ -152,8 +152,7 @@ class Candidate_SpecializationController_Interest with ChangeNotifier {
     notifyListeners();
   }
 }
-
-class Candidate_SpecializationController_Skillset with ChangeNotifier {
+class Employer_SpecializationController_Skillset with ChangeNotifier {
   int _SelectIndex = 0;
   String _throwdrop = "";
   bool _showdrop = false;
@@ -218,8 +217,7 @@ class Candidate_SpecializationController_Skillset with ChangeNotifier {
     notifyListeners();
   }
 }
-
-class Candidate_SpecializationController_Collection with ChangeNotifier {
+class Employer_SpecializationController_Collection with ChangeNotifier {
   bool _visible = true;
   bool _Colloction = false;
   bool _CollcetionButtons_one = false;

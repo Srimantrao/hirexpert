@@ -16,7 +16,6 @@ class Extra_info extends StatefulWidget {
 }
 
 class _Extra_infoState extends State<Extra_info> {
-
   TextEditingController whichJob = TextEditingController();
   TextEditingController Specializationss = TextEditingController();
   TextEditingController Skillset = TextEditingController();
@@ -30,114 +29,112 @@ class _Extra_infoState extends State<Extra_info> {
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
         ),
-        child: Column(
-          crossAxisAlignment:
-          CrossAxisAlignment.start,
-          children: [
-            SizedBox(height: Get.height / 50),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width / 30,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(height: Get.height / 30),
 
-            //Which of these most closely describe your job !
-            Text(
-              Profile_Text.Moust,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: Get.width / 24,
-                color: AppColor.subcolor,
-              ),
-            ),
-            TextField(
-              controller: whichJob,
-              decoration: InputDecoration(
-                hintText: Profile_Text.Moust_hint,
-                hintStyle: TextStyle(
+              //Which of these most closely describe your job !
+              Text(
+                Profile_Text.Moust,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
                   fontSize: Get.width / 24,
+                  color: AppColor.subcolor,
                 ),
-                focusedBorder:
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColor.Buttom_color,
+              ),
+              TextField(
+                controller: whichJob,
+                decoration: InputDecoration(
+                  hintText: Profile_Text.Moust_hint,
+                  hintStyle: TextStyle(
+                    fontSize: Get.width / 24,
                   ),
-                ),
-                enabledBorder:
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColor.Buttom_color,
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppColor.Buttom_color,
+                    ),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppColor.Buttom_color,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: Get.height / 50),
+              SizedBox(height: Get.height / 50),
 
-            //Select your Specialization / interest
-            Text(
-              Profile_Text.specializationss,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: Get.width / 24,
-                color: AppColor.subcolor,
-              ),
-            ),
-            TextField(
-              controller: Specializationss,
-              decoration: InputDecoration(
-                hintText: Profile_Text.Company,
-                hintStyle: TextStyle(
+              //Select your Specialization / interest
+              Text(
+                Profile_Text.specializationss,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
                   fontSize: Get.width / 24,
+                  color: AppColor.subcolor,
                 ),
-                focusedBorder:
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColor.Buttom_color,
+              ),
+              TextField(
+                controller: Specializationss,
+                decoration: InputDecoration(
+                  hintText: Profile_Text.Company,
+                  hintStyle: TextStyle(
+                    fontSize: Get.width / 24,
                   ),
-                ),
-                enabledBorder:
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColor.Buttom_color,
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppColor.Buttom_color,
+                    ),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppColor.Buttom_color,
+                    ),
                   ),
                 ),
               ),
-            ),
-            SizedBox(height: Get.height / 50),
+              SizedBox(height: Get.height / 50),
 
-            //What is Your Primary Skilled
-            Text(
-              Profile_Text.What,
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: Get.width / 24,
-                color: AppColor.subcolor,
-              ),
-            ),
-            TextField(
-              controller: Skillset,
-              decoration: InputDecoration(
-                hintText: Profile_Text.What,
-                hintStyle: TextStyle(
+              //What is Your Primary Skilled
+              Text(
+                Profile_Text.What,
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
                   fontSize: Get.width / 24,
+                  color: AppColor.subcolor,
                 ),
-                focusedBorder:
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColor.Buttom_color,
+              ),
+              TextField(
+                controller: Skillset,
+                decoration: InputDecoration(
+                  hintText: Profile_Text.What,
+                  hintStyle: TextStyle(
+                    fontSize: Get.width / 24,
                   ),
-                ),
-                enabledBorder:
-                UnderlineInputBorder(
-                  borderSide: BorderSide(
-                    color: AppColor.Buttom_color,
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppColor.Buttom_color,
+                    ),
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(
+                      color: AppColor.Buttom_color,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
 
       //Buttons
       floatingActionButton: InkWell(
-        onTap: (){
-          Get.to(()=>const Specialization());
+        onTap: () {
+          Get.to(() => const Candidate_Specialization());
         },
         child: Container(
           height: Get.height / 20,
@@ -149,8 +146,7 @@ class _Extra_infoState extends State<Extra_info> {
             color: AppColor.Button_color,
           ),
           child: Row(
-            mainAxisAlignment:
-            MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SvgPicture.asset(AppIcons.Edit),
               Text(

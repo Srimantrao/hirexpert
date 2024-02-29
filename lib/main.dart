@@ -9,7 +9,6 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 import 'controller/Candidate_Controller/ButtonsController/SearchButtonsController.dart';
 import 'controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
@@ -23,11 +22,14 @@ import 'controller/Candidate_Controller/DropdownController/SpecializationControl
 import 'controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 import 'controller/Candidate_Controller/LoginControoler/visibility.dart';
 import 'controller/Candidate_Controller/MY_ProfileController/My_ProfileController.dart';
-import 'controller/Candidate_Controller/OptionController/SelectButton.dart';
 import 'controller/Candidate_Controller/SearchScreenController/DropdownConroller.dart';
 import 'controller/Candidate_Controller/SignupController/SinupController.dart';
 import 'controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
-
+import 'controller/Employer_Controller/DropdownController/SpecializationController.dart';
+import 'controller/Employer_Controller/LoginControoler/LoginValidation.dart';
+import 'controller/Employer_Controller/LoginControoler/visibility.dart';
+import 'controller/Employer_Controller/SignupController/SinupController.dart';
+import 'controller/Option_Controller/SelectButton.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,19 +54,19 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => SelectButtonsController()),
-        ChangeNotifierProvider(create: (_) => VisibilityController()),
-        ChangeNotifierProvider(create: (_) => LoginValidation()),
-        ChangeNotifierProvider(create: (_) => SinupController()),
+        ChangeNotifierProvider(create: (_) => Candidate_VisibilityController()),
+        ChangeNotifierProvider(create: (_) => Candidate_LoginValidation()),
+        ChangeNotifierProvider(create: (_) => Candidate_SinupController()),
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
-        ChangeNotifierProvider(create: (_) => SpecializationController_popup()),
+        ChangeNotifierProvider(create: (_) => Candidate_SpecializationController_popup()),
         ChangeNotifierProvider(
-            create: (_) => SpecializationController_Interest()),
+            create: (_) => Candidate_SpecializationController_Interest()),
         ChangeNotifierProvider(
-            create: (_) => SpecializationController_Skillset()),
+            create: (_) => Candidate_SpecializationController_Skillset()),
         ChangeNotifierProvider(
-            create: (_) => SpecializationController_Collection()),
+            create: (_) => Candidate_SpecializationController_Collection()),
         ChangeNotifierProvider(create: (_) => Education_Controller()),
         ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
         ChangeNotifierProvider(create: (_) => FreherController()),
@@ -76,6 +78,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Notification_Controller()),
         ChangeNotifierProvider(create: (_) => My_ProfileController()),
         ChangeNotifierProvider(create: (_) => ChosefileController()),
+        ChangeNotifierProvider(create: (_) => Employer_LoginValidation()),
+        ChangeNotifierProvider(create: (_) => Employer_VisibilityController()),
+        ChangeNotifierProvider(create: (_) => Employer_SinupController()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_popup()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_popup()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Interest()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Interest()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Skillset()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Collection()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

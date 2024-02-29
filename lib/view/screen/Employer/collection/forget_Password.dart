@@ -2,26 +2,27 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
+import '../../../../controller/Employer_Controller/LoginControoler/LoginValidation.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
-import 'Signup.dart';
 
-class Candidate_F_Password extends StatefulWidget {
-  const Candidate_F_Password({super.key});
+class Employer_F_Password extends StatefulWidget {
+  const Employer_F_Password({super.key});
 
   @override
-  State<Candidate_F_Password> createState() => _Candidate_F_PasswordState();
+  State<Employer_F_Password> createState() => _Employer_F_PasswordState();
 }
 
-class _Candidate_F_PasswordState extends State<Candidate_F_Password> {
+class _Employer_F_PasswordState extends State<Employer_F_Password> {
   @override
   Widget build(BuildContext context) {
-    final vail = Provider.of<Candidate_LoginValidation>(context, listen: false);
+    final vail = Provider.of<Employer_LoginValidation>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -35,14 +36,14 @@ class _Candidate_F_PasswordState extends State<Candidate_F_Password> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(height: Get.height/20),
+                SizedBox(height: Get.height / 20),
                 Padding(
                   padding: EdgeInsets.symmetric(
                     horizontal: Get.width / 6.5,
                   ),
                   child: Image.asset(AppIcons.logo, scale: 6),
                 ),
-                SizedBox(height: Get.height/20),
+                SizedBox(height: Get.height / 20),
                 Text(
                   Forget_Password_text.hading,
                   style: TextStyle(
@@ -169,7 +170,7 @@ class _Candidate_F_PasswordState extends State<Candidate_F_Password> {
                     SizedBox(width: Get.width / 60),
                     InkWell(
                       onTap: () {
-                        Get.to(() => const candidate_Signup());
+                        Get.to(() => const Employer_Signup());
                       },
                       child: Text(
                         Login_text.Sinup,

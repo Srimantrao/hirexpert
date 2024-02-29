@@ -8,8 +8,8 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/DropdownController/PreferenceController.dart';
-import '../../../../modal/bottamsheet/Location_list.dart';
+import '../../../../../controller/Candidate_Controller/DropdownController/PreferenceController.dart';
+import '../../../../../modal/bottamsheet/Location_list.dart';
 
 //Job type Preference?
 class Preference extends StatefulWidget {

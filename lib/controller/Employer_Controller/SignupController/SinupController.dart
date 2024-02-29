@@ -3,12 +3,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/Employer/collection/login.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 
 import '../../../view/screen/Candidate/collection/login.dart';
 
-class Candidate_SinupController with ChangeNotifier {
+class Employer_SinupController with ChangeNotifier {
   TextEditingController frist_name = TextEditingController();
   TextEditingController last_name = TextEditingController();
   TextEditingController email = TextEditingController();
@@ -85,7 +86,7 @@ class Candidate_SinupController with ChangeNotifier {
       if (kDebugMode) {
         print("Confirm Password :- $Comfarm_password");
       }
-      Get.to(() => const Candidate_Login());
+      Get.to(() => const Employer_Login());
       _isError = false;
       _throwEmailnameError = "";
       _throwLastnameError = "";

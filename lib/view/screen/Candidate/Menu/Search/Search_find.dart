@@ -8,7 +8,7 @@ import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../utils/common/List/jobSearch.dart';
-import '../../../../utils/common/Popup/Search_Job(Conatiner).dart';
+import '../../../../utils/common/Popup/Candidate/Search_Job(Conatiner).dart';
 import 'Details_Search.dart';
 
 

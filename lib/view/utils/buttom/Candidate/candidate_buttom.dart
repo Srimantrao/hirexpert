@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -6,16 +8,16 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
 
-import '../../../controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
+import '../../../../controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 
-class Bottam extends StatefulWidget {
-  const Bottam({super.key});
+class Candidate_Bottam extends StatefulWidget {
+  const Candidate_Bottam({super.key});
 
   @override
-  State<Bottam> createState() => _BottamState();
+  State<Candidate_Bottam> createState() => _Candidate_BottamState();
 }
 
-class _BottamState extends State<Bottam> {
+class _Candidate_BottamState extends State<Candidate_Bottam> {
   @override
   Widget build(BuildContext context) {
     final nav = Provider.of<MenuNavigationController>(

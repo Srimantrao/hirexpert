@@ -10,7 +10,7 @@ import '../../../../controller/Candidate_Controller/ChoseFileController/Chosefil
 import '../../../utils/aap_image.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/app_icon.dart';
-import '../../../utils/buttom/b_navigation.dart';
+import '../../../utils/buttom/Candidate/candidate_buttom.dart';
 
 class Choose extends StatefulWidget {
   const Choose({super.key});
@@ -202,7 +202,7 @@ class _ChooseState extends State<Choose> {
                           onTap: () {
                             if (Pick.selectwidgetone == 0 &&
                                 Pick.selectwidgettwo == 1) {
-                              Get.to(() => const Bottam());
+                              Get.to(() => const Candidate_Bottam());
                             }
                           },
                           child: Row(

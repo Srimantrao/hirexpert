@@ -7,10 +7,11 @@ import 'package:get/get.dart';
 import 'package:hirexpert/modal/Dropdowns/drops.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
-import '../../app_String.dart';
-import '../../app_color.dart';
-import '../../app_icon.dart';
+import '../../../../../controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
+import '../../../app_String.dart';
+import '../../../app_color.dart';
+import '../../../app_icon.dart';
+
 
 class Searching extends StatefulWidget {
   final String OnString;

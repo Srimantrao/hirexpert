@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 // ignore: camel_case_types
-class Candidate_VisibilityController with ChangeNotifier {
+class Employer_VisibilityController with ChangeNotifier {
   bool _isVis = true;
   bool _isviscnf = true;
   bool _isobscr = true;

@@ -3,13 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:hirexpert/view/screen/Employer/collection/login.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 
 import '../../../view/screen/Candidate/collection/login.dart';
 
 class SelectButtonsController with ChangeNotifier {
   bool _SelectButton = true;
-  bool _SelectButtonSecond = false;
+  bool _SelectButtonSecond = true;
 
   bool Error = false;
   String ShowError = "";
@@ -20,10 +21,13 @@ class SelectButtonsController with ChangeNotifier {
 
   void Select() {
     _SelectButton = !_SelectButton;
-    if (!_SelectButton && _SelectButtonSecond) {
+    if (!_SelectButtonSecond) {
       Error = true;
       ShowError = Error_String.sorry;
-    } else if (!_SelectButton && !_SelectButtonSecond) {
+    } else {
+      Get.to(() => const Employer_Login());
+    }
+    if (!_SelectButton && !_SelectButtonSecond) {
       Error = true;
       ShowError = Error_String.both;
     } else {
@@ -39,7 +43,7 @@ class SelectButtonsController with ChangeNotifier {
       Error = true;
       ShowError = Error_String.both;
     } else {
-      Get.to(() => const Login());
+      Get.to(() => const Candidate_Login());
     }
     if (!_SelectButton && !_SelectButtonSecond) {
       Error = true;

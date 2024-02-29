@@ -9,7 +9,7 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/Candidate_Controller/DropdownController/PreferenceController.dart';
 import '../../../utils/aap_image.dart';
-import '../../../utils/common/Popup/Location_comm.dart';
+import '../../../utils/common/Popup/Candidate/Location_comm.dart';
 import 'choose_file.dart';
 
 class Location extends StatefulWidget {

@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_GIF.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 import '../option/option.dart';
 
@@ -21,7 +19,9 @@ class _LogoState extends State<Logo> {
     Future.delayed(
       const Duration(seconds: 3),
       () {
-        Get.to(() => const Option());
+        Get.to(
+          () => const Option(),
+        );
       },
     );
     super.initState();
@@ -40,8 +40,27 @@ class _LogoState extends State<Logo> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const SizedBox(),
-            Center(
-              child: Image.asset(AppIcons.logo, scale: 4),
+            TweenAnimationBuilder(
+              tween: Tween<double>(
+                begin: 0,
+                end: 1,
+              ),
+              duration: const Duration(
+                seconds: 3,
+              ),
+              builder: (
+                BuildContext context,
+                double value,
+                Widget? child,
+              ) {
+                return Opacity(
+                  opacity: value,
+                  child: Image.asset(
+                    AppIcons.logo,
+                    scale: 4,
+                  ),
+                );
+              },
             ),
             Column(
               children: [
@@ -50,7 +69,9 @@ class _LogoState extends State<Logo> {
                   height: Get.width / 10,
                   width: Get.width / 10,
                 ),
-                SizedBox(height: Get.height/50),
+                SizedBox(
+                  height: Get.height / 50,
+                ),
               ],
             ),
           ],

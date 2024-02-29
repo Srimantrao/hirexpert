@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/DropdownController/FresherController.dart';
-import '../../../../modal/Dropdowns/drops.dart';
-import '../../app_String.dart';
-import '../../app_color.dart';
-import '../../app_icon.dart';
-import '../Buttons/wideButtons.dart';
+
+import '../../../../../controller/Candidate_Controller/DropdownController/FresherController.dart';
+import '../../../../../modal/Dropdowns/drops.dart';
+import '../../../app_String.dart';
+import '../../../app_color.dart';
+import '../../../app_icon.dart';
+import '../../Buttons/wideButtons.dart';
 
 //Experience
 class Experience extends StatelessWidget {

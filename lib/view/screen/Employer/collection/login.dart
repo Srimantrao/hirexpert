@@ -2,29 +2,37 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/Employer_Controller/LoginControoler/visibility.dart';
+import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 import '../../../../controller/Candidate_Controller/LoginControoler/visibility.dart';
+import '../../../../controller/Employer_Controller/LoginControoler/LoginValidation.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
-import 'Signup.dart';
-import 'forget_password.dart';
+import 'forget_Password.dart';
 
-class Candidate_Login extends StatefulWidget {
-  const Candidate_Login({super.key});
+class Employer_Login extends StatefulWidget {
+  const Employer_Login({super.key});
 
   @override
-  State<Candidate_Login> createState() => _Candidate_LoginState();
+  State<Employer_Login> createState() => _Employer_LoginState();
 }
 
-class _Candidate_LoginState extends State<Candidate_Login> {
+class _Employer_LoginState extends State<Employer_Login> {
   @override
   Widget build(BuildContext context) {
-    final vis = Provider.of<Candidate_VisibilityController>(context, listen: false);
-    final vail = Provider.of<Candidate_LoginValidation>(context, listen: false);
+    final vis = Provider.of<Employer_VisibilityController>(
+      context,
+      listen: false,
+    );
+    final vail = Provider.of<Employer_LoginValidation>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       body: Container(
         width: Get.width,
@@ -44,14 +52,14 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Get.height/20),
+                      SizedBox(height: Get.height / 20),
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: Get.width / 6.5,
                         ),
                         child: Image.asset(AppIcons.logo, scale: 5),
                       ),
-                      SizedBox(height: Get.height/20),
+                      SizedBox(height: Get.height / 20),
                       Text(
                         Login_text.login,
                         style: TextStyle(
@@ -113,12 +121,13 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           InkWell(
-                            onTap: (){
-                              Get.to(()=>const Candidate_F_Password());
+                            onTap: () {
+                              Get.to(() => const Employer_F_Password());
                             },
                             child: Text(
                               Login_text.Forget_Password,
                               style: TextStyle(
+                                color: AppColor.Button_color,
                                 fontSize: Get.width / 25,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -151,7 +160,7 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                           SizedBox(width: Get.width / 60),
                           InkWell(
                             onTap: () {
-                              Get.to(() => const candidate_Signup());
+                              Get.to(() => const Employer_Signup());
                             },
                             child: Text(
                               Login_text.Sinup,

@@ -4,28 +4,34 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
+import 'package:hirexpert/view/screen/Employer/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/LoginControoler/visibility.dart';
-import '../../../../controller/Candidate_Controller/SignupController/SinupController.dart';
+import '../../../../controller/Employer_Controller/LoginControoler/visibility.dart';
+import '../../../../controller/Employer_Controller/SignupController/SinupController.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 
-
-class candidate_Signup extends StatefulWidget {
-  const candidate_Signup({super.key});
+class Employer_Signup extends StatefulWidget {
+  const Employer_Signup({super.key});
 
   @override
-  State<candidate_Signup> createState() => _candidate_SignupState();
+  State<Employer_Signup> createState() => _Employer_SignupState();
 }
 
-class _candidate_SignupState extends State<candidate_Signup> {
+class _Employer_SignupState extends State<Employer_Signup> {
   @override
   Widget build(BuildContext context) {
-    final vail = Provider.of<Candidate_SinupController>(context, listen: false);
-    final vis = Provider.of<Candidate_VisibilityController>(context, listen: false);
+    final vail = Provider.of<Employer_SinupController>(
+      context,
+      listen: false,
+    );
+    final vis = Provider.of<Employer_VisibilityController>(
+      context,
+      listen: false,
+    );
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -38,19 +44,19 @@ class _candidate_SignupState extends State<candidate_Signup> {
             ),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
-              child: Consumer<Candidate_SinupController>(
+              child: Consumer<Employer_SinupController>(
                 builder: (BuildContext context, value, Widget? child) {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Get.height/20),
+                      SizedBox(height: Get.height / 20),
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: Get.width / 6.5,
                         ),
                         child: Image.asset(AppIcons.logo, scale: 6),
                       ),
-                      SizedBox(height: Get.height/20),
+                      SizedBox(height: Get.height / 20),
                       Text(
                         Signup_text.Sign_Up,
                         style: TextStyle(
@@ -132,7 +138,7 @@ class _candidate_SignupState extends State<candidate_Signup> {
                             )
                           : const SizedBox(),
                       SizedBox(height: Get.height / 50),
-                      Consumer<Candidate_VisibilityController>(
+                      Consumer<Employer_SinupController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             obscureText: vis.isVis,
@@ -163,7 +169,7 @@ class _candidate_SignupState extends State<candidate_Signup> {
                             )
                           : const SizedBox(),
                       SizedBox(height: Get.height / 50),
-                      Consumer<Candidate_VisibilityController>(
+                      Consumer<Employer_SinupController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             suffixIcon: InkWell(
@@ -186,7 +192,9 @@ class _candidate_SignupState extends State<candidate_Signup> {
                       ),
                       (vail.isError)
                           ? Text(
-                              vail.isError ? vail.throwConfirmPasswordError : "",
+                              vail.isError
+                                  ? vail.throwConfirmPasswordError
+                                  : "",
                               style: TextStyle(
                                 fontSize: Get.width / 25,
                                 color: AppColor.Error_color,
@@ -198,7 +206,7 @@ class _candidate_SignupState extends State<candidate_Signup> {
                         onTap: () {
                           vail.SingupValidation();
                           Get.to(
-                            () => const Candidate_Specialization(),
+                            () => const Employer_Specialization(),
                           );
                         },
                         child: OnButtons(

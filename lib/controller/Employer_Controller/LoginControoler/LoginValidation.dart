@@ -6,7 +6,7 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
 
-class Candidate_LoginValidation with ChangeNotifier {
+class Employer_LoginValidation with ChangeNotifier {
   TextEditingController EmailController = TextEditingController();
   TextEditingController PasswordController = TextEditingController();
 
@@ -70,7 +70,7 @@ class Candidate_LoginValidation with ChangeNotifier {
     } else {
       _isError = false;
       _throwErrorEmail = "";
-      Get.to(() => const Candidate_Bottam());
+      // Get.to(() => const Candidate_Bottam());
       notifyListeners();
     }
   }

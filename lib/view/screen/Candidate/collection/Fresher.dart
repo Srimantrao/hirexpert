@@ -11,7 +11,8 @@ import 'package:provider/provider.dart';
 import '../../../../controller/Candidate_Controller/DropdownController/FresherController.dart';
 import '../../../utils/aap_image.dart';
 import '../../../utils/app_String.dart';
-import '../../../utils/common/Popup/fresher_comm.dart';
+import '../../../utils/common/Popup/Candidate/fresher_comm.dart';
+
 
 class Fresher extends StatefulWidget {
   const Fresher({super.key});
