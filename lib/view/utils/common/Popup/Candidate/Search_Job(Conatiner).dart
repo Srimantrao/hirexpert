@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/modal/Dropdowns/drops.dart';
@@ -668,39 +669,42 @@ class _SearchingState extends State<Searching> {
                                       decoration: BoxDecoration(
                                         color: AppColor.Full_body_color,
                                       ),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            Searchjob_text.Part_Time,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
+                                      child: SingleChildScrollView(
+                                        scrollDirection: Axis.vertical,
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              Searchjob_text.Part_Time,
+                                              style: TextStyle(
+                                                fontSize: Get.width / 24,
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Full_Time,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
+                                            SizedBox(height: Get.height / 50),
+                                            Text(
+                                              Searchjob_text.Full_Time,
+                                              style: TextStyle(
+                                                fontSize: Get.width / 24,
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Internship,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
+                                            SizedBox(height: Get.height / 50),
+                                            Text(
+                                              Searchjob_text.Internship,
+                                              style: TextStyle(
+                                                fontSize: Get.width / 24,
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Contract,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
+                                            SizedBox(height: Get.height / 50),
+                                            Text(
+                                              Searchjob_text.Contract,
+                                              style: TextStyle(
+                                                fontSize: Get.width / 24,
+                                              ),
                                             ),
-                                          ),
-                                          SizedBox(height: Get.height / 50),
-                                        ],
+                                            SizedBox(height: Get.height / 50),
+                                          ],
+                                        ),
                                       ),
                                     ),
                                   );
@@ -769,7 +773,7 @@ class _SearchingState extends State<Searching> {
                                                   fontSize: Get.width / 24,
                                                 ),
                                               ),
-                                              InkWell(
+                                              GestureDetector(
                                                 onTap: () {
                                                   Get.back();
                                                 },
@@ -785,39 +789,42 @@ class _SearchingState extends State<Searching> {
                                           decoration: BoxDecoration(
                                             color: AppColor.Full_body_color,
                                           ),
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
-                                            children: [
-                                              Text(
-                                                Searchjob_text.Remote_Work,
-                                                style: TextStyle(
-                                                  fontSize: Get.width / 24,
+                                          child: SingleChildScrollView(
+                                            scrollDirection: Axis.vertical,
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  Searchjob_text.Remote_Work,
+                                                  style: TextStyle(
+                                                    fontSize: Get.width / 24,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(height: Get.height / 50),
-                                              Text(
-                                                Searchjob_text.In_Office,
-                                                style: TextStyle(
-                                                  fontSize: Get.width / 24,
+                                                SizedBox(height: Get.height / 50),
+                                                Text(
+                                                  Searchjob_text.In_Office,
+                                                  style: TextStyle(
+                                                    fontSize: Get.width / 24,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(height: Get.height / 50),
-                                              Text(
-                                                Searchjob_text.Hybrid,
-                                                style: TextStyle(
-                                                  fontSize: Get.width / 24,
+                                                SizedBox(height: Get.height / 50),
+                                                Text(
+                                                  Searchjob_text.Hybrid,
+                                                  style: TextStyle(
+                                                    fontSize: Get.width / 24,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(height: Get.height / 50),
-                                              Text(
-                                                Searchjob_text.Any,
-                                                style: TextStyle(
-                                                  fontSize: Get.width / 24,
+                                                SizedBox(height: Get.height / 50),
+                                                Text(
+                                                  Searchjob_text.Any,
+                                                  style: TextStyle(
+                                                    fontSize: Get.width / 24,
+                                                  ),
                                                 ),
-                                              ),
-                                              SizedBox(height: Get.height / 50),
-                                            ],
+                                                SizedBox(height: Get.height / 50),
+                                              ],
+                                            ),
                                           ),
                                         ),
                                       );

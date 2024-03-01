@@ -29,6 +29,8 @@ class _SearchState extends State<Search> {
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
         automaticallyImplyLeading: false,
         title: const Text(
           Search_text.Search_Jobs,

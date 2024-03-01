@@ -87,10 +87,10 @@ class _DetailsState extends State<Details> {
                   backgroundColor: AppColor.Full_body_color,
                   forceMaterialTransparency: true,
                   pinned: true,
-                  collapsedHeight: Get.height / 4,
+                  collapsedHeight: Get.height / 3.5,
                   automaticallyImplyLeading: false,
                   flexibleSpace: SizedBox(
-                    height: Get.height / 4,
+                    height: Get.height / 3.5,
                     child: JobSearch(
                       Icon: widget.Icon,
                       Color_container: widget.Color_container,

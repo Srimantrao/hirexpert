@@ -55,6 +55,7 @@ class _Details_InterviweState extends State<Details_Interviwe> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 15,
@@ -90,10 +91,10 @@ class _Details_InterviweState extends State<Details_Interviwe> {
                   backgroundColor: AppColor.Full_body_color,
                   forceMaterialTransparency: true,
                   pinned: false,
-                  collapsedHeight: Get.height / 4,
+                  collapsedHeight: size.height / 3.5,
                   automaticallyImplyLeading: false,
                   flexibleSpace: SizedBox(
-                    height: Get.height / 4,
+                    height: size.height / 3.5,
                     child: JobSearch(
                       Icon: widget.Icon,
                       Color_container: widget.Color_container,

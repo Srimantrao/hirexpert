@@ -50,6 +50,7 @@ class _Details_AppildState extends State<Details_Appild> {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -67,10 +68,10 @@ class _Details_AppildState extends State<Details_Appild> {
                   backgroundColor: AppColor.Full_body_color,
                   forceMaterialTransparency: true,
                   pinned: true,
-                  collapsedHeight: Get.height / 4,
+                  collapsedHeight: size.height / 3.5,
                   automaticallyImplyLeading: false,
                   flexibleSpace: SizedBox(
-                    height: Get.height / 4,
+                    height: size.height / 3.5,
                     child: JobSearch(
                       Icon: widget.Icon,
                       Color_container: widget.Color_container,
