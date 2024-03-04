@@ -73,49 +73,52 @@ class _PreferenceState extends State<Preference> {
                       decoration: BoxDecoration(
                         color: AppColor.Full_body_color,
                       ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Perfernce.Full_Time();
-                            },
-                            child: Text(
-                              Location_text.Full_Time,
-                              style: TextStyle(fontSize: Get.width / 24),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.vertical,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                Perfernce.Full_Time();
+                              },
+                              child: Text(
+                                Location_text.Full_Time,
+                                style: TextStyle(fontSize: Get.width / 24),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: Get.height / 40),
-                          InkWell(
-                            onTap: () {
-                              Perfernce.Contrct();
-                            },
-                            child: Text(
-                              Location_text.Contract,
-                              style: TextStyle(fontSize: Get.width / 24),
+                            SizedBox(height: Get.height / 40),
+                            InkWell(
+                              onTap: () {
+                                Perfernce.Contrct();
+                              },
+                              child: Text(
+                                Location_text.Contract,
+                                style: TextStyle(fontSize: Get.width / 24),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: Get.height / 40),
-                          InkWell(
-                            onTap: () {
-                              Perfernce.Internship();
-                            },
-                            child: Text(
-                              Location_text.Internship,
-                              style: TextStyle(fontSize: Get.width / 24),
+                            SizedBox(height: Get.height / 40),
+                            InkWell(
+                              onTap: () {
+                                Perfernce.Internship();
+                              },
+                              child: Text(
+                                Location_text.Internship,
+                                style: TextStyle(fontSize: Get.width / 24),
+                              ),
                             ),
-                          ),
-                          SizedBox(height: Get.height / 40),
-                          InkWell(
-                            onTap: () {
-                              Perfernce.Part_Time();
-                            },
-                            child: Text(
-                              Location_text.Part_Time,
-                              style: TextStyle(fontSize: Get.width / 24),
+                            SizedBox(height: Get.height / 40),
+                            InkWell(
+                              onTap: () {
+                                Perfernce.Part_Time();
+                              },
+                              child: Text(
+                                Location_text.Part_Time,
+                                style: TextStyle(fontSize: Get.width / 24),
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );

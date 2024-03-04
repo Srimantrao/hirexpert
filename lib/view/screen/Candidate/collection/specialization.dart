@@ -129,7 +129,6 @@ class _Candidate_SpecializationState extends State<Candidate_Specialization> {
                         );
                       },
                     ),
-                    SizedBox(height: Get.height / 5),
                   ],
                 ),
 

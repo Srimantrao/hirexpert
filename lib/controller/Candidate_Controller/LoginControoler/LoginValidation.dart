@@ -40,7 +40,6 @@ class Candidate_LoginValidation with ChangeNotifier {
         islogin = pref!.getBool("login")!;
 
         //Navigation
-
       } else if (EmailController.text.isEmpty) {
         _isError = true;
         _throwErrorEmail = Error_String.Error_Email;

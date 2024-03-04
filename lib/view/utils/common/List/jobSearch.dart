@@ -67,7 +67,7 @@ class _JobSearchState extends State<JobSearch> {
             horizontal: size.width / 50,
           ),
           child: Container(
-            height: size.height / 4,
+            height: size.height / 3.8,
             width: size.width,
             decoration: BoxDecoration(
               border: Border(
