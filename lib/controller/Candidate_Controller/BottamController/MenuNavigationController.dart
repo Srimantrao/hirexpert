@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import '../../../view/screen/Candidate/Menu/Home/Home.dart';
 import '../../../view/screen/Candidate/Menu/Search/Search.dart';
 import '../../../view/screen/Candidate/Menu/profile/information.dart';
+import '../../../view/screen/Candidate/message/Message.dart';
 
 class MenuNavigationController with ChangeNotifier {
   int _selectindex = 0;
@@ -13,6 +14,7 @@ class MenuNavigationController with ChangeNotifier {
     const Home(),
     const Search(),
     const Profile_info(),
+    const Message(),
   ];
 
   Widget Selectitem(int index) {
@@ -35,6 +37,11 @@ class MenuNavigationController with ChangeNotifier {
 
   void SelectIndex_three() {
     _selectindex = 2;
+    notifyListeners();
+  }
+
+  void SelectIndex_four() {
+    _selectindex = 3;
     notifyListeners();
   }
 }

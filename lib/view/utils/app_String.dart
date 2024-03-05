@@ -7,7 +7,6 @@ class Navigator_text {
   static const Back = "Back";
   static const Done = "Done";
 }
-
 class DropDownMenu_String {
   static const Gujarat = "Gujarat";
   static const Maharastrya = "Maharastrya";
@@ -30,7 +29,6 @@ class DropDownMenu_String {
   static const mothe = "6 Months";
   static const one = "Last 1 Year";
 }
-
 class Error_String {
   static const sorry = "So Sorry Sir/Mem App is under-consideration";
   static const both = "Please Select Only & Only One Button";
@@ -215,8 +213,8 @@ class Details_texts {
   static const Accept_Interview = "Accept Interview?";
   static const Are_you_sure = "Are you sure you want to accept this interview?";
   static const Success = "Success";
-  static const Job_Interview  = "Job Interview schedule changed successfully";
-  static const Ok  = "Ok";
+  static const Job_Interview = "Job Interview schedule changed successfully";
+  static const Ok = "Ok";
   static const Offered = "Offered";
   static const Offered_CTC = "Offered CTC :";
   static const Jobs_Type = "Jobs Type :";
@@ -536,11 +534,9 @@ class Location_text {
   static const Any = "Any";
   static const Save = "Save";
 }
-
 class Location_State {
   static const Gujarat = "Gujarat";
 }
-
 class Location_Area {
   static const Surat = "Surat";
 }
@@ -652,4 +648,11 @@ class Notification_text {
   static const Reset = "Reset";
   static const suhdding_3 =
       "Would you like to be notified on new resources available through airopply?";
+}
+
+class Message_text {
+  static const Hedding = "Messages";
+  static const Sagar_Patil = "Sagar Patil";
+  static const Lorem = "Lorem ipsum dolor sit amet";
+  static const hint_text = "Write something here...";
 }

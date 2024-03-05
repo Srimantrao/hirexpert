@@ -138,6 +138,7 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                         onTap: () {
                           vail.isEmtey();
                           vail.loginvalidation();
+                          Get.to(() => const Candidate_Bottam());
                         },
                         child: OnButtons(
                           Button_Color: AppColor.Button_color,

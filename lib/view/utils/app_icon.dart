@@ -28,6 +28,7 @@ class AppIcons {
   //bottam
   static const Jobs = "assets/icon/bottam/Jobs.svg";
   static const Messages = "assets/icon/bottam/Messages.svg";
+  static const Messages_Open = "assets/icon/bottam/Messages_Open.svg";
   static const Profile = "assets/icon/bottam/Profile.svg";
   static const Search = "assets/icon/bottam/Search Job.svg";
   static const open_job = "assets/icon/bottam/My_Jobs_open.svg";
@@ -42,6 +43,8 @@ class AppIcons {
   static const Layer_1 = "assets/icon/container/Layer_1.svg";
   static const Layer_2 = "assets/icon/container/Layer_2.svg";
   static const pro1 = "assets/icon/container/pro1.svg";
+  static const Write = "assets/icon/container/Write.svg";
+  static const Send = "assets/icon/container/Send.svg";
 
   //Arrow
   static const Backarrow = "assets/icon/arrow/Back.svg";

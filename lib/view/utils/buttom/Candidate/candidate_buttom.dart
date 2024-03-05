@@ -92,10 +92,21 @@ class _Candidate_BottamState extends State<Candidate_Bottam> {
                           width: Get.width / 32,
                         ),
                 ),
-                SvgPicture.asset(
-                  AppIcons.Messages,
-                  height: Get.height / 32,
-                  width: Get.width / 32,
+                InkWell(
+                  onTap: () {
+                    nav.SelectIndex_four();
+                  },
+                  child: (nav.Selectindex == 3)
+                      ? SvgPicture.asset(
+                          AppIcons.Messages_Open,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        )
+                      : SvgPicture.asset(
+                          AppIcons.Messages,
+                          height: Get.height / 32,
+                          width: Get.width / 32,
+                        ),
                 ),
               ],
             );
