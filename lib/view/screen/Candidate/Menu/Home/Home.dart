@@ -48,6 +48,8 @@ class Home extends StatelessWidget {
           ),
           child: Column(
             children: [
+
+              //Saved
               GestureDetector(
                 onTap: () {
                   Get.to(
@@ -65,6 +67,8 @@ class Home extends StatelessWidget {
                         ),
                 ),
               ),
+
+              //Applied
               GestureDetector(
                 onTap: () {
                   Get.to(() => const Show_Applied());
@@ -80,6 +84,8 @@ class Home extends StatelessWidget {
                         ),
                 ),
               ),
+
+              //Interviwe
               GestureDetector(
                 onTap: () {
                   Get.to(() => const Show_Interviwe());
@@ -89,6 +95,8 @@ class Home extends StatelessWidget {
                   name: My_Jobs_Screen.Interview,
                 ),
               ),
+
+              //Offer
               GestureDetector(
                 onTap: () {
                   Get.to(() => const Show_Offer());
@@ -98,6 +106,8 @@ class Home extends StatelessWidget {
                   name: My_Jobs_Screen.Offer,
                 ),
               ),
+
+              //Hired
               GestureDetector(
                 onTap: () {
                   Get.to(() => const Show_Hired());
@@ -107,6 +117,8 @@ class Home extends StatelessWidget {
                   name: My_Jobs_Screen.Hired,
                 ),
               ),
+
+              //Declined
               GestureDetector(
                 onTap: () {
                   Get.to(() => const Show_Declined());

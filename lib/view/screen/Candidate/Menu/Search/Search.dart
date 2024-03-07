@@ -70,55 +70,53 @@ class _SearchState extends State<Search> {
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
         ),
-        child: Expanded(
-          child: ListView.builder(
-            itemCount: showjob.length,
-            itemBuilder: (BuildContext context, int index) {
-              return JobSearch(
-                onTap: () {
-                  Get.to(
-                    () => Details(
-                      Icon: showjob[index]["Icon"],
-                      Color_container: showjob[index]["Container_color"],
-                      Job_Tital: showjob[index]["Job_tital"],
-                      Language: showjob[index]["Language"],
-                      Commpany: showjob[index]["Company_name"],
-                      Working: showjob[index]["Working"],
-                      Location: showjob[index]["Location"],
-                      Job_time: showjob[index]["job_time"],
-                      Exp: showjob[index]["Exp"],
-                      lake: showjob[index]["Sallary"],
-                      Hybrid: showjob[index]["Hybrid"],
-                      stats: showjob[index]["stats"],
-                    ),
-                  );
-                },
-                Icon: showjob[index]["Icon"],
-                Color_container: showjob[index]["Container_color"],
-                Job_Tital: showjob[index]["Job_tital"],
-                Language: showjob[index]["Language"],
-                Commpany: showjob[index]["Company_name"],
-                Working: showjob[index]["Working"],
-                Location: showjob[index]["Location"],
-                Job_time: showjob[index]["job_time"],
-                Exp: showjob[index]["Exp"],
-                lake: showjob[index]["Sallary"],
-                Hybrid: showjob[index]["Hybrid"],
-                stats: showjob[index]["stats"],
-                saveonTap: () {
-                  isSeved[index] = !isSeved[index];
-                  setState(() {});
-                  saveshowjob.add(showjob);
-                },
-                savechild: (isSeved[index])
-                    ? SvgPicture.asset(AppIcons.bookmark)
-                    : SvgPicture.asset(AppIcons.save),
-                top: BorderSide(
-                  color: AppColor.Bottam_color,
-                ),
-              );
-            },
-          ),
+        child: ListView.builder(
+          itemCount: showjob.length,
+          itemBuilder: (BuildContext context, int index) {
+            return JobSearch(
+              onTap: () {
+                Get.to(
+                  () => Details(
+                    Icon: showjob[index]["Icon"],
+                    Color_container: showjob[index]["Container_color"],
+                    Job_Tital: showjob[index]["Job_tital"],
+                    Language: showjob[index]["Language"],
+                    Commpany: showjob[index]["Company_name"],
+                    Working: showjob[index]["Working"],
+                    Location: showjob[index]["Location"],
+                    Job_time: showjob[index]["job_time"],
+                    Exp: showjob[index]["Exp"],
+                    lake: showjob[index]["Sallary"],
+                    Hybrid: showjob[index]["Hybrid"],
+                    stats: showjob[index]["stats"],
+                  ),
+                );
+              },
+              Icon: showjob[index]["Icon"],
+              Color_container: showjob[index]["Container_color"],
+              Job_Tital: showjob[index]["Job_tital"],
+              Language: showjob[index]["Language"],
+              Commpany: showjob[index]["Company_name"],
+              Working: showjob[index]["Working"],
+              Location: showjob[index]["Location"],
+              Job_time: showjob[index]["job_time"],
+              Exp: showjob[index]["Exp"],
+              lake: showjob[index]["Sallary"],
+              Hybrid: showjob[index]["Hybrid"],
+              stats: showjob[index]["stats"],
+              saveonTap: () {
+                isSeved[index] = !isSeved[index];
+                setState(() {});
+                saveshowjob.add(showjob);
+              },
+              savechild: (isSeved[index])
+                  ? SvgPicture.asset(AppIcons.bookmark)
+                  : SvgPicture.asset(AppIcons.save),
+              top: BorderSide(
+                color: AppColor.Bottam_color,
+              ),
+            );
+          },
         ),
       ),
     );

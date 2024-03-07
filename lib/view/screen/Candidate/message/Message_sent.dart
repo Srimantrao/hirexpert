@@ -22,13 +22,6 @@ class _Message_sentState extends State<Message_sent> {
   final channel = WebSocketChannel.connect(Uri.parse(AppUrl.WebSocket));
 
   @override
-  void dispose() {
-    channel.sink.close();
-    sendmessage.text;
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Padding(
@@ -159,5 +152,12 @@ class _Message_sentState extends State<Message_sent> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    channel.sink.close();
+    sendmessage.text;
+    super.dispose();
   }
 }

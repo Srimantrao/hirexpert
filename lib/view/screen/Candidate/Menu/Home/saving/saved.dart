@@ -45,25 +45,7 @@ class Saved extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     horizontal: size.width / 30,
                   ),
-                  child: ListView.builder(
-                    itemCount: saveshowjob.length,
-                    itemBuilder: (context, index) {
-                      return Seved_List(
-                        Icon: showjob[index]["Icon"],
-                        Color_container: showjob[index]["Container_color"],
-                        Job_Tital: showjob[index]["Job_tital"],
-                        Language: showjob[index]["Language"],
-                        Commpany: showjob[index]["Company_name"],
-                        Working: showjob[index]["Working"],
-                        Location: showjob[index]["Location"],
-                        Job_time: showjob[index]["job_time"],
-                        Exp: showjob[index]["Exp"],
-                        lake: showjob[index]["Sallary"],
-                        Hybrid: showjob[index]["Hybrid"],
-                        stats: showjob[index]["stats"],
-                      );
-                    },
-                  ),
+                  child: const Seved_List(),
                 ),
         ),
       ),
