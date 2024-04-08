@@ -453,49 +453,49 @@ class _SettingState extends State<Setting> {
                             return StatefulBuilder(
                               builder: (BuildContext context,
                                   void Function(void Function()) setState) {
-                                return SingleChildScrollView(
-                                  scrollDirection: Axis.vertical,
-                                  child: AlertDialog(
-                                    backgroundColor: AppColor.Full_body_color,
-                                    elevation: 0,
-                                    title: Container(
-                                      height: Get.height / 15,
-                                      width: Get.width,
-                                      decoration: BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(
-                                            color: AppColor.Buttom_color,
-                                          ),
+                                return AlertDialog(
+                                  backgroundColor: AppColor.Full_body_color,
+                                  elevation: 0,
+                                  title: Container(
+                                    height: Get.height / 15,
+                                    width: Get.width,
+                                    decoration: BoxDecoration(
+                                      border: Border(
+                                        bottom: BorderSide(
+                                          color: AppColor.Buttom_color,
                                         ),
                                       ),
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          const SizedBox(),
-                                          Text(
-                                            My_Archive_text.Old_Password,
-                                            style: TextStyle(
-                                              color: AppColor.subcolor,
-                                              fontSize: Get.width / 23,
-                                            ),
-                                          ),
-                                          InkWell(
-                                            onTap: () {
-                                              Get.back();
-                                            },
-                                            child: SvgPicture.asset(
-                                                AppIcons.cancel),
-                                          ),
-                                        ],
-                                      ),
                                     ),
-                                    content: Container(
-                                      width: Get.width,
-                                      height: Get.height / 2.8,
-                                      decoration: BoxDecoration(
-                                        color: AppColor.Full_body_color,
-                                      ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const SizedBox(),
+                                        Text(
+                                          My_Archive_text.Old_Password,
+                                          style: TextStyle(
+                                            color: AppColor.subcolor,
+                                            fontSize: Get.width / 23,
+                                          ),
+                                        ),
+                                        InkWell(
+                                          onTap: () {
+                                            Get.back();
+                                          },
+                                          child: SvgPicture.asset(
+                                              AppIcons.cancel),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  content: Container(
+                                    width: Get.width,
+                                    height: Get.height / 2.8,
+                                    decoration: BoxDecoration(
+                                      color: AppColor.Full_body_color,
+                                    ),
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.vertical,
                                       child: Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
@@ -699,40 +699,40 @@ class _SettingState extends State<Setting> {
                                         ],
                                       ),
                                     ),
-                                    actions: [
-                                      InkWell(
-                                        onTap: () {
-                                          if (old_pass.text.isEmpty) {
-                                            Old_passing = true;
-                                            Olding = "Plese Input Old Password";
-                                          } else {
-                                            Old_passing = false;
-                                            Olding = "";
-                                          }
-                                          if (new_pass.text.isEmpty) {
-                                            Old_passing = true;
-                                            Newing = "Plese Input Old Password";
-                                          } else {
-                                            Old_passing = false;
-                                            Newing = "";
-                                          }
-                                          if (conf_pass.text.isEmpty) {
-                                            Old_passing = true;
-                                            Confarm_Newing =
-                                                "Plese Input Old Password";
-                                          } else {
-                                            Old_passing = false;
-                                            Confarm_Newing = "";
-                                          }
-                                          setState(() {});
-                                        },
-                                        child: OnButtons(
-                                          Button_Color: AppColor.Button_color,
-                                          btn_name: Profile_Text.Change,
-                                        ),
-                                      ),
-                                    ],
                                   ),
+                                  actions: [
+                                    InkWell(
+                                      onTap: () {
+                                        if (old_pass.text.isEmpty) {
+                                          Old_passing = true;
+                                          Olding = "Plese Input Old Password";
+                                        } else {
+                                          Old_passing = false;
+                                          Olding = "";
+                                        }
+                                        if (new_pass.text.isEmpty) {
+                                          Old_passing = true;
+                                          Newing = "Plese Input Old Password";
+                                        } else {
+                                          Old_passing = false;
+                                          Newing = "";
+                                        }
+                                        if (conf_pass.text.isEmpty) {
+                                          Old_passing = true;
+                                          Confarm_Newing =
+                                              "Plese Input Old Password";
+                                        } else {
+                                          Old_passing = false;
+                                          Confarm_Newing = "";
+                                        }
+                                        setState(() {});
+                                      },
+                                      child: OnButtons(
+                                        Button_Color: AppColor.Button_color,
+                                        btn_name: Profile_Text.Change,
+                                      ),
+                                    ),
+                                  ],
                                 );
                               },
                             );

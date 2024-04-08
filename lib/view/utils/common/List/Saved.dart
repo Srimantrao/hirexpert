@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import '../../../../modal/Job/jobSearch_list.dart';
-import '../../../screen/Candidate/Menu/Search/Details_Search.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 
@@ -26,7 +24,7 @@ class _Seved_ListState extends State<Seved_List> {
       shrinkWrap: true,
       itemCount: saveshowjob.length,
       itemBuilder: (BuildContext context, int index) {
-        int itemCount = saveshowjob.length ?? 0;
+        int itemCount = saveshowjob.length;
         int reversedIndex = itemCount - 1 - index;
         return Container(
           height: size.height / 3.8,

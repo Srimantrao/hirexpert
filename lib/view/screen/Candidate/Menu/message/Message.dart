@@ -3,10 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:hirexpert/view/screen/Candidate/message/Message_sent.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 
-import '../../../utils/app_String.dart';
+import '../../../../utils/app_String.dart';
+import 'Message_sent.dart';
+
+
 
 class Message extends StatefulWidget {
   const Message({super.key});

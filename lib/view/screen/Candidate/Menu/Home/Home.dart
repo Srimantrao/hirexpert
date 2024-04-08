@@ -63,7 +63,9 @@ class Home extends StatelessWidget {
                       ? const SizedBox()
                       : CircleAvatar(
                           minRadius: 12,
-                          child: Text("${saveshowjob.length}"),
+                          child: Text(
+                            "${saveshowjob.length}",
+                          ),
                         ),
                 ),
               ),
@@ -80,7 +82,9 @@ class Home extends StatelessWidget {
                       ? const SizedBox()
                       : CircleAvatar(
                           minRadius: 12,
-                          child: Text("${appliedjob.length}"),
+                          child: Text(
+                            "${appliedjob.length}",
+                          ),
                         ),
                 ),
               ),

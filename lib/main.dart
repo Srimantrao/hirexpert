@@ -60,7 +60,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
-        ChangeNotifierProvider(create: (_) => Candidate_SpecializationController_popup()),
+        ChangeNotifierProvider(
+            create: (_) => Candidate_SpecializationController_popup()),
         ChangeNotifierProvider(
             create: (_) => Candidate_SpecializationController_Interest()),
         ChangeNotifierProvider(
@@ -81,12 +82,18 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Employer_LoginValidation()),
         ChangeNotifierProvider(create: (_) => Employer_VisibilityController()),
         ChangeNotifierProvider(create: (_) => Employer_SinupController()),
-        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_popup()),
-        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_popup()),
-        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Interest()),
-        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Interest()),
-        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Skillset()),
-        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Collection()),
+        ChangeNotifierProvider(
+            create: (_) => Employer_SpecializationController_popup()),
+        ChangeNotifierProvider(
+            create: (_) => Employer_SpecializationController_popup()),
+        ChangeNotifierProvider(
+            create: (_) => Employer_SpecializationController_Interest()),
+        ChangeNotifierProvider(
+            create: (_) => Employer_SpecializationController_Interest()),
+        ChangeNotifierProvider(
+            create: (_) => Employer_SpecializationController_Skillset()),
+        ChangeNotifierProvider(
+            create: (_) => Employer_SpecializationController_Collection()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

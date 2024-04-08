@@ -4,8 +4,8 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../view/screen/Candidate/Menu/Home/Home.dart';
 import '../../../view/screen/Candidate/Menu/Search/Search.dart';
+import '../../../view/screen/Candidate/Menu/message/Message.dart';
 import '../../../view/screen/Candidate/Menu/profile/information.dart';
-import '../../../view/screen/Candidate/message/Message.dart';
 
 class MenuNavigationController with ChangeNotifier {
   int _selectindex = 0;

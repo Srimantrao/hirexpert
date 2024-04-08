@@ -7,8 +7,7 @@ import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
-
-import '../../../utils/app_String.dart';
+import '../../../../utils/app_String.dart';
 
 class Message_sent extends StatefulWidget {
   const Message_sent({super.key});

@@ -81,8 +81,8 @@ class _Profile_infoState extends State<Profile_info> {
                           ],
                         ),
                         InkWell(
-                          onTap: (){
-                            Get.to(()=>const Setting());
+                          onTap: () {
+                            Get.to(() => const Setting());
                           },
                           child: Icon(
                             Icons.settings,
@@ -123,9 +123,8 @@ class _Profile_infoState extends State<Profile_info> {
                               ),
                               tabs: [
                                 Container_tab(
-                                  text: Profile_Text.Extra_Info,
-                                  tabcolor: Tabb.tabColor
-                                ),
+                                    text: Profile_Text.Extra_Info,
+                                    tabcolor: Tabb.tabColor),
                                 Container_tab(
                                   text: Profile_Text.My_Profile,
                                   tabcolor: Tabb.tabColor2,
