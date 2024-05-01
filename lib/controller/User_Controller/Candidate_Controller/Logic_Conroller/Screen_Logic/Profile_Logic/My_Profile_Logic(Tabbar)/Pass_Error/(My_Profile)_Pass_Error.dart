@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/utils/app_color.dart';
 
-import '../../../../../../../view/utils/app_color.dart';
 
 //Error
 class MyProfile_Error extends StatelessWidget {

@@ -2,13 +2,12 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/modal/Dropdowns/drops.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-import '../../../../../controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
+import '../../../../../controller/User_Controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
 import '../../../app_String.dart';
 import '../../../app_color.dart';
 import '../../../app_icon.dart';

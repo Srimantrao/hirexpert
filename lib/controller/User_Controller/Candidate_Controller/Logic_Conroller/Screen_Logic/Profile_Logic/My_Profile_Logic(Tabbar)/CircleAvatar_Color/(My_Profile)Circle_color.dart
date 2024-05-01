@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-
-import '../../../../../../../view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
 
 
 class Change_Circle extends StatelessWidget {

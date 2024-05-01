@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
-import '../../../../../../controller/Candidate_Controller/CheckMarkController/Notification_Controller.dart';
+import '../../../../../../controller/User_Controller/Candidate_Controller/CheckMarkController/Notification_Controller.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/common/Buttons/ShortButton.dart';
 import '../../../../../utils/common/Row/CheckMark.dart';

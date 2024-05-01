@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 
 import '../../../../view/utils/app_String.dart';
 
-
-
 class Candidate_SpecializationController_popup with ChangeNotifier {
   int _SelectIndex = 0;
   String _throwdrop = "";
