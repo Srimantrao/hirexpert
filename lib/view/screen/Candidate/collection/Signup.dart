@@ -8,8 +8,8 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/LoginControoler/visibility.dart';
-import '../../../../controller/Candidate_Controller/SignupController/SinupController.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 

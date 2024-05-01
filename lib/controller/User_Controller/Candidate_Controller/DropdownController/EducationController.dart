@@ -3,7 +3,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../view/utils/app_String.dart';
+import '../../../../view/utils/app_String.dart';
+
+
 
 
 class Education_Controller with ChangeNotifier {

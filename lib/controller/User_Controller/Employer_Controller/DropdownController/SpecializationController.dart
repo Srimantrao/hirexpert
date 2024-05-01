@@ -3,7 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../view/utils/app_String.dart';
+import '../../../../view/utils/app_String.dart';
+
 
 
 class Employer_SpecializationController_popup with ChangeNotifier {

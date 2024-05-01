@@ -8,7 +8,7 @@ import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Employer_Controller/DropdownController/SpecializationController.dart';
+import '../../../../controller/User_Controller/Employer_Controller/DropdownController/SpecializationController.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/common/Popup/Employer/Specialization_common.dart';
 

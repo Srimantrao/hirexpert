@@ -3,7 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../view/utils/app_String.dart';
+import '../../../../view/utils/app_String.dart';
+
 
 class PreferenceController with ChangeNotifier {
   bool _Perferncedrop = false;

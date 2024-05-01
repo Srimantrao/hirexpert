@@ -5,7 +5,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
-import '../../../../../controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
+import '../../../../../controller/User_Controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
 import '../../../../utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Document_profile.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';

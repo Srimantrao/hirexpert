@@ -6,7 +6,8 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 
-import '../../../view/screen/Candidate/collection/login.dart';
+import '../../../../view/screen/Candidate/collection/login.dart';
+
 
 class Candidate_SinupController with ChangeNotifier {
   TextEditingController frist_name = TextEditingController();

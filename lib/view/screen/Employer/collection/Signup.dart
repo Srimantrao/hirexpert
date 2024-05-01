@@ -3,14 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/screen/Employer/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Employer_Controller/LoginControoler/visibility.dart';
-import '../../../../controller/Employer_Controller/SignupController/SinupController.dart';
+import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/visibility.dart';
+import '../../../../controller/User_Controller/Employer_Controller/SignupController/SinupController.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 

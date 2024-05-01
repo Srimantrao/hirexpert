@@ -8,7 +8,7 @@ import 'package:hirexpert/view/screen/Candidate/collection/location.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/DropdownController/FresherController.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/DropdownController/FresherController.dart';
 import '../../../utils/aap_image.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/common/Popup/Candidate/fresher_comm.dart';

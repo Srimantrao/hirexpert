@@ -24,7 +24,7 @@ class _Seved_ListState extends State<Seved_List> {
       shrinkWrap: true,
       itemCount: saveshowjob.length,
       itemBuilder: (BuildContext context, int index) {
-        int itemCount = saveshowjob.length;
+        int itemCount = saveshowjob.length ?? 0;
         int reversedIndex = itemCount - 1 - index;
         return Container(
           height: size.height / 3.8,

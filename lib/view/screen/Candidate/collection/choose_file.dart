@@ -6,7 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/ChoseFileController/ChosefileController.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/ChoseFileController/ChosefileController.dart';
 import '../../../utils/aap_image.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/app_icon.dart';

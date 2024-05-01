@@ -8,7 +8,8 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
 
-import '../../../../controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
+
 
 class Candidate_Bottam extends StatefulWidget {
   const Candidate_Bottam({super.key});

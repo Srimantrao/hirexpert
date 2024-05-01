@@ -3,7 +3,8 @@
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:open_app_file/open_app_file.dart';
-import '../../../modal/Dropdowns/drops.dart';
+
+import '../../../../modal/Dropdowns/drops.dart';
 
 class My_ProfileController with ChangeNotifier {
   //Personal Information

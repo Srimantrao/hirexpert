@@ -2,15 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/Employer_Controller/LoginControoler/visibility.dart';
 import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
-import '../../../../controller/Candidate_Controller/LoginControoler/visibility.dart';
-import '../../../../controller/Employer_Controller/LoginControoler/LoginValidation.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
+import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
+import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/LoginValidation.dart';
+import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/visibility.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
 import 'forget_Password.dart';
