@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/PreferredWorkSetup/preferredWorkSetup.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -658,8 +659,9 @@ class _PrefferedState extends State<Preffered> {
                                                           isArea_fun();
                                                           ontext = Area_Gujarat[
                                                               index];
-                                                          ontext2 = Area_Gujarat[
-                                                          index];
+                                                          ontext2 =
+                                                              Area_Gujarat[
+                                                                  index];
                                                         }
                                                       });
                                                     },
@@ -1040,26 +1042,26 @@ class _SetupState extends State<Setup> {
               children: [
                 (Setup.isindex == 0)
                     ? Text(
-                        Location_text.Select,
-                        style: TextStyle(
-                          fontSize: Get.width / 23,
-                        ),
-                      )
+                  Location_text.Select,
+                  style: TextStyle(
+                    fontSize: Get.width / 23,
+                  ),
+                )
                     : Text(
-                        Setup.isString,
-                        style: TextStyle(
-                          fontSize: Get.width / 23,
-                        ),
-                      ),
+                  Setup.isString,
+                  style: TextStyle(
+                    fontSize: Get.width / 23,
+                  ),
+                ),
                 (Setup.istrue)
                     ? SvgPicture.asset(
-                        AppIcons.Right,
-                        color: AppColor.Bottam_color,
-                      )
+                  AppIcons.Right,
+                  color: AppColor.Bottam_color,
+                )
                     : SvgPicture.asset(
-                        AppIcons.down,
-                        color: AppColor.Bottam_color,
-                      ),
+                  AppIcons.down,
+                  color: AppColor.Bottam_color,
+                ),
               ],
             ),
           ),
