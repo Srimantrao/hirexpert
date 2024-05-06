@@ -10,12 +10,10 @@ class Preferredworksetup extends GetxController {
   var isloding = false.obs;
   var preferredWorkSetup_data;
 
-  Future preferredWorkSetup_Fuction() async {
+  Future<void> preferredWorkSetup_Fuction() async {
     try {
-      isloding.value = true;
-
       final preferredWorkSetup_responce =
-          await http.get(Uri.parse(AppUrl.preferredWork), headers: {
+      await http.get(Uri.parse(AppUrl.preferredWork), headers: {
         'API-KEY': '9B14C4E5260D960613FA525AC4378BA6',
         'Clientip': '192.16.1.115',
       });
@@ -27,8 +25,15 @@ class Preferredworksetup extends GetxController {
         }
       } else {
         if (kDebugMode) {
-          print("Error => ${preferredWorkSetup_responce.statusCode} , ${preferredWorkSetup_responce.body}");
+          print(
+            "Error => ${preferredWorkSetup_responce.statusCode},"
+                " ${preferredWorkSetup_responce.body}",
+          );
         }
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print('Error fetching preferred work setup: $e');
       }
     } finally {
       isloding.value = false;
