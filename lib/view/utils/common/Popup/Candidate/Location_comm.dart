@@ -3,11 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/PreferredWorkSetup/preferredWorkSetup.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Location/jobtype_API_controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Location/preferencetype_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:hirexpert/view/utils/common/showpop/showdialog.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/DropdownController/PreferenceController.dart';
 import '../../../../../modal/bottamsheet/Location_list.dart';
@@ -20,6 +22,16 @@ class Preference extends StatefulWidget {
   State<Preference> createState() => _PreferenceState();
 }
 class _PreferenceState extends State<Preference> {
+  JobtypeApiController Jobtype = Get.put(JobtypeApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() {
+      Jobtype.JobtypeApiController_Fuction();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Perfernce = Provider.of<PreferenceController>(
@@ -30,99 +42,55 @@ class _PreferenceState extends State<Preference> {
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {
-            Perfernce.Perferncedrop_true();
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    backgroundColor: AppColor.Full_body_color,
-                    elevation: 0,
-                    title: Container(
-                      height: Get.height / 15,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: AppColor.Bottam_color,
-                          ),
-                        ),
+            Perfernce.isselect_true();
+            Showdialog.showdialod(
+                Get.height / 3,
+                context,
+                Obx(() {
+                  if (Jobtype.isloding.value) {
+                    return const Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (Jobtype.jobtype_data == null) {
+                    return const Center(
+                      child: Text("No Data"),
+                    );
+                  } else {
+                    return SizedBox(
+                      height: Get.height / 3,
+                      child: ListView.builder(
+                        itemCount: Jobtype.jobtype_data['data'].length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Get.width / 30,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: Get.height / 50),
+                                GestureDetector(
+                                  onTap: () {
+                                    Perfernce.Select(Jobtype.jobtype_data['data'][index]);
+                                  },
+                                  child: Text(
+                                    Jobtype.jobtype_data['data'][index],
+                                    style: TextStyle(
+                                      fontSize: Get.width / 27,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
                       ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(),
-                          Text(
-                            Location_text.preference,
-                            style: TextStyle(
-                              fontSize: Get.width / 24,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Perfernce.Perferncedrop_false();
-                              Get.back();
-                            },
-                            child: SvgPicture.asset(AppIcons.cancel),
-                          ),
-                        ],
-                      ),
-                    ),
-                    content: Container(
-                      height: Get.height / 5,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        color: AppColor.Full_body_color,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              onTap: () {
-                                Perfernce.Full_Time();
-                              },
-                              child: Text(
-                                Location_text.Full_Time,
-                                style: TextStyle(fontSize: Get.width / 24),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 40),
-                            InkWell(
-                              onTap: () {
-                                Perfernce.Contrct();
-                              },
-                              child: Text(
-                                Location_text.Contract,
-                                style: TextStyle(fontSize: Get.width / 24),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 40),
-                            InkWell(
-                              onTap: () {
-                                Perfernce.Internship();
-                              },
-                              child: Text(
-                                Location_text.Internship,
-                                style: TextStyle(fontSize: Get.width / 24),
-                              ),
-                            ),
-                            SizedBox(height: Get.height / 40),
-                            InkWell(
-                              onTap: () {
-                                Perfernce.Part_Time();
-                              },
-                              child: Text(
-                                Location_text.Part_Time,
-                                style: TextStyle(fontSize: Get.width / 24),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+                    );
+                  }
+                }),
+                Location_text.preference,
+                () {
+                  Perfernce.isselect_false();
                 });
           },
           child: Container(
@@ -141,16 +109,14 @@ class _PreferenceState extends State<Preference> {
                 Row(
                   children: [
                     Text(
-                      (Perfernce.Perferenceindex == 0)
-                          ? Location_text.Select
-                          : Perfernce.Perferencestring,
+                      (Perfernce.isselect) ? Location_text.Select : Perfernce.select,
                       style: TextStyle(
                         fontSize: Get.width / 23,
                       ),
                     ),
                   ],
                 ),
-                (Perfernce.Perferncedrop)
+                (Perfernce.isselect)
                     ? SvgPicture.asset(
                         AppIcons.Right,
                         color: AppColor.Bottam_color,
@@ -927,6 +893,20 @@ class Setup extends StatefulWidget {
   State<Setup> createState() => _SetupState();
 }
 class _SetupState extends State<Setup> {
+  bool isselect = true;
+  String select = "";
+
+  PreferencetypeApiController Preferencetype =
+      Get.put(PreferencetypeApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() {
+      Preferencetype.PreferencetypeApiController_fuction();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Setup = Provider.of<SetupController>(context, listen: false);
@@ -934,98 +914,55 @@ class _SetupState extends State<Setup> {
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {
-            Setup.istrue_true();
-            Setup.isnext_fun();
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    backgroundColor: AppColor.Full_body_color,
-                    elevation: 0,
-                    title: Container(
-                      height: Get.height / 15,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: AppColor.Bottam_color,
-                          ),
-                        ),
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          const SizedBox(),
-                          Text(
-                            Location_text.Work,
-                            style: TextStyle(
-                              fontSize: Get.width / 24,
-                              fontWeight: FontWeight.w600,
+            Setup.isselect_true();
+            setState(() {});
+            Showdialog.showdialod(
+              Get.height / 5,
+              context,
+              Obx(() {
+                if (Preferencetype.islodind.value) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                } else if (Preferencetype.Preferencetype_data == null) {
+                  return const Center(
+                    child: Text("No Data"),
+                  );
+                } else {
+                  return SizedBox(
+                    height: Get.height / 5,
+                    child: ListView.builder(
+                      itemCount:
+                          Preferencetype.Preferencetype_data['data'].length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: Get.height / 50),
+                            GestureDetector(
+                              onTap: () {
+                                Setup.Select(Preferencetype.Preferencetype_data['data'][index]);
+                              },
+                              child: Text(
+                                Preferencetype.Preferencetype_data['data']
+                                    [index],
+                                style: TextStyle(
+                                  fontSize: Get.width / 27,
+                                ),
+                              ),
                             ),
-                          ),
-                          InkWell(
-                            onTap: () {
-                              Get.back();
-                              Setup.istrue_false();
-                            },
-                            child: SvgPicture.asset(AppIcons.cancel),
-                          ),
-                        ],
-                      ),
-                    ),
-                    content: Container(
-                      height: Get.height / 5,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        color: AppColor.Full_body_color,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Setup.Remote_Work_fun();
-                            },
-                            child: Text(
-                              Location_text.Remote_Work,
-                              style: TextStyle(fontSize: Get.width / 24),
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          InkWell(
-                            onTap: () {
-                              Setup.In_Office_fun();
-                            },
-                            child: Text(
-                              Location_text.In_Office,
-                              style: TextStyle(fontSize: Get.width / 24),
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          InkWell(
-                            onTap: () {
-                              Setup.Hybrid_fun();
-                            },
-                            child: Text(
-                              Location_text.Hybrid,
-                              style: TextStyle(fontSize: Get.width / 24),
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          InkWell(
-                            onTap: () {
-                              Setup.Any_fun();
-                            },
-                            child: Text(
-                              Location_text.Any,
-                              style: TextStyle(fontSize: Get.width / 24),
-                            ),
-                          ),
-                        ],
-                      ),
+                          ],
+                        );
+                      },
                     ),
                   );
-                });
+                }
+              }),
+              Location_text.Work,
+              () {
+                Setup.isselect_false();
+              },
+            );
           },
           child: Container(
             height: Get.height / 17,
@@ -1040,28 +977,28 @@ class _SetupState extends State<Setup> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                (Setup.isindex == 0)
+                (Setup.isselect)
                     ? Text(
-                  Location_text.Select,
-                  style: TextStyle(
-                    fontSize: Get.width / 23,
-                  ),
-                )
+                        Location_text.Select,
+                        style: TextStyle(
+                          fontSize: Get.width / 23,
+                        ),
+                      )
                     : Text(
-                  Setup.isString,
-                  style: TextStyle(
-                    fontSize: Get.width / 23,
-                  ),
-                ),
-                (Setup.istrue)
+                        Setup.select,
+                        style: TextStyle(
+                          fontSize: Get.width / 23,
+                        ),
+                      ),
+                (Setup.isselect)
                     ? SvgPicture.asset(
-                  AppIcons.Right,
-                  color: AppColor.Bottam_color,
-                )
+                        AppIcons.Right,
+                        color: AppColor.Bottam_color,
+                      )
                     : SvgPicture.asset(
-                  AppIcons.down,
-                  color: AppColor.Bottam_color,
-                ),
+                        AppIcons.down,
+                        color: AppColor.Bottam_color,
+                      ),
               ],
             ),
           ),

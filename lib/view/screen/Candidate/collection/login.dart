@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
@@ -22,6 +23,8 @@ class Candidate_Login extends StatefulWidget {
 }
 
 class _Candidate_LoginState extends State<Candidate_Login> {
+  OptionApiController login = Get.put(OptionApiController());
+
   @override
   Widget build(BuildContext context) {
     final vis = Provider.of<Candidate_VisibilityController>(
@@ -138,7 +141,12 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                         onTap: () {
                           vail.isEmtey();
                           vail.loginvalidation();
-                          Get.to(() => const Candidate_Bottam());
+                          login.OptionApiController_fuction(
+                            UserType: 'Candidate',
+                            Email: vail.EmailController.text,
+                            Password: vail.PasswordController.text,
+                          );
+                          // Get.to(() => const Candidate_Bottam());
                         },
                         child: OnButtons(
                           Button_Color: AppColor.Button_color,

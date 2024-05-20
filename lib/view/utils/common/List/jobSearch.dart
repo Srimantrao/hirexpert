@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../app_color.dart';
-import '../../app_icon.dart';
 
 class JobSearch extends StatefulWidget {
   final String Icon;
@@ -50,7 +49,6 @@ class JobSearch extends StatefulWidget {
 }
 
 class _JobSearchState extends State<JobSearch> {
-
   bool isSeved = false;
 
   @override
@@ -134,7 +132,7 @@ class _JobSearchState extends State<JobSearch> {
                         ),
                       ],
                     ),
-                    SizedBox(width: size.width/7),
+                    SizedBox(width: size.width / 7),
                     GestureDetector(
                       onTap: widget.saveonTap,
                       child: widget.savechild,
@@ -275,7 +273,7 @@ class _JobSearchState extends State<JobSearch> {
                     ),
                   ],
                 ),
-                SizedBox(height: size.height/70),
+                SizedBox(height: size.height / 70),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [

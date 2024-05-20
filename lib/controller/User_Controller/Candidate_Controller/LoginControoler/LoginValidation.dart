@@ -69,7 +69,7 @@ class Candidate_LoginValidation with ChangeNotifier {
     } else {
       _isError = false;
       _throwErrorEmail = "";
-      Get.to(() => const Candidate_Bottam());
+      // Get.to(() => const Candidate_Bottam());
       notifyListeners();
     }
   }

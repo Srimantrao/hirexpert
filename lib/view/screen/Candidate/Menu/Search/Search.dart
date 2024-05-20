@@ -1,11 +1,11 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import '../../../../../controller/API_Cobtroller/Candidate/Menu/Search/SearchJob_API_Controller.dart';
 import '../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/common/List/jobSearch.dart';
@@ -20,7 +20,17 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
-  
+  SearchjobApiController_API Search_API = Get.put(SearchjobApiController_API());
+
+  @override
+  void initState() {
+    Search_API.SearchjobController_Fuction(
+      Timezone: 'asia/kolkata',
+      CandidateId: '45',
+    );
+    super.initState();
+  }
+
   List<bool> isSeved = List.generate(showjob.length, (index) => false);
 
   @override
@@ -79,9 +89,9 @@ class _SearchState extends State<Search> {
                   () => Details(
                     Icon: showjob[index]["Icon"],
                     Color_container: showjob[index]["Container_color"],
-                    Job_Tital: showjob[index]["Job_tital"],
+                    Job_Tital: showjob[index]['Job_tital'],
                     Language: showjob[index]["Language"],
-                    Commpany: showjob[index]["Company_name"],
+                    Commpany: showjob[index]['Company_name'],
                     Working: showjob[index]["Working"],
                     Location: showjob[index]["Location"],
                     Job_time: showjob[index]["job_time"],

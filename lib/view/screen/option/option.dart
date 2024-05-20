@@ -1,6 +1,5 @@
 // ignore_for_file: non_constant_identifier_names
 
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
@@ -9,8 +8,8 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
 
+import '../../../controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import '../../../controller/User_Controller/Option_Controller/SelectButton.dart';
-
 
 class Option extends StatefulWidget {
   const Option({super.key});
@@ -22,6 +21,8 @@ class Option extends StatefulWidget {
 class _OptionState extends State<Option> {
   @override
   Widget build(BuildContext context) {
+    OptionApiController option_api = Get.put(OptionApiController());
+
     final select = Provider.of<SelectButtonsController>(
       context,
       listen: false,
@@ -44,9 +45,9 @@ class _OptionState extends State<Option> {
                 builder: (BuildContext context, value, Widget? child) {
                   return Column(
                     children: [
-                      SizedBox(height: Get.height/10),
+                      SizedBox(height: Get.height / 10),
                       Image.asset(AppIcons.logo, scale: 5),
-                      SizedBox(height: Get.height/10),
+                      SizedBox(height: Get.height / 10),
                       SizedBox(
                         width: Get.width / 1.2,
                         child: Text(
@@ -76,6 +77,9 @@ class _OptionState extends State<Option> {
                       //Employer
                       InkWell(
                         onTap: () {
+                          option_api.OptionApiController_fuction(
+                            UserType: 'Company',
+                          );
                           select.Select();
                         },
                         child: WideButton(
@@ -100,6 +104,9 @@ class _OptionState extends State<Option> {
                       //Candidate
                       InkWell(
                         onTap: () {
+                          option_api.OptionApiController_fuction(
+                            UserType: 'Candidate',
+                          );
                           select.SelectSecond();
                         },
                         child: WideButton(
