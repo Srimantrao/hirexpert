@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -23,6 +25,8 @@ class Employer_Login extends StatefulWidget {
 }
 
 class _Employer_LoginState extends State<Employer_Login> {
+  OptionApiController Employer_login = Get.put(OptionApiController());
+
   @override
   Widget build(BuildContext context) {
     final vis = Provider.of<Employer_VisibilityController>(
@@ -140,6 +144,11 @@ class _Employer_LoginState extends State<Employer_Login> {
                         onTap: () {
                           vail.isEmtey();
                           vail.loginvalidation();
+                          Employer_login.OptionApiController_fuction(
+                            UserType: 'Company',
+                            Email: vail.EmailController.text,
+                            Password: vail.PasswordController.text,
+                          );
                         },
                         child: OnButtons(
                           Button_Color: AppColor.Button_color,

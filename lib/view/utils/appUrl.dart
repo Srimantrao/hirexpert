@@ -4,6 +4,7 @@ class AppUrl {
   static const WebSocket = "wss://echo.websocket.events";
   static const Hirexpert = "http://192.168.1.137/stage_gohire/";
 
+  //Candidate
   //Popup
   static const preferredWork = "$Hirexpert/api/v1/user/preferredWorkSetupList";
   static const Jobtype = "$Hirexpert/api/v1/user/jobTypeList";
@@ -17,4 +18,12 @@ class AppUrl {
   static const login = "$Hirexpert/api/v1/user/login";
   static const Sinup = "$Hirexpert/api/v1/user/candidateSignup";
   static const OTP = "$Hirexpert/api/v1/user/candidateOTPVerified/NTU=";
+
+  //Notification
+  static const Notification = "$Hirexpert/api/v1/user/userNotification";
+
+
+  //Employer
+  //Collcetion
+  static const Employer_Signup = "$Hirexpert/api/v1/user/employerSignup";
 }

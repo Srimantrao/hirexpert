@@ -1,8 +1,9 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../../controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
@@ -51,7 +52,8 @@ class _SearchState extends State<Search> {
           ),
         ),
         actions: [
-          InkWell(
+          //Search
+          GestureDetector(
             onTap: () {
               Get.to(() => const Search_location());
             },
@@ -62,10 +64,17 @@ class _SearchState extends State<Search> {
             ),
           ),
           SizedBox(width: Get.width / 50),
-          Icon(
-            Icons.notifications_none,
-            color: AppColor.subcolor,
-            size: 30,
+
+          //Notification
+          GestureDetector(
+            onTap: () {
+              Get.to(() => Notification_Screen());
+            },
+            child: Icon(
+              Icons.notifications_none,
+              color: AppColor.subcolor,
+              size: 30,
+            ),
           ),
           SizedBox(width: Get.width / 50),
           Icon(
@@ -153,6 +162,7 @@ class _SearchState extends State<Search> {
       ),
     );
   }
+
   @override
   void dispose() {
     Search.SearchApiController_fuction(

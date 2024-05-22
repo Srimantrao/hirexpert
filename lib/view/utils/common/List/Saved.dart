@@ -117,7 +117,7 @@ class _Seved_ListState extends State<Seved_List> {
                               // _Search.Search_data['data'][index]["TechName"],
                               saveshowjob[index]['TechName'],
                               style: TextStyle(
-                                fontSize: size.width / 23,
+                                fontSize: size.width / 26,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),

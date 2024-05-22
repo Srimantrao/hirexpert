@@ -5,6 +5,7 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Home/saving/saved.dart';
+import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -32,7 +33,13 @@ class Home extends StatelessWidget {
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
+          GestureDetector(
+              onTap: () {
+                Get.to(
+                  () => const Notification_Screen(),
+                );
+              },
+              child: const Icon(Icons.notifications)),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -48,7 +55,6 @@ class Home extends StatelessWidget {
           ),
           child: Column(
             children: [
-
               //Saved
               GestureDetector(
                 onTap: () {

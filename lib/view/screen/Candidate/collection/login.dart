@@ -122,7 +122,7 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          InkWell(
+                          GestureDetector(
                             onTap: () {
                               Get.to(() => const Candidate_F_Password());
                             },
@@ -137,27 +137,26 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                         ],
                       ),
                       SizedBox(height: Get.height / 20),
-                      InkWell(
-                          onTap: () {
-                            vail.isEmtey();
-                            vail.loginvalidation();
-                            login.OptionApiController_fuction(
-                              UserType: 'Candidate',
-                              Email: vail.EmailController.text,
-                              Password: vail.PasswordController.text,
-                            );
-                            Get.to(() => const Candidate_Bottam());
-                          },
-                          child: Obx(
-                            () => (login.isLodingvalue.value)
-                                ? const Center(
-                                    child: CircularProgressIndicator(),
-                                  )
-                                : OnButtons(
-                                    Button_Color: AppColor.Button_color,
-                                    btn_name: Login_text.btn_name,
-                                  ),
-                          )),
+                      Obx(
+                        () => (login.isLodingvalue.value)
+                            ? const Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : OnButtons(
+                                onTap: () {
+                                  vail.isEmtey();
+                                  vail.loginvalidation();
+                                  login.OptionApiController_fuction(
+                                    UserType: 'Candidate',
+                                    Email: vail.EmailController.text,
+                                    Password: vail.PasswordController.text,
+                                  );
+                                  Get.to(() => const Candidate_Bottam());
+                                },
+                                Button_Color: AppColor.Button_color,
+                                btn_name: Login_text.btn_name,
+                              ),
+                      ),
                       SizedBox(height: Get.height / 40),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -170,7 +169,7 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                             ),
                           ),
                           SizedBox(width: Get.width / 60),
-                          InkWell(
+                          GestureDetector(
                             onTap: () {
                               Get.to(() => const candidate_Signup());
                             },

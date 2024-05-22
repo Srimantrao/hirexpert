@@ -1,8 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, file_names, camel_case_types
 
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Employer/Collction/Sinup/employer_API_Sinup_controller.dart';
 import 'package:hirexpert/view/screen/Employer/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -21,6 +21,9 @@ class Employer_Signup extends StatefulWidget {
 }
 
 class _Employer_SignupState extends State<Employer_Signup> {
+  EmployerApiSinupController Employer_Sinup =
+      Get.put(EmployerApiSinupController());
+
   @override
   Widget build(BuildContext context) {
     final vail = Provider.of<Employer_SinupController>(
@@ -204,9 +207,16 @@ class _Employer_SignupState extends State<Employer_Signup> {
                       InkWell(
                         onTap: () {
                           vail.SingupValidation();
-                          Get.to(
-                            () => const Employer_Specialization(),
+                          Employer_Sinup.EmployerApiSinupController_Fuction(
+                            FirstName: vail.frist_name.text,
+                            LastName: vail.last_name.text,
+                            Email: vail.email.text,
+                            Password: vail.password.text,
+                            ComName: 'WT1',
                           );
+                          // Get.to(
+                          //   () => const Employer_Specialization(),
+                          // );
                         },
                         child: OnButtons(
                           Button_Color: AppColor.Button_color,

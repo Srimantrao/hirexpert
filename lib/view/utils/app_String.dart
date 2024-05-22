@@ -4,7 +4,6 @@
 class API_Error{
   static const null_data = "Soory, Your Data Not Found";
 }
-
 class Navigator_text {
   static const Next = "Next";
   static const Back = "Back";
@@ -634,6 +633,7 @@ class My_Archive_text {
 //My Notification
 class Notification_text {
   static const Hedding = "Notification Setting";
+  static const titel = "Notification";
   static const subheding =
       "Airopply can notify you when you have a job match what's your preference?";
   static const Update_me_once_per_week = "Update me once per week";
