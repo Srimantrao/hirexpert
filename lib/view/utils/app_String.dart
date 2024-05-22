@@ -1,6 +1,9 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, file_names
 
 //DropDown Menu
+class API_Error{
+  static const null_data = "Soory, Your Data Not Found";
+}
 
 class Navigator_text {
   static const Next = "Next";

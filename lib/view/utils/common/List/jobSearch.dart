@@ -1,32 +1,33 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types, file_names
+// ignore_for_file: non_constant_identifier_names, camel_case_types, file_names, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import '../../app_color.dart';
 
 class JobSearch extends StatefulWidget {
-  final String Icon;
-  final Color Color_container;
-  final String Job_Tital;
-  final String Language;
-  final String Commpany;
-  final String Working;
-  final String Location;
-  final String Job_time;
-  final String Exp;
-  final String lake;
-  final String Hybrid;
-  final String stats;
-  final BorderSide top;
-  final BorderSide? bottam;
-  final void Function()? onTap;
-  final void Function()? saveonTap;
-  final Widget? savechild;
+  String Icon;
+  Color? Color_container;
+  String Job_Tital;
+  String Language;
+  String Commpany;
+  String Working;
+  String Location;
+  String Job_time;
+  String Exp;
+  String lake;
+  String Hybrid;
+  String stats;
+  BorderSide top;
+  BorderSide? bottam;
+  void Function()? onTap;
+  void Function()? saveonTap;
+  Widget? savechild;
 
-  const JobSearch({
+  JobSearch({
     super.key,
     required this.Icon,
-    required this.Color_container,
+    this.Color_container,
     required this.Job_Tital,
     required this.Language,
     required this.Commpany,
@@ -97,33 +98,36 @@ class _JobSearchState extends State<JobSearch> {
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(15),
-                          child: SvgPicture.asset(widget.Icon),
+                          child: Image.network(widget.Icon ?? ''),
                         ),
                       ),
                     ),
-                    SizedBox(width: size.width / 50),
+                    SizedBox(width: size.width / 25),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Row(
                           children: [
                             Text(
-                              widget.Job_Tital,
+                              widget.Job_Tital ?? '',
                               style: TextStyle(
                                 color: AppColor.subcolor,
                               ),
                             ),
                           ],
                         ),
-                        Text(
-                          widget.Language,
-                          style: TextStyle(
-                            fontSize: size.width / 23,
-                            fontWeight: FontWeight.w600,
+                        SizedBox(
+                          width: Get.width / 2,
+                          child: Text(
+                            widget.Language ?? '',
+                            style: TextStyle(
+                              fontSize: size.width / 26,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         Text(
-                          widget.Commpany,
+                          widget.Commpany ?? '',
                           style: TextStyle(
                             fontSize: size.width / 26,
                             fontWeight: FontWeight.w400,
@@ -155,7 +159,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.Working,
+                              widget.Working ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -165,8 +169,8 @@ class _JobSearchState extends State<JobSearch> {
                         ),
                         SizedBox(width: size.width / 40),
                         Container(
-                          width: size.width / 7,
-                          height: size.height / 25,
+                          width: size.width / 4,
+                          height: size.height / 22,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                               size.width / 60,
@@ -174,11 +178,15 @@ class _JobSearchState extends State<JobSearch> {
                             color: AppColor.ditalis_conatiner,
                           ),
                           child: Center(
-                            child: Text(
-                              widget.Location,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: size.width / 30,
+                            child: Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: Get.width / 30),
+                              child: Text(
+                                widget.Location ?? '',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: size.width / 30,
+                                ),
                               ),
                             ),
                           ),
@@ -195,7 +203,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.Job_time,
+                              widget.Job_time ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -220,7 +228,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.Exp,
+                              widget.Exp ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 35,
@@ -240,7 +248,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.lake,
+                              widget.lake ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -251,19 +259,24 @@ class _JobSearchState extends State<JobSearch> {
                         SizedBox(width: size.width / 40),
                         Container(
                           width: size.width / 5,
-                          height: size.height / 25,
+                          height: size.height / 21,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(
                               size.width / 60,
                             ),
                             color: AppColor.ditalis_conatiner,
                           ),
-                          child: Center(
-                            child: Text(
-                              widget.Hybrid,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: size.width / 30,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: Get.width / 30),
+                            child: Center(
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                widget.Hybrid ?? '',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: size.width / 30,
+                                ),
                               ),
                             ),
                           ),
@@ -278,7 +291,7 @@ class _JobSearchState extends State<JobSearch> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      widget.stats,
+                      widget.stats ?? '',
                       style: TextStyle(
                         color: AppColor.subcolor,
                       ),

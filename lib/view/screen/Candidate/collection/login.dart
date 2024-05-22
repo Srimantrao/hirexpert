@@ -138,21 +138,26 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                       ),
                       SizedBox(height: Get.height / 20),
                       InkWell(
-                        onTap: () {
-                          vail.isEmtey();
-                          vail.loginvalidation();
-                          login.OptionApiController_fuction(
-                            UserType: 'Candidate',
-                            Email: vail.EmailController.text,
-                            Password: vail.PasswordController.text,
-                          );
-                          // Get.to(() => const Candidate_Bottam());
-                        },
-                        child: OnButtons(
-                          Button_Color: AppColor.Button_color,
-                          btn_name: Login_text.btn_name,
-                        ),
-                      ),
+                          onTap: () {
+                            vail.isEmtey();
+                            vail.loginvalidation();
+                            login.OptionApiController_fuction(
+                              UserType: 'Candidate',
+                              Email: vail.EmailController.text,
+                              Password: vail.PasswordController.text,
+                            );
+                            Get.to(() => const Candidate_Bottam());
+                          },
+                          child: Obx(
+                            () => (login.isLodingvalue.value)
+                                ? const Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                : OnButtons(
+                                    Button_Color: AppColor.Button_color,
+                                    btn_name: Login_text.btn_name,
+                                  ),
+                          )),
                       SizedBox(height: Get.height / 40),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,

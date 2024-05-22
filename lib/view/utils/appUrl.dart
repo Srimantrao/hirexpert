@@ -15,4 +15,6 @@ class AppUrl {
 
   //Collcetion
   static const login = "$Hirexpert/api/v1/user/login";
+  static const Sinup = "$Hirexpert/api/v1/user/candidateSignup";
+  static const OTP = "$Hirexpert/api/v1/user/candidateOTPVerified/NTU=";
 }

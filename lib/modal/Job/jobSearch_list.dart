@@ -91,5 +91,5 @@ List showjob = [
   },
 ];
 
-List saveshowjob = [];
+List<Map<String,dynamic>> saveshowjob = [];
 List appliedjob = [];

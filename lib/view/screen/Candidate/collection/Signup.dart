@@ -1,8 +1,11 @@
 // ignore_for_file: non_constant_identifier_names, file_names, camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Sinup/sinup_API_controller.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -12,7 +15,6 @@ import '../../../../controller/User_Controller/Candidate_Controller/LoginControo
 import '../../../../controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
-
 
 class candidate_Signup extends StatefulWidget {
   const candidate_Signup({super.key});
@@ -24,8 +26,11 @@ class candidate_Signup extends StatefulWidget {
 class _candidate_SignupState extends State<candidate_Signup> {
   @override
   Widget build(BuildContext context) {
+    SinupApiController Sinup_API = Get.put(SinupApiController());
+
     final vail = Provider.of<Candidate_SinupController>(context, listen: false);
-    final vis = Provider.of<Candidate_VisibilityController>(context, listen: false);
+    final vis =
+        Provider.of<Candidate_VisibilityController>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -43,14 +48,14 @@ class _candidate_SignupState extends State<candidate_Signup> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Get.height/20),
+                      SizedBox(height: Get.height / 20),
                       Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: Get.width / 6.5,
                         ),
                         child: Image.asset(AppIcons.logo, scale: 6),
                       ),
-                      SizedBox(height: Get.height/20),
+                      SizedBox(height: Get.height / 20),
                       Text(
                         Signup_text.Sign_Up,
                         style: TextStyle(
@@ -186,7 +191,9 @@ class _candidate_SignupState extends State<candidate_Signup> {
                       ),
                       (vail.isError)
                           ? Text(
-                              vail.isError ? vail.throwConfirmPasswordError : "",
+                              vail.isError
+                                  ? vail.throwConfirmPasswordError
+                                  : "",
                               style: TextStyle(
                                 fontSize: Get.width / 25,
                                 color: AppColor.Error_color,
@@ -197,14 +204,28 @@ class _candidate_SignupState extends State<candidate_Signup> {
                       InkWell(
                         onTap: () {
                           vail.SingupValidation();
-                          Get.to(
-                            () => const Candidate_Specialization(),
-                          );
+                          // Get.to(
+                          //   () => const Candidate_Specialization(),
+                          // );
                         },
-                        child: OnButtons(
-                          Button_Color: AppColor.Button_color,
-                          btn_name: Signup_text.Sign_Up,
-                        ),
+                        child: (Sinup_API.isLoding.value)
+                            ? const Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : OnButtons(
+                                onTap: () {
+                                  Sinup_API.SinupApiController_faction(
+                                    FirstName: vail.frist_name.text,
+                                    LastName: vail.last_name.text,
+                                    Email: vail.email.text,
+                                    Password: vail.password.text,
+                                    Phone: vail.phone.text,
+                                  );
+                                  Get.to(() => const OTP());
+                                },
+                                Button_Color: AppColor.Button_color,
+                                btn_name: Signup_text.Sign_Up,
+                              ),
                       ),
                       SizedBox(height: Get.height / 50),
                       Row(

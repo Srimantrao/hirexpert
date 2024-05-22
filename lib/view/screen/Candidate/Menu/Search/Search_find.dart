@@ -2,15 +2,16 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../utils/common/List/jobSearch.dart';
 import '../../../../utils/common/Popup/Candidate/Search_Job(Conatiner).dart';
 import 'Details_Search.dart';
-
 
 class Search_find extends StatefulWidget {
   final String OnString;
@@ -22,6 +23,19 @@ class Search_find extends StatefulWidget {
 }
 
 class _Search_findState extends State<Search_find> {
+  SearchApiController Search = Get.put(SearchApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await Search.SearchApiController_fuction(
+        Timezone: 'asia/kolkata',
+        CandidateId: '61',
+      );
+    });
+    super.initState();
+  }
+
   List<bool> isSeved = List.generate(showjob.length, (index) => false);
 
   @override
@@ -38,24 +52,30 @@ class _Search_findState extends State<Search_find> {
           SizedBox(
             height: Get.height / 1.6,
             child: ListView.builder(
-              itemCount: showjob.length,
+              itemCount: Search.Search_data['data'].length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
                   onTap: () {
                     Get.to(
                       () => Details(
-                        Icon: showjob[index]["Icon"],
+                        Icon: Search.Search_data['data'][index]['ComLogo'],
                         Color_container: showjob[index]["Container_color"],
-                        Job_Tital: showjob[index]["Job_tital"],
-                        Language: showjob[index]["Language"],
-                        Commpany: showjob[index]["Company_name"],
-                        Working: showjob[index]["Working"],
-                        Location: showjob[index]["Location"],
-                        Job_time: showjob[index]["job_time"],
-                        Exp: showjob[index]["Exp"],
-                        lake: showjob[index]["Sallary"],
-                        Hybrid: showjob[index]["Hybrid"],
-                        stats: showjob[index]["stats"],
+                        Job_Tital: Search.Search_data['data'][index]
+                        ['JobTitle'],
+                        Language: Search.Search_data['data'][index]
+                        ['TechName'],
+                        Commpany: Search.Search_data['data'][index]
+                        ['ComName'],
+                        Working: Search.Search_data['data'][index]
+                        ["WorkWeek"],
+                        Location: Search.Search_data['data'][index]
+                        ["Location"],
+                        Job_time: Search.Search_data['data'][index]
+                        ['JobType'],
+                        Exp: Search.Search_data['data'][index]["Experience"],
+                        lake: Search.Search_data['data'][index]["Salary"],
+                        Hybrid: Search.Search_data['data'][index]["WorkSet"],
+                        stats: Search.Search_data['data'][index]["FormatDt"],
                       ),
                     );
                   },
@@ -63,7 +83,7 @@ class _Search_findState extends State<Search_find> {
                     saveonTap: () {
                       isSeved[index] = !isSeved[index];
                       setState(() {});
-                      saveshowjob.add(showjob);
+                      saveshowjob.add(Search.Search_data['data'][index]);
                     },
                     savechild: (isSeved[index])
                         ? SvgPicture.asset(AppIcons.bookmark)
@@ -71,18 +91,24 @@ class _Search_findState extends State<Search_find> {
                     top: BorderSide(
                       color: AppColor.Bottam_color,
                     ),
-                    Icon: showjob[index]["Icon"],
+                    Icon: Search.Search_data['data'][index]['ComLogo'],
                     Color_container: showjob[index]["Container_color"],
-                    Job_Tital: showjob[index]["Job_tital"],
-                    Language: showjob[index]["Language"],
-                    Commpany: showjob[index]["Company_name"],
-                    Working: showjob[index]["Working"],
-                    Location: showjob[index]["Location"],
-                    Job_time: showjob[index]["job_time"],
-                    Exp: showjob[index]["Exp"],
-                    lake: showjob[index]["Sallary"],
-                    Hybrid: showjob[index]["Hybrid"],
-                    stats: showjob[index]["stats"],
+                    Job_Tital: Search.Search_data['data'][index]
+                    ['JobTitle'],
+                    Language: Search.Search_data['data'][index]
+                    ['TechName'],
+                    Commpany: Search.Search_data['data'][index]
+                    ['ComName'],
+                    Working: Search.Search_data['data'][index]
+                    ["WorkWeek"],
+                    Location: Search.Search_data['data'][index]
+                    ["Location"],
+                    Job_time: Search.Search_data['data'][index]
+                    ['JobType'],
+                    Exp: Search.Search_data['data'][index]["Experience"],
+                    lake: Search.Search_data['data'][index]["Salary"],
+                    Hybrid: Search.Search_data['data'][index]["WorkSet"],
+                    stats: Search.Search_data['data'][index]["FormatDt"],
                   ),
                 );
               },
@@ -91,5 +117,13 @@ class _Search_findState extends State<Search_find> {
         ],
       ),
     );
+  }
+  @override
+  void dispose() {
+    Search.SearchApiController_fuction(
+      Timezone: 'asia/kolkata',
+      CandidateId: '61',
+    );
+    super.dispose();
   }
 }
