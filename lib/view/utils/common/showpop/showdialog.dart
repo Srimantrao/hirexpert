@@ -6,8 +6,13 @@ import '../../app_color.dart';
 import '../../app_icon.dart';
 
 class Showdialog {
-  static showdialod(double? height, context, Widget colamWidget,
-      String hedingtext, void Function() onTabs) {
+  static showdialod({
+    double? height,
+    context,
+    required Widget colamWidget,
+    required String hedingtext,
+    required void Function() onTabs,
+  }) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -28,11 +33,15 @@ class Showdialog {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                Text(
-                  hedingtext,
-                  style: TextStyle(
-                    fontSize: Get.width / 24,
-                    fontWeight: FontWeight.w600,
+                SizedBox(
+                  width: Get.width/2,
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    hedingtext,
+                    style: TextStyle(
+                      fontSize: Get.width / 24,
+                      fontWeight: FontWeight.w600,
+                    ),
                   ),
                 ),
                 InkWell(

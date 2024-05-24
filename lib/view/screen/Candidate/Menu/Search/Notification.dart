@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Notification/Notification_API_Controller.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 
@@ -15,12 +16,17 @@ class Notification_Screen extends StatefulWidget {
 }
 
 class _Notification_ScreenState extends State<Notification_Screen> {
+  OptionApiController login = Get.put(OptionApiController());
   NotificationApiController Notifica = Get.put(NotificationApiController());
 
   @override
   void initState() {
     Future.microtask(() async {
-      await Notifica.NotificationApiController_fuction();
+      if (login.option_data['status'] == true) {
+        Notifica.NotificationApiController_fuction(
+          Tokan: login.option_data['data']['LoginToken'],
+        );
+      }
     });
     super.initState();
   }
@@ -33,7 +39,11 @@ class _Notification_ScreenState extends State<Notification_Screen> {
         elevation: 0,
         automaticallyImplyLeading: false,
         centerTitle: true,
-        leading: const Icon(Icons.navigate_before_outlined),
+        leading: GestureDetector(
+            onTap: () {
+              Get.back();
+            },
+            child: const Icon(Icons.navigate_before_outlined)),
         title: Text(
           Notification_text.titel,
           style: TextStyle(
@@ -62,12 +72,11 @@ class _Notification_ScreenState extends State<Notification_Screen> {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if(Notifica.Notification_data == null){
+              } else if (Notifica.Notification_data == null) {
                 return const Center(
                   child: Text(API_Error.null_data),
                 );
-              }
-              else {
+              } else {
                 return ListView.builder(
                   itemCount: Notifica.Notification_data['data'].length,
                   itemBuilder: (BuildContext context, int index) {
@@ -91,24 +100,23 @@ class _Notification_ScreenState extends State<Notification_Screen> {
                                 width: Get.width / 7,
                                 height: Get.height / 15,
                                 decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                      Notifica.Notification_data['data'][0]
-                                      ['Profile'],
-                                    ),
-                                  ),
                                   borderRadius:
-                                  BorderRadius.circular(Get.width / 30),
+                                      BorderRadius.circular(Get.width / 30),
                                   border: Border.all(
                                     color: AppColor.Buttom_color,
                                   ),
+                                ),
+                                child: Center(
+                                  child: Text(Notifica.Notification_data['data']
+                                      [index]['NotificationId']),
                                 ),
                               ),
                               SizedBox(width: Get.width / 50),
                               SizedBox(
                                 width: Get.width / 1.35,
                                 child: Text(
-                                  Notifica.Notification_data['data'][0]['Message'],
+                                  Notifica.Notification_data['data'][index]
+                                      ['NotifyTitle'],
                                   style: TextStyle(
                                     fontWeight: FontWeight.w400,
                                     fontSize: Get.width / 28,
@@ -118,17 +126,6 @@ class _Notification_ScreenState extends State<Notification_Screen> {
                             ],
                           ),
                           SizedBox(height: Get.height / 120),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                Notifica.Notification_data['data'][0]['EntryDate'],
-                                style: TextStyle(
-                                  fontSize: Get.width / 35,
-                                ),
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     );

@@ -26,7 +26,7 @@ class OptionApiController extends GetxController {
         print("UserType: $UserType");
         print("Timezone: asia/kolkata");
       }
-
+      
       Map<String, dynamic> body = {
         'Email': Email ?? '',
         'Password': Password ?? '',

@@ -221,7 +221,8 @@ class _candidate_SignupState extends State<candidate_Signup> {
                                     Password: vail.password.text,
                                     Phone: vail.phone.text,
                                   );
-                                  Get.to(() => const OTP());
+                                  // Get.to(() => const OTP());
+                                  Get.to(()=>const Candidate_Specialization());
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Signup_text.Sign_Up,

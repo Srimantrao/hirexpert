@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -22,14 +23,19 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   SearchApiController Search = Get.put(SearchApiController());
+  OptionApiController Login = Get.put(OptionApiController());
 
   @override
   void initState() {
     Future.microtask(() async {
-      await Search.SearchApiController_fuction(
-        Timezone: 'asia/kolkata',
-        CandidateId: '61',
-      );
+      if (Login.option_data['status'] == true) {
+        await Search.SearchApiController_fuction(
+          Timezone: 'asia/kolkata',
+          CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
+          Tokan: Login.option_data['data']['LoginToken'],
+        );
+      }
+      setState(() {});
     });
     super.initState();
   }
@@ -167,7 +173,8 @@ class _SearchState extends State<Search> {
   void dispose() {
     Search.SearchApiController_fuction(
       Timezone: 'asia/kolkata',
-      CandidateId: '61',
+      CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
+      Tokan: Login.option_data['data']['LoginToken'],
     );
     super.dispose();
   }

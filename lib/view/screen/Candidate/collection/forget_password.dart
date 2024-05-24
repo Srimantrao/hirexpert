@@ -72,9 +72,9 @@ class _Candidate_F_PasswordState extends State<Candidate_F_Password> {
                     );
                   },
                 ),
-                (vail.isError)
+                (vail.isError_Email)
                     ? Text(
-                        vail.isError ? vail.throwErrorEmail : "",
+                        vail.isError_Email ? vail.throwErrorEmail : "",
                         style: TextStyle(
                           fontSize: Get.width / 25,
                           color: AppColor.Error_color,

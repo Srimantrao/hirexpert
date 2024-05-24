@@ -7,8 +7,10 @@ import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
+import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import '../../../../../controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import '../../../../utils/common/List/jobSearch.dart';
 import '../../../../utils/common/Popup/Candidate/Search_Job(Conatiner).dart';
 import 'Details_Search.dart';
@@ -24,14 +26,18 @@ class Search_find extends StatefulWidget {
 
 class _Search_findState extends State<Search_find> {
   SearchApiController Search = Get.put(SearchApiController());
+  OptionApiController Login = Get.put(OptionApiController());
 
   @override
   void initState() {
     Future.microtask(() async {
-      await Search.SearchApiController_fuction(
-        Timezone: 'asia/kolkata',
-        CandidateId: '61',
-      );
+      if (Login.option_data['status'] == true) {
+        await Search.SearchApiController_fuction(
+          Timezone: 'asia/kolkata',
+          CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
+          Tokan: Login.option_data['data']['LoginToken'],
+        );
+      }
     });
     super.initState();
   }
@@ -51,27 +57,69 @@ class _Search_findState extends State<Search_find> {
           ),
           SizedBox(
             height: Get.height / 1.6,
-            child: ListView.builder(
-              itemCount: Search.Search_data['data'].length,
-              itemBuilder: (BuildContext context, int index) {
-                return InkWell(
-                  onTap: () {
-                    Get.to(
-                      () => Details(
+            child: Obx(() {
+              if (Search.isLoding.value) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (Search.Search_data['data'] == null ||
+                  Search.Search_data == null) {
+                return const Center(
+                  child: Text(API_Error.null_data),
+                );
+              } else {
+                return ListView.builder(
+                  itemCount: Search.Search_data['data'].length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return InkWell(
+                      onTap: () {
+                        Get.to(
+                          () => Details(
+                            Icon: Search.Search_data['data'][index]['ComLogo'],
+                            Color_container: showjob[index]["Container_color"],
+                            Job_Tital: Search.Search_data['data'][index]
+                                ['JobTitle'],
+                            Language: Search.Search_data['data'][index]
+                                ['TechName'],
+                            Commpany: Search.Search_data['data'][index]
+                                ['ComName'],
+                            Working: Search.Search_data['data'][index]
+                                ["WorkWeek"],
+                            Location: Search.Search_data['data'][index]
+                                ["Location"],
+                            Job_time: Search.Search_data['data'][index]
+                                ['JobType'],
+                            Exp: Search.Search_data['data'][index]
+                                ["Experience"],
+                            lake: Search.Search_data['data'][index]["Salary"],
+                            Hybrid: Search.Search_data['data'][index]
+                                ["WorkSet"],
+                            stats: Search.Search_data['data'][index]
+                                ["FormatDt"],
+                          ),
+                        );
+                      },
+                      child: JobSearch(
+                        saveonTap: () {
+                          isSeved[index] = !isSeved[index];
+                          setState(() {});
+                          saveshowjob.add(Search.Search_data['data'][index]);
+                        },
+                        savechild: (isSeved[index])
+                            ? SvgPicture.asset(AppIcons.bookmark)
+                            : SvgPicture.asset(AppIcons.save),
+                        top: BorderSide(
+                          color: AppColor.Bottam_color,
+                        ),
                         Icon: Search.Search_data['data'][index]['ComLogo'],
                         Color_container: showjob[index]["Container_color"],
                         Job_Tital: Search.Search_data['data'][index]
-                        ['JobTitle'],
-                        Language: Search.Search_data['data'][index]
-                        ['TechName'],
-                        Commpany: Search.Search_data['data'][index]
-                        ['ComName'],
-                        Working: Search.Search_data['data'][index]
-                        ["WorkWeek"],
-                        Location: Search.Search_data['data'][index]
-                        ["Location"],
-                        Job_time: Search.Search_data['data'][index]
-                        ['JobType'],
+                            ['JobTitle'],
+                        Language: Search.Search_data['data'][index]['TechName'],
+                        Commpany: Search.Search_data['data'][index]['ComName'],
+                        Working: Search.Search_data['data'][index]["WorkWeek"],
+                        Location: Search.Search_data['data'][index]["Location"],
+                        Job_time: Search.Search_data['data'][index]['JobType'],
                         Exp: Search.Search_data['data'][index]["Experience"],
                         lake: Search.Search_data['data'][index]["Salary"],
                         Hybrid: Search.Search_data['data'][index]["WorkSet"],
@@ -79,50 +127,21 @@ class _Search_findState extends State<Search_find> {
                       ),
                     );
                   },
-                  child: JobSearch(
-                    saveonTap: () {
-                      isSeved[index] = !isSeved[index];
-                      setState(() {});
-                      saveshowjob.add(Search.Search_data['data'][index]);
-                    },
-                    savechild: (isSeved[index])
-                        ? SvgPicture.asset(AppIcons.bookmark)
-                        : SvgPicture.asset(AppIcons.save),
-                    top: BorderSide(
-                      color: AppColor.Bottam_color,
-                    ),
-                    Icon: Search.Search_data['data'][index]['ComLogo'],
-                    Color_container: showjob[index]["Container_color"],
-                    Job_Tital: Search.Search_data['data'][index]
-                    ['JobTitle'],
-                    Language: Search.Search_data['data'][index]
-                    ['TechName'],
-                    Commpany: Search.Search_data['data'][index]
-                    ['ComName'],
-                    Working: Search.Search_data['data'][index]
-                    ["WorkWeek"],
-                    Location: Search.Search_data['data'][index]
-                    ["Location"],
-                    Job_time: Search.Search_data['data'][index]
-                    ['JobType'],
-                    Exp: Search.Search_data['data'][index]["Experience"],
-                    lake: Search.Search_data['data'][index]["Salary"],
-                    Hybrid: Search.Search_data['data'][index]["WorkSet"],
-                    stats: Search.Search_data['data'][index]["FormatDt"],
-                  ),
                 );
-              },
-            ),
+              }
+            }),
           ),
         ],
       ),
     );
   }
+
   @override
   void dispose() {
     Search.SearchApiController_fuction(
       Timezone: 'asia/kolkata',
-      CandidateId: '61',
+      CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
+      Tokan: Login.option_data['data']['LoginToken'],
     );
     super.dispose();
   }

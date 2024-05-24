@@ -21,6 +21,7 @@ class Preference extends StatefulWidget {
   @override
   State<Preference> createState() => _PreferenceState();
 }
+
 class _PreferenceState extends State<Preference> {
   JobtypeApiController Jobtype = Get.put(JobtypeApiController());
 
@@ -44,9 +45,9 @@ class _PreferenceState extends State<Preference> {
           onTap: () {
             Perfernce.isselect_true();
             Showdialog.showdialod(
-                Get.height / 3,
-                context,
-                Obx(() {
+                height: Get.height / 3,
+                context: context,
+                colamWidget: Obx(() {
                   if (Jobtype.isloding.value) {
                     return const Center(
                       child: CircularProgressIndicator(),
@@ -71,7 +72,8 @@ class _PreferenceState extends State<Preference> {
                                 SizedBox(height: Get.height / 50),
                                 GestureDetector(
                                   onTap: () {
-                                    Perfernce.Select(Jobtype.jobtype_data['data'][index]);
+                                    Perfernce.Select(
+                                        Jobtype.jobtype_data['data'][index]);
                                   },
                                   child: Text(
                                     Jobtype.jobtype_data['data'][index],
@@ -88,8 +90,8 @@ class _PreferenceState extends State<Preference> {
                     );
                   }
                 }),
-                Location_text.preference,
-                () {
+                hedingtext: Location_text.preference,
+                onTabs: () {
                   Perfernce.isselect_false();
                 });
           },
@@ -109,7 +111,9 @@ class _PreferenceState extends State<Preference> {
                 Row(
                   children: [
                     Text(
-                      (Perfernce.isselect) ? Location_text.Select : Perfernce.select,
+                      (Perfernce.isselect)
+                          ? Location_text.Select
+                          : Perfernce.select,
                       style: TextStyle(
                         fontSize: Get.width / 23,
                       ),
@@ -141,6 +145,7 @@ class Location_fild extends StatefulWidget {
   @override
   State<Location_fild> createState() => _Location_fildState();
 }
+
 class _Location_fildState extends State<Location_fild> {
   int State = -1;
   int Gujarat = -1;
@@ -476,6 +481,7 @@ class Preffered extends StatefulWidget {
   @override
   State<Preffered> createState() => _PrefferedState();
 }
+
 class _PrefferedState extends State<Preffered> {
   int State = -1;
 
@@ -892,6 +898,7 @@ class Setup extends StatefulWidget {
   @override
   State<Setup> createState() => _SetupState();
 }
+
 class _SetupState extends State<Setup> {
   bool isselect = true;
   String select = "";
@@ -915,11 +922,10 @@ class _SetupState extends State<Setup> {
         return InkWell(
           onTap: () {
             Setup.isselect_true();
-            setState(() {});
             Showdialog.showdialod(
-              Get.height / 5,
-              context,
-              Obx(() {
+              height: Get.height / 5,
+              context: context,
+              colamWidget: Obx(() {
                 if (Preferencetype.islodind.value) {
                   return const Center(
                     child: CircularProgressIndicator(),
@@ -941,7 +947,8 @@ class _SetupState extends State<Setup> {
                             SizedBox(height: Get.height / 50),
                             GestureDetector(
                               onTap: () {
-                                Setup.Select(Preferencetype.Preferencetype_data['data'][index]);
+                                Setup.Select(Preferencetype
+                                    .Preferencetype_data['data'][index]);
                               },
                               child: Text(
                                 Preferencetype.Preferencetype_data['data']
@@ -958,8 +965,8 @@ class _SetupState extends State<Setup> {
                   );
                 }
               }),
-              Location_text.Work,
-              () {
+              hedingtext: Location_text.Work,
+              onTabs: () {
                 Setup.isselect_false();
               },
             );

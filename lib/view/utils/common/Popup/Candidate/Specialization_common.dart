@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Pop_Collection/Interest_pop_Controller.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/DropdownController/SpecializationController.dart';
 import '../../../app_String.dart';
 import '../../../app_color.dart';
 import '../../../app_icon.dart';
 import '../../Container/Option.dart';
+import '../../showpop/showdialog.dart';
 
 class Candidate_Function_area extends StatelessWidget {
   const Candidate_Function_area({super.key});
@@ -246,128 +248,194 @@ class Candidate_Function_area extends StatelessWidget {
     );
   }
 }
-class Candidate_Interest extends StatelessWidget {
+
+class Candidate_Interest extends StatefulWidget {
   const Candidate_Interest({super.key});
 
   @override
+  State<Candidate_Interest> createState() => _Candidate_InterestState();
+}
+
+class _Candidate_InterestState extends State<Candidate_Interest> {
+  String Inter = "";
+  bool Inter_Select = false;
+
+  InterestPopController Interest = Get.put(InterestPopController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await Interest.InterestPopController_Fuction(
+        CandidateId: '51',
+        TechId: '2',
+        Timezone: 'asia/kolkata',
+      );
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    final speciailChang = Provider.of<Candidate_SpecializationController_Interest>(
+    final speciailChang =
+        Provider.of<Candidate_SpecializationController_Interest>(
       context,
       listen: false,
     );
     return Consumer<Candidate_SpecializationController_Interest>(
-      builder: (BuildContext context, Candidate_SpecializationController_Interest value,
-          Widget? child) {
-        return InkWell(
+      builder: (BuildContext context,
+          Candidate_SpecializationController_Interest value, Widget? child) {
+        return GestureDetector(
           onTap: () {
-            speciailChang.Showingdrop();
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    title: Container(
-                      height: Get.height / 18,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: AppColor.Bottam_color,
-                          ),
-                        ),
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(width: Get.width / 50),
-                            Text(
-                              Specialization_text.Select_area,
-                              style: TextStyle(
-                                fontSize: Get.width / 24,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                                speciailChang.Showingdrop();
-                              },
-                              child: SvgPicture.asset(AppIcons.cancel),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    backgroundColor: AppColor.Full_body_color,
-                    elevation: 0,
-                    content: Container(
-                      height: Get.height / 3,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        color: AppColor.Full_body_color,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
+            // speciailChang.Showingdrop();
+            Showdialog.showdialod(
+              context: context,
+              height: Get.width / 1,
+              colamWidget: Column(
+                children: [
+                  SizedBox(
+                    height: Get.height / 1,
+                    child: ListView.builder(
+                      itemCount: Interest.Interest_pop['data'].length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            InkWell(
+                            GestureDetector(
                               child: Text(
-                                Specialization_text.Frontend,
+                                Interest.Interest_pop['data']['OptionList']
+                                    [index]['QueAnswer'],
                                 style: TextStyle(
-                                  fontSize: Get.width / 26,
+                                  fontSize: Get.width / 27,
                                 ),
                               ),
                               onTap: () {
-                                speciailChang.Skillset_Selectone();
+                                Inter_Select = true;
+                                Inter = Interest.Interest_pop['data']
+                                    ['OptionList'][index]['QueAnswer'];
+                                Get.back();
+                                setState(() {});
                               },
                             ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Backend,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.Skillset_Secondone();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Software,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.Skillset_Thrdone();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.eCommerce,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.Skillset_Fouth();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
+                            SizedBox(height: Get.height / 50),
                           ],
-                        ),
-                      ),
+                        );
+                      },
                     ),
-                  );
-                });
+                  )
+                ],
+              ),
+              hedingtext: Interest.Interest_pop['data']['Question'],
+              onTabs: () {
+                Get.back();
+              },
+            );
+            // showDialog(
+            //     context: context,
+            //     builder: (BuildContext context) {
+            //       return AlertDialog(
+            //         shape: RoundedRectangleBorder(
+            //           borderRadius: BorderRadius.circular(10.0),
+            //         ),
+            //         title: Container(
+            //           height: Get.height / 18,
+            //           width: Get.width,
+            //           decoration: BoxDecoration(
+            //             border: Border(
+            //               bottom: BorderSide(
+            //                 color: AppColor.Bottam_color,
+            //               ),
+            //             ),
+            //           ),
+            //           child: Center(
+            //             child: Row(
+            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //               children: [
+            //                 SizedBox(width: Get.width / 50),
+            //                 Text(
+            //                   Specialization_text.Select_area,
+            //                   style: TextStyle(
+            //                     fontSize: Get.width / 24,
+            //                     fontWeight: FontWeight.w600,
+            //                   ),
+            //                 ),
+            //                 InkWell(
+            //                   onTap: () {
+            //                     Get.back();
+            //                     speciailChang.Showingdrop();
+            //                   },
+            //                   child: SvgPicture.asset(AppIcons.cancel),
+            //                 ),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //         backgroundColor: AppColor.Full_body_color,
+            //         elevation: 0,
+            //         content: Container(
+            //           height: Get.height / 3,
+            //           width: Get.width,
+            //           decoration: BoxDecoration(
+            //             color: AppColor.Full_body_color,
+            //           ),
+            //           child: SingleChildScrollView(
+            //             scrollDirection: Axis.vertical,
+            //             child: Column(
+            //               crossAxisAlignment: CrossAxisAlignment.start,
+            //               children: [
+            //                 InkWell(
+            //                   child: Text(
+            //                     Specialization_text.Frontend,
+            //                     style: TextStyle(
+            //                       fontSize: Get.width / 26,
+            //                     ),
+            //                   ),
+            //                   onTap: () {
+            //                     speciailChang.Skillset_Selectone();
+            //                   },
+            //                 ),
+            //                 SizedBox(height: Get.height / 60),
+            //                 InkWell(
+            //                   child: Text(
+            //                     Specialization_text.Backend,
+            //                     style: TextStyle(
+            //                       fontSize: Get.width / 26,
+            //                     ),
+            //                   ),
+            //                   onTap: () {
+            //                     speciailChang.Skillset_Secondone();
+            //                   },
+            //                 ),
+            //                 SizedBox(height: Get.height / 60),
+            //                 InkWell(
+            //                   child: Text(
+            //                     Specialization_text.Software,
+            //                     style: TextStyle(
+            //                       fontSize: Get.width / 26,
+            //                     ),
+            //                   ),
+            //                   onTap: () {
+            //                     speciailChang.Skillset_Thrdone();
+            //                   },
+            //                 ),
+            //                 SizedBox(height: Get.height / 60),
+            //                 InkWell(
+            //                   child: Text(
+            //                     Specialization_text.eCommerce,
+            //                     style: TextStyle(
+            //                       fontSize: Get.width / 26,
+            //                     ),
+            //                   ),
+            //                   onTap: () {
+            //                     speciailChang.Skillset_Fouth();
+            //                   },
+            //                 ),
+            //                 SizedBox(height: Get.height / 60),
+            //               ],
+            //             ),
+            //           ),
+            //         ),
+            //       );
+            //     });
           },
           child: Container(
             height: Get.height / 20,
@@ -387,14 +455,14 @@ class Candidate_Interest extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      (speciailChang.SelectIndex == 0)
-                          ? Specialization_text.interest
-                          : speciailChang.throwdrop,
+                      (Inter_Select)
+                          ? Inter
+                          : Specialization_text.interest,
                       style: TextStyle(
                         fontSize: Get.width / 25,
                       ),
                     ),
-                    (speciailChang.showdrop)
+                    (Inter_Select)
                         ? SvgPicture.asset(AppIcons.Right)
                         : SvgPicture.asset(
                             AppIcons.down,
@@ -410,12 +478,14 @@ class Candidate_Interest extends StatelessWidget {
     );
   }
 }
+
 class Candidate_Skillset extends StatelessWidget {
   const Candidate_Skillset({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final speciailChang = Provider.of<Candidate_SpecializationController_Skillset>(
+    final speciailChang =
+        Provider.of<Candidate_SpecializationController_Skillset>(
       context,
       listen: false,
     );
@@ -597,6 +667,7 @@ class Candidate_Skillset extends StatelessWidget {
     );
   }
 }
+
 class Candidate_Collection extends StatelessWidget {
   const Candidate_Collection({super.key});
 

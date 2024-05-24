@@ -71,29 +71,29 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                       ),
                       SizedBox(height: Get.height / 20),
                       Inputfild(
-                        onChanged: (txt) {
-                          vail.Emailvali(txt);
-                        },
+                        // onChanged: (txt) {
+                        //   vail.Emailvali(txt);
+                        // },
                         labal: Login_text.lebelemail,
                         hint: Login_text.hintemail,
                         controller: vail.EmailController,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwErrorEmail : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError_Email)
+                      //     ? Text(
+                      //         vail.isError_Email ? vail.throwErrorEmail : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 20),
                       Consumer<Candidate_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
-                            onChanged: (textp) {
-                              vail.passwordvali(textp);
-                            },
+                            // onChanged: (textp) {
+                            //   vail.passwordvali(textp);
+                            // },
                             obscureText: vis.isobscr,
                             labal: Login_text.lebelpassword,
                             hint: Login_text.hintpassword,
@@ -109,15 +109,17 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                           );
                         },
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwErrorPassword : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError_Password)
+                      //     ? Text(
+                      //         vail.isError_Password
+                      //             ? vail.throwErrorPassword
+                      //             : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -151,7 +153,16 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                                     Email: vail.EmailController.text,
                                     Password: vail.PasswordController.text,
                                   );
-                                  Get.to(() => const Candidate_Bottam());
+                                  if (login.option_data['status'] == true) {
+                                    Get.to(() => const Candidate_Bottam());
+                                  } else {
+                                    Get.showSnackbar(
+                                      GetBar(
+                                        duration: const Duration(seconds: 2),
+                                        message: login.option_data['message'],
+                                      ),
+                                    );
+                                  }
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Login_text.btn_name,

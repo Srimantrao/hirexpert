@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
@@ -61,16 +62,17 @@ class _Profile_infoState extends State<Profile_info> {
                             SizedBox(width: Get.width / 30),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  "Sagar Patil",
+                                  "Sager Patil",
                                   style: TextStyle(
                                     fontSize: Get.width / 22,
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
                                 Text(
-                                  "Accounting",
+                                  "Accounts & Finance",
                                   style: TextStyle(
                                       fontSize: Get.width / 26,
                                       fontWeight: FontWeight.w400,

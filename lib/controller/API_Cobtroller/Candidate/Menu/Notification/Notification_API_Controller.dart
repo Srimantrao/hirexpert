@@ -12,15 +12,19 @@ class NotificationApiController extends GetxController {
   var isLoding = false.obs;
   var Notification_data;
 
-  Future NotificationApiController_fuction() async {
+  Future NotificationApiController_fuction({required String Tokan}) async {
     try {
       isLoding.value = true;
-
       final Response = await http.get(Uri.parse(AppUrl.Notification), headers: {
         API_KEY.api_key: API_KEY.key,
         Clientip.clientip: Clientip.ip,
-        Logintoken.logintoken: Logintoken.token,
+        Logintoken.logintoken: Tokan,
       });
+
+      if (kDebugMode) {
+        print("Tokan :- $Tokan");
+      }
+
       if (Response.statusCode == 200 || Response.statusCode == 201) {
         Notification_data = jsonDecode(Response.body);
         if (kDebugMode) {

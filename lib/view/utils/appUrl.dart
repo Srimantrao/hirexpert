@@ -8,6 +8,7 @@ class AppUrl {
   //Popup
   static const preferredWork = "$Hirexpert/api/v1/user/preferredWorkSetupList";
   static const Jobtype = "$Hirexpert/api/v1/user/jobTypeList";
+  static const interest = "$Hirexpert/api/v1/user/candidateTech";
 
   //Show All Data
   static const Search_Job =
@@ -20,7 +21,9 @@ class AppUrl {
   static const OTP = "$Hirexpert/api/v1/user/candidateOTPVerified/NTU=";
 
   //Notification
-  static const Notification = "$Hirexpert/api/v1/user/userNotification";
+  static const Notification =
+      "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";
+
 
 
   //Employer

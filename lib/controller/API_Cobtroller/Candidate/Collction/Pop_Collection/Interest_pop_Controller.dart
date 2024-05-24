@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_typing_uninitialized_variables, non_constant_identifier_names
+// ignore_for_file: prefer_typing_uninitialized_variables, file_names, non_constant_identifier_names
 
 import 'dart:convert';
 
@@ -8,26 +8,28 @@ import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:http/http.dart' as http;
 
-class SearchApiController extends GetxController {
+class InterestPopController extends GetxController {
   var isLoding = false.obs;
-  var Search_data;
+  var Interest_pop;
 
-  Future SearchApiController_fuction({
-    required String Timezone,
+  Future InterestPopController_Fuction({
     required String CandidateId,
-    String? Tokan,
+    required String TechId,
+    required String Timezone,
   }) async {
     try {
       isLoding.value = true;
 
       if (kDebugMode) {
-        print("Timezone :- $Timezone");
         print("CandidateId :- $CandidateId");
+        print("CandidateId :- $TechId");
+        print("CandidateId :- $Timezone");
       }
 
       Map<String, dynamic> body = {
-        'Timezone': Timezone,
         'CandidateId': CandidateId,
+        'TechId': TechId,
+        'Timezone': Timezone,
       };
 
       if (kDebugMode) {
@@ -35,32 +37,28 @@ class SearchApiController extends GetxController {
       }
 
       final Response = await http.post(
-        Uri.parse(AppUrl.SearchJob),
+        Uri.parse(
+          AppUrl.interest,
+        ),
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
         },
         body: body,
       );
-
-      if (kDebugMode) {
-        print("Tokan :- $Tokan");
-      }
-
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Search_data = jsonDecode(Response.body);
+        Interest_pop = jsonDecode(Response.body);
         if (kDebugMode) {
-          print("Search Job :-  $Search_data");
+          print("Interest_POP :- $Interest_pop");
         }
       } else {
         throw {
-          " Search Job Error this :- ${Response.statusCode} , ${Response.body} "
+          " Interest_POP Error this :- ${Response.statusCode} , ${Response.body} "
         };
       }
     } catch (e) {
       if (kDebugMode) {
-        print("Search job this Error :- $e");
+        print("Interest Erro :- $e");
       }
     } finally {
       isLoding.value = false;
