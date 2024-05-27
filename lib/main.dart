@@ -15,6 +15,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'controller/User_Controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 import 'controller/User_Controller/Candidate_Controller/ButtonsController/SearchButtonsController.dart';
 import 'controller/User_Controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
+import 'controller/User_Controller/Candidate_Controller/Change_PasswordController/Change_Password_Controller.dart';
 import 'controller/User_Controller/Candidate_Controller/CheckMarkController/Notification_Controller.dart';
 import 'controller/User_Controller/Candidate_Controller/ChoseFileController/ChosefileController.dart';
 import 'controller/User_Controller/Candidate_Controller/CollectionController/Collectiondepartment.dart';
@@ -85,6 +86,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Employer_LoginValidation()),
         ChangeNotifierProvider(create: (_) => Employer_VisibilityController()),
         ChangeNotifierProvider(create: (_) => Employer_SinupController()),
+        ChangeNotifierProvider(create: (_) => ChangePasswordController()),
         ChangeNotifierProvider(create: (_) => OtpController()),
         ChangeNotifierProvider(
             create: (_) => Employer_SpecializationController_popup()),

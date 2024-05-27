@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Pop_Collection/Interest_pop_Controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Pop_Collection/TechnologyList_pop_controller.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/DropdownController/SpecializationController.dart';
 import '../../../app_String.dart';
@@ -257,9 +258,6 @@ class Candidate_Interest extends StatefulWidget {
 }
 
 class _Candidate_InterestState extends State<Candidate_Interest> {
-  String Inter = "";
-  bool Inter_Select = false;
-
   InterestPopController Interest = Get.put(InterestPopController());
 
   @override
@@ -286,42 +284,52 @@ class _Candidate_InterestState extends State<Candidate_Interest> {
           Candidate_SpecializationController_Interest value, Widget? child) {
         return GestureDetector(
           onTap: () {
-            // speciailChang.Showingdrop();
             Showdialog.showdialod(
               context: context,
               height: Get.width / 1,
               colamWidget: Column(
                 children: [
                   SizedBox(
-                    height: Get.height / 1,
-                    child: ListView.builder(
-                      itemCount: Interest.Interest_pop['data'].length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            GestureDetector(
-                              child: Text(
-                                Interest.Interest_pop['data']['OptionList']
-                                    [index]['QueAnswer'],
-                                style: TextStyle(
-                                  fontSize: Get.width / 27,
-                                ),
-                              ),
-                              onTap: () {
-                                Inter_Select = true;
-                                Inter = Interest.Interest_pop['data']
-                                    ['OptionList'][index]['QueAnswer'];
-                                Get.back();
-                                setState(() {});
-                              },
-                            ),
-                            SizedBox(height: Get.height / 50),
-                          ],
-                        );
-                      },
-                    ),
-                  )
+                      height: Get.height / 1,
+                      child: Obx(() {
+                        if (Interest.isLoding.value) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        } else if (Interest.Interest_pop['data'] == null ||
+                            Interest.Interest_pop == null) {
+                          return const Center(
+                            child: Text(API_Error.null_data),
+                          );
+                        } else {
+                          return ListView.builder(
+                            itemCount: Interest.Interest_pop['data'].length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  GestureDetector(
+                                    child: Text(
+                                      Interest.Interest_pop['data']
+                                          ['OptionList'][index]['QueAnswer'],
+                                      style: TextStyle(
+                                        fontSize: Get.width / 27,
+                                      ),
+                                    ),
+                                    onTap: () {
+                                      speciailChang.Select_Fuction(
+                                        Interest.Interest_pop['data']
+                                            ['OptionList'][index]['QueAnswer'],
+                                      );
+                                    },
+                                  ),
+                                  SizedBox(height: Get.height / 50),
+                                ],
+                              );
+                            },
+                          );
+                        }
+                      }))
                 ],
               ),
               hedingtext: Interest.Interest_pop['data']['Question'],
@@ -329,113 +337,6 @@ class _Candidate_InterestState extends State<Candidate_Interest> {
                 Get.back();
               },
             );
-            // showDialog(
-            //     context: context,
-            //     builder: (BuildContext context) {
-            //       return AlertDialog(
-            //         shape: RoundedRectangleBorder(
-            //           borderRadius: BorderRadius.circular(10.0),
-            //         ),
-            //         title: Container(
-            //           height: Get.height / 18,
-            //           width: Get.width,
-            //           decoration: BoxDecoration(
-            //             border: Border(
-            //               bottom: BorderSide(
-            //                 color: AppColor.Bottam_color,
-            //               ),
-            //             ),
-            //           ),
-            //           child: Center(
-            //             child: Row(
-            //               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //               children: [
-            //                 SizedBox(width: Get.width / 50),
-            //                 Text(
-            //                   Specialization_text.Select_area,
-            //                   style: TextStyle(
-            //                     fontSize: Get.width / 24,
-            //                     fontWeight: FontWeight.w600,
-            //                   ),
-            //                 ),
-            //                 InkWell(
-            //                   onTap: () {
-            //                     Get.back();
-            //                     speciailChang.Showingdrop();
-            //                   },
-            //                   child: SvgPicture.asset(AppIcons.cancel),
-            //                 ),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //         backgroundColor: AppColor.Full_body_color,
-            //         elevation: 0,
-            //         content: Container(
-            //           height: Get.height / 3,
-            //           width: Get.width,
-            //           decoration: BoxDecoration(
-            //             color: AppColor.Full_body_color,
-            //           ),
-            //           child: SingleChildScrollView(
-            //             scrollDirection: Axis.vertical,
-            //             child: Column(
-            //               crossAxisAlignment: CrossAxisAlignment.start,
-            //               children: [
-            //                 InkWell(
-            //                   child: Text(
-            //                     Specialization_text.Frontend,
-            //                     style: TextStyle(
-            //                       fontSize: Get.width / 26,
-            //                     ),
-            //                   ),
-            //                   onTap: () {
-            //                     speciailChang.Skillset_Selectone();
-            //                   },
-            //                 ),
-            //                 SizedBox(height: Get.height / 60),
-            //                 InkWell(
-            //                   child: Text(
-            //                     Specialization_text.Backend,
-            //                     style: TextStyle(
-            //                       fontSize: Get.width / 26,
-            //                     ),
-            //                   ),
-            //                   onTap: () {
-            //                     speciailChang.Skillset_Secondone();
-            //                   },
-            //                 ),
-            //                 SizedBox(height: Get.height / 60),
-            //                 InkWell(
-            //                   child: Text(
-            //                     Specialization_text.Software,
-            //                     style: TextStyle(
-            //                       fontSize: Get.width / 26,
-            //                     ),
-            //                   ),
-            //                   onTap: () {
-            //                     speciailChang.Skillset_Thrdone();
-            //                   },
-            //                 ),
-            //                 SizedBox(height: Get.height / 60),
-            //                 InkWell(
-            //                   child: Text(
-            //                     Specialization_text.eCommerce,
-            //                     style: TextStyle(
-            //                       fontSize: Get.width / 26,
-            //                     ),
-            //                   ),
-            //                   onTap: () {
-            //                     speciailChang.Skillset_Fouth();
-            //                   },
-            //                 ),
-            //                 SizedBox(height: Get.height / 60),
-            //               ],
-            //             ),
-            //           ),
-            //         ),
-            //       );
-            //     });
           },
           child: Container(
             height: Get.height / 20,
@@ -455,14 +356,14 @@ class _Candidate_InterestState extends State<Candidate_Interest> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      (Inter_Select)
-                          ? Inter
+                      (speciailChang.Inter_Select)
+                          ? speciailChang.Inter
                           : Specialization_text.interest,
                       style: TextStyle(
                         fontSize: Get.width / 25,
                       ),
                     ),
-                    (Inter_Select)
+                    (speciailChang.Inter_Select)
                         ? SvgPicture.asset(AppIcons.Right)
                         : SvgPicture.asset(
                             AppIcons.down,
@@ -479,8 +380,24 @@ class _Candidate_InterestState extends State<Candidate_Interest> {
   }
 }
 
-class Candidate_Skillset extends StatelessWidget {
+class Candidate_Skillset extends StatefulWidget {
   const Candidate_Skillset({super.key});
+
+  @override
+  State<Candidate_Skillset> createState() => _Candidate_SkillsetState();
+}
+
+class _Candidate_SkillsetState extends State<Candidate_Skillset> {
+  TechnologylistPopController Technolist =
+      Get.put(TechnologylistPopController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await Technolist.TechnologylistPopController_Fuction();
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -493,137 +410,45 @@ class Candidate_Skillset extends StatelessWidget {
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {
-            speciailChang.Showingdrop();
-            showDialog(
+            Showdialog.showdialod(
+                height: Get.height / 2.5,
                 context: context,
-                builder: (BuildContext context) {
-                  return AlertDialog(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    title: Container(
-                      height: Get.height / 18,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        border: Border(
-                          bottom: BorderSide(
-                            color: AppColor.Bottam_color,
-                          ),
-                        ),
-                      ),
-                      child: Center(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(width: Get.width / 50),
-                            Text(
-                              Specialization_text.Select_Skillset,
-                              style: TextStyle(
-                                fontSize: Get.width / 24,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                            InkWell(
-                              onTap: () {
-                                Get.back();
-                                speciailChang.Showingdrop();
-                              },
-                              child: SvgPicture.asset(AppIcons.cancel),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    backgroundColor: AppColor.Full_body_color,
-                    elevation: 0,
-                    content: Container(
-                      height: Get.height / 3,
-                      width: Get.width,
-                      decoration: BoxDecoration(
-                        color: AppColor.Full_body_color,
-                      ),
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Angular_TS,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
+                colamWidget: SizedBox(
+                    height: Get.height / 1,
+                    child: Obx(() {
+                      if (Technolist.isLoding.value) {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      } else if (Technolist.TechnologylistPop_data['data'] ==
+                              null ||
+                          Technolist.TechnologylistPop_data == null) {
+                        return const Center(
+                          child: Text(API_Error.null_data),
+                        );
+                      } else {
+                        return ListView.builder(
+                          itemCount:
+                              Technolist.TechnologylistPop_data['data'].length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  Technolist.TechnologylistPop_data['data']
+                                      [index]['TechName'],
+                                  style: TextStyle(fontSize: Get.width / 27),
                                 ),
-                              ),
-                              onTap: () {
-                                speciailChang.SkillsetSecond_Selectone();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Angular,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.SkillsetSecond_Secondone();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Bootstrap,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.SkillsetSecond_Thrdone();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.JQuery,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.SkillsetSecond_Fouth();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Designing_UIUX,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.SkillsetSecond_Fifth();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                            InkWell(
-                              child: Text(
-                                Specialization_text.Bpo,
-                                style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                ),
-                              ),
-                              onTap: () {
-                                speciailChang.SkillsetSecond_Sixth();
-                              },
-                            ),
-                            SizedBox(height: Get.height / 60),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
+                                SizedBox(height: Get.height / 50),
+                              ],
+                            );
+                          },
+                        );
+                      }
+                    })),
+                hedingtext: Specialization_text.Select_Skillset,
+                onTabs: () {
+                  Get.back();
                 });
           },
           child: Container(

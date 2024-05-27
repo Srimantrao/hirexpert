@@ -9,6 +9,8 @@ class AppUrl {
   static const preferredWork = "$Hirexpert/api/v1/user/preferredWorkSetupList";
   static const Jobtype = "$Hirexpert/api/v1/user/jobTypeList";
   static const interest = "$Hirexpert/api/v1/user/candidateTech";
+  static const degreeList = "$Hirexpert/api/v1/user/degreeList";
+  static const technologyList = "$Hirexpert/api/v1/user/technologyList";
 
   //Show All Data
   static const Search_Job =
@@ -19,12 +21,11 @@ class AppUrl {
   static const login = "$Hirexpert/api/v1/user/login";
   static const Sinup = "$Hirexpert/api/v1/user/candidateSignup";
   static const OTP = "$Hirexpert/api/v1/user/candidateOTPVerified/NTU=";
+  static const Change_password = "$Hirexpert/api/v1/user/changePassword";
 
   //Notification
   static const Notification =
       "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";
-
-
 
   //Employer
   //Collcetion

@@ -9,39 +9,15 @@ import '../../../../view/utils/app_String.dart';
 
 
 class Education_Controller with ChangeNotifier {
-  bool _shodrop = false;
-  int _Realvalue = 0;
-  String _showvalue = "";
+  bool _Select_click = false;
+  String _Select_String = "";
 
-  bool get shodrop => _shodrop;
+  get Select_click => _Select_click;
+  get Select_String => _Select_String;
 
-  int get Realvalue => _Realvalue;
-
-  String get showvalue => _showvalue;
-
-  void Poppup_true() {
-    _shodrop = true;
-    notifyListeners();
-  }
-
-  void Poppup_false() {
-    Get.back();
-    _shodrop = false;
-    notifyListeners();
-  }
-
-  void Education_one() {
-    _shodrop = false;
-    _Realvalue = 1;
-    _showvalue = Specialization_text.BCA;
-    Get.back();
-    notifyListeners();
-  }
-
-  void Education_two() {
-    _shodrop = false;
-    _Realvalue = 2;
-    _showvalue = Specialization_text.BBA;
+  void Select_Fuction(String Selecttxt){
+    _Select_click = true;
+    _Select_String = Selecttxt;
     Get.back();
     notifyListeners();
   }

@@ -3,11 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Change%20Password/Change_Controller_API_Controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
+import 'package:provider/provider.dart';
+import '../../../../../controller/User_Controller/Candidate_Controller/Change_PasswordController/Change_Password_Controller.dart';
 import 'Setting_Screen/My_Archive.dart';
 import 'Setting_Screen/Notification_Setting.dart';
 
@@ -19,6 +23,20 @@ class Setting extends StatefulWidget {
 }
 
 class _SettingState extends State<Setting> {
+  ChangeControllerApiController Change_Pass =
+      Get.put(ChangeControllerApiController());
+  OptionApiController Login = Get.put(OptionApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await Change_Pass.ChangeControllerApiController_Fuction(
+        Tokan: Login.option_data['data']['LoginToken'],
+      );
+    });
+    super.initState();
+  }
+
   //Check box
   bool value1 = false;
   bool value2 = false;
@@ -26,24 +44,26 @@ class _SettingState extends State<Setting> {
   //Switchs
   bool switchs = false;
 
-  //obscureText
-  bool o_pass = true;
-  bool n_pass = true;
-  bool c_pass = true;
-
-  //Throw Error
-  bool Old_passing = false;
-  String Olding = "";
-  String Newing = "";
-  String Confarm_Newing = "";
-
-  //TextfoldController
-  TextEditingController old_pass = TextEditingController();
-  TextEditingController new_pass = TextEditingController();
-  TextEditingController conf_pass = TextEditingController();
+  // //obscureText
+  // bool o_pass = true;
+  // bool n_pass = true;
+  // bool c_pass = true;
+  //
+  // //Throw Error
+  // bool Old_passing = false;
+  // String Olding = "";
+  // String Newing = "";
+  // String Confarm_Newing = "";
+  //
+  // //TextfoldController
+  // TextEditingController old_pass = TextEditingController();
+  // TextEditingController new_pass = TextEditingController();
+  // TextEditingController conf_pass = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    final Pass_change =
+        Provider.of<ChangePasswordController>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -445,302 +465,276 @@ class _SettingState extends State<Setting> {
                   const Info_Setting(info: Profile_Text.Privacy_Policy),
 
                   //Password Change
-                  InkWell(
-                      onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return StatefulBuilder(
-                              builder: (BuildContext context,
-                                  void Function(void Function()) setState) {
-                                return AlertDialog(
-                                  backgroundColor: AppColor.Full_body_color,
-                                  elevation: 0,
-                                  title: Container(
-                                    height: Get.height / 15,
-                                    width: Get.width,
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: AppColor.Buttom_color,
-                                        ),
-                                      ),
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        const SizedBox(),
-                                        Text(
-                                          My_Archive_text.Old_Password,
-                                          style: TextStyle(
-                                            color: AppColor.subcolor,
-                                            fontSize: Get.width / 23,
+                  Consumer<ChangePasswordController>(
+                    builder: (BuildContext context, value, Widget? child) {
+                      return InkWell(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return StatefulBuilder(
+                                  builder: (BuildContext context,
+                                      void Function(void Function()) setState) {
+                                    return AlertDialog(
+                                      backgroundColor: AppColor.Full_body_color,
+                                      elevation: 0,
+                                      title: Container(
+                                        height: Get.height / 15,
+                                        width: Get.width,
+                                        decoration: BoxDecoration(
+                                          border: Border(
+                                            bottom: BorderSide(
+                                              color: AppColor.Buttom_color,
+                                            ),
                                           ),
                                         ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            const SizedBox(),
+                                            Text(
+                                              My_Archive_text.Old_Password,
+                                              style: TextStyle(
+                                                color: AppColor.subcolor,
+                                                fontSize: Get.width / 23,
+                                              ),
+                                            ),
+                                            InkWell(
+                                              onTap: () {
+                                                Get.back();
+                                              },
+                                              child: SvgPicture.asset(
+                                                  AppIcons.cancel),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      content: Container(
+                                        width: Get.width,
+                                        height: Get.height / 2.8,
+                                        decoration: BoxDecoration(
+                                          color: AppColor.Full_body_color,
+                                        ),
+                                        child: SingleChildScrollView(
+                                          scrollDirection: Axis.vertical,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                My_Archive_text.Old_Password,
+                                                style: TextStyle(
+                                                  fontSize: Get.width / 23,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: AppColor.subcolor,
+                                                ),
+                                              ),
+                                              TextField(
+                                                onTap: () {},
+                                                onChanged: (String val) {
+                                                  Pass_change
+                                                      .Old_Password_fuction(
+                                                          val);
+                                                },
+                                                obscureText: Pass_change.o_pass,
+                                                controller:
+                                                    Pass_change.old_pass,
+                                                decoration: InputDecoration(
+                                                  suffixIcon: InkWell(
+                                                    onTap: () {
+                                                      Pass_change
+                                                          .OldPassword_Fuction_obx();
+                                                    },
+                                                    child: (Pass_change.o_pass)
+                                                        ? const Icon(Icons
+                                                            .visibility_off)
+                                                        : const Icon(
+                                                            Icons.visibility),
+                                                  ),
+                                                  hintText: My_Archive_text
+                                                      .Enter_Old_Password,
+                                                  enabledBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          AppColor.Buttom_color,
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          AppColor.Buttom_color,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              (Pass_change.Old_passing)
+                                                  ? Text(
+                                                      Pass_change.Olding,
+                                                      style: TextStyle(
+                                                          color: AppColor
+                                                              .Error_color),
+                                                    )
+                                                  : const Text(""),
+                                              SizedBox(height: Get.height / 50),
+                                              Text(
+                                                My_Archive_text.New_Password,
+                                                style: TextStyle(
+                                                  fontSize: Get.width / 23,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: AppColor.subcolor,
+                                                ),
+                                              ),
+                                              TextField(
+                                                onChanged: (String val) {
+                                                  Pass_change
+                                                      .new_password_fuction(
+                                                          val);
+                                                },
+                                                obscureText: Pass_change.n_pass,
+                                                controller:
+                                                    Pass_change.new_pass,
+                                                decoration: InputDecoration(
+                                                  suffixIcon: InkWell(
+                                                    onTap: () {
+                                                      Pass_change
+                                                          .Confirm_Password_obx();
+                                                    },
+                                                    child: (Pass_change.o_pass)
+                                                        ? const Icon(
+                                                            Icons
+                                                                .visibility_off,
+                                                          )
+                                                        : const Icon(
+                                                            Icons.visibility,
+                                                          ),
+                                                  ),
+                                                  hintText: My_Archive_text
+                                                      .Enter_New_Password,
+                                                  enabledBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          AppColor.Buttom_color,
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          AppColor.Buttom_color,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              (Pass_change.Old_passing)
+                                                  ? Text(
+                                                      Pass_change.Newing,
+                                                      style: TextStyle(
+                                                          color: AppColor
+                                                              .Error_color),
+                                                    )
+                                                  : Text(Pass_change.Newing),
+                                              SizedBox(height: Get.height / 50),
+                                              Text(
+                                                My_Archive_text
+                                                    .Confirm_Password,
+                                                style: TextStyle(
+                                                  fontSize: Get.width / 23,
+                                                  fontWeight: FontWeight.w400,
+                                                  color: AppColor.subcolor,
+                                                ),
+                                              ),
+                                              TextField(
+                                                onChanged: (String val) {
+                                                  onChanged:
+                                                  (String val) {
+                                                    Pass_change
+                                                        .Confirm_Password(val);
+                                                  };
+                                                },
+                                                obscureText: Pass_change.c_pass,
+                                                controller:
+                                                    Pass_change.conf_pass,
+                                                decoration: InputDecoration(
+                                                  suffixIcon: InkWell(
+                                                    onTap: () {
+                                                      Pass_change
+                                                          .Confirm_Password_obx();
+                                                    },
+                                                    child: (Pass_change.c_pass)
+                                                        ? const Icon(
+                                                            Icons
+                                                                .visibility_off,
+                                                          )
+                                                        : const Icon(
+                                                            Icons.visibility,
+                                                          ),
+                                                  ),
+                                                  hintText: My_Archive_text
+                                                      .Enter_Confirm_Password,
+                                                  enabledBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          AppColor.Buttom_color,
+                                                    ),
+                                                  ),
+                                                  focusedBorder:
+                                                      UnderlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      color:
+                                                          AppColor.Buttom_color,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                              (Pass_change.Old_passing)
+                                                  ? Text(
+                                                      Pass_change
+                                                          .Confarm_Newing,
+                                                      style: TextStyle(
+                                                          color: AppColor
+                                                              .Error_color),
+                                                    )
+                                                  : const Text(""),
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                      actions: [
                                         InkWell(
                                           onTap: () {
-                                            Get.back();
+                                            Pass_change.Button_Fuction();
+                                            Change_Pass
+                                                .ChangeControllerApiController_Fuction(
+                                              Password:
+                                                  Pass_change.new_pass.text,
+                                              OldPassword:
+                                                  Pass_change.old_pass.text,
+                                              Tokan: Login.option_data['data']
+                                                  ['LoginToken'],
+                                            );
+                                            setState(() {});
                                           },
-                                          child: SvgPicture.asset(
-                                              AppIcons.cancel),
+                                          child: OnButtons(
+                                            Button_Color: AppColor.Button_color,
+                                            btn_name: Profile_Text.Change,
+                                          ),
                                         ),
                                       ],
-                                    ),
-                                  ),
-                                  content: Container(
-                                    width: Get.width,
-                                    height: Get.height / 2.8,
-                                    decoration: BoxDecoration(
-                                      color: AppColor.Full_body_color,
-                                    ),
-                                    child: SingleChildScrollView(
-                                      scrollDirection: Axis.vertical,
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            My_Archive_text.Old_Password,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 23,
-                                              fontWeight: FontWeight.w400,
-                                              color: AppColor.subcolor,
-                                            ),
-                                          ),
-                                          TextField(
-                                            onTap: () {},
-                                            onChanged: (String val) {
-                                              if (!val.contains("@")) {
-                                                Old_passing = true;
-                                                Olding = "@";
-                                              } else if (!val.contains("5")) {
-                                                Old_passing = true;
-                                                Olding = "5";
-                                              } else if (!val.contains("A")) {
-                                                Old_passing = true;
-                                                Olding = "A";
-                                              } else {
-                                                Old_passing = false;
-                                                Olding = "";
-                                              }
-                                              setState(() {});
-                                            },
-                                            obscureText: o_pass,
-                                            controller: old_pass,
-                                            decoration: InputDecoration(
-                                              suffixIcon: InkWell(
-                                                onTap: () {
-                                                  o_pass = !o_pass;
-                                                  setState(() {});
-                                                },
-                                                child: (o_pass)
-                                                    ? const Icon(
-                                                        Icons.visibility_off)
-                                                    : const Icon(
-                                                        Icons.visibility),
-                                              ),
-                                              hintText: My_Archive_text
-                                                  .Enter_Old_Password,
-                                              enabledBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColor.Buttom_color,
-                                                ),
-                                              ),
-                                              focusedBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColor.Buttom_color,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          (Old_passing)
-                                              ? Text(
-                                                  Olding,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppColor.Error_color),
-                                                )
-                                              : const Text(""),
-                                          SizedBox(height: Get.height / 50),
-                                          Text(
-                                            My_Archive_text.New_Password,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 23,
-                                              fontWeight: FontWeight.w400,
-                                              color: AppColor.subcolor,
-                                            ),
-                                          ),
-                                          TextField(
-                                            onChanged: (String val) {
-                                              if (!val.contains("@")) {
-                                                Old_passing = true;
-                                                Newing = "@";
-                                              } else if (!val.contains("5")) {
-                                                Old_passing = true;
-                                                Newing = "5";
-                                              } else if (!val.contains("A")) {
-                                                Old_passing = true;
-                                                Newing = "A";
-                                              } else {
-                                                Old_passing = false;
-                                                Newing = "";
-                                              }
-                                              setState(() {});
-                                            },
-                                            obscureText: n_pass,
-                                            controller: new_pass,
-                                            decoration: InputDecoration(
-                                              suffixIcon: InkWell(
-                                                onTap: () {
-                                                  n_pass = !n_pass;
-                                                  setState(() {});
-                                                },
-                                                child: (o_pass)
-                                                    ? const Icon(
-                                                        Icons.visibility_off,
-                                                      )
-                                                    : const Icon(
-                                                        Icons.visibility,
-                                                      ),
-                                              ),
-                                              hintText: My_Archive_text
-                                                  .Enter_New_Password,
-                                              enabledBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColor.Buttom_color,
-                                                ),
-                                              ),
-                                              focusedBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColor.Buttom_color,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          (Old_passing)
-                                              ? Text(
-                                                  Newing,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppColor.Error_color),
-                                                )
-                                              : Text(Newing = ""),
-                                          SizedBox(height: Get.height / 50),
-                                          Text(
-                                            My_Archive_text.Confirm_Password,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 23,
-                                              fontWeight: FontWeight.w400,
-                                              color: AppColor.subcolor,
-                                            ),
-                                          ),
-                                          TextField(
-                                            onChanged: (String val) {
-                                              if (!val.contains("@")) {
-                                                Old_passing = true;
-                                                Confarm_Newing = "@";
-                                              } else if (!val.contains("5")) {
-                                                Old_passing = true;
-                                                Confarm_Newing = "5";
-                                              } else if (!val.contains("A")) {
-                                                Old_passing = true;
-                                                Confarm_Newing = "A";
-                                              } else {
-                                                Old_passing = false;
-                                                Confarm_Newing = "";
-                                              }
-                                              setState(() {});
-                                            },
-                                            obscureText: c_pass,
-                                            controller: conf_pass,
-                                            decoration: InputDecoration(
-                                              suffixIcon: InkWell(
-                                                onTap: () {
-                                                  c_pass = !c_pass;
-                                                  setState(() {});
-                                                },
-                                                child: (c_pass)
-                                                    ? const Icon(
-                                                        Icons.visibility_off,
-                                                      )
-                                                    : const Icon(
-                                                        Icons.visibility,
-                                                      ),
-                                              ),
-                                              hintText: My_Archive_text
-                                                  .Enter_Confirm_Password,
-                                              enabledBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColor.Buttom_color,
-                                                ),
-                                              ),
-                                              focusedBorder:
-                                                  UnderlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: AppColor.Buttom_color,
-                                                ),
-                                              ),
-                                            ),
-                                          ),
-                                          (Old_passing)
-                                              ? Text(
-                                                  Confarm_Newing,
-                                                  style: TextStyle(
-                                                      color:
-                                                          AppColor.Error_color),
-                                                )
-                                              : const Text(""),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  actions: [
-                                    InkWell(
-                                      onTap: () {
-                                        if (old_pass.text.isEmpty) {
-                                          Old_passing = true;
-                                          Olding = "Plese Input Old Password";
-                                        } else {
-                                          Old_passing = false;
-                                          Olding = "";
-                                        }
-                                        if (new_pass.text.isEmpty) {
-                                          Old_passing = true;
-                                          Newing = "Plese Input Old Password";
-                                        } else {
-                                          Old_passing = false;
-                                          Newing = "";
-                                        }
-                                        if (conf_pass.text.isEmpty) {
-                                          Old_passing = true;
-                                          Confarm_Newing =
-                                              "Plese Input Old Password";
-                                        } else {
-                                          Old_passing = false;
-                                          Confarm_Newing = "";
-                                        }
-                                        setState(() {});
-                                      },
-                                      child: OnButtons(
-                                        Button_Color: AppColor.Button_color,
-                                        btn_name: Profile_Text.Change,
-                                      ),
-                                    ),
-                                  ],
+                                    );
+                                  },
                                 );
                               },
                             );
                           },
-                        );
-                      },
-                      child: const Info_Setting(
-                          info: Profile_Text.Change_Password)),
+                          child: const Info_Setting(
+                              info: Profile_Text.Change_Password));
+                    },
+                  ),
                   SizedBox(height: Get.height / 40),
                   Padding(
                     padding: EdgeInsets.only(left: Get.width / 32),

@@ -24,10 +24,10 @@ class candidate_Signup extends StatefulWidget {
 }
 
 class _candidate_SignupState extends State<candidate_Signup> {
+  SinupApiController Sinup_API = Get.put(SinupApiController());
+
   @override
   Widget build(BuildContext context) {
-    SinupApiController Sinup_API = Get.put(SinupApiController());
-
     final vail = Provider.of<Candidate_SinupController>(context, listen: false);
     final vis =
         Provider.of<Candidate_VisibilityController>(context, listen: false);
@@ -64,87 +64,97 @@ class _candidate_SignupState extends State<candidate_Signup> {
                         ),
                       ),
                       SizedBox(height: Get.height / 20),
+
+                      //First Name
                       Inputfild(
-                        onChanged: (FrisName) {
-                          vail.fristname_vail(FrisName);
-                        },
+                        // onChanged: (FrisName) {
+                        //   vail.fristname_vail(FrisName);
+                        // },
                         labal: Signup_text.First_Name,
                         hint: Signup_text.Enter_First_Name,
                         controller: vail.frist_name,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwFristnameError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError)
+                      //     ? Text(
+                      //         vail.isError ? vail.throwFristnameError : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 50),
+
+                      //Last Name
                       Inputfild(
-                        onChanged: (Lastname) {
-                          vail.lastname_vail(Lastname);
-                        },
+                        // onChanged: (Lastname) {
+                        //   vail.lastname_vail(Lastname);
+                        // },
                         labal: Signup_text.Last_Name,
                         hint: Signup_text.Enter_last_Name,
                         controller: vail.last_name,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwLastnameError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError)
+                      //     ? Text(
+                      //         vail.isError ? vail.throwLastnameError : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 50),
+
+                      //Email
                       Inputfild(
-                        onChanged: (Email) {
-                          vail.Email_vali(Email);
-                        },
+                        // onChanged: (Email) {
+                        //   vail.Email_vali(Email);
+                        // },
                         labal: Signup_text.Email_Id,
                         hint: Signup_text.Enter_Email_Address,
                         controller: vail.email,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwEmailnameError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError)
+                      //     ? Text(
+                      //         vail.isError ? vail.throwEmailnameError : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 50),
+
+                      //Phone Number
                       Inputfild(
                         keyboardType: TextInputType.number,
-                        onChanged: (Phonevalue) {
-                          vail.Phone_vail(Phonevalue);
-                        },
+                        // onChanged: (Phonevalue) {
+                        //   vail.Phone_vail(Phonevalue);
+                        // },
                         labal: Signup_text.Phone_Number,
                         hint: Signup_text.Enter_Phone_Number,
                         controller: vail.phone,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwPhoneNumberError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError)
+                      //     ? Text(
+                      //         vail.isError ? vail.throwPhoneNumberError : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
+
+                      //Password
                       SizedBox(height: Get.height / 50),
                       Consumer<Candidate_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             obscureText: vis.isVis,
                             suffixIcon: InkWell(
-                              onTap: () {
-                                vis.visibilityVis();
-                              },
+                              // onTap: () {
+                              //   vis.visibilityVis();
+                              // },
                               child: (vis.isVis)
                                   ? const Icon(Icons.visibility_off)
                                   : const Icon(Icons.visibility),
@@ -158,23 +168,23 @@ class _candidate_SignupState extends State<candidate_Signup> {
                           );
                         },
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwPasswordError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError)
+                      //     ? Text(
+                      //         vail.isError ? vail.throwPasswordError : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 50),
                       Consumer<Candidate_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             suffixIcon: InkWell(
-                              onTap: () {
-                                vis.visibilitycnf();
-                              },
+                              // onTap: () {
+                              //   vis.visibilitycnf();
+                              // },
                               child: (vis.isviscnf)
                                   ? const Icon(Icons.visibility_off)
                                   : const Icon(Icons.visibility),
@@ -189,17 +199,17 @@ class _candidate_SignupState extends State<candidate_Signup> {
                           );
                         },
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError
-                                  ? vail.throwConfirmPasswordError
-                                  : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      // (vail.isError)
+                      //     ? Text(
+                      //         vail.isError
+                      //             ? vail.throwConfirmPasswordError
+                      //             : "",
+                      //         style: TextStyle(
+                      //           fontSize: Get.width / 25,
+                      //           color: AppColor.Error_color,
+                      //         ),
+                      //       )
+                      //     : const SizedBox(),
                       SizedBox(height: Get.height / 20),
                       InkWell(
                         onTap: () {
@@ -221,8 +231,20 @@ class _candidate_SignupState extends State<candidate_Signup> {
                                     Password: vail.password.text,
                                     Phone: vail.phone.text,
                                   );
-                                  // Get.to(() => const OTP());
-                                  Get.to(()=>const Candidate_Specialization());
+                                  if (Sinup_API.Sinup_data['status'] == true) {
+                                    Get.to(() => const OTP());
+                                  } else {
+                                    Get.showSnackbar(
+                                      GetBar(
+                                        duration: const Duration(seconds: 2),
+                                        message:
+                                            Sinup_API.Sinup_data['message'],
+                                      ),
+                                    );
+                                  }
+                                  Get.to(
+                                    () => const Candidate_Specialization(),
+                                  );
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Signup_text.Sign_Up,

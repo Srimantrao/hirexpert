@@ -104,50 +104,16 @@ class Candidate_SpecializationController_popup with ChangeNotifier {
 }
 
 class Candidate_SpecializationController_Interest with ChangeNotifier {
-  int _SelectIndex = 0;
-  String _throwdrop = "";
-  bool _showdrop = false;
+  String _Inter = "";
+  bool _Inter_Select = false;
 
-  int get SelectIndex => _SelectIndex;
+  get Inter => _Inter;
 
-  String get throwdrop => _throwdrop;
+  get Inter_Select => _Inter_Select;
 
-  bool get showdrop => _showdrop;
-
-  void Showingdrop() {
-    _showdrop = true;
-    notifyListeners();
-  }
-
-  //Primary Skillset
-  void Skillset_Selectone() {
-    _SelectIndex = 1;
-    _throwdrop = Specialization_text.Frontend;
-    _showdrop = false;
-    Get.back();
-    notifyListeners();
-  }
-
-  void Skillset_Secondone() {
-    _SelectIndex = 2;
-    _throwdrop = Specialization_text.Backend;
-    _showdrop = false;
-    Get.back();
-    notifyListeners();
-  }
-
-  void Skillset_Thrdone() {
-    _SelectIndex = 3;
-    _throwdrop = Specialization_text.Software;
-    _showdrop = false;
-    Get.back();
-    notifyListeners();
-  }
-
-  void Skillset_Fouth() {
-    _SelectIndex = 4;
-    _throwdrop = Specialization_text.eCommerce;
-    _showdrop = false;
+  void Select_Fuction(String SelectString) {
+    _Inter_Select = true;
+    _Inter = SelectString;
     Get.back();
     notifyListeners();
   }

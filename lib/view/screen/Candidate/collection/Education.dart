@@ -68,6 +68,8 @@ class _EducationState extends State<Education> {
                   ],
                 ),
                 SizedBox(height: Get.height / 20),
+
+                //Education
                 Text(
                   Specialization_text.Education,
                   style: TextStyle(
@@ -77,6 +79,8 @@ class _EducationState extends State<Education> {
                 ),
                 const Education_Comm(),
                 SizedBox(height: Get.height / 50),
+
+                //Passsing Year
                 Text(
                   Specialization_text.graduation,
                   style: TextStyle(
