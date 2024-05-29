@@ -36,7 +36,6 @@ class _SearchState extends State<Search> {
           Tokan: Login.option_data['data']['LoginToken'],
         );
       }
-      setState(() {});
     });
     super.initState();
   }

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
 import '../../../../modal/Job/jobSearch_list.dart';
 import '../../app_String.dart';
@@ -20,13 +22,14 @@ class Seved_List extends StatefulWidget {
 
 class _Seved_ListState extends State<Seved_List> {
   final SearchApiController _Search = Get.put(SearchApiController());
+  OptionApiController login = Get.put(OptionApiController());
 
   @override
   void initState() {
     Future.microtask(() async {
       await _Search.SearchApiController_fuction(
         Timezone: 'asia/kolkata',
-        CandidateId: '61',
+        CandidateId: login.option_data['data']['LoginToken'],
       );
     });
     super.initState();
@@ -37,8 +40,8 @@ class _Seved_ListState extends State<Seved_List> {
     final size = MediaQuery.of(context).size;
     return Obx(() {
       if (_Search.isLoding.value) {
-        return const Center(
-          child: CircularProgressIndicator(),
+        return Center(
+          child: Image.network(AppLoder.infinityloder_without_background),
         );
       } else if (_Search.Search_data == null) {
         return const Center(

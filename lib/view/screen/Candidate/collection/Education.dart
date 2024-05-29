@@ -3,8 +3,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Concern/Concern_API_Controller.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:provider/provider.dart';
@@ -23,6 +23,7 @@ class Education extends StatefulWidget {
 }
 
 class _EducationState extends State<Education> {
+  ConcernApiController Con = Get.put(ConcernApiController());
   bool shodrop = false;
   int Realvalue = 0;
   String showvalue = "";
@@ -301,6 +302,10 @@ class _EducationState extends State<Education> {
                       builder: (BuildContext context, value, Widget? child) {
                         return InkWell(
                           onTap: () {
+                            Con.ConcernApi_fuction(
+                              JobId: '1',
+                              Comment: JobTitle.JobTitalController.text,
+                            );
                             if (JobTitle.SelectIndex) {
                               Get.to(() => const Fresher());
                             }
