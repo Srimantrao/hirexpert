@@ -10,6 +10,7 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../../controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
 import '../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../utils/app_String.dart';
+import '../../../../utils/app_loder.dart';
 import '../../../../utils/common/List/jobSearch.dart';
 import 'Details_Search.dart';
 import 'Search_location.dart';
@@ -100,8 +101,8 @@ class _SearchState extends State<Search> {
         child: Obx(
           () {
             if (Search.isLoding.value) {
-              return const Center(
-                child: CircularProgressIndicator(),
+              return  Center(
+                child: Image.asset(AppLoder.infinityloder_without_background),
               );
             } else if (Search.Search_data == null) {
               return const Center(
@@ -111,6 +112,9 @@ class _SearchState extends State<Search> {
               return ListView.builder(
                 itemCount: Search.Search_data['data'].length,
                 itemBuilder: (BuildContext context, int index) {
+                  if (index >= showjob.length || index >= isSeved.length) {
+                    return SizedBox.shrink();
+                  }
                   return JobSearch(
                     onTap: () {
                       Get.to(

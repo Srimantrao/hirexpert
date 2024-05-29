@@ -16,6 +16,7 @@ class AppUrl {
   static const Search_Job =
       "$Hirexpert/api/v1/Advertisedjob/JobFilterList?TechId=3";
   static const SearchJob = "$Hirexpert/api/v1/Advertisedjob/SearchJob";
+  static const JobInterviewList = "$Hirexpert/api/v1/Advertisedjob/JobInterviewList";
 
   //Collcetion
   static const login = "$Hirexpert/api/v1/user/login";

@@ -12,5 +12,5 @@ class Clientip {
 
 class Logintoken {
   static const logintoken = "Logintoken";
-  static const token = "b48a149bdae36a4a6448eeadfeb61c81";
+  static const token = "16c9d3c0d97b6c22cc05bc20b2d4f19f";
 }

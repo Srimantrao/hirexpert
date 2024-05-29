@@ -11,6 +11,7 @@ import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
 import '../../../utils/app_icon.dart';
+import '../../../utils/app_loder.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
 import 'Signup.dart';
 import 'forget_password.dart';
@@ -141,8 +142,8 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                       SizedBox(height: Get.height / 20),
                       Obx(
                         () => (login.isLodingvalue.value)
-                            ? const Center(
-                                child: CircularProgressIndicator(),
+                            ?  Center(
+                                child: Image.asset(AppLoder.infinityloder_without_background),
                               )
                             : OnButtons(
                                 onTap: () {

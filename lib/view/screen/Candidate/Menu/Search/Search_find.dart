@@ -11,6 +11,7 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../../controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import '../../../../utils/app_loder.dart';
 import '../../../../utils/common/List/jobSearch.dart';
 import '../../../../utils/common/Popup/Candidate/Search_Job(Conatiner).dart';
 import 'Details_Search.dart';
@@ -59,8 +60,8 @@ class _Search_findState extends State<Search_find> {
             height: Get.height / 1.6,
             child: Obx(() {
               if (Search.isLoding.value) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return  Center(
+                  child: Image.asset(AppLoder.infinityloder_without_background),
                 );
               } else if (Search.Search_data['data'] == null ||
                   Search.Search_data == null) {
@@ -71,6 +72,9 @@ class _Search_findState extends State<Search_find> {
                 return ListView.builder(
                   itemCount: Search.Search_data['data'].length,
                   itemBuilder: (BuildContext context, int index) {
+                    if (index >= showjob.length || index >= isSeved.length) {
+                      return const SizedBox.shrink();
+                    }
                     return InkWell(
                       onTap: () {
                         Get.to(

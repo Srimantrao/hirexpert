@@ -7,6 +7,7 @@ import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Notification/
 import 'package:hirexpert/view/utils/app_color.dart';
 
 import '../../../../utils/app_String.dart';
+import '../../../../utils/app_loder.dart';
 
 class Notification_Screen extends StatefulWidget {
   const Notification_Screen({super.key});
@@ -69,10 +70,11 @@ class _Notification_ScreenState extends State<Notification_Screen> {
             ),
             child: Obx(() {
               if (Notifica.isLoding.value) {
-                return const Center(
-                  child: CircularProgressIndicator(),
+                return Center(
+                  child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (Notifica.Notification_data == null) {
+              } else if (Notifica.Notification_data == null ||
+                  Notifica.Notification_data['data'] == null) {
                 return const Center(
                   child: Text(API_Error.null_data),
                 );

@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import '../../../utils/app_icon.dart';
+import '../../../utils/app_loder.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 
 class candidate_Signup extends StatefulWidget {
@@ -219,8 +220,8 @@ class _candidate_SignupState extends State<candidate_Signup> {
                           // );
                         },
                         child: (Sinup_API.isLoding.value)
-                            ? const Center(
-                                child: CircularProgressIndicator(),
+                            ?  Center(
+                                child:Image.asset(AppLoder.infinityloder_without_background),
                               )
                             : OnButtons(
                                 onTap: () {
