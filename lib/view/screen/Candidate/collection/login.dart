@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 import 'package:provider/provider.dart';
@@ -98,7 +99,8 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                             obscureText: vis.isobscr,
                             labal: Login_text.lebelpassword,
                             hint: Login_text.hintpassword,
-                            controller: vail.PasswordController,
+                            // controller: vail.PasswordController,
+                            controller: Password_main.Pass,
                             suffixIcon: InkWell(
                               onTap: () {
                                 vis.visibilityVis();
@@ -142,28 +144,31 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                       SizedBox(height: Get.height / 20),
                       Obx(
                         () => (login.isLodingvalue.value)
-                            ?  Center(
-                                child: Image.asset(AppLoder.infinityloder_without_background),
+                            ? Center(
+                                child: Image.asset(
+                                    AppLoder.infinityloder_without_background),
                               )
                             : OnButtons(
                                 onTap: () {
-                                  vail.isEmtey();
-                                  vail.loginvalidation();
+                                  // vail.isEmtey();
+                                  // vail.loginvalidation();
                                   login.OptionApiController_fuction(
                                     UserType: 'Candidate',
                                     Email: vail.EmailController.text,
-                                    Password: vail.PasswordController.text,
-                                  );
-                                  if (login.option_data['status'] == true) {
-                                    Get.to(() => const Candidate_Bottam());
-                                  } else {
-                                    Get.showSnackbar(
-                                      GetBar(
-                                        duration: const Duration(seconds: 2),
-                                        message: login.option_data['message'],
-                                      ),
-                                    );
-                                  }
+                                    Password: Password_main.Pass.text,
+                                  ).then((value){
+                                    if (login.option_data['status'] == true) {
+                                      Get.to(() => const Candidate_Bottam());
+                                    } else {
+                                      Get.showSnackbar(
+                                        GetBar(
+                                          duration: const Duration(seconds: 2),
+                                          message: login.option_data['message'],
+                                        ),
+                                      );
+                                    }
+                                  });
+
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Login_text.btn_name,

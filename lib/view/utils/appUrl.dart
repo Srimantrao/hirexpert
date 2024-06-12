@@ -2,7 +2,7 @@
 
 class AppUrl {
   static const WebSocket = "wss://echo.websocket.events";
-  static const Hirexpert = "http://192.168.1.137/stage_gohire/";
+  static const Hirexpert = "https://cidevelop.weingenious.in/hirexpert/";
 
   //Candidate
   //Popup

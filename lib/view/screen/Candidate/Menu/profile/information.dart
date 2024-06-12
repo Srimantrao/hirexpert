@@ -1,12 +1,16 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
+// ignore_for_file: camel_case_types, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
+import '../../../../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
+import '../../../../utils/app_constance.dart';
 import '../../../../utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Document_profile.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
@@ -21,6 +25,20 @@ class Profile_info extends StatefulWidget {
 }
 
 class _Profile_infoState extends State<Profile_info> {
+  OptionApiController login = Get.put(OptionApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await login.OptionApiController_fuction(
+        UserType: 'Candidate',
+        Email: login.option_data['data']['Email'],
+        Password: Password_main.Pass.text,
+      );
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final Tabb = Provider.of<TabbarController>(context, listen: false);
@@ -54,34 +72,51 @@ class _Profile_infoState extends State<Profile_info> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          children: [
-                            const CircleAvatar(
-                              radius: 40,
-                            ),
-                            SizedBox(width: Get.width / 30),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                        Obx(() {
+                          if (login.isLodingvalue.value) {
+                            return Center(
+                              child: Image.asset(
+                                  AppLoder.infinityloder_without_background),
+                            );
+                          } else if (login.option_data['data'] == null ||
+                              login.option_data == null) {
+                            return Center(child: Text(API_Error.null_data));
+                          } else {
+                            return Row(
                               children: [
-                                Text(
-                                  "Sager Patil",
-                                  style: TextStyle(
-                                    fontSize: Get.width / 22,
-                                    fontWeight: FontWeight.w700,
+                                CircleAvatar(
+                                  radius: 40,
+                                  backgroundImage: NetworkImage(
+                                    login.option_data['data']['Profile'],
                                   ),
                                 ),
-                                Text(
-                                  "Accounts & Finance",
-                                  style: TextStyle(
-                                      fontSize: Get.width / 26,
-                                      fontWeight: FontWeight.w400,
-                                      color: AppColor.subcolor),
+                                SizedBox(width: Get.width / 30),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      login.option_data['data']['Username'],
+                                      style: TextStyle(
+                                        fontSize: Get.width / 22,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                    Text(
+                                      login.option_data['data']['UserDetails']
+                                          ['TechName'],
+                                      style: TextStyle(
+                                        fontSize: Get.width / 26,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColor.subcolor,
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ],
-                            ),
-                          ],
-                        ),
+                            );
+                          }
+                        }),
                         InkWell(
                           onTap: () {
                             Get.to(() => const Setting());

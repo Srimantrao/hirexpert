@@ -1,9 +1,12 @@
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
@@ -13,8 +16,27 @@ import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
 import '../../../../../app_icon.dart';
 
-class Upload_Yor_CV extends StatelessWidget {
+class Upload_Yor_CV extends StatefulWidget {
   const Upload_Yor_CV({super.key});
+
+  @override
+  State<Upload_Yor_CV> createState() => _Upload_Yor_CVState();
+}
+
+class _Upload_Yor_CVState extends State<Upload_Yor_CV> {
+  OptionApiController login = Get.put(OptionApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await login.OptionApiController_fuction(
+        UserType: login.option_data['data']['UserType'],
+        Password: Password_main.Pass.text,
+        Email: login.option_data['data']['Email'],
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,98 +46,125 @@ class Upload_Yor_CV extends StatelessWidget {
     );
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
-        return Column(
-          children: [
-            InkWell(
-              onTap: () {
-                myProfile.Upload_lock_fun();
-              },
-              child: Info(
-                info: Profile_Text.Upload_Your_CV,
-                CircleAvatar_color:
-                    Change_Circle(Condition: myProfile.file != null),
-                dropicons: DropIcons(
-                  conditional_name: myProfile.Upload_lock,
-                ),
-              ),
-            ),
-            Visibility(
-              visible: myProfile.Upload_lock,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: Get.height / 60),
-                  Text(
-                    Profile_Text.Upload,
-                    style: TextStyle(
-                      color: AppColor.subcolor,
-                      fontSize: Get.width / 23,
+        return Obx(() {
+          if (login.isLodingvalue.value) {
+            return Center(
+              child: Image.asset(AppLoder.infinityloder_without_background),
+            );
+          } else if (login.option_data['data'] == null ||
+              login.option_data == null) {
+            return Center(child: Text(API_Error.null_data));
+          } else {
+            return Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    myProfile.Upload_lock_fun();
+                  },
+                  child: Info(
+                    info: Profile_Text.Upload_Your_CV,
+                    CircleAvatar_color:
+                        Change_Circle(Condition: myProfile.file != null),
+                    dropicons: DropIcons(
+                      conditional_name: myProfile.Upload_lock,
                     ),
                   ),
-                  SizedBox(height: Get.height / 60),
-                  InkWell(
-                    onTap: () {
-                      myProfile.picksinglefile();
-                    },
-                    child: DottedBorder(
-                      color: AppColor.Bottam_color,
-                      dashPattern: const [15, 12],
-                      child: SizedBox(
-                        height: Get.height / 6,
-                        width: Get.width,
-                        child: Center(
-                          child: (myProfile.file != null)
-                              ? SvgPicture.asset(AppIcons.PDF_Icon)
-                              : Text(
+                ),
+                Visibility(
+                  visible: myProfile.Upload_lock,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: Get.height / 60),
+                      Text(
+                        Profile_Text.Upload,
+                        style: TextStyle(
+                          color: AppColor.subcolor,
+                          fontSize: Get.width / 23,
+                        ),
+                      ),
+                      SizedBox(height: Get.height / 60),
+                      InkWell(
+                        onTap: () {
+                          myProfile.picksinglefile();
+                        },
+                        child: DottedBorder(
+                          color: AppColor.Bottam_color,
+                          dashPattern: const [15, 12],
+                          child: SizedBox(
+                            height: Get.height / 6,
+                            width: Get.width,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SvgPicture.asset(AppIcons.PDF_Icon),
+                                SizedBox(height: Get.height / 50),
+                                Text(
                                   textAlign: TextAlign.center,
-                                  Profile_Text.resume,
+                                  login.option_data['data']['UserDetails']
+                                          ['ResumeDetails']['ResumeName']
+                                      .toString(),
                                   style: TextStyle(
                                     fontSize: Get.width / 27,
                                     color: AppColor.subcolor,
                                   ),
                                 ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: Get.height / 60),
-                  Row(
-                    children: [
-                      Text(
-                        Profile_Text.Resume_Link,
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      (myProfile.file == null)
-                          ? const SizedBox()
-                          : Row(
-                              children: [
-                                SizedBox(width: Get.width / 25),
-                                SizedBox(
-                                  width: Get.width / 1.7,
-                                  child: Text(
-                                    myProfile.file!.name,
-                                    style: TextStyle(
-                                      color: AppColor.Button_color,
-                                      decoration: TextDecoration.underline,
-                                      fontSize: Get.width / 26,
-                                      fontWeight: FontWeight.w600,
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                  ),
-                                ),
                               ],
                             ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: Get.height / 60),
+                      Row(
+                        children: [
+                          Text(
+                            Profile_Text.Resume_Link,
+                            style: TextStyle(
+                              fontSize: Get.width / 25,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(width: Get.width / 25),
+                              SizedBox(
+                                width: Get.width / 1.7,
+                                child: Text(
+                                  login.option_data['data']['UserDetails']
+                                      ['ResumeDetails']['UploadName'],
+                                  style: TextStyle(
+                                    color: AppColor.Button_color,
+                                    decoration: TextDecoration.underline,
+                                    fontSize: Get.width / 26,
+                                    fontWeight: FontWeight.w600,
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
                     ],
                   ),
-                ],
-              ),
-            ),
-          ],
-        );
+                ),
+              ],
+            );
+          }
+        });
       },
     );
+  }
+
+  @override
+  void dispose() {
+    Future.microtask(() async {
+      await login.OptionApiController_fuction(
+        UserType: login.option_data['data']['UserType'],
+        Password: Password_main.Pass.text,
+        Email: login.option_data['data']['Email'],
+      );
+    });
+    super.dispose();
   }
 }

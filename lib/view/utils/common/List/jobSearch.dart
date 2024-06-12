@@ -95,10 +95,9 @@ class _JobSearchState extends State<JobSearch> {
                             size.width / 30,
                           ),
                           color: widget.Color_container,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(15),
-                          child: Image.network(widget.Icon ?? ''),
+                          image: DecorationImage(
+                              image: NetworkImage(widget.Icon ?? ''),
+                              fit: BoxFit.fill),
                         ),
                       ),
                     ),

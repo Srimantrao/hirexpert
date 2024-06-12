@@ -20,12 +20,12 @@ class OptionApiController extends GetxController {
     try {
       isLodingvalue.value = true;
 
-      if (kDebugMode) {
-        print("Email: $Email");
-        print("Password: $Password");
-        print("UserType: $UserType");
-        print("Timezone: asia/kolkata");
-      }
+      // if (kDebugMode) {
+      //   print("Email: $Email");
+      //   print("Password: $Password");
+      //   print("UserType: $UserType");
+      //   print("Timezone: asia/kolkata");
+      // }
       
       Map<String, dynamic> body = {
         'Email': Email ?? '',
@@ -34,9 +34,9 @@ class OptionApiController extends GetxController {
         'Timezone': 'asia/kolkata',
       };
 
-      if (kDebugMode) {
-        print(body);
-      }
+      // if (kDebugMode) {
+      //   print(body);
+      // }
 
       final responce = await http.post(
         Uri.parse(AppUrl.login),

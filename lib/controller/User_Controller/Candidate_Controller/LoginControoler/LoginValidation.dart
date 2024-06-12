@@ -13,7 +13,7 @@ class Candidate_LoginValidation with ChangeNotifier {
   OptionApiController login = Get.put(OptionApiController());
 
   TextEditingController EmailController = TextEditingController();
-  TextEditingController PasswordController = TextEditingController();
+  static TextEditingController PasswordController = TextEditingController();
 
   bool _isError_Email = false;
   bool _isError_Password = false;

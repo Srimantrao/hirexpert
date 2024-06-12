@@ -1,7 +1,9 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, camel_case_types
 
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 
 //Save Login & Password !
 SharedPreferences? pref;
@@ -14,3 +16,8 @@ String Password = "";
 String Comfarm_password = "";
 
 bool islogin = false;
+
+class Password_main {
+  static TextEditingController Pass =
+      Candidate_LoginValidation.PasswordController = TextEditingController();
+}

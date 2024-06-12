@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,10 +8,12 @@ import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/lo
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/Change_PasswordController/Change_Password_Controller.dart';
+import '../../../../utils/app_constance.dart';
 import 'Setting_Screen/My_Archive.dart';
 import 'Setting_Screen/Notification_Setting.dart';
 
@@ -30,6 +32,18 @@ class _SettingState extends State<Setting> {
   @override
   void initState() {
     Future.microtask(() async {
+      @override
+      void initState() {
+        Future.microtask(() async {
+          await Login.OptionApiController_fuction(
+            UserType: 'Candidate',
+            Email: Login.option_data['data']['Email'],
+            Password: Password_main.Pass.text,
+          );
+        });
+        super.initState();
+      }
+
       await Change_Pass.ChangeControllerApiController_Fuction(
         Tokan: Login.option_data['data']['LoginToken'],
       );
@@ -82,42 +96,59 @@ class _SettingState extends State<Setting> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    height: Get.height / 8,
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.Bottam_color,
+                      height: Get.height / 8,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
                         ),
                       ),
-                    ),
-                    child: Row(
-                      children: [
-                        const CircleAvatar(
-                          radius: 40,
-                        ),
-                        SizedBox(width: Get.width / 30),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Sagar Patil",
-                              style: TextStyle(
-                                fontSize: Get.width / 22,
-                                fontWeight: FontWeight.w700,
+                      child: Obx(() {
+                        if (Login.isLodingvalue.value) {
+                          return Center(
+                            child: Image.asset(
+                                AppLoder.infinityloder_without_background),
+                          );
+                        } else if (Login.option_data == null ||
+                            Login.option_data['data'] == null) {
+                          return Text(API_Error.null_data);
+                        } else {
+                          return Row(
+                            children: [
+                              CircleAvatar(
+                                radius: 40,
+                                backgroundImage: NetworkImage(
+                                  Login.option_data['data']['Profile'],
+                                ),
                               ),
-                            ),
-                            Text(
-                              "Accounting",
-                              style: TextStyle(
-                                  fontSize: Get.width / 26,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.subcolor),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                              SizedBox(width: Get.width / 30),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    Login.option_data['data']['Username'],
+                                    style: TextStyle(
+                                      fontSize: Get.width / 22,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  Text(
+                                    Login.option_data['data']['UserDetails']
+                                        ['TechName'],
+                                    style: TextStyle(
+                                      fontSize: Get.width / 26,
+                                      fontWeight: FontWeight.w400,
+                                      color: AppColor.subcolor,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          );
+                        }
+                      })),
                   const Info_Setting(info: Profile_Text.Profile),
 
                   //My Archive
@@ -753,5 +784,17 @@ class _SettingState extends State<Setting> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    Future.microtask(() async {
+      await Login.OptionApiController_fuction(
+        UserType: 'Candidate',
+        Email: Login.option_data['data']['Email'],
+        Password: Password_main.Pass.text,
+      );
+    });
+    super.dispose();
   }
 }

@@ -1,7 +1,10 @@
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
@@ -12,8 +15,27 @@ import '../../../../../app_color.dart';
 import '../../../../Container/profile_Info.dart';
 import '../../../../Textfild/Inputfild.dart';
 
-class Parsonal_Information extends StatelessWidget {
+class Parsonal_Information extends StatefulWidget {
   const Parsonal_Information({super.key});
+
+  @override
+  State<Parsonal_Information> createState() => _Parsonal_InformationState();
+}
+
+class _Parsonal_InformationState extends State<Parsonal_Information> {
+  OptionApiController login = Get.put(OptionApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await login.OptionApiController_fuction(
+        UserType: login.option_data['data']['UserType'],
+        Password: Password_main.Pass.text,
+        Email: login.option_data['data']['Email'],
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,246 +45,272 @@ class Parsonal_Information extends StatelessWidget {
     );
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
-        return Column(
-          children: [
-            InkWell(
-              onTap: () {
-                myProfile.Personal_Information_fun();
-              },
-              child: Info(
-                info: Profile_Text.Personal_Information,
-                CircleAvatar_color: Change_Circle(
-                  Condition: myProfile.P_Job_Title == 0 &&
-                      myProfile.P_Frist_Name == 1 &&
-                      myProfile.P_Last_Name == 2 &&
-                      myProfile.P_Email_Id == 3 &&
-                      myProfile.P_Mobile_Numbres == 4 &&
-                      myProfile.P_Birthday == 5,
-                ),
-                dropicons: DropIcons(
-                  conditional_name: myProfile.Personal_Information,
-                ),
-              ),
-            ),
-            Visibility(
-              visible: myProfile.Personal_Information,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: Get.height / 60),
-                  //Job Title
-                  Inputfild(
-                    onTap: () {
-                      myProfile.P_Job_Title_fun();
-                    },
-                    onChanged: (val) {
-                      myProfile.JobTitle_validation(val);
-                    },
-                    labal: Profile_Text.Job_Title,
-                    hint: Profile_Text.Enter_Tital_job,
-                    controller: myProfile.Job_Titales,
-                  ),
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.JobTitle,
-                  ),
-                  SizedBox(height: Get.height / 60),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      //First Name
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: Get.width / 2.5,
-                            child: Inputfild(
-                              onTap: () {
-                                myProfile.P_Frist_Name_fun();
-                              },
-                              onChanged: (val) {
-                                myProfile.FristName_validation(val);
-                              },
-                              labal: Profile_Text.First_Name,
-                              hint: Profile_Text.Enter_The_Frist_Name,
-                              controller: myProfile.Frist_Name_Profile,
-                            ),
-                          ),
-                          SizedBox(
-                            width: Get.width / 2.5,
-                            child: MyProfile_Error(
-                              throww: myProfile.onthrowError,
-                              Error: myProfile.FristName,
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      //Last Name
-                      Column(
-                        children: [
-                          SizedBox(
-                            width: Get.width / 2.5,
-                            child: Inputfild(
-                              onTap: () {
-                                myProfile.P_Last_Name_fun();
-                              },
-                              onChanged: (val) {
-                                myProfile.LastName_validation(val);
-                              },
-                              labal: Profile_Text.Last_Name,
-                              hint: Profile_Text.Enter_The_Last_Name,
-                              controller: myProfile.Last_Name_Profile,
-                            ),
-                          ),
-                          SizedBox(
-                            width: Get.width / 2.5,
-                            child: MyProfile_Error(
-                              throww: myProfile.onthrowError,
-                              Error: myProfile.LastName,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                  SizedBox(height: Get.height / 60),
-
-                  //Email ID
-                  Inputfild(
-                    labal: Profile_Text.Email_Id,
-                    hint: Profile_Text.Enter_Email_Id,
-                    controller: myProfile.Email_id_Profile,
-                    onTap: () {
-                      myProfile.P_Email_ID_fun();
-                    },
-                    onChanged: (val) {
-                      myProfile.Email_ID_validation(val);
-                    },
-                  ),
-                  //Error
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.Email_Id,
-                  ),
-                  SizedBox(height: Get.height / 60),
-
-                  //Mobile Numbres
-                  Inputfild(
-                    keyboardType: TextInputType.number,
-                    labal: Profile_Text.Mobile_Number,
-                    hint: Profile_Text.Enter_Mobile_Number,
-                    controller: myProfile.Mobile_Numbres,
-                    onTap: () {
-                      myProfile.P_Mobile_Numbres_fun();
-                    },
-                    onChanged: (val) {
-                      myProfile.Mobile_Numbress_validation(val);
-                    },
-                  ),
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.Mobile_Numbress,
-                  ),
-                  SizedBox(height: Get.height / 60),
-
-                  //Gender
-                  Text(
-                    Profile_Text.Gender,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      color: AppColor.select_check_color,
+        return Obx(() {
+          if (login.isLodingvalue.value) {
+            return Center(
+              child: Image.asset(AppLoder.infinityloder_without_background),
+            );
+          } else if (login.option_data['data'] == null ||
+              login.option_data == null) {
+            return Text(API_Error.null_data);
+          } else {
+            return Column(
+              children: [
+                InkWell(
+                  onTap: () {
+                    myProfile.Personal_Information_fun();
+                  },
+                  child: Info(
+                    info: Profile_Text.Personal_Information,
+                    CircleAvatar_color: Change_Circle(
+                      Condition: myProfile.P_Job_Title == 0 &&
+                          myProfile.P_Frist_Name == 1 &&
+                          myProfile.P_Last_Name == 2 &&
+                          myProfile.P_Email_Id == 3 &&
+                          myProfile.P_Mobile_Numbres == 4 &&
+                          myProfile.P_Birthday == 5,
+                    ),
+                    dropicons: DropIcons(
+                      conditional_name: myProfile.Personal_Information,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+                Visibility(
+                  visible: myProfile.Personal_Information,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: Get.height / 60),
+                      //Job Title
+                      Inputfild(
+                        onTap: () {
+                          myProfile.P_Job_Title_fun();
+                        },
+                        onChanged: (val) {
+                          myProfile.JobTitle_validation(val);
+                        },
+                        labal: Profile_Text.Job_Title,
+                        hint: login.option_data['data']['UserDetails']
+                            ['JobTitle'],
+                        controller: myProfile.Job_Titales,
+                      ),
+                      MyProfile_Error(
+                        throww: myProfile.onthrowError,
+                        Error: myProfile.JobTitle,
+                      ),
+                      SizedBox(height: Get.height / 60),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Checkbox(
-                              side: BorderSide(
-                                color: AppColor.Buttom_color,
+                          //First Name
+                          Column(
+                            children: [
+                              SizedBox(
+                                width: Get.width / 2.5,
+                                child: Inputfild(
+                                  onTap: () {
+                                    myProfile.P_Frist_Name_fun();
+                                  },
+                                  onChanged: (val) {
+                                    myProfile.FristName_validation(val);
+                                  },
+                                  labal: Profile_Text.First_Name,
+                                  hint: login.option_data['data']['UserDetails']
+                                      ['FirstName'],
+                                  controller: myProfile.Frist_Name_Profile,
+                                ),
                               ),
-                              activeColor: AppColor.Button_color,
-                              value: myProfile.selectedCheckboxIndex == 0,
-                              onChanged: (val) {
-                                myProfile.handleCheckboxValueChanged(0);
-                              }),
-                          Text(
-                            Profile_Text.Male,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              color: AppColor.subcolor,
-                            ),
+                              SizedBox(
+                                width: Get.width / 2.5,
+                                child: MyProfile_Error(
+                                  throww: myProfile.onthrowError,
+                                  Error: myProfile.FristName,
+                                ),
+                              ),
+                            ],
+                          ),
+
+                          //Last Name
+                          Column(
+                            children: [
+                              SizedBox(
+                                width: Get.width / 2.5,
+                                child: Inputfild(
+                                  onTap: () {
+                                    myProfile.P_Last_Name_fun();
+                                  },
+                                  onChanged: (val) {
+                                    myProfile.LastName_validation(val);
+                                  },
+                                  labal: Profile_Text.Last_Name,
+                                  hint: login.option_data['data']['UserDetails']
+                                      ['LastName'],
+                                  controller: myProfile.Last_Name_Profile,
+                                ),
+                              ),
+                              SizedBox(
+                                width: Get.width / 2.5,
+                                child: MyProfile_Error(
+                                  throww: myProfile.onthrowError,
+                                  Error: myProfile.LastName,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
+                      SizedBox(height: Get.height / 60),
+
+                      //Email ID
+                      Inputfild(
+                        labal: Profile_Text.Email_Id,
+                        hint: login.option_data['data']['UserDetails']['Email'],
+                        controller: myProfile.Email_id_Profile,
+                        onTap: () {
+                          myProfile.P_Email_ID_fun();
+                        },
+                        onChanged: (val) {
+                          myProfile.Email_ID_validation(val);
+                        },
+                      ),
+                      //Error
+                      MyProfile_Error(
+                        throww: myProfile.onthrowError,
+                        Error: myProfile.Email_Id,
+                      ),
+                      SizedBox(height: Get.height / 60),
+
+                      //Mobile Numbres
+                      Inputfild(
+                        keyboardType: TextInputType.number,
+                        labal: Profile_Text.Mobile_Number,
+                        hint: login.option_data['data']['UserDetails']['Phone'],
+                        controller: myProfile.Mobile_Numbres,
+                        onTap: () {
+                          myProfile.P_Mobile_Numbres_fun();
+                        },
+                        onChanged: (val) {
+                          myProfile.Mobile_Numbress_validation(val);
+                        },
+                      ),
+                      MyProfile_Error(
+                        throww: myProfile.onthrowError,
+                        Error: myProfile.Mobile_Numbress,
+                      ),
+                      SizedBox(height: Get.height / 60),
+
+                      //Gender
+                      Text(
+                        Profile_Text.Gender,
+                        style: TextStyle(
+                          fontSize: Get.width / 24,
+                          color: AppColor.select_check_color,
+                        ),
+                      ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Checkbox(
-                            side: BorderSide(
-                              color: AppColor.Buttom_color,
-                            ),
-                            activeColor: AppColor.Button_color,
-                            value: myProfile.selectedCheckboxIndex == 1,
-                            onChanged: (val) {
-                              myProfile.handleCheckboxValueChanged(1);
-                            },
+                          Row(
+                            children: [
+                              Checkbox(
+                                  side: BorderSide(
+                                    color: AppColor.Buttom_color,
+                                  ),
+                                  activeColor: AppColor.Button_color,
+                                  value: myProfile.selectedCheckboxIndex == 0,
+                                  onChanged: (val) {
+                                    myProfile.handleCheckboxValueChanged(0);
+                                  }),
+                              Text(
+                                Profile_Text.Male,
+                                style: TextStyle(
+                                  fontSize: Get.width / 25,
+                                  color: AppColor.subcolor,
+                                ),
+                              ),
+                            ],
                           ),
-                          Text(
-                            Profile_Text.Female,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              color: AppColor.subcolor,
-                            ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                side: BorderSide(
+                                  color: AppColor.Buttom_color,
+                                ),
+                                activeColor: AppColor.Button_color,
+                                value: myProfile.selectedCheckboxIndex == 1,
+                                onChanged: (val) {
+                                  myProfile.handleCheckboxValueChanged(1);
+                                },
+                              ),
+                              Text(
+                                Profile_Text.Female,
+                                style: TextStyle(
+                                  fontSize: Get.width / 25,
+                                  color: AppColor.subcolor,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Checkbox(
+                                  side: BorderSide(
+                                    color: AppColor.Buttom_color,
+                                  ),
+                                  activeColor: AppColor.Button_color,
+                                  value: myProfile.selectedCheckboxIndex == 2,
+                                  onChanged: (val) {
+                                    myProfile.handleCheckboxValueChanged(2);
+                                  }),
+                              Text(
+                                Profile_Text.PreferNot_tosay,
+                                style: TextStyle(
+                                  fontSize: Get.width / 25,
+                                  color: AppColor.subcolor,
+                                ),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-                      Row(
-                        children: [
-                          Checkbox(
-                              side: BorderSide(
-                                color: AppColor.Buttom_color,
-                              ),
-                              activeColor: AppColor.Button_color,
-                              value: myProfile.selectedCheckboxIndex == 2,
-                              onChanged: (val) {
-                                myProfile.handleCheckboxValueChanged(2);
-                              }),
-                          Text(
-                            Profile_Text.PreferNot_tosay,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              color: AppColor.subcolor,
-                            ),
-                          ),
-                        ],
+                      SizedBox(height: Get.height / 60),
+
+                      //Date Of Birthday
+                      Inputfild(
+                        labal: Profile_Text.Date_Of_Birthday,
+                        hint: login.option_data['data']['UserDetails']['DOB'],
+                        controller: myProfile.BirthDay,
+                        onTap: () {
+                          myProfile.P_Birthday_fun();
+                        },
+                        onChanged: (val) {
+                          myProfile.Date_OF_Bithday_validation(val);
+                        },
+                      ),
+                      MyProfile_Error(
+                        throww: myProfile.onthrowError,
+                        Error: myProfile.Date_Of_Birth,
                       ),
                     ],
                   ),
-                  SizedBox(height: Get.height / 60),
-
-                  //Date Of Birthday
-                  Inputfild(
-                    labal: Profile_Text.Date_Of_Birthday,
-                    hint: Profile_Text.Date_OF_Bithday,
-                    controller: myProfile.BirthDay,
-                    onTap: () {
-                      myProfile.P_Birthday_fun();
-                    },
-                    onChanged: (val) {
-                      myProfile.Date_OF_Bithday_validation(val);
-                    },
-                  ),
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.Date_Of_Birth,
-                  ),
-                ],
-              ),
-            ),
-          ],
-        );
+                ),
+              ],
+            );
+          }
+        });
       },
     );
+  }
+
+  @override
+  void dispose() {
+    Future.microtask(() async {
+      login.OptionApiController_fuction(
+        UserType: login.option_data['data']['UserType'],
+        Password: Password_main.Pass.text,
+        Email: login.option_data['data']['Email'],
+      );
+    });
+    super.dispose();
   }
 }

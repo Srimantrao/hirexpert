@@ -1,8 +1,11 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../screen/Candidate/collection/specialization.dart';
 import '../../../../app_String.dart';
 import '../../../../app_color.dart';
@@ -16,6 +19,20 @@ class Extra_info extends StatefulWidget {
 }
 
 class _Extra_infoState extends State<Extra_info> {
+  OptionApiController login = Get.put(OptionApiController());
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await login.OptionApiController_fuction(
+        Email: login.option_data['data']['Email'],
+        Password: Password_main.Pass.text,
+        UserType: login.option_data['data']['UserType'],
+      );
+    });
+    super.initState();
+  }
+
   TextEditingController whichJob = TextEditingController();
   TextEditingController Specializationss = TextEditingController();
   TextEditingController Skillset = TextEditingController();
@@ -30,105 +47,119 @@ class _Extra_infoState extends State<Extra_info> {
           color: AppColor.Full_body_color,
         ),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Get.width / 30,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: Get.height / 30),
+            padding: EdgeInsets.symmetric(
+              horizontal: Get.width / 30,
+            ),
+            child: Obx(() {
+              if (login.isLodingvalue.value) {
+                return Center(
+                  child: Image.asset(AppLoder.infinityloder_without_background),
+                );
+              } else if (login.option_data['data'] == null ||
+                  login.option_data == null) {
+                return Center(
+                  child: Text(API_Error.null_data),
+                );
+              } else {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: Get.height / 30),
 
-              //Which of these most closely describe your job !
-              Text(
-                Profile_Text.Moust,
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: Get.width / 24,
-                  color: AppColor.subcolor,
-                ),
-              ),
-              TextField(
-                controller: whichJob,
-                decoration: InputDecoration(
-                  hintText: Profile_Text.Moust_hint,
-                  hintStyle: TextStyle(
-                    fontSize: Get.width / 24,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Buttom_color,
+                    //Which of these most closely describe your job !
+                    Text(
+                      Profile_Text.Moust,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: Get.width / 24,
+                        color: AppColor.subcolor,
+                      ),
                     ),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Buttom_color,
+                    TextField(
+                      controller: whichJob,
+                      decoration: InputDecoration(
+                        hintText: Profile_Text.Moust_hint,
+                        hintStyle: TextStyle(
+                          fontSize: Get.width / 24,
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColor.Buttom_color,
+                          ),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColor.Buttom_color,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              SizedBox(height: Get.height / 50),
+                    SizedBox(height: Get.height / 50),
 
-              //Select your Specialization / interest
-              Text(
-                Profile_Text.specializationss,
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: Get.width / 24,
-                  color: AppColor.subcolor,
-                ),
-              ),
-              TextField(
-                controller: Specializationss,
-                decoration: InputDecoration(
-                  hintText: Profile_Text.Company,
-                  hintStyle: TextStyle(
-                    fontSize: Get.width / 24,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Buttom_color,
+                    //Select your Specialization / interest
+                    Text(
+                      Profile_Text.specializationss,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: Get.width / 24,
+                        color: AppColor.subcolor,
+                      ),
                     ),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Buttom_color,
+                    TextField(
+                      controller: Specializationss,
+                      decoration: InputDecoration(
+                        hintText: login.option_data['data']['UserDetails']
+                            ['QuestionList'][0]['AnswerArr'][0],
+                        hintStyle: TextStyle(
+                          fontSize: Get.width / 24,
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColor.Buttom_color,
+                          ),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColor.Buttom_color,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-              SizedBox(height: Get.height / 50),
+                    SizedBox(height: Get.height / 50),
 
-              //What is Your Primary Skilled
-              Text(
-                Profile_Text.What,
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: Get.width / 24,
-                  color: AppColor.subcolor,
-                ),
-              ),
-              TextField(
-                controller: Skillset,
-                decoration: InputDecoration(
-                  hintText: Profile_Text.What,
-                  hintStyle: TextStyle(
-                    fontSize: Get.width / 24,
-                  ),
-                  focusedBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Buttom_color,
+                    //What is Your Primary Skilled
+                    Text(
+                      Profile_Text.What,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        fontSize: Get.width / 24,
+                        color: AppColor.subcolor,
+                      ),
                     ),
-                  ),
-                  enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                      color: AppColor.Buttom_color,
+                    TextField(
+                      controller: Skillset,
+                      decoration: InputDecoration(
+                        hintText: login.option_data['data']['UserDetails']
+                            ['QuestionList'][0]['AnswerArr'][0],
+                        hintStyle: TextStyle(
+                          fontSize: Get.width / 24,
+                        ),
+                        focusedBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColor.Buttom_color,
+                          ),
+                        ),
+                        enabledBorder: UnderlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColor.Buttom_color,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
+                  ],
+                );
+              }
+            })),
       ),
 
       //Buttons
@@ -161,5 +192,17 @@ class _Extra_infoState extends State<Extra_info> {
       ),
       backgroundColor: AppColor.Full_body_color,
     );
+  }
+
+  @override
+  void dispose() {
+    Future.microtask(() async {
+      await login.OptionApiController_fuction(
+        Email: login.option_data['data']['Email'],
+        Password: Password_main.Pass.text,
+        UserType: login.option_data['data']['UserType'],
+      );
+    });
+    super.dispose();
   }
 }

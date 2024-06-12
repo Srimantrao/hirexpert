@@ -41,7 +41,7 @@ class _Seved_ListState extends State<Seved_List> {
     return Obx(() {
       if (_Search.isLoding.value) {
         return Center(
-          child: Image.network(AppLoder.infinityloder_without_background),
+          child: Image.asset(AppLoder.infinityloder_without_background),
         );
       } else if (_Search.Search_data == null) {
         return const Center(
