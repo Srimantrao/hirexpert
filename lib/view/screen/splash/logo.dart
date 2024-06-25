@@ -1,31 +1,18 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/LogoController/logoController.dart';
 import 'package:hirexpert/view/utils/app_GIF.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 
 import '../option/option.dart';
 
-class Logo extends StatefulWidget {
-  const Logo({super.key});
+class Logo extends StatelessWidget {
+  final Logocontroller logo = Get.put(Logocontroller());
 
-  @override
-  State<Logo> createState() => _LogoState();
-}
-
-class _LogoState extends State<Logo> {
-  @override
-  void initState() {
-    Future.delayed(
-      const Duration(seconds: 3),
-      () {
-        Get.to(
-          () => const Option(),
-        );
-      },
-    );
-    super.initState();
-  }
+  Logo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +26,7 @@ class _LogoState extends State<Logo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(),
+            SizedBox(),
             TweenAnimationBuilder(
               tween: Tween<double>(
                 begin: 0,

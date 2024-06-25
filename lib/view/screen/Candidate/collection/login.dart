@@ -17,15 +17,10 @@ import '../../../utils/common/Buttons/wideButtons.dart';
 import 'Signup.dart';
 import 'forget_password.dart';
 
-class Candidate_Login extends StatefulWidget {
-  const Candidate_Login({super.key});
+class Candidate_Login extends StatelessWidget {
+  final OptionApiController login = Get.put(OptionApiController());
 
-  @override
-  State<Candidate_Login> createState() => _Candidate_LoginState();
-}
-
-class _Candidate_LoginState extends State<Candidate_Login> {
-  OptionApiController login = Get.put(OptionApiController());
+  Candidate_Login({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -156,7 +151,7 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                                     UserType: 'Candidate',
                                     Email: vail.EmailController.text,
                                     Password: Password_main.Pass.text,
-                                  ).then((value){
+                                  ).then((value) {
                                     if (login.option_data['status'] == true) {
                                       Get.to(() => const Candidate_Bottam());
                                     } else {
@@ -168,7 +163,6 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                                       );
                                     }
                                   });
-
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Login_text.btn_name,
@@ -188,7 +182,7 @@ class _Candidate_LoginState extends State<Candidate_Login> {
                           SizedBox(width: Get.width / 60),
                           GestureDetector(
                             onTap: () {
-                              Get.to(() => const candidate_Signup());
+                              Get.to(() => candidate_Signup());
                             },
                             child: Text(
                               Login_text.Sinup,

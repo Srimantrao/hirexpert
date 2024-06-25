@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,15 +17,10 @@ import '../../../utils/app_icon.dart';
 import '../../../utils/app_loder.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 
-class candidate_Signup extends StatefulWidget {
-  const candidate_Signup({super.key});
-
-  @override
-  State<candidate_Signup> createState() => _candidate_SignupState();
-}
-
-class _candidate_SignupState extends State<candidate_Signup> {
+class candidate_Signup extends StatelessWidget {
   SinupApiController Sinup_API = Get.put(SinupApiController());
+
+  candidate_Signup({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -220,8 +215,9 @@ class _candidate_SignupState extends State<candidate_Signup> {
                           // );
                         },
                         child: (Sinup_API.isLoding.value)
-                            ?  Center(
-                                child:Image.asset(AppLoder.infinityloder_without_background),
+                            ? Center(
+                                child: Image.asset(
+                                    AppLoder.infinityloder_without_background),
                               )
                             : OnButtons(
                                 onTap: () {

@@ -4,33 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Notification/Notification_API_Controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Notification_Hendal.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_loder.dart';
 
-class Notification_Screen extends StatefulWidget {
-  const Notification_Screen({super.key});
+class Notification_Screen extends StatelessWidget {
+  final NotificationHendal noti = Get.put(NotificationHendal());
 
-  @override
-  State<Notification_Screen> createState() => _Notification_ScreenState();
-}
-
-class _Notification_ScreenState extends State<Notification_Screen> {
-  OptionApiController login = Get.put(OptionApiController());
-  NotificationApiController Notifica = Get.put(NotificationApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      if (login.option_data['status'] == true) {
-        Notifica.NotificationApiController_fuction(
-          Tokan: login.option_data['data']['LoginToken'],
-        );
-      }
-    });
-    super.initState();
-  }
+  Notification_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -41,10 +24,11 @@ class _Notification_ScreenState extends State<Notification_Screen> {
         automaticallyImplyLeading: false,
         centerTitle: true,
         leading: GestureDetector(
-            onTap: () {
-              Get.back();
-            },
-            child: const Icon(Icons.navigate_before_outlined)),
+          onTap: () {
+            Get.back();
+          },
+          child: const Icon(Icons.navigate_before_outlined),
+        ),
         title: Text(
           Notification_text.titel,
           style: TextStyle(
@@ -65,22 +49,23 @@ class _Notification_ScreenState extends State<Notification_Screen> {
           color: AppColor.Full_body_color,
         ),
         child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 30,
-            ),
-            child: Obx(() {
-              if (Notifica.isLoding.value) {
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width / 30,
+          ),
+          child: Obx(
+            () {
+              if (noti.Notifica.isLoding.value) {
                 return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (Notifica.Notification_data == null ||
-                  Notifica.Notification_data['data'] == null) {
+              } else if (noti.Notifica.Notification_data == null ||
+                  noti.Notifica.Notification_data['data'] == null) {
                 return const Center(
                   child: Text(API_Error.null_data),
                 );
               } else {
                 return ListView.builder(
-                  itemCount: Notifica.Notification_data['data'].length,
+                  itemCount: noti.Notifica.Notification_data['data'].length,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
                       margin: EdgeInsets.symmetric(vertical: Get.height / 90),
@@ -109,15 +94,17 @@ class _Notification_ScreenState extends State<Notification_Screen> {
                                   ),
                                 ),
                                 child: Center(
-                                  child: Text(Notifica.Notification_data['data']
-                                      [index]['NotificationId']),
+                                  child: Text(
+                                    noti.Notifica.Notification_data['data']
+                                        [index]['NotificationId'],
+                                  ),
                                 ),
                               ),
                               SizedBox(width: Get.width / 50),
                               SizedBox(
                                 width: Get.width / 1.35,
                                 child: Text(
-                                  Notifica.Notification_data['data'][index]
+                                  noti.Notifica.Notification_data['data'][index]
                                       ['NotifyTitle'],
                                   style: TextStyle(
                                     fontWeight: FontWeight.w400,
@@ -134,7 +121,9 @@ class _Notification_ScreenState extends State<Notification_Screen> {
                   },
                 );
               }
-            })),
+            },
+          ),
+        ),
       ),
     );
   }

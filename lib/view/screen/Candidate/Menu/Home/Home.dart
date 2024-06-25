@@ -36,7 +36,7 @@ class Home extends StatelessWidget {
           GestureDetector(
               onTap: () {
                 Get.to(
-                  () => const Notification_Screen(),
+                  () => Notification_Screen(),
                 );
               },
               child: const Icon(Icons.notifications)),

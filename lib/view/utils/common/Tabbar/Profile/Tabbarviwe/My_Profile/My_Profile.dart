@@ -36,13 +36,13 @@ class MY_Profile extends StatelessWidget {
               SizedBox(height: Get.height / 60),
 
               //Upload Your CV
-              const Upload_Yor_CV(),
+              Upload_Yor_CV(),
 
               //Personal Information
-              const Parsonal_Information(),
+              Parsonal_Information(),
 
               //Adress
-              const Address(),
+               Address(),
 
               //Educational Details
               const Educational_Details(),

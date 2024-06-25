@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -12,7 +12,7 @@ import '../../../../../modal/Job/Search_list.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_icon.dart';
 
-class Details extends StatefulWidget {
+class Details extends StatelessWidget {
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -25,6 +25,8 @@ class Details extends StatefulWidget {
   final String lake;
   final String Hybrid;
   final String stats;
+  final void Function()? saveonTap;
+  final bool? save;
 
   const Details({
     super.key,
@@ -40,15 +42,9 @@ class Details extends StatefulWidget {
     required this.lake,
     required this.Hybrid,
     required this.stats,
+    this.saveonTap,
+    this.save,
   });
-
-  @override
-  State<Details> createState() => _DetailsState();
-}
-
-class _DetailsState extends State<Details> {
-
-  bool isSeved = false;
 
   @override
   Widget build(BuildContext context) {
@@ -60,14 +56,13 @@ class _DetailsState extends State<Details> {
         scrolledUnderElevation: 0,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           My_Jobs_Screen.Saved,
           style: TextStyle(
             fontWeight: FontWeight.w700,
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -92,23 +87,20 @@ class _DetailsState extends State<Details> {
                   flexibleSpace: SizedBox(
                     height: Get.height / 3.5,
                     child: JobSearch(
-                      Icon: widget.Icon,
-                      Color_container: widget.Color_container,
-                      Job_Tital: widget.Job_Tital,
-                      Language: widget.Language,
-                      Commpany: widget.Commpany,
-                      Working: widget.Working,
-                      Location: widget.Location,
-                      Job_time: widget.Job_time,
-                      Exp: widget.Exp,
-                      lake: widget.lake,
-                      Hybrid: widget.Hybrid,
-                      stats: widget.stats,
-                      saveonTap: () {
-                        isSeved =!isSeved;
-                        setState(() {});
-                      },
-                      savechild: (isSeved)
+                      Icon: Icon,
+                      Color_container: Color_container,
+                      Job_Tital: Job_Tital,
+                      Language: Language,
+                      Commpany: Commpany,
+                      Working: Working,
+                      Location: Location,
+                      Job_time: Job_time,
+                      Exp: Exp,
+                      lake: lake,
+                      Hybrid: Hybrid,
+                      stats: stats,
+                      saveonTap: () {},
+                      savechild: (save ?? false)
                           ? SvgPicture.asset(AppIcons.bookmark)
                           : SvgPicture.asset(AppIcons.save),
                       top: BorderSide(

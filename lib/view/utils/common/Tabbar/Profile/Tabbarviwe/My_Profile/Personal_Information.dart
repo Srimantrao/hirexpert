@@ -1,9 +1,8 @@
-// ignore_for_file: file_names, camel_case_types, prefer_const_constructors
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors, must_be_immutable, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/myprofile/Personal_Information.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
@@ -15,27 +14,10 @@ import '../../../../../app_color.dart';
 import '../../../../Container/profile_Info.dart';
 import '../../../../Textfild/Inputfild.dart';
 
-class Parsonal_Information extends StatefulWidget {
-  const Parsonal_Information({super.key});
+class Parsonal_Information extends StatelessWidget {
+ final PersonalInformation Parsonal = Get.put(PersonalInformation());
 
-  @override
-  State<Parsonal_Information> createState() => _Parsonal_InformationState();
-}
-
-class _Parsonal_InformationState extends State<Parsonal_Information> {
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        UserType: login.option_data['data']['UserType'],
-        Password: Password_main.Pass.text,
-        Email: login.option_data['data']['Email'],
-      );
-    });
-    super.initState();
-  }
+  Parsonal_Information({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,12 +28,12 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
         return Obx(() {
-          if (login.isLodingvalue.value) {
+          if (Parsonal.login.isLodingvalue.value) {
             return Center(
               child: Image.asset(AppLoder.infinityloder_without_background),
             );
-          } else if (login.option_data['data'] == null ||
-              login.option_data == null) {
+          } else if (Parsonal.login.option_data['data'] == null ||
+              Parsonal.login.option_data == null) {
             return Text(API_Error.null_data);
           } else {
             return Column(
@@ -90,7 +72,7 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
                           myProfile.JobTitle_validation(val);
                         },
                         labal: Profile_Text.Job_Title,
-                        hint: login.option_data['data']['UserDetails']
+                        hint: Parsonal.login.option_data['data']['UserDetails']
                             ['JobTitle'],
                         controller: myProfile.Job_Titales,
                       ),
@@ -115,8 +97,8 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
                                     myProfile.FristName_validation(val);
                                   },
                                   labal: Profile_Text.First_Name,
-                                  hint: login.option_data['data']['UserDetails']
-                                      ['FirstName'],
+                                  hint: Parsonal.login.option_data['data']
+                                      ['UserDetails']['FirstName'],
                                   controller: myProfile.Frist_Name_Profile,
                                 ),
                               ),
@@ -143,8 +125,8 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
                                     myProfile.LastName_validation(val);
                                   },
                                   labal: Profile_Text.Last_Name,
-                                  hint: login.option_data['data']['UserDetails']
-                                      ['LastName'],
+                                  hint: Parsonal.login.option_data['data']
+                                      ['UserDetails']['LastName'],
                                   controller: myProfile.Last_Name_Profile,
                                 ),
                               ),
@@ -164,7 +146,8 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
                       //Email ID
                       Inputfild(
                         labal: Profile_Text.Email_Id,
-                        hint: login.option_data['data']['UserDetails']['Email'],
+                        hint: Parsonal.login.option_data['data']['UserDetails']
+                            ['Email'],
                         controller: myProfile.Email_id_Profile,
                         onTap: () {
                           myProfile.P_Email_ID_fun();
@@ -184,7 +167,8 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
                       Inputfild(
                         keyboardType: TextInputType.number,
                         labal: Profile_Text.Mobile_Number,
-                        hint: login.option_data['data']['UserDetails']['Phone'],
+                        hint: Parsonal.login.option_data['data']['UserDetails']
+                            ['Phone'],
                         controller: myProfile.Mobile_Numbres,
                         onTap: () {
                           myProfile.P_Mobile_Numbres_fun();
@@ -278,7 +262,8 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
                       //Date Of Birthday
                       Inputfild(
                         labal: Profile_Text.Date_Of_Birthday,
-                        hint: login.option_data['data']['UserDetails']['DOB'],
+                        hint: Parsonal.login.option_data['data']['UserDetails']
+                            ['DOB'],
                         controller: myProfile.BirthDay,
                         onTap: () {
                           myProfile.P_Birthday_fun();
@@ -300,17 +285,5 @@ class _Parsonal_InformationState extends State<Parsonal_Information> {
         });
       },
     );
-  }
-
-  @override
-  void dispose() {
-    Future.microtask(() async {
-      login.OptionApiController_fuction(
-        UserType: login.option_data['data']['UserType'],
-        Password: Password_main.Pass.text,
-        Email: login.option_data['data']['Email'],
-      );
-    });
-    super.dispose();
   }
 }

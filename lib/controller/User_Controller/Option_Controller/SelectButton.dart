@@ -43,7 +43,7 @@ class SelectButtonsController with ChangeNotifier {
       Error = true;
       ShowError = Error_String.both;
     } else {
-      Get.to(() => const Candidate_Login());
+      Get.to(() => Candidate_Login());
     }
     if (!_SelectButton && !_SelectButtonSecond) {
       Error = true;

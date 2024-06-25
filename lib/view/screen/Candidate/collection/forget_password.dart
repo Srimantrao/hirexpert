@@ -169,7 +169,7 @@ class _Candidate_F_PasswordState extends State<Candidate_F_Password> {
                     SizedBox(width: Get.width / 60),
                     InkWell(
                       onTap: () {
-                        Get.to(() => const candidate_Signup());
+                        Get.to(() => candidate_Signup());
                       },
                       child: Text(
                         Login_text.Sinup,

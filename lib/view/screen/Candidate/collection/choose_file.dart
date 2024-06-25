@@ -12,14 +12,9 @@ import '../../../utils/app_String.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/buttom/Candidate/candidate_buttom.dart';
 
-class Choose extends StatefulWidget {
+class Choose extends StatelessWidget {
   const Choose({super.key});
 
-  @override
-  State<Choose> createState() => _ChooseState();
-}
-
-class _ChooseState extends State<Choose> {
   @override
   Widget build(BuildContext context) {
     final Pick = Provider.of<ChosefileController>(context, listen: false);

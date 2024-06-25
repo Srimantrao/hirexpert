@@ -6,14 +6,9 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 
-class My_Archive extends StatefulWidget {
+class My_Archive extends StatelessWidget {
   const My_Archive({super.key});
 
-  @override
-  State<My_Archive> createState() => _My_ArchiveState();
-}
-
-class _My_ArchiveState extends State<My_Archive> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

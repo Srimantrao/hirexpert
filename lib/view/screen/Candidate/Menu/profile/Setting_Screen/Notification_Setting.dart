@@ -9,14 +9,9 @@ import '../../../../../utils/app_String.dart';
 import '../../../../../utils/common/Buttons/ShortButton.dart';
 import '../../../../../utils/common/Row/CheckMark.dart';
 
-class Notification_setting extends StatefulWidget {
+class Notification_setting extends StatelessWidget {
   const Notification_setting({super.key});
 
-  @override
-  State<Notification_setting> createState() => _Notification_settingState();
-}
-
-class _Notification_settingState extends State<Notification_setting> {
   @override
   Widget build(BuildContext context) {
     final Notifi = Provider.of<Notification_Controller>(
@@ -43,7 +38,7 @@ class _Notification_settingState extends State<Notification_setting> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: (){
+                  onTap: () {
                     Get.back();
                   },
                   child: const Icon(

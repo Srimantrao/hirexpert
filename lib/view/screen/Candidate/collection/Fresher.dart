@@ -14,14 +14,9 @@ import '../../../utils/app_String.dart';
 import '../../../utils/common/Popup/Candidate/fresher_comm.dart';
 
 
-class Fresher extends StatefulWidget {
+class Fresher extends StatelessWidget {
   const Fresher({super.key});
 
-  @override
-  State<Fresher> createState() => _FresherState();
-}
-
-class _FresherState extends State<Fresher> {
   @override
   Widget build(BuildContext context) {
     final E_Salary = Provider.of<FreherController>(

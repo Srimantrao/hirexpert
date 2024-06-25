@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/myprofile/upload_cv.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
@@ -16,27 +17,10 @@ import '../../../../../app_String.dart';
 import '../../../../../app_color.dart';
 import '../../../../../app_icon.dart';
 
-class Upload_Yor_CV extends StatefulWidget {
-  const Upload_Yor_CV({super.key});
+class Upload_Yor_CV extends StatelessWidget {
+  final UploadCv cv = Get.put(UploadCv());
 
-  @override
-  State<Upload_Yor_CV> createState() => _Upload_Yor_CVState();
-}
-
-class _Upload_Yor_CVState extends State<Upload_Yor_CV> {
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        UserType: login.option_data['data']['UserType'],
-        Password: Password_main.Pass.text,
-        Email: login.option_data['data']['Email'],
-      );
-    });
-    super.initState();
-  }
+  Upload_Yor_CV({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,12 +31,12 @@ class _Upload_Yor_CVState extends State<Upload_Yor_CV> {
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
         return Obx(() {
-          if (login.isLodingvalue.value) {
+          if (cv.login.isLodingvalue.value) {
             return Center(
               child: Image.asset(AppLoder.infinityloder_without_background),
             );
-          } else if (login.option_data['data'] == null ||
-              login.option_data == null) {
+          } else if (cv.login.option_data['data'] == null ||
+              cv.login.option_data == null) {
             return Center(child: Text(API_Error.null_data));
           } else {
             return Column(
@@ -101,7 +85,9 @@ class _Upload_Yor_CVState extends State<Upload_Yor_CV> {
                                 SizedBox(height: Get.height / 50),
                                 Text(
                                   textAlign: TextAlign.center,
-                                  login.option_data['data']['UserDetails']
+                                  cv
+                                      .login
+                                      .option_data['data']['UserDetails']
                                           ['ResumeDetails']['ResumeName']
                                       .toString(),
                                   style: TextStyle(
@@ -130,7 +116,7 @@ class _Upload_Yor_CVState extends State<Upload_Yor_CV> {
                               SizedBox(
                                 width: Get.width / 1.7,
                                 child: Text(
-                                  login.option_data['data']['UserDetails']
+                                  cv.login.option_data['data']['UserDetails']
                                       ['ResumeDetails']['UploadName'],
                                   style: TextStyle(
                                     color: AppColor.Button_color,
@@ -154,17 +140,5 @@ class _Upload_Yor_CVState extends State<Upload_Yor_CV> {
         });
       },
     );
-  }
-
-  @override
-  void dispose() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        UserType: login.option_data['data']['UserType'],
-        Password: Password_main.Pass.text,
-        Email: login.option_data['data']['Email'],
-      );
-    });
-    super.dispose();
   }
 }

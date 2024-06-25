@@ -7,15 +7,13 @@ import '../../../../view/screen/Candidate/Menu/Search/Search.dart';
 import '../../../../view/screen/Candidate/Menu/message/Message.dart';
 import '../../../../view/screen/Candidate/Menu/profile/information.dart';
 
-
-
 class MenuNavigationController with ChangeNotifier {
   int _selectindex = 0;
 
   final List<Widget> _item = [
     const Home(),
-    const Search(),
-    const Profile_info(),
+    Search(),
+    Profile_info(),
     const Message(),
   ];
 

@@ -11,18 +11,13 @@ import 'package:provider/provider.dart';
 import '../../../controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import '../../../controller/User_Controller/Option_Controller/SelectButton.dart';
 
-class Option extends StatefulWidget {
-  const Option({super.key});
+class Option extends StatelessWidget {
+  final OptionApiController option_api = Get.put(OptionApiController());
 
-  @override
-  State<Option> createState() => _OptionState();
-}
+  Option({super.key});
 
-class _OptionState extends State<Option> {
   @override
   Widget build(BuildContext context) {
-    OptionApiController option_api = Get.put(OptionApiController());
-
     final select = Provider.of<SelectButtonsController>(
       context,
       listen: false,

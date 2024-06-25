@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_Hendal.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -16,34 +17,11 @@ import '../../../../utils/common/List/jobSearch.dart';
 import '../../../../utils/common/Popup/Candidate/Search_Job(Conatiner).dart';
 import 'Details_Search.dart';
 
-class Search_find extends StatefulWidget {
+class Search_find extends StatelessWidget {
   final String OnString;
+  final SearchHendal Searchings = Get.put(SearchHendal());
 
-  const Search_find({super.key, required this.OnString});
-
-  @override
-  State<Search_find> createState() => _Search_findState();
-}
-
-class _Search_findState extends State<Search_find> {
-  SearchApiController Search = Get.put(SearchApiController());
-  OptionApiController Login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      if (Login.option_data['status'] == true) {
-        await Search.SearchApiController_fuction(
-          Timezone: 'asia/kolkata',
-          CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
-          Tokan: Login.option_data['data']['LoginToken'],
-        );
-      }
-    });
-    super.initState();
-  }
-
-  List<bool> isSeved = List.generate(showjob.length, (index) => false);
+  Search_find({super.key, required this.OnString});
 
   @override
   Widget build(BuildContext context) {
@@ -54,80 +32,90 @@ class _Search_findState extends State<Search_find> {
         children: [
           SizedBox(height: Get.height / 50),
           Searching(
-            OnString: widget.OnString,
+            OnString: OnString,
           ),
           SizedBox(
             height: Get.height / 1.6,
             child: Obx(() {
-              if (Search.isLoding.value) {
-                return  Center(
+              if (Searchings.Search.isLoding.value) {
+                return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (Search.Search_data['data'] == null ||
-                  Search.Search_data == null) {
+              } else if (Searchings.Search.Search_data['data'] == null ||
+                  Searchings.Search.Search_data == null) {
                 return const Center(
                   child: Text(API_Error.null_data),
                 );
               } else {
                 return ListView.builder(
-                  itemCount: Search.Search_data['data'].length,
                   itemBuilder: (BuildContext context, int index) {
-                    if (index >= showjob.length || index >= isSeved.length) {
+                    if (index >= Searchings.Search.Search_data['data'].length ||
+                        index >= Searchings.Search.Search_data['data'].length) {
                       return const SizedBox.shrink();
                     }
                     return InkWell(
                       onTap: () {
                         Get.to(
                           () => Details(
-                            Icon: Search.Search_data['data'][index]['ComLogo'],
+                            Icon: Searchings.Search.Search_data['data'][index]
+                                ['ComLogo'],
                             Color_container: showjob[index]["Container_color"],
-                            Job_Tital: Search.Search_data['data'][index]
-                                ['JobTitle'],
-                            Language: Search.Search_data['data'][index]
-                                ['TechName'],
-                            Commpany: Search.Search_data['data'][index]
-                                ['ComName'],
-                            Working: Search.Search_data['data'][index]
-                                ["WorkWeek"],
-                            Location: Search.Search_data['data'][index]
-                                ["Location"],
-                            Job_time: Search.Search_data['data'][index]
-                                ['JobType'],
-                            Exp: Search.Search_data['data'][index]
+                            Job_Tital: Searchings.Search.Search_data['data']
+                                [index]['JobTitle'],
+                            Language: Searchings.Search.Search_data['data']
+                                [index]['TechName'],
+                            Commpany: Searchings.Search.Search_data['data']
+                                [index]['ComName'],
+                            Working: Searchings.Search.Search_data['data']
+                                [index]["WorkWeek"],
+                            Location: Searchings.Search.Search_data['data']
+                                [index]["Location"],
+                            Job_time: Searchings.Search.Search_data['data']
+                                [index]['JobType'],
+                            Exp: Searchings.Search.Search_data['data'][index]
                                 ["Experience"],
-                            lake: Search.Search_data['data'][index]["Salary"],
-                            Hybrid: Search.Search_data['data'][index]
+                            lake: Searchings.Search.Search_data['data'][index]
+                                ["Salary"],
+                            Hybrid: Searchings.Search.Search_data['data'][index]
                                 ["WorkSet"],
-                            stats: Search.Search_data['data'][index]
+                            stats: Searchings.Search.Search_data['data'][index]
                                 ["FormatDt"],
                           ),
                         );
                       },
                       child: JobSearch(
                         saveonTap: () {
-                          isSeved[index] = !isSeved[index];
-                          setState(() {});
-                          saveshowjob.add(Search.Search_data['data'][index]);
+                          Searchings.isSave(index);
                         },
-                        savechild: (isSeved[index])
+                        savechild: (Searchings.isSeved[index])
                             ? SvgPicture.asset(AppIcons.bookmark)
                             : SvgPicture.asset(AppIcons.save),
                         top: BorderSide(
                           color: AppColor.Bottam_color,
                         ),
-                        Icon: Search.Search_data['data'][index]['ComLogo'],
+                        Icon: Searchings.Search.Search_data['data'][index]
+                            ['ComLogo'],
                         Color_container: showjob[index]["Container_color"],
-                        Job_Tital: Search.Search_data['data'][index]
+                        Job_Tital: Searchings.Search.Search_data['data'][index]
                             ['JobTitle'],
-                        Language: Search.Search_data['data'][index]['TechName'],
-                        Commpany: Search.Search_data['data'][index]['ComName'],
-                        Working: Search.Search_data['data'][index]["WorkWeek"],
-                        Location: Search.Search_data['data'][index]["Location"],
-                        Job_time: Search.Search_data['data'][index]['JobType'],
-                        Exp: Search.Search_data['data'][index]["Experience"],
-                        lake: Search.Search_data['data'][index]["Salary"],
-                        Hybrid: Search.Search_data['data'][index]["WorkSet"],
-                        stats: Search.Search_data['data'][index]["FormatDt"],
+                        Language: Searchings.Search.Search_data['data'][index]
+                            ['TechName'],
+                        Commpany: Searchings.Search.Search_data['data'][index]
+                            ['ComName'],
+                        Working: Searchings.Search.Search_data['data'][index]
+                            ["WorkWeek"],
+                        Location: Searchings.Search.Search_data['data'][index]
+                            ["Location"],
+                        Job_time: Searchings.Search.Search_data['data'][index]
+                            ['JobType'],
+                        Exp: Searchings.Search.Search_data['data'][index]
+                            ["Experience"],
+                        lake: Searchings.Search.Search_data['data'][index]
+                            ["Salary"],
+                        Hybrid: Searchings.Search.Search_data['data'][index]
+                            ["WorkSet"],
+                        stats: Searchings.Search.Search_data['data'][index]
+                            ["FormatDt"],
                       ),
                     );
                   },
@@ -138,15 +126,5 @@ class _Search_findState extends State<Search_find> {
         ],
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    Search.SearchApiController_fuction(
-      Timezone: 'asia/kolkata',
-      CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
-      Tokan: Login.option_data['data']['LoginToken'],
-    );
-    super.dispose();
   }
 }

@@ -1,9 +1,10 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/Extra_info.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../screen/Candidate/collection/specialization.dart';
@@ -11,30 +12,15 @@ import '../../../../app_String.dart';
 import '../../../../app_color.dart';
 import '../../../../app_icon.dart';
 
-class Extra_info extends StatefulWidget {
-  const Extra_info({super.key});
+class Extra_info extends StatelessWidget {
+  final ExtraInfo Extra = Get.put(ExtraInfo());
 
-  @override
-  State<Extra_info> createState() => _Extra_infoState();
-}
-
-class _Extra_infoState extends State<Extra_info> {
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        Email: login.option_data['data']['Email'],
-        Password: Password_main.Pass.text,
-        UserType: login.option_data['data']['UserType'],
-      );
-    });
-    super.initState();
-  }
+  Extra_info({super.key});
 
   TextEditingController whichJob = TextEditingController();
+
   TextEditingController Specializationss = TextEditingController();
+
   TextEditingController Skillset = TextEditingController();
 
   @override
@@ -47,16 +33,17 @@ class _Extra_infoState extends State<Extra_info> {
           color: AppColor.Full_body_color,
         ),
         child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 30,
-            ),
-            child: Obx(() {
-              if (login.isLodingvalue.value) {
+          padding: EdgeInsets.symmetric(
+            horizontal: Get.width / 30,
+          ),
+          child: Obx(
+            () {
+              if (Extra.login.isLodingvalue.value) {
                 return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (login.option_data['data'] == null ||
-                  login.option_data == null) {
+              } else if (Extra.login.option_data['data'] == null ||
+                  Extra.login.option_data == null) {
                 return Center(
                   child: Text(API_Error.null_data),
                 );
@@ -108,7 +95,7 @@ class _Extra_infoState extends State<Extra_info> {
                     TextField(
                       controller: Specializationss,
                       decoration: InputDecoration(
-                        hintText: login.option_data['data']['UserDetails']
+                        hintText: Extra.login.option_data['data']['UserDetails']
                             ['QuestionList'][0]['AnswerArr'][0],
                         hintStyle: TextStyle(
                           fontSize: Get.width / 24,
@@ -139,7 +126,7 @@ class _Extra_infoState extends State<Extra_info> {
                     TextField(
                       controller: Skillset,
                       decoration: InputDecoration(
-                        hintText: login.option_data['data']['UserDetails']
+                        hintText: Extra.login.option_data['data']['UserDetails']
                             ['QuestionList'][0]['AnswerArr'][0],
                         hintStyle: TextStyle(
                           fontSize: Get.width / 24,
@@ -159,7 +146,9 @@ class _Extra_infoState extends State<Extra_info> {
                   ],
                 );
               }
-            })),
+            },
+          ),
+        ),
       ),
 
       //Buttons
@@ -192,17 +181,5 @@ class _Extra_infoState extends State<Extra_info> {
       ),
       backgroundColor: AppColor.Full_body_color,
     );
-  }
-
-  @override
-  void dispose() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        Email: login.option_data['data']['Email'],
-        Password: Password_main.Pass.text,
-        UserType: login.option_data['data']['UserType'],
-      );
-    });
-    super.dispose();
   }
 }

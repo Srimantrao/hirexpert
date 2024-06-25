@@ -12,14 +12,9 @@ import '../../../utils/aap_image.dart';
 import '../../../utils/common/Popup/Candidate/Location_comm.dart';
 import 'choose_file.dart';
 
-class Location extends StatefulWidget {
+class Location extends StatelessWidget {
   const Location({super.key});
 
-  @override
-  State<Location> createState() => _LocationState();
-}
-
-class _LocationState extends State<Location> {
   @override
   Widget build(BuildContext context) {
     final Work = Provider.of<SetupController>(context, listen: false);

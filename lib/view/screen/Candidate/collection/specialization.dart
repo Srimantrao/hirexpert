@@ -13,14 +13,9 @@ import '../../../utils/app_String.dart';
 import '../../../utils/common/Popup/Candidate/Specialization_common.dart';
 import 'Education.dart';
 
-class Candidate_Specialization extends StatefulWidget {
+class Candidate_Specialization extends StatelessWidget {
   const Candidate_Specialization({super.key});
 
-  @override
-  State<Candidate_Specialization> createState() => _Candidate_SpecializationState();
-}
-
-class _Candidate_SpecializationState extends State<Candidate_Specialization> {
   @override
   Widget build(BuildContext context) {
     final Cont = Provider.of<Candidate_SpecializationController_Collection>(

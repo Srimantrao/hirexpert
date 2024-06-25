@@ -1,8 +1,9 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/myprofile/Address.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
@@ -14,27 +15,12 @@ import '../../../../../../../controller/User_Controller/Candidate_Controller/MY_
 import '../../../../../app_String.dart';
 import '../../../../Container/profile_Info.dart';
 
-class Address extends StatefulWidget {
-  const Address({super.key});
+class Address extends StatelessWidget {
+  final Address_Hendal Addresss = Get.put(Address_Hendal());
 
-  @override
-  State<Address> createState() => _AddressState();
-}
+  Address({super.key});
 
-class _AddressState extends State<Address> {
   OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        Email: login.option_data['data']['Email'],
-        Password: Password_main.Pass.text,
-        UserType: login.option_data['data']['UserType'],
-      );
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +31,12 @@ class _AddressState extends State<Address> {
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
         return Obx(() {
-          if (login.isLodingvalue.value) {
+          if (Addresss.login.isLodingvalue.value) {
             return Center(
               child: Image.asset(AppLoder.infinityloder_without_background),
             );
-          } else if (login.option_data['data'] == null ||
-              login.option_data == null) {
+          } else if (Addresss.login.option_data['data'] == null ||
+              Addresss.login.option_data == null) {
             return Text(API_Error.null_data);
           } else {
             return Column(
@@ -82,7 +68,7 @@ class _AddressState extends State<Address> {
                       //Street Address
                       Inputfild(
                         labal: Profile_Text.Street_Address,
-                        hint: login.option_data['data']['UserDetails']
+                        hint: Addresss.login.option_data['data']['UserDetails']
                             ['Address'],
                         controller: myProfile.Street_Address,
                         onTap: () {
@@ -101,7 +87,7 @@ class _AddressState extends State<Address> {
                       //Post Code
                       Inputfild(
                         labal: Profile_Text.Post_Code,
-                        hint: login.option_data['data']['UserDetails']
+                        hint: Addresss.login.option_data['data']['UserDetails']
                             ['PostCode'],
                         controller: myProfile.Post_Code,
                         onTap: () {
@@ -120,7 +106,7 @@ class _AddressState extends State<Address> {
                       //Select Province
                       Inputfild(
                         labal: Profile_Text.Select_Province,
-                        hint: login.option_data['data']['UserDetails']
+                        hint: Addresss.login.option_data['data']['UserDetails']
                             ['ProvinceId'],
                         controller: myProfile.Select_Province,
                         onTap: () {
@@ -139,7 +125,7 @@ class _AddressState extends State<Address> {
                       //Select city
                       Inputfild(
                         labal: Profile_Text.Select_City,
-                        hint: login.option_data['data']['UserDetails']
+                        hint: Addresss.login.option_data['data']['UserDetails']
                             ['CityName'],
                         controller: myProfile.Select_City,
                         onTap: () {
@@ -163,17 +149,5 @@ class _AddressState extends State<Address> {
         });
       },
     );
-  }
-
-  @override
-  void dispose() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        Email: login.option_data['data']['Email'],
-        Password: Password_main.Pass.text,
-        UserType: login.option_data['data']['UserType'],
-      );
-    });
-    super.dispose();
   }
 }

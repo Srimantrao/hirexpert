@@ -8,6 +8,7 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
+import '../../../../../controller/API_handler/Candidate/Menu/profile/profiel_info.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
 import '../../../../utils/app_constance.dart';
@@ -17,27 +18,10 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile.dart';
 import 'Setting.dart';
 
-class Profile_info extends StatefulWidget {
-  const Profile_info({super.key});
+class Profile_info extends StatelessWidget {
+  final ProfielInfo profile = Get.put(ProfielInfo());
 
-  @override
-  State<Profile_info> createState() => _Profile_infoState();
-}
-
-class _Profile_infoState extends State<Profile_info> {
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        UserType: 'Candidate',
-        Email: login.option_data['data']['Email'],
-        Password: Password_main.Pass.text,
-      );
-    });
-    super.initState();
-  }
+  Profile_info({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -73,13 +57,14 @@ class _Profile_infoState extends State<Profile_info> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Obx(() {
-                          if (login.isLodingvalue.value) {
+                          if (profile.login.isLodingvalue.value) {
                             return Center(
                               child: Image.asset(
                                   AppLoder.infinityloder_without_background),
                             );
-                          } else if (login.option_data['data'] == null ||
-                              login.option_data == null) {
+                          } else if (profile.login.option_data['data'] ==
+                                  null ||
+                              profile.login.option_data == null) {
                             return Center(child: Text(API_Error.null_data));
                           } else {
                             return Row(
@@ -87,7 +72,8 @@ class _Profile_infoState extends State<Profile_info> {
                                 CircleAvatar(
                                   radius: 40,
                                   backgroundImage: NetworkImage(
-                                    login.option_data['data']['Profile'],
+                                    profile.login.option_data['data']
+                                        ['Profile'],
                                   ),
                                 ),
                                 SizedBox(width: Get.width / 30),
@@ -96,15 +82,16 @@ class _Profile_infoState extends State<Profile_info> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      login.option_data['data']['Username'],
+                                      profile.login.option_data['data']
+                                          ['Username'],
                                       style: TextStyle(
                                         fontSize: Get.width / 22,
                                         fontWeight: FontWeight.w700,
                                       ),
                                     ),
                                     Text(
-                                      login.option_data['data']['UserDetails']
-                                          ['TechName'],
+                                      profile.login.option_data['data']
+                                          ['UserDetails']['TechName'],
                                       style: TextStyle(
                                         fontSize: Get.width / 26,
                                         fontWeight: FontWeight.w400,
@@ -119,7 +106,7 @@ class _Profile_infoState extends State<Profile_info> {
                         }),
                         InkWell(
                           onTap: () {
-                            Get.to(() => const Setting());
+                            Get.to(() => Setting());
                           },
                           child: Icon(
                             Icons.settings,
@@ -174,7 +161,7 @@ class _Profile_infoState extends State<Profile_info> {
                             ),
                             SizedBox(
                               height: Get.height / 1.52,
-                              child: const TabBarView(
+                              child: TabBarView(
                                 physics: NeverScrollableScrollPhysics(),
                                 children: [
                                   Extra_info(),

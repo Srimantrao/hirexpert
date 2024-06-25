@@ -86,7 +86,7 @@ class Candidate_SinupController with ChangeNotifier {
       if (kDebugMode) {
         print("Confirm Password :- $Comfarm_password");
       }
-      Get.to(() => const Candidate_Login());
+      Get.to(() => Candidate_Login());
       _isError = false;
       _throwEmailnameError = "";
       _throwLastnameError = "";
