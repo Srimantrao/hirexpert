@@ -9,6 +9,7 @@ import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Datail
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Hired.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Interviwe.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Offer.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/EducationController/EducationController.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
@@ -112,6 +113,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DetailsInterviwe()),
         ChangeNotifierProvider(create: (_) => DetailsOffer()),
         ChangeNotifierProvider(create: (_) => DocumentInfoController()),
+        ChangeNotifierProvider(create: (_) => Educationcontroller()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

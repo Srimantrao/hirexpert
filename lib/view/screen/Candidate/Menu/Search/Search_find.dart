@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -18,10 +18,10 @@ import '../../../../utils/common/Popup/Candidate/Search_Job(Conatiner).dart';
 import 'Details_Search.dart';
 
 class Search_find extends StatelessWidget {
-  final String OnString;
-  final SearchHendal Searchings = Get.put(SearchHendal());
+  final String onString;
+  final SearchHendal searchHandler = Get.put(SearchHendal());
 
-  Search_find({super.key, required this.OnString});
+  Search_find({super.key, required this.onString});
 
   @override
   Widget build(BuildContext context) {
@@ -31,91 +31,64 @@ class Search_find extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: Get.height / 50),
-          Searching(
-            OnString: OnString,
-          ),
+          Searching(OnString: onString),
           SizedBox(
             height: Get.height / 1.6,
             child: Obx(() {
-              if (Searchings.Search.isLoding.value) {
+              if (searchHandler.Search.isLoding.value) {
                 return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (Searchings.Search.Search_data['data'] == null ||
-                  Searchings.Search.Search_data == null) {
-                return const Center(
+              } else if (searchHandler.Search.Search_data == null ||
+                  searchHandler.Search.Search_data['data'] == null) {
+                return Center(
                   child: Text(API_Error.null_data),
                 );
               } else {
                 return ListView.builder(
+                  itemCount: searchHandler.Search.Search_data['data'].length,
                   itemBuilder: (BuildContext context, int index) {
-                    if (index >= Searchings.Search.Search_data['data'].length ||
-                        index >= Searchings.Search.Search_data['data'].length) {
-                      return const SizedBox.shrink();
-                    }
+                    final jobData = searchHandler.Search.Search_data['data'][index];
+                    final jobColor = showjob[index]["Container_color"];
                     return InkWell(
                       onTap: () {
                         Get.to(
                           () => Details(
-                            Icon: Searchings.Search.Search_data['data'][index]
-                                ['ComLogo'],
-                            Color_container: showjob[index]["Container_color"],
-                            Job_Tital: Searchings.Search.Search_data['data']
-                                [index]['JobTitle'],
-                            Language: Searchings.Search.Search_data['data']
-                                [index]['TechName'],
-                            Commpany: Searchings.Search.Search_data['data']
-                                [index]['ComName'],
-                            Working: Searchings.Search.Search_data['data']
-                                [index]["WorkWeek"],
-                            Location: Searchings.Search.Search_data['data']
-                                [index]["Location"],
-                            Job_time: Searchings.Search.Search_data['data']
-                                [index]['JobType'],
-                            Exp: Searchings.Search.Search_data['data'][index]
-                                ["Experience"],
-                            lake: Searchings.Search.Search_data['data'][index]
-                                ["Salary"],
-                            Hybrid: Searchings.Search.Search_data['data'][index]
-                                ["WorkSet"],
-                            stats: Searchings.Search.Search_data['data'][index]
-                                ["FormatDt"],
+                            Icon: jobData['ComLogo'],
+                            Color_container: jobColor,
+                            Job_Tital: jobData['JobTitle'],
+                            Language: jobData['TechName'],
+                            Commpany: jobData['ComName'],
+                            Working: jobData["WorkWeek"],
+                            Location: jobData["Location"],
+                            Job_time: jobData['JobType'],
+                            Exp: jobData["Experience"],
+                            lake: jobData["Salary"],
+                            Hybrid: jobData["WorkSet"],
+                            stats: jobData["FormatDt"],
                           ),
                         );
                       },
                       child: JobSearch(
                         saveonTap: () {
-                          Searchings.isSave(index);
+                          searchHandler.isSave(index);
                         },
-                        savechild: (Searchings.isSeved[index])
+                        savechild: (searchHandler.isSeved[index])
                             ? SvgPicture.asset(AppIcons.bookmark)
                             : SvgPicture.asset(AppIcons.save),
-                        top: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                        Icon: Searchings.Search.Search_data['data'][index]
-                            ['ComLogo'],
-                        Color_container: showjob[index]["Container_color"],
-                        Job_Tital: Searchings.Search.Search_data['data'][index]
-                            ['JobTitle'],
-                        Language: Searchings.Search.Search_data['data'][index]
-                            ['TechName'],
-                        Commpany: Searchings.Search.Search_data['data'][index]
-                            ['ComName'],
-                        Working: Searchings.Search.Search_data['data'][index]
-                            ["WorkWeek"],
-                        Location: Searchings.Search.Search_data['data'][index]
-                            ["Location"],
-                        Job_time: Searchings.Search.Search_data['data'][index]
-                            ['JobType'],
-                        Exp: Searchings.Search.Search_data['data'][index]
-                            ["Experience"],
-                        lake: Searchings.Search.Search_data['data'][index]
-                            ["Salary"],
-                        Hybrid: Searchings.Search.Search_data['data'][index]
-                            ["WorkSet"],
-                        stats: Searchings.Search.Search_data['data'][index]
-                            ["FormatDt"],
+                        top: BorderSide(color: AppColor.Bottam_color),
+                        Icon: jobData['ComLogo'],
+                        Color_container: jobColor,
+                        Job_Tital: jobData['JobTitle'],
+                        Language: jobData['TechName'],
+                        Commpany: jobData['ComName'],
+                        Working: jobData["WorkWeek"],
+                        Location: jobData["Location"],
+                        Job_time: jobData['JobType'],
+                        Exp: jobData["Experience"],
+                        lake: jobData["Salary"],
+                        Hybrid: jobData["WorkSet"],
+                        stats: jobData["FormatDt"],
                       ),
                     );
                   },

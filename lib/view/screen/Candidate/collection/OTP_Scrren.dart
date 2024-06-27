@@ -13,14 +13,9 @@ import 'package:provider/provider.dart';
 
 import '../../../../controller/API_Cobtroller/Candidate/Collction/OTP/OTP_API_Controller.dart';
 
-class OTP extends StatefulWidget {
-  const OTP({super.key});
+class OTP extends StatelessWidget {
+  OTP({super.key});
 
-  @override
-  State<OTP> createState() => _OTPState();
-}
-
-class _OTPState extends State<OTP> {
   OtpApiController_API OTP_API = Get.put(OtpApiController_API());
 
   @override

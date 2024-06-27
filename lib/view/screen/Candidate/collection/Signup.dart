@@ -229,7 +229,7 @@ class candidate_Signup extends StatelessWidget {
                                     Phone: vail.phone.text,
                                   );
                                   if (Sinup_API.Sinup_data['status'] == true) {
-                                    Get.to(() => const OTP());
+                                    Get.to(() => OTP());
                                   } else {
                                     Get.showSnackbar(
                                       GetBar(

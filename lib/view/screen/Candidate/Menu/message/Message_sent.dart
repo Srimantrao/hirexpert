@@ -126,14 +126,12 @@ class Message_sent extends StatelessWidget {
                         color: AppColor.Button_color,
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(5),
+                        padding: EdgeInsets.all(5),
                         child: Center(
                           child: Text(
                             textAlign: TextAlign.center,
                             snapshot.hasData ? '${snapshot.data}' : "",
-                            style: TextStyle(
-                              color: AppColor.Full_body_color,
-                            ),
+                            style: TextStyle(color: AppColor.Full_body_color),
                           ),
                         ),
                       ),

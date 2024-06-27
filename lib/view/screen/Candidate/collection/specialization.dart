@@ -135,7 +135,7 @@ class Candidate_Specialization extends StatelessWidget {
                         InkWell(
                           onTap: () {
                             if (Cont.colloction) {
-                              Get.to(() => const Education());
+                              Get.to(() => Education());
                             }
                           },
                           child: Row(

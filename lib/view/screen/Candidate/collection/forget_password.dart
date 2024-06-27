@@ -11,14 +11,9 @@ import '../../../utils/common/Buttons/wideButtons.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 import 'Signup.dart';
 
-class Candidate_F_Password extends StatefulWidget {
+class Candidate_F_Password extends StatelessWidget {
   const Candidate_F_Password({super.key});
 
-  @override
-  State<Candidate_F_Password> createState() => _Candidate_F_PasswordState();
-}
-
-class _Candidate_F_PasswordState extends State<Candidate_F_Password> {
   @override
   Widget build(BuildContext context) {
     final vail = Provider.of<Candidate_LoginValidation>(context, listen: false);

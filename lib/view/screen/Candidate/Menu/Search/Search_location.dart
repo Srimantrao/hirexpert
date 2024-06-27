@@ -480,7 +480,7 @@ class _Search_locationState extends State<Search_location> {
                   return Column(
                     children: [
                       (buttonsController.Savebutton)
-                          ? Search_find(OnString: select)
+                          ? Search_find(onString: select)
                           : const SizedBox(),
                     ],
                   );

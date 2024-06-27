@@ -151,18 +151,22 @@ class Candidate_Login extends StatelessWidget {
                                     UserType: 'Candidate',
                                     Email: vail.EmailController.text,
                                     Password: Password_main.Pass.text,
-                                  ).then((value) {
-                                    if (login.option_data['status'] == true) {
-                                      Get.to(() => const Candidate_Bottam());
-                                    } else {
-                                      Get.showSnackbar(
-                                        GetBar(
-                                          duration: const Duration(seconds: 2),
-                                          message: login.option_data['message'],
-                                        ),
-                                      );
-                                    }
-                                  });
+                                  ).then(
+                                    (value) {
+                                      if (login.option_data['status'] == true) {
+                                        Get.to(() => const Candidate_Bottam());
+                                      } else {
+                                        Get.showSnackbar(
+                                          GetBar(
+                                            duration:
+                                                const Duration(seconds: 2),
+                                            message:
+                                                login.option_data['message'],
+                                          ),
+                                        );
+                                      }
+                                    },
+                                  );
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Login_text.btn_name,
