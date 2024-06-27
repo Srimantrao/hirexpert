@@ -11,14 +11,9 @@ import '../../../../../utils/app_icon.dart';
 import 'Details_Declined.dart';
 
 
-class Show_Declined extends StatefulWidget {
+class Show_Declined extends StatelessWidget {
   const Show_Declined({super.key});
 
-  @override
-  State<Show_Declined> createState() => _Show_DeclinedState();
-}
-
-class _Show_DeclinedState extends State<Show_Declined> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/OTP/OTP_API_Controller.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/JobInterviwe_API_Controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/InterviweDetails.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import '../../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../../utils/app_String.dart';
@@ -14,29 +15,10 @@ import '../../../../../utils/app_icon.dart';
 import '../../../../../utils/app_loder.dart';
 import 'Details_Interviwe.dart';
 
-class Show_Interviwe extends StatefulWidget {
-  const Show_Interviwe({super.key});
+class Show_Interviwe extends StatelessWidget {
+  final Interviwedetails Interview = Get.put(Interviwedetails());
 
-  @override
-  State<Show_Interviwe> createState() => _Show_InterviweState();
-}
-
-class _Show_InterviweState extends State<Show_Interviwe> {
-  JobinterviweApiController JobInter = Get.put(JobinterviweApiController());
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await JobInter.JobinterviweApiController_Fuction(
-        Tokan: login.option_data['data']['LoginToken'],
-        page: '1',
-        Timezone: 'asia/kolkata',
-        CandidateID: login.option_data['data']['UserDetails']['CandidateId'],
-      );
-    });
-    super.initState();
-  }
+  Show_Interviwe({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +36,7 @@ class _Show_InterviweState extends State<Show_Interviwe> {
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
+          Icon(Icons.notifications),
           SizedBox(width: size.width / 50),
         ],
       ),
@@ -65,20 +47,22 @@ class _Show_InterviweState extends State<Show_Interviwe> {
           color: AppColor.Full_body_color,
         ),
         child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width / 30),
-            child: Obx(() {
-              if (JobInter.isloding.value) {
-                return  Center(
+          padding: EdgeInsets.symmetric(horizontal: size.width / 30),
+          child: Obx(
+            () {
+              if (Interview.JobInter.isloding.value) {
+                return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (JobInter.JobInterviwe_data['data'] == null ||
-                  JobInter.JobInterviwe_data == null) {
+              } else if (Interview.JobInter.JobInterviwe_data['data'] == null ||
+                  Interview.JobInter.JobInterviwe_data == null) {
                 return const Center(
                   child: Text(API_Error.null_data),
                 );
               } else {
                 return ListView.builder(
-                  itemCount: JobInter.JobInterviwe_data['data'].length,
+                  itemCount:
+                      Interview.JobInter.JobInterviwe_data['data'].length,
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
@@ -86,29 +70,29 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                       onTap: () {
                         Get.to(
                           () => Details_Interviwe(
-                            Icon: JobInter.JobInterviwe_data['data'][index]
-                                ['ComLogo'],
+                            Icon: Interview.JobInter.JobInterviwe_data['data']
+                                [index]['ComLogo'],
                             Color_container: showjob[index]["Container_color"],
-                            Job_Tital: JobInter.JobInterviwe_data['data'][index]
-                                ['JobTitle'],
-                            Language: JobInter.JobInterviwe_data['data'][index]
-                                ['TechName'],
-                            Commpany: JobInter.JobInterviwe_data['data'][index]
-                                ['ComName'],
-                            Working: JobInter.JobInterviwe_data['data'][index]
-                                ["WorkWeek"],
-                            Location: JobInter.JobInterviwe_data['data'][index]
-                                ["Location"],
-                            Job_time: JobInter.JobInterviwe_data['data'][index]
-                                ['JobType'],
-                            Exp: JobInter.JobInterviwe_data['data'][index]
-                                ["Experience"],
-                            lake: JobInter.JobInterviwe_data['data'][index]
-                                ["Salary"],
-                            Hybrid: JobInter.JobInterviwe_data['data'][index]
-                                ["WorkSet"],
-                            stats: JobInter.JobInterviwe_data['data'][index]
-                                ["FormatDt"],
+                            Job_Tital: Interview.JobInter
+                                .JobInterviwe_data['data'][index]['JobTitle'],
+                            Language: Interview.JobInter
+                                .JobInterviwe_data['data'][index]['TechName'],
+                            Commpany: Interview.JobInter
+                                .JobInterviwe_data['data'][index]['ComName'],
+                            Working: Interview.JobInter
+                                .JobInterviwe_data['data'][index]["WorkWeek"],
+                            Location: Interview.JobInter
+                                .JobInterviwe_data['data'][index]["Location"],
+                            Job_time: Interview.JobInter
+                                .JobInterviwe_data['data'][index]['JobType'],
+                            Exp: Interview.JobInter.JobInterviwe_data['data']
+                                [index]["Experience"],
+                            lake: Interview.JobInter.JobInterviwe_data['data']
+                                [index]["Salary"],
+                            Hybrid: Interview.JobInter.JobInterviwe_data['data']
+                                [index]["WorkSet"],
+                            stats: Interview.JobInter.JobInterviwe_data['data']
+                                [index]["FormatDt"],
                           ),
                         );
                       },
@@ -147,7 +131,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                     child: Padding(
                                       padding: const EdgeInsets.all(15),
                                       child: Image.network(
-                                        JobInter.JobInterviwe_data['data']
+                                        Interview.JobInter
+                                                .JobInterviwe_data['data']
                                             [index]['ComLogo'],
                                       ),
                                     ),
@@ -162,7 +147,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                         Row(
                                           children: [
                                             Text(
-                                              JobInter.JobInterviwe_data['data']
+                                              Interview.JobInter
+                                                      .JobInterviwe_data['data']
                                                   [index]['TechName'],
                                               style: TextStyle(
                                                 color: AppColor.subcolor,
@@ -175,7 +161,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                     SizedBox(
                                       width: Get.width / 2,
                                       child: Text(
-                                        JobInter.JobInterviwe_data['data']
+                                        Interview.JobInter
+                                                .JobInterviwe_data['data']
                                             [index]['JobTitle'],
                                         style: TextStyle(
                                           fontSize: size.width / 23,
@@ -184,7 +171,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                     ),
                                     Text(
-                                      JobInter.JobInterviwe_data['data'][index]
+                                      Interview.JobInter
+                                              .JobInterviwe_data['data'][index]
                                           ['ComName'],
                                       style: TextStyle(
                                         fontSize: size.width / 26,
@@ -214,7 +202,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          JobInter.JobInterviwe_data['data']
+                                          Interview.JobInter
+                                                  .JobInterviwe_data['data']
                                               [index]["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -235,7 +224,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          JobInter.JobInterviwe_data['data']
+                                          Interview.JobInter
+                                                  .JobInterviwe_data['data']
                                               [index]["Location"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -256,7 +246,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          JobInter.JobInterviwe_data['data']
+                                          Interview.JobInter
+                                                  .JobInterviwe_data['data']
                                               [index]['JobType'],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -281,7 +272,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          JobInter.JobInterviwe_data['data']
+                                          Interview.JobInter
+                                                  .JobInterviwe_data['data']
                                               [index]["Experience"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -302,7 +294,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          JobInter.JobInterviwe_data['data']
+                                          Interview.JobInter
+                                                  .JobInterviwe_data['data']
                                               [index]["Salary"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -323,7 +316,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          JobInter.JobInterviwe_data['data']
+                                          Interview.JobInter
+                                                  .JobInterviwe_data['data']
                                               [index]["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -342,8 +336,8 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  JobInter.JobInterviwe_data['data'][index]
-                                      ["FormatDt"],
+                                  Interview.JobInter.JobInterviwe_data['data']
+                                      [index]["FormatDt"],
                                   style: TextStyle(
                                     color: AppColor.subcolor,
                                   ),
@@ -357,7 +351,9 @@ class _Show_InterviweState extends State<Show_Interviwe> {
                   },
                 );
               }
-            })),
+            },
+          ),
+        ),
       ),
     );
   }

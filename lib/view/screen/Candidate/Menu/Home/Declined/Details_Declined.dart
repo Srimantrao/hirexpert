@@ -1,9 +1,11 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Declined.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:provider/provider.dart';
 import '../../../../../../modal/Job/Search_list.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
@@ -11,8 +13,7 @@ import '../../../../../utils/app_icon.dart';
 import '../../../../../utils/common/Container/Option.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 
-
-class Details_Declined extends StatefulWidget {
+class Details_Declined extends StatelessWidget {
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -26,7 +27,7 @@ class Details_Declined extends StatefulWidget {
   final String Hybrid;
   final String stats;
 
-  const Details_Declined(
+   Details_Declined(
       {super.key,
       required this.Icon,
       required this.Color_container,
@@ -42,14 +43,8 @@ class Details_Declined extends StatefulWidget {
       required this.stats});
 
   @override
-  State<Details_Declined> createState() => _Details_DeclinedState();
-}
-
-class _Details_DeclinedState extends State<Details_Declined> {
-  bool isSeved = false;
-
-  @override
   Widget build(BuildContext context) {
+    final Declineds = Provider.of<DetailsDeclined>(context, listen: false);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -66,7 +61,6 @@ class _Details_DeclinedState extends State<Details_Declined> {
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -81,44 +75,47 @@ class _Details_DeclinedState extends State<Details_Declined> {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
-                SliverAppBar(
-                  elevation: 0,
-                  backgroundColor: AppColor.Full_body_color,
-                  forceMaterialTransparency: true,
-                  pinned: false,
-                  collapsedHeight: size.height / 3.5,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: SizedBox(
-                    height: size.height / 3.5,
-                    child: JobSearch(
-                      Icon: widget.Icon,
-                      Color_container: widget.Color_container,
-                      Job_Tital: widget.Job_Tital,
-                      Language: widget.Language,
-                      Commpany: widget.Commpany,
-                      Working: widget.Working,
-                      Location: widget.Location,
-                      Job_time: widget.Job_time,
-                      Exp: widget.Exp,
-                      lake: widget.lake,
-                      Hybrid: widget.Hybrid,
-                      stats: widget.stats,
-                      saveonTap: () {
-                        isSeved = !isSeved;
-                        setState(() {});
-                      },
-                      savechild: (isSeved)
-                          ? SvgPicture.asset(AppIcons.bookmark)
-                          : SvgPicture.asset(AppIcons.save),
-                      top: BorderSide(
-                        color: AppColor.Full_body_color,
+                Consumer<DetailsDeclined>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return SliverAppBar(
+                      elevation: 0,
+                      backgroundColor: AppColor.Full_body_color,
+                      forceMaterialTransparency: true,
+                      pinned: false,
+                      collapsedHeight: size.height / 3.5,
+                      automaticallyImplyLeading: false,
+                      flexibleSpace: SizedBox(
+                        height: size.height / 3.5,
+                        child: JobSearch(
+                          Icon: Icon,
+                          Color_container: Color_container,
+                          Job_Tital: Job_Tital,
+                          Language: Language,
+                          Commpany: Commpany,
+                          Working: Working,
+                          Location: Location,
+                          Job_time: Job_time,
+                          Exp: Exp,
+                          lake: lake,
+                          Hybrid: Hybrid,
+                          stats: stats,
+                          saveonTap: () {
+                            Declineds.Details_Declined();
+                          },
+                          savechild: (Declineds.isSeved)
+                              ? SvgPicture.asset(AppIcons.bookmark)
+                              : SvgPicture.asset(AppIcons.save),
+                          top: BorderSide(
+                            color: AppColor.Full_body_color,
+                          ),
+                          bottam: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
+                        ),
                       ),
-                      bottam: BorderSide(
-                        color: AppColor.Bottam_color,
-                      ),
-                    ),
-                  ),
-                ),
+                    );
+                  },
+                )
               ];
             },
             body: Padding(

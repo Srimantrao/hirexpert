@@ -1,4 +1,4 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -8,16 +8,9 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import '../../../../utils/app_String.dart';
 import 'Message_sent.dart';
 
-
-
-class Message extends StatefulWidget {
+class Message extends StatelessWidget {
   const Message({super.key});
 
-  @override
-  State<Message> createState() => _MessageState();
-}
-
-class _MessageState extends State<Message> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,8 +45,8 @@ class _MessageState extends State<Message> {
             itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
               return GestureDetector(
-                onTap: (){
-                  Get.to(()=>const Message_sent());
+                onTap: () {
+                  Get.to(() => Message_sent());
                 },
                 child: Container(
                   height: Get.height / 10,
@@ -69,7 +62,7 @@ class _MessageState extends State<Message> {
                     children: [
                       Row(
                         children: [
-                          const CircleAvatar(radius: 30),
+                          CircleAvatar(radius: 30),
                           SizedBox(width: Get.width / 30),
                           Column(
                             mainAxisAlignment: MainAxisAlignment.center,

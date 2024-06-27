@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,16 +9,9 @@ import '../../../../../utils/app_color.dart';
 import '../../../../../utils/app_icon.dart';
 import 'Details_Offer.dart';
 
-class Show_Offer extends StatefulWidget {
-  const Show_Offer({
-    super.key,
-  });
+class Show_Offer extends StatelessWidget {
+  const Show_Offer({super.key});
 
-  @override
-  State<Show_Offer> createState() => _Show_OfferState();
-}
-
-class _Show_OfferState extends State<Show_Offer> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -28,14 +21,14 @@ class _Show_OfferState extends State<Show_Offer> {
         backgroundColor: AppColor.Full_body_color,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           My_Jobs_Screen.Offer,
           style: TextStyle(
             fontWeight: FontWeight.w700,
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
+          Icon(Icons.notifications),
           SizedBox(width: size.width / 50),
         ],
       ),
@@ -81,7 +74,7 @@ class _Show_OfferState extends State<Show_Offer> {
                       top: BorderSide(
                         color: AppColor.Bottam_color,
                       ),
-                      bottom: const BorderSide(
+                      bottom: BorderSide(
                         color: Colors.transparent,
                       ),
                     ),
@@ -100,16 +93,13 @@ class _Show_OfferState extends State<Show_Offer> {
                               width: size.width / 5.5,
                               height: size.height / 12,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  size.width / 30,
-                                ),
+                                borderRadius:
+                                    BorderRadius.circular(size.width / 30),
                                 color: showjob[index]["Container_color"],
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(15),
-                                child: SvgPicture.asset(
-                                  showjob[index]["Icon"],
-                                ),
+                                child: SvgPicture.asset(showjob[index]["Icon"]),
                               ),
                             ),
                           ),
@@ -201,9 +191,8 @@ class _Show_OfferState extends State<Show_Offer> {
                                 width: size.width / 5,
                                 height: size.height / 25,
                                 decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
+                                  borderRadius:
+                                      BorderRadius.circular(size.width / 60),
                                   color: AppColor.ditalis_conatiner,
                                 ),
                                 child: Center(

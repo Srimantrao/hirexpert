@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors, prefer_const_literals_to_create_immutables, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -9,16 +9,11 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import '../../../../utils/app_String.dart';
 
-class Message_sent extends StatefulWidget {
-  const Message_sent({super.key});
-
-  @override
-  State<Message_sent> createState() => _Message_sentState();
-}
-
-class _Message_sentState extends State<Message_sent> {
-  TextEditingController sendmessage = TextEditingController();
+class Message_sent extends StatelessWidget {
   final channel = WebSocketChannel.connect(Uri.parse(AppUrl.WebSocket));
+  TextEditingController sendmessage = TextEditingController();
+
+  Message_sent({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +25,7 @@ class _Message_sentState extends State<Message_sent> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const SizedBox(),
+            SizedBox(),
             Container(
               height: Get.height / 15,
               width: Get.width / 1.5,
@@ -41,7 +36,7 @@ class _Message_sentState extends State<Message_sent> {
                 color: AppColor.Textfild_color,
               ),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: TextField(
                   controller: sendmessage,
                   decoration: InputDecoration(
@@ -50,7 +45,7 @@ class _Message_sentState extends State<Message_sent> {
                       color: AppColor.subcolor,
                     ),
                     prefixIcon: Padding(
-                      padding: const EdgeInsets.all(11),
+                      padding: EdgeInsets.all(11),
                       child: SvgPicture.asset(
                         AppIcons.Write,
                       ),
@@ -77,7 +72,7 @@ class _Message_sentState extends State<Message_sent> {
                   color: AppColor.Button_color,
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(20),
+                  padding: EdgeInsets.all(20),
                   child: SvgPicture.asset(AppIcons.Send),
                 ),
               ),
@@ -91,7 +86,7 @@ class _Message_sentState extends State<Message_sent> {
         elevation: 0,
         surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: const Row(
+        title: Row(
           children: [
             Icon(Icons.navigate_before_outlined, size: 30),
             Text(
@@ -103,7 +98,7 @@ class _Message_sentState extends State<Message_sent> {
           ],
         ),
         actions: [
-          const Icon(Icons.notifications),
+          Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -151,12 +146,5 @@ class _Message_sentState extends State<Message_sent> {
         ),
       ),
     );
-  }
-
-  @override
-  void dispose() {
-    channel.sink.close();
-    sendmessage.text;
-    super.dispose();
   }
 }

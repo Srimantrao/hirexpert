@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Interviwe.dart';
+import 'package:provider/provider.dart';
 import '../../../../../../modal/Dropdowns/drops.dart';
 import '../../../../../../modal/Job/Search_list.dart';
 import '../../../../../utils/app_String.dart';
@@ -14,8 +15,7 @@ import '../../../../../utils/common/Buttons/ShortButton.dart';
 import '../../../../../utils/common/Container/Option.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 
-
-class Details_Interviwe extends StatefulWidget {
+class Details_Interviwe extends StatelessWidget {
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -45,16 +45,8 @@ class Details_Interviwe extends StatefulWidget {
       required this.stats});
 
   @override
-  State<Details_Interviwe> createState() => _Details_InterviweState();
-}
-
-class _Details_InterviweState extends State<Details_Interviwe> {
-  bool isSeved = false;
-  String face = "Face to Face";
-  late DateTime selectdate;
-
-  @override
   Widget build(BuildContext context) {
+    final Interviwe = Provider.of<DetailsInterviwe>(context, listen: false);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -71,7 +63,6 @@ class _Details_InterviweState extends State<Details_Interviwe> {
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -86,44 +77,47 @@ class _Details_InterviweState extends State<Details_Interviwe> {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
-                SliverAppBar(
-                  elevation: 0,
-                  backgroundColor: AppColor.Full_body_color,
-                  forceMaterialTransparency: true,
-                  pinned: false,
-                  collapsedHeight: size.height / 3.5,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: SizedBox(
-                    height: size.height / 3.5,
-                    child: JobSearch(
-                      Icon: widget.Icon,
-                      Color_container: widget.Color_container,
-                      Job_Tital: widget.Job_Tital,
-                      Language: widget.Language,
-                      Commpany: widget.Commpany,
-                      Working: widget.Working,
-                      Location: widget.Location,
-                      Job_time: widget.Job_time,
-                      Exp: widget.Exp,
-                      lake: widget.lake,
-                      Hybrid: widget.Hybrid,
-                      stats: widget.stats,
-                      saveonTap: () {
-                        isSeved = !isSeved;
-                        setState(() {});
-                      },
-                      savechild: (isSeved)
-                          ? SvgPicture.asset(AppIcons.bookmark)
-                          : SvgPicture.asset(AppIcons.save),
-                      top: BorderSide(
-                        color: AppColor.Full_body_color,
+                Consumer<DetailsInterviwe>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return SliverAppBar(
+                      elevation: 0,
+                      backgroundColor: AppColor.Full_body_color,
+                      forceMaterialTransparency: true,
+                      pinned: false,
+                      collapsedHeight: size.height / 3.5,
+                      automaticallyImplyLeading: false,
+                      flexibleSpace: SizedBox(
+                        height: size.height / 3.5,
+                        child: JobSearch(
+                          Icon: Icon,
+                          Color_container: Color_container,
+                          Job_Tital: Job_Tital,
+                          Language: Language,
+                          Commpany: Commpany,
+                          Working: Working,
+                          Location: Location,
+                          Job_time: Job_time,
+                          Exp: Exp,
+                          lake: lake,
+                          Hybrid: Hybrid,
+                          stats: stats,
+                          saveonTap: () {
+                            Interviwe.Interviwe_Select();
+                          },
+                          savechild: (Interviwe.isSeved)
+                              ? SvgPicture.asset(AppIcons.bookmark)
+                              : SvgPicture.asset(AppIcons.save),
+                          top: BorderSide(
+                            color: AppColor.Full_body_color,
+                          ),
+                          bottam: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
+                        ),
                       ),
-                      bottam: BorderSide(
-                        color: AppColor.Bottam_color,
-                      ),
-                    ),
-                  ),
-                ),
+                    );
+                  },
+                )
               ];
             },
             body: Padding(
@@ -368,70 +362,84 @@ class _Details_InterviweState extends State<Details_Interviwe> {
                                                 SizedBox(
                                                     height: Get.height / 50),
                                                 Container(
-                                                  height: Get.height / 20,
-                                                  width: Get.width,
-                                                  decoration: BoxDecoration(
-                                                    border: Border.all(
-                                                      color: AppColor
-                                                          .select_check_color,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                      Get.width / 60,
-                                                    ),
-                                                  ),
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      SizedBox(
-                                                        width: Get.width / 1.5,
-                                                        child: DropdownButton<
-                                                            String>(
-                                                          icon: const Icon(
-                                                            Icons
-                                                                .keyboard_arrow_down,
-                                                          ),
-                                                          underline:
-                                                              const SizedBox(),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                            Get.width / 20,
-                                                          ),
-                                                          style: TextStyle(
-                                                            fontWeight:
-                                                                FontWeight.w600,
-                                                            fontSize:
-                                                                Get.width / 30,
-                                                            color: AppColor
-                                                                .black_all,
-                                                          ),
-                                                          value: face,
-                                                          items: Mettings.map(
-                                                              (String value) {
-                                                            return DropdownMenuItem<
-                                                                String>(
-                                                              value: value,
-                                                              child:
-                                                                  Text(value),
-                                                            );
-                                                          }).toList(),
-                                                          onChanged: (String?
-                                                              newValue) {
-                                                            if (newValue !=
-                                                                null) {
-                                                              face = newValue;
-                                                              setState(() {});
-                                                            }
-                                                          },
-                                                          isExpanded: true,
-                                                        ),
+                                                    height: Get.height / 20,
+                                                    width: Get.width,
+                                                    decoration: BoxDecoration(
+                                                      border: Border.all(
+                                                        color: AppColor
+                                                            .select_check_color,
                                                       ),
-                                                    ],
-                                                  ),
-                                                ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                        Get.width / 60,
+                                                      ),
+                                                    ),
+                                                    child: Consumer<
+                                                        DetailsInterviwe>(
+                                                      builder:
+                                                          (BuildContext context,
+                                                              value,
+                                                              Widget? child) {
+                                                        return Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .center,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: Get.width /
+                                                                  1.5,
+                                                              child:
+                                                                  DropdownButton<
+                                                                      String>(
+                                                                underline:
+                                                                    const SizedBox(),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                  Get.width /
+                                                                      20,
+                                                                ),
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w600,
+                                                                  fontSize:
+                                                                      Get.width /
+                                                                          30,
+                                                                  color: AppColor
+                                                                      .black_all,
+                                                                ),
+                                                                value: Interviwe
+                                                                    .face,
+                                                                items: Mettings
+                                                                    .map((String
+                                                                        value) {
+                                                                  return DropdownMenuItem<
+                                                                      String>(
+                                                                    value:
+                                                                        value,
+                                                                    child: Text(
+                                                                        value),
+                                                                  );
+                                                                }).toList(),
+                                                                onChanged: (String?
+                                                                    newValue) {
+                                                                  if (newValue !=
+                                                                      null) {
+                                                                    Interviwe
+                                                                        .face_Select(
+                                                                            newValue);
+                                                                  }
+                                                                },
+                                                                isExpanded:
+                                                                    true,
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    )),
                                                 SizedBox(
                                                   height: Get.height / 50,
                                                 ),

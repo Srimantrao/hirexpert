@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Offer.dart';
+import 'package:provider/provider.dart';
 import '../../../../../../modal/Job/Search_list.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
@@ -10,7 +12,7 @@ import '../../../../../utils/app_icon.dart';
 import '../../../../../utils/common/Container/Option.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 
-class Details_Offer extends StatefulWidget {
+class Details_Offer extends StatelessWidget {
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -41,14 +43,8 @@ class Details_Offer extends StatefulWidget {
   });
 
   @override
-  State<Details_Offer> createState() => _Details_OfferState();
-}
-
-class _Details_OfferState extends State<Details_Offer> {
-  bool isSeved = false;
-
-  @override
   Widget build(BuildContext context) {
+    final offer = Provider.of<DetailsOffer>(context, listen: false);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
@@ -65,7 +61,6 @@ class _Details_OfferState extends State<Details_Offer> {
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -80,44 +75,47 @@ class _Details_OfferState extends State<Details_Offer> {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
-                SliverAppBar(
-                  elevation: 0,
-                  backgroundColor: AppColor.Full_body_color,
-                  forceMaterialTransparency: true,
-                  pinned: true,
-                  collapsedHeight: size.height / 3.5,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: SizedBox(
-                    height: size.height / 3.5,
-                    child: JobSearch(
-                      Icon: widget.Icon,
-                      Color_container: widget.Color_container,
-                      Job_Tital: widget.Job_Tital,
-                      Language: widget.Language,
-                      Commpany: widget.Commpany,
-                      Working: widget.Working,
-                      Location: widget.Location,
-                      Job_time: widget.Job_time,
-                      Exp: widget.Exp,
-                      lake: widget.lake,
-                      Hybrid: widget.Hybrid,
-                      stats: widget.stats,
-                      saveonTap: () {
-                        isSeved = !isSeved;
-                        setState(() {});
-                      },
-                      savechild: (isSeved)
-                          ? SvgPicture.asset(AppIcons.bookmark)
-                          : SvgPicture.asset(AppIcons.save),
-                      top: BorderSide(
-                        color: AppColor.Full_body_color,
+                Consumer<DetailsOffer>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return SliverAppBar(
+                      elevation: 0,
+                      backgroundColor: AppColor.Full_body_color,
+                      forceMaterialTransparency: true,
+                      pinned: true,
+                      collapsedHeight: size.height / 3.5,
+                      automaticallyImplyLeading: false,
+                      flexibleSpace: SizedBox(
+                        height: size.height / 3.5,
+                        child: JobSearch(
+                          Icon: Icon,
+                          Color_container: Color_container,
+                          Job_Tital: Job_Tital,
+                          Language: Language,
+                          Commpany: Commpany,
+                          Working: Working,
+                          Location: Location,
+                          Job_time: Job_time,
+                          Exp: Exp,
+                          lake: lake,
+                          Hybrid: Hybrid,
+                          stats: stats,
+                          saveonTap: () {
+                            offer.Details_fuction();
+                          },
+                          savechild: (offer.isSeved)
+                              ? SvgPicture.asset(AppIcons.bookmark)
+                              : SvgPicture.asset(AppIcons.save),
+                          top: BorderSide(
+                            color: AppColor.Full_body_color,
+                          ),
+                          bottam: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
+                        ),
                       ),
-                      bottam: BorderSide(
-                        color: AppColor.Bottam_color,
-                      ),
-                    ),
-                  ),
-                ),
+                    );
+                  },
+                )
               ];
             },
             body: Padding(

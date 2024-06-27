@@ -98,7 +98,7 @@ class Home extends StatelessWidget {
               //Interviwe
               GestureDetector(
                 onTap: () {
-                  Get.to(() => const Show_Interviwe());
+                  Get.to(() => Show_Interviwe());
                 },
                 child: const Jobrow(
                   icon: AppIcons.seved,

@@ -10,14 +10,9 @@ import '../../../../../utils/app_icon.dart';
 
 import 'Details_Hired.dart';
 
-class Show_Hired extends StatefulWidget {
+class Show_Hired extends StatelessWidget {
   const Show_Hired({super.key});
 
-  @override
-  State<Show_Hired> createState() => _Show_HiredState();
-}
-
-class _Show_HiredState extends State<Show_Hired> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

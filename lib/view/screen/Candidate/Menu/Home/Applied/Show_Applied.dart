@@ -9,14 +9,9 @@ import '../../../../../utils/app_color.dart';
 import '../../../../../utils/app_icon.dart';
 import 'Details_Applid.dart';
 
-class Show_Applied extends StatefulWidget {
+class Show_Applied extends StatelessWidget {
   const Show_Applied({super.key});
 
-  @override
-  State<Show_Applied> createState() => _Show_AppliedState();
-}
-
-class _Show_AppliedState extends State<Show_Applied> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

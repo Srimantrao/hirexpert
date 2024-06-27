@@ -4,6 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Declined.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Hired.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
@@ -157,6 +160,15 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => SettingScreenController(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DetailsAppild(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DetailsDeclined(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) =>  DetailsHired(),
         ),
       ],
       child: GetMaterialApp(

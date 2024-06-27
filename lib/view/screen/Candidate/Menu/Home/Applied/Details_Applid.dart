@@ -1,8 +1,10 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names
+// ignore_for_file: camel_case_types, non_constant_identifier_names, file_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
+import 'package:provider/provider.dart';
 
 import '../../../../../../modal/Job/Search_list.dart';
 import '../../../../../utils/app_String.dart';
@@ -11,7 +13,7 @@ import '../../../../../utils/app_icon.dart';
 import '../../../../../utils/common/Container/Option.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 
-class Details_Appild extends StatefulWidget {
+class Details_Appild extends StatelessWidget {
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -42,14 +44,8 @@ class Details_Appild extends StatefulWidget {
   });
 
   @override
-  State<Details_Appild> createState() => _Details_AppildState();
-}
-
-class _Details_AppildState extends State<Details_Appild> {
-  bool isSeved = false;
-
-  @override
   Widget build(BuildContext context) {
+    final Applid = Provider.of<DetailsAppild>(context, listen: false);
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
@@ -63,44 +59,47 @@ class _Details_AppildState extends State<Details_Appild> {
             headerSliverBuilder:
                 (BuildContext context, bool innerBoxIsScrolled) {
               return [
-                SliverAppBar(
-                  elevation: 0,
-                  backgroundColor: AppColor.Full_body_color,
-                  forceMaterialTransparency: true,
-                  pinned: true,
-                  collapsedHeight: size.height / 3.5,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: SizedBox(
-                    height: size.height / 3.5,
-                    child: JobSearch(
-                      Icon: widget.Icon,
-                      Color_container: widget.Color_container,
-                      Job_Tital: widget.Job_Tital,
-                      Language: widget.Language,
-                      Commpany: widget.Commpany,
-                      Working: widget.Working,
-                      Location: widget.Location,
-                      Job_time: widget.Job_time,
-                      Exp: widget.Exp,
-                      lake: widget.lake,
-                      Hybrid: widget.Hybrid,
-                      stats: widget.stats,
-                      saveonTap: () {
-                        isSeved = !isSeved;
-                        setState(() {});
-                      },
-                      savechild: (isSeved)
-                          ? SvgPicture.asset(AppIcons.bookmark)
-                          : SvgPicture.asset(AppIcons.save),
-                      top: BorderSide(
-                        color: AppColor.Full_body_color,
+                Consumer<DetailsAppild>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return SliverAppBar(
+                      elevation: 0,
+                      backgroundColor: AppColor.Full_body_color,
+                      forceMaterialTransparency: true,
+                      pinned: true,
+                      collapsedHeight: size.height / 3.5,
+                      automaticallyImplyLeading: false,
+                      flexibleSpace: SizedBox(
+                        height: size.height / 3.5,
+                        child: JobSearch(
+                          Icon: Icon,
+                          Color_container: Color_container,
+                          Job_Tital: Job_Tital,
+                          Language: Language,
+                          Commpany: Commpany,
+                          Working: Working,
+                          Location: Location,
+                          Job_time: Job_time,
+                          Exp: Exp,
+                          lake: lake,
+                          Hybrid: Hybrid,
+                          stats: stats,
+                          saveonTap: () {
+                            Applid.Details_Appild();
+                          },
+                          savechild: (Applid.isSeved)
+                              ? SvgPicture.asset(AppIcons.bookmark)
+                              : SvgPicture.asset(AppIcons.save),
+                          top: BorderSide(
+                            color: AppColor.Full_body_color,
+                          ),
+                          bottam: BorderSide(
+                            color: AppColor.Bottam_color,
+                          ),
+                        ),
                       ),
-                      bottam: BorderSide(
-                        color: AppColor.Bottam_color,
-                      ),
-                    ),
-                  ),
-                ),
+                    );
+                  },
+                )
               ];
             },
             body: Padding(
@@ -151,7 +150,7 @@ class _Details_AppildState extends State<Details_Appild> {
                       ),
                       Column(
                         children: [
-                          SizedBox(height: Get.height/80),
+                          SizedBox(height: Get.height / 80),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
