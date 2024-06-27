@@ -7,7 +7,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Declined.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Hired.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Interviwe.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Offer.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -59,117 +62,56 @@ class MyApp extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => SelectButtonsController()),
+        ChangeNotifierProvider(create: (_) => Candidate_VisibilityController()),
+        ChangeNotifierProvider(create: (_) => Candidate_LoginValidation()),
+        ChangeNotifierProvider(create: (_) => Candidate_SinupController()),
+        ChangeNotifierProvider(create: (_) => MenuNavigationController()),
+        ChangeNotifierProvider(create: (_) => DropdownController()),
+        ChangeNotifierProvider(create: (_) => Collectionpart()),
         ChangeNotifierProvider(
-          create: (_) => SelectButtonsController(),
-        ),
+            create: (_) => Candidate_SpecializationController_popup()),
         ChangeNotifierProvider(
-          create: (_) => Candidate_VisibilityController(),
-        ),
+            create: (_) => Candidate_SpecializationController_Interest()),
         ChangeNotifierProvider(
-          create: (_) => Candidate_LoginValidation(),
-        ),
+            create: (_) => Candidate_SpecializationController_Skillset()),
         ChangeNotifierProvider(
-          create: (_) => Candidate_SinupController(),
-        ),
+            create: (_) => Candidate_SpecializationController_Collection()),
+        ChangeNotifierProvider(create: (_) => Education_Controller()),
+        ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
+        ChangeNotifierProvider(create: (_) => FreherController()),
+        ChangeNotifierProvider(create: (_) => PreferenceController()),
+        ChangeNotifierProvider(create: (_) => SetupController()),
+        ChangeNotifierProvider(create: (_) => SearchJobController()),
+        ChangeNotifierProvider(create: (_) => SearchButtonsController()),
+        ChangeNotifierProvider(create: (_) => TabbarController()),
+        ChangeNotifierProvider(create: (_) => Notification_Controller()),
+        ChangeNotifierProvider(create: (_) => My_ProfileController()),
+        ChangeNotifierProvider(create: (_) => ChosefileController()),
+        ChangeNotifierProvider(create: (_) => Employer_LoginValidation()),
+        ChangeNotifierProvider(create: (_) => Employer_VisibilityController()),
+        ChangeNotifierProvider(create: (_) => Employer_SinupController()),
+        ChangeNotifierProvider(create: (_) => ChangePasswordController()),
+        ChangeNotifierProvider(create: (_) => OtpController()),
         ChangeNotifierProvider(
-          create: (_) => MenuNavigationController(),
-        ),
+            create: (_) => Employer_SpecializationController_popup()),
         ChangeNotifierProvider(
-          create: (_) => DropdownController(),
-        ),
+            create: (_) => Employer_SpecializationController_popup()),
         ChangeNotifierProvider(
-          create: (_) => Collectionpart(),
-        ),
+            create: (_) => Employer_SpecializationController_Interest()),
         ChangeNotifierProvider(
-          create: (_) => Candidate_SpecializationController_popup(),
-        ),
+            create: (_) => Employer_SpecializationController_Interest()),
         ChangeNotifierProvider(
-          create: (_) => Candidate_SpecializationController_Interest(),
-        ),
+            create: (_) => Employer_SpecializationController_Skillset()),
         ChangeNotifierProvider(
-          create: (_) => Candidate_SpecializationController_Skillset(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Candidate_SpecializationController_Collection(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Education_Controller(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => JobTitle_Controller(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => FreherController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => PreferenceController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SetupController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SearchJobController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SearchButtonsController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => TabbarController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Notification_Controller(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => My_ProfileController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ChosefileController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_LoginValidation(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_VisibilityController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SinupController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => ChangePasswordController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => OtpController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SpecializationController_popup(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SpecializationController_popup(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SpecializationController_Interest(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SpecializationController_Interest(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SpecializationController_Skillset(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => Employer_SpecializationController_Collection(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => SettingScreenController(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => DetailsAppild(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => DetailsDeclined(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) =>  DetailsHired(),
-        ),
+            create: (_) => Employer_SpecializationController_Collection()),
+        ChangeNotifierProvider(create: (_) => SettingScreenController()),
+        ChangeNotifierProvider(create: (_) => DetailsAppild()),
+        ChangeNotifierProvider(create: (_) => DetailsDeclined()),
+        ChangeNotifierProvider(create: (_) => DetailsHired()),
+        ChangeNotifierProvider(create: (_) => DetailsInterviwe()),
+        ChangeNotifierProvider(create: (_) => DetailsOffer()),
+        ChangeNotifierProvider(create: (_) => DocumentInfoController()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(

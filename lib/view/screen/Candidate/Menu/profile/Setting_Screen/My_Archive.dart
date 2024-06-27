@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names
+// ignore_for_file: camel_case_types, file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -30,17 +30,14 @@ class My_Archive extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Icon(
-                  Icons.navigate_before,
-                  size: 35,
-                ),
+                Icon(Icons.navigate_before, size: 35),
                 Text(
                   My_Archive_text.titele,
                   style: TextStyle(
                     fontSize: Get.width / 20,
                   ),
                 ),
-                const SizedBox(),
+                SizedBox(),
               ],
             ),
           ),

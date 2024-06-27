@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -41,10 +41,8 @@ class Notification_setting extends StatelessWidget {
                   onTap: () {
                     Get.back();
                   },
-                  child: const Icon(
-                    Icons.navigate_before,
-                    size: 35,
-                  ),
+                  // ignore: prefer_const_constructors
+                  child: Icon(Icons.navigate_before, size: 35),
                 ),
                 Text(
                   Notification_text.Hedding,
@@ -52,7 +50,7 @@ class Notification_setting extends StatelessWidget {
                     fontSize: Get.width / 20,
                   ),
                 ),
-                const SizedBox(),
+                SizedBox(),
               ],
             ),
           ),

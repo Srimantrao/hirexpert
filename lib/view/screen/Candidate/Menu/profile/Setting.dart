@@ -103,17 +103,17 @@ class Setting extends StatelessWidget {
                   //My Archive
                   InkWell(
                     onTap: () {
-                      Get.to(() => const My_Archive());
+                      Get.to(() => My_Archive());
                     },
-                    child: const Info_Setting(info: Profile_Text.Archive),
+                    child: Info_Setting(info: Profile_Text.Archive),
                   ),
 
                   //Notification Setting
                   InkWell(
                     onTap: () {
-                      Get.to(() => const Notification_setting());
+                      Get.to(() => Notification_setting());
                     },
-                    child: const Info_Setting(
+                    child: Info_Setting(
                       info: Profile_Text.Notification_Setting,
                     ),
                   ),
@@ -576,7 +576,7 @@ class Setting extends StatelessWidget {
                                                         color: AppColor
                                                             .Error_color),
                                                   )
-                                                : const Text(""),
+                                                : Text(""),
                                             SizedBox(height: Get.height / 50),
                                             Text(
                                               My_Archive_text.New_Password,
@@ -600,10 +600,10 @@ class Setting extends StatelessWidget {
                                                         .Confirm_Password_obx();
                                                   },
                                                   child: (Pass_change.o_pass)
-                                                      ? const Icon(
+                                                      ? Icon(
                                                           Icons.visibility_off,
                                                         )
-                                                      : const Icon(
+                                                      : Icon(
                                                           Icons.visibility,
                                                         ),
                                                 ),
@@ -659,10 +659,10 @@ class Setting extends StatelessWidget {
                                                         .Confirm_Password_obx();
                                                   },
                                                   child: (Pass_change.c_pass)
-                                                      ? const Icon(
+                                                      ? Icon(
                                                           Icons.visibility_off,
                                                         )
-                                                      : const Icon(
+                                                      : Icon(
                                                           Icons.visibility,
                                                         ),
                                                 ),
@@ -691,7 +691,7 @@ class Setting extends StatelessWidget {
                                                         color: AppColor
                                                             .Error_color),
                                                   )
-                                                : const Text(""),
+                                                : Text(""),
                                           ],
                                         ),
                                       ),
@@ -723,7 +723,7 @@ class Setting extends StatelessWidget {
                             },
                           );
                         },
-                        child: const Info_Setting(
+                        child: Info_Setting(
                           info: Profile_Text.Change_Password,
                         ),
                       );
