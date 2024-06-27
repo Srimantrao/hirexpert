@@ -145,7 +145,6 @@ class Location_fild extends StatefulWidget {
   @override
   State<Location_fild> createState() => _Location_fildState();
 }
-
 class _Location_fildState extends State<Location_fild> {
   int State = -1;
   int Gujarat = -1;
@@ -481,7 +480,6 @@ class Preffered extends StatefulWidget {
   @override
   State<Preffered> createState() => _PrefferedState();
 }
-
 class _PrefferedState extends State<Preffered> {
   int State = -1;
 
@@ -898,7 +896,6 @@ class Setup extends StatefulWidget {
   @override
   State<Setup> createState() => _SetupState();
 }
-
 class _SetupState extends State<Setup> {
   bool isselect = true;
   String select = "";

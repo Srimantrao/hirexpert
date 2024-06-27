@@ -124,7 +124,7 @@ class Location extends StatelessWidget {
                           ),
                           InkWell(
                             onTap: () {
-                              Get.to(()=>const Choose());
+                              Get.to(() => const Choose());
                             },
                             child: Row(
                               children: [
