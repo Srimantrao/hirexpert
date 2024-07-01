@@ -7,10 +7,10 @@ class Eduction_hedal extends GetxController {
   DegreelistPopController Dedree = Get.put(DegreelistPopController());
 
   void onInit() {
+    super.onInit();
     Future.microtask(() async {
       await Dedree.DegreelistPopController_Fuction();
     });
-    super.onInit();
   }
 
   void onClose() {

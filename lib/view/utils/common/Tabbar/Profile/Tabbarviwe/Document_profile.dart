@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,16 +11,8 @@ import 'package:provider/provider.dart';
 
 import '../../../../app_icon.dart';
 
-class Documant_Profile extends StatefulWidget {
-  const Documant_Profile({super.key});
-
-  @override
-  State<Documant_Profile> createState() => _Documant_ProfileState();
-}
-
-class _Documant_ProfileState extends State<Documant_Profile> {
-  String Month = "Month";
-  String Year = "Year";
+class Documant_Profile extends StatelessWidget {
+  Documant_Profile({super.key});
 
   TextEditingController Certificate = TextEditingController();
 
@@ -128,7 +120,7 @@ class _Documant_ProfileState extends State<Documant_Profile> {
                                             Icons.keyboard_arrow_down,
                                             color: AppColor.select_check_color,
                                           ),
-                                          hintText: Month,
+                                          hintText: 'Month',
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: AppColor.Bottam_color),
@@ -150,7 +142,7 @@ class _Documant_ProfileState extends State<Documant_Profile> {
                                             Icons.keyboard_arrow_down,
                                             color: AppColor.select_check_color,
                                           ),
-                                          hintText: Year,
+                                          hintText: 'Year',
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
                                                 color: AppColor.Bottam_color),

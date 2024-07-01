@@ -1,9 +1,11 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Favouritejob.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Sarching_Saving_API.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
 import '../../../../modal/Job/jobSearch_list.dart';
@@ -11,39 +13,20 @@ import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 
-class Seved_List extends StatefulWidget {
-  const Seved_List({
-    super.key,
-  });
+class Seved_List extends StatelessWidget {
+  final SarchingSavingApi Saving_Apis = Get.put(SarchingSavingApi());
 
-  @override
-  State<Seved_List> createState() => _Seved_ListState();
-}
-
-class _Seved_ListState extends State<Seved_List> {
-  final SearchApiController _Search = Get.put(SearchApiController());
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await _Search.SearchApiController_fuction(
-        Timezone: 'asia/kolkata',
-        CandidateId: login.option_data['data']['LoginToken'],
-      );
-    });
-    super.initState();
-  }
+  Seved_List({super.key});
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Obx(() {
-      if (_Search.isLoding.value) {
+      if (Saving_Apis.favourlist.isloding.value) {
         return Center(
           child: Image.asset(AppLoder.infinityloder_without_background),
         );
-      } else if (_Search.Search_data == null) {
+      } else if (Saving_Apis.favourlist.data == null) {
         return const Center(
           child: Text(API_Error.null_data),
         );
@@ -86,10 +69,10 @@ class _Seved_ListState extends State<Seved_List> {
                             color: showjob[index]["Container_color"],
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(15),
+                            padding: EdgeInsets.all(15),
                             child: Image.network(
                               // _Search.Search_data['data'][index]['ComLogo'],
-                              saveshowjob[index]['ComLogo'],
+                              Saving_Apis.favourlist.data[index]['ComLogo'],
                             ),
                           ),
                         ),
@@ -105,7 +88,8 @@ class _Seved_ListState extends State<Seved_List> {
                                   Text(
                                     // _Search.Search_data['data'][index]
                                     //     ["JobTitle"],
-                                    saveshowjob[index]['JobTitle'],
+                                    Saving_Apis.favourlist.data[index]
+                                        ['JobTitle'],
                                     style: TextStyle(
                                       color: AppColor.subcolor,
                                     ),
@@ -118,7 +102,7 @@ class _Seved_ListState extends State<Seved_List> {
                             width: Get.width / 2,
                             child: Text(
                               // _Search.Search_data['data'][index]["TechName"],
-                              saveshowjob[index]['TechName'],
+                              Saving_Apis.favourlist.data[index]['TechName'],
                               style: TextStyle(
                                 fontSize: size.width / 26,
                                 fontWeight: FontWeight.w600,
@@ -127,7 +111,7 @@ class _Seved_ListState extends State<Seved_List> {
                           ),
                           Text(
                             // _Search.Search_data['data'][index]["ComName"],
-                            saveshowjob[index]['ComName'],
+                            Saving_Apis.favourlist.data[index]['ComName'],
                             style: TextStyle(
                               fontSize: size.width / 26,
                               fontWeight: FontWeight.w400,
@@ -157,7 +141,7 @@ class _Seved_ListState extends State<Seved_List> {
                             child: Center(
                               child: Text(
                                 // _Search.Search_data['data'][index]["JobType"],
-                                saveshowjob[index]['JobType'],
+                                Saving_Apis.favourlist.data[index]['JobType'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -178,7 +162,7 @@ class _Seved_ListState extends State<Seved_List> {
                             child: Center(
                               child: Text(
                                 // _Search.Search_data['data'][index]["Location"],
-                                saveshowjob[index]['Location'],
+                                Saving_Apis.favourlist.data[index]['Location'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -199,7 +183,7 @@ class _Seved_ListState extends State<Seved_List> {
                             child: Center(
                               child: Text(
                                 // _Search.Search_data['data'][index]["JobType"],
-                                saveshowjob[index]['JobType'],
+                                Saving_Apis.favourlist.data[index]['JobType'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -225,7 +209,8 @@ class _Seved_ListState extends State<Seved_List> {
                               child: Text(
                                 // _Search.Search_data['data'][index]
                                 //     ["Experience"],
-                                saveshowjob[index]['Experience'],
+                                Saving_Apis.favourlist.data[index]
+                                    ['Experience'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 35,
@@ -246,7 +231,7 @@ class _Seved_ListState extends State<Seved_List> {
                             child: Center(
                               child: Text(
                                 // _Search.Search_data['data'][index]["Salary"],
-                                saveshowjob[index]['Salary'],
+                                Saving_Apis.favourlist.data[index]['Salary'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -270,7 +255,7 @@ class _Seved_ListState extends State<Seved_List> {
                               child: Center(
                                 child: Text(
                                   // _Search.Search_data['data'][index]["WorkSet"],
-                                  saveshowjob[index]['WorkSet'],
+                                  Saving_Apis.favourlist.data[index]['WorkSet'],
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: size.width / 33,
@@ -290,7 +275,7 @@ class _Seved_ListState extends State<Seved_List> {
                     children: [
                       Text(
                         // _Search.Search_data['data'][index]["FormatDt"],
-                        saveshowjob[index]['FormatDt'],
+                        Saving_Apis.favourlist.data[index]['FormatDt'],
                         style: TextStyle(
                           color: AppColor.subcolor,
                         ),

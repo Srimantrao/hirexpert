@@ -45,7 +45,7 @@ class Saved extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     horizontal: size.width / 30,
                   ),
-                  child: const Seved_List(),
+                  child: Seved_List(),
                 ),
         ),
       ),
