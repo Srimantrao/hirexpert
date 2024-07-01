@@ -1,14 +1,16 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, file_names
 
 //DropDown Menu
-class API_Error{
+class API_Error {
   static const null_data = "Soory, Your Data Not Found";
 }
+
 class Navigator_text {
   static const Next = "Next";
   static const Back = "Back";
   static const Done = "Done";
 }
+
 class DropDownMenu_String {
   static const Gujarat = "Gujarat";
   static const Maharastrya = "Maharastrya";
@@ -31,6 +33,7 @@ class DropDownMenu_String {
   static const mothe = "6 Months";
   static const one = "Last 1 Year";
 }
+
 class Error_String {
   static const sorry = "So Sorry Sir/Mem App is under-consideration";
   static const both = "Please Select Only & Only One Button";
@@ -536,9 +539,11 @@ class Location_text {
   static const Any = "Any";
   static const Save = "Save";
 }
+
 class Location_State {
   static const Gujarat = "Gujarat";
 }
+
 class Location_Area {
   static const Surat = "Surat";
 }

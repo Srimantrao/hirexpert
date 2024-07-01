@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 

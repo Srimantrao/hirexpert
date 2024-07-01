@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, must_be_immutable
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -69,7 +69,7 @@ class Education extends StatelessWidget {
                         color: AppColor.subcolor,
                       ),
                     ),
-                    const Education_Comm(),
+                    Education_Comm(),
                     SizedBox(height: Get.height / 50),
 
                     //Passsing Year

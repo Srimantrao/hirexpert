@@ -239,9 +239,9 @@ class candidate_Signup extends StatelessWidget {
                                       ),
                                     );
                                   }
-                                  // Get.to(
-                                  //   () => const Candidate_Specialization(),
-                                  // );
+                                  Get.to(
+                                    () => const Candidate_Specialization(),
+                                  );
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Signup_text.Sign_Up,
