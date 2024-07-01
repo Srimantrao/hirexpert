@@ -11,14 +11,9 @@ import '../../../utils/app_icon.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 
-class Employer_F_Password extends StatefulWidget {
+class Employer_F_Password extends StatelessWidget {
   const Employer_F_Password({super.key});
 
-  @override
-  State<Employer_F_Password> createState() => _Employer_F_PasswordState();
-}
-
-class _Employer_F_PasswordState extends State<Employer_F_Password> {
   @override
   Widget build(BuildContext context) {
     final vail = Provider.of<Employer_LoginValidation>(context, listen: false);
@@ -169,7 +164,7 @@ class _Employer_F_PasswordState extends State<Employer_F_Password> {
                     SizedBox(width: Get.width / 60),
                     InkWell(
                       onTap: () {
-                        Get.to(() => const Employer_Signup());
+                        Get.to(() =>Employer_Signup());
                       },
                       child: Text(
                         Login_text.Sinup,

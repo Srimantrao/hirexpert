@@ -26,6 +26,7 @@ class AppUrl {
   static const Change_password = "$Hirexpert/api/v1/user/changePassword";
   static const tagList = "$Hirexpert/api/v1/user/tagList";
   static const Concern = "$Hirexpert/api/v1/Advertisedjob/addConcern";
+  static const  count  ="$Hirexpert/api/v1/Advertisedjob/JobStatusWiseCountList";
 
   //Notification
   static const Notification =

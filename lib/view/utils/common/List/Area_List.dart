@@ -21,7 +21,7 @@ class Area_List extends StatelessWidget {
   }
 }
 
-class Area_Containers extends StatefulWidget {
+class Area_Containers extends StatelessWidget {
   final void Function()? onTap;
   final String Listing;
   final Color Button_color;
@@ -36,14 +36,9 @@ class Area_Containers extends StatefulWidget {
   });
 
   @override
-  State<Area_Containers> createState() => _Area_ContainersState();
-}
-
-class _Area_ContainersState extends State<Area_Containers> {
-  @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: widget.onTap,
+      onTap: onTap,
       child: Container(
         margin: EdgeInsets.symmetric(
           vertical: Get.width / 60,
@@ -54,15 +49,15 @@ class _Area_ContainersState extends State<Area_Containers> {
           borderRadius: BorderRadius.circular(
             Get.width / 50,
           ),
-          color: widget.Button_color,
+          color: Button_color,
         ),
         child: Center(
           child: Text(
             textAlign: TextAlign.center,
-            widget.Listing,
+            Listing,
             style: TextStyle(
               fontSize: Get.width / 28,
-              color: widget.text_color,
+              color: text_color,
             ),
           ),
         ),

@@ -1,14 +1,17 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
+import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/jobcountsaccording.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/JobCountabale_hedal.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Home/saving/saved.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Row/homerow.dart';
 import 'Applied/Show_Applied.dart';
 import 'Declined/Show_Declined.dart';
@@ -17,7 +20,9 @@ import 'Interviwe/Show_Interview.dart';
 import 'Offer/Show_Offer.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final JobcountabaleHedal jobincount = Get.put(JobcountabaleHedal());
+
+  Home({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,97 +54,133 @@ class Home extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
         ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Get.width / 30,
-          ),
-          child: Column(
-            children: [
-              //Saved
-              GestureDetector(
-                onTap: () {
-                  Get.to(
-                    () => const Saved(),
-                  );
-                },
-                child: Jobrow(
-                  icon: AppIcons.Seeved,
-                  name: My_Jobs_Screen.Saved,
-                  child: (saveshowjob.isEmpty)
-                      ? const SizedBox()
-                      : CircleAvatar(
+        child: Obx(
+          () {
+            if (jobincount.jobcount.isLoding.value) {
+              return Center(
+                child: Image.asset(AppLoder.infinityloder_without_background),
+              );
+            } else {
+              return Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: Get.width / 30,
+                ),
+                child: Column(
+                  children: [
+                    //Saved
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => const Saved(),
+                        );
+                      },
+                      child: Jobrow(
+                        icon: AppIcons.Seeved,
+                        name: My_Jobs_Screen.Saved,
+                        child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            "${saveshowjob.length}",
+                            jobincount.jobcount.data['data']['savedJobCnt']
+                                .toString(),
                           ),
                         ),
-                ),
-              ),
+                      ),
+                    ),
 
-              //Applied
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => const Show_Applied());
-                },
-                child: Jobrow(
-                  icon: AppIcons.Applid,
-                  name: My_Jobs_Screen.Applied,
-                  child: (appliedjob.isEmpty)
-                      ? const SizedBox()
-                      : CircleAvatar(
+                    //Applied
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => Show_Applied());
+                      },
+                      child: Jobrow(
+                        icon: AppIcons.Applid,
+                        name: My_Jobs_Screen.Applied,
+                        child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            "${appliedjob.length}",
+                            jobincount.jobcount.data['data']['appliedJobCnt']
+                                .toString(),
                           ),
                         ),
-                ),
-              ),
+                      ),
+                    ),
 
-              //Interviwe
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => Show_Interviwe());
-                },
-                child: const Jobrow(
-                  icon: AppIcons.seved,
-                  name: My_Jobs_Screen.Interview,
-                ),
-              ),
+                    //Interviwe
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => Show_Interviwe());
+                      },
+                      child: Jobrow(
+                        icon: AppIcons.seved,
+                        name: My_Jobs_Screen.Interview,
+                        child: CircleAvatar(
+                          minRadius: 12,
+                          child: Text(
+                            jobincount.jobcount.data['data']['interviewJobCnt']
+                                .toString(),
+                          ),
+                        ),
+                      ),
+                    ),
 
-              //Offer
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => const Show_Offer());
-                },
-                child: const Jobrow(
-                  icon: AppIcons.rupess,
-                  name: My_Jobs_Screen.Offer,
-                ),
-              ),
+                    //Offer
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => const Show_Offer());
+                      },
+                      child: Jobrow(
+                        icon: AppIcons.rupess,
+                        name: My_Jobs_Screen.Offer,
+                        child: CircleAvatar(
+                          minRadius: 12,
+                          child: Text(
+                            jobincount.jobcount.data['data']['offersJobCnt']
+                                .toString(),
+                          ),
+                        ),
+                      ),
+                    ),
 
-              //Hired
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => const Show_Hired());
-                },
-                child: const Jobrow(
-                  icon: AppIcons.Hired,
-                  name: My_Jobs_Screen.Hired,
-                ),
-              ),
+                    //Hired
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => Show_Hired());
+                      },
+                      child: Jobrow(
+                        icon: AppIcons.Hired,
+                        name: My_Jobs_Screen.Hired,
+                        child: CircleAvatar(
+                          minRadius: 12,
+                          child: Text(
+                            jobincount.jobcount.data['data']['hiredJobCnt']
+                                .toString(),
+                          ),
+                        ),
+                      ),
+                    ),
 
-              //Declined
-              GestureDetector(
-                onTap: () {
-                  Get.to(() => const Show_Declined());
-                },
-                child: const Jobrow(
-                  icon: AppIcons.Declind,
-                  name: My_Jobs_Screen.Declined,
+                    //Declined
+                    GestureDetector(
+                      onTap: () {
+                        Get.to(() => Show_Declined());
+                      },
+                      child: Jobrow(
+                        icon: AppIcons.Declind,
+                        name: My_Jobs_Screen.Declined,
+                        child: CircleAvatar(
+                          minRadius: 12,
+                          child: Text(
+                            jobincount.jobcount.data['data']['declinedJobCnt']
+                                .toString(),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
+              );
+            }
+          },
         ),
       ),
     );

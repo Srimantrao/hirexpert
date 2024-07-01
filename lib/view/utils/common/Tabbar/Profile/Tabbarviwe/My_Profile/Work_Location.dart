@@ -11,14 +11,9 @@ import '../../../../../../../controller/User_Controller/Candidate_Controller/MY_
 import '../../../../../app_String.dart';
 import '../../../../Container/profile_Info.dart';
 
-class Work_Location extends StatefulWidget {
+class Work_Location extends StatelessWidget {
   const Work_Location({super.key});
 
-  @override
-  State<Work_Location> createState() => _Work_LocationState();
-}
-
-class _Work_LocationState extends State<Work_Location> {
   @override
   Widget build(BuildContext context) {
     final myProfile = Provider.of<My_ProfileController>(

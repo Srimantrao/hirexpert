@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,14 +11,9 @@ import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 
 
-class Candidate_Bottam extends StatefulWidget {
-  const Candidate_Bottam({super.key});
+class Candidate_Bottam extends StatelessWidget {
+  Candidate_Bottam({super.key});
 
-  @override
-  State<Candidate_Bottam> createState() => _Candidate_BottamState();
-}
-
-class _Candidate_BottamState extends State<Candidate_Bottam> {
   @override
   Widget build(BuildContext context) {
     final nav = Provider.of<MenuNavigationController>(

@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,7 +11,7 @@ import '../../../../../utils/app_icon.dart';
 import 'Details_Hired.dart';
 
 class Show_Hired extends StatelessWidget {
-  const Show_Hired({super.key});
+  Show_Hired({super.key});
 
   @override
   Widget build(BuildContext context) {

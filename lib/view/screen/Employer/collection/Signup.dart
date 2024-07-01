@@ -13,14 +13,9 @@ import '../../../../controller/User_Controller/Employer_Controller/SignupControl
 import '../../../utils/app_icon.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 
-class Employer_Signup extends StatefulWidget {
-  const Employer_Signup({super.key});
+class Employer_Signup extends StatelessWidget {
+   Employer_Signup({super.key});
 
-  @override
-  State<Employer_Signup> createState() => _Employer_SignupState();
-}
-
-class _Employer_SignupState extends State<Employer_Signup> {
   EmployerApiSinupController Employer_Sinup =
       Get.put(EmployerApiSinupController());
 

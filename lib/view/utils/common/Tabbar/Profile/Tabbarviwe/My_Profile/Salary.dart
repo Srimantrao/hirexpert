@@ -12,14 +12,9 @@ import '../../../../../app_String.dart';
 import '../../../../Container/profile_Info.dart';
 
 
-class Salary_Profile extends StatefulWidget {
+class Salary_Profile extends StatelessWidget {
   const Salary_Profile({super.key});
 
-  @override
-  State<Salary_Profile> createState() => _Salary_ProfileState();
-}
-
-class _Salary_ProfileState extends State<Salary_Profile> {
   @override
   Widget build(BuildContext context) {
     final myProfile = Provider.of<My_ProfileController>(

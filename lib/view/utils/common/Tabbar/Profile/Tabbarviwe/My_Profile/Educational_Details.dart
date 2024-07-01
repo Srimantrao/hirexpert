@@ -14,14 +14,9 @@ import '../../../../../app_color.dart';
 import '../../../../Container/profile_Info.dart';
 import '../../../../Selection/Information_Selection.dart';
 
-class Educational_Details extends StatefulWidget {
+class Educational_Details extends StatelessWidget {
   const Educational_Details({super.key});
 
-  @override
-  State<Educational_Details> createState() => _Educational_DetailsState();
-}
-
-class _Educational_DetailsState extends State<Educational_Details> {
   @override
   Widget build(BuildContext context) {
     final myProfile = Provider.of<My_ProfileController>(

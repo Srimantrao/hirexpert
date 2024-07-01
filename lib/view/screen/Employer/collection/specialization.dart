@@ -12,14 +12,9 @@ import '../../../../controller/User_Controller/Employer_Controller/DropdownContr
 import '../../../utils/app_String.dart';
 import '../../../utils/common/Popup/Employer/Specialization_common.dart';
 
-class Employer_Specialization extends StatefulWidget {
+class Employer_Specialization extends StatelessWidget {
   const Employer_Specialization({super.key});
 
-  @override
-  State<Employer_Specialization> createState() => _Employer_SpecializationState();
-}
-
-class _Employer_SpecializationState extends State<Employer_Specialization> {
   @override
   Widget build(BuildContext context) {
     final Cont = Provider.of<Employer_SpecializationController_Collection>(

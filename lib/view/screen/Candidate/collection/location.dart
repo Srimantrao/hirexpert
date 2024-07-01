@@ -103,7 +103,7 @@ class Location extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          InkWell(
+                          GestureDetector(
                             onTap: () {
                               Get.back();
                             },
@@ -111,7 +111,7 @@ class Location extends StatelessWidget {
                               children: [
                                 SvgPicture.asset(AppIcons.Backarrow),
                                 SizedBox(width: Get.width / 70),
-                                Text(
+                                Text(  
                                   Navigator_text.Back,
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -122,8 +122,9 @@ class Location extends StatelessWidget {
                               ],
                             ),
                           ),
-                          InkWell(
+                          GestureDetector(
                             onTap: () {
+                              Work.isnext_fun();
                               Get.to(() => const Choose());
                             },
                             child: Row(

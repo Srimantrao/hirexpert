@@ -13,15 +13,10 @@ import '../../../app_color.dart';
 import '../../../app_icon.dart';
 
 
-class Searching extends StatefulWidget {
+class Searching extends StatelessWidget {
   final String OnString;
   const Searching({super.key, required this.OnString});
 
-  @override
-  State<Searching> createState() => _SearchingState();
-}
-
-class _SearchingState extends State<Searching> {
   @override
   Widget build(BuildContext context) {
     final Buttonschang = Provider.of<SearchJobController>(
@@ -69,7 +64,7 @@ class _SearchingState extends State<Searching> {
                           ),
                           SizedBox(width: Get.width / 100),
                           Text(
-                            widget.OnString,
+                            OnString,
                             style: TextStyle(
                               color: (Buttonschang.SelectButtons)
                                   ? AppColor.Full_body_color

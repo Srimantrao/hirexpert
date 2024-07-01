@@ -154,7 +154,7 @@ class Candidate_Login extends StatelessWidget {
                                   ).then(
                                     (value) {
                                       if (login.option_data['status'] == true) {
-                                        Get.to(() => const Candidate_Bottam());
+                                        Get.to(() => Candidate_Bottam());
                                       } else {
                                         Get.showSnackbar(
                                           GetBar(

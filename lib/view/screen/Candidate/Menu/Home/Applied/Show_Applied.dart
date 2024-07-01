@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names
+// ignore_for_file: camel_case_types, file_names, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -10,7 +10,7 @@ import '../../../../../utils/app_icon.dart';
 import 'Details_Applid.dart';
 
 class Show_Applied extends StatelessWidget {
-  const Show_Applied({super.key});
+ Show_Applied({super.key});
 
   @override
   Widget build(BuildContext context) {

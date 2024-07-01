@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-
-import '../../app_String.dart';
 import '../../app_color.dart';
-import '../../app_icon.dart';
 
 class Jobrow extends StatelessWidget {
   final String icon;

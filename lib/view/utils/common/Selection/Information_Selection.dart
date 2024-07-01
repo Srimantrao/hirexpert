@@ -10,7 +10,7 @@ import '../../app_String.dart';
 import '../../app_color.dart';
 import '../../app_icon.dart';
 
-class Infromation_Selection extends StatefulWidget {
+class Infromation_Selection extends StatelessWidget {
   final String? name;
   final String Hadline;
   final String Selectedtext;
@@ -18,7 +18,7 @@ class Infromation_Selection extends StatefulWidget {
   final void Function()? SelectonTap_Button;
   final void Function(int index)? onSelectedItemChanged;
 
-  const Infromation_Selection({
+  Infromation_Selection({
     super.key,
     this.name,
     required this.Hadline,
@@ -28,11 +28,6 @@ class Infromation_Selection extends StatefulWidget {
     this.SelectonTap_Button,
   });
 
-  @override
-  State<Infromation_Selection> createState() => _Infromation_SelectionState();
-}
-
-class _Infromation_SelectionState extends State<Infromation_Selection> {
   bool Selectd = false;
 
   @override
@@ -43,7 +38,7 @@ class _Infromation_SelectionState extends State<Infromation_Selection> {
         (Selectd)
             ? const SizedBox()
             : Text(
-                widget.name ?? "",
+                name ?? "",
                 style: TextStyle(
                   fontSize: Get.width / 24,
                   color: AppColor.select_check_color,
@@ -82,7 +77,7 @@ class _Infromation_SelectionState extends State<Infromation_Selection> {
                         children: [
                           const SizedBox(),
                           Text(
-                            widget.Hadline,
+                            Hadline,
                             style: TextStyle(
                               fontSize: Get.width / 23,
                               fontWeight: FontWeight.w600,
@@ -120,13 +115,13 @@ class _Infromation_SelectionState extends State<Infromation_Selection> {
                         ),
                       ),
                       itemExtent: 30,
-                      onSelectedItemChanged: widget.onSelectedItemChanged,
-                      children: widget.children ?? [],
+                      onSelectedItemChanged: onSelectedItemChanged,
+                      children: children ?? [],
                     ),
                   ),
                   actions: [
                     GestureDetector(
-                      onTap: widget.SelectonTap_Button,
+                      onTap: SelectonTap_Button,
                       child: OnButtons(
                         Button_Color: AppColor.Button_color,
                         btn_name: Profile_Text.Save,
@@ -160,7 +155,7 @@ class _Infromation_SelectionState extends State<Infromation_Selection> {
                         ),
                       )
                     : Text(
-                        widget.Selectedtext,
+                        Selectedtext,
                         style: TextStyle(
                           fontSize: Get.width / 25,
                           color: AppColor.black_all,

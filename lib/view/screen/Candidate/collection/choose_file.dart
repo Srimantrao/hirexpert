@@ -197,7 +197,7 @@ class Choose extends StatelessWidget {
                           onTap: () {
                             if (Pick.selectwidgetone == 0 &&
                                 Pick.selectwidgettwo == 1) {
-                              Get.to(() => const Candidate_Bottam());
+                              Get.to(() => Candidate_Bottam());
                             }
                           },
                           child: Row(

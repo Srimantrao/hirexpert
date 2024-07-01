@@ -84,7 +84,7 @@ class Employer_SinupController with ChangeNotifier {
       if (kDebugMode) {
         print("Confirm Password :- $Comfarm_password");
       }
-      Get.to(() => const Employer_Login());
+      Get.to(() =>  Employer_Login());
       _isError = false;
       _throwEmailnameError = "";
       _throwLastnameError = "";

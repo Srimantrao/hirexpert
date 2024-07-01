@@ -5,7 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../app_color.dart';
 
-class JobSearch extends StatefulWidget {
+class JobSearch extends StatelessWidget {
   String Icon;
   Color? Color_container;
   String Job_Tital;
@@ -45,11 +45,6 @@ class JobSearch extends StatefulWidget {
     this.savechild,
   });
 
-  @override
-  State<JobSearch> createState() => _JobSearchState();
-}
-
-class _JobSearchState extends State<JobSearch> {
   bool isSeved = false;
 
   @override
@@ -60,7 +55,7 @@ class _JobSearchState extends State<JobSearch> {
         horizontal: size.width / 40,
       ),
       child: GestureDetector(
-        onTap: widget.onTap,
+        onTap: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: size.width / 50,
@@ -70,8 +65,8 @@ class _JobSearchState extends State<JobSearch> {
             width: size.width,
             decoration: BoxDecoration(
               border: Border(
-                top: widget.top,
-                bottom: widget.bottam ??
+                top: top,
+                bottom: bottam ??
                     BorderSide(
                       color: AppColor.Full_body_color,
                     ),
@@ -94,9 +89,9 @@ class _JobSearchState extends State<JobSearch> {
                           borderRadius: BorderRadius.circular(
                             size.width / 30,
                           ),
-                          color: widget.Color_container,
+                          color: Color_container,
                           image: DecorationImage(
-                              image: NetworkImage(widget.Icon ?? ''),
+                              image: NetworkImage(Icon ?? ''),
                               fit: BoxFit.fill),
                         ),
                       ),
@@ -108,7 +103,7 @@ class _JobSearchState extends State<JobSearch> {
                         Row(
                           children: [
                             Text(
-                              widget.Job_Tital ?? '',
+                              Job_Tital ?? '',
                               style: TextStyle(
                                 color: AppColor.subcolor,
                               ),
@@ -118,7 +113,7 @@ class _JobSearchState extends State<JobSearch> {
                         SizedBox(
                           width: Get.width / 2,
                           child: Text(
-                            widget.Language ?? '',
+                            Language ?? '',
                             style: TextStyle(
                               fontSize: size.width / 26,
                               fontWeight: FontWeight.w600,
@@ -126,7 +121,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                         ),
                         Text(
-                          widget.Commpany ?? '',
+                          Commpany ?? '',
                           style: TextStyle(
                             fontSize: size.width / 26,
                             fontWeight: FontWeight.w400,
@@ -137,8 +132,8 @@ class _JobSearchState extends State<JobSearch> {
                     ),
                     SizedBox(width: size.width / 7),
                     GestureDetector(
-                      onTap: widget.saveonTap,
-                      child: widget.savechild,
+                      onTap: saveonTap,
+                      child: savechild,
                     ),
                   ],
                 ),
@@ -158,7 +153,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.Working ?? '',
+                              Working ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -181,7 +176,7 @@ class _JobSearchState extends State<JobSearch> {
                               padding: EdgeInsets.symmetric(
                                   horizontal: Get.width / 30),
                               child: Text(
-                                widget.Location ?? '',
+                                Location ?? '',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -202,7 +197,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.Job_time ?? '',
+                              Job_time ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -227,7 +222,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.Exp ?? '',
+                              Exp ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 35,
@@ -247,7 +242,7 @@ class _JobSearchState extends State<JobSearch> {
                           ),
                           child: Center(
                             child: Text(
-                              widget.lake ?? '',
+                              lake ?? '',
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -271,7 +266,7 @@ class _JobSearchState extends State<JobSearch> {
                             child: Center(
                               child: Text(
                                 textAlign: TextAlign.center,
-                                widget.Hybrid ?? '',
+                                Hybrid ?? '',
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -290,7 +285,7 @@ class _JobSearchState extends State<JobSearch> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      widget.stats ?? '',
+                      stats ?? '',
                       style: TextStyle(
                         color: AppColor.subcolor,
                       ),

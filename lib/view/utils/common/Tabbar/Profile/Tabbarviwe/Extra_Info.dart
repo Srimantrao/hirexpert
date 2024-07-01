@@ -14,13 +14,9 @@ import '../../../../app_icon.dart';
 
 class Extra_info extends StatelessWidget {
   final ExtraInfo Extra = Get.put(ExtraInfo());
-
   Extra_info({super.key});
-
   TextEditingController whichJob = TextEditingController();
-
   TextEditingController Specializationss = TextEditingController();
-
   TextEditingController Skillset = TextEditingController();
 
   @override

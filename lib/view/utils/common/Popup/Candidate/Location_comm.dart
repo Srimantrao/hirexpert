@@ -21,7 +21,6 @@ class Preference extends StatefulWidget {
   @override
   State<Preference> createState() => _PreferenceState();
 }
-
 class _PreferenceState extends State<Preference> {
   JobtypeApiController Jobtype = Get.put(JobtypeApiController());
 

@@ -17,14 +17,9 @@ import '../../../utils/app_icon.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
 import 'forget_Password.dart';
 
-class Employer_Login extends StatefulWidget {
-  const Employer_Login({super.key});
+class Employer_Login extends StatelessWidget {
+  Employer_Login({super.key});
 
-  @override
-  State<Employer_Login> createState() => _Employer_LoginState();
-}
-
-class _Employer_LoginState extends State<Employer_Login> {
   OptionApiController Employer_login = Get.put(OptionApiController());
 
   @override
@@ -169,7 +164,7 @@ class _Employer_LoginState extends State<Employer_Login> {
                           SizedBox(width: Get.width / 60),
                           InkWell(
                             onTap: () {
-                              Get.to(() => const Employer_Signup());
+                              Get.to(() => Employer_Signup());
                             },
                             child: Text(
                               Login_text.Sinup,

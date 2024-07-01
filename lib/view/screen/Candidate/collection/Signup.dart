@@ -148,9 +148,9 @@ class candidate_Signup extends StatelessWidget {
                           return Inputfild(
                             obscureText: vis.isVis,
                             suffixIcon: InkWell(
-                              // onTap: () {
-                              //   vis.visibilityVis();
-                              // },
+                              onTap: () {
+                                vis.visibilityVis();
+                              },
                               child: (vis.isVis)
                                   ? const Icon(Icons.visibility_off)
                                   : const Icon(Icons.visibility),
@@ -178,9 +178,9 @@ class candidate_Signup extends StatelessWidget {
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             suffixIcon: InkWell(
-                              // onTap: () {
-                              //   vis.visibilitycnf();
-                              // },
+                              onTap: () {
+                                vis.visibilitycnf();
+                              },
                               child: (vis.isviscnf)
                                   ? const Icon(Icons.visibility_off)
                                   : const Icon(Icons.visibility),
@@ -239,9 +239,9 @@ class candidate_Signup extends StatelessWidget {
                                       ),
                                     );
                                   }
-                                  Get.to(
-                                    () => const Candidate_Specialization(),
-                                  );
+                                  // Get.to(
+                                  //   () => const Candidate_Specialization(),
+                                  // );
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Signup_text.Sign_Up,
