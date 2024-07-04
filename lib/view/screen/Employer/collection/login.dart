@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, camel_case_types, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,9 +18,9 @@ import '../../../utils/common/Buttons/wideButtons.dart';
 import 'forget_Password.dart';
 
 class Employer_Login extends StatelessWidget {
-  Employer_Login({super.key});
+  final OptionApiController Employer_login = Get.put(OptionApiController());
 
-  OptionApiController Employer_login = Get.put(OptionApiController());
+  Employer_Login({super.key});
 
   @override
   Widget build(BuildContext context) {

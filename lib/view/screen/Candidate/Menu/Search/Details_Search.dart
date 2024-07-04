@@ -1,18 +1,23 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, override_on_non_overriding_member, avoid_print, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Apply_now_Controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Details_API_Hendal.dart';
 import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
-
-import '../../../../../modal/Job/Search_list.dart';
+import 'package:flutter_html/flutter_html.dart';
 import '../../../../utils/app_String.dart';
-import '../../../../utils/app_icon.dart';
 
 class Details extends StatelessWidget {
+  final OptionApiController login = Get.put(OptionApiController());
+  final DetailsApiHendal Details_now = Get.put(DetailsApiHendal());
+  final ApplyNowController Appling = Get.put(ApplyNowController());
+
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -25,10 +30,11 @@ class Details extends StatelessWidget {
   final String lake;
   final String Hybrid;
   final String stats;
+  final Widget? saving;
   final void Function()? saveonTap;
   final bool? save;
 
-  const Details({
+  Details({
     super.key,
     required this.Icon,
     required this.Color_container,
@@ -44,6 +50,7 @@ class Details extends StatelessWidget {
     required this.stats,
     this.saveonTap,
     this.save,
+    this.saving,
   });
 
   @override
@@ -66,357 +73,156 @@ class Details extends StatelessWidget {
           SizedBox(width: Get.width / 50),
         ],
       ),
-      body: Container(
-        height: Get.height,
-        width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
-        child: SafeArea(
-          child: NestedScrollView(
-            headerSliverBuilder:
-                (BuildContext context, bool innerBoxIsScrolled) {
-              return [
-                SliverAppBar(
-                  elevation: 0,
-                  backgroundColor: AppColor.Full_body_color,
-                  forceMaterialTransparency: true,
-                  pinned: true,
-                  collapsedHeight: Get.height / 3.5,
-                  automaticallyImplyLeading: false,
-                  flexibleSpace: SizedBox(
-                    height: Get.height / 3.5,
-                    child: JobSearch(
-                      Icon: Icon,
-                      Color_container: Color_container,
-                      Job_Tital: Job_Tital,
-                      Language: Language,
-                      Commpany: Commpany,
-                      Working: Working,
-                      Location: Location,
-                      Job_time: Job_time,
-                      Exp: Exp,
-                      lake: lake,
-                      Hybrid: Hybrid,
-                      stats: stats,
-                      saveonTap: () {},
-                      savechild: (save ?? false)
-                          ? SvgPicture.asset(AppIcons.bookmark)
-                          : SvgPicture.asset(AppIcons.save),
-                      top: BorderSide(
-                        color: AppColor.Full_body_color,
+      body: Obx(
+        () {
+          if (Details_now.Details.isLoding.value) {
+            return Scaffold(
+              body: Container(
+                height: Get.height,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  color: AppColor.Full_body_color,
+                ),
+                child: Center(
+                  child: Image.asset(AppLoder.infinityloder_without_background),
+                ),
+              ),
+            );
+          } else if (Details_now.Details.Details_data['data'] == null ||
+              Details_now.Details.Details_data == null) {
+            return Scaffold(
+              body: Container(
+                height: Get.height,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  color: AppColor.Full_body_color,
+                ),
+                child: Center(
+                  child: Image.asset(AppLoder.infinityloder_without_background),
+                ),
+              ),
+            );
+          } else {
+            return Container(
+              height: Get.height,
+              width: Get.width,
+              decoration: BoxDecoration(
+                color: AppColor.Full_body_color,
+              ),
+              child: SafeArea(
+                child: NestedScrollView(
+                  headerSliverBuilder:
+                      (BuildContext context, bool innerBoxIsScrolled) {
+                    return [
+                      SliverAppBar(
+                        elevation: 0,
+                        backgroundColor: AppColor.Full_body_color,
+                        forceMaterialTransparency: true,
+                        pinned: true,
+                        collapsedHeight: Get.height / 3.5,
+                        automaticallyImplyLeading: false,
+                        flexibleSpace: SizedBox(
+                          height: Get.height / 3.5,
+                          child: JobSearch(
+                            Icon: Icon,
+                            Color_container: Color_container,
+                            Job_Tital: Job_Tital,
+                            Language: Language,
+                            Commpany: Commpany,
+                            Working: Working,
+                            Location: Location,
+                            Job_time: Job_time,
+                            Exp: Exp,
+                            lake: lake,
+                            Hybrid: Hybrid,
+                            stats: stats,
+                            saveonTap: saveonTap,
+                            savechild: saving,
+                            top: BorderSide(
+                              color: AppColor.Full_body_color,
+                            ),
+                            bottam: BorderSide(
+                              color: AppColor.Bottam_color,
+                            ),
+                          ),
+                        ),
                       ),
-                      bottam: BorderSide(
-                        color: AppColor.Bottam_color,
-                      ),
+                    ];
+                  },
+                  body: Padding(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: Get.width / 30,
+                    ),
+                    child: Stack(
+                      children: [
+                        SingleChildScrollView(
+                          scrollDirection: Axis.vertical,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Get.width / 50,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: Get.height / 60),
+
+                                //Description
+                                Text(
+                                  Details_texts.Job_Description,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Get.width / 22,
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 60),
+                                SizedBox(
+                                  height: Get.height / 0.52,
+                                  child: ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: 1,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Html(
+                                        data: Details_now.Details
+                                            .Details_data['data']['JobAbout'],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 60),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          top: 730,
+                          left: 5,
+                          right: 5,
+                          bottom: 10,
+                          child: OnButtons(
+                            onTap: () {
+                              // appliedjob.add(showjob);
+
+                              Appling.ApplynowController_fuction(
+                                Candidate: login.option_data['data']
+                                    ['UserDetails']['CandidateId'],
+                                JobId: '10',
+                                Company: '19',
+                                Tokan: login.option_data['data']['LoginToken'],
+                              );
+                            },
+                            Button_Color: AppColor.Button_color,
+                            btn_name: Details_texts.Apply_Now,
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ];
-            },
-            body: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Get.width / 30,
               ),
-              child: Stack(
-                children: [
-                  SingleChildScrollView(
-                    scrollDirection: Axis.vertical,
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Get.width / 50,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          SizedBox(height: Get.height / 60),
-                          Text(
-                            Details_texts.Job_Description,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 60),
-                          SizedBox(
-                            height: Get.height / 3.5,
-                            child: ListView.builder(
-                              itemCount: Description_list.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Text(
-                                  Description_list[index],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: Get.width / 25,
-                                    color: AppColor.subcolor,
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 60),
-                          Text(
-                            Details_texts.Requirements,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 60),
-                          SizedBox(
-                            height: Get.width / 1,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: Requirements_list.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                      child: CircleAvatar(
-                                        backgroundColor: AppColor.subcolor,
-                                      ),
-                                    ),
-                                    SizedBox(width: Get.width / 23),
-                                    Expanded(
-                                      child: Text(
-                                        Requirements_list[index],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          Text(
-                            Details_texts.Skills,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          SizedBox(
-                            height: Get.width / 1,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: Skills_list.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                      child: CircleAvatar(
-                                        backgroundColor: AppColor.subcolor,
-                                      ),
-                                    ),
-                                    SizedBox(width: Get.width / 23),
-                                    Expanded(
-                                      child: Text(
-                                        Skills_list[index],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          Text(
-                            Details_texts.Benefits_Offered,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          SizedBox(
-                            height: Get.height / 45,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: Benefits_Offered.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                      child: CircleAvatar(
-                                        backgroundColor: AppColor.subcolor,
-                                      ),
-                                    ),
-                                    SizedBox(width: Get.width / 23),
-                                    Expanded(
-                                      child: Text(
-                                        Benefits_Offered[index],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          Text(
-                            Details_texts.Supplement_Pay,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          SizedBox(
-                            height: Get.width / 10,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: Supplement_pay.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                      child: CircleAvatar(
-                                        backgroundColor: AppColor.subcolor,
-                                      ),
-                                    ),
-                                    SizedBox(width: Get.width / 23),
-                                    Expanded(
-                                      child: Text(
-                                        Supplement_pay[index],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          Text(
-                            Details_texts.Educational_Level_Required,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          SizedBox(
-                            height: Get.width / 15,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: Education_level_Required.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                      child: CircleAvatar(
-                                        backgroundColor: AppColor.subcolor,
-                                      ),
-                                    ),
-                                    SizedBox(width: Get.width / 23),
-                                    Expanded(
-                                      child: Text(
-                                        Education_level_Required[index],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          Text(
-                            Details_texts.Added_Advantage_Skills,
-                            style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: Get.width / 22,
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 50),
-                          SizedBox(
-                            height: Get.width / 10,
-                            child: ListView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              itemCount: Added_Advantage_Skills.length,
-                              itemBuilder: (BuildContext context, int index) {
-                                return Row(
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    SizedBox(
-                                      width: 8,
-                                      height: 8,
-                                      child: CircleAvatar(
-                                        backgroundColor: AppColor.subcolor,
-                                      ),
-                                    ),
-                                    SizedBox(width: Get.width / 23),
-                                    Expanded(
-                                      child: Text(
-                                        Added_Advantage_Skills[index],
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              },
-                            ),
-                          ),
-                          SizedBox(height: Get.height / 10),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    top: 730,
-                    left: 5,
-                    right: 5,
-                    bottom: 10,
-                    child: OnButtons(
-                      onTap: () {
-                        appliedjob.add(showjob);
-                      },
-                      Button_Color: AppColor.Button_color,
-                      btn_name: Details_texts.Apply_Now,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+            );
+          }
+        },
       ),
     );
   }

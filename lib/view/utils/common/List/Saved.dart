@@ -44,7 +44,7 @@ class Seved_List extends StatelessWidget {
                   top: BorderSide(
                     color: AppColor.Bottam_color,
                   ),
-                  bottom: const BorderSide(
+                  bottom: BorderSide(
                     color: Colors.transparent,
                   ),
                 ),
@@ -71,7 +71,6 @@ class Seved_List extends StatelessWidget {
                           child: Padding(
                             padding: EdgeInsets.all(15),
                             child: Image.network(
-                              // _Search.Search_data['data'][index]['ComLogo'],
                               Saving_Apis.favourlist.data[index]['ComLogo'],
                             ),
                           ),
@@ -86,10 +85,7 @@ class Seved_List extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    // _Search.Search_data['data'][index]
-                                    //     ["JobTitle"],
-                                    Saving_Apis.favourlist.data[index]
-                                        ['JobTitle'],
+                                    Saving_Apis.favourlist.data[index]['JobTitle'],
                                     style: TextStyle(
                                       color: AppColor.subcolor,
                                     ),
@@ -101,7 +97,6 @@ class Seved_List extends StatelessWidget {
                           SizedBox(
                             width: Get.width / 2,
                             child: Text(
-                              // _Search.Search_data['data'][index]["TechName"],
                               Saving_Apis.favourlist.data[index]['TechName'],
                               style: TextStyle(
                                 fontSize: size.width / 26,
@@ -110,7 +105,6 @@ class Seved_List extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            // _Search.Search_data['data'][index]["ComName"],
                             Saving_Apis.favourlist.data[index]['ComName'],
                             style: TextStyle(
                               fontSize: size.width / 26,
@@ -140,7 +134,6 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                // _Search.Search_data['data'][index]["JobType"],
                                 Saving_Apis.favourlist.data[index]['JobType'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -161,7 +154,6 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                // _Search.Search_data['data'][index]["Location"],
                                 Saving_Apis.favourlist.data[index]['Location'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -182,7 +174,6 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                // _Search.Search_data['data'][index]["JobType"],
                                 Saving_Apis.favourlist.data[index]['JobType'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -207,8 +198,6 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                // _Search.Search_data['data'][index]
-                                //     ["Experience"],
                                 Saving_Apis.favourlist.data[index]
                                     ['Experience'],
                                 style: TextStyle(
@@ -230,7 +219,6 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                // _Search.Search_data['data'][index]["Salary"],
                                 Saving_Apis.favourlist.data[index]['Salary'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -254,7 +242,6 @@ class Seved_List extends StatelessWidget {
                                   horizontal: Get.width / 30),
                               child: Center(
                                 child: Text(
-                                  // _Search.Search_data['data'][index]["WorkSet"],
                                   Saving_Apis.favourlist.data[index]['WorkSet'],
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
@@ -274,7 +261,6 @@ class Seved_List extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        // _Search.Search_data['data'][index]["FormatDt"],
                         Saving_Apis.favourlist.data[index]['FormatDt'],
                         style: TextStyle(
                           color: AppColor.subcolor,

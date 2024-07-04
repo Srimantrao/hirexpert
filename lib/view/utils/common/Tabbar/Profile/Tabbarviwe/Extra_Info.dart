@@ -3,10 +3,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/Extra_info.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
+import 'package:provider/provider.dart';
+import '../../../../../../controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import '../../../../../screen/Candidate/collection/specialization.dart';
 import '../../../../app_String.dart';
 import '../../../../app_color.dart';
@@ -21,6 +21,7 @@ class Extra_info extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final vail = Provider.of<Candidate_SinupController>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height / 1.54,
@@ -150,7 +151,10 @@ class Extra_info extends StatelessWidget {
       //Buttons
       floatingActionButton: InkWell(
         onTap: () {
-          Get.to(() => const Candidate_Specialization());
+          Get.to(() => Candidate_Specialization(
+            first_name: vail.frist_name.text,
+            last_name: vail.last_name.text,
+          ));
         },
         child: Container(
           height: Get.height / 20,

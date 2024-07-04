@@ -13,9 +13,11 @@ class AppUrl {
   static const technologyList = "$Hirexpert/api/v1/user/technologyList";
 
   //Show All Data
-  static const Search_Job = "$Hirexpert/api/v1/Advertisedjob/JobFilterList?TechId=3";
+  static const Search_Job =
+      "$Hirexpert/api/v1/Advertisedjob/JobFilterList?TechId=3";
   static const SearchJob = "$Hirexpert/api/v1/Advertisedjob/SearchJob";
-  static const JobInterviewList = "$Hirexpert/api/v1/Advertisedjob/JobInterviewList";
+  static const JobInterviewList =
+      "$Hirexpert/api/v1/Advertisedjob/JobInterviewList";
 
   //Collcetion
   static const login = "$Hirexpert/api/v1/user/login";
@@ -26,6 +28,14 @@ class AppUrl {
   static const Concern = "$Hirexpert/api/v1/Advertisedjob/addConcern";
   static const count = "$Hirexpert/api/v1/Advertisedjob/JobStatusWiseCountList";
   static const savelist = "$Hirexpert/api/v1/Advertisedjob/FavouriteJobList";
+
+  //Menu
+  static const Offer = "$Hirexpert/api/v1/Advertisedjob/AdvertiseJob";
+  static const IsFavourite = "$Hirexpert/api/v1/Advertisedjob/CanFavourite";
+  static const Applyed = "$Hirexpert/api/v1/Advertisedjob/JobApply";
+
+  //Details
+  static const details = "$Hirexpert/api/v1/Advertisedjob/JobDetails";
 
   //Notification
   static const Notification = "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";

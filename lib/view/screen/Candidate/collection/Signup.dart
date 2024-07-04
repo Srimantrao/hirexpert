@@ -240,7 +240,10 @@ class candidate_Signup extends StatelessWidget {
                                     );
                                   }
                                   Get.to(
-                                    () => const Candidate_Specialization(),
+                                    () => Candidate_Specialization(
+                                      first_name: vail.frist_name.text,
+                                      last_name: vail.last_name.text,
+                                    ),
                                   );
                                 },
                                 Button_Color: AppColor.Button_color,

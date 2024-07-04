@@ -2,10 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/jobcountsaccording.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/JobCountabale_hedal.dart';
-import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Home/saving/saved.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
@@ -31,7 +28,7 @@ class Home extends StatelessWidget {
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           My_Jobs_Screen.My_Jobs,
           style: TextStyle(
             fontWeight: FontWeight.w700,
@@ -39,12 +36,11 @@ class Home extends StatelessWidget {
         ),
         actions: [
           GestureDetector(
-              onTap: () {
-                Get.to(
-                  () => Notification_Screen(),
-                );
-              },
-              child: const Icon(Icons.notifications)),
+            onTap: () {
+              Get.to(() => Notification_Screen());
+            },
+            child: const Icon(Icons.notifications),
+          ),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -71,7 +67,7 @@ class Home extends StatelessWidget {
                     GestureDetector(
                       onTap: () {
                         Get.to(
-                          () => const Saved(),
+                          () => Saved(),
                         );
                       },
                       child: Jobrow(
@@ -126,7 +122,7 @@ class Home extends StatelessWidget {
                     //Offer
                     GestureDetector(
                       onTap: () {
-                        Get.to(() => const Show_Offer());
+                        Get.to(() => Show_Offer());
                       },
                       child: Jobrow(
                         icon: AppIcons.rupess,

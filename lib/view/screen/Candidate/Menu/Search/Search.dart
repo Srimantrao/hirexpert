@@ -1,8 +1,10 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/isFavration_Controllers.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_Hendal.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -16,6 +18,8 @@ import 'Search_location.dart';
 
 class Search extends StatelessWidget {
   final SearchHendal Searchings = Get.put(SearchHendal());
+  final IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
+  final OptionApiController login = Get.put(OptionApiController());
 
   Search({super.key});
 
@@ -119,6 +123,20 @@ class Search extends StatelessWidget {
                               ["WorkSet"],
                           stats: Searchings.Search.Search_data['data'][index]
                               ["FormatDt"],
+                          saveonTap: () {
+                            isfavication.IsfavrationControllers_fuction(
+                              CandidateId: login.option_data['data']
+                                  ['UserDetails']['CandidateId'],
+                              JobId: '10',
+                              IsLike: true,
+                              Tokan: login.option_data['data']['LoginToken'],
+                            );
+                            print("Tab");
+                          },
+                          saving:
+                              (isfavication.isFavration.value.status == true)
+                                  ? SvgPicture.asset(AppIcons.bookmark)
+                                  : SvgPicture.asset(AppIcons.save),
                         ),
                       );
                     },
