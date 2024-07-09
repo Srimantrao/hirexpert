@@ -66,9 +66,7 @@ class Home extends StatelessWidget {
                     //Saved
                     GestureDetector(
                       onTap: () {
-                        Get.to(
-                          () => Saved(),
-                        );
+                        Get.to(() => Saved());
                       },
                       child: Jobrow(
                         icon: AppIcons.Seeved,
@@ -76,8 +74,7 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['savedJobCnt']
-                                .toString(),
+                            jobincount.jobcount.data['data']['savedJobCnt'].toString(),
                           ),
                         ),
                       ),
@@ -94,8 +91,7 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['appliedJobCnt']
-                                .toString(),
+                            jobincount.jobcount.data['data']['appliedJobCnt'].toString(),
                           ),
                         ),
                       ),
@@ -112,8 +108,7 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['interviewJobCnt']
-                                .toString(),
+                            jobincount.jobcount.data['data']['interviewJobCnt'].toString(),
                           ),
                         ),
                       ),
@@ -130,8 +125,7 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['offersJobCnt']
-                                .toString(),
+                            jobincount.jobcount.data['data']['offersJobCnt'].toString(),
                           ),
                         ),
                       ),
@@ -148,8 +142,7 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['hiredJobCnt']
-                                .toString(),
+                            jobincount.jobcount.data['data']['hiredJobCnt'].toString(),
                           ),
                         ),
                       ),
@@ -166,8 +159,7 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['declinedJobCnt']
-                                .toString(),
+                            jobincount.jobcount.data['data']['declinedJobCnt'].toString(),
                           ),
                         ),
                       ),

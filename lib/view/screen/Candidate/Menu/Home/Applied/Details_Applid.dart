@@ -1,8 +1,10 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names, file_names
+// ignore_for_file: camel_case_types, non_constant_identifier_names, file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Appling_API_handler.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +16,7 @@ import '../../../../../utils/common/Container/Option.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 
 class Details_Appild extends StatelessWidget {
+  final ApplingApiHandler Appling = Get.put(ApplingApiHandler());
   final String Icon;
   final Color Color_container;
   final String Job_Tital;
@@ -27,7 +30,7 @@ class Details_Appild extends StatelessWidget {
   final String Hybrid;
   final String stats;
 
-  const Details_Appild({
+  Details_Appild({
     super.key,
     required this.Icon,
     required this.Color_container,
@@ -125,17 +128,25 @@ class Details_Appild extends StatelessWidget {
                       ),
                       SizedBox(height: Get.height / 60),
                       SizedBox(
-                        height: Get.height / 3.5,
+                        height: Get.height / 0.52,
                         child: ListView.builder(
-                          itemCount: Description_list.length,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: 1,
                           itemBuilder: (BuildContext context, int index) {
-                            return Text(
-                              Description_list[index],
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: Get.width / 25,
-                                color: AppColor.subcolor,
-                              ),
+                            return Html(
+                              data: Appling.Detailing.Details_data['data']
+                                  ['JobAbout'],
+                              style: {
+                                'p': Style(
+                                  fontSize: FontSize(Get.width / 27),
+                                ),
+                                'strong': Style(
+                                  fontSize: FontSize(Get.width / 22),
+                                ),
+                                'li': Style(
+                                  fontSize: FontSize(Get.width / 27),
+                                )
+                              },
                             );
                           },
                         ),

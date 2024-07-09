@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Apply_now_Controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Details_API_Hendal.dart';
-import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
@@ -185,6 +184,17 @@ class Details extends StatelessWidget {
                                       return Html(
                                         data: Details_now.Details
                                             .Details_data['data']['JobAbout'],
+                                        style: {
+                                          'p': Style(
+                                            fontSize: FontSize(Get.width / 27),
+                                          ),
+                                          'strong': Style(
+                                            fontSize: FontSize(Get.width / 22),
+                                          ),
+                                          'li': Style(
+                                            fontSize: FontSize(Get.width / 27),
+                                          )
+                                        },
                                       );
                                     },
                                   ),
@@ -202,12 +212,10 @@ class Details extends StatelessWidget {
                           child: OnButtons(
                             onTap: () {
                               // appliedjob.add(showjob);
-
                               Appling.ApplynowController_fuction(
-                                Candidate: login.option_data['data']
-                                    ['UserDetails']['CandidateId'],
-                                JobId: '10',
-                                Company: '19',
+                                Candidate: login.option_data['data']['UserDetails']['CandidateId'],
+                                JobId: Details_now.Details.Details_data['data']['JobId'],
+                                Company: Details_now.Details.Details_data['data']['CompanyId'],
                                 Tokan: login.option_data['data']['LoginToken'],
                               );
                             },

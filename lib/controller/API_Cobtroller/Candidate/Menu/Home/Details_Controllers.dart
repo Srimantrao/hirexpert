@@ -18,6 +18,10 @@ class DetailsControllers extends GetxController {
     try {
       isLoding.value = true;
 
+      print("JobId :- $JobID");
+      print("Timezome :- $Timezone");
+      print("Tokan :- $Tokan");
+
       final responce = await http.get(
         Uri.parse('${AppUrl.details}?JobId=$JobID&Timezone=$Timezone'),
         headers: {

@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, camel_case_types, avoid_print, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -147,6 +147,7 @@ class Candidate_Login extends StatelessWidget {
                                 onTap: () {
                                   // vail.isEmtey();
                                   // vail.loginvalidation();
+
                                   login.OptionApiController_fuction(
                                     UserType: 'Candidate',
                                     Email: vail.EmailController.text,
@@ -158,8 +159,7 @@ class Candidate_Login extends StatelessWidget {
                                       } else {
                                         Get.showSnackbar(
                                           GetBar(
-                                            duration:
-                                                const Duration(seconds: 2),
+                                            duration: Duration(seconds: 2),
                                             message:
                                                 login.option_data['message'],
                                           ),

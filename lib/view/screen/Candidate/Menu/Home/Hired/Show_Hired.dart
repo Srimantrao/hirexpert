@@ -149,8 +149,10 @@ class Show_Hired extends StatelessWidget {
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(15),
-                                      child: SvgPicture.asset(Hireding.hired
-                                          .data['data'][index]["ComLogo"]),
+                                      child: SvgPicture.asset(
+                                        Hireding.hired.data['data'][index]
+                                            ["ComLogo"],
+                                      ),
                                     ),
                                   ),
                                 ),

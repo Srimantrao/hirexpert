@@ -1,16 +1,21 @@
-// ignore_for_file: camel_case_types, file_names, prefer_const_constructors_in_immutables
+// ignore_for_file: camel_case_types, file_names, prefer_const_constructors_in_immutables, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import '../../../../../../modal/Job/jobSearch_list.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Details_Controllers.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Appling_API_handler.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
 import '../../../../../utils/app_icon.dart';
 import 'Details_Applid.dart';
 
 class Show_Applied extends StatelessWidget {
- Show_Applied({super.key});
+  final ApplingApiHandler Appling = Get.put(ApplingApiHandler());
+
+  Show_Applied({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,283 +26,342 @@ class Show_Applied extends StatelessWidget {
         backgroundColor: AppColor.Full_body_color,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: const Text(
+        surfaceTintColor: AppColor.Full_body_color,
+        title: Text(
           My_Jobs_Screen.Applied,
           style: TextStyle(
             fontWeight: FontWeight.w700,
           ),
         ),
         actions: [
-          const Icon(Icons.notifications),
+          Icon(Icons.notifications),
           SizedBox(width: size.width / 50),
         ],
       ),
-      body: Container(
-        height: size.height,
-        width: size.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: size.width / 30),
-          child: ListView.builder(
-            padding: EdgeInsets.zero,
-            shrinkWrap: true,
-            itemCount: appliedjob.length,
-            itemBuilder: (BuildContext context, int index) {
-              int itemCount = appliedjob.length ?? 0;
-              int reversedIndex = itemCount - 1 - index;
-              return GestureDetector(
-                onTap: () {
-                  Get.to(
-                    () => Details_Appild(
-                      Icon: showjob[index]["Icon"],
-                      Color_container: showjob[index]["Container_color"],
-                      Job_Tital: showjob[index]["Job_tital"],
-                      Language: showjob[index]["Language"],
-                      Commpany: showjob[index]["Company_name"],
-                      Working: showjob[index]["Working"],
-                      Location: showjob[index]["Location"],
-                      Job_time: showjob[index]["job_time"],
-                      Exp: showjob[index]["Exp"],
-                      lake: showjob[index]["Sallary"],
-                      Hybrid: showjob[index]["Hybrid"],
-                      stats: showjob[index]["stats"],
+      body: Obx(
+        () {
+          if (Appling.Detailing.isLoding.value) {
+            return Scaffold(
+              body: Container(
+                height: Get.height,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  color: AppColor.Full_body_color,
+                ),
+                child: Center(
+                  child: Image.asset(AppLoder.infinityloder_without_background),
+                ),
+              ),
+            );
+          } else if (Appling.Detailing.Details_data['data'] == null ||
+              Appling.Detailing.Details_data == null) {
+            return Scaffold(
+              body: Container(
+                height: Get.height,
+                width: Get.width,
+                decoration: BoxDecoration(
+                  color: AppColor.Full_body_color,
+                ),
+                child: Center(
+                  child: Text(
+                    "Your Data is Empty !",
+                    style: TextStyle(
+                      fontSize: Get.width / 25,
                     ),
-                  );
-                },
-                child: Container(
-                  height: size.height / 3.8,
-                  width: size.width,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                        color: AppColor.Bottam_color,
-                      ),
-                      bottom: const BorderSide(
-                        color: Colors.transparent,
-                      ),
-                    ),
-                    color: AppColor.Full_body_color,
-                  ),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Row(
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.symmetric(
-                              vertical: size.width / 40,
-                            ),
-                            child: Container(
-                              width: size.width / 5.5,
-                              height: size.height / 12,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  size.width / 30,
-                                ),
-                                color: showjob[reversedIndex]
-                                    ["Container_color"],
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(15),
-                                child: SvgPicture.asset(
-                                  showjob[reversedIndex]["Icon"],
-                                ),
-                              ),
-                            ),
-                          ),
-                          SizedBox(width: size.width / 50),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                children: [
-                                  Row(
-                                    children: [
-                                      Text(
-                                        showjob[reversedIndex]["Job_tital"],
-                                        style: TextStyle(
-                                          color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              Text(
-                                showjob[reversedIndex]["Language"],
-                                style: TextStyle(
-                                  fontSize: size.width / 23,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                              Text(
-                                showjob[reversedIndex]["Company_name"],
-                                style: TextStyle(
-                                  fontSize: size.width / 26,
-                                  fontWeight: FontWeight.w400,
-                                  color: AppColor.Button_color,
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(width: size.width / 7),
-                          SvgPicture.asset(AppIcons.bookmark),
-                        ],
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                width: size.width / 3.2,
-                                height: size.height / 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
-                                  color: AppColor.ditalis_conatiner,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    showjob[reversedIndex]["Working"],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: size.width / 30,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: size.width / 40),
-                              Container(
-                                width: size.width / 7,
-                                height: size.height / 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
-                                  color: AppColor.ditalis_conatiner,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    showjob[reversedIndex]["Location"],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: size.width / 30,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: size.width / 40),
-                              Container(
-                                width: size.width / 5,
-                                height: size.height / 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
-                                  color: AppColor.ditalis_conatiner,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    showjob[reversedIndex]["job_time"],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: size.width / 30,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                          SizedBox(height: size.height / 80),
-                          Row(
-                            children: [
-                              Container(
-                                width: size.width / 5,
-                                height: size.height / 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
-                                  color: AppColor.ditalis_conatiner,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    showjob[reversedIndex]["Exp"],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: size.width / 35,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: size.width / 40),
-                              Container(
-                                width: size.width / 2.5,
-                                height: size.height / 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
-                                  color: AppColor.ditalis_conatiner,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    showjob[reversedIndex]["Sallary"],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: size.width / 30,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: size.width / 40),
-                              Container(
-                                width: size.width / 5,
-                                height: size.height / 25,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    size.width / 60,
-                                  ),
-                                  color: AppColor.ditalis_conatiner,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    showjob[reversedIndex]["Hybrid"],
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: size.width / 30,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(width: size.width / 40),
-                            ],
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: size.width / 50),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        children: [
-                          Text(
-                            showjob[reversedIndex]["stats"],
-                            style: TextStyle(
-                              color: AppColor.subcolor,
-                            ),
-                          ),
-                        ],
-                      )
-                    ],
                   ),
                 ),
-              );
-            },
-          ),
-        ),
+              ),
+            );
+          } else {
+            return Container(
+              height: size.height,
+              width: size.width,
+              decoration: BoxDecoration(
+                color: AppColor.Full_body_color,
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: size.width / 30),
+                child: ListView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  itemCount: Appling.Detailing.Details_data['data'].length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return GestureDetector(
+                      onTap: () {
+                        Get.to(
+                          () => Details_Appild(
+                            Icon: Appling.Detailing.Details_data['data']
+                                ["ProfileImage"],
+                            Color_container: AppColor.Full_body_color,
+                            Job_Tital: Appling.Detailing.Details_data['data']
+                                ["JobTitle"],
+                            Language: Appling.Detailing.Details_data['data']
+                                ["TechName"],
+                            Commpany: Appling.Detailing.Details_data['data']
+                                ["ComName"],
+                            Working: Appling.Detailing.Details_data['data']
+                                ["JobShift"],
+                            Location: Appling.Detailing.Details_data['data']
+                                ["hireEmp"],
+                            Job_time: Appling.Detailing.Details_data['data']
+                                ["JobType"],
+                            Exp: Appling.Detailing.Details_data['data']
+                                ["MinExperience"],
+                            lake: Appling.Detailing.Details_data['data']
+                                ["days"],
+                            Hybrid: Appling.Detailing.Details_data['data']
+                                ["WorkSet"],
+                            stats: Appling.Detailing.Details_data['data']
+                                ["FormatDt"],
+                          ),
+                        );
+                      },
+                      child: Container(
+                        height: size.height / 3.8,
+                        width: size.width,
+                        decoration: BoxDecoration(
+                          border: Border(
+                            top: BorderSide(
+                              color: AppColor.Bottam_color,
+                            ),
+                            bottom: BorderSide(
+                              color: Colors.transparent,
+                            ),
+                          ),
+                          color: AppColor.Full_body_color,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Row(
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.symmetric(
+                                    vertical: size.width / 40,
+                                  ),
+                                  child: Container(
+                                    width: size.width / 5.5,
+                                    height: size.height / 12,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(
+                                        size.width / 30,
+                                      ),
+                                      color: AppColor.Full_body_color,
+                                    ),
+                                    child: Padding(
+                                      padding: EdgeInsets.all(15),
+                                      child: Image.network(
+                                        Appling.Detailing.Details_data['data']
+                                            ["ProfileImage"],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(width: size.width / 50),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Row(
+                                          children: [
+                                            Text(
+                                              Appling.Detailing
+                                                      .Details_data['data']
+                                                  ["JobTitle"],
+                                              style: TextStyle(
+                                                color: AppColor.subcolor,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    Text(
+                                      Appling.Detailing.Details_data['data']
+                                          ["TechName"],
+                                      style: TextStyle(
+                                        fontSize: size.width / 23,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Text(
+                                      Appling.Detailing.Details_data['data']
+                                          ["ComName"],
+                                      style: TextStyle(
+                                        fontSize: size.width / 26,
+                                        fontWeight: FontWeight.w400,
+                                        color: AppColor.Button_color,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(width: size.width / 4),
+                                SvgPicture.asset(AppIcons.bookmark),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: size.width / 3.2,
+                                      height: size.height / 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          size.width / 60,
+                                        ),
+                                        color: AppColor.ditalis_conatiner,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          Appling.Detailing.Details_data['data']
+                                              ["JobShift"],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: size.width / 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 40),
+                                    Container(
+                                      width: size.width / 7,
+                                      height: size.height / 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          size.width / 60,
+                                        ),
+                                        color: AppColor.ditalis_conatiner,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          Appling.Detailing.Details_data['data']
+                                              ["MinExperience"],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: size.width / 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 40),
+                                    Container(
+                                      width: size.width / 5,
+                                      height: size.height / 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          size.width / 60,
+                                        ),
+                                        color: AppColor.ditalis_conatiner,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          Appling.Detailing.Details_data['data']
+                                              ["JobType"],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: size.width / 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(height: size.height / 80),
+                                Row(
+                                  children: [
+                                    Container(
+                                      width: size.width / 5,
+                                      height: size.height / 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          size.width / 60,
+                                        ),
+                                        color: AppColor.ditalis_conatiner,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          Appling.Detailing.Details_data['data']
+                                              ["WorkWeek"],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: size.width / 35,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 40),
+                                    Container(
+                                      width: size.width / 2.5,
+                                      height: size.height / 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          size.width / 60,
+                                        ),
+                                        color: AppColor.ditalis_conatiner,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          Appling.Detailing.Details_data['data']
+                                              ["days"],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: size.width / 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 40),
+                                    Container(
+                                      width: size.width / 5,
+                                      height: size.height / 25,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          size.width / 60,
+                                        ),
+                                        color: AppColor.ditalis_conatiner,
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          Appling.Detailing.Details_data['data']
+                                              ["WorkSet"],
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: size.width / 30,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    SizedBox(width: size.width / 40),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: size.width / 50),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Text(
+                                  Appling.Detailing.Details_data['data']
+                                      ["FormatDt"],
+                                  style: TextStyle(
+                                    color: AppColor.subcolor,
+                                  ),
+                                ),
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            );
+          }
+        },
       ),
     );
   }

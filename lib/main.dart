@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -52,6 +54,9 @@ Future<void> main() async {
   islogin = pref!.getBool("login") ?? false;
   Email = pref!.getString("Email") ?? "em";
   Password = pref!.getString("Password") ?? "pass";
+
+  print("Email $Email");
+  print("Password $Password");
   runApp(const MyApp());
 }
 

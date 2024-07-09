@@ -10,8 +10,8 @@ class HiredApiHandler extends GetxController {
 
   @override
   void onInit() {
-    Future.microtask(() {
-      hired.OfferController_fuction(
+    Future.microtask(() async{
+      await hired.OfferController_fuction(
         CompanyId: login.option_data['data']['UserDetails']['CandidateId'],
         Page: '1',
         Timezone: 'asia/kolkata',

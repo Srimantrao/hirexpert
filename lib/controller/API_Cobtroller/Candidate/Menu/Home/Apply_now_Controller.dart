@@ -22,10 +22,7 @@ class ApplyNowController extends GetxController {
 
       final responce = await http.get(
         Uri.parse(
-          '${AppUrl.Applyed}'
-          '?CandidateId=$Candidate'
-          '&JobId=$JobId&'
-          'CompanyId=$Company',
+          '${AppUrl.Applyed}?CandidateId=$Candidate&JobId=$JobId&CompanyId=$Company',
         ),
         headers: {
           API_KEY.api_key: API_KEY.key,
