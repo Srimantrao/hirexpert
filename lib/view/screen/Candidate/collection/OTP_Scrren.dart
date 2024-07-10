@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/OTP/OTP_API_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -10,8 +11,6 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/ShortButton.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
-
-import '../../../../controller/API_Cobtroller/Candidate/Collction/OTP/OTP_API_Controller.dart';
 
 class OTP extends StatelessWidget {
   OTP({super.key});

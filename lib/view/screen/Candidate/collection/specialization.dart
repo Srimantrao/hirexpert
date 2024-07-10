@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_color.dart';

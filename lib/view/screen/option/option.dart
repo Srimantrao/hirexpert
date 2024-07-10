@@ -2,13 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
-
-import '../../../controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 import '../../../controller/User_Controller/Option_Controller/SelectButton.dart';
 
 class Option extends StatelessWidget {

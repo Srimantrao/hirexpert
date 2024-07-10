@@ -1,9 +1,8 @@
 // ignore_for_file: file_names, annotate_overrides, non_constant_identifier_names
 
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Favouritejob.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Search/Search_API_Controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Favouritejob.dart';
 
 class SarchingSavingApi extends GetxController {
   final Favouritejob favourlist = Get.put(Favouritejob());

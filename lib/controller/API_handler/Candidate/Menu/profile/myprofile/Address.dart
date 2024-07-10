@@ -1,7 +1,7 @@
 // ignore_for_file: file_names, camel_case_types
 
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 
 class Address_Hendal extends GetxController {

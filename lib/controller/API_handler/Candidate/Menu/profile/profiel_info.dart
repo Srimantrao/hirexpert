@@ -1,7 +1,7 @@
 // ignore_for_file: annotate_overrides
 
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 
 class ProfielInfo extends GetxController {

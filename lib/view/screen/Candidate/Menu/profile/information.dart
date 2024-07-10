@@ -2,16 +2,12 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/API_handler/Candidate/Menu/profile/profiel_info.dart';
-import '../../../../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
-import '../../../../utils/app_constance.dart';
 import '../../../../utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Document_profile.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';

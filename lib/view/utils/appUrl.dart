@@ -34,6 +34,7 @@ class AppUrl {
   static const Offer = "$Base_location/Advertisedjob/AdvertiseJob";
   static const IsFavourite = "$Base_location/Advertisedjob/CanFavourite";
   static const Applyed = "$Base_location/Advertisedjob/JobApply";
+  static const isApplyed = "$Base_location/Advertisedjob/jobDetails";
 
   //Details
   static const details = "$Base_location/Advertisedjob/JobDetails";

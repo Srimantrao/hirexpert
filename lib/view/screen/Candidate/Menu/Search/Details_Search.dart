@@ -2,9 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Apply_now_Controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Apply_now_Controller.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Button_Apping_handler.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Details_API_Hendal.dart';
+import 'package:hirexpert/modal/Job/Search_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
@@ -13,9 +15,7 @@ import 'package:flutter_html/flutter_html.dart';
 import '../../../../utils/app_String.dart';
 
 class Details extends StatelessWidget {
-  final OptionApiController login = Get.put(OptionApiController());
-  final DetailsApiHendal Details_now = Get.put(DetailsApiHendal());
-  final ApplyNowController Appling = Get.put(ApplyNowController());
+  final ButtonAppingHandler hitting = Get.put(ButtonAppingHandler());
 
   final String Icon;
   final Color Color_container;
@@ -74,7 +74,7 @@ class Details extends StatelessWidget {
       ),
       body: Obx(
         () {
-          if (Details_now.Details.isLoding.value) {
+          if (hitting.Details_now.Details.isLoding.value) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -87,8 +87,8 @@ class Details extends StatelessWidget {
                 ),
               ),
             );
-          } else if (Details_now.Details.Details_data['data'] == null ||
-              Details_now.Details.Details_data == null) {
+          } else if (hitting.Details_now.Details.Details_data['data'] == null ||
+              hitting.Details_now.Details.Details_data == null) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -182,7 +182,7 @@ class Details extends StatelessWidget {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       return Html(
-                                        data: Details_now.Details
+                                        data: hitting.Details_now.Details
                                             .Details_data['data']['JobAbout'],
                                         style: {
                                           'p': Style(
@@ -199,7 +199,188 @@ class Details extends StatelessWidget {
                                     },
                                   ),
                                 ),
-                                SizedBox(height: Get.height / 60),
+                                SizedBox(height: Get.height / 50),
+                                //Benefits Offered
+                                Text(
+                                  Details_texts.Benefits_Offered,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Get.width / 22,
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+                                SizedBox(
+                                  height: Get.height / 45,
+                                  child: ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: Benefits_Offered.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 8,
+                                            height: 8,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  AppColor.subcolor,
+                                            ),
+                                          ),
+                                          SizedBox(width: Get.width / 23),
+                                          Expanded(
+                                            child: Text(
+                                              Benefits_Offered[index],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: AppColor.subcolor,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+
+                                //Suppiement Pay
+                                Text(
+                                  Details_texts.Supplement_Pay,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Get.width / 22,
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+                                SizedBox(
+                                  height: Get.width / 10,
+                                  child: ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: Supplement_pay.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 8,
+                                            height: 8,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  AppColor.subcolor,
+                                            ),
+                                          ),
+                                          SizedBox(width: Get.width / 23),
+                                          Expanded(
+                                            child: Text(
+                                              Supplement_pay[index],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: AppColor.subcolor,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+
+                                //Education Level Requird
+                                Text(
+                                  Details_texts.Educational_Level_Required,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Get.width / 22,
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+                                SizedBox(
+                                  height: Get.width / 15,
+                                  child: ListView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    itemCount: Education_level_Required.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 8,
+                                            height: 8,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  AppColor.subcolor,
+                                            ),
+                                          ),
+                                          SizedBox(width: Get.width / 23),
+                                          Expanded(
+                                            child: Text(
+                                              Education_level_Required[index],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: AppColor.subcolor,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+
+                                //Added Advantage Skills
+                                Text(
+                                  Details_texts.Added_Advantage_Skills,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: Get.width / 22,
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 50),
+                                SizedBox(
+                                  height: Get.width / 10,
+                                  child: ListView.builder(
+                                    physics: NeverScrollableScrollPhysics(),
+                                    itemCount: Added_Advantage_Skills.length,
+                                    itemBuilder:
+                                        (BuildContext context, int index) {
+                                      return Row(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.center,
+                                        children: [
+                                          SizedBox(
+                                            width: 8,
+                                            height: 8,
+                                            child: CircleAvatar(
+                                              backgroundColor:
+                                                  AppColor.subcolor,
+                                            ),
+                                          ),
+                                          SizedBox(width: Get.width / 23),
+                                          Expanded(
+                                            child: Text(
+                                              Added_Advantage_Skills[index],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                color: AppColor.subcolor,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  ),
+                                ),
+                                SizedBox(height: Get.height / 10),
                               ],
                             ),
                           ),
@@ -211,13 +392,7 @@ class Details extends StatelessWidget {
                           bottom: 10,
                           child: OnButtons(
                             onTap: () {
-                              // appliedjob.add(showjob);
-                              Appling.ApplynowController_fuction(
-                                Candidate: login.option_data['data']['UserDetails']['CandidateId'],
-                                JobId: Details_now.Details.Details_data['data']['JobId'],
-                                Company: Details_now.Details.Details_data['data']['CompanyId'],
-                                Tokan: login.option_data['data']['LoginToken'],
-                              );
+                              hitting.HitAppling();
                             },
                             Button_Color: AppColor.Button_color,
                             btn_name: Details_texts.Apply_Now,

@@ -2,9 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/get_navigation.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Sinup/sinup_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Sinup/sinup_API_controller.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';

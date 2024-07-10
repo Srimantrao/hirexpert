@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Pop_Collection/Interest_pop_Controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Pop_Collection/TechnologyList_pop_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Collection/Interest_pop_Controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Collection/TechnologyList_pop_controller.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/DropdownController/SpecializationController.dart';
 import '../../../app_String.dart';

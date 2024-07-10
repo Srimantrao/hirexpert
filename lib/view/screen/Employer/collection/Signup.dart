@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Employer/Collction/Sinup/employer_API_Sinup_controller.dart';
-import 'package:hirexpert/view/screen/Employer/collection/specialization.dart';
+import 'package:hirexpert/controller/API_Controller/Employer/Collction/Sinup/employer_API_Sinup_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
@@ -16,8 +15,7 @@ import '../../../utils/common/Textfild/Inputfild.dart';
 class Employer_Signup extends StatelessWidget {
    Employer_Signup({super.key});
 
-  EmployerApiSinupController Employer_Sinup =
-      Get.put(EmployerApiSinupController());
+  EmployerApiSinupController Employer_Sinup = Get.put(EmployerApiSinupController());
 
   @override
   Widget build(BuildContext context) {

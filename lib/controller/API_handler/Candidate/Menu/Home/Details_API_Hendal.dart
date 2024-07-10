@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Details_Controllers.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Details_Controllers.dart';
 
 class DetailsApiHendal extends GetxController {
   DetailsControllers Details = Get.put(DetailsControllers());

@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Location/jobtype_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Location/preferencetype_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Location/jobtype_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Location/preferencetype_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';

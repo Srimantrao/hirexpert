@@ -3,8 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Details_Controllers.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Appling_API_handler.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../utils/app_String.dart';
@@ -90,29 +88,18 @@ class Show_Applied extends StatelessWidget {
                       onTap: () {
                         Get.to(
                           () => Details_Appild(
-                            Icon: Appling.Detailing.Details_data['data']
-                                ["ProfileImage"],
+                            Icon: Appling.Detailing.Details_data['data']["ProfileImage"],
                             Color_container: AppColor.Full_body_color,
-                            Job_Tital: Appling.Detailing.Details_data['data']
-                                ["JobTitle"],
-                            Language: Appling.Detailing.Details_data['data']
-                                ["TechName"],
-                            Commpany: Appling.Detailing.Details_data['data']
-                                ["ComName"],
-                            Working: Appling.Detailing.Details_data['data']
-                                ["JobShift"],
-                            Location: Appling.Detailing.Details_data['data']
-                                ["hireEmp"],
-                            Job_time: Appling.Detailing.Details_data['data']
-                                ["JobType"],
-                            Exp: Appling.Detailing.Details_data['data']
-                                ["MinExperience"],
-                            lake: Appling.Detailing.Details_data['data']
-                                ["days"],
-                            Hybrid: Appling.Detailing.Details_data['data']
-                                ["WorkSet"],
-                            stats: Appling.Detailing.Details_data['data']
-                                ["FormatDt"],
+                            Job_Tital: Appling.Detailing.Details_data['data']["JobTitle"],
+                            Language: Appling.Detailing.Details_data['data']["TechName"],
+                            Commpany: Appling.Detailing.Details_data['data']["ComName"],
+                            Working: Appling.Detailing.Details_data['data']["JobShift"],
+                            Location: Appling.Detailing.Details_data['data']["hireEmp"],
+                            Job_time: Appling.Detailing.Details_data['data']["JobType"],
+                            Exp: Appling.Detailing.Details_data['data']["MinExperience"],
+                            lake: Appling.Detailing.Details_data['data']["days"],
+                            Hybrid: Appling.Detailing.Details_data['data']["WorkSet"],
+                            stats: Appling.Detailing.Details_data['data']["FormatDt"],
                           ),
                         );
                       },
@@ -237,6 +224,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
+                                          textAlign: TextAlign.center,
                                           Appling.Detailing.Details_data['data']
                                               ["MinExperience"],
                                           style: TextStyle(

@@ -1,13 +1,10 @@
 // ignore_for_file: non_constant_identifier_names, file_names, camel_case_types
 
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
-import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
-
-import '../../../API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
 
 class Candidate_LoginValidation with ChangeNotifier {
   OptionApiController login = Get.put(OptionApiController());

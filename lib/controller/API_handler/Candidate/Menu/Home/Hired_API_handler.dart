@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, annotate_overrides
 
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Menu/Home/Offer_Controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Offer_Controller.dart';
 
 class HiredApiHandler extends GetxController {
   OfferController hired = Get.put(OfferController());

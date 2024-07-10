@@ -185,6 +185,8 @@ class Details_Appild extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: Get.height / 60),
+
+                      //Benefits Offered
                       Text(
                         Details_texts.Benefits_Offered,
                         style: TextStyle(
@@ -225,6 +227,8 @@ class Details_Appild extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: Get.height / 50),
+
+                      //Suppiement Pay
                       Text(
                         Details_texts.Supplement_Pay,
                         style: TextStyle(
@@ -265,6 +269,8 @@ class Details_Appild extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: Get.height / 50),
+
+                      //Education Level Requird
                       Text(
                         Details_texts.Educational_Level_Required,
                         style: TextStyle(
@@ -305,6 +311,8 @@ class Details_Appild extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: Get.height / 50),
+
+                      //Added Advantage Skills
                       Text(
                         Details_texts.Added_Advantage_Skills,
                         style: TextStyle(
@@ -344,6 +352,7 @@ class Details_Appild extends StatelessWidget {
                           },
                         ),
                       ),
+                      SizedBox(height: Get.height / 50),
                     ],
                   ),
                 ),

@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Cobtroller/Candidate/Collction/Pop_Collection/DegreeList_pop_Controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/collection/Eduction.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DropdownController/EducationController.dart';
 import 'package:hirexpert/view/utils/common/showpop/showdialog.dart';
