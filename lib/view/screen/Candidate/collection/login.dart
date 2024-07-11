@@ -147,7 +147,6 @@ class Candidate_Login extends StatelessWidget {
                                 onTap: () {
                                   // vail.isEmtey();
                                   // vail.loginvalidation();
-
                                   login.OptionApiController_fuction(
                                     UserType: 'Candidate',
                                     Email: vail.EmailController.text,

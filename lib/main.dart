@@ -50,13 +50,6 @@ Future<void> main() async {
       print("yes");
     }
   }
-  pref = await SharedPreferences.getInstance();
-  islogin = pref!.getBool("login") ?? false;
-  Email = pref!.getString("Email") ?? "em";
-  Password = pref!.getString("Password") ?? "pass";
-
-  print("Email $Email");
-  print("Password $Password");
   runApp(const MyApp());
 }
 

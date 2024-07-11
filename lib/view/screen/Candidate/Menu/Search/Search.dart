@@ -13,7 +13,7 @@ import '../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_loder.dart';
 import '../../../../utils/common/List/jobSearch.dart';
-import 'Details_Search.dart';
+import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
 class Search extends StatelessWidget {
@@ -100,29 +100,18 @@ class Search extends StatelessWidget {
                     onTap: () {
                       Get.to(
                         () => Details(
-                          Icon: Searchings.Search.Search_data['data'][index]
-                              ['ComLogo'],
+                          Icon: Searchings.Search.Search_data['data'][index]['ComLogo'],
                           Color_container: showjob[index]["Container_color"],
-                          Job_Tital: Searchings.Search.Search_data['data']
-                              [index]['JobTitle'],
-                          Language: Searchings.Search.Search_data['data'][index]
-                              ['TechName'],
-                          Commpany: Searchings.Search.Search_data['data'][index]
-                              ['ComName'],
-                          Working: Searchings.Search.Search_data['data'][index]
-                              ["WorkWeek"],
-                          Location: Searchings.Search.Search_data['data'][index]
-                              ["Location"],
-                          Job_time: Searchings.Search.Search_data['data'][index]
-                              ['JobType'],
-                          Exp: Searchings.Search.Search_data['data'][index]
-                              ["Experience"],
-                          lake: Searchings.Search.Search_data['data'][index]
-                              ["Salary"],
-                          Hybrid: Searchings.Search.Search_data['data'][index]
-                              ["WorkSet"],
-                          stats: Searchings.Search.Search_data['data'][index]
-                              ["FormatDt"],
+                          Job_Tital: Searchings.Search.Search_data['data'][index]['JobTitle'],
+                          Language: Searchings.Search.Search_data['data'][index]['TechName'],
+                          Commpany: Searchings.Search.Search_data['data'][index]['ComName'],
+                          Working: Searchings.Search.Search_data['data'][index]["WorkWeek"],
+                          Location: Searchings.Search.Search_data['data'][index]["Location"],
+                          Job_time: Searchings.Search.Search_data['data'][index]['JobType'],
+                          Exp: Searchings.Search.Search_data['data'][index]["Experience"],
+                          lake: Searchings.Search.Search_data['data'][index]["Salary"],
+                          Hybrid: Searchings.Search.Search_data['data'][index]["WorkSet"],
+                          stats: Searchings.Search.Search_data['data'][index]["FormatDt"],
                           saveonTap: () {
                             isfavication.IsfavrationControllers_fuction(
                               CandidateId: login.option_data['data']
@@ -140,29 +129,18 @@ class Search extends StatelessWidget {
                         ),
                       );
                     },
-                    Icon: Searchings.Search.Search_data['data'][index]
-                        ['ComLogo'],
+                    Icon: Searchings.Search.Search_data['data'][index]['ComLogo'],
                     Color_container: showjob[index]["Container_color"],
-                    Job_Tital: Searchings.Search.Search_data['data'][index]
-                        ['JobTitle'],
-                    Language: Searchings.Search.Search_data['data'][index]
-                        ['TechName'],
-                    Commpany: Searchings.Search.Search_data['data'][index]
-                        ['ComName'],
-                    Working: Searchings.Search.Search_data['data'][index]
-                        ["WorkWeek"],
-                    Location: Searchings.Search.Search_data['data'][index]
-                        ["Location"],
-                    Job_time: Searchings.Search.Search_data['data'][index]
-                        ['JobType'],
-                    Exp: Searchings.Search.Search_data['data'][index]
-                        ["Experience"],
-                    lake: Searchings.Search.Search_data['data'][index]
-                        ["Salary"],
-                    Hybrid: Searchings.Search.Search_data['data'][index]
-                        ["WorkSet"],
-                    stats: Searchings.Search.Search_data['data'][index]
-                        ["FormatDt"],
+                    Job_Tital: Searchings.Search.Search_data['data'][index]['JobTitle'],
+                    Language: Searchings.Search.Search_data['data'][index]['TechName'],
+                    Commpany: Searchings.Search.Search_data['data'][index]['ComName'],
+                    Working: Searchings.Search.Search_data['data'][index]["WorkWeek"],
+                    Location: Searchings.Search.Search_data['data'][index]["Location"],
+                    Job_time: Searchings.Search.Search_data['data'][index]['JobType'],
+                    Exp: Searchings.Search.Search_data['data'][index]["Experience"],
+                    lake: Searchings.Search.Search_data['data'][index]["Salary"],
+                    Hybrid: Searchings.Search.Search_data['data'][index]["WorkSet"],
+                    stats: Searchings.Search.Search_data['data'][index]["FormatDt"],
                     saveonTap: () {
                       Searchings.isSave(index);
                     },

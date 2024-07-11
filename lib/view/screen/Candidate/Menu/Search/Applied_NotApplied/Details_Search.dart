@@ -1,18 +1,15 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, override_on_non_overriding_member, avoid_print, prefer_const_constructors_in_immutables
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, override_on_non_overriding_member, avoid_print, prefer_const_constructors_in_immutables, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Apply_now_Controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Button_Apping_handler.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Details_API_Hendal.dart';
 import 'package:hirexpert/modal/Job/Search_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../../../../utils/app_String.dart';
+import '../../../../../utils/app_String.dart';
 
 class Details extends StatelessWidget {
   final ButtonAppingHandler hitting = Get.put(ButtonAppingHandler());
@@ -52,7 +49,6 @@ class Details extends StatelessWidget {
     this.saving,
   });
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

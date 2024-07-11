@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, must_be_immutable
+// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, must_be_immutable, avoid_print
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -7,6 +7,7 @@ import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
@@ -223,26 +224,28 @@ class candidate_Signup extends StatelessWidget {
                                     FirstName: vail.frist_name.text,
                                     LastName: vail.last_name.text,
                                     Email: vail.email.text,
-                                    Password: vail.password.text,
+                                    Password: Password_main.Pass.text,
                                     Phone: vail.phone.text,
-                                  );
-                                  if (Sinup_API.Sinup_data['status'] == true) {
-                                    Get.to(() => OTP());
-                                  } else {
-                                    Get.showSnackbar(
-                                      GetBar(
-                                        duration: const Duration(seconds: 2),
-                                        message:
-                                            Sinup_API.Sinup_data['message'],
-                                      ),
-                                    );
-                                  }
-                                  Get.to(
-                                    () => Candidate_Specialization(
-                                      first_name: vail.frist_name.text,
-                                      last_name: vail.last_name.text,
-                                    ),
-                                  );
+                                  ).then((value) {
+                                    if (Sinup_API.Sinup_data['status'] ==
+                                        true) {
+                                      Get.to(() => OTP());
+                                    } else {
+                                      Get.showSnackbar(
+                                        GetBar(
+                                          duration: const Duration(seconds: 2),
+                                          message:
+                                              Sinup_API.Sinup_data['message'],
+                                        ),
+                                      );
+                                    }
+                                    // Get.to(
+                                    //   () => Candidate_Specialization(
+                                    //     first_name: vail.frist_name.text,
+                                    //     last_name: vail.last_name.text,
+                                    //   ),
+                                    // );
+                                  });
                                 },
                                 Button_Color: AppColor.Button_color,
                                 btn_name: Signup_text.Sign_Up,

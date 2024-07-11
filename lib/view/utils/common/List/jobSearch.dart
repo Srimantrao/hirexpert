@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names, camel_case_types, file_names, must_be_immutable
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import '../../app_color.dart';
 

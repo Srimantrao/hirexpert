@@ -10,16 +10,26 @@ import 'package:http/http.dart' as http;
 class IsapplingApiController extends GetxController {
   var isLoding = false.obs;
   var isApplingdata;
+  var appling = 0.obs;
 
   Future IsApplingAPIController_fuction({
     required String Tokan,
-    required int appling,
+    required String Candidate,
+    required String JobId,
+    required String Timezone,
   }) async {
     try {
       isLoding.value = true;
 
+      print("Tokan :- $Tokan");
+      print("Tokan :- $Candidate");
+      print("Tokan :- $JobId");
+      print("Tokan :- $Timezone");
+
       final responce = await http.get(
-        Uri.parse('${AppUrl.isApplyed}?.IsApply == $appling'),
+        Uri.parse(
+          '${AppUrl.isApplyed}?CandidateId=$Candidate&JobId=$JobId&Timezone=$Timezone',
+        ),
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,

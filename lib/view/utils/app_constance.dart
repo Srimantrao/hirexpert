@@ -10,9 +10,9 @@ SharedPreferences? pref;
 
 String Frist_name = "";
 String Last_name = "";
-String Email = "";
+String Email = "khushraajsoni@gmail.com";
 String Phone = "";
-String Password = "";
+String Password = "Ilove@2015";
 String Comfarm_password = "";
 
 bool islogin = false;
