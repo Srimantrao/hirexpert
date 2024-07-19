@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names, prefer_const_constructors_in_immutables, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: camel_case_types, file_names, prefer_const_constructors_in_immutables, prefer_const_constructors, non_constant_identifier_names, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,8 +51,7 @@ class Show_Applied extends StatelessWidget {
                 ),
               ),
             );
-          } else if (Appling.Detailing.Details_data['data'] == null ||
-              Appling.Detailing.Details_data == null) {
+          } else if (Appling.Detailing.Details_data.value['data'] == null) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -88,18 +87,17 @@ class Show_Applied extends StatelessWidget {
                       onTap: () {
                         Get.to(
                           () => Details_Appild(
-                            Icon: Appling.Detailing.Details_data['data']["ProfileImage"],
-                            Color_container: AppColor.Full_body_color,
-                            Job_Tital: Appling.Detailing.Details_data['data']["JobTitle"],
-                            Language: Appling.Detailing.Details_data['data']["TechName"],
-                            Commpany: Appling.Detailing.Details_data['data']["ComName"],
-                            Working: Appling.Detailing.Details_data['data']["JobShift"],
-                            Location: Appling.Detailing.Details_data['data']["hireEmp"],
-                            Job_time: Appling.Detailing.Details_data['data']["JobType"],
-                            Exp: Appling.Detailing.Details_data['data']["MinExperience"],
-                            lake: Appling.Detailing.Details_data['data']["days"],
-                            Hybrid: Appling.Detailing.Details_data['data']["WorkSet"],
-                            stats: Appling.Detailing.Details_data['data']["FormatDt"],
+                            Icon: Appling.Detailing.Details_data.value['data']["ProfileImage"],
+                            Job_Tital: Appling.Detailing.Details_data.value['data']["JobTitle"],
+                            Language: Appling.Detailing.Details_data.value['data']["TechName"],
+                            Commpany: Appling.Detailing.Details_data.value['data']["ComName"],
+                            Working: Appling.Detailing.Details_data.value['data']["JobShift"],
+                            Location: Appling.Detailing.Details_data.value['data']["hireEmp"],
+                            Job_time: Appling.Detailing.Details_data.value['data']["JobType"],
+                            Exp: Appling.Detailing.Details_data.value['data']["MinExperience"],
+                            lake: Appling.Detailing.Details_data.value['data']["days"],
+                            Hybrid: Appling.Detailing.Details_data.value['data']["WorkSet"],
+                            stats: Appling.Detailing.Details_data.value['data']["FormatDt"],
                           ),
                         );
                       },
@@ -138,7 +136,7 @@ class Show_Applied extends StatelessWidget {
                                     child: Padding(
                                       padding: EdgeInsets.all(15),
                                       child: Image.network(
-                                        Appling.Detailing.Details_data['data']
+                                        Appling.Detailing.Details_data.value['data']
                                             ["ProfileImage"],
                                       ),
                                     ),
@@ -154,7 +152,7 @@ class Show_Applied extends StatelessWidget {
                                           children: [
                                             Text(
                                               Appling.Detailing
-                                                      .Details_data['data']
+                                                      .Details_data.value['data']
                                                   ["JobTitle"],
                                               style: TextStyle(
                                                 color: AppColor.subcolor,
@@ -165,7 +163,7 @@ class Show_Applied extends StatelessWidget {
                                       ],
                                     ),
                                     Text(
-                                      Appling.Detailing.Details_data['data']
+                                      Appling.Detailing.Details_data.value['data']
                                           ["TechName"],
                                       style: TextStyle(
                                         fontSize: size.width / 23,
@@ -173,7 +171,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      Appling.Detailing.Details_data['data']
+                                      Appling.Detailing.Details_data.value['data']
                                           ["ComName"],
                                       style: TextStyle(
                                         fontSize: size.width / 26,
@@ -203,7 +201,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data['data']
+                                          Appling.Detailing.Details_data.value['data']
                                               ["JobShift"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -225,7 +223,7 @@ class Show_Applied extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           textAlign: TextAlign.center,
-                                          Appling.Detailing.Details_data['data']
+                                          Appling.Detailing.Details_data.value['data']
                                               ["MinExperience"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -246,7 +244,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data['data']
+                                          Appling.Detailing.Details_data.value['data']
                                               ["JobType"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -271,7 +269,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data['data']
+                                          Appling.Detailing.Details_data.value['data']
                                               ["WorkWeek"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -292,7 +290,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data['data']
+                                          Appling.Detailing.Details_data.value['data']
                                               ["days"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -313,7 +311,7 @@ class Show_Applied extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data['data']
+                                          Appling.Detailing.Details_data.value['data']
                                               ["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -332,7 +330,7 @@ class Show_Applied extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  Appling.Detailing.Details_data['data']
+                                  Appling.Detailing.Details_data.value['data']
                                       ["FormatDt"],
                                   style: TextStyle(
                                     color: AppColor.subcolor,

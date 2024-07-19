@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class NotificationApiController extends GetxController {
   var isLoding = false.obs;
-  var Notification_data;
+  var Notification_data= {}.obs;
 
   Future NotificationApiController_fuction({required String Tokan}) async {
     try {
@@ -26,7 +26,7 @@ class NotificationApiController extends GetxController {
       }
 
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Notification_data = jsonDecode(Response.body);
+        Notification_data.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("Notification Data :- $Notification_data");
         }

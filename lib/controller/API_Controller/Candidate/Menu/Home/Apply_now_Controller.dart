@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class ApplyNowController extends GetxController {
   var isLoding = false.obs;
-  var Applynowcontroller_var;
+  var Applynowcontroller_var= {}.obs;
 
   Future ApplynowController_fuction({
     required String Candidate,
@@ -36,7 +36,7 @@ class ApplyNowController extends GetxController {
       print("Company :- $Company");
 
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        Applynowcontroller_var = jsonDecode(responce.body);
+        Applynowcontroller_var.value = jsonDecode(responce.body);
         print("ApplyController Data :- $Applynowcontroller_var");
       } else {
         throw {

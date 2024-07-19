@@ -65,10 +65,7 @@ class JobSearch extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border(
                 top: top,
-                bottom: bottam ??
-                    BorderSide(
-                      color: AppColor.Full_body_color,
-                    ),
+
               ),
               color: AppColor.Full_body_color,
             ),

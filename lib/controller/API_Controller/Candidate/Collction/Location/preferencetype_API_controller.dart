@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class PreferencetypeApiController extends GetxController {
   var islodind = false.obs;
-  var Preferencetype_data;
+  var Preferencetype_data= {}.obs;
 
   Future PreferencetypeApiController_fuction() async {
     try {
@@ -20,7 +20,7 @@ class PreferencetypeApiController extends GetxController {
         Clientip.clientip: Clientip.ip,
       });
       if (response.statusCode == 200 || response.statusCode == 201) {
-        Preferencetype_data = jsonDecode(response.body);
+        Preferencetype_data.value = jsonDecode(response.body);
         if (kDebugMode) {
           print("Preference_data :- $Preferencetype_data");
         }

@@ -1,11 +1,21 @@
 // ignore_for_file: avoid_print
 
+// Platform  Firebase App Id
+// web       1:435726694932:web:fe8e283cd3e26528410501
+// android   1:435726694932:android:cdf2eba093c19c1a410501
+// ios       1:435726694932:ios:bea68d2cf6fa55d0410501
+// macos     1:435726694932:ios:7e2f495edde32823410501
+
 import 'dart:io';
 
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/get_core.dart';
+import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/AnimationControllers/AnimationControllers.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Declined.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Hired.dart';
@@ -15,6 +25,7 @@ import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Educat
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
@@ -42,6 +53,7 @@ import 'controller/User_Controller/Employer_Controller/LoginControoler/LoginVali
 import 'controller/User_Controller/Employer_Controller/LoginControoler/visibility.dart';
 import 'controller/User_Controller/Employer_Controller/SignupController/SinupController.dart';
 import 'controller/User_Controller/Option_Controller/SelectButton.dart';
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -50,6 +62,26 @@ Future<void> main() async {
       print("yes");
     }
   }
+
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
+  pref = await SharedPreferences.getInstance();
+
+  Frist_name = pref!.getString('FristName') ?? 'FristName :- ';
+  Last_name = pref!.getString('LastName') ?? 'LastName :- ';
+  Email = pref!.getString('Email') ?? 'LastName :- ';
+  Phone = pref!.getString('Phone') ?? 'Phone :- ';
+  Password = pref!.getString('Password') ?? 'Password :- ';
+
+  islogin = pref!.getBool("Login") ?? false;
+
+  print("FristName :- $Frist_name");
+  print("LastName :- $Last_name");
+  print("Email :- $Email");
+  print("Phone :- $Phone");
+  print("Password :- $Password");
+
+  print("isLogin :- $islogin");
   runApp(const MyApp());
 }
 
@@ -68,14 +100,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
-        ChangeNotifierProvider(
-            create: (_) => Candidate_SpecializationController_popup()),
-        ChangeNotifierProvider(
-            create: (_) => Candidate_SpecializationController_Interest()),
-        ChangeNotifierProvider(
-            create: (_) => Candidate_SpecializationController_Skillset()),
-        ChangeNotifierProvider(
-            create: (_) => Candidate_SpecializationController_Collection()),
         ChangeNotifierProvider(create: (_) => Education_Controller()),
         ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
         ChangeNotifierProvider(create: (_) => FreherController()),
@@ -92,6 +116,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Employer_SinupController()),
         ChangeNotifierProvider(create: (_) => ChangePasswordController()),
         ChangeNotifierProvider(create: (_) => OtpController()),
+        ChangeNotifierProvider(create: (_) => Specializationcontroller()),
         ChangeNotifierProvider(
             create: (_) => Employer_SpecializationController_popup()),
         ChangeNotifierProvider(

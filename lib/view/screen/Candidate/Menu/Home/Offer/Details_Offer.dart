@@ -14,7 +14,7 @@ import '../../../../../utils/common/List/jobSearch.dart';
 
 class Details_Offer extends StatelessWidget {
   final String Icon;
-  final Color Color_container;
+  final Color? Color_container;
   final String Job_Tital;
   final String Language;
   final String Commpany;
@@ -29,7 +29,7 @@ class Details_Offer extends StatelessWidget {
   const Details_Offer({
     super.key,
     required this.Icon,
-    required this.Color_container,
+    this.Color_container,
     required this.Job_Tital,
     required this.Language,
     required this.Commpany,

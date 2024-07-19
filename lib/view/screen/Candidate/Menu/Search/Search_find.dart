@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, avoid_print
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, avoid_print, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -39,24 +39,21 @@ class Search_find extends StatelessWidget {
                 return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (searchHandler.Search.Search_data == null ||
-                  searchHandler.Search.Search_data['data'] == null) {
+              } else if (
+                  searchHandler.Search.Search_data.value['data'] == null) {
                 return Center(
                   child: Text(API_Error.null_data),
                 );
               } else {
                 return ListView.builder(
-                  itemCount: searchHandler.Search.Search_data['data'].length,
+                  itemCount: searchHandler.Search.Search_data.value['data'].length,
                   itemBuilder: (BuildContext context, int index) {
-                    final jobData =
-                        searchHandler.Search.Search_data['data'][index];
-                    final jobColor = showjob[index]["Container_color"];
+                    final jobData = searchHandler.Search.Search_data.value['data'][index];
                     return InkWell(
                       onTap: () {
                         Get.to(
                           () => Details(
                             Icon: jobData['ComLogo'],
-                            Color_container: jobColor,
                             Job_Tital: jobData['JobTitle'],
                             Language: jobData['TechName'],
                             Commpany: jobData['ComName'],
@@ -86,14 +83,13 @@ class Search_find extends StatelessWidget {
                       },
                       child: JobSearch(
                         saveonTap: () {
-                          searchHandler.isSave(index);
+                          searchHandler;
                         },
-                        savechild: (searchHandler.isSeved[index])
+                        savechild: (isfavication.isFavration.value.status == true)
                             ? SvgPicture.asset(AppIcons.bookmark)
                             : SvgPicture.asset(AppIcons.save),
                         top: BorderSide(color: AppColor.Bottam_color),
                         Icon: jobData['ComLogo'],
-                        Color_container: jobColor,
                         Job_Tital: jobData['JobTitle'],
                         Language: jobData['TechName'],
                         Commpany: jobData['ComName'],

@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class EmployerApiSinupController extends GetxController {
   var isLodind = false.obs;
-  var Employer_Sinup;
+  var Employer_Sinup= {}.obs;
 
   Future EmployerApiSinupController_Fuction({
     required String Email,
@@ -52,7 +52,7 @@ class EmployerApiSinupController extends GetxController {
         body: body,
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Employer_Sinup = jsonDecode(Response.body);
+        Employer_Sinup.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("Employer Sinup :- $Employer_Sinup");
         }

@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class OtpApiController_API extends GetxController {
   var isLoding = false.obs;
-  var OTP_data;
+  var OTP_data = {}.obs;
 
   Future OtpApiController_fuction({
     required String EmailOTP,
@@ -45,7 +45,7 @@ class OtpApiController_API extends GetxController {
         body: body,
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        OTP_data = jsonDecode(responce.body);
+        OTP_data.value = jsonDecode(responce.body);
         if (kDebugMode) {
           print("Otpdata :- $OTP_data");
         }

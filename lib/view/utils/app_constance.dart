@@ -10,14 +10,14 @@ SharedPreferences? pref;
 
 String Frist_name = "";
 String Last_name = "";
-String Email = "khushraajsoni@gmail.com";
+String Email = "";
 String Phone = "";
-String Password = "Ilove@2015";
+String Password = "";
 String Comfarm_password = "";
 
 bool islogin = false;
 
 class Password_main {
   static TextEditingController Pass =
-      Candidate_LoginValidation.PasswordController = TextEditingController();
+      Candidate_LoginValidation.password_controller = TextEditingController();
 }

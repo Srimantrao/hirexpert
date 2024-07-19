@@ -18,7 +18,7 @@ import '../../../../../utils/common/List/jobSearch.dart';
 class Details_Appild extends StatelessWidget {
   final ApplingApiHandler Appling = Get.put(ApplingApiHandler());
   final String Icon;
-  final Color Color_container;
+  final Color? Color_container;
   final String Job_Tital;
   final String Language;
   final String Commpany;
@@ -33,7 +33,7 @@ class Details_Appild extends StatelessWidget {
   Details_Appild({
     super.key,
     required this.Icon,
-    required this.Color_container,
+    this.Color_container,
     required this.Job_Tital,
     required this.Language,
     required this.Commpany,

@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class JobinterviweApiController extends GetxController {
   var isloding = false.obs;
-  var JobInterviwe_data;
+  var JobInterviwe_data= {}.obs;
 
   Future JobinterviweApiController_Fuction({
     required String page,
@@ -31,7 +31,7 @@ class JobinterviweApiController extends GetxController {
         },
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        JobInterviwe_data = jsonDecode(Response.body);
+        JobInterviwe_data.value = jsonDecode(Response.body);
         print("JobInterviwe_data $JobInterviwe_data");
       } else {
         throw {

@@ -1,3 +1,5 @@
+// ignore_for_file: camel_case_types
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -33,7 +35,7 @@ class Showdialog {
               children: [
                 const SizedBox(),
                 SizedBox(
-                  width: Get.width/2,
+                  width: Get.width / 2,
                   child: Text(
                     textAlign: TextAlign.center,
                     hedingtext,
@@ -63,6 +65,63 @@ class Showdialog {
           ),
         );
       },
+    );
+  }
+}
+
+class Pop_Container extends StatelessWidget {
+  final String text;
+  final String? text2;
+  final bool? condition;
+
+  const Pop_Container({
+    super.key,
+    required this.text,
+    this.condition,
+    this.text2,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Get.width,
+      height: Get.height / 20,
+      decoration: BoxDecoration(
+        border: Border(
+          bottom: BorderSide(
+            color: AppColor.Bottam_color,
+          ),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          (condition ?? false)
+              ? Text(
+                  text2 ?? '',
+                  style: TextStyle(
+                    color: AppColor.subcolor,
+                    fontSize: Get.width / 27,
+                  ),
+                )
+              : Text(
+                  text,
+                  style: TextStyle(
+                    color: AppColor.subcolor,
+                    fontSize: Get.width / 27,
+                  ),
+                ),
+          (condition ?? false)
+              ? SvgPicture.asset(
+                  AppIcons.Right,
+                  color: AppColor.subcolor,
+                )
+              : SvgPicture.asset(
+                  AppIcons.down,
+                  color: AppColor.subcolor,
+                ),
+        ],
+      ),
     );
   }
 }

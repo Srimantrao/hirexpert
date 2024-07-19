@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class TechnologylistPopController extends GetxController {
   var isLoding = false.obs;
-  var TechnologylistPop_data;
+  var TechnologylistPop_data= {}.obs;
 
   Future TechnologylistPopController_Fuction() async {
     try {
@@ -22,7 +22,7 @@ class TechnologylistPopController extends GetxController {
         Clientip.clientip: Clientip.ip,
       });
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        TechnologylistPop_data = jsonDecode(Response.body);
+        TechnologylistPop_data.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("TechnologyList Data :- $TechnologylistPop_data");
         }

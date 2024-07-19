@@ -1,5 +1,35 @@
 // ignore_for_file: constant_identifier_names, camel_case_types, file_names
 
+class Validation_Error {
+  //Input
+  static const FristName = "Please Input Your Frist Name";
+  static const LastName = "Please Input Your Last Name";
+  static const Email = "Please Input Your Email Address";
+  static const Phone = "Please Input Your Phone Number";
+  static const password = "Please Enter Your Password";
+  static const C_password = "Confirm Password";
+
+  //vaild
+  static const V_FristName = "Please enter a valid Frist name";
+  static const V_LastName = "Please enter a valid Last name";
+  static const V_Email = "Please Input Vaild Email Address";
+  static const V_phone = "Please Input Vaild Phone Number";
+  static const Matching = "Password is not Matching";
+
+  //Password
+  static const characters = 'Password must be at least 8 characters long';
+  static const uppercase =
+      'Password must contain at least one uppercase letter';
+  static const lowercase =
+      'Password must contain at least one lowercase letter';
+  static const digit = 'Password must contain at least one digit';
+  static const special = 'Password must contain at least one special character';
+
+  //less
+  static const Email_less = 'Please Input Your Email less the 6 latters';
+  static const phone_ditit = 'Plese Input 10 ditit Number';
+}
+
 //DropDown Menu
 class API_Error {
   static const null_data = "Soory, Your Data Not Found";
@@ -434,7 +464,7 @@ class EditProfile_text {
 
 //Specialization
 class Specialization_text {
-  static const area = "Select your functional area:";
+  static const area = "Select your functional area";
   static const Select_area = "Select functional area";
   static const interest = "Select specialization / interest";
   static const Search_text = "Select your specialization / interest:";

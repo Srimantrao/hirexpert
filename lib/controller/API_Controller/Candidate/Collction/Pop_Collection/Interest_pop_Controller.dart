@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class InterestPopController extends GetxController {
   var isLoding = false.obs;
-  var Interest_pop;
+  var Interest_pop = {}.obs;
 
   Future InterestPopController_Fuction({
     required String CandidateId,
@@ -47,7 +47,7 @@ class InterestPopController extends GetxController {
         body: body,
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Interest_pop = jsonDecode(Response.body);
+        Interest_pop.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("Interest_POP :- $Interest_pop");
         }

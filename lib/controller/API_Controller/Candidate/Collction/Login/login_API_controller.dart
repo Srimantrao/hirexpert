@@ -10,7 +10,7 @@ import '../../../../../view/utils/API_Key.dart';
 
 class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
-  var option_data;
+  var option_data = {}.obs;
 
   Future OptionApiController_fuction({
     String? Email,
@@ -26,7 +26,7 @@ class OptionApiController extends GetxController {
         print("UserType: $UserType");
         print("Timezone: asia/kolkata");
       }
-      
+
       Map<String, dynamic> body = {
         'Email': Email ?? '',
         'Password': Password ?? '',
@@ -47,7 +47,7 @@ class OptionApiController extends GetxController {
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        option_data = jsonDecode(responce.body);
+        option_data.value = jsonDecode(responce.body);
         if (kDebugMode) {
           print("option_data :- $option_data");
         }

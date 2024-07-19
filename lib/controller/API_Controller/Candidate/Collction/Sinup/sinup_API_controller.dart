@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class SinupApiController extends GetxController {
   var isLoding = false.obs;
-  var Sinup_data;
+  var Sinup_data= {}.obs;
 
   Future SinupApiController_faction({
     required String FirstName,
@@ -52,7 +52,7 @@ class SinupApiController extends GetxController {
         body: body,
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        Sinup_data = jsonDecode(responce.body);
+        Sinup_data.value = jsonDecode(responce.body);
         if (kDebugMode) {
           print("Sinup Data :-$Sinup_data");
         }

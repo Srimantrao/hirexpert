@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -51,8 +51,7 @@ class Show_Offer extends StatelessWidget {
                 ),
               ),
             );
-          } else if (offing.offer.data['data'] == null ||
-              offing.offer.data == null) {
+          } else if (offing.offer.data.value['data'] == null) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -90,24 +89,17 @@ class Show_Offer extends StatelessWidget {
                       onTap: () {
                         Get.to(
                           () => Details_Offer(
-                            Icon: offing.offer.data['data'][index]["ComLogo"],
-                            Color_container: showjob[index]["Container_color"],
-                            Job_Tital: offing.offer.data['data'][index]
-                                ["JobTitle"],
-                            Language: offing.offer.data['data'][index]
-                                ["TechName"],
-                            Commpany: offing.offer.data['data'][index]
-                                ["ComName"],
-                            Working: offing.offer.data['data'][index]
-                                ["Working"],
-                            Location: offing.offer.data['data'][index]
-                                ["Location"],
-                            Job_time: offing.offer.data['data'][index]
-                                ["JobType"],
-                            Exp: offing.offer.data['data'][index]["Experience"],
-                            lake: offing.offer.data['data'][index]["Salary"],
-                            Hybrid: offing.offer.data['data'][index]["WorkSet"],
-                            stats: offing.offer.data['data'][index]["stats"],
+                            Icon: offing.offer.data.value['data'][index]["ComLogo"],
+                            Job_Tital: offing.offer.data.value['data'][index]["JobTitle"],
+                            Language: offing.offer.data.value['data'][index]["TechName"],
+                            Commpany: offing.offer.data.value['data'][index]["ComName"],
+                            Working: offing.offer.data.value['data'][index]["Working"],
+                            Location: offing.offer.data.value['data'][index]["Location"],
+                            Job_time: offing.offer.data.value['data'][index]["JobType"],
+                            Exp: offing.offer.data.value['data'][index]["Experience"],
+                            lake: offing.offer.data.value['data'][index]["Salary"],
+                            Hybrid: offing.offer.data.value['data'][index]["WorkSet"],
+                            stats: offing.offer.data.value['data'][index]["stats"],
                           ),
                         );
                       },
@@ -140,7 +132,6 @@ class Show_Offer extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
                                           size.width / 30),
-                                      color: showjob[index]["Container_color"],
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(15),
@@ -158,7 +149,7 @@ class Show_Offer extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                              offing.offer.data['data'][index]
+                                              offing.offer.data.value['data'][index]
                                                   ["JobTitle"],
                                               style: TextStyle(
                                                 color: AppColor.subcolor,
@@ -169,7 +160,7 @@ class Show_Offer extends StatelessWidget {
                                       ],
                                     ),
                                     Text(
-                                      offing.offer.data['data'][index]
+                                      offing.offer.data.value['data'][index]
                                           ["TechName"],
                                       style: TextStyle(
                                         fontSize: size.width / 23,
@@ -177,7 +168,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      offing.offer.data['data'][index]
+                                      offing.offer.data.value['data'][index]
                                           ["ComName"],
                                       style: TextStyle(
                                         fontSize: size.width / 26,
@@ -207,8 +198,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          offing.offer.data['data'][index]
-                                              ["Working"],
+                                          offing.offer.data.value['data'][index]["Working"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: size.width / 30,
@@ -228,7 +218,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          offing.offer.data['data'][index]
+                                          offing.offer.data.value['data'][index]
                                               ["Location"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -248,8 +238,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          offing.offer.data['data'][index]
-                                              ["JobType"],
+                                          offing.offer.data.value['data'][index]["JobType"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: size.width / 30,
@@ -273,8 +262,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          offing.offer.data['data'][index]
-                                              ["Experience"],
+                                          offing.offer.data.value['data'][index]["Experience"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: size.width / 35,
@@ -294,7 +282,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          offing.offer.data['data'][index]
+                                          offing.offer.data.value['data'][index]
                                               ["Salary"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -315,7 +303,7 @@ class Show_Offer extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          offing.offer.data['data'][index]
+                                          offing.offer.data.value['data'][index]
                                               ["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -334,7 +322,7 @@ class Show_Offer extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  offing.offer.data['data'][index]["stats"],
+                                  offing.offer.data.value['data'][index]["stats"],
                                   style: TextStyle(
                                     color: AppColor.subcolor,
                                   ),

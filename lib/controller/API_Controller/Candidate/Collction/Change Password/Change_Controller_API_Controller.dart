@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class ChangeControllerApiController extends GetxController {
   var isLoding = false.obs;
-  var ChagePassword_data;
+  var ChagePassword_data =  {}.obs;
 
   Future ChangeControllerApiController_Fuction({
     String? Password,
@@ -46,7 +46,7 @@ class ChangeControllerApiController extends GetxController {
         body: body,
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        ChagePassword_data = jsonDecode(Response.body);
+        ChagePassword_data.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("Show Password Data :-  $ChagePassword_data");
         }

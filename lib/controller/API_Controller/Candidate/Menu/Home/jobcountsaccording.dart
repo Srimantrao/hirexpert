@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class Jobcountsaccording extends GetxController {
   var isLoding = false.obs;
-  var data;
+  var data= {}.obs;
 
   Future Jobcountsaccording_fuction({
     required String Tokan,
@@ -38,7 +38,7 @@ class Jobcountsaccording extends GetxController {
       print("CandidateId :- $CandidateId");
 
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        data = jsonDecode(responce.body);
+        data.value = jsonDecode(responce.body);
         print("Candidatecount :- $data");
       } else {
         throw {

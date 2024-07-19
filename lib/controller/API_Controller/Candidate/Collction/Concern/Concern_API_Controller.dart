@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class ConcernApiController extends GetxController {
   var isLoding = false.obs;
-  var Concer_data;
+  var Concer_data= {}.obs;
 
   Future ConcernApi_fuction({
     required String JobId,
@@ -37,7 +37,7 @@ class ConcernApiController extends GetxController {
         body: body,
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Concer_data = jsonDecode(Response.body);
+        Concer_data.value = jsonDecode(Response.body);
         print("Concer Data:-  $Concer_data");
       } else {
         throw {

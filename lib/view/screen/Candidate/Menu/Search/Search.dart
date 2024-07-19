@@ -84,13 +84,13 @@ class Search extends StatelessWidget {
               return Center(
                 child: Image.asset(AppLoder.infinityloder_without_background),
               );
-            } else if (Searchings.Search.Search_data == null) {
+            } else if (Searchings.Search.Search_data.value['data'] == null) {
               return Center(
                 child: Text(API_Error.null_data),
               );
             } else {
               return ListView.builder(
-                itemCount: Searchings.Search.Search_data['data'].length,
+                itemCount: Searchings.Search.Search_data.value['data'].length,
                 itemBuilder: (BuildContext context, int index) {
                   if (index >= Searchings.Search.Search_data['data'].length ||
                       index >= Searchings.Search.Search_data['data'].length) {
@@ -100,22 +100,20 @@ class Search extends StatelessWidget {
                     onTap: () {
                       Get.to(
                         () => Details(
-                          Icon: Searchings.Search.Search_data['data'][index]['ComLogo'],
-                          Color_container: showjob[index]["Container_color"],
-                          Job_Tital: Searchings.Search.Search_data['data'][index]['JobTitle'],
-                          Language: Searchings.Search.Search_data['data'][index]['TechName'],
-                          Commpany: Searchings.Search.Search_data['data'][index]['ComName'],
-                          Working: Searchings.Search.Search_data['data'][index]["WorkWeek"],
-                          Location: Searchings.Search.Search_data['data'][index]["Location"],
-                          Job_time: Searchings.Search.Search_data['data'][index]['JobType'],
-                          Exp: Searchings.Search.Search_data['data'][index]["Experience"],
-                          lake: Searchings.Search.Search_data['data'][index]["Salary"],
-                          Hybrid: Searchings.Search.Search_data['data'][index]["WorkSet"],
-                          stats: Searchings.Search.Search_data['data'][index]["FormatDt"],
+                          Icon: Searchings.Search.Search_data.value['data'][index]['ComLogo'],
+                          Job_Tital: Searchings.Search.Search_data.value['data'][index]['JobTitle'],
+                          Language: Searchings.Search.Search_data.value['data'][index]['TechName'],
+                          Commpany: Searchings.Search.Search_data.value['data'][index]['ComName'],
+                          Working: Searchings.Search.Search_data.value['data'][index]["WorkWeek"],
+                          Location: Searchings.Search.Search_data.value['data'][index]["Location"],
+                          Job_time: Searchings.Search.Search_data.value['data'][index]['JobType'],
+                          Exp: Searchings.Search.Search_data.value['data'][index]["Experience"],
+                          lake: Searchings.Search.Search_data.value['data'][index]["Salary"],
+                          Hybrid: Searchings.Search.Search_data.value['data'][index]["WorkSet"],
+                          stats: Searchings.Search.Search_data.value['data'][index]["FormatDt"],
                           saveonTap: () {
                             isfavication.IsfavrationControllers_fuction(
-                              CandidateId: login.option_data['data']
-                                  ['UserDetails']['CandidateId'],
+                              CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
                               JobId: '10',
                               IsLike: true,
                               Tokan: login.option_data['data']['LoginToken'],
@@ -129,22 +127,21 @@ class Search extends StatelessWidget {
                         ),
                       );
                     },
-                    Icon: Searchings.Search.Search_data['data'][index]['ComLogo'],
-                    Color_container: showjob[index]["Container_color"],
-                    Job_Tital: Searchings.Search.Search_data['data'][index]['JobTitle'],
-                    Language: Searchings.Search.Search_data['data'][index]['TechName'],
-                    Commpany: Searchings.Search.Search_data['data'][index]['ComName'],
-                    Working: Searchings.Search.Search_data['data'][index]["WorkWeek"],
-                    Location: Searchings.Search.Search_data['data'][index]["Location"],
+                    Icon: Searchings.Search.Search_data.value['data'][index]['ComLogo'],
+                    Job_Tital: Searchings.Search.Search_data.value['data'][index]['JobTitle'],
+                    Language: Searchings.Search.Search_data.value['data'][index]['TechName'],
+                    Commpany: Searchings.Search.Search_data.value['data'][index]['ComName'],
+                    Working: Searchings.Search.Search_data.value['data'][index]["WorkWeek"],
+                    Location: Searchings.Search.Search_data.value['data'][index]["Location"],
                     Job_time: Searchings.Search.Search_data['data'][index]['JobType'],
-                    Exp: Searchings.Search.Search_data['data'][index]["Experience"],
-                    lake: Searchings.Search.Search_data['data'][index]["Salary"],
-                    Hybrid: Searchings.Search.Search_data['data'][index]["WorkSet"],
-                    stats: Searchings.Search.Search_data['data'][index]["FormatDt"],
+                    Exp: Searchings.Search.Search_data.value['data'][index]["Experience"],
+                    lake: Searchings.Search.Search_data.value['data'][index]["Salary"],
+                    Hybrid: Searchings.Search.Search_data.value['data'][index]["WorkSet"],
+                    stats: Searchings.Search.Search_data.value['data'][index]["FormatDt"],
                     saveonTap: () {
-                      Searchings.isSave(index);
+                      // Searchings.isSave(index);
                     },
-                    savechild: (Searchings.isSeved[index])
+                    savechild: (isfavication.isFavration.value.status == true)
                         ? SvgPicture.asset(AppIcons.bookmark)
                         : SvgPicture.asset(AppIcons.save),
                     top: BorderSide(

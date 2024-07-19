@@ -43,6 +43,10 @@ class AppUrl {
   static const Notification =
       "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";
 
+  //Pop
+  static const describe_your_job = '$Base_location/user/technologyList';
+  static const candidateTech = '$Base_location/user/candidateTech';
+
   //Employer
   //Collcetion
   static const Employer_Signup = "$Hirexpert/api/v1/user/employerSignup";

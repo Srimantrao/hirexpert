@@ -11,7 +11,7 @@ import '../../../../../view/utils/API_Key.dart';
 
 class JobtypeApiController extends GetxController {
   var isloding = false.obs;
-  var jobtype_data;
+  var jobtype_data = {}.obs;
 
   Future JobtypeApiController_Fuction() async {
     try {
@@ -20,7 +20,7 @@ class JobtypeApiController extends GetxController {
         Clientip.clientip: Clientip.ip,
       });
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        jobtype_data = jsonDecode(responce.body);
+        jobtype_data.value = jsonDecode(responce.body);
         if (kDebugMode) {
           print("jobtype_data :- $jobtype_data");
         }

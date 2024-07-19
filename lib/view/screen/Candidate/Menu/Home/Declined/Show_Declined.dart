@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, prefer_const_constructors_in_immutables, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors_in_immutables, non_constant_identifier_names, prefer_const_constructors, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -50,8 +50,7 @@ class Show_Declined extends StatelessWidget {
                 ),
               ),
             );
-          } else if (Declined_offer.Decline.data['data'] == null ||
-              Declined_offer.Decline.data == null) {
+          } else if (Declined_offer.Decline.data.value['data'] == null) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -89,28 +88,28 @@ class Show_Declined extends StatelessWidget {
                       onTap: () {
                         Get.to(
                           () => Details_Declined(
-                            Icon: Declined_offer.Decline.data['data'][index]
+                            Icon: Declined_offer.Decline.data.value['data'][index]
                                 ["ComLogo"],
-                            Color_container: showjob[index]["Container_color"],
-                            Job_Tital: Declined_offer.Decline.data['data']
+
+                            Job_Tital: Declined_offer.Decline.data.value['data']
                                 [index]["JobTitle"],
-                            Language: Declined_offer.Decline.data['data'][index]
+                            Language: Declined_offer.Decline.data.value['data'][index]
                                 ["TechName"],
-                            Commpany: Declined_offer.Decline.data['data'][index]
+                            Commpany: Declined_offer.Decline.data.value['data'][index]
                                 ["ComName"],
-                            Working: Declined_offer.Decline.data['data'][index]
+                            Working: Declined_offer.Decline.data.value['data'][index]
                                 ["Working"],
-                            Location: Declined_offer.Decline.data['data'][index]
+                            Location: Declined_offer.Decline.data.value['data'][index]
                                 ["Location"],
-                            Job_time: Declined_offer.Decline.data['data'][index]
+                            Job_time: Declined_offer.Decline.data.value['data'][index]
                                 ["JobType"],
-                            Exp: Declined_offer.Decline.data['data'][index]
+                            Exp: Declined_offer.Decline.data.value['data'][index]
                                 ["Experience"],
-                            lake: Declined_offer.Decline.data['data'][index]
+                            lake: Declined_offer.Decline.data.value['data'][index]
                                 ["Salary"],
-                            Hybrid: Declined_offer.Decline.data['data'][index]
+                            Hybrid: Declined_offer.Decline.data.value['data'][index]
                                 ["WorkSet"],
-                            stats: Declined_offer.Decline.data['data'][index]
+                            stats: Declined_offer.Decline.data.value['data'][index]
                                 ["stats"],
                           ),
                         );
@@ -144,13 +143,12 @@ class Show_Declined extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
                                           size.width / 30),
-                                      color: showjob[index]["Container_color"],
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(15),
                                       child: SvgPicture.asset(Declined_offer
                                           .Decline
-                                          .data['data'][index]["ComLogo"]),
+                                          .data.value['data'][index]["ComLogo"]),
                                     ),
                                   ),
                                 ),
@@ -164,7 +162,7 @@ class Show_Declined extends StatelessWidget {
                                           children: [
                                             Text(
                                               Declined_offer
-                                                      .Decline.data['data']
+                                                      .Decline.data.value['data']
                                                   [index]["JobTitle"],
                                               style: TextStyle(
                                                 color: AppColor.subcolor,
@@ -175,7 +173,7 @@ class Show_Declined extends StatelessWidget {
                                       ],
                                     ),
                                     Text(
-                                      Declined_offer.Decline.data['data'][index]
+                                      Declined_offer.Decline.data.value['data'][index]
                                           ["TechName"],
                                       style: TextStyle(
                                         fontSize: size.width / 23,
@@ -183,7 +181,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                     ),
                                     Text(
-                                      Declined_offer.Decline.data['data'][index]
+                                      Declined_offer.Decline.data.value['data'][index]
                                           ["ComName"],
                                       style: TextStyle(
                                         fontSize: size.width / 26,
@@ -213,7 +211,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Declined_offer.Decline.data['data']
+                                          Declined_offer.Decline.data.value['data']
                                               [index]["Working"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -234,7 +232,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Declined_offer.Decline.data['data']
+                                          Declined_offer.Decline.data.value['data']
                                               [index]["Location"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -254,7 +252,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Declined_offer.Decline.data['data']
+                                          Declined_offer.Decline.data.value['data']
                                               [index]["JobType"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -279,7 +277,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Declined_offer.Decline.data['data']
+                                          Declined_offer.Decline.data.value['data']
                                               [index]["Experience"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -300,7 +298,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Declined_offer.Decline.data['data']
+                                          Declined_offer.Decline.data.value['data']
                                               [index]["Salary"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -321,7 +319,7 @@ class Show_Declined extends StatelessWidget {
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Declined_offer.Decline.data['data']
+                                          Declined_offer.Decline.data.value['data']
                                               [index]["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -340,7 +338,7 @@ class Show_Declined extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  Declined_offer.Decline.data['data'][index]
+                                  Declined_offer.Decline.data.value['data'][index]
                                       ["stats"],
                                   style: TextStyle(
                                     color: AppColor.subcolor,

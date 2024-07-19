@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class SearchApiController extends GetxController {
   var isLoding = false.obs;
-  var Search_data;
+  var Search_data= {}.obs;
 
   Future SearchApiController_fuction({
     required String Timezone,
@@ -49,7 +49,7 @@ class SearchApiController extends GetxController {
       }
 
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Search_data = jsonDecode(Response.body);
+        Search_data.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("Search Job :-  $Search_data");
         }

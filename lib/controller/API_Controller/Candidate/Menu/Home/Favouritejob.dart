@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class Favouritejob extends GetxController {
   var isloding = false.obs;
-  var data;
+  var data= {}.obs;
 
   Future Favouritejob_fuction({
     required String CandidateId,
@@ -31,7 +31,7 @@ class Favouritejob extends GetxController {
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        data = jsonDecode(responce.body);
+        data.value = jsonDecode(responce.body);
         print("data :- $data");
       } else {
         throw {

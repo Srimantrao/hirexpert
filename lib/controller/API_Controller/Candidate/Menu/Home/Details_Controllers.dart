@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class DetailsControllers extends GetxController {
   var isLoding = false.obs;
-  var Details_data;
+  var Details_data= {}.obs;
 
   Future DetailsControllers_fuction(
       {required String JobID,
@@ -31,7 +31,7 @@ class DetailsControllers extends GetxController {
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        Details_data = jsonDecode(responce.body);
+        Details_data.value = jsonDecode(responce.body);
         print("Details data : - $Details_data");
       } else {
         throw {

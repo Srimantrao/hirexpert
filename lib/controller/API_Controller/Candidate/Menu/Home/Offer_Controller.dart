@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class OfferController extends GetxController {
   var isLoding = false.obs;
-  var data;
+  var data= {}.obs;
 
   Future OfferController_fuction({
     required String CompanyId,
@@ -32,7 +32,7 @@ class OfferController extends GetxController {
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        data = jsonDecode(responce.body);
+        data.value = jsonDecode(responce.body);
         print('Offer data :- $data');
       } else {
         throw {

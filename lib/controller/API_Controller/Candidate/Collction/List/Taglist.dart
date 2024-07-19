@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class Taglist extends GetxController {
   var isLoding = false.obs;
-  var Taglist_data;
+  var Taglist_data = {}.obs;
 
   Future Taglist_Fuction() async {
     try {
@@ -21,7 +21,7 @@ class Taglist extends GetxController {
         },
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Taglist_data = jsonDecode(Response.body);
+        Taglist_data.value = jsonDecode(Response.body);
         print("Taglist_data:- $Taglist_data");
       } else {
         throw {

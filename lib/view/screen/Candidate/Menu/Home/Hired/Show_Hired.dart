@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors, non_constant_identifier_names, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -52,8 +52,7 @@ class Show_Hired extends StatelessWidget {
                 ),
               ),
             );
-          } else if (Hireding.hired.data['data'] == null ||
-              Hireding.hired.data == null) {
+          } else if (Hireding.hired.data.value['data'] == null) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -92,7 +91,6 @@ class Show_Hired extends StatelessWidget {
                         Get.to(
                           () => Details_Hired(
                             Icon: Hireding.hired.data['data'][index]["ComLogo"],
-                            Color_container: showjob[index]["Container_color"],
                             Job_Tital: Hireding.hired.data['data'][index]
                                 ["JobTitle"],
                             Language: Hireding.hired.data['data'][index]
@@ -143,7 +141,6 @@ class Show_Hired extends StatelessWidget {
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(
                                           size.width / 30),
-                                      color: showjob[index]["Container_color"],
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(15),

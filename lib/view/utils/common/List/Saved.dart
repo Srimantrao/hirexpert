@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, must_be_immutable
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -23,7 +23,7 @@ class Seved_List extends StatelessWidget {
         return Center(
           child: Image.asset(AppLoder.infinityloder_without_background),
         );
-      } else if (Saving_Apis.favourlist.data == null) {
+      } else if (Saving_Apis.favourlist.data.value['data'] == null) {
         return const Center(
           child: Text(API_Error.null_data),
         );
@@ -56,20 +56,10 @@ class Seved_List extends StatelessWidget {
                         padding: EdgeInsets.symmetric(
                           vertical: size.width / 40,
                         ),
-                        child: Container(
-                          width: size.width / 5.5,
-                          height: size.height / 12,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 30,
-                            ),
-                            color: showjob[index]["Container_color"],
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(15),
-                            child: Image.network(
-                              Saving_Apis.favourlist.data[index]['ComLogo'],
-                            ),
+                        child: Padding(
+                          padding: EdgeInsets.all(15),
+                          child: Image.network(
+                            Saving_Apis.favourlist.data.value[index]['ComLogo'],
                           ),
                         ),
                       ),
@@ -82,7 +72,7 @@ class Seved_List extends StatelessWidget {
                               Row(
                                 children: [
                                   Text(
-                                    Saving_Apis.favourlist.data[index]['JobTitle'],
+                                    Saving_Apis.favourlist.data.value[index]['JobTitle'],
                                     style: TextStyle(
                                       color: AppColor.subcolor,
                                     ),
@@ -94,7 +84,7 @@ class Seved_List extends StatelessWidget {
                           SizedBox(
                             width: Get.width / 2,
                             child: Text(
-                              Saving_Apis.favourlist.data[index]['TechName'],
+                              Saving_Apis.favourlist.data.value[index]['TechName'],
                               style: TextStyle(
                                 fontSize: size.width / 26,
                                 fontWeight: FontWeight.w600,
@@ -102,7 +92,7 @@ class Seved_List extends StatelessWidget {
                             ),
                           ),
                           Text(
-                            Saving_Apis.favourlist.data[index]['ComName'],
+                            Saving_Apis.favourlist.data.value[index]['ComName'],
                             style: TextStyle(
                               fontSize: size.width / 26,
                               fontWeight: FontWeight.w400,
@@ -131,7 +121,7 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                Saving_Apis.favourlist.data[index]['JobType'],
+                                Saving_Apis.favourlist.data.value[index]['JobType'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -151,7 +141,7 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                Saving_Apis.favourlist.data[index]['Location'],
+                                Saving_Apis.favourlist.data.value[index]['Location'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -171,7 +161,7 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                Saving_Apis.favourlist.data[index]['JobType'],
+                                Saving_Apis.favourlist.data.value[index]['JobType'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -195,7 +185,7 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                Saving_Apis.favourlist.data[index]
+                                Saving_Apis.favourlist.data.value[index]
                                     ['Experience'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
@@ -216,7 +206,7 @@ class Seved_List extends StatelessWidget {
                             ),
                             child: Center(
                               child: Text(
-                                Saving_Apis.favourlist.data[index]['Salary'],
+                                Saving_Apis.favourlist.data.value[index]['Salary'],
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -239,7 +229,7 @@ class Seved_List extends StatelessWidget {
                                   horizontal: Get.width / 30),
                               child: Center(
                                 child: Text(
-                                  Saving_Apis.favourlist.data[index]['WorkSet'],
+                                  Saving_Apis.favourlist.data.value[index]['WorkSet'],
                                   style: TextStyle(
                                     fontWeight: FontWeight.w600,
                                     fontSize: size.width / 33,
@@ -258,7 +248,7 @@ class Seved_List extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        Saving_Apis.favourlist.data[index]['FormatDt'],
+                        Saving_Apis.favourlist.data.value[index]['FormatDt'],
                         style: TextStyle(
                           color: AppColor.subcolor,
                         ),

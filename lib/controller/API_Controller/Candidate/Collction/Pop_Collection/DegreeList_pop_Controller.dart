@@ -10,7 +10,7 @@ import 'package:http/http.dart' as http;
 
 class DegreelistPopController extends GetxController {
   var isLoding = false.obs;
-  var Degree_data;
+  var Degree_data = {}.obs;
 
   Future DegreelistPopController_Fuction() async {
     try {
@@ -21,7 +21,7 @@ class DegreelistPopController extends GetxController {
         headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip},
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Degree_data = jsonDecode(Response.body);
+        Degree_data.value = jsonDecode(Response.body);
         if (kDebugMode) {
           print("Degree_data :-  $Degree_data");
         }

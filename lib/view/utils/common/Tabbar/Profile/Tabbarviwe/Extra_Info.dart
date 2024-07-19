@@ -152,8 +152,8 @@ class Extra_info extends StatelessWidget {
       floatingActionButton: InkWell(
         onTap: () {
           Get.to(() => Candidate_Specialization(
-            first_name: vail.frist_name.text,
-            last_name: vail.last_name.text,
+            first_name: vail.frist_name_controller.text,
+            last_name: vail.last_name_controller.text,
           ));
         },
         child: Container(

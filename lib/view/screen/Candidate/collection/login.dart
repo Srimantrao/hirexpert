@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types, avoid_print, prefer_const_constructors
+// ignore_for_file: non_constant_identifier_names, camel_case_types, avoid_print, prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,12 +14,11 @@ import '../../../../controller/User_Controller/Candidate_Controller/LoginControo
 import '../../../utils/app_icon.dart';
 import '../../../utils/app_loder.dart';
 import '../../../utils/common/Buttons/wideButtons.dart';
+import '../../../utils/logic/validation_error.dart';
 import 'Signup.dart';
 import 'forget_password.dart';
 
 class Candidate_Login extends StatelessWidget {
-  final OptionApiController login = Get.put(OptionApiController());
-
   Candidate_Login({super.key});
 
   @override
@@ -68,63 +67,54 @@ class Candidate_Login extends StatelessWidget {
                       ),
                       SizedBox(height: Get.height / 20),
                       Inputfild(
-                        // onChanged: (txt) {
-                        //   vail.Emailvali(txt);
-                        // },
+                        onChanged: (Email) {
+                          vail.Email_validation(Email);
+                        },
                         labal: Login_text.lebelemail,
                         hint: Login_text.hintemail,
-                        controller: vail.EmailController,
+                        controller: vail.email_controller,
                       ),
-                      // (vail.isError_Email)
-                      //     ? Text(
-                      //         vail.isError_Email ? vail.throwErrorEmail : "",
-                      //         style: TextStyle(
-                      //           fontSize: Get.width / 25,
-                      //           color: AppColor.Error_color,
-                      //         ),
-                      //       )
-                      //     : const SizedBox(),
+                      valiadtion_error(
+                        condiation: vail.Email_value,
+                        Error: vail.throwEmailnameError,
+                      ),
                       SizedBox(height: Get.height / 20),
                       Consumer<Candidate_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
-                            // onChanged: (textp) {
-                            //   vail.passwordvali(textp);
-                            // },
+                            onChanged: (password) {
+                              vail.Password_validation(password);
+                            },
                             obscureText: vis.isobscr,
                             labal: Login_text.lebelpassword,
                             hint: Login_text.hintpassword,
-                            // controller: vail.PasswordController,
                             controller: Password_main.Pass,
                             suffixIcon: InkWell(
                               onTap: () {
                                 vis.visibilityVis();
                               },
                               child: (vis.isVis)
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                                  ? Icon(Icons.visibility_off)
+                                  : Icon(Icons.visibility),
                             ),
                           );
                         },
                       ),
-                      // (vail.isError_Password)
-                      //     ? Text(
-                      //         vail.isError_Password
-                      //             ? vail.throwErrorPassword
-                      //             : "",
-                      //         style: TextStyle(
-                      //           fontSize: Get.width / 25,
-                      //           color: AppColor.Error_color,
-                      //         ),
-                      //       )
-                      //     : const SizedBox(),
+                      valiadtion_error(
+                        condiation: vail.password_value,
+                        Error: vail.throwPasswordError,
+                      ),
                       SizedBox(height: Get.height / 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.to(() => const Candidate_F_Password());
+                              Get.to(
+                                () => Candidate_F_Password(),
+                                transition: Transition.downToUp,
+                                duration: Duration(milliseconds: 500),
+                              );
                             },
                             child: Text(
                               Login_text.Forget_Password,
@@ -137,39 +127,12 @@ class Candidate_Login extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: Get.height / 20),
-                      Obx(
-                        () => (login.isLodingvalue.value)
-                            ? Center(
-                                child: Image.asset(
-                                    AppLoder.infinityloder_without_background),
-                              )
-                            : OnButtons(
-                                onTap: () {
-                                  // vail.isEmtey();
-                                  // vail.loginvalidation();
-                                  login.OptionApiController_fuction(
-                                    UserType: 'Candidate',
-                                    Email: vail.EmailController.text,
-                                    Password: Password_main.Pass.text,
-                                  ).then(
-                                    (value) {
-                                      if (login.option_data['status'] == true) {
-                                        Get.to(() => Candidate_Bottam());
-                                      } else {
-                                        Get.showSnackbar(
-                                          GetBar(
-                                            duration: Duration(seconds: 2),
-                                            message:
-                                                login.option_data['message'],
-                                          ),
-                                        );
-                                      }
-                                    },
-                                  );
-                                },
-                                Button_Color: AppColor.Button_color,
-                                btn_name: Login_text.btn_name,
-                              ),
+                      OnButtons(
+                        onTap: () {
+                          vail.Loginvalidation();
+                        },
+                        Button_Color: AppColor.Button_color,
+                        btn_name: Login_text.login,
                       ),
                       SizedBox(height: Get.height / 40),
                       Row(
@@ -185,7 +148,11 @@ class Candidate_Login extends StatelessWidget {
                           SizedBox(width: Get.width / 60),
                           GestureDetector(
                             onTap: () {
-                              Get.to(() => candidate_Signup());
+                              Get.to(
+                                () => candidate_Signup(),
+                                duration: Duration(milliseconds: 500),
+                                transition: Transition.rightToLeft,
+                              );
                             },
                             child: Text(
                               Login_text.Sinup,

@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -50,8 +50,7 @@ class Show_Interviwe extends StatelessWidget {
                 return Center(
                   child: Image.asset(AppLoder.infinityloder_without_background),
                 );
-              } else if (Interview.JobInter.JobInterviwe_data['data'] == null ||
-                  Interview.JobInter.JobInterviwe_data == null) {
+              } else if (Interview.JobInter.JobInterviwe_data.value['data'] == null) {
                 return const Center(
                   child: Text(API_Error.null_data),
                 );
@@ -66,29 +65,17 @@ class Show_Interviwe extends StatelessWidget {
                       onTap: () {
                         Get.to(
                           () => Details_Interviwe(
-                            Icon: Interview.JobInter.JobInterviwe_data['data']
-                                [index]['ComLogo'],
-                            Color_container: showjob[index]["Container_color"],
-                            Job_Tital: Interview.JobInter
-                                .JobInterviwe_data['data'][index]['JobTitle'],
-                            Language: Interview.JobInter
-                                .JobInterviwe_data['data'][index]['TechName'],
-                            Commpany: Interview.JobInter
-                                .JobInterviwe_data['data'][index]['ComName'],
-                            Working: Interview.JobInter
-                                .JobInterviwe_data['data'][index]["WorkWeek"],
-                            Location: Interview.JobInter
-                                .JobInterviwe_data['data'][index]["Location"],
-                            Job_time: Interview.JobInter
-                                .JobInterviwe_data['data'][index]['JobType'],
-                            Exp: Interview.JobInter.JobInterviwe_data['data']
-                                [index]["Experience"],
-                            lake: Interview.JobInter.JobInterviwe_data['data']
-                                [index]["Salary"],
-                            Hybrid: Interview.JobInter.JobInterviwe_data['data']
-                                [index]["WorkSet"],
-                            stats: Interview.JobInter.JobInterviwe_data['data']
-                                [index]["FormatDt"],
+                            Icon: Interview.JobInter.JobInterviwe_data.value['data'][index]['ComLogo'],
+                            Job_Tital: Interview.JobInter.JobInterviwe_data.value['data'][index]['JobTitle'],
+                            Language: Interview.JobInter.JobInterviwe_data.value['data'][index]['TechName'],
+                            Commpany: Interview.JobInter.JobInterviwe_data.value['data'][index]['ComName'],
+                            Working: Interview.JobInter.JobInterviwe_data.value['data'][index]["WorkWeek"],
+                            Location: Interview.JobInter.JobInterviwe_data.value['data'][index]["Location"],
+                            Job_time: Interview.JobInter.JobInterviwe_data.value['data'][index]['JobType'],
+                            Exp: Interview.JobInter.JobInterviwe_data.value['data'][index]["Experience"],
+                            lake: Interview.JobInter.JobInterviwe_data.value['data'][index]["Salary"],
+                            Hybrid: Interview.JobInter.JobInterviwe_data.value['data'][index]["WorkSet"],
+                            stats: Interview.JobInter.JobInterviwe_data.value['data'][index]["FormatDt"],
                           ),
                         );
                       },
@@ -122,13 +109,12 @@ class Show_Interviwe extends StatelessWidget {
                                       borderRadius: BorderRadius.circular(
                                         size.width / 30,
                                       ),
-                                      color: showjob[index]["Container_color"],
                                     ),
                                     child: Padding(
                                       padding: const EdgeInsets.all(15),
                                       child: Image.network(
                                         Interview.JobInter
-                                                .JobInterviwe_data['data']
+                                                .JobInterviwe_data.value['data']
                                             [index]['ComLogo'],
                                       ),
                                     ),
@@ -144,7 +130,7 @@ class Show_Interviwe extends StatelessWidget {
                                           children: [
                                             Text(
                                               Interview.JobInter
-                                                      .JobInterviwe_data['data']
+                                                      .JobInterviwe_data.value['data']
                                                   [index]['TechName'],
                                               style: TextStyle(
                                                 color: AppColor.subcolor,
@@ -158,7 +144,7 @@ class Show_Interviwe extends StatelessWidget {
                                       width: Get.width / 2,
                                       child: Text(
                                         Interview.JobInter
-                                                .JobInterviwe_data['data']
+                                                .JobInterviwe_data.value['data']
                                             [index]['JobTitle'],
                                         style: TextStyle(
                                           fontSize: size.width / 23,
@@ -168,7 +154,7 @@ class Show_Interviwe extends StatelessWidget {
                                     ),
                                     Text(
                                       Interview.JobInter
-                                              .JobInterviwe_data['data'][index]
+                                              .JobInterviwe_data.value['data'][index]
                                           ['ComName'],
                                       style: TextStyle(
                                         fontSize: size.width / 26,
@@ -199,7 +185,7 @@ class Show_Interviwe extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           Interview.JobInter
-                                                  .JobInterviwe_data['data']
+                                                  .JobInterviwe_data.value['data']
                                               [index]["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -221,7 +207,7 @@ class Show_Interviwe extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           Interview.JobInter
-                                                  .JobInterviwe_data['data']
+                                                  .JobInterviwe_data.value['data']
                                               [index]["Location"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -243,7 +229,7 @@ class Show_Interviwe extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           Interview.JobInter
-                                                  .JobInterviwe_data['data']
+                                                  .JobInterviwe_data.value['data']
                                               [index]['JobType'],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -269,7 +255,7 @@ class Show_Interviwe extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           Interview.JobInter
-                                                  .JobInterviwe_data['data']
+                                                  .JobInterviwe_data.value['data']
                                               [index]["Experience"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -291,7 +277,7 @@ class Show_Interviwe extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           Interview.JobInter
-                                                  .JobInterviwe_data['data']
+                                                  .JobInterviwe_data.value['data']
                                               [index]["Salary"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -313,7 +299,7 @@ class Show_Interviwe extends StatelessWidget {
                                       child: Center(
                                         child: Text(
                                           Interview.JobInter
-                                                  .JobInterviwe_data['data']
+                                                  .JobInterviwe_data.value['data']
                                               [index]["WorkSet"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
@@ -332,7 +318,7 @@ class Show_Interviwe extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  Interview.JobInter.JobInterviwe_data['data']
+                                  Interview.JobInter.JobInterviwe_data.value['data']
                                       [index]["FormatDt"],
                                   style: TextStyle(
                                     color: AppColor.subcolor,

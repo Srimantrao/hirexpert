@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "435726694932",
+    "project_id": "hirexpert-29455",
+    "storage_bucket": "hirexpert-29455.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435726694932:android:cdf2eba093c19c1a410501",
+        "android_client_info": {
+          "package_name": "com.example.hirexpert"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDI5jy4sFeC62I98et4Y03goBr0JOFtNEM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

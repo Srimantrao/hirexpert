@@ -9,7 +9,7 @@ import 'package:http/http.dart' as http;
 
 class IsapplingApiController extends GetxController {
   var isLoding = false.obs;
-  var isApplingdata;
+  var isApplingdata= {}.obs;
   var appling = 0.obs;
 
   Future IsApplingAPIController_fuction({
@@ -37,7 +37,7 @@ class IsapplingApiController extends GetxController {
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
-        isApplingdata = jsonDecode(responce.body);
+        isApplingdata.value = jsonDecode(responce.body);
         print('isApplingdata :- $isApplingdata');
       } else {
         throw ('isAppling Data is Error :-  ${responce.statusCode} , ${responce.body}');

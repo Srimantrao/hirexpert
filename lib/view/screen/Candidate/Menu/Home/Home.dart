@@ -1,7 +1,8 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, invalid_use_of_protected_member
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/JobCountabale_hedal.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Home/saving/saved.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
@@ -56,6 +57,10 @@ class Home extends StatelessWidget {
               return Center(
                 child: Image.asset(AppLoder.infinityloder_without_background),
               );
+            } else if (jobincount.jobcount.data.value['data'] == null) {
+              return Center(
+                child: Text('Plese wait'),
+              );
             } else {
               return Padding(
                 padding: EdgeInsets.symmetric(
@@ -74,7 +79,8 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['savedJobCnt'].toString(),
+                            jobincount.jobcount.data.value['data']['savedJobCnt']
+                                .toString(),
                           ),
                         ),
                       ),
@@ -91,7 +97,8 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['appliedJobCnt'].toString(),
+                            jobincount.jobcount.data.value['data']['appliedJobCnt']
+                                .toString(),
                           ),
                         ),
                       ),
@@ -108,7 +115,8 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['interviewJobCnt'].toString(),
+                            jobincount.jobcount.data.value['data']['interviewJobCnt']
+                                .toString(),
                           ),
                         ),
                       ),
@@ -125,7 +133,8 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['offersJobCnt'].toString(),
+                            jobincount.jobcount.data.value['data']['offersJobCnt']
+                                .toString(),
                           ),
                         ),
                       ),
@@ -142,7 +151,8 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['hiredJobCnt'].toString(),
+                            jobincount.jobcount.data.value['data']['hiredJobCnt']
+                                .toString(),
                           ),
                         ),
                       ),
@@ -159,7 +169,8 @@ class Home extends StatelessWidget {
                         child: CircleAvatar(
                           minRadius: 12,
                           child: Text(
-                            jobincount.jobcount.data['data']['declinedJobCnt'].toString(),
+                            jobincount.jobcount.data.value['data']['declinedJobCnt']
+                                .toString(),
                           ),
                         ),
                       ),
