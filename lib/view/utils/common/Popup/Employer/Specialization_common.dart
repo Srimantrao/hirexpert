@@ -20,7 +20,7 @@ class Employer_Function_area extends StatelessWidget {
       context,
       listen: false,
     );
-    return Consumer<Candidate_SpecializationController_popup>(
+    return Consumer<Employer_SpecializationController_popup>(
       builder: (BuildContext context, value, Widget? child) {
         return InkWell(
           onTap: () {
