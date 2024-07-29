@@ -38,6 +38,7 @@ import 'controller/User_Controller/Candidate_Controller/Change_PasswordControlle
 import 'controller/User_Controller/Candidate_Controller/CheckMarkController/Notification_Controller.dart';
 import 'controller/User_Controller/Candidate_Controller/ChoseFileController/ChosefileController.dart';
 import 'controller/User_Controller/Candidate_Controller/CollectionController/Collectiondepartment.dart';
+import 'controller/User_Controller/Candidate_Controller/CollectionController/Secondary_Collection.dart';
 import 'controller/User_Controller/Candidate_Controller/DropdownController/EducationController.dart';
 import 'controller/User_Controller/Candidate_Controller/DropdownController/FresherController.dart';
 import 'controller/User_Controller/Candidate_Controller/DropdownController/PreferenceController.dart';
@@ -117,18 +118,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ChangePasswordController()),
         ChangeNotifierProvider(create: (_) => OtpController()),
         ChangeNotifierProvider(create: (_) => Specializationcontroller()),
-        ChangeNotifierProvider(
-            create: (_) => Employer_SpecializationController_popup()),
-        ChangeNotifierProvider(
-            create: (_) => Employer_SpecializationController_popup()),
-        ChangeNotifierProvider(
-            create: (_) => Employer_SpecializationController_Interest()),
-        ChangeNotifierProvider(
-            create: (_) => Employer_SpecializationController_Interest()),
-        ChangeNotifierProvider(
-            create: (_) => Employer_SpecializationController_Skillset()),
-        ChangeNotifierProvider(
-            create: (_) => Employer_SpecializationController_Collection()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_popup()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_popup()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Interest()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Interest()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Skillset()),
+        ChangeNotifierProvider(create: (_) => Employer_SpecializationController_Collection()),
         ChangeNotifierProvider(create: (_) => SettingScreenController()),
         ChangeNotifierProvider(create: (_) => DetailsAppild()),
         ChangeNotifierProvider(create: (_) => DetailsDeclined()),
@@ -152,7 +147,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: Logo(),
+        home: Candidate_Specialization(),
       ),
     );
   }

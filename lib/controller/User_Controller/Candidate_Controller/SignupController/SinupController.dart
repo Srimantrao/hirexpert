@@ -41,27 +41,16 @@ class Candidate_SinupController with ChangeNotifier {
   String _throwConfirmPasswordError = "";
 
   get Frist_name_value => _Frist_name_value;
-
   get Last_name_value => _Last_name_value;
-
   get Email_value => _Email_value;
-
   get phone_value => _phone_value;
-
   get password_value => _password_value;
-
   get confirm_password => _confirm_password;
-
   get throwFristnameError => _throwFirstnameError;
-
   get throwLastnameError => _throwLastnameError;
-
   get throwEmailnameError => _throwEmailnameError;
-
   get throwPhoneNumberError => _throwPhoneNumberError;
-
   get throwPasswordError => _throwPasswordError;
-
   get throwConfirmPasswordError => _throwConfirmPasswordError;
 
   //Onchange
@@ -103,8 +92,7 @@ class Candidate_SinupController with ChangeNotifier {
     } else if (email_controller.text.length < 6) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email_less;
-    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-        .hasMatch(email_controller.text)) {
+    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.V_Email;
     } else {
@@ -150,8 +138,7 @@ class Candidate_SinupController with ChangeNotifier {
     } else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.digit;
-    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]')
-        .hasMatch(password_controller.text)) {
+    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.special;
     } else {
@@ -194,8 +181,7 @@ class Candidate_SinupController with ChangeNotifier {
     } else if (email_controller.text.length < 6) {
       _Email_value = true;
       _throwPhoneNumberError = Validation_Error.Email_less;
-    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-        .hasMatch(email_controller.text)) {
+    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.V_Email;
     } else {
@@ -207,8 +193,7 @@ class Candidate_SinupController with ChangeNotifier {
     if (phone_controller.text.isEmpty) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.Phone;
-    } else if (phone_controller.text.length > 9 &&
-        phone_controller.text.length < 10) {
+    } else if (phone_controller.text.length > 9 && phone_controller.text.length < 10) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.phone_ditit;
     } else if (!RegExp(r'^\+?[1-9]\d{1,14}$').hasMatch(phone_controller.text)) {

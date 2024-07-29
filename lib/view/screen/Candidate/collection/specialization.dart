@@ -1,23 +1,19 @@
 // ignore_for_file: non_constant_identifier_names, camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors, invalid_use_of_protected_member, sort_child_properties_last
 
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Poppup/candidateTech.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Poppup/describeyourjob.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/collection/specialization.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/Education.dart';
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
-import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/AnimationControllers/AnimationControllers.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/DropdownController/SpecializationController.dart';
 import '../../../utils/common/showpop/showdialog.dart';
+import '../../../utils/logic/next_thow.dart';
+import 'collection.dart';
 
 class Candidate_Specialization extends StatelessWidget {
   final Specializations Specialization = Get.put(Specializations());
@@ -77,25 +73,22 @@ class Candidate_Specialization extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         if (Specializations.jobdescirbe && Specializations.specialzation) {
-                          Get.to(() => Education());
+                          Get.to(() => Collection(
+                            first_name: first_name,
+                            last_name: last_name,
+                          ));
                         }
                       },
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
-                            Navigator_text.Next,
-                            style: TextStyle(
-                              fontWeight: (Specializations.jobdescirbe && Specializations.specialzation) ? FontWeight.w700 : FontWeight.w300,
-                              color: (Specializations.jobdescirbe && Specializations.specialzation) ? AppColor.Button_color : AppColor.Botton_color_hide,
-                              fontSize: Get.width / 22,
-                            ),
+                          NextThow(
+                            text: Navigator_text.Next,
+                            fontweight: Specializations.jobdescirbe && Specializations.specialzation,
+                            fontcolor: Specializations.jobdescirbe && Specializations.specialzation,
                           ),
                           SizedBox(width: Get.width / 80),
-                          SvgPicture.asset(
-                            AppIcons.Go,
-                            color: (Specializations.jobdescirbe && Specializations.specialzation) ? AppColor.Button_color : AppColor.Botton_color_hide,
-                          ),
+                          NextArrow(arrowcolor: Specializations.jobdescirbe && Specializations.specialzation)
                         ],
                       ),
                     ),
@@ -105,7 +98,7 @@ class Candidate_Specialization extends StatelessWidget {
               body: Container(
                 height: Get.height,
                 width: Get.width,
-                decoration: const BoxDecoration(color: Colors.white),
+                decoration: BoxDecoration(color: AppColor.Full_body_color),
                 child: SafeArea(
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
@@ -116,24 +109,16 @@ class Candidate_Specialization extends StatelessWidget {
                         SizedBox(height: Get.height / 50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(AppImage.profile, scale: 5),
-                          ],
+                          children: [Image.asset(AppImage.profile, scale: 5)],
                         ),
                         Consumer<Candidate_SinupController>(
                           builder: (BuildContext context, value, Widget? child) {
                             return Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(
-                                  first_name ?? '',
-                                  style: TextStyle(fontSize: Get.width / 25),
-                                ),
+                                Text(first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                                 SizedBox(width: Get.width / 80),
-                                Text(
-                                  last_name ?? '',
-                                  style: TextStyle(fontSize: Get.width / 25),
-                                ),
+                                Text(last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                               ],
                             );
                           },
@@ -157,7 +142,7 @@ class Candidate_Specialization extends StatelessWidget {
                                           //Which of these most closely describe your Job ?
                                           Text(
                                             Specialization.job.Describeyourjob_data['message'],
-                                            style: TextStyle(fontSize: Get.width / 26),
+                                            style: TextStyle(fontSize: Get.width / 26,color: AppColor.subcolor),
                                           ),
                                           GestureDetector(
                                             onTap: () {
@@ -216,7 +201,7 @@ class Candidate_Specialization extends StatelessWidget {
                                                   children: [
                                                     Text(
                                                       Specialization.candidate.Candidatetech_data['data']['Question'],
-                                                      style: TextStyle(fontSize: Get.width / 26),
+                                                      style: TextStyle(fontSize: Get.width / 26,color: AppColor.subcolor),
                                                     ),
                                                     GestureDetector(
                                                       onTap: () {
@@ -227,18 +212,19 @@ class Candidate_Specialization extends StatelessWidget {
                                                               child: ListView.builder(
                                                                 itemCount: Specialization.candidate.Candidatetech_data['data'].length,
                                                                 itemBuilder: (BuildContextcontext, int index) {
-                                                                  final Jobtype = Specialization.candidate.Candidatetech_data['data']['OptionList'][index];
+                                                                  final
+                                                                  Jobtypes = Specialization.candidate.Candidatetech_data['data']['OptionList'][index];
                                                                   return Column(
                                                                     crossAxisAlignment: CrossAxisAlignment.start,
                                                                     children: [
                                                                       GestureDetector(
-                                                                        child: Text(Jobtype['QueAnswer'],
+                                                                        child: Text(Jobtypes['QueAnswer'],
                                                                           style: TextStyle(fontSize: Get.width / 28),
                                                                         ),
                                                                         onTap: () {
                                                                           Specializations.SpecializationController_Skillset(
-                                                                            text: Jobtype['QueAnswer'],
-                                                                            id: Jobtype['QuestionId'],
+                                                                            text: Jobtypes['QueAnswer'],
+                                                                            id: Jobtypes['QuestionId'],
                                                                           );
                                                                         },
                                                                       ),
@@ -256,7 +242,7 @@ class Candidate_Specialization extends StatelessWidget {
                                                       child: Pop_Container(
                                                         text: Specialization_text.interest,
                                                         condition: Specializations.specialzation,
-                                                        text2: Specializations.jobdescirbe_String,
+                                                        text2: Specializations.specialzation_String,
                                                       ),
                                                     ),
                                                   ],

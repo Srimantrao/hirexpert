@@ -14,11 +14,9 @@ class AppUrl {
   static const technologyList = "$Base_location/user/technologyList";
 
   //Show All Data
-  static const Search_Job =
-      "$Base_location/Advertisedjob/JobFilterList?TechId=3";
+  static const Search_Job = "$Base_location/Advertisedjob/JobFilterList?TechId=3";
   static const SearchJob = "$Base_location/Advertisedjob/SearchJob";
-  static const JobInterviewList =
-      "$Base_location/Advertisedjob/JobInterviewList";
+  static const JobInterviewList = "$Base_location/Advertisedjob/JobInterviewList";
 
   //Collcetion
   static const login = "$Base_location/user/login";
@@ -40,8 +38,8 @@ class AppUrl {
   static const details = "$Base_location/Advertisedjob/JobDetails";
 
   //Notification
-  static const Notification =
-      "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";
+  static const Notification = "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";
+  static const taglist = "$Base_location/user/tagList";
 
   //Pop
   static const describe_your_job = '$Base_location/user/technologyList';

@@ -100,14 +100,14 @@ class Pop_Container extends StatelessWidget {
               ? Text(
                   text2 ?? '',
                   style: TextStyle(
-                    color: AppColor.subcolor,
+                    color: AppColor.black_all,
                     fontSize: Get.width / 27,
                   ),
                 )
               : Text(
                   text,
                   style: TextStyle(
-                    color: AppColor.subcolor,
+                    color: AppColor.black_all,
                     fontSize: Get.width / 27,
                   ),
                 ),

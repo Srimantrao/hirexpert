@@ -18,10 +18,8 @@ class Validation_Error {
 
   //Password
   static const characters = 'Password must be at least 8 characters long';
-  static const uppercase =
-      'Password must contain at least one uppercase letter';
-  static const lowercase =
-      'Password must contain at least one lowercase letter';
+  static const uppercase = 'Password must contain at least one uppercase letter';
+  static const lowercase = 'Password must contain at least one lowercase letter';
   static const digit = 'Password must contain at least one digit';
   static const special = 'Password must contain at least one special character';
 
@@ -82,8 +80,7 @@ class Error_String {
   static const pass = "Input Password !";
   static const cnfpass = "Input ConfirmPasswprd !";
   static const vaild_phone = "Please Input Valid Phone Number !";
-  static const varify_phone =
-      "Not Your Phone Numbres Please Check and Virify !";
+  static const varify_phone = "Not Your Phone Numbres Please Check and Virify !";
 }
 
 //Option Screen
@@ -91,10 +88,8 @@ class Option_text {
   static const hed = "We're excited to have you on board with Hirexpertert!";
   static const Employer = "Login For Employer";
   static const Candidate = "Login For Candidate";
-  static const ThenkYOU =
-      "Thanks for choosing Hirexpert for your career goals.Contact our support team if you need assistance.";
-  static const subhed =
-      "Create an account or log in to connect with the right job opportunity or candidate on our seamlessportal, whether you're a job seeker or an employer!";
+  static const ThenkYOU = "Thanks for choosing Hirexpert for your career goals.Contact our support team if you need assistance.";
+  static const subhed = "Create an account or log in to connect with the right job opportunity or candidate on our seamlessportal, whether you're a job seeker or an employer!";
 }
 
 //Login Screen
@@ -118,10 +113,8 @@ class Forget_Password_text {
   static const Submit = "Submit";
   static const Success = "Success!";
   static const OK = "OK";
-  static const Sub_Suessess =
-      "We have sent a mail to your registeredemail id. You can reset your password byclicking on the link mentioned in theemail.";
-  static const sub =
-      "Expenses as material breeding insisted buildingto in. Continual so distrusts pronounce by unwillinglistening. Thing do taste on we manor.";
+  static const Sub_Suessess = "We have sent a mail to your registeredemail id. You can reset your password byclicking on the link mentioned in theemail.";
+  static const sub = "Expenses as material breeding insisted buildingto in. Continual so distrusts pronounce by unwillinglistening. Thing do taste on we manor.";
 }
 
 //Sinup Screen
@@ -182,39 +175,25 @@ class Search_text {
 class Details_texts {
   static const Apply_Now = "Apply Now";
   static const Job_Description = "Job Description";
-  static const Description =
-      "We are looking for React Native developer interested in building performant mobile apps on both the iOS &Android platform. You will responsible for architectingand building these applications, as well coordinatingwith teams responsible for other layers of the productinfrastructure. Building a product is highly collaborativeeffort, and as such, a strong team player commitmentto perfection is required.";
+  static const Description = "We are looking for React Native developer interested in building performant mobile apps on both the iOS &Android platform. You will responsible for architectingand building these applications, as well coordinatingwith teams responsible for other layers of the productinfrastructure. Building a product is highly collaborativeeffort, and as such, a strong team player commitmentto perfection is required.";
   static const Requirements = "Requirements";
-  static const req1 =
-      "Build pixel-perfect, buttery smooth UIs across both mobile platforms.";
-  static const req2 =
-      "Leverage native APIs for deep integrations with both platforms.";
-  static const req3 =
-      "Diagnose and fix bugs and performance bottlenecks for performance that feels native.";
-  static const req4 =
-      "Reach out the open source community to encourageand help implement mission-critical software fixes -React Native moves fast and often breaks things";
+  static const req1 = "Build pixel-perfect, buttery smooth UIs across both mobile platforms.";
+  static const req2 = "Leverage native APIs for deep integrations with both platforms.";
+  static const req3 = "Diagnose and fix bugs and performance bottlenecks for performance that feels native.";
+  static const req4 = "Reach out the open source community to encourageand help implement mission-critical software fixes -React Native moves fast and often breaks things";
   static const req5 = "Maintain code and wirte automated tests to ensure";
-  static const req6 =
-      "Maintain code and wirte automated tests to ensure the product is of the highest quality";
+  static const req6 = "Maintain code and wirte automated tests to ensure the product is of the highest quality";
   static const req7 = "Transition existing React web apps to React Native.";
   static const req8 = "Add any other relevant responsibilities here";
   static const Skills = "Skills";
-  static const Skills1 =
-      "Firm grasp of the JavaScript and TypeScript orClojureScript language and its nuances, including ES6+ syntax";
-  static const Skills2 =
-      "Knowledge of functional or object-oriented programming";
-  static const Skills3 =
-      "Ability to write well-documented, clean Javascript code";
-  static const Skills4 =
-      "Rock solid at working with third-party dependencies and debugging dependency conflicts";
-  static const Skills5 =
-      "Familiarity with native build tools, like XCode, Gradle Android Studio, IntelliJ";
-  static const Skills7 =
-      "Understanding of REST APIs, the document request model, and offline storage";
-  static const Skills8 =
-      "Experience with automated testing suites, like Jest or Mocha";
-  static const Skills9 =
-      "Make sure to mention other frameworks, libraries, or other technologies relevant to your project";
+  static const Skills1 = "Firm grasp of the JavaScript and TypeScript orClojureScript language and its nuances, including ES6+ syntax";
+  static const Skills2 = "Knowledge of functional or object-oriented programming";
+  static const Skills3 = "Ability to write well-documented, clean Javascript code";
+  static const Skills4 = "Rock solid at working with third-party dependencies and debugging dependency conflicts";
+  static const Skills5 = "Familiarity with native build tools, like XCode, Gradle Android Studio, IntelliJ";
+  static const Skills7 = "Understanding of REST APIs, the document request model, and offline storage";
+  static const Skills8 = "Experience with automated testing suites, like Jest or Mocha";
+  static const Skills9 = "Make sure to mention other frameworks, libraries, or other technologies relevant to your project";
   static const Benefits_Offered = "Benefits Offered:";
   static const BCA = "BCA";
   static const Supplement_Pay = "Supplement Pay:";
@@ -229,10 +208,8 @@ class Details_texts {
   static const Field_Sales = "Field Sales";
   static const Sales = "Sales";
   static const Second_Interview = "Second Interview";
-  static const Second_link =
-      "https://weingenious.in/gohire/member/job/ApplyCandidate/Mw";
-  static const interviwe_time =
-      "Face to face interview on 31st Jan 2024 03:35 PM IST +05:30";
+  static const Second_link = "https://weingenious.in/gohire/member/job/ApplyCandidate/Mw";
+  static const interviwe_time = "Face to face interview on 31st Jan 2024 03:35 PM IST +05:30";
   static const Message = "Message";
   static const Decline = "Decline";
   static const Cancle = "Cancle";
@@ -299,8 +276,7 @@ class Profile_Text {
   //Upload your CV
   static const Upload = "Upload your resume/cv with autofill option.";
   static const Resume_Link = "Resume Link :";
-  static const resume =
-      "Upload your resume or drag and drop it hereOnly .doc, .docx, .pdf, .odt, .rtf";
+  static const resume = "Upload your resume or drag and drop it hereOnly .doc, .docx, .pdf, .odt, .rtf";
 
   //Parsnoal Information
   static const Job_Title = "Job itle";
@@ -367,11 +343,9 @@ class Profile_Text {
   static const Current_CTC_per_annum = "Current CTC (per annum)";
   static const Enter_the_Current_CTC = "Enter The Current CTC";
   static const Preffered_Working_Location = "Preffered Working Location)";
-  static const Enter_Preffered_Working_location =
-      "Enter Preffered Working location";
+  static const Enter_Preffered_Working_location = "Enter Preffered Working location";
   static const Preffered_Work_Setup = "Preffered Work Setup";
-  static const Enter_the_Preffered_Work_Setup =
-      "Enter the Preffered Work Setup";
+  static const Enter_the_Preffered_Work_Setup = "Enter the Preffered Work Setup";
   static const Job_Type_Preferrence = "Job Type Preferrence";
   static const Enter_the_Preferrence = "Enter the Preferrence";
   static const Notice_Period_days_Optional = "Notice Period (days)(Optional)";
@@ -393,8 +367,7 @@ class Profile_Text {
 
   //When as a Empty Document
   static const Add_New = "+ Add New";
-  static const Candidate_certificate_list_not_found =
-      "Candidate certificate list not found";
+  static const Candidate_certificate_list_not_found = "Candidate certificate list not found";
 }
 
 //Edit Profile
@@ -413,8 +386,7 @@ class EditProfile_text {
   static const CV = "Upload Your CV";
   static const Resume_Link = "Resume Link";
   static const your = "Upload your resume/cv in seconds with autofill option.";
-  static const Upload =
-      "Upload your resume or drag and drop it here Only .doc, .docx, .pdf, .odt, .rtf";
+  static const Upload = "Upload your resume or drag and drop it here Only .doc, .docx, .pdf, .odt, .rtf";
   static const Job_Title = "Job Title :";
   static const Enter_Job_Title = "Enter The Job Tital";
   static const Enter_Email = "Enter Your Email";
@@ -581,8 +553,7 @@ class Location_Area {
 //Choose
 class Choose_text {
   static const tell = "Tell your employer more about you.";
-  static const resume_CV =
-      "Add Your Resume / CV with and Option to skip for now";
+  static const resume_CV = "Add Your Resume / CV with and Option to skip for now";
   static const Drop = "Drop file here, ";
   static const or = "or ";
   static const it = "choose it from disk ";
@@ -669,23 +640,18 @@ class My_Archive_text {
 class Notification_text {
   static const Hedding = "Notification Setting";
   static const titel = "Notification";
-  static const subheding =
-      "Airopply can notify you when you have a job match what's your preference?";
+  static const subheding = "Airopply can notify you when you have a job match what's your preference?";
   static const Update_me_once_per_week = "Update me once per week";
   static const Update_me_every_2_weeks = "Update me every 2 weeks";
   static const Update_me_once_a_month = "Update me once a month";
-  static const Id_prefer_no_job_match_notifications =
-      "I'd prefer no job match notifications";
-  static const Update_me_immediately_when_new_job_available =
-      "Update me immediately when new job available";
-  static const suhdding_2 =
-      "Employers can message you directly, should wenotify you when they do?";
+  static const Id_prefer_no_job_match_notifications = "I'd prefer no job match notifications";
+  static const Update_me_immediately_when_new_job_available = "Update me immediately when new job available";
+  static const suhdding_2 = "Employers can message you directly, should wenotify you when they do?";
   static const Yes = "Yes";
   static const no = "No";
   static const Save = "Save";
   static const Reset = "Reset";
-  static const suhdding_3 =
-      "Would you like to be notified on new resources available through airopply?";
+  static const suhdding_3 = "Would you like to be notified on new resources available through airopply?";
 }
 
 class Message_text {

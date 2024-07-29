@@ -9,13 +9,13 @@ class SearchLoction extends GetxController {
   OptionApiController Login = Get.put(OptionApiController());
   SearchApiController Search = Get.put(SearchApiController());
 
-  RxList<bool> isSeved = List.generate(showjob.length, (index) => false).obs;
-
-  void isSave(int index) {
-    isSeved.value[index] = true;
-    saveshowjob.add(Search.Search_data['data'][index]);
-    update(isSeved);
-  }
+  // RxList<bool> isSeved = List.generate(showjob.length, (index) => false).obs;
+  //
+  // void isSave(int index) {
+  //   isSeved.value[index] = true;
+  //   saveshowjob.add(Search.Search_data['data'][index]);
+  //   update(isSeved);
+  // }
 
   void onInit() {
     Future.microtask(() async {
