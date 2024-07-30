@@ -55,6 +55,7 @@ import 'controller/User_Controller/Employer_Controller/LoginControoler/visibilit
 import 'controller/User_Controller/Employer_Controller/SignupController/SinupController.dart';
 import 'controller/User_Controller/Option_Controller/SelectButton.dart';
 import 'firebase_options.dart';
+import 'view/screen/Candidate/collection/Education.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -147,7 +148,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: Candidate_Specialization(),
+        home: Education(),
       ),
     );
   }

@@ -12,7 +12,7 @@ class DegreelistPopController extends GetxController {
   var isLoding = false.obs;
   var Degree_data = {}.obs;
 
-  Future DegreelistPopController_Fuction() async {
+  Future DegreelistPopController_Fuction({String? list}) async {
     try {
       isLoding.value = true;
 

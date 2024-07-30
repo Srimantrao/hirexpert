@@ -13,6 +13,7 @@ class Showdialog {
     required Widget colamWidget,
     required String hedingtext,
     required void Function() onTabs,
+    List<Widget>? actions,
   }) {
     showDialog(
       context: context,
@@ -45,7 +46,7 @@ class Showdialog {
                     ),
                   ),
                 ),
-                InkWell(
+                GestureDetector(
                   onTap: onTabs,
                   child: SvgPicture.asset(AppIcons.cancel),
                 ),
@@ -63,6 +64,13 @@ class Showdialog {
               child: colamWidget,
             ),
           ),
+          actions: [
+            if (actions != null)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: actions,
+              ),
+          ],
         );
       },
     );

@@ -32,7 +32,7 @@ class OnButtons_short extends StatelessWidget {
       onTap: onTap,
       child: Container(
         height: Get.height / 16,
-        width: width ?? Get.width / 2.5,
+        width: width ?? Get.width / 1.5,
         decoration: BoxDecoration(
           border: Border.all(
             color: Border_color,

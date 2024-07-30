@@ -82,11 +82,7 @@ class Candidate_Specialization extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          NextThow(
-                            text: Navigator_text.Next,
-                            fontweight: Specializations.jobdescirbe && Specializations.specialzation,
-                            fontcolor: Specializations.jobdescirbe && Specializations.specialzation,
-                          ),
+                          NextThow(text: Navigator_text.Next, fontweight: Specializations.jobdescirbe && Specializations.specialzation, fontcolor: Specializations.jobdescirbe && Specializations.specialzation),
                           SizedBox(width: Get.width / 80),
                           NextArrow(arrowcolor: Specializations.jobdescirbe && Specializations.specialzation)
                         ],

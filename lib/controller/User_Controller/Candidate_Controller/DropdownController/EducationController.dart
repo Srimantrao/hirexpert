@@ -5,9 +5,6 @@ import 'package:get/get.dart';
 
 import '../../../../view/utils/app_String.dart';
 
-
-
-
 class Education_Controller with ChangeNotifier {
   bool _Select_click = false;
   String _Select_String = "";

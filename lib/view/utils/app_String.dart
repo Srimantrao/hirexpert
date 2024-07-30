@@ -480,6 +480,7 @@ class Specialization_text {
   static const Education = "What is your highest level of Education?";
   static const Education_Level = "Select Education Level";
   static const graduation = "What is your graduation passing year?";
+  static const Praduation = "Passing year?";
   static const Job_Title = "Job Title";
   static const BCA = "BCA";
   static const BBA = "BBA";

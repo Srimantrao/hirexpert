@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, must_be_immutable
+// ignore_for_file: file_names, non_constant_identifier_names, must_be_immutable, prefer_const_constructors, prefer_const_constructors_in_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +8,12 @@ import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Concern/
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/EducationController/EducationController.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/common/Buttons/ShortButton.dart';
+import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:hirexpert/view/utils/common/showpop/showdialog.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
+import '../../../../controller/API_handler/Candidate/collection/Eduction.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/DropdownController/EducationController.dart';
 import '../../../../modal/Dropdowns/drops.dart';
 import '../../../utils/aap_image.dart';
@@ -16,10 +21,24 @@ import '../../../utils/app_String.dart';
 import '../../../utils/common/Popup/Candidate/Education_common.dart';
 import 'Fresher.dart';
 
-class Education extends StatelessWidget {
-  Education({super.key});
+class Education extends StatefulWidget {
+  final String? first_name;
+  final String? last_name;
 
+  Education({super.key, this.first_name, this.last_name});
+
+  @override
+  State<Education> createState() => _EducationState();
+}
+
+class _EducationState extends State<Education> {
   ConcernApiController Con = Get.put(ConcernApiController());
+
+  final Eduction_hedal Eduction = Get.put(Eduction_hedal());
+
+  bool select_Eduction = false;
+  String Select_Eduction = '';
+  int _currentIntValue = 2000;
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +46,71 @@ class Education extends StatelessWidget {
     final JobTitle = Provider.of<JobTitle_Controller>(context, listen: false);
     final Educations = Provider.of<Educationcontroller>(context, listen: false);
     return Scaffold(
+      bottomNavigationBar: Container(
+        height: Get.height / 20,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: AppColor.Full_body_color,
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () {
+                  Get.back();
+                },
+                child: Row(
+                  children: [
+                    SvgPicture.asset(AppIcons.Backarrow),
+                    SizedBox(width: Get.width / 80),
+                    Text(Navigator_text.Back, style: TextStyle(fontSize: Get.width / 23, fontWeight: FontWeight.w600, color: AppColor.Button_color),
+                    ),
+                  ],
+                ),
+              ),
+              Consumer<JobTitle_Controller>(
+                builder: (BuildContext context, value, Widget? child) {
+                  return InkWell(
+                    onTap: () {
+                      Con.ConcernApi_fuction(
+                        JobId: '1',
+                        Comment: JobTitle.JobTitalController.text,
+                      );
+                      if (JobTitle.SelectIndex) {
+                        Get.to(() => const Fresher());
+                      }
+                      JobTitle.EmptyError();
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          Navigator_text.Next,
+                          style: TextStyle(
+                            fontSize: Get.width / 23,
+                            fontWeight: FontWeight.w600,
+                            color: (JobTitle.SelectIndex)
+                                ? AppColor.Button_color
+                                : AppColor.Botton_color_hide,
+                          ),
+                        ),
+                        SizedBox(width: Get.width / 80),
+                        SvgPicture.asset(
+                          AppIcons.Go,
+                          color: (JobTitle.SelectIndex)
+                              ? AppColor.Button_color
+                              : AppColor.Botton_color_hide,
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              )
+            ],
+          ),
+        ),
+      ),
       body: Consumer<Educationcontroller>(
         builder: (BuildContext context, value, Widget? child) {
           return Container(
@@ -37,39 +121,71 @@ class Education extends StatelessWidget {
             ),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: Get.width / 50,
+                horizontal: Get.width / 20,
               ),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: Get.height / 20),
+                    SizedBox(height: Get.height / 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(AppImage.profile, scale: 5),
-                      ],
+                      children: [Image.asset(AppImage.profile, scale: 5)],
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                        Text(widget.first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
+                        SizedBox(width: Get.width / 80),
+                        Text(widget.last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                       ],
                     ),
                     SizedBox(height: Get.height / 20),
 
                     //Education
-                    Text(
-                      Specialization_text.Education,
-                      style: TextStyle(
-                        fontSize: Get.width / 25,
-                        color: AppColor.subcolor,
+                    Text(Specialization_text.Education, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
+                    GestureDetector(
+                      onTap: () {
+                        Showdialog.showdialod(
+                            context: context,
+                            colamWidget: SizedBox(
+                              height: Get.width / 1,
+                              child: ListView.builder(
+                                itemCount: Eduction.Dedree.Degree_data['data'].length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      GestureDetector(
+                                        onTap: () {
+                                          select_Eduction = true;
+                                          Select_Eduction = Eduction.Dedree.Degree_data['data'][index]['Name'];
+                                          Get.back();
+                                          setState(() {});
+                                        },
+                                        child: Text(
+                                          Eduction.Dedree.Degree_data['data'][index]['Name'],
+                                          style: TextStyle(fontSize: Get.width / 28),
+                                        ),
+                                      ),
+                                      SizedBox(height: Get.height / 50),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                            hedingtext: Specialization_text.Education_Level,
+                            onTabs: () {
+                              Get.back();
+                            });
+                      },
+                      child: Pop_Container(
+                        text: Specialization_text.Education_Level,
+                        condition: select_Eduction,
+                        text2: Select_Eduction,
                       ),
                     ),
-                    Education_Comm(),
                     SizedBox(height: Get.height / 50),
 
                     //Passsing Year
@@ -80,125 +196,56 @@ class Education extends StatelessWidget {
                         color: AppColor.subcolor,
                       ),
                     ),
-                    InkWell(
+                    GestureDetector(
                       onTap: () {
-                        Educations.Passing_Year_Fuction();
-                        showDialog(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return AlertDialog(
-                              elevation: 0,
-                              backgroundColor: AppColor.Full_body_color,
-                              title: Container(
-                                height: Get.height / 20,
-                                width: Get.width,
-                                decoration: BoxDecoration(
-                                  border: Border(
-                                    bottom: BorderSide(
-                                      color: AppColor.select_check_color,
-                                    ),
-                                  ),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const SizedBox(),
-                                    SizedBox(
-                                      width: Get.width / 2,
-                                      child: Text(
-                                        Specialization_text.Education,
-                                        style: TextStyle(
-                                          fontSize: Get.width / 26,
-                                        ),
-                                      ),
-                                    ),
-                                    SvgPicture.asset(AppIcons.cancel),
-                                  ],
-                                ),
-                              ),
-                              content: Container(
-                                height: Get.height / 5,
-                                width: Get.width,
-                                decoration: BoxDecoration(
-                                  color: AppColor.Full_body_color,
-                                ),
-                                child: SizedBox(
-                                  child: CupertinoPicker(
-                                    selectionOverlay: Container(
-                                      height: Get.height / 20,
-                                      width: Get.width,
+                        Showdialog.showdialod(
+                            height: Get.height / 4,
+                            context: context,
+                            colamWidget: StatefulBuilder(
+                              builder: (BuildContext context, void Function(void Function()) setState) {
+                                return Padding(
+                                  padding: EdgeInsets.symmetric(horizontal:
+                                  Get.width/10),
+                                  child: NumberPicker(
+                                      haptics: true,
+                                      minValue: 2000,
+                                      maxValue: 2050,
+                                      itemHeight: Get.height / 13,
+                                      selectedTextStyle: TextStyle(
+                                          color: AppColor.black_all,
+                                          fontSize: Get.width / 22),
                                       decoration: BoxDecoration(
                                         border: Border(
                                           top: BorderSide(
-                                            color: AppColor.select_check_color,
+                                              color: AppColor.subcolor,
                                           ),
                                           bottom: BorderSide(
-                                            color: AppColor.select_check_color,
-                                          ),
+                                              color: AppColor.subcolor),
                                         ),
                                       ),
-                                    ),
-                                    itemExtent: 30,
-                                    onSelectedItemChanged: (index) {
-                                      Educations.Passing_Year_onPassing(index);
-                                    },
-                                    children: List.generate(
-                                      PickYers.length,
-                                      (index) => Text(
-                                        PickYers[index],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        );
+                                      value: _currentIntValue,
+                                      onChanged: (value) {
+                                        _currentIntValue = value;
+                                        setState(() {});
+                                      }),
+                                );
+                              },
+                            ),
+                            actions: [
+                              OnButtons_short(
+                                btn_name: Experience_text.Save,
+                                Border_color: AppColor.Button_color,
+                                btn_color: AppColor.Button_color,
+                                text_color: AppColor.Full_body_color,
+                              )
+                            ],
+                            hedingtext: Specialization_text.Praduation,
+                            onTabs: () {
+                              Get.back();
+                            });
                       },
-                      child: Container(
-                        width: Get.width,
-                        height: Get.height / 20,
-                        decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(
-                              color: AppColor.Bottam_color,
-                            ),
-                          ),
-                        ),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                (Educations.pick)
-                                    ? Text(
-                                        Educations.pickyers,
-                                        style: TextStyle(
-                                          fontSize: Get.width / 25,
-                                        ),
-                                      )
-                                    : Text(
-                                        Specialization_text.Education,
-                                        style: TextStyle(
-                                          fontSize: Get.width / 25,
-                                        ),
-                                      ),
-                                (Educations.shodrop)
-                                    ? SvgPicture.asset(
-                                        AppIcons.Right,
-                                        color: AppColor.Bottam_color,
-                                      )
-                                    : SvgPicture.asset(
-                                        AppIcons.down,
-                                        color: AppColor.Bottam_color,
-                                      ),
-                              ],
-                            ),
-                          ],
-                        ),
+                      child: Pop_Container(
+                        text: Specialization_text.Praduation,
                       ),
                     ),
                     SizedBox(height: Get.height / 50),
@@ -263,69 +310,7 @@ class Education extends StatelessWidget {
                             : const SizedBox();
                       },
                     ),
-                    SizedBox(height: size.height / 3),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(AppIcons.Backarrow),
-                              SizedBox(width: Get.width / 80),
-                              Text(
-                                Navigator_text.Back,
-                                style: TextStyle(
-                                  fontSize: Get.width / 23,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.Button_color,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Consumer<JobTitle_Controller>(
-                          builder:
-                              (BuildContext context, value, Widget? child) {
-                            return InkWell(
-                              onTap: () {
-                                Con.ConcernApi_fuction(
-                                  JobId: '1',
-                                  Comment: JobTitle.JobTitalController.text,
-                                );
-                                if (JobTitle.SelectIndex) {
-                                  Get.to(() => const Fresher());
-                                }
-                                JobTitle.EmptyError();
-                              },
-                              child: Row(
-                                children: [
-                                  Text(
-                                    Navigator_text.Next,
-                                    style: TextStyle(
-                                      fontSize: Get.width / 23,
-                                      fontWeight: FontWeight.w600,
-                                      color: (JobTitle.SelectIndex)
-                                          ? AppColor.Button_color
-                                          : AppColor.Botton_color_hide,
-                                    ),
-                                  ),
-                                  SizedBox(width: Get.width / 80),
-                                  SvgPicture.asset(
-                                    AppIcons.Go,
-                                    color: (JobTitle.SelectIndex)
-                                        ? AppColor.Button_color
-                                        : AppColor.Botton_color_hide,
-                                  ),
-                                ],
-                              ),
-                            );
-                          },
-                        )
-                      ],
-                    ),
+                    SizedBox(height: size.height / 3), SizedBox(),
                   ],
                 ),
               ),
