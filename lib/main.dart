@@ -21,7 +21,7 @@ import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Datail
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/Fresher.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/location.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
@@ -49,7 +49,6 @@ import 'controller/User_Controller/Employer_Controller/LoginControoler/visibilit
 import 'controller/User_Controller/Employer_Controller/SignupController/SinupController.dart';
 import 'controller/User_Controller/Option_Controller/SelectButton.dart';
 import 'firebase_options.dart';
-import 'view/screen/Candidate/collection/Education.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -141,7 +140,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: Fresher(),
+        home: Location(),
       ),
     );
   }

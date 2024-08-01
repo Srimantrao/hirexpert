@@ -70,7 +70,7 @@ class _FresherState extends State<Fresher> {
                               },
                               child: Row(
                                 children: [
-                                  NextThow(text: Navigator_text.Next, fontweight: E_Salary.Expected && E_Salary.designation.text.isNotEmpty && E_Salary.company_name.text.isNotEmpty && E_Salary.Experience && E_Salary.CTC, fontcolor: E_Salary.Expected && E_Salary.designation.text.isNotEmpty && E_Salary.company_name.text.isNotEmpty && E_Salary.Experience && E_Salary.CTC,),
+                                  NextThow(text: Navigator_text.Next, fontweight: E_Salary.Expected && E_Salary.designation.text.isNotEmpty && E_Salary.company_name.text.isNotEmpty && E_Salary.Experience && E_Salary.CTC, fontcolor: E_Salary.Expected && E_Salary.designation.text.isNotEmpty && E_Salary.company_name.text.isNotEmpty && E_Salary.Experience && E_Salary.CTC),
                                   SizedBox(width: Get.width / 80),
                                   NextArrow(arrowcolor: E_Salary.Expected || E_Salary.designation.text.isNotEmpty && E_Salary.company_name.text.isNotEmpty && E_Salary.Experience && E_Salary.CTC),
                                 ],
@@ -134,8 +134,7 @@ class _FresherState extends State<Fresher> {
                     height: Get.height / 25,
                     width: Get.width,
                     decoration: BoxDecoration(
-                      border: Border(
-                          bottom: BorderSide(color: AppColor.Bottam_color)),
+                      border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
