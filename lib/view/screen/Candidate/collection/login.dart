@@ -23,14 +23,8 @@ class Candidate_Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vis = Provider.of<Candidate_VisibilityController>(
-      context,
-      listen: false,
-    );
-    final vail = Provider.of<Candidate_LoginValidation>(
-      context,
-      listen: false,
-    );
+    final vis = Provider.of<Candidate_VisibilityController>(context, listen: false);
+    final vail = Provider.of<Candidate_LoginValidation>(context, listen: false);
     return Scaffold(
       body: Container(
         width: Get.width,
@@ -58,14 +52,9 @@ class Candidate_Login extends StatelessWidget {
                         child: Image.asset(AppIcons.logo, scale: 5),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(
-                        Login_text.login,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: Get.width / 18,
-                        ),
-                      ),
+                      Text(Login_text.login, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
+
                       Inputfild(
                         onChanged: (Email) {
                           vail.Email_validation(Email);
@@ -74,11 +63,9 @@ class Candidate_Login extends StatelessWidget {
                         hint: Login_text.hintemail,
                         controller: vail.email_controller,
                       ),
-                      valiadtion_error(
-                        condiation: vail.Email_value,
-                        Error: vail.throwEmailnameError,
-                      ),
+                      valiadtion_error(condiation: vail.Email_value, Error: vail.throwEmailnameError),
                       SizedBox(height: Get.height / 20),
+
                       Consumer<Candidate_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
@@ -100,10 +87,7 @@ class Candidate_Login extends StatelessWidget {
                           );
                         },
                       ),
-                      valiadtion_error(
-                        condiation: vail.password_value,
-                        Error: vail.throwPasswordError,
-                      ),
+                      valiadtion_error(condiation: vail.password_value, Error: vail.throwPasswordError),
                       SizedBox(height: Get.height / 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -116,13 +100,7 @@ class Candidate_Login extends StatelessWidget {
                                 duration: Duration(milliseconds: 500),
                               );
                             },
-                            child: Text(
-                              Login_text.Forget_Password,
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            child: Text(Login_text.Forget_Password,style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600)),
                           ),
                         ],
                       ),
@@ -135,56 +113,29 @@ class Candidate_Login extends StatelessWidget {
                         btn_name: Login_text.login,
                       ),
                       SizedBox(height: Get.height / 40),
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            Login_text.Dont,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              fontWeight: FontWeight.w400,
-                            ),
+                          Text(Login_text.Dont, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w400),
                           ),
                           SizedBox(width: Get.width / 60),
                           GestureDetector(
                             onTap: () {
-                              Get.to(
-                                () => candidate_Signup(),
-                                duration: Duration(milliseconds: 500),
-                                transition: Transition.rightToLeft,
-                              );
+                              Get.to(() => candidate_Signup(), duration: Duration(milliseconds: 500), transition: Transition.rightToLeft);
                             },
-                            child: Text(
-                              Login_text.Sinup,
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                fontWeight: FontWeight.w600,
-                                color: AppColor.Button_color,
-                              ),
+                            child: Text(Login_text.Sinup, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600, color: AppColor.Button_color),
                             ),
                           ),
                         ],
                       ),
                       SizedBox(height: Get.height / 8),
+
                       Row(
                         children: [
-                          Text(
-                            Login_text.acesss,
-                            style: TextStyle(
-                              fontSize: Get.width / 28,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                          Text(Login_text.acesss, style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400)),
                           SizedBox(width: Get.width / 100),
-                          Text(
-                            Login_text.Click_Here,
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontSize: Get.width / 28,
-                              fontWeight: FontWeight.w600,
-                              color: AppColor.Button_color,
-                            ),
-                          ),
+                          Text(Login_text.Click_Here, style: TextStyle(decoration: TextDecoration.underline, fontSize: Get.width / 28, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
                         ],
                       )
                     ],

@@ -62,6 +62,8 @@ dependencies:
   firebase_auth: ^5.1.2
   flutter_tagging_plus: ^4.0.2
   numberpicker: ^2.1.2
+  flutter_material_pickers: ^3.6.0
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:

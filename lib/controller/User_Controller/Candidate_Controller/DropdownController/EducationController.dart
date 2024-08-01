@@ -5,21 +5,6 @@ import 'package:get/get.dart';
 
 import '../../../../view/utils/app_String.dart';
 
-class Education_Controller with ChangeNotifier {
-  bool _Select_click = false;
-  String _Select_String = "";
-
-  get Select_click => _Select_click;
-  get Select_String => _Select_String;
-
-  void Select_Fuction(String Selecttxt){
-    _Select_click = true;
-    _Select_String = Selecttxt;
-    Get.back();
-    notifyListeners();
-  }
-}
-
 class JobTitle_Controller with ChangeNotifier {
   TextEditingController JobTitalController = TextEditingController();
   bool _SelectIndex = false;
@@ -59,6 +44,34 @@ class JobTitle_Controller with ChangeNotifier {
       _SelectIndex = false;
       _showError = "";
     }
+    notifyListeners();
+  }
+}
+
+class Education_Controller with ChangeNotifier {
+  bool _select_Eduction = false;
+  String _Select_Eduction = '';
+  int _currentIntValue = 2000;
+  bool _currentValue = false;
+  String _currentStringValue = '';
+
+  get select_Eduction => _select_Eduction;
+  get Select_Eduction => _Select_Eduction;
+  get currentIntValue => _currentIntValue;
+  get currentValue => _currentValue;
+  get currentStringValue => _currentStringValue;
+
+  void Education_level({required String text}) {
+    _select_Eduction = true;
+    _Select_Eduction = text;
+    Get.back();
+    notifyListeners();
+  }
+
+  void graduation_passing(value) {
+    _currentValue = true;
+    _currentIntValue = value;
+    _currentStringValue = _currentIntValue.toString();
     notifyListeners();
   }
 }

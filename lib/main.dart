@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print
+// ignore_for_file: avoid_print, prefer_const_constructors
 
 // Platform  Firebase App Id
 // web       1:435726694932:web:fe8e283cd3e26528410501
@@ -11,22 +11,17 @@ import 'dart:io';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hirexpert/controller/User_Controller/Candidate_Controller/AnimationControllers/AnimationControllers.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Declined.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Hired.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Interviwe.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Offer.dart';
-import 'package:hirexpert/controller/User_Controller/Candidate_Controller/EducationController/EducationController.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
-import 'package:hirexpert/view/screen/splash/logo.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/Fresher.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
@@ -38,7 +33,6 @@ import 'controller/User_Controller/Candidate_Controller/Change_PasswordControlle
 import 'controller/User_Controller/Candidate_Controller/CheckMarkController/Notification_Controller.dart';
 import 'controller/User_Controller/Candidate_Controller/ChoseFileController/ChosefileController.dart';
 import 'controller/User_Controller/Candidate_Controller/CollectionController/Collectiondepartment.dart';
-import 'controller/User_Controller/Candidate_Controller/CollectionController/Secondary_Collection.dart';
 import 'controller/User_Controller/Candidate_Controller/DropdownController/EducationController.dart';
 import 'controller/User_Controller/Candidate_Controller/DropdownController/FresherController.dart';
 import 'controller/User_Controller/Candidate_Controller/DropdownController/PreferenceController.dart';
@@ -102,7 +96,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
-        ChangeNotifierProvider(create: (_) => Education_Controller()),
         ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
         ChangeNotifierProvider(create: (_) => FreherController()),
         ChangeNotifierProvider(create: (_) => PreferenceController()),
@@ -132,7 +125,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DetailsInterviwe()),
         ChangeNotifierProvider(create: (_) => DetailsOffer()),
         ChangeNotifierProvider(create: (_) => DocumentInfoController()),
-        ChangeNotifierProvider(create: (_) => Educationcontroller()),
+        ChangeNotifierProvider(create: (_) => Education_Controller()),
       ],
       child: GetMaterialApp(
         theme: ThemeData(
@@ -148,7 +141,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         debugShowCheckedModeBanner: false,
-        home: Education(),
+        home: Fresher(),
       ),
     );
   }

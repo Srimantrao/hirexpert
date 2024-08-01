@@ -32,13 +32,11 @@ class Validation_Error {
 class API_Error {
   static const null_data = "Soory, Your Data Not Found";
 }
-
 class Navigator_text {
   static const Next = "Next";
   static const Back = "Back";
   static const Done = "Done";
 }
-
 class DropDownMenu_String {
   static const Gujarat = "Gujarat";
   static const Maharastrya = "Maharastrya";
@@ -64,6 +62,8 @@ class DropDownMenu_String {
 
 class Error_String {
   static const sorry = "So Sorry Sir/Mem App is under-consideration";
+  static const name = "Please Input Name";
+  static const vaild_name = "Please Input vaildname";
   static const both = "Please Select Only & Only One Button";
   static const Error_Email = "Input Email !";
   static const Error_Password = "Input Password !";
@@ -505,10 +505,11 @@ class Collection_text {
 
 //Experience
 class Experience_text {
-  static const IM = "I'm a fresher";
+  static const IM = "I'm not a fresher";
   static const ctc = "What is your current CTC (per annum)?";
   static const of_Experience = "Years Of Experience";
   static const E_Salary = "Expected Salary";
+  static const E_CTC = "Expected CTC";
   static const Year = "0 Year";
   static const Month = "0 Month";
   static const experience = "How many years of experience do you have?";
@@ -523,6 +524,10 @@ class Experience_text {
   static const Save = "Save";
   static const Lakh = "0 Lakh";
   static const Thousand = "0 Thousand";
+  static const Years = "Year";
+  static const Lacks = "Lack";
+  static const Thousands = "Thousand";
+  static const Months = "Month";
 }
 
 //Location

@@ -1,119 +1,231 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_print, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/Education.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/location.dart';
+import 'package:intl/intl.dart';
 
 import '../../../../modal/Dropdowns/drops.dart';
-
-
-
+import '../../../../view/utils/app_String.dart';
 
 class FreherController with ChangeNotifier {
-  String _Select_Month = "0 Month";
-  String _Select_Years = "0 Years";
-  bool _Selectdrop = true;
+  TextEditingController company_name = TextEditingController();
+  TextEditingController designation = TextEditingController();
 
-  bool _isnext = false;
-  bool _isnext1 = false;
-  bool _isnext2 = false;
+  DateTime _selectedDate = DateTime.now();
+  String _formattedDate = DateFormat('dd/MM/yyyy').format(DateTime.now());
+
+  DateTime _selectedDate2 = DateTime.now();
+  String _formattedDate2 = DateFormat('dd/MM/yyyy').format(DateTime.now());
+
+  DateTime get selectedDate => _selectedDate;
+  String get formattedDate => _formattedDate;
+
+  DateTime get selectedDate2 => _selectedDate2;
+  String get formattedDate2 => _formattedDate2;
+
+  bool _Experience = false;
+
+  String _Experience_Years_value = '';
+  String _Experience_Month_value = '';
+  int _selectedYear = 0;
+  int _selectMonth = 0;
+  bool _Expected = false;
+  bool _CTC = false;
+  String _Expected_Lack_value = '';
+  String _Expected_Lack_value2 = '';
+  String _Expected_Thousand_value = '';
+  String _Expected_Thousand_value2 = '';
+  int _selectLack = 0;
+  int _selectLack2 = 0;
+  int _selectThousand = 0;
+  int _selectThousand2 = 0;
+  bool _companynames = false;
+  String _companyname_value = '';
+  bool _designations = false;
+  String _Designtion_value = '';
   bool _Visible = false;
   bool _valuecheck = false;
 
-  String _Lakh = "0 Lakh";
-  String _CTC_Lakh = "0 Lakh";
-  String _Thousand = "0 Thousand";
-  String _CTC_Thousand = "0 Thousand";
-  bool _droping = false;
+  get Experience => _Experience;
+  get Experience_Years_value => _Experience_Years_value;
+  get Experience_Month_value => _Experience_Month_value;
+  get selectedYear => _selectedYear;
+  get selectMonth => _selectMonth;
+  get Expected => _Expected;
+  get CTC => _CTC;
+  get Expected_Lack_value => _Expected_Lack_value;
+  get Expected_Lack_value2 => _Expected_Lack_value2;
+  get Expected_Thousand_value => _Expected_Thousand_value;
+  get Expected_Thousand_value2 => _Expected_Thousand_value2;
+  get selectLack => _selectLack;
+  get selectLack2 => _selectLack2;
+  get selectThousand => _selectThousand;
+  get selectThousand2 => _selectThousand2;
+  get companynames => _companynames;
+  get companyname_value => _companyname_value;
+  get designations => _designations;
+  get Designtion_value => _Designtion_value;
+  get valuecheck => _valuecheck;
+  get Visible => _Visible;
 
-  bool get valuecheck => _valuecheck;
-
-  bool get Visible => _Visible;
-
-  bool get isnext => _isnext;
-  bool get isnext1 => _isnext1;
-  bool get isnext2 => _isnext2;
-
-  String get CTC_Lakh => _CTC_Lakh;
-  String get CTC_Thousand => _CTC_Thousand;
-
-  String get Lakh => _Lakh;
-
-  String get Thousand => _Thousand;
-
-  bool get droping => _droping;
-
-  String get Select_Month => _Select_Month;
-
-  String get Select_Years => _Select_Years;
-
-  bool get Selectdrop => _Selectdrop;
-
-  void Visible_fun() {
-    _Visible = !_Visible;
+  void next_button() {
+    if (company_name.text.isEmpty) {
+      _companynames = true;
+      _companyname_value = Error_String.name;
+    } else if (!RegExp(r'^[a-zA-Z]+$').hasMatch(company_name.text)) {
+      _companynames = true;
+      _companyname_value = Error_String.vaild_name;
+    } else {
+      _companynames = false;
+      _companyname_value = '';
+    }
+    if (designation.text.isEmpty) {
+      _designations = true;
+      _Designtion_value = Error_String.name;
+    } else if (!RegExp(r'^[a-zA-Z]+$').hasMatch(designation.text)) {
+      _designations = true;
+      _Designtion_value = Error_String.vaild_name;
+    } else {
+      _designations = false;
+      _Designtion_value = '';
+    }
+    next();
     notifyListeners();
   }
 
-  void valuecheck_fun(newvalue){
-    _valuecheck = newvalue!;
+  void next() {
+    if (!_companynames && !_designations  && Expected  &&  Experience && CTC) {
+      Get.to(() => Location());
+    }
     notifyListeners();
   }
 
-  void Selectnect_true() {
-    _isnext = true;
+  void next_viwe(){
+    if(Expected){
+      Get.to(()=> Location());
+    }
+  }
+
+  void updateDate(DateTime newDate) {
+    _selectedDate = newDate;
+    _formattedDate = DateFormat('dd/MM/yyyy').format(newDate);
     notifyListeners();
   }
 
-  void Selectnect1_true() {
-    _isnext1 = true;
+  void updateDate2(DateTime newDate) {
+    _selectedDate2 = newDate;
+    _formattedDate2 = DateFormat('dd/MM/yyyy').format(newDate);
     notifyListeners();
   }
 
-  void Selectnect2_true() {
-    _isnext2 = true;
+
+  void company_validation(value) {
+    if (value.isEmpty) {
+      _companynames = true;
+      _companyname_value = Error_String.name;
+    } else if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+      _companynames = true;
+      _companyname_value = Error_String.vaild_name;
+    } else {
+      _companynames = false;
+      _companyname_value = '';
+    }
     notifyListeners();
   }
 
-  void Selectdrop_true() {
-    _Selectdrop = false;
+  void Designation_validation(value) {
+    if (value.isEmpty) {
+      _designations = true;
+      _Designtion_value = Error_String.name;
+    } else if (!RegExp(r'^[a-zA-Z]+$').hasMatch(value)) {
+      _designations = true;
+      _Designtion_value = Error_String.vaild_name;
+    } else {
+      _designations = false;
+      _Designtion_value = '';
+    }
     notifyListeners();
   }
 
-  void Selectdroping_true() {
-    _droping = true;
+  void Experience_fuction(value) {
+    _Experience = true;
+    _selectedYear = value;
+    _Experience_Years_value = _selectedYear.toString();
     notifyListeners();
   }
 
-  void Selectdroping_false() {
-    _droping = false;
+  void Experience2_fuction(value) {
+    _Experience = true;
+    _selectMonth = value;
+    _Experience_Month_value = _selectMonth.toString();
     notifyListeners();
   }
 
-  void onSelectedItemChanged_Years(index) {
-    _Select_Years = Years[index];
+  void Expected_fuction(value) {
+    _Expected = true;
+    _selectLack = value;
+    _Expected_Lack_value = _selectLack.toString();
     notifyListeners();
   }
 
-  void onSelectedItemChanged_Month(index) {
-    _Select_Month = Years[index];
+  void Expected2_fuction(value) {
+    _Expected = true;
+    _selectThousand = value;
+    _Expected_Thousand_value = _selectThousand.toString();
     notifyListeners();
   }
 
-  void onSelectedItemChanged_Lakh(index) {
-    _Lakh = Lakh_list[index];
+  void CTC_fuction(value) {
+    _CTC = true;
+    _selectLack2 = value;
+    _Expected_Lack_value2 = _selectLack2.toString();
     notifyListeners();
   }
 
-  void onSelectedItemChanged_Lakh_CTC(index) {
-    _CTC_Lakh = Lakh_list[index];
+  void CTC2_fuction(value) {
+    _CTC = true;
+    _selectThousand2 = value;
+    _Expected_Thousand_value2 = _selectThousand2.toString();
     notifyListeners();
   }
 
-  void onSelectedItemChanged_Thousand(index) {
-    _Thousand = Thousand_list[index];
+  Future<void> showpicker(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2050),
+    );
+    if (picked != null && picked != _selectedDate) _selectedDate = picked;
+
+      final DateFormat formatter = DateFormat('dd/MM/yyyy');
+      final String _formatteddate = formatter.format(_selectedDate);
+      print(_formatteddate);
+
     notifyListeners();
   }
 
-  void onSelectedItemChanged_Thousand_CTC(index) {
-    _CTC_Thousand = Thousand_list[index];
+  Future<void> showpicker2(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: _selectedDate2,
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2050),
+    );
+    if (picked != null && picked != _selectedDate2) _selectedDate2 = picked;
+
+    final DateFormat formatter = DateFormat('dd/MM/yyyy');
+    final String _formatteddate2 = formatter.format(_selectedDate2);
+    print(_formatteddate2);
+
     notifyListeners();
   }
+
+  void Visible_fun() {_Visible = !_Visible;notifyListeners();}
+  void valuecheck_fun(newvalue) {_valuecheck = newvalue!;notifyListeners();}
+
 }

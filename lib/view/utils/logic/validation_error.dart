@@ -9,8 +9,7 @@ class valiadtion_error extends StatelessWidget {
   final bool condiation;
   final String Error;
 
-  const valiadtion_error(
-      {super.key, required this.condiation, required this.Error});
+  const valiadtion_error({super.key, required this.condiation, required this.Error});
 
   @override
   Widget build(BuildContext context) {

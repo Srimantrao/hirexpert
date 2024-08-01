@@ -222,6 +222,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_colorpicker:
+    dependency: transitive
+    description:
+      name: flutter_colorpicker
+      sha256: "969de5f6f9e2a570ac660fb7b501551451ea2a1ab9e2097e89475f60e07816ea"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.1.0"
   flutter_html:
     dependency: "direct main"
     description:
@@ -286,6 +294,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  flutter_material_pickers:
+    dependency: "direct main"
+    description:
+      name: flutter_material_pickers
+      sha256: "1100bfd9a296a6680578aba8c51a0db114fb8ef94708fe320fe6da92b1f8c0e1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.6.0"
   flutter_multi_select_items:
     dependency: "direct main"
     description:
@@ -400,6 +416,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.18.1"
   iregexp:
     dependency: transitive
     description:

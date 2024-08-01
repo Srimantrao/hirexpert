@@ -25,11 +25,8 @@ class Candidate_LoginValidation with ChangeNotifier {
   String _throwPasswordError = "";
 
   get Email_value => _Email_value;
-
   get password_value => _password_value;
-
   get throwEmailnameError => _throwEmailnameError;
-
   get throwPasswordError => _throwPasswordError;
 
   void Email_validation(value) {
@@ -39,8 +36,7 @@ class Candidate_LoginValidation with ChangeNotifier {
     } else if (email_controller.text.length < 6) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email_less;
-    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-        .hasMatch(email_controller.text)) {
+    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.V_Email;
     } else {
@@ -66,8 +62,7 @@ class Candidate_LoginValidation with ChangeNotifier {
     } else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.digit;
-    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]')
-        .hasMatch(password_controller.text)) {
+    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.special;
     } else {
@@ -84,8 +79,7 @@ class Candidate_LoginValidation with ChangeNotifier {
     } else if (email_controller.text.length < 6) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email_less;
-    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+')
-        .hasMatch(email_controller.text)) {
+    } else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.V_Email;
     } else {
@@ -108,8 +102,7 @@ class Candidate_LoginValidation with ChangeNotifier {
     } else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.digit;
-    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]')
-        .hasMatch(password_controller.text)) {
+    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.special;
     } else {
@@ -129,8 +122,7 @@ class Candidate_LoginValidation with ChangeNotifier {
           password: password_controller.text,
         );
 
-        if (email_controller.text == Email &&
-            password_controller.text == Password) {
+        if (email_controller.text == Email && password_controller.text == Password) {
           print("Suessfull");
           pref!.setBool('Login', true);
           islogin = pref!.getBool('Login')!;
@@ -143,11 +135,7 @@ class Candidate_LoginValidation with ChangeNotifier {
         ).then(
           (value) {
             if (login.option_data['status'] == true) {
-              Get.to(
-                () => Candidate_Bottam(),
-                duration: Duration(seconds: 1),
-                transition: Transition.circularReveal,
-              );
+              Get.to(() => Candidate_Bottam(), duration: Duration(seconds: 1), transition: Transition.circularReveal);
             } else {
               Get.showSnackbar(
                 GetBar(
