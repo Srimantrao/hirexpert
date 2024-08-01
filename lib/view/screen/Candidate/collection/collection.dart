@@ -45,10 +45,7 @@ class Collection extends StatelessWidget {
                   children: [
                     SvgPicture.asset(AppIcons.Backarrow),
                     SizedBox(width: Get.width / 80),
-                    NextThow(
-                        text: Navigator_text.Back,
-                        fontweight: true,
-                        fontcolor: true),
+                    NextThow(text: Navigator_text.Back, fontweight: true, fontcolor: true),
                   ],
                 ),
               ),

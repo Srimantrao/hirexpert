@@ -95,6 +95,7 @@
     <!-- Permissions options for the `Internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <application
+        android:enableOnBackInvokedCallback="true"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:label="hirexpert">

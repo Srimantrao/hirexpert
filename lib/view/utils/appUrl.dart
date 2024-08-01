@@ -44,6 +44,7 @@ class AppUrl {
   //Pop
   static const describe_your_job = '$Base_location/user/technologyList';
   static const candidateTech = '$Base_location/user/candidateTech';
+  static const CountryList = '$Base_location/user/CountryList';
 
   //Employer
   //Collcetion
