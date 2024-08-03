@@ -7,14 +7,7 @@ import '../../app_color.dart';
 import '../../app_icon.dart';
 
 class Showdialog {
-  static showdialod({
-    double? height,
-    context,
-    required Widget colamWidget,
-    required String hedingtext,
-    required void Function() onTabs,
-    List<Widget>? actions,
-  }) {
+  static showdialod({double? height, context, required Widget colamWidget, required String hedingtext, required void Function() onTabs, List<Widget>? actions}) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -82,12 +75,7 @@ class Pop_Container extends StatelessWidget {
   final String? text2;
   final bool? condition;
 
-  const Pop_Container({
-    super.key,
-    required this.text,
-    this.condition,
-    this.text2,
-  });
+  const Pop_Container({super.key, required this.text, this.condition, this.text2});
 
   @override
   Widget build(BuildContext context) {

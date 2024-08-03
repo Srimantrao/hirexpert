@@ -22,6 +22,7 @@ import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Co
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/location.dart';
+import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
@@ -98,7 +99,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
         ChangeNotifierProvider(create: (_) => FreherController()),
         ChangeNotifierProvider(create: (_) => PreferenceController()),
-        ChangeNotifierProvider(create: (_) => SetupController()),
         ChangeNotifierProvider(create: (_) => SearchJobController()),
         ChangeNotifierProvider(create: (_) => SearchButtonsController()),
         ChangeNotifierProvider(create: (_) => TabbarController()),
