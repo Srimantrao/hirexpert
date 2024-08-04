@@ -127,15 +127,9 @@ class MyApp extends StatelessWidget {
       ],
       child: GetMaterialApp(
         theme: ThemeData(
-          textTheme: GoogleFonts.interTextTheme(textTheme).copyWith(
-            bodyMedium: GoogleFonts.inter(
-              textStyle: textTheme.bodyMedium,
-            ),
-          ),
+          textTheme: GoogleFonts.interTextTheme(textTheme).copyWith(bodyMedium: GoogleFonts.inter(textStyle: textTheme.bodyMedium)),
           scrollbarTheme: ScrollbarThemeData(
-            thumbColor: MaterialStateProperty.all<Color>(
-              AppColor.Full_body_color,
-            ), // Change this to your desired color
+            thumbColor: MaterialStateProperty.all<Color>(AppColor.Full_body_color), // Change this to your desired color
           ),
         ),
         debugShowCheckedModeBanner: false,
