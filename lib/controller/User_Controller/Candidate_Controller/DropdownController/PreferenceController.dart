@@ -10,6 +10,18 @@ import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Coll
 import '../../../../view/screen/Candidate/Menu/Home/Home.dart';
 import '../../../../view/utils/app_String.dart';
 
+class PreferenceControllers extends GetxController{
+  var preferences = false.obs;
+  var working_location = false.obs;
+  var work_location = false.obs;
+  var work_setup = false.obs;
+
+  void preferences_fuction()=> preferences.value = true;
+  void working_location_fuction()=> working_location.value = true;
+  void work_location_fuction()=> work_location.value = true;
+  void work_setup_fuction()=> work_setup.value = true;
+}
+
 class PreferenceController with ChangeNotifier {
   final JobtypeApiController Jobtype = Get.put(JobtypeApiController());
   final CountrylistPopController country = Get.put(CountrylistPopController());
@@ -17,21 +29,6 @@ class PreferenceController with ChangeNotifier {
 
   ValueNotifier<bool> _isState = ValueNotifier<bool>(false);
   ValueNotifier<bool> _isState2 = ValueNotifier<bool>(false);
-
-  bool _preferences = false;
-  bool _working_location = false;
-  bool _work_location = false;
-  bool _work_setup = false;
-
-  get preferences => _preferences;
-  get working_location  => _working_location;
-  get work_location => _work_location;
-  get work_setup => _work_setup;
-
-  void preferences_fuction(){ _preference = true;notifyListeners(); }
-  void working_location_fuction(){ _working_location = true;notifyListeners(); }
-  void work_location_fuction(){ _work_location = true;notifyListeners(); }
-  void work_setup_fuction(){ _work_setup = true;notifyListeners(); }
 
   get isState => _isState;
   get isState2 => _isState2;

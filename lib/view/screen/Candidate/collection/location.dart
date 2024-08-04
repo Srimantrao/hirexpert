@@ -28,6 +28,7 @@ class Location extends StatefulWidget {
 }
 
 class _LocationState extends State<Location> {
+  final PreferenceControllers next = Get.put(PreferenceControllers());
   @override
   Widget build(BuildContext context) {
     final locations = Provider.of<PreferenceController>(context, listen: false);
@@ -58,25 +59,24 @@ class _LocationState extends State<Location> {
                       ],
                     ),
                   ),
-                  GestureDetector(
+                  Obx(() => GestureDetector(
                     onTap: () {
-                      if(locations.preferences && locations.working_location && locations. work_setup && locations.work_location){
+                      if(next.preferences.value && next.working_location.value && next.work_setup.value && next.work_location.value){
                         Get.to(()=> Choose());
                       }
-                      setState(() {});
                     },
                     child: Row(
                       children: [
                         NextThow(
                           text: Navigator_text.Next,
-                          fontweight: locations.preferences && locations.working_location && locations.work_setup && locations.work_location,
-                          fontcolor: locations.preferences && locations.working_location && locations.work_setup && locations.work_location,
+                          fontweight: next.preferences.value && next.working_location.value && next.work_setup.value && next.work_location.value,
+                          fontcolor: next.preferences.value && next.working_location.value && next.work_setup.value && next.work_location.value,
                         ),
                         SizedBox(width: Get.width / 80),
-                        NextArrow(arrowcolor: locations.preferences &&locations. working_location && locations.work_setup && locations.work_location),
+                        NextArrow(arrowcolor: next.preferences.value && next.working_location.value && next.work_setup.value && next.work_location.value),
                       ],
                     ),
-                  )
+                  ),)
                 ],
               ),
             );
@@ -115,6 +115,7 @@ class _LocationState extends State<Location> {
                   Text(Location_text.preference, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
                   GestureDetector(
                     onTap: () {
+                      next.preferences_fuction();
                       Showdialog.showdialod(
                         context: context,
                         height: Get.height / 3,
@@ -160,9 +161,10 @@ class _LocationState extends State<Location> {
                   SizedBox(height: Get.height / 50),
 
                   //Current Location
-                  Text(Location_text.Location, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor,)),
+                  Text(Location_text.Location, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
                   GestureDetector(
                     onTap: () {
+                      next.work_location_fuction();
                       showLocationSelector(
                         context: context,
                         countryList: locations.country.countrylist,
@@ -194,6 +196,7 @@ class _LocationState extends State<Location> {
                   Text(Location_text.Preffered, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
                   GestureDetector(
                     onTap: () {
+                      next.working_location_fuction();
                       showModalBottomSheet(
                         context: context,
                         isScrollControlled: true,
@@ -332,6 +335,7 @@ class _LocationState extends State<Location> {
                   Text(Location_text.Work, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
                   GestureDetector(
                     onTap: () {
+                      next.work_setup_fuction();
                       Showdialog.showdialod(
                         height: Get.height / 3,
                         context: context,
