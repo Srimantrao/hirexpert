@@ -11,14 +11,63 @@ import '../../../utils/aap_image.dart';
 import '../../../utils/app_String.dart';
 import '../../../utils/app_icon.dart';
 import '../../../utils/buttom/Candidate/candidate_buttom.dart';
+import '../../../utils/logic/next_thow.dart';
 
 class Choose extends StatelessWidget {
-  const Choose({super.key});
+  final String? first_name;
+  final String? last_name;
+  const Choose({super.key, this.first_name, this.last_name});
 
   @override
   Widget build(BuildContext context) {
     final Pick = Provider.of<ChosefileController>(context, listen: false);
     return Scaffold(
+      bottomNavigationBar: Container(
+        height: Get.height/20,
+        width: Get.width,
+        decoration: BoxDecoration(
+          color: AppColor.Full_body_color,
+        ),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: Get.width/20),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              GestureDetector(
+                onTap: () {
+                  Get.back();
+                },
+                child: Row(
+                  children: [
+                    SvgPicture.asset(AppIcons.Backarrow),
+                    SizedBox(width: Get.width / 70),
+                    Text(Navigator_text.Back, style: TextStyle(fontWeight: FontWeight.w600, fontSize: Get.width / 23, color: AppColor.Button_color),
+                    )
+                  ],
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  if (Pick.selectwidgetone == 0 && Pick.selectwidgettwo == 1) {
+                    Get.to(() => Candidate_Bottam());
+                  }
+                },
+                child: Row(
+                  children: [
+                    NextThow(
+                      text: Navigator_text.Next,
+                      fontweight:Pick.selectwidgetone == 0 && Pick.selectwidgettwo == 1,
+                      fontcolor: Pick.selectwidgetone == 0 && Pick.selectwidgettwo == 1,
+                    ),
+                    SizedBox(width: Get.width / 80),
+                    NextArrow(arrowcolor: Pick.selectwidgetone == 0 && Pick.selectwidgettwo == 1),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
       body: Container(
         height: Get.height,
         width: Get.width,
@@ -32,35 +81,29 @@ class Choose extends StatelessWidget {
             child: Consumer<ChosefileController>(
               builder: (BuildContext context, value, Widget? child) {
                 return Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: Get.height / 20),
+                    SizedBox(height: Get.height / 15),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [Image.asset(AppImage.profile, scale: 5)],
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(AppImage.profile, scale: 5),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
-                        Text("HI", style: TextStyle(fontSize: Get.width / 25)),
+                        Text(first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
+                        SizedBox(width: Get.width / 80),
+                        Text(last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                       ],
                     ),
                     SizedBox(height: Get.height / 20),
-                    Text(
-                      Choose_text.tell,
-                      style: TextStyle(
-                        fontSize: Get.width / 23,
-                        color: AppColor.subcolor,
-                      ),
-                    ),
+                    Text(Choose_text.tell, style: TextStyle(fontSize: Get.width / 23, color: AppColor.subcolor)),
                     SizedBox(height: Get.height / 60),
                     SizedBox(
                       width: Get.width,
                       height: Get.height / 3.3,
                       child: TextField(
+                        textAlignVertical: TextAlignVertical.top,
                         onTap: () {
                           Pick.SelectWidget_one();
                         },
@@ -83,13 +126,7 @@ class Choose extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: Get.height / 30),
-                    Text(
-                      Choose_text.resume_CV,
-                      style: TextStyle(
-                        fontSize: Get.width / 23,
-                        color: AppColor.subcolor,
-                      ),
-                    ),
+                    Text(Choose_text.resume_CV, style: TextStyle(fontSize: Get.width / 23, color: AppColor.subcolor)),
                     SizedBox(height: Get.height / 60),
 
                     //SelectFile Button
@@ -112,53 +149,23 @@ class Choose extends StatelessWidget {
                             child: Center(
                               child: (Pick.files != null)
                                   ? Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         SvgPicture.asset(AppIcons.PDF_Icon),
                                         SizedBox(height: Get.height / 70),
-                                        Text(
-                                          Pick.files!.name,
-                                          style: TextStyle(
-                                            fontSize: Get.width / 26,
-                                          ),
-                                        ),
+                                        Text(Pick.files!.name, style: TextStyle(fontSize: Get.width / 26)),
                                       ],
                                     )
                                   : Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
                                         RichText(
                                           text: TextSpan(
                                             children: [
-                                              TextSpan(
-                                                text: Choose_text.Drop,
-                                                style: TextStyle(
-                                                  color: AppColor.black_all,
-                                                  fontSize: Get.width / 22,
-                                                ),
-                                              ),
-                                              TextSpan(
-                                                text: Choose_text.it,
-                                                style: TextStyle(
-                                                  color: AppColor.Button_color,
-                                                  fontSize: Get.width / 22,
-                                                ),
-                                              ),
-                                              TextSpan(
-                                                text: Choose_text.or,
-                                                style: TextStyle(
-                                                  color: AppColor.black_all,
-                                                  fontSize: Get.width / 22,
-                                                ),
-                                              ),
-                                              TextSpan(
-                                                text: Choose_text.form,
-                                                style: TextStyle(
-                                                  color: AppColor.Button_color,
-                                                  fontSize: Get.width / 22,
-                                                ),
+                                              TextSpan(text: Choose_text.Drop, style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22)),
+                                              TextSpan(text: Choose_text.it, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 22)),
+                                              TextSpan(text: Choose_text.or, style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22)),
+                                              TextSpan(text: Choose_text.form, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 22),
                                               ),
                                             ],
                                           ),
@@ -171,64 +178,6 @@ class Choose extends StatelessWidget {
                       ),
                     ),
                     SizedBox(height: Get.height / 25),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        GestureDetector(
-                          onTap: () {
-                            Get.back();
-                          },
-                          child: Row(
-                            children: [
-                              SvgPicture.asset(AppIcons.Backarrow),
-                              SizedBox(width: Get.width / 70),
-                              Text(
-                                Navigator_text.Back,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: Get.width / 23,
-                                  color: AppColor.Button_color,
-                                ),
-                              )
-                            ],
-                          ),
-                        ),
-                        GestureDetector(
-                          onTap: () {
-                            if (Pick.selectwidgetone == 0 &&
-                                Pick.selectwidgettwo == 1) {
-                              Get.to(() => Candidate_Bottam());
-                            }
-                          },
-                          child: Row(
-                            children: [
-                              Text(
-                                (Pick.selectwidgetone == 0 &&
-                                        Pick.selectwidgettwo == 1)
-                                    ? Navigator_text.Done
-                                    : Navigator_text.Next,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: Get.width / 23,
-                                  color: (Pick.selectwidgetone == 0 &&
-                                          Pick.selectwidgettwo == 1)
-                                      ? AppColor.Button_color
-                                      : AppColor.offButton_color,
-                                ),
-                              ),
-                              SizedBox(width: Get.width / 70),
-                              SvgPicture.asset(
-                                AppIcons.Go,
-                                color: (Pick.selectwidgetone == 0 &&
-                                        Pick.selectwidgettwo == 1)
-                                    ? AppColor.Button_color
-                                    : AppColor.offButton_color,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 );
               },
