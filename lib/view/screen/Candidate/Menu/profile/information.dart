@@ -26,15 +26,10 @@ class Profile_info extends StatelessWidget {
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color,),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 50,
-              vertical: Get.width / 50,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 50, vertical: Get.width / 50),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Column(
@@ -43,56 +38,30 @@ class Profile_info extends StatelessWidget {
                   Container(
                     height: Get.height / 8,
                     decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.Bottam_color,
-                        ),
-                      ),
+                      border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Obx(() {
                           if (profile.login.isLodingvalue.value) {
-                            return Center(
-                              child: Image.asset(
-                                  AppLoder.infinityloder_without_background),
-                            );
-                          } else if (profile.login.option_data['data'] ==
-                                  null ||
-                              profile.login.option_data == null) {
+                            return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+                          } else if (profile.login.option_data['data'] == null || profile.login.option_data == null) {
                             return Center(child: Text(API_Error.null_data));
                           } else {
                             return Row(
                               children: [
-                                CircleAvatar(
-                                  radius: 40,
-                                  backgroundImage: NetworkImage(
-                                    profile.login.option_data['data']
-                                        ['Profile'],
-                                  ),
-                                ),
+                                CircleAvatar(radius: 40, backgroundImage: NetworkImage(profile.login.option_data['data']['Profile'])),
                                 SizedBox(width: Get.width / 30),
                                 Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text(
-                                      profile.login.option_data['data']
-                                          ['Username'],
-                                      style: TextStyle(
-                                        fontSize: Get.width / 22,
-                                        fontWeight: FontWeight.w700,
-                                      ),
+                                    Text(profile.login.option_data['data']['Username'],
+                                      style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
                                     ),
-                                    Text(
-                                      profile.login.option_data['data']
-                                          ['UserDetails']['TechName'],
-                                      style: TextStyle(
-                                        fontSize: Get.width / 26,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColor.subcolor,
-                                      ),
+                                    Text(profile.login.option_data['data']['UserDetails']['TechName'],
+                                      style: TextStyle(fontSize: Get.width / 26, fontWeight: FontWeight.w400, color: AppColor.subcolor),
                                     ),
                                   ],
                                 ),
@@ -104,11 +73,7 @@ class Profile_info extends StatelessWidget {
                           onTap: () {
                             Get.to(() => Setting());
                           },
-                          child: Icon(
-                            Icons.settings,
-                            color: AppColor.Button_color,
-                            size: 32,
-                          ),
+                          child: Icon(Icons.settings, color: AppColor.Button_color, size: 32),
                         )
                       ],
                     ),
@@ -123,12 +88,8 @@ class Profile_info extends StatelessWidget {
                             TabBar(
                               automaticIndicatorColorAdjustment: true,
                               unselectedLabelColor: AppColor.subcolor,
-                              labelStyle: const TextStyle(
-                                fontWeight: FontWeight.w700,
-                              ),
-                              unselectedLabelStyle: const TextStyle(
-                                fontWeight: FontWeight.w400,
-                              ),
+                              labelStyle: const TextStyle(fontWeight: FontWeight.w700),
+                              unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
                               labelColor: AppColor.Full_body_color,
                               dividerColor: AppColor.Full_body_color,
                               onTap: (index) {
@@ -136,23 +97,13 @@ class Profile_info extends StatelessWidget {
                               },
                               indicatorSize: TabBarIndicatorSize.label,
                               indicator: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  Get.width / 60,
-                                ),
+                                borderRadius: BorderRadius.circular(Get.width / 60),
                                 color: AppColor.Full_body_color,
                               ),
                               tabs: [
-                                Container_tab(
-                                    text: Profile_Text.Extra_Info,
-                                    tabcolor: Tabb.tabColor),
-                                Container_tab(
-                                  text: Profile_Text.My_Profile,
-                                  tabcolor: Tabb.tabColor2,
-                                ),
-                                Container_tab(
-                                  text: Profile_Text.Document,
-                                  tabcolor: Tabb.tabColor3,
-                                ),
+                                Container_tab(text: Profile_Text.Extra_Info, tabcolor: Tabb.tabColor),
+                                Container_tab(text: Profile_Text.My_Profile, tabcolor: Tabb.tabColor2),
+                                Container_tab(text: Profile_Text.Document, tabcolor: Tabb.tabColor3),
                               ],
                             ),
                             SizedBox(

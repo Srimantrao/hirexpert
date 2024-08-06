@@ -18,6 +18,5 @@ String Comfarm_password = "";
 bool islogin = false;
 
 class Password_main {
-  static TextEditingController Pass =
-      Candidate_LoginValidation.password_controller = TextEditingController();
+  static TextEditingController Pass = Candidate_LoginValidation.password_controller = TextEditingController();
 }

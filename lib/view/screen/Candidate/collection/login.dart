@@ -34,9 +34,7 @@ class Candidate_Login extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 20,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 20,),
             child: Consumer<Candidate_LoginValidation>(
               builder: (BuildContext context, value, Widget? child) {
                 return SingleChildScrollView(
@@ -45,10 +43,7 @@ class Candidate_Login extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: Get.height / 20),
-                      Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Get.width / 6.5,
-                        ),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
                         child: Image.asset(AppIcons.logo, scale: 5),
                       ),
                       SizedBox(height: Get.height / 20),
