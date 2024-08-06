@@ -29,18 +29,13 @@ class Home extends StatelessWidget {
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
         automaticallyImplyLeading: false,
-        title: Text(
-          My_Jobs_Screen.My_Jobs,
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        title: Text(My_Jobs_Screen.My_Jobs, style: TextStyle(fontWeight: FontWeight.w700)),
         actions: [
           GestureDetector(
             onTap: () {
               Get.to(() => Notification_Screen());
             },
-            child: const Icon(Icons.notifications),
+            child: Icon(Icons.notifications),
           ),
           SizedBox(width: Get.width / 50),
         ],
@@ -51,8 +46,7 @@ class Home extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
         ),
-        child: Obx(
-          () {
+        child: Obx(() {
             if (jobincount.jobcount.isLoding.value) {
               return Center(
                 child: Image.asset(AppLoder.infinityloder_without_background),
@@ -78,10 +72,7 @@ class Home extends StatelessWidget {
                         name: My_Jobs_Screen.Saved,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            jobincount.jobcount.data.value['data']['savedJobCnt']
-                                .toString(),
-                          ),
+                          child: Text(jobincount.jobcount.data.value['data']['savedJobCnt'].toString()),
                         ),
                       ),
                     ),
@@ -96,10 +87,7 @@ class Home extends StatelessWidget {
                         name: My_Jobs_Screen.Applied,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            jobincount.jobcount.data.value['data']['appliedJobCnt']
-                                .toString(),
-                          ),
+                          child: Text(jobincount.jobcount.data.value['data']['appliedJobCnt'].toString()),
                         ),
                       ),
                     ),
@@ -114,10 +102,7 @@ class Home extends StatelessWidget {
                         name: My_Jobs_Screen.Interview,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            jobincount.jobcount.data.value['data']['interviewJobCnt']
-                                .toString(),
-                          ),
+                          child: Text(jobincount.jobcount.data.value['data']['interviewJobCnt'].toString()),
                         ),
                       ),
                     ),
@@ -132,10 +117,7 @@ class Home extends StatelessWidget {
                         name: My_Jobs_Screen.Offer,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            jobincount.jobcount.data.value['data']['offersJobCnt']
-                                .toString(),
-                          ),
+                          child: Text(jobincount.jobcount.data.value['data']['offersJobCnt'].toString()),
                         ),
                       ),
                     ),
@@ -150,10 +132,7 @@ class Home extends StatelessWidget {
                         name: My_Jobs_Screen.Hired,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            jobincount.jobcount.data.value['data']['hiredJobCnt']
-                                .toString(),
-                          ),
+                          child: Text(jobincount.jobcount.data.value['data']['hiredJobCnt'].toString()),
                         ),
                       ),
                     ),
@@ -168,10 +147,7 @@ class Home extends StatelessWidget {
                         name: My_Jobs_Screen.Declined,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(
-                            jobincount.jobcount.data.value['data']['declinedJobCnt']
-                                .toString(),
-                          ),
+                          child: Text(jobincount.jobcount.data.value['data']['declinedJobCnt'].toString()),
                         ),
                       ),
                     ),

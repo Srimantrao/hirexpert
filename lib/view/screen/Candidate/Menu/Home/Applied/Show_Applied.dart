@@ -25,30 +25,17 @@ class Show_Applied extends StatelessWidget {
         elevation: 0,
         automaticallyImplyLeading: false,
         surfaceTintColor: AppColor.Full_body_color,
-        title: Text(
-          My_Jobs_Screen.Applied,
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        actions: [
-          Icon(Icons.notifications),
-          SizedBox(width: size.width / 50),
-        ],
+        title: Text(My_Jobs_Screen.Applied, style: TextStyle(fontWeight: FontWeight.w700)),
+        actions: [Icon(Icons.notifications), SizedBox(width: size.width / 50)],
       ),
-      body: Obx(
-        () {
+      body: Obx(() {
           if (Appling.Detailing.isLoding.value) {
             return Scaffold(
               body: Container(
                 height: Get.height,
                 width: Get.width,
-                decoration: BoxDecoration(
-                  color: AppColor.Full_body_color,
-                ),
-                child: Center(
-                  child: Image.asset(AppLoder.infinityloder_without_background),
-                ),
+                decoration: BoxDecoration(color: AppColor.Full_body_color),
+                child: Center(child: Image.asset(AppLoder.infinityloder_without_background)),
               ),
             );
           } else if (Appling.Detailing.Details_data.value['data'] == null) {
@@ -56,16 +43,9 @@ class Show_Applied extends StatelessWidget {
               body: Container(
                 height: Get.height,
                 width: Get.width,
-                decoration: BoxDecoration(
-                  color: AppColor.Full_body_color,
-                ),
+                decoration: BoxDecoration(color: AppColor.Full_body_color),
                 child: Center(
-                  child: Text(
-                    "Your Data is Empty !",
-                    style: TextStyle(
-                      fontSize: Get.width / 25,
-                    ),
-                  ),
+                  child: Text("Your Data is Empty !", style: TextStyle(fontSize: Get.width / 25)),
                 ),
               ),
             );
@@ -106,12 +86,8 @@ class Show_Applied extends StatelessWidget {
                         width: size.width,
                         decoration: BoxDecoration(
                           border: Border(
-                            top: BorderSide(
-                              color: AppColor.Bottam_color,
-                            ),
-                            bottom: BorderSide(
-                              color: Colors.transparent,
-                            ),
+                            top: BorderSide(color: AppColor.Bottam_color),
+                            bottom: BorderSide(color: Colors.transparent),
                           ),
                           color: AppColor.Full_body_color,
                         ),
@@ -121,24 +97,17 @@ class Show_Applied extends StatelessWidget {
                             Row(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: size.width / 40,
-                                  ),
+                                  padding: EdgeInsets.symmetric(vertical: size.width / 40),
                                   child: Container(
                                     width: size.width / 5.5,
                                     height: size.height / 12,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                        size.width / 30,
-                                      ),
+                                      borderRadius: BorderRadius.circular(size.width / 30),
                                       color: AppColor.Full_body_color,
                                     ),
                                     child: Padding(
                                       padding: EdgeInsets.all(15),
-                                      child: Image.network(
-                                        Appling.Detailing.Details_data.value['data']
-                                            ["ProfileImage"],
-                                      ),
+                                      child: Image.network(Appling.Detailing.Details_data.value['data']["ProfileImage"]),
                                     ),
                                   ),
                                 ),
@@ -150,35 +119,13 @@ class Show_Applied extends StatelessWidget {
                                       children: [
                                         Row(
                                           children: [
-                                            Text(
-                                              Appling.Detailing
-                                                      .Details_data.value['data']
-                                                  ["JobTitle"],
-                                              style: TextStyle(
-                                                color: AppColor.subcolor,
-                                              ),
-                                            ),
+                                            Text(Appling.Detailing.Details_data.value['data']["JobTitle"], style: TextStyle(color: AppColor.subcolor)),
                                           ],
                                         ),
                                       ],
                                     ),
-                                    Text(
-                                      Appling.Detailing.Details_data.value['data']
-                                          ["TechName"],
-                                      style: TextStyle(
-                                        fontSize: size.width / 23,
-                                        fontWeight: FontWeight.w600,
-                                      ),
-                                    ),
-                                    Text(
-                                      Appling.Detailing.Details_data.value['data']
-                                          ["ComName"],
-                                      style: TextStyle(
-                                        fontSize: size.width / 26,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColor.Button_color,
-                                      ),
-                                    ),
+                                    Text(Appling.Detailing.Details_data.value['data']["TechName"], style: TextStyle(fontSize: size.width / 23, fontWeight: FontWeight.w600)),
+                                    Text(Appling.Detailing.Details_data.value['data']["ComName"], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color)),
                                   ],
                                 ),
                                 SizedBox(width: size.width / 4),
@@ -194,20 +141,11 @@ class Show_Applied extends StatelessWidget {
                                       width: size.width / 3.2,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
-                                        child: Text(
-                                          Appling.Detailing.Details_data.value['data']
-                                              ["JobShift"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
-                                        ),
+                                        child: Text(Appling.Detailing.Details_data.value['data']["JobShift"], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                                       ),
                                     ),
                                     SizedBox(width: size.width / 40),
@@ -215,20 +153,14 @@ class Show_Applied extends StatelessWidget {
                                       width: size.width / 7,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
                                           textAlign: TextAlign.center,
-                                          Appling.Detailing.Details_data.value['data']
-                                              ["MinExperience"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Appling.Detailing.Details_data.value['data']["MinExperience"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -237,19 +169,13 @@ class Show_Applied extends StatelessWidget {
                                       width: size.width / 5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data.value['data']
-                                              ["JobType"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Appling.Detailing.Details_data.value['data']["JobType"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -262,15 +188,12 @@ class Show_Applied extends StatelessWidget {
                                       width: size.width / 5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Appling.Detailing.Details_data.value['data']
-                                              ["WorkWeek"],
+                                          Appling.Detailing.Details_data.value['data']["WorkWeek"],
                                           style: TextStyle(
                                             fontWeight: FontWeight.w600,
                                             fontSize: size.width / 35,
@@ -283,19 +206,11 @@ class Show_Applied extends StatelessWidget {
                                       width: size.width / 2.5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
-                                        child: Text(
-                                          Appling.Detailing.Details_data.value['data']
-                                              ["days"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                        child: Text(Appling.Detailing.Details_data.value['data']["days"], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -304,19 +219,11 @@ class Show_Applied extends StatelessWidget {
                                       width: size.width / 5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
-                                        child: Text(
-                                          Appling.Detailing.Details_data.value['data']
-                                              ["WorkSet"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                        child: Text(Appling.Detailing.Details_data.value['data']["WorkSet"], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -329,13 +236,7 @@ class Show_Applied extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
-                                Text(
-                                  Appling.Detailing.Details_data.value['data']
-                                      ["FormatDt"],
-                                  style: TextStyle(
-                                    color: AppColor.subcolor,
-                                  ),
-                                ),
+                                Text(Appling.Detailing.Details_data.value['data']["FormatDt"], style: TextStyle(color: AppColor.subcolor)),
                               ],
                             )
                           ],

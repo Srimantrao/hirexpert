@@ -38,12 +38,8 @@ class Seved_List extends StatelessWidget {
               width: size.width,
               decoration: BoxDecoration(
                 border: Border(
-                  top: BorderSide(
-                    color: AppColor.Bottam_color,
-                  ),
-                  bottom: BorderSide(
-                    color: Colors.transparent,
-                  ),
+                  top: BorderSide(color: AppColor.Bottam_color),
+                  bottom: BorderSide(color: Colors.transparent),
                 ),
                 color: AppColor.Full_body_color,
               ),
@@ -53,9 +49,7 @@ class Seved_List extends StatelessWidget {
                   Row(
                     children: [
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: size.width / 40,
-                        ),
+                        padding: EdgeInsets.symmetric(vertical: size.width / 40),
                         child: Padding(
                           padding: EdgeInsets.all(15),
                           child: Image.network(
@@ -69,35 +63,14 @@ class Seved_List extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Row(
-                                children: [
-                                  Text(
-                                    Saving_Apis.favourlist.data.value[index]['JobTitle'],
-                                    style: TextStyle(
-                                      color: AppColor.subcolor,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                              Text(Saving_Apis.favourlist.data.value[index]['JobTitle'], style: TextStyle(color: AppColor.subcolor)),
                             ],
                           ),
                           SizedBox(
                             width: Get.width / 2,
-                            child: Text(
-                              Saving_Apis.favourlist.data.value[index]['TechName'],
-                              style: TextStyle(
-                                fontSize: size.width / 26,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            child: Text(Saving_Apis.favourlist.data.value[index]['TechName'], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w600)),
                           ),
-                          Text(
-                            Saving_Apis.favourlist.data.value[index]['ComName'],
-                            style: TextStyle(
-                              fontSize: size.width / 26,
-                              fontWeight: FontWeight.w400,
-                              color: AppColor.Button_color,
-                            ),
+                          Text(Saving_Apis.favourlist.data.value[index]['ComName'], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color),
                           ),
                         ],
                       ),
@@ -114,19 +87,11 @@ class Seved_List extends StatelessWidget {
                             width: size.width / 3.2,
                             height: size.height / 25,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                size.width / 60,
-                              ),
+                              borderRadius: BorderRadius.circular(size.width / 60),
                               color: AppColor.ditalis_conatiner,
                             ),
                             child: Center(
-                              child: Text(
-                                Saving_Apis.favourlist.data.value[index]['JobType'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 30,
-                                ),
-                              ),
+                              child: Text(Saving_Apis.favourlist.data.value[index]['JobType'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                             ),
                           ),
                           SizedBox(width: size.width / 40),
@@ -134,19 +99,11 @@ class Seved_List extends StatelessWidget {
                             width: size.width / 7,
                             height: size.height / 25,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                size.width / 60,
-                              ),
+                              borderRadius: BorderRadius.circular(size.width / 60),
                               color: AppColor.ditalis_conatiner,
                             ),
                             child: Center(
-                              child: Text(
-                                Saving_Apis.favourlist.data.value[index]['Location'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 30,
-                                ),
-                              ),
+                              child: Text(Saving_Apis.favourlist.data.value[index]['Location'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                             ),
                           ),
                           SizedBox(width: size.width / 40),
@@ -154,18 +111,11 @@ class Seved_List extends StatelessWidget {
                             width: size.width / 5,
                             height: size.height / 25,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                size.width / 60,
-                              ),
+                              borderRadius: BorderRadius.circular(size.width / 60),
                               color: AppColor.ditalis_conatiner,
                             ),
                             child: Center(
-                              child: Text(
-                                Saving_Apis.favourlist.data.value[index]['JobType'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 30,
-                                ),
+                              child: Text(Saving_Apis.favourlist.data.value[index]['JobType'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                               ),
                             ),
                           ),
@@ -178,20 +128,11 @@ class Seved_List extends StatelessWidget {
                             width: size.width / 5,
                             height: size.height / 25,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                size.width / 60,
-                              ),
+                              borderRadius: BorderRadius.circular(size.width / 60),
                               color: AppColor.ditalis_conatiner,
                             ),
                             child: Center(
-                              child: Text(
-                                Saving_Apis.favourlist.data.value[index]
-                                    ['Experience'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 35,
-                                ),
-                              ),
+                              child: Text(Saving_Apis.favourlist.data.value[index]['Experience'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 35)),
                             ),
                           ),
                           SizedBox(width: size.width / 40),
@@ -199,19 +140,11 @@ class Seved_List extends StatelessWidget {
                             width: size.width / 2.5,
                             height: size.height / 25,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                size.width / 60,
-                              ),
+                              borderRadius: BorderRadius.circular(size.width / 60),
                               color: AppColor.ditalis_conatiner,
                             ),
                             child: Center(
-                              child: Text(
-                                Saving_Apis.favourlist.data.value[index]['Salary'],
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 30,
-                                ),
-                              ),
+                              child: Text(Saving_Apis.favourlist.data.value[index]['Salary'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                             ),
                           ),
                           SizedBox(width: size.width / 40),
@@ -219,22 +152,13 @@ class Seved_List extends StatelessWidget {
                             width: size.width / 5,
                             height: size.height / 22,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                size.width / 60,
-                              ),
+                              borderRadius: BorderRadius.circular(size.width / 60),
                               color: AppColor.ditalis_conatiner,
                             ),
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: Get.width / 30),
+                              padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
                               child: Center(
-                                child: Text(
-                                  Saving_Apis.favourlist.data.value[index]['WorkSet'],
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: size.width / 33,
-                                  ),
-                                ),
+                                child: Text(Saving_Apis.favourlist.data.value[index]['WorkSet'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 33,)),
                               ),
                             ),
                           ),
@@ -247,12 +171,7 @@ class Seved_List extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        Saving_Apis.favourlist.data.value[index]['FormatDt'],
-                        style: TextStyle(
-                          color: AppColor.subcolor,
-                        ),
-                      ),
+                      Text(Saving_Apis.favourlist.data.value[index]['FormatDt'], style: TextStyle(color: AppColor.subcolor)),
                     ],
                   )
                 ],

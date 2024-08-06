@@ -21,9 +21,7 @@ class ApplyNowController extends GetxController {
       isLoding.value = true;
 
       final responce = await http.get(
-        Uri.parse(
-          '${AppUrl.Applyed}?CandidateId=$Candidate&JobId=$JobId&CompanyId=$Company',
-        ),
+        Uri.parse('${AppUrl.Applyed}?CandidateId=$Candidate&JobId=$JobId&CompanyId=$Company'),
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,

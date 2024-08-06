@@ -9,12 +9,9 @@ import 'package:http/http.dart' as http;
 
 class DetailsControllers extends GetxController {
   var isLoding = false.obs;
-  var Details_data= {}.obs;
+  var Details_data = {}.obs;
 
-  Future DetailsControllers_fuction(
-      {required String JobID,
-      required String Timezone,
-      required String Tokan}) async {
+  Future DetailsControllers_fuction({required String JobID, required String Timezone, required String Tokan}) async {
     try {
       isLoding.value = true;
 

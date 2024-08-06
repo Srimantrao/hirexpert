@@ -66,16 +66,15 @@ class Search_find extends StatelessWidget {
                             stats: jobData["FormatDt"],
                             saveonTap: () {
                               isfavication.IsfavrationControllers_fuction(
-                                CandidateId: login.option_data['data']
-                                    ['UserDetails']['CandidateId'],
+                                CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
                                 JobId: '10',
-                                IsLike: true,
+                                IsLike: isfavication.isFavration.value.isFavourite == 1 ? '1' : '0',
                                 Tokan: login.option_data['data']['LoginToken'],
                               );
                               print("Tab");
                             },
                             saving:
-                                (isfavication.isFavration.value.status == true)
+                                (isfavication.isFavration.value.isFavourite == 1)
                                     ? SvgPicture.asset(AppIcons.bookmark)
                                     : SvgPicture.asset(AppIcons.save),
                           ),
@@ -85,7 +84,7 @@ class Search_find extends StatelessWidget {
                         saveonTap: () {
                           searchHandler;
                         },
-                        savechild: (isfavication.isFavration.value.status == true)
+                        savechild: (isfavication.isFavration.value.isFavourite == 1)
                             ? SvgPicture.asset(AppIcons.bookmark)
                             : SvgPicture.asset(AppIcons.save),
                         top: BorderSide(color: AppColor.Bottam_color),

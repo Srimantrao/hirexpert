@@ -34,7 +34,7 @@ class IsfavrationControllers extends GetxController {
   Future IsfavrationControllers_fuction({
     required String CandidateId,
     required String JobId,
-    required bool IsLike,
+    required String IsLike,
     required String Tokan,
   }) async {
     try {
