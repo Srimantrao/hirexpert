@@ -68,8 +68,7 @@ class Upload_Yor_CV extends StatelessWidget {
                                 SizedBox(height: Get.height / 50),
                                 Text(
                                   textAlign: TextAlign.center,
-                                  cv.login.option_data['data']['UserDetails']['ResumeDetails']['ResumeName']
-                                      .toString(),
+                                  cv.login.option_data['data']['UserDetails']['ResumeDetails']['ResumeName'].toString(),
                                   style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
                                 ),
                               ],
