@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -24,11 +24,10 @@ class Extra_info extends StatelessWidget {
     final vail = Provider.of<Candidate_SinupController>(context, listen: false);
     return Scaffold(
       body: Container(
-        height: Get.height / 1.54,
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+          padding: EdgeInsets.symmetric(horizontal: Get.width / 40),
           child: Obx(() {
               if (Extra.login.isLodingvalue.value) {
                 return Center(child: Image.asset(AppLoder.infinityloder_without_background));
@@ -62,9 +61,7 @@ class Extra_info extends StatelessWidget {
                         // hintText: Extra.login.option_data['data']['UserDetails']['QuestionList'][0]['AnswerArr'][0],
                         hintStyle: TextStyle(fontSize: Get.width / 24),
                         focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color,)),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColor.Buttom_color),
-                        ),
+                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                       ),
                     ),
                     SizedBox(height: Get.height / 50),
@@ -78,9 +75,7 @@ class Extra_info extends StatelessWidget {
                         // hintText: Extra.login.option_data['data']['UserDetails']['QuestionList'][0]['AnswerArr'][0],
                         hintStyle: TextStyle(fontSize: Get.width / 24),
                         focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: AppColor.Buttom_color),
-                        ),
+                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                       ),
                     ),
                   ],
@@ -110,12 +105,7 @@ class Extra_info extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               SvgPicture.asset(AppIcons.Edit),
-              Text(
-                "Edit",
-                style: TextStyle(
-                  color: AppColor.Full_body_color,
-                ),
-              ),
+              Text("Edit", style: TextStyle(color: AppColor.Full_body_color)),
             ],
           ),
         ),

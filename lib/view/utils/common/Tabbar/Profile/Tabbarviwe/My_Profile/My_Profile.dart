@@ -24,7 +24,6 @@ class MY_Profile extends StatelessWidget {
         horizontal: Get.width / 70,
       ),
       child: Container(
-        height: Get.height / 1.52,
         width: Get.width,
         decoration: BoxDecoration(
           color: AppColor.Full_body_color,
@@ -33,7 +32,6 @@ class MY_Profile extends StatelessWidget {
           scrollDirection: Axis.vertical,
           child: Column(
             children: [
-              SizedBox(height: Get.height / 60),
 
               //Upload Your CV
               Upload_Yor_CV(),

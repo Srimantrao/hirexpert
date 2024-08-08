@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names, prefer_const_constructors
+// ignore_for_file: camel_case_types, non_constant_identifier_names, prefer_const_constructors, unnecessary_null_comparison, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,10 +14,17 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile.dart';
 import 'Setting.dart';
 
-class Profile_info extends StatelessWidget {
+class Profile_info extends StatefulWidget {
+  Profile_info({super.key});
+
+  @override
+  State<Profile_info> createState() => _Profile_infoState();
+}
+
+class _Profile_infoState extends State<Profile_info> {
   final ProfielInfo profile = Get.put(ProfielInfo());
 
-  Profile_info({super.key});
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +33,21 @@ class Profile_info extends StatelessWidget {
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(color: AppColor.Full_body_color,),
+        decoration: BoxDecoration(
+          color: AppColor.Full_body_color,
+        ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: Get.width / 50, vertical: Get.width / 50),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
             child: SingleChildScrollView(
-              scrollDirection: Axis.vertical,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
                     height: Get.height / 8,
                     decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
+                      border: Border(
+                        bottom: BorderSide(color: AppColor.Bottam_color),
+                      ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -58,10 +67,13 @@ class Profile_info extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(profile.login.option_data['data']['Username'],
-                                      style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
+                                      style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700,
+                                      ),
                                     ),
-                                    Text(profile.login.option_data['data']['UserDetails']['TechName'],
-                                      style: TextStyle(fontSize: Get.width / 26, fontWeight: FontWeight.w400, color: AppColor.subcolor),
+                                    Text(
+                                      profile.login.option_data['data']['UserDetails']['TechName'],
+                                      style: TextStyle(fontSize: Get.width / 26, fontWeight: FontWeight.w400, color: AppColor.subcolor,
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -79,48 +91,61 @@ class Profile_info extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: Get.height / 50),
-                  Consumer<TabbarController>(
-                    builder: (BuildContext context, value, Widget? child) {
-                      return DefaultTabController(
-                        length: 3,
-                        child: Column(
-                          children: [
-                            TabBar(
-                              automaticIndicatorColorAdjustment: true,
-                              unselectedLabelColor: AppColor.subcolor,
-                              labelStyle: const TextStyle(fontWeight: FontWeight.w700),
-                              unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w400),
-                              labelColor: AppColor.Full_body_color,
-                              dividerColor: AppColor.Full_body_color,
-                              onTap: (index) {
-                                Tabb.ChangigColor(index);
-                              },
-                              indicatorSize: TabBarIndicatorSize.label,
-                              indicator: BoxDecoration(
-                                borderRadius: BorderRadius.circular(Get.width / 60),
-                                color: AppColor.Full_body_color,
-                              ),
-                              tabs: [
-                                Container_tab(text: Profile_Text.Extra_Info, tabcolor: Tabb.tabColor),
-                                Container_tab(text: Profile_Text.My_Profile, tabcolor: Tabb.tabColor2),
-                                Container_tab(text: Profile_Text.Document, tabcolor: Tabb.tabColor3),
-                              ],
-                            ),
-                            SizedBox(
-                              height: Get.height / 1.52,
-                              child: TabBarView(
-                                physics: NeverScrollableScrollPhysics(),
-                                children: [
-                                  Extra_info(),
-                                  MY_Profile(),
-                                  Documant_Profile(),
-                                ],
-                              ),
-                            )
-                          ],
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {selectedIndex = 0;});
+                        },
+                        child: Container_tab(text: Profile_Text.Extra_Info,
+                            textcolor: (selectedIndex == 0)
+                                ?AppColor.Full_body_color
+                                :AppColor.black_all,
+                            tabcolor: (selectedIndex == 0)
+                                ?AppColor.Button_color
+                                :AppColor.Bottam_color,
                         ),
-                      );
-                    },
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {selectedIndex = 1;});
+                        },
+                        child: Container_tab(text: Profile_Text.My_Profile,
+                          textcolor: (selectedIndex == 1)
+                              ?AppColor.Full_body_color
+                              :AppColor.black_all,
+                          tabcolor: (selectedIndex == 1)
+                            ?AppColor.Button_color
+                            :AppColor.Bottam_color,),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          setState(() {selectedIndex = 2;});
+                        },
+                        child: Container_tab(text: Profile_Text.Document,
+                          textcolor: (selectedIndex == 2)
+                              ?AppColor.Full_body_color
+                              :AppColor.black_all,
+                          tabcolor: (selectedIndex == 2)
+                            ?AppColor.Button_color
+                            :AppColor.Bottam_color,),
+                      ),
+                    ],
+                  ),
+
+                  SizedBox(height: Get.height/50),
+
+                  SizedBox(
+                    height: Get.height / 1.52,
+                    child: IndexedStack(
+                      index: selectedIndex,
+                      children: [
+                        Extra_info(),
+                        MY_Profile(),
+                        Documant_Profile(),
+                      ],
+                    ),
                   ),
                 ],
               ),

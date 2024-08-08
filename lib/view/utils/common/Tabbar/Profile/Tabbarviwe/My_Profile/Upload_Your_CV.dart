@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, camel_case_types, prefer_const_constructors
+// ignore_for_file: file_names, camel_case_types, prefer_const_constructors, unnecessary_null_comparison, prefer_const_literals_to_create_immutables
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -22,19 +22,13 @@ class Upload_Yor_CV extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myProfile = Provider.of<My_ProfileController>(
-      context,
-      listen: false,
-    );
+    final myProfile = Provider.of<My_ProfileController>(context, listen: false);
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
         return Obx(() {
           if (cv.login.isLodingvalue.value) {
-            return Center(
-              child: Image.asset(AppLoder.infinityloder_without_background),
-            );
-          } else if (cv.login.option_data['data'] == null ||
-              cv.login.option_data == null) {
+            return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+          } else if (cv.login.option_data['data'] == null || cv.login.option_data == null) {
             return Center(child: Text(API_Error.null_data));
           } else {
             return Column(
@@ -45,11 +39,8 @@ class Upload_Yor_CV extends StatelessWidget {
                   },
                   child: Info(
                     info: Profile_Text.Upload_Your_CV,
-                    CircleAvatar_color:
-                        Change_Circle(Condition: myProfile.file != null),
-                    dropicons: DropIcons(
-                      conditional_name: myProfile.Upload_lock,
-                    ),
+                    CircleAvatar_color: Change_Circle(Condition: myProfile.file != null),
+                    dropicons: DropIcons(conditional_name: myProfile.Upload_lock),
                   ),
                 ),
                 Visibility(
@@ -58,13 +49,7 @@ class Upload_Yor_CV extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: Get.height / 60),
-                      Text(
-                        Profile_Text.Upload,
-                        style: TextStyle(
-                          color: AppColor.subcolor,
-                          fontSize: Get.width / 23,
-                        ),
-                      ),
+                      Text(Profile_Text.Upload, style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 23)),
                       SizedBox(height: Get.height / 60),
                       InkWell(
                         onTap: () {
@@ -72,7 +57,7 @@ class Upload_Yor_CV extends StatelessWidget {
                         },
                         child: DottedBorder(
                           color: AppColor.Bottam_color,
-                          dashPattern: const [15, 12],
+                          dashPattern: [15,12],
                           child: SizedBox(
                             height: Get.height / 6,
                             width: Get.width,
@@ -83,15 +68,8 @@ class Upload_Yor_CV extends StatelessWidget {
                                 SizedBox(height: Get.height / 50),
                                 Text(
                                   textAlign: TextAlign.center,
-                                  cv
-                                      .login
-                                      .option_data['data']['UserDetails']
-                                          ['ResumeDetails']['ResumeName']
-                                      .toString(),
-                                  style: TextStyle(
-                                    fontSize: Get.width / 27,
-                                    color: AppColor.subcolor,
-                                  ),
+                                  cv.login.option_data['data']['UserDetails']['ResumeDetails']['ResumeName'].toString(),
+                                  style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
                                 ),
                               ],
                             ),
@@ -103,26 +81,16 @@ class Upload_Yor_CV extends StatelessWidget {
                         children: [
                           Text(
                             Profile_Text.Resume_Link,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600),
                           ),
                           Row(
                             children: [
                               SizedBox(width: Get.width / 25),
                               SizedBox(
-                                width: Get.width / 1.7,
+                                width: Get.width / 2,
                                 child: Text(
-                                  cv.login.option_data['data']['UserDetails']
-                                      ['ResumeDetails']['UploadName'],
-                                  style: TextStyle(
-                                    color: AppColor.Button_color,
-                                    decoration: TextDecoration.underline,
-                                    fontSize: Get.width / 26,
-                                    fontWeight: FontWeight.w600,
-                                    fontStyle: FontStyle.italic,
-                                  ),
+                                  cv.login.option_data['data']['UserDetails']['ResumeDetails']['UploadName'],
+                                  style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
                                 ),
                               ),
                             ],

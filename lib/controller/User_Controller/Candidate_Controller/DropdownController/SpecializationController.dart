@@ -2,9 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/User_Controller/Employer_Controller/DropdownController/SpecializationController.dart';
-
-import '../../../../view/utils/app_String.dart';
 
 class Specializationcontroller with ChangeNotifier {
   bool _jobdescirbe = false;
