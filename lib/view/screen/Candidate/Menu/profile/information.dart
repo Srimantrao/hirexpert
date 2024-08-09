@@ -70,9 +70,12 @@ class _Profile_infoState extends State<Profile_info> {
                                       style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700,
                                       ),
                                     ),
-                                    Text(
-                                      profile.login.option_data['data']['UserDetails']['TechName'],
-                                      style: TextStyle(fontSize: Get.width / 26, fontWeight: FontWeight.w400, color: AppColor.subcolor,
+                                    SizedBox(
+                                      width: Get.width/2,
+                                      child: Text(
+                                        profile.login.option_data['data']['UserDetails']['TechName'],
+                                        style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor,
+                                        ),
                                       ),
                                     ),
                                   ],

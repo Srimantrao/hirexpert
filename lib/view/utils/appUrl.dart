@@ -27,6 +27,7 @@ class AppUrl {
   static const Concern = "$Base_location/Advertisedjob/addConcern";
   static const count = "$Base_location/Advertisedjob/JobStatusWiseCountList";
   static const savelist = "$Base_location/Advertisedjob/FavouriteJobList";
+  static const password_change = "$Base_location/user/changePassword";
 
   //Menu
   static const Offer = "$Base_location/Advertisedjob/AdvertiseJob";

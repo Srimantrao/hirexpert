@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Profile/Setting/password_change.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/seetting.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
@@ -18,6 +19,7 @@ import 'Setting_Screen/Notification_Setting.dart';
 
 class Setting extends StatelessWidget {
   final Seettings sett = Get.put(Seettings());
+  final PasswordChange chagepassword = Get.put(PasswordChange());
 
   Setting({super.key});
 
@@ -429,12 +431,9 @@ class Setting extends StatelessWidget {
                                             SizedBox(height: Get.height / 50),
                                             Text(My_Archive_text.Confirm_Password, style: TextStyle(fontSize: Get.width / 23, fontWeight: FontWeight.w400, color: AppColor.subcolor)),
                                             TextField(
-                                              onChanged: (String val) {
-                                                onChanged:
-                                                (String val) {
+                                                onChanged:(String val) {
                                                   Pass_change.Confirm_Password(val);
-                                                };
-                                              },
+                                                },
                                               obscureText: Pass_change.c_pass,
                                               controller: Pass_change.conf_pass,
                                               decoration: InputDecoration(
@@ -462,10 +461,15 @@ class Setting extends StatelessWidget {
                                       InkWell(
                                         onTap: () {
                                           Pass_change.Button_Fuction();
-                                          sett.Change_Pass.ChangeControllerApiController_Fuction(
-                                            Password: Pass_change.new_pass.text,
-                                            OldPassword: Pass_change.old_pass.text,
-                                            Tokan: sett.Login.option_data['data']['LoginToken'],
+                                          // sett.Change_Pass.ChangeControllerApiController_Fuction(
+                                          //   Password: Pass_change.new_pass.text,
+                                          //   OldPassword: Pass_change.old_pass.text,
+                                          //   Tokan: sett.Login.option_data['data']['LoginToken'],
+                                          // );
+                                          chagepassword.PasswordChange_fuction(
+                                              Password: Pass_change.new_pass.text,
+                                              OldPassword: Pass_change.old_pass.text,
+                                              Tokan: sett.Login.option_data['data']['LoginToken'],
                                           );
                                           setState(() {});
                                         },
