@@ -14,17 +14,10 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile.dart';
 import 'Setting.dart';
 
-class Profile_info extends StatefulWidget {
+class Profile_info extends StatelessWidget {
   Profile_info({super.key});
 
-  @override
-  State<Profile_info> createState() => _Profile_infoState();
-}
-
-class _Profile_infoState extends State<Profile_info> {
   final ProfielInfo profile = Get.put(ProfielInfo());
-
-  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -40,118 +33,86 @@ class _Profile_infoState extends State<Profile_info> {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  Container(
-                    height: Get.height / 8,
-                    decoration: BoxDecoration(
-                      border: Border(
-                        bottom: BorderSide(color: AppColor.Bottam_color),
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Obx(() {
-                          if (profile.login.isLodingvalue.value) {
-                            return Center(child: Image.asset(AppLoder.infinityloder_without_background));
-                          } else if (profile.login.option_data['data'] == null || profile.login.option_data == null) {
-                            return Center(child: Text(API_Error.null_data));
-                          } else {
-                            return Row(
-                              children: [
-                                CircleAvatar(radius: 40, backgroundImage: NetworkImage(profile.login.option_data['data']['Profile'])),
-                                SizedBox(width: Get.width / 30),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(profile.login.option_data['data']['Username'],
-                                      style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700,
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: Get.width/2,
-                                      child: Text(
-                                        profile.login.option_data['data']['UserDetails']['TechName'],
-                                        style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            );
-                          }
-                        }),
-                        InkWell(
-                          onTap: () {
-                            Get.to(() => Setting());
-                          },
-                          child: Icon(Icons.settings, color: AppColor.Button_color, size: 32),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: Get.height / 50),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {selectedIndex = 0;});
-                        },
-                        child: Container_tab(text: Profile_Text.Extra_Info,
-                            textcolor: (selectedIndex == 0)
-                                ?AppColor.Full_body_color
-                                :AppColor.black_all,
-                            tabcolor: (selectedIndex == 0)
-                                ?AppColor.Button_color
-                                :AppColor.Bottam_color,
+              child: Consumer<TabbarController>(builder: (BuildContext context, value, Widget? child) {
+                return Column(
+                  children: [
+                    Container(
+                      height: Get.height / 8,
+                      decoration: BoxDecoration(
+                        border: Border(
+                          bottom: BorderSide(color: AppColor.Bottam_color),
                         ),
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {selectedIndex = 1;});
-                        },
-                        child: Container_tab(text: Profile_Text.My_Profile,
-                          textcolor: (selectedIndex == 1)
-                              ?AppColor.Full_body_color
-                              :AppColor.black_all,
-                          tabcolor: (selectedIndex == 1)
-                            ?AppColor.Button_color
-                            :AppColor.Bottam_color,),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Obx(() {
+                            if (profile.login.isLodingvalue.value) {
+                              return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+                            } else if (profile.login.option_data['data'] == null || profile.login.option_data == null) {
+                              return Center(child: Text(API_Error.null_data));
+                            } else {
+                              return Row(
+                                children: [
+                                  CircleAvatar(radius: 40, backgroundImage: NetworkImage(profile.login.option_data['data']['Profile'])),
+                                  SizedBox(width: Get.width / 30),
+                                  Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(profile.login.option_data['data']['Username'],
+                                        style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        width: Get.width/2,
+                                        child: Text(
+                                          profile.login.option_data['data']['UserDetails']['TechName'],
+                                          style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              );
+                            }
+                          }),
+                          InkWell(
+                            onTap: () {
+                              Get.to(() => Setting());
+                            },
+                            child: Icon(Icons.settings, color: AppColor.Button_color, size: 32),
+                          )
+                        ],
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          setState(() {selectedIndex = 2;});
-                        },
-                        child: Container_tab(text: Profile_Text.Document,
-                          textcolor: (selectedIndex == 2)
-                              ?AppColor.Full_body_color
-                              :AppColor.black_all,
-                          tabcolor: (selectedIndex == 2)
-                            ?AppColor.Button_color
-                            :AppColor.Bottam_color,),
-                      ),
-                    ],
-                  ),
-
-                  SizedBox(height: Get.height/50),
-
-                  SizedBox(
-                    height: Get.height / 1.52,
-                    child: IndexedStack(
-                      index: selectedIndex,
+                    ),
+                    SizedBox(height: Get.height / 50),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Extra_info(),
-                        MY_Profile(),
-                        Documant_Profile(),
+                        tab(onTap: () { Tabb.Tabbarcontroler_1(); }, textcolor: Tabb.selectedIndex == 0, tabcolor: Tabb.selectedIndex == 0),
+                        tab(onTap: () { Tabb.Tabbarcontroler_2();},textcolor: Tabb.selectedIndex == 1, tabcolor: Tabb.selectedIndex == 1),
+                        tab(onTap: () { Tabb.Tabbarcontroler_3();}, textcolor: Tabb.selectedIndex == 2, tabcolor: Tabb.selectedIndex == 2),
                       ],
                     ),
-                  ),
-                ],
-              ),
+
+                    SizedBox(height: Get.height/50),
+
+                    SizedBox(
+                      height: Get.height / 1.52,
+                      child: IndexedStack(
+                        index: Tabb.selectedIndex,
+                        children: [
+                          Extra_info(),
+                          MY_Profile(),
+                          Documant_Profile(),
+                        ],
+                      ),
+                    ),
+                  ],
+                );
+              },)
             ),
           ),
         ),

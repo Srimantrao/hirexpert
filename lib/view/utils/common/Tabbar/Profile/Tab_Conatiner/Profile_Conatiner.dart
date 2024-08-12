@@ -30,3 +30,21 @@ class Container_tab extends StatelessWidget {
   }
 }
 
+class tab extends StatelessWidget {
+  final void Function() onTap;
+  final bool textcolor;
+  final bool tabcolor;
+  const tab({super.key, required this.onTap, required this.textcolor, required this.tabcolor});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container_tab(text: Profile_Text.Extra_Info,
+        textcolor: (textcolor) ?AppColor.Full_body_color :AppColor.black_all,
+        tabcolor: (tabcolor) ?AppColor.Button_color :AppColor.Bottam_color,
+      ),
+    );
+  }
+}
+
