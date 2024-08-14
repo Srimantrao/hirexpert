@@ -32,8 +32,8 @@ class Profile_info extends StatelessWidget {
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
-            child: SingleChildScrollView(
-              child: Consumer<TabbarController>(builder: (BuildContext context, value, Widget? child) {
+            child: SingleChildScrollView(child: Consumer<TabbarController>(
+              builder: (BuildContext context, value, Widget? child) {
                 return Column(
                   children: [
                     Container(
@@ -61,15 +61,13 @@ class Profile_info extends StatelessWidget {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Text(profile.login.option_data['data']['Username'],
-                                        style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700,
-                                        ),
+                                        style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
                                       ),
                                       SizedBox(
-                                        width: Get.width/2,
+                                        width: Get.width / 2,
                                         child: Text(
                                           profile.login.option_data['data']['UserDetails']['TechName'],
-                                          style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor,
-                                          ),
+                                          style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor),
                                         ),
                                       ),
                                     ],
@@ -91,14 +89,30 @@ class Profile_info extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        tab(onTap: () { Tabb.Tabbarcontroler_1(); }, textcolor: Tabb.selectedIndex == 0, tabcolor: Tabb.selectedIndex == 0),
-                        tab(onTap: () { Tabb.Tabbarcontroler_2();},textcolor: Tabb.selectedIndex == 1, tabcolor: Tabb.selectedIndex == 1),
-                        tab(onTap: () { Tabb.Tabbarcontroler_3();}, textcolor: Tabb.selectedIndex == 2, tabcolor: Tabb.selectedIndex == 2),
+                        tab(
+                            onTap: () {
+                              Tabb.Tabbarcontroler_1();
+                            },
+                            textcolor: Tabb.selectedIndex == 0,
+                            tabcolor: Tabb.selectedIndex == 0,
+                            name: Profile_Text.Extra_Info),
+                        tab(
+                            onTap: () {
+                              Tabb.Tabbarcontroler_2();
+                            },
+                            textcolor: Tabb.selectedIndex == 1,
+                            tabcolor: Tabb.selectedIndex == 1,
+                            name: Profile_Text.Company_Name),
+                        tab(
+                            onTap: () {
+                              Tabb.Tabbarcontroler_3();
+                            },
+                            textcolor: Tabb.selectedIndex == 2,
+                            tabcolor: Tabb.selectedIndex == 2,
+                            name: Profile_Text.Document),
                       ],
                     ),
-
-                    SizedBox(height: Get.height/50),
-
+                    SizedBox(height: Get.height / 50),
                     SizedBox(
                       height: Get.height / 1.52,
                       child: IndexedStack(
@@ -112,8 +126,8 @@ class Profile_info extends StatelessWidget {
                     ),
                   ],
                 );
-              },)
-            ),
+              },
+            )),
           ),
         ),
       ),

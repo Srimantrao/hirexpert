@@ -15,7 +15,6 @@ class Container_tab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
       height: Get.height / 18,
       width: Get.width / 3.8,
@@ -24,7 +23,7 @@ class Container_tab extends StatelessWidget {
         color: tabcolor,
       ),
       child: Center(
-        child: Text(text, style: TextStyle(fontSize: Get.width / 27,color: textcolor ?? AppColor.Full_body_color)),
+        child: Text(text, style: TextStyle(fontSize: Get.width / 27, color: textcolor ?? AppColor.Full_body_color)),
       ),
     );
   }
@@ -34,17 +33,18 @@ class tab extends StatelessWidget {
   final void Function() onTap;
   final bool textcolor;
   final bool tabcolor;
-  const tab({super.key, required this.onTap, required this.textcolor, required this.tabcolor});
+  final String name;
+  const tab({super.key, required this.onTap, required this.textcolor, required this.tabcolor, required this.name});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
-      child: Container_tab(text: Profile_Text.Extra_Info,
-        textcolor: (textcolor) ?AppColor.Full_body_color :AppColor.black_all,
-        tabcolor: (tabcolor) ?AppColor.Button_color :AppColor.Bottam_color,
+      child: Container_tab(
+        text: name,
+        textcolor: (textcolor) ? AppColor.Full_body_color : AppColor.black_all,
+        tabcolor: (tabcolor) ? AppColor.Button_color : AppColor.Bottam_color,
       ),
     );
   }
 }
-
