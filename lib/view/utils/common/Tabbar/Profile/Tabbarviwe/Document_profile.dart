@@ -18,8 +18,7 @@ class Documant_Profile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Documents_pro =
-        Provider.of<DocumentInfoController>(context, listen: false);
+    final Documents_pro = Provider.of<DocumentInfoController>(context, listen: false);
     return Consumer<DocumentInfoController>(
       builder: (BuildContext context, value, Widget? child) {
         return Scaffold(
@@ -48,10 +47,7 @@ class Documant_Profile extends StatelessWidget {
                           const SizedBox(),
                           Text(
                             Profile_Text.Hedding_Critifaction,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              fontWeight: FontWeight.w600,
-                            ),
+                            style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600),
                           ),
                           InkWell(
                             onTap: () {
@@ -71,29 +67,22 @@ class Documant_Profile extends StatelessWidget {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.vertical,
                         child: StatefulBuilder(
-                          builder: (BuildContext context,
-                              void Function(void Function()) setState) {
+                          builder: (BuildContext context, void Function(void Function()) setState) {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  Profile_Text.Certificate,
-                                  style: TextStyle(
-                                    fontSize: Get.width / 25,
-                                    color: AppColor.select_check_color,
-                                  ),
+                                Text(Profile_Text.Certificate,
+                                  style: TextStyle(fontSize: Get.width / 25, color: AppColor.select_check_color),
                                 ),
                                 TextField(
                                   controller: Certificate,
                                   decoration: InputDecoration(
                                     hintText: Profile_Text.Certificate_Name,
                                     focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: AppColor.Bottam_color),
+                                      borderSide: BorderSide(color: AppColor.Bottam_color),
                                     ),
                                     enabledBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(
-                                          color: AppColor.Bottam_color),
+                                      borderSide: BorderSide(color: AppColor.Bottam_color),
                                     ),
                                   ),
                                 ),
@@ -102,10 +91,7 @@ class Documant_Profile extends StatelessWidget {
                                 //Date
                                 Text(
                                   Profile_Text.Date_issued,
-                                  style: TextStyle(
-                                    color: AppColor.select_check_color,
-                                    fontSize: Get.width / 25,
-                                  ),
+                                  style: TextStyle(color: AppColor.select_check_color, fontSize: Get.width / 25),
                                 ),
                                 Row(
                                   mainAxisAlignment:
@@ -116,14 +102,10 @@ class Documant_Profile extends StatelessWidget {
                                       child: TextField(
                                         controller: Certificate,
                                         decoration: InputDecoration(
-                                          suffixIcon: Icon(
-                                            Icons.keyboard_arrow_down,
-                                            color: AppColor.select_check_color,
-                                          ),
+                                          suffixIcon: Icon(Icons.keyboard_arrow_down, color: AppColor.select_check_color),
                                           hintText: 'Month',
                                           focusedBorder: UnderlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: AppColor.Bottam_color),
+                                            borderSide: BorderSide(color: AppColor.Bottam_color),
                                           ),
                                           enabledBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -138,10 +120,7 @@ class Documant_Profile extends StatelessWidget {
                                       child: TextField(
                                         controller: Certificate,
                                         decoration: InputDecoration(
-                                          suffixIcon: Icon(
-                                            Icons.keyboard_arrow_down,
-                                            color: AppColor.select_check_color,
-                                          ),
+                                          suffixIcon: Icon(Icons.keyboard_arrow_down, color: AppColor.select_check_color),
                                           hintText: 'Year',
                                           focusedBorder: UnderlineInputBorder(
                                             borderSide: BorderSide(
@@ -161,22 +140,16 @@ class Documant_Profile extends StatelessWidget {
                                 Row(
                                   children: [
                                     Checkbox(
-                                        side: BorderSide(
-                                          color: AppColor.select_check_color,
-                                        ),
+                                        side: BorderSide(color: AppColor.select_check_color),
                                         value: Documents_pro.certificate_cheak,
                                         onChanged: (val) {
-                                          Documents_pro
-                                              .certificate_cheak_fuction(val);
+                                          Documents_pro.certificate_cheak_fuction(val);
                                         }),
                                     SizedBox(
                                       width: Get.width / 2,
                                       child: Text(
                                         Profile_Text.This_certificate,
-                                        style: TextStyle(
-                                          fontSize: Get.width / 27,
-                                          color: AppColor.select_check_color,
-                                        ),
+                                        style: TextStyle(fontSize: Get.width / 27, color: AppColor.select_check_color),
                                       ),
                                     ),
                                   ],
@@ -198,12 +171,10 @@ class Documant_Profile extends StatelessWidget {
                                     maxLines: null,
                                     decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: AppColor.select_check_color),
+                                        borderSide: BorderSide(color: AppColor.select_check_color),
                                       ),
                                       focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                            color: AppColor.select_check_color),
+                                        borderSide: BorderSide(color: AppColor.select_check_color),
                                       ),
                                     ),
                                   ),
@@ -219,9 +190,7 @@ class Documant_Profile extends StatelessWidget {
                                 Row(
                                   children: [
                                     Checkbox(
-                                        side: BorderSide(
-                                          color: AppColor.select_check_color,
-                                        ),
+                                        side: BorderSide(color: AppColor.select_check_color),
                                         value: Documents_pro.Image_url,
                                         onChanged: (val) {
                                           Documents_pro.Image_url_fuction(val);
@@ -260,8 +229,7 @@ class Documant_Profile extends StatelessWidget {
                                   ),
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     SizedBox(
                                       width: Get.width / 2.5,
@@ -286,9 +254,7 @@ class Documant_Profile extends StatelessWidget {
                                       height: Get.height / 15,
                                       width: Get.width / 3.9,
                                       decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(
-                                            Get.width / 60,
-                                          ),
+                                          borderRadius: BorderRadius.circular(Get.width / 60),
                                           color: AppColor.Button_color),
                                       child: Center(
                                         child: Text(
@@ -323,18 +289,12 @@ class Documant_Profile extends StatelessWidget {
               height: Get.height / 20,
               width: Get.width / 3,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  Get.height / 80,
-                ),
+                borderRadius: BorderRadius.circular(Get.height / 80),
                 color: AppColor.Button_color,
               ),
               child: Center(
-                child: Text(
-                  Profile_Text.Add_New,
-                  style: TextStyle(
-                    color: AppColor.Full_body_color,
-                    fontSize: Get.width / 26,
-                  ),
+                child: Text(Profile_Text.Add_New,
+                  style: TextStyle(color: AppColor.Full_body_color, fontSize: Get.width / 26),
                 ),
               ),
             ),
@@ -344,9 +304,7 @@ class Documant_Profile extends StatelessWidget {
           body: Container(
             height: Get.height / 1.52,
             width: Get.width,
-            decoration: BoxDecoration(
-              color: AppColor.Full_body_color,
-            ),
+            decoration: BoxDecoration(color: AppColor.Full_body_color),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
