@@ -11,9 +11,15 @@ class Jobcountsaccording extends GetxController {
   var isLoding = false.obs;
   var data= {}.obs;
 
+  @override
+  void onInit() {
+    Jobcountsaccording_fuction();
+    super.onInit();
+  }
+
   Future Jobcountsaccording_fuction({
-    required String Tokan,
-    required String CandidateId,
+    String? Tokan,
+     String? CandidateId,
   }) async {
     Map<String, dynamic> body = {
       'CandidateId': CandidateId,

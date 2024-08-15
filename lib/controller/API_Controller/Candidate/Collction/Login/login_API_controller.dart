@@ -12,13 +12,10 @@ class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
   var option_data = {}.obs;
 
-  Future OptionApiController_fuction({
-    String? Email,
-    String? Password,
-    String? UserType,
-  }) async {
+  Future OptionApiController_fuction({String? Email, String? Password, String? UserType,}) async {
     try {
       isLodingvalue.value = true;
+      update();
 
       if (kDebugMode) {
         print("Email: $Email");
@@ -41,10 +38,7 @@ class OptionApiController extends GetxController {
       final responce = await http.post(
         Uri.parse(AppUrl.login),
         body: body,
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip},
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         option_data.value = jsonDecode(responce.body);
@@ -60,6 +54,7 @@ class OptionApiController extends GetxController {
       }
     } finally {
       isLodingvalue.value = false;
+      update();
     }
   }
 }

@@ -20,6 +20,7 @@ class Search extends StatelessWidget {
   final SearchHendal Searchings = Get.put(SearchHendal());
   final IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
   final OptionApiController login = Get.put(OptionApiController());
+
   Search({super.key});
 
   @override
@@ -57,9 +58,7 @@ class Search extends StatelessWidget {
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Obx(() {
             if (Searchings.Search.isLoding.value) {
               return Center(
@@ -105,9 +104,7 @@ class Search extends StatelessWidget {
                               isFavourite = !isFavourite;(context as Element).markNeedsBuild();
                             }
                           },
-                          saving: isFavourite
-                              ? SvgPicture.asset(AppIcons.bookmark)
-                              : SvgPicture.asset(AppIcons.save),
+                          saving: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
                         ),
                       );
                     },
@@ -135,12 +132,8 @@ class Search extends StatelessWidget {
                         isFavourite = !isFavourite;(context as Element).markNeedsBuild();
                       }
                     },
-                    savechild: isFavourite
-                        ? SvgPicture.asset(AppIcons.bookmark)
-                        : SvgPicture.asset(AppIcons.save),
-                    top: BorderSide(
-                      color: AppColor.Bottam_color,
-                    ),
+                    savechild: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
+                    top: BorderSide(color: AppColor.Bottam_color),
                   );
                 },
               );

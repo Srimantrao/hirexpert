@@ -1,15 +1,13 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names, unrelated_type_equality_checks, avoid_print
+
+// ignore_for_file: camel_case_types, non_constant_identifier_names, unrelated_type_equality_checks, avoid_print, prefer_const_constructors
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Sinup/sinup_API_controller.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/login.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 
@@ -107,8 +105,7 @@ class Candidate_SinupController with ChangeNotifier {
     if (phone_controller.text.isEmpty) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.Phone;
-    } else if (phone_controller.text.length > 9 &&
-        phone_controller.text.length < 10) {
+    } else if (phone_controller.text.length > 9 && phone_controller.text.length < 10) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.phone_ditit;
     } else if (!RegExp(r'^\+?[1-9]\d{1,14}$').hasMatch(phone_controller.text)) {
@@ -220,8 +217,7 @@ class Candidate_SinupController with ChangeNotifier {
     } else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.digit;
-    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]')
-        .hasMatch(password_controller.text)) {
+    } else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.special;
     } else {
@@ -246,15 +242,9 @@ class Candidate_SinupController with ChangeNotifier {
   }
 
   void SinupValidtion_successful() async {
-    if (!_Frist_name_value &&
-        !_Last_name_value &&
-        !_Email_value &&
-        !_phone_value &&
-        !_password_value &&
-        !_confirm_password) {
+    if (!_Frist_name_value && !_Last_name_value && !_Email_value && !_phone_value && !_password_value && !_confirm_password) {
       try {
-        UserCredential userCredential =
-            await auth.createUserWithEmailAndPassword(
+        UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email_controller.text,
           password: password_controller.text,
         );
@@ -293,30 +283,31 @@ class Candidate_SinupController with ChangeNotifier {
                 ),
               );
             }
+            String message =
+                Sinup_API.Sinup_data['message'] ?? "Unknown error occurred";
             Get.showSnackbar(
               GetBar(
-                duration: const Duration(seconds: 2),
-                message: Sinup_API.Sinup_data['message'],
+                duration: Duration(seconds: 2),
+                message: message,
               ),
             );
           },
         );
 
-        await FirebaseFirestore.instance
-            .collection('users')
-            .doc(userCredential.user!.uid)
-            .set({
-          'FristName :-': frist_name_controller.text,
-          'LastName  :-': last_name_controller.text,
-          'Email     :-': email_controller.text,
-          'Phone     :-': phone_controller.text,
-          'Password  :-': password_controller.text,
+        await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
+          'FristName': frist_name_controller.text,
+          'LastName': last_name_controller.text,
+          'Email': email_controller.text,
+          'Phone': phone_controller.text,
+          'Password': password_controller.text,
         });
       } on FirebaseException catch (e) {
+        String message = Sinup_API.Sinup_data['message'] ??
+            "Firebase error occurred: ${e.message}";
         Get.showSnackbar(
           GetBar(
-            duration: const Duration(seconds: 2),
-            message: Sinup_API.Sinup_data['message'],
+            duration: Duration(seconds: 2),
+            message: message,
           ),
         );
       }

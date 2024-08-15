@@ -27,86 +27,83 @@ class Search_find extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(height: Get.height / 50),
-          Searching(OnString: onString),
-          SizedBox(
-            height: Get.height / 1.6,
-            child: Obx(() {
-              if (searchHandler.Search.isLoding.value) {
-                return Center(
-                  child: Image.asset(AppLoder.infinityloder_without_background),
-                );
-              } else if (
-                  searchHandler.Search.Search_data.value['data'] == null) {
-                return Center(
-                  child: Text(API_Error.null_data),
-                );
-              } else {
-                return ListView.builder(
-                  itemCount: searchHandler.Search.Search_data.value['data'].length,
-                  itemBuilder: (BuildContext context, int index) {
-                    final jobData = searchHandler.Search.Search_data.value['data'][index];
-                    return InkWell(
-                      onTap: () {
-                        Get.to(
-                          () => Details(
-                            Icon: jobData['ComLogo'],
-                            Job_Tital: jobData['JobTitle'],
-                            Language: jobData['TechName'],
-                            Commpany: jobData['ComName'],
-                            Working: jobData["WorkWeek"],
-                            Location: jobData["Location"],
-                            Job_time: jobData['JobType'],
-                            Exp: jobData["Experience"],
-                            lake: jobData["Salary"],
-                            Hybrid: jobData["WorkSet"],
-                            stats: jobData["FormatDt"],
-                            saveonTap: () {
-                              isfavication.IsfavrationControllers_fuction(
-                                CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-                                JobId: '10',
-                                IsLike: isfavication.isFavration.value.isFavourite == 1 ? '1' : '0',
-                                Tokan: login.option_data['data']['LoginToken'],
-                              );
-                              print("Tab");
-                            },
-                            saving:
-                                (isfavication.isFavration.value.isFavourite == 1)
-                                    ? SvgPicture.asset(AppIcons.bookmark)
-                                    : SvgPicture.asset(AppIcons.save),
-                          ),
-                        );
-                      },
-                      child: JobSearch(
-                        saveonTap: () {
-                          searchHandler;
+      child: Container(
+        width: Get.width,
+        height: Get.height,
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: Get.height / 50),
+            Searching(OnString: onString),
+            SizedBox(
+              height: Get.height / 1.6,
+              child: Obx(() {
+                if (searchHandler.Search.isLoding.value) {
+                  return Center(
+                    child: Image.asset(AppLoder.infinityloder_without_background),
+                  );
+                } else if (searchHandler.Search.Search_data.value['data'] == null) {
+                  return Center(
+                    child: Text(API_Error.null_data),
+                  );
+                } else {
+                  return ListView.builder(
+                    itemCount: searchHandler.Search.Search_data.value['data'].length,
+                    itemBuilder: (BuildContext context, int index) {
+                      final jobData = searchHandler.Search.Search_data.value['data'][index];
+                      return InkWell(
+                        onTap: () {
+                          Get.to(
+                            () => Details(
+                              Icon: jobData['ComLogo'],
+                              Job_Tital: jobData['JobTitle'],
+                              Language: jobData['TechName'],
+                              Commpany: jobData['ComName'],
+                              Working: jobData["WorkWeek"],
+                              Location: jobData["Location"],
+                              Job_time: jobData['JobType'],
+                              Exp: jobData["Experience"],
+                              lake: jobData["Salary"],
+                              Hybrid: jobData["WorkSet"],
+                              stats: jobData["FormatDt"],
+                              saveonTap: () {
+                                isfavication.IsfavrationControllers_fuction(
+                                  CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+                                  JobId: '10',
+                                  IsLike: isfavication.isFavration.value.isFavourite == 1 ? '1' : '0',
+                                  Tokan: login.option_data['data']['LoginToken'],
+                                );
+                                print("Tab");
+                              },
+                              saving: (isfavication.isFavration.value.isFavourite == 1) ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
+                            ),
+                          );
                         },
-                        savechild: (isfavication.isFavration.value.isFavourite == 1)
-                            ? SvgPicture.asset(AppIcons.bookmark)
-                            : SvgPicture.asset(AppIcons.save),
-                        top: BorderSide(color: AppColor.Bottam_color),
-                        Icon: jobData['ComLogo'],
-                        Job_Tital: jobData['JobTitle'],
-                        Language: jobData['TechName'],
-                        Commpany: jobData['ComName'],
-                        Working: jobData["WorkWeek"],
-                        Location: jobData["Location"],
-                        Job_time: jobData['JobType'],
-                        Exp: jobData["Experience"],
-                        lake: jobData["Salary"],
-                        Hybrid: jobData["WorkSet"],
-                        stats: jobData["FormatDt"],
-                      ),
-                    );
-                  },
-                );
-              }
-            }),
-          ),
-        ],
+                        child: JobSearch(
+                          saveonTap: () {searchHandler;},
+                          savechild: (isfavication.isFavration.value.isFavourite == 1) ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
+                          top: BorderSide(color: AppColor.Bottam_color),
+                          Icon: jobData['ComLogo'],
+                          Job_Tital: jobData['JobTitle'],
+                          Language: jobData['TechName'],
+                          Commpany: jobData['ComName'],
+                          Working: jobData["WorkWeek"],
+                          Location: jobData["Location"],
+                          Job_time: jobData['JobType'],
+                          Exp: jobData["Experience"],
+                          lake: jobData["Salary"],
+                          Hybrid: jobData["WorkSet"],
+                          stats: jobData["FormatDt"],
+                        ),
+                      );
+                    },
+                  );
+                }
+              }),
+            ),
+          ],
+        ),
       ),
     );
   }

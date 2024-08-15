@@ -166,7 +166,7 @@ class Search_text {
   static const lake = "1.00 - 5.00 Lakh’s";
   static const Hybrid = "Hybrid";
   static const Days = "5 Days Ago";
-  static const cancel = "Cancle";
+  static const cancel = "cancel";
   static const Keyword = "Job Title, Keyword or Company";
   static const Select_Location = "Select Location";
 }

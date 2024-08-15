@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,14 +19,9 @@ class Searching extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Buttonschang = Provider.of<SearchJobController>(
-      context,
-      listen: false,
-    );
+    final Buttonschang = Provider.of<SearchJobController>(context, listen: false);
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: Get.width / 50,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
       child: Consumer<SearchJobController>(
         builder: (BuildContext context, value, Widget? child) {
           return Column(
@@ -42,33 +37,23 @@ class Searching extends StatelessWidget {
                       height: Get.height / 20,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: (Buttonschang.SelectButtons)
-                              ? AppColor.Button_color
-                              : AppColor.subcolor,
+                          color: (Buttonschang.SelectButtons) ? AppColor.Button_color : AppColor.subcolor,
                         ),
-                        borderRadius: BorderRadius.circular(
-                          Get.width / 50,
-                        ),
-                        color: (Buttonschang.SelectButtons)
-                            ? AppColor.Button_color
-                            : AppColor.Buttom_color,
+                        borderRadius: BorderRadius.circular(Get.width / 50),
+                        color: (Buttonschang.SelectButtons) ? AppColor.Button_color : AppColor.Buttom_color,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.location_on_outlined,
-                            color: (Buttonschang.SelectButtons)
-                                ? AppColor.Full_body_color
-                                : AppColor.subcolor,
+                            color: (Buttonschang.SelectButtons) ? AppColor.Full_body_color : AppColor.subcolor,
                           ),
                           SizedBox(width: Get.width / 100),
                           Text(
                             OnString,
                             style: TextStyle(
-                              color: (Buttonschang.SelectButtons)
-                                  ? AppColor.Full_body_color
-                                  : AppColor.black_all,
+                              color: (Buttonschang.SelectButtons) ? AppColor.Full_body_color : AppColor.black_all,
                             ),
                           ),
                         ],
@@ -85,33 +70,25 @@ class Searching extends StatelessWidget {
                       height: Get.height / 20,
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: (Buttonschang.Filtters)
-                              ? AppColor.Button_color
-                              : AppColor.subcolor,
+                          color: (Buttonschang.Filtters) ? AppColor.Button_color : AppColor.subcolor,
                         ),
                         borderRadius: BorderRadius.circular(
                           Get.width / 50,
                         ),
-                        color: (Buttonschang.Filtters)
-                            ? AppColor.Button_color
-                            : AppColor.Buttom_color,
+                        color: (Buttonschang.Filtters) ? AppColor.Button_color : AppColor.Buttom_color,
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Icon(
                             Icons.filter_alt_outlined,
-                            color: (Buttonschang.Filtters)
-                                ? AppColor.Full_body_color
-                                : AppColor.subcolor,
+                            color: (Buttonschang.Filtters) ? AppColor.Full_body_color : AppColor.subcolor,
                           ),
                           SizedBox(width: Get.width / 100),
                           Text(
                             Searchjob_text.Filtter,
                             style: TextStyle(
-                              color: (Buttonschang.Filtters)
-                                  ? AppColor.Full_body_color
-                                  : AppColor.black_all,
+                              color: (Buttonschang.Filtters) ? AppColor.Full_body_color : AppColor.black_all,
                             ),
                           ),
                         ],
@@ -142,23 +119,15 @@ class Searching extends StatelessWidget {
                                     height: Get.height / 20,
                                     width: Get.width,
                                     decoration: BoxDecoration(
-                                      border: Border(
-                                        bottom: BorderSide(
-                                          color: AppColor.Buttom_color,
-                                        ),
-                                      ),
+                                      border: Border(bottom: BorderSide(color: AppColor.Buttom_color)),
                                     ),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const SizedBox(),
+                                        SizedBox(),
                                         Text(
                                           Searchjob_text.Experience,
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: Get.width / 24,
-                                          ),
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: Get.width / 24),
                                         ),
                                         InkWell(
                                           highlightColor: Colors.transparent,
@@ -166,9 +135,7 @@ class Searching extends StatelessWidget {
                                           onTap: () {
                                             Get.back();
                                           },
-                                          child: SvgPicture.asset(
-                                            AppIcons.cancel,
-                                          ),
+                                          child: SvgPicture.asset(AppIcons.cancel),
                                         ),
                                       ],
                                     ),
@@ -176,90 +143,33 @@ class Searching extends StatelessWidget {
                                   content: Container(
                                     height: Get.height / 3,
                                     width: Get.width,
-                                    decoration: BoxDecoration(
-                                      color: AppColor.Full_body_color,
-                                    ),
+                                    decoration: BoxDecoration(color: AppColor.Full_body_color),
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            Searchjob_text.Fresher,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Fresher, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year1,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year1, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year2,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year2, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year3,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year3, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year4,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year4, style: TextStyle(fontSize: Get.width / 24,)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year5,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year5, style: TextStyle(fontSize: Get.width / 24,)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year6,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year6, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year7,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year7, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year8,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year8, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year9,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.Year9, style: TextStyle(fontSize: Get.width / 24)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.Year10,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                            ),
+                                          Text(Searchjob_text.Year10, style: TextStyle(fontSize: Get.width / 24),
                                           ),
                                         ],
                                       ),
@@ -273,18 +183,15 @@ class Searching extends StatelessWidget {
                             width: Get.width / 2.5,
                             height: Get.height / 20,
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColor.subcolor,
-                              ),
-                              borderRadius:
-                                  BorderRadius.circular(Get.width / 50),
+                              border: Border.all(color: AppColor.subcolor),
+                              borderRadius: BorderRadius.circular(Get.width / 50),
                               color: AppColor.Buttom_color,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const SizedBox(),
-                                const Text(Searchjob_text.Experience),
+                                SizedBox(),
+                                Text(Searchjob_text.Experience),
                                 SvgPicture.asset(
                                   AppIcons.down,
                                   color: AppColor.subcolor,
@@ -309,24 +216,15 @@ class Searching extends StatelessWidget {
                                     width: Get.width,
                                     decoration: BoxDecoration(
                                       border: Border(
-                                        bottom: BorderSide(
-                                          color: AppColor.Buttom_color,
-                                        ),
+                                        bottom: BorderSide(color: AppColor.Buttom_color),
                                       ),
                                       color: AppColor.Full_body_color,
                                     ),
                                     child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: [
-                                        const SizedBox(),
-                                        Text(
-                                          Searchjob_text.Education,
-                                          style: TextStyle(
-                                            fontSize: Get.width / 24,
-                                            fontWeight: FontWeight.w600,
-                                          ),
-                                        ),
+                                        SizedBox(),
+                                        Text(Searchjob_text.Education, style: TextStyle(fontSize: Get.width / 24, fontWeight: FontWeight.w600)),
                                         InkWell(
                                           onTap: () {
                                             Get.back();
@@ -349,64 +247,23 @@ class Searching extends StatelessWidget {
                                     child: SingleChildScrollView(
                                       scrollDirection: Axis.vertical,
                                       child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
                                         children: [
-                                          Text(
-                                            Searchjob_text.BBA,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.BBA, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.BCA,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.BCA, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.BE,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.BE, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.B_Com,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.B_Com, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.M_Com,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.M_Com, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.M_Tech,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.M_Tech, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.B_Tech,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.B_Tech, style: TextStyle(fontSize: Get.width / 25)),
                                           SizedBox(height: Get.height / 50),
-                                          Text(
-                                            Searchjob_text.MBA,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 25,
-                                            ),
-                                          ),
+                                          Text(Searchjob_text.MBA, style: TextStyle(fontSize: Get.width / 25)),
                                         ],
                                       ),
                                     ),
@@ -419,18 +276,15 @@ class Searching extends StatelessWidget {
                             width: Get.width / 2.8,
                             height: Get.height / 20,
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColor.subcolor,
-                              ),
-                              borderRadius:
-                                  BorderRadius.circular(Get.width / 50),
+                              border: Border.all(color: AppColor.subcolor),
+                              borderRadius: BorderRadius.circular(Get.width / 50),
                               color: AppColor.Buttom_color,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const SizedBox(),
-                                const Text(Searchjob_text.Education),
+                                SizedBox(),
+                                Text(Searchjob_text.Education),
                                 SvgPicture.asset(
                                   AppIcons.down,
                                   color: AppColor.subcolor,
@@ -461,45 +315,31 @@ class Searching extends StatelessWidget {
                                       width: Get.width,
                                       decoration: BoxDecoration(
                                         border: Border(
-                                          bottom: BorderSide(
-                                            color: AppColor.Buttom_color,
-                                          ),
+                                          bottom: BorderSide(color: AppColor.Buttom_color),
                                         ),
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const SizedBox(),
-                                          Text(
-                                            Searchjob_text.CTC,
-                                            style: TextStyle(
-                                              fontSize: Get.width / 24,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                          ),
+                                          SizedBox(),
+                                          Text(Searchjob_text.CTC, style: TextStyle(fontSize: Get.width / 24, fontWeight: FontWeight.w600)),
                                           InkWell(
                                               splashColor: Colors.transparent,
                                               focusColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
+                                              highlightColor: Colors.transparent,
                                               onTap: () {
                                                 Get.back();
                                               },
-                                              child: SvgPicture.asset(
-                                                  AppIcons.cancel))
+                                              child: SvgPicture.asset(AppIcons.cancel))
                                         ],
                                       ),
                                     ),
                                     content: Container(
                                       height: Get.height / 4,
                                       width: Get.width,
-                                      decoration: BoxDecoration(
-                                        color: AppColor.Full_body_color,
-                                      ),
+                                      decoration: BoxDecoration(color: AppColor.Full_body_color),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           SizedBox(
                                             width: Get.width / 3.5,
@@ -510,29 +350,17 @@ class Searching extends StatelessWidget {
                                                 width: Get.width,
                                                 decoration: BoxDecoration(
                                                   border: Border(
-                                                    top: BorderSide(
-                                                      color:
-                                                          AppColor.Buttom_color,
-                                                    ),
-                                                    bottom: BorderSide(
-                                                      color:
-                                                          AppColor.Buttom_color,
-                                                    ),
+                                                    top: BorderSide(color: AppColor.Buttom_color),
+                                                    bottom: BorderSide(color: AppColor.Buttom_color),
                                                   ),
                                                 ),
                                               ),
                                               itemExtent: 30,
-                                              onSelectedItemChanged:
-                                                  (int value) {},
+                                              onSelectedItemChanged: (int value) {},
                                               children: List.generate(
                                                 Lakh_list.length,
                                                 (index) => Center(
-                                                  child: Text(
-                                                    Lakh_list[index],
-                                                    style: TextStyle(
-                                                      fontSize: Get.width / 24,
-                                                    ),
-                                                  ),
+                                                  child: Text(Lakh_list[index], style: TextStyle(fontSize: Get.width / 24)),
                                                 ),
                                               ),
                                             ),
@@ -546,29 +374,17 @@ class Searching extends StatelessWidget {
                                                 width: Get.width,
                                                 decoration: BoxDecoration(
                                                   border: Border(
-                                                    top: BorderSide(
-                                                      color:
-                                                          AppColor.Buttom_color,
-                                                    ),
-                                                    bottom: BorderSide(
-                                                      color:
-                                                          AppColor.Buttom_color,
-                                                    ),
+                                                    top: BorderSide(color: AppColor.Buttom_color),
+                                                    bottom: BorderSide(color: AppColor.Buttom_color),
                                                   ),
                                                 ),
                                               ),
                                               itemExtent: 30,
-                                              onSelectedItemChanged:
-                                                  (int value) {},
+                                              onSelectedItemChanged: (int value) {},
                                               children: List.generate(
                                                 Thousand_list.length,
                                                 (index) => Center(
-                                                  child: Text(
-                                                    Thousand_list[index],
-                                                    style: TextStyle(
-                                                      fontSize: Get.width / 24,
-                                                    ),
-                                                  ),
+                                                  child: Text(Thousand_list[index], style: TextStyle(fontSize: Get.width / 24)),
                                                 ),
                                               ),
                                             ),
@@ -597,15 +413,14 @@ class Searching extends StatelessWidget {
                               border: Border.all(
                                 color: AppColor.subcolor,
                               ),
-                              borderRadius:
-                                  BorderRadius.circular(Get.width / 50),
+                              borderRadius: BorderRadius.circular(Get.width / 50),
                               color: AppColor.Buttom_color,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const SizedBox(),
-                                const Text(Searchjob_text.CTC),
+                                SizedBox(),
+                                Text(Searchjob_text.CTC),
                                 SvgPicture.asset(
                                   AppIcons.down,
                                   color: AppColor.subcolor,
@@ -630,29 +445,19 @@ class Searching extends StatelessWidget {
                                       width: Get.width,
                                       decoration: BoxDecoration(
                                         border: Border(
-                                          bottom: BorderSide(
-                                            color: AppColor.Buttom_color,
-                                          ),
+                                          bottom: BorderSide(color: AppColor.Buttom_color),
                                         ),
                                       ),
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
-                                          const SizedBox(),
-                                          Text(
-                                            Searchjob_text.Job_Type,
-                                            style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: Get.width / 24,
-                                            ),
-                                          ),
+                                          SizedBox(),
+                                          Text(Searchjob_text.Job_Type, style: TextStyle(fontWeight: FontWeight.w600, fontSize: Get.width / 24)),
                                           InkWell(
                                             onTap: () {
                                               Get.back();
                                             },
-                                            child: SvgPicture.asset(
-                                                AppIcons.cancel),
+                                            child: SvgPicture.asset(AppIcons.cancel),
                                           ),
                                         ],
                                       ),
@@ -666,36 +471,15 @@ class Searching extends StatelessWidget {
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                          crossAxisAlignment: CrossAxisAlignment.start,
                                           children: [
-                                            Text(
-                                              Searchjob_text.Part_Time,
-                                              style: TextStyle(
-                                                fontSize: Get.width / 24,
-                                              ),
-                                            ),
+                                            Text(Searchjob_text.Part_Time, style: TextStyle(fontSize: Get.width / 24)),
                                             SizedBox(height: Get.height / 50),
-                                            Text(
-                                              Searchjob_text.Full_Time,
-                                              style: TextStyle(
-                                                fontSize: Get.width / 24,
-                                              ),
-                                            ),
+                                            Text(Searchjob_text.Full_Time, style: TextStyle(fontSize: Get.width / 24)),
                                             SizedBox(height: Get.height / 50),
-                                            Text(
-                                              Searchjob_text.Internship,
-                                              style: TextStyle(
-                                                fontSize: Get.width / 24,
-                                              ),
-                                            ),
+                                            Text(Searchjob_text.Internship, style: TextStyle(fontSize: Get.width / 24)),
                                             SizedBox(height: Get.height / 50),
-                                            Text(
-                                              Searchjob_text.Contract,
-                                              style: TextStyle(
-                                                fontSize: Get.width / 24,
-                                              ),
-                                            ),
+                                            Text(Searchjob_text.Contract, style: TextStyle(fontSize: Get.width / 24)),
                                             SizedBox(height: Get.height / 50),
                                           ],
                                         ),
@@ -708,18 +492,15 @@ class Searching extends StatelessWidget {
                             width: Get.width / 3,
                             height: Get.height / 20,
                             decoration: BoxDecoration(
-                              border: Border.all(
-                                color: AppColor.subcolor,
-                              ),
-                              borderRadius:
-                                  BorderRadius.circular(Get.width / 50),
+                              border: Border.all(color: AppColor.subcolor,),
+                              borderRadius: BorderRadius.circular(Get.width / 50),
                               color: AppColor.Buttom_color,
                             ),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
-                                const SizedBox(),
-                                const Text(Searchjob_text.Job_Type),
+                                SizedBox(),
+                                Text(Searchjob_text.Job_Type),
                                 SvgPicture.asset(
                                   AppIcons.down,
                                   color: AppColor.subcolor,
@@ -750,30 +531,19 @@ class Searching extends StatelessWidget {
                                           width: Get.width,
                                           decoration: BoxDecoration(
                                             border: Border(
-                                              bottom: BorderSide(
-                                                color: AppColor.Buttom_color,
-                                              ),
+                                              bottom: BorderSide(color: AppColor.Buttom_color),
                                             ),
                                           ),
                                           child: Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
-                                              const SizedBox(),
-                                              Text(
-                                                Searchjob_text.Work_Setup,
-                                                style: TextStyle(
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: Get.width / 24,
-                                                ),
-                                              ),
+                                              SizedBox(),
+                                              Text(Searchjob_text.Work_Setup, style: TextStyle(fontWeight: FontWeight.w600, fontSize: Get.width / 24)),
                                               GestureDetector(
                                                 onTap: () {
                                                   Get.back();
                                                 },
-                                                child: SvgPicture.asset(
-                                                    AppIcons.cancel),
-                                              ),
+                                                child: SvgPicture.asset(AppIcons.cancel)),
                                             ],
                                           ),
                                         ),
@@ -786,36 +556,15 @@ class Searching extends StatelessWidget {
                                           child: SingleChildScrollView(
                                             scrollDirection: Axis.vertical,
                                             child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
+                                              crossAxisAlignment: CrossAxisAlignment.start,
                                               children: [
-                                                Text(
-                                                  Searchjob_text.Remote_Work,
-                                                  style: TextStyle(
-                                                    fontSize: Get.width / 24,
-                                                  ),
-                                                ),
+                                                Text(Searchjob_text.Remote_Work, style: TextStyle(fontSize: Get.width / 24)),
                                                 SizedBox(height: Get.height / 50),
-                                                Text(
-                                                  Searchjob_text.In_Office,
-                                                  style: TextStyle(
-                                                    fontSize: Get.width / 24,
-                                                  ),
-                                                ),
+                                                Text(Searchjob_text.In_Office, style: TextStyle(fontSize: Get.width / 24)),
                                                 SizedBox(height: Get.height / 50),
-                                                Text(
-                                                  Searchjob_text.Hybrid,
-                                                  style: TextStyle(
-                                                    fontSize: Get.width / 24,
-                                                  ),
-                                                ),
+                                                Text(Searchjob_text.Hybrid, style: TextStyle(fontSize: Get.width / 24)),
                                                 SizedBox(height: Get.height / 50),
-                                                Text(
-                                                  Searchjob_text.Any,
-                                                  style: TextStyle(
-                                                    fontSize: Get.width / 24,
-                                                  ),
-                                                ),
+                                                Text(Searchjob_text.Any, style: TextStyle(fontSize: Get.width / 24)),
                                                 SizedBox(height: Get.height / 50),
                                               ],
                                             ),
@@ -828,20 +577,15 @@ class Searching extends StatelessWidget {
                                 width: Get.width / 2.9,
                                 height: Get.height / 20,
                                 decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: AppColor.subcolor,
-                                  ),
-                                  borderRadius: BorderRadius.circular(
-                                    Get.width / 50,
-                                  ),
+                                  border: Border.all(color: AppColor.subcolor),
+                                  borderRadius: BorderRadius.circular(Get.width / 50),
                                   color: AppColor.Buttom_color,
                                 ),
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
                                   children: [
-                                    const SizedBox(),
-                                    const Text(Searchjob_text.Work_Setup),
+                                    SizedBox(),
+                                    Text(Searchjob_text.Work_Setup),
                                     SvgPicture.asset(
                                       AppIcons.down,
                                       color: AppColor.subcolor,

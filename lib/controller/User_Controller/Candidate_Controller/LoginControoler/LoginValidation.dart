@@ -1,14 +1,69 @@
 // ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, avoid_print, prefer_const_constructors
+  // void Loginvalidation_successfully() async {
+  //   if (!_Email_value && !_password_value) {
+  //     try {
+  //       UserCredential userCredential = await auth.signInWithEmailAndPassword(
+  //         email: email_controller.text,
+  //         password: password_controller.text,
+  //       );
+  //
+  //       if (email_controller.text == Email && password_controller.text == Password) {
+  //         print("Suessfull");
+  //         pref!.setBool('Login', true);
+  //         islogin = pref!.getBool('Login')!;
+  //       }
+  //
+  //       login.OptionApiController_fuction(
+  //         UserType: 'Candidate',
+  //         Email: email_controller.text,
+  //         Password: password_controller.text,
+  //       ).then(
+  //         (value) {
+  //           Obx((){
+  //             if(login.isLodingvalue.value){
+  //               return Image.asset(AppLoder.infinityloder_without_background);
+  //             }else{
+  //                if (login.option_data['status'] == true) {
+  //             Get.to(() => Candidate_Bottam(), duration: Duration(seconds: 1), transition: Transition.circularReveal);
+  //           } else {
+  //             Get.showSnackbar(
+  //               GetBar(
+  //                 duration: Duration(seconds: 2),
+  //                 message: login.option_data['message'],
+  //               ),
+  //             );
+  //           }
+  //                return SizedBox();
+  //             }
+  //           });
+  //
+  //
+  //         },
+  //       );
+  //     } on FirebaseException catch (e) {
+  //       Get.showSnackbar(
+  //         GetBar(
+  //           duration: Duration(seconds: 2),
+  //           message: '$e',
+  //         ),
+  //       );
+  //     }
+  //   }
+  //   notifyListeners();
+  // }
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
+import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
 
 class Candidate_LoginValidation with ChangeNotifier {
@@ -115,46 +170,51 @@ class Candidate_LoginValidation with ChangeNotifier {
   }
 
   void Loginvalidation_successfully() async {
-    if (!_Email_value && !_password_value) {
-      try {
-        UserCredential userCredential = await auth.signInWithEmailAndPassword(
-          email: email_controller.text,
-          password: password_controller.text,
-        );
+  if (!_Email_value && !_password_value) {
+    try {
+      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+        email: email_controller.text,
+        password: password_controller.text,
+      );
 
-        if (email_controller.text == Email && password_controller.text == Password) {
-          print("Suessfull");
-          pref!.setBool('Login', true);
-          islogin = pref!.getBool('Login')!;
-        }
+      if (email_controller.text == Email && password_controller.text == Password) {
+        print("Successful");
+        pref!.setBool('Login', true);
+        islogin = pref!.getBool('Login')!;
+      }
 
-        login.OptionApiController_fuction(
-          UserType: 'Candidate',
-          Email: email_controller.text,
-          Password: password_controller.text,
-        ).then(
-          (value) {
-            if (login.option_data['status'] == true) {
-              Get.to(() => Candidate_Bottam(), duration: Duration(seconds: 1), transition: Transition.circularReveal);
-            } else {
-              Get.showSnackbar(
-                GetBar(
-                  duration: Duration(seconds: 2),
-                  message: login.option_data['message'],
-                ),
-              );
-            }
-          },
-        );
-      } on FirebaseException catch (e) {
+      Get.dialog(
+        Center(child: Image.asset(AppLoder.infinityloder_without_background)),
+        barrierDismissible: false,
+      );
+
+       await login.OptionApiController_fuction(
+        UserType: 'Candidate',
+        Email: email_controller.text,
+        Password: password_controller.text,
+      );
+
+      Get.back();
+
+      if (login.option_data['status'] == true) {
+        Get.to(() => Candidate_Bottam(), transition: Transition.circularReveal);
+      } else {
         Get.showSnackbar(
           GetBar(
             duration: Duration(seconds: 2),
-            message: '$e',
+            message: login.option_data['message'] ?? 'An error occurred',
           ),
         );
       }
+    } on FirebaseAuthException catch (e) {
+      Get.showSnackbar(
+        GetBar(
+          duration: Duration(seconds: 2),
+          message: 'Authentication failed: ${e.message}',
+        ),
+      );
     }
-    notifyListeners();
   }
+  notifyListeners();
+}
 }

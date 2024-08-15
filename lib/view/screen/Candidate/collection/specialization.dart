@@ -31,9 +31,7 @@ class Candidate_Specialization extends StatelessWidget {
           body: Container(
             height: Get.height,
             width: Get.width,
-            decoration: BoxDecoration(
-              color: AppColor.Full_body_color,
-            ),
+            decoration: BoxDecoration(color: AppColor.Full_body_color),
             child: Center(
               child: Image.asset(AppLoder.infinityloder_without_background),
             ),
@@ -44,16 +42,9 @@ class Candidate_Specialization extends StatelessWidget {
           body: Container(
             height: Get.height,
             width: Get.width,
-            decoration: BoxDecoration(
-              color: AppColor.Full_body_color,
-            ),
+            decoration: BoxDecoration(color: AppColor.Full_body_color),
             child: Center(
-              child: Text(
-                "Please Wait !",
-                style: TextStyle(
-                  fontSize: Get.width / 25,
-                ),
-              ),
+              child: Text("Please Wait !", style: TextStyle(fontSize: Get.width / 25)),
             ),
           ),
         );

@@ -88,8 +88,7 @@ class LocationSelector extends StatelessWidget {
                     ),
                   ),
                   SizedBox(width: Get.width / 30),
-                  selectedCountryId.isNotEmpty
-                      ? Expanded(
+                  selectedCountryId.isNotEmpty ? Expanded(
                           child: ListView.builder(
                             itemCount: states.length,
                             itemBuilder: (BuildContext context, int index) {
