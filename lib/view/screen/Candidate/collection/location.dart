@@ -17,18 +17,14 @@ import '../../../utils/aap_image.dart';
 import '../../../utils/logic/next_thow.dart';
 import 'choose_file.dart';
 
-class Location extends StatefulWidget {
+class Location extends StatelessWidget {
   final String? first_name;
   final String? last_name;
 
   Location({super.key, this.first_name, this.last_name});
 
-  @override
-  State<Location> createState() => _LocationState();
-}
-
-class _LocationState extends State<Location> {
   final PreferenceControllers next = Get.put(PreferenceControllers());
+
   @override
   Widget build(BuildContext context) {
     final locations = Provider.of<PreferenceController>(context, listen: false);
@@ -104,9 +100,9 @@ class _LocationState extends State<Location> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(widget.first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
+                      Text(first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                       SizedBox(width: Get.width / 50),
-                      Text(widget.last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
+                      Text(last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                     ],
                   ),
                   SizedBox(height: Get.height / 20),
@@ -130,7 +126,6 @@ class _LocationState extends State<Location> {
                                   GestureDetector(
                                     onTap: () {
                                       locations.Preference_fuction(text: locations.Jobtype.jobtype_data['data'][index]);
-                                      setState(() {});
                                     },
                                     child: Text(
                                       locations.Jobtype.jobtype_data['data'][index],
@@ -170,9 +165,7 @@ class _LocationState extends State<Location> {
                         countryList: locations.country.countrylist,
                         initialCountryId: locations.country.countrylist['data'][0]['CountryId'],
                         onLocationSelected: (String countryId, String stateName) {
-                          setState(() {
                             locations.showLocationSelector_fuction(stateName);
-                          });
                           print('Selected Country: $countryId, Selected State: $stateName');
                         },
                         isStateNotifier: locations.isState,
@@ -202,7 +195,7 @@ class _LocationState extends State<Location> {
                         isScrollControlled: true,
                         builder: (BuildContext context) {
                           return StatefulBuilder(
-                            builder: (BuildContext context, void Function(void Function()) setState) {
+                            builder: (BuildContext context, inCgange) {
                               return Container(
                                 height: Get.height / 1.1,
                                 width: Get.width,
@@ -243,7 +236,7 @@ class _LocationState extends State<Location> {
                                                   bool isSelected = locations.cuntrycodevalue2 == locations.country.countrylist['data'][index]['CountryId'];
                                                   return GestureDetector(
                                                     onTap: () {
-                                                      setState(() {
+                                                      inCgange(() {
                                                         locations.showLocationselector_location(
                                                             cuntrycodevalue2: locations.country.countrylist['data'][index]['CountryId'],
                                                             states2: locations.country.countrylist['data'][index]['ProvinceList'],
@@ -274,16 +267,16 @@ class _LocationState extends State<Location> {
                                               ),
                                             ),
                                             SizedBox(width: Get.width / 30),
-                                            locations.cuntrycode2
-                                                ? Expanded(
+                                            locations.cuntrycode2 ? Expanded(
                                               child: ListView.builder(
                                                 itemCount: locations.states2.length,
                                                 itemBuilder: (BuildContext context, int index) {
                                                   bool isStateSelected = locations.selectedStates.contains(locations.states2[index]['Name']);
                                                   return GestureDetector(
                                                     onTap: () {
-                                                      locations.showLocation_state(context, isStateSelected, locations.states2[index]['Name']);
-                                                      setState(() {});
+                                                      inCgange((){
+                                                         locations.showLocation_state(context, isStateSelected, locations.states2[index]['Name']);
+                                                      });
                                                     },
                                                     child: Container(
                                                       margin: EdgeInsets.symmetric(vertical: Get.width / 60),
@@ -350,7 +343,6 @@ class _LocationState extends State<Location> {
                                   GestureDetector(
                                     onTap: () {
                                       locations.WorkSetup_fuction(locations.Preferencetype.Preferencetype_data['data'][index]);
-                                      setState(() {});
                                     },
                                     child: Text(locations.Preferencetype.Preferencetype_data['data'][index]),
                                   ),

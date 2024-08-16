@@ -19,17 +19,12 @@ import '../../../utils/common/Buttons/ShortButton.dart';
 import '../../../utils/logic/next_thow.dart';
 import '../../../utils/logic/validation_error.dart';
 
-class Fresher extends StatefulWidget {
+class Fresher extends StatelessWidget {
   final String? first_name;
   final String? last_name;
 
   const Fresher({super.key, this.first_name, this.last_name});
 
-  @override
-  State<Fresher> createState() => _FresherState();
-}
-
-class _FresherState extends State<Fresher> {
   @override
   Widget build(BuildContext context) {
     final E_Salary = Provider.of<FreherController>(context, listen: false);
@@ -121,9 +116,9 @@ class _FresherState extends State<Fresher> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(widget.first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
+                      Text(first_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                       SizedBox(width: Get.width / 80),
-                      Text(widget.last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
+                      Text(last_name ?? '', style: TextStyle(fontSize: Get.width / 25)),
                     ],
                   ),
                   SizedBox(height: Get.height / 20),
@@ -171,7 +166,7 @@ class _FresherState extends State<Fresher> {
                                 colamWidget: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
                                   child: StatefulBuilder(
-                                    builder: (BuildContext context, void Function(void Function())setState) {
+                                    builder: (BuildContext context, inChage) {
                                       return Row(
                                         children: [
                                           Column(
@@ -192,7 +187,7 @@ class _FresherState extends State<Fresher> {
                                                 value: E_Salary.selectedYear,
                                                 onChanged: (value) {
                                                   E_Salary.Experience_fuction(value);
-                                                  setState(() {});
+                                                  inChage(() {});
                                                 },
                                               ),
                                             ],
@@ -217,7 +212,7 @@ class _FresherState extends State<Fresher> {
                                                 value: E_Salary.selectMonth,
                                                 onChanged: (value) {
                                                   E_Salary.Experience2_fuction(value);
-                                                  setState(() {});
+                                                  inChage(() {});
                                                 },
                                               ),
                                             ],
@@ -232,7 +227,6 @@ class _FresherState extends State<Fresher> {
                                     onTap: () {
                                       print("Year :- ${E_Salary.selectedYear}, Month :- ${E_Salary.selectMonth}");
                                       Get.back();
-                                      setState(() {});
                                     },
                                     btn_name: Experience_text.Save,
                                     Border_color: AppColor.Button_color,
@@ -264,7 +258,7 @@ class _FresherState extends State<Fresher> {
                           colamWidget: Padding(
                             padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
                             child: StatefulBuilder(
-                              builder: (BuildContext context, void Function(void Function()) setState) {
+                              builder: (BuildContext context, inChage) {
                                 return Row(
                                   children: [
                                     Column(
@@ -285,7 +279,7 @@ class _FresherState extends State<Fresher> {
                                           value: E_Salary.selectLack,
                                           onChanged: (value) {
                                             E_Salary.Expected_fuction(value);
-                                            setState(() {});
+                                            inChage(() {});
                                           },
                                         ),
                                       ],
@@ -311,7 +305,7 @@ class _FresherState extends State<Fresher> {
                                           value: E_Salary.selectThousand,
                                           onChanged: (value) {
                                             E_Salary.Expected2_fuction(value);
-                                            setState(() {});
+                                            inChage(() {});
                                           },
                                         ),
                                       ],
@@ -326,7 +320,6 @@ class _FresherState extends State<Fresher> {
                               onTap: () {
                                 print("Lack :- ${E_Salary.selectLack}, Month :- ${E_Salary.selectThousand}");
                                 Get.back();
-                                setState(() {});
                               },
                               btn_name: Experience_text.Save,
                               Border_color: AppColor.Button_color,
@@ -501,7 +494,7 @@ class _FresherState extends State<Fresher> {
                                 colamWidget: Padding(
                                   padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
                                   child: StatefulBuilder(
-                                    builder: (BuildContext context, void Function(void Function())setState) {
+                                    builder: (BuildContext context, inChage) {
                                       return Row(
                                         children: [
                                           Column(
@@ -524,7 +517,7 @@ class _FresherState extends State<Fresher> {
                                                 value: E_Salary.selectLack2,
                                                 onChanged: (value) {
                                                   E_Salary.CTC_fuction(value);
-                                                  setState(() {});
+                                                  inChage(() {});
                                                 },
                                               ),
                                             ],
@@ -550,7 +543,7 @@ class _FresherState extends State<Fresher> {
                                                 value: E_Salary.selectThousand2,
                                                 onChanged: (value) {
                                                   E_Salary.CTC2_fuction(value);
-                                                  setState(() {});
+                                                  inChage(() {});
                                                 },
                                               ),
                                             ],
