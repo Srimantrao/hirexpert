@@ -7,8 +7,6 @@ import 'package:hirexpert/view/utils/app_GIF.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 
-import '../option/option.dart';
-
 class Logo extends StatelessWidget {
   final Logocontroller logo = Get.put(Logocontroller());
 

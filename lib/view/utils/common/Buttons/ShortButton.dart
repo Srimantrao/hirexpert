@@ -5,9 +5,6 @@ import 'package:get/get.dart';
 // ignore: unnecessary_import
 import 'package:get/get_core/src/get_main.dart';
 
-import '../../app_String.dart';
-import '../../app_color.dart';
-
 class OnButtons_short extends StatelessWidget {
   final String btn_name;
   final Color Border_color;

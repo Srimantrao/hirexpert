@@ -36,7 +36,7 @@ class Notification_setting extends StatelessWidget {
                   onTap: () {
                     Get.back();
                   },
-                  // ignore: prefer_const_constructors
+                  // ignore: prefer_constructors
                   child: Icon(Icons.navigate_before, size: 35),
                 ),
                 Text(

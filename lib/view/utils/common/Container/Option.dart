@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../app_color.dart';
 
 class Collec extends StatelessWidget {
   final String text;

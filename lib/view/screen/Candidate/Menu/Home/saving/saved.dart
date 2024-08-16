@@ -2,12 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_Hendal.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
-import '../../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/common/List/Saved.dart';
 

@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/List/Taglist.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/CollectionController/Secondary_Collection.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/Education.dart';
 import 'package:hirexpert/view/utils/app_color.dart';

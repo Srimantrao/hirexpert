@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, non_constant_identifier_names
 
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 
 class TabbarController with ChangeNotifier{
   var selectedIndex = 0;

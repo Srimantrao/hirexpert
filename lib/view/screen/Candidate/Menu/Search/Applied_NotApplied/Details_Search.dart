@@ -2,18 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Apply_now_Controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isAppling_API_Controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Button_Apping_handler.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Details_API_Hendal.dart';
 import 'package:hirexpert/modal/Job/Search_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
 import 'package:flutter_html/flutter_html.dart';
-import '../../../../../../controller/API_Controller/Candidate/Menu/Home/Details_Controllers.dart';
 import '../../../../../utils/app_String.dart';
 
 class Details extends StatelessWidget {

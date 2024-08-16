@@ -1,14 +1,10 @@
 // ignore_for_file: file_names, non_constant_identifier_names, avoid_print, prefer_const_constructors, avoid_types_as_parameter_names, prefer_final_fields
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Location/jobtype_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Location/preferencetype_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Collection/CountryList_pop_controller.dart';
-
-import '../../../../view/screen/Candidate/Menu/Home/Home.dart';
-import '../../../../view/utils/app_String.dart';
 
 class PreferenceControllers extends GetxController{
   var preferences = false.obs;

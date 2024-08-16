@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../../app_String.dart';
 import '../../app_color.dart';
 
 class CheckMark extends StatelessWidget {

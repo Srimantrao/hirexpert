@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
-import '../../../../../controller/User_Controller/Candidate_Controller/DropdownController/SpecializationController.dart';
 import '../../../../../controller/User_Controller/Employer_Controller/DropdownController/SpecializationController.dart';
 import '../../../app_String.dart';
 import '../../../app_color.dart';

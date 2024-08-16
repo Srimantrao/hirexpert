@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 
-import '../../../../app_String.dart';
-
 class Container_tab extends StatelessWidget {
   final String text;
   final Color tabcolor;

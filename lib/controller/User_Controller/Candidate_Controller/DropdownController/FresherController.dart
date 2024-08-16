@@ -1,14 +1,10 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, curly_braces_in_flow_control_structures, avoid_print, no_leading_underscores_for_local_identifiers
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/Education.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/location.dart';
 import 'package:intl/intl.dart';
-
-import '../../../../modal/Dropdowns/drops.dart';
 import '../../../../view/utils/app_String.dart';
 
 class FreherController with ChangeNotifier {

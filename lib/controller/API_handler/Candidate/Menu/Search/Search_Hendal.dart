@@ -3,7 +3,6 @@
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Search/Search_API_Controller.dart';
-import 'package:hirexpert/modal/Job/jobSearch_list.dart';
 
 class SearchHendal extends GetxController {
   OptionApiController Login = Get.put(OptionApiController());

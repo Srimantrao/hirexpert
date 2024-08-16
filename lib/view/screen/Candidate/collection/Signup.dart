@@ -2,20 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Sinup/sinup_API_controller.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/login.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
-import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import '../../../utils/app_icon.dart';
-import '../../../utils/app_loder.dart';
 import '../../../utils/common/Textfild/Inputfild.dart';
 import '../../../utils/logic/validation_error.dart';
 

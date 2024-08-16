@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/InterviweDetails.dart';
-import '../../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
 import '../../../../../utils/app_icon.dart';

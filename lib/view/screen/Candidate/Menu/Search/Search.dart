@@ -9,7 +9,6 @@ import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_He
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
-import '../../../../../modal/Job/jobSearch_list.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_loder.dart';
 import '../../../../utils/common/List/jobSearch.dart';

@@ -56,12 +56,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/get_core.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
-import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
@@ -172,7 +168,7 @@ class Candidate_LoginValidation with ChangeNotifier {
   void Loginvalidation_successfully() async {
   if (!_Email_value && !_password_value) {
     try {
-      UserCredential userCredential = await auth.signInWithEmailAndPassword(
+       await auth.signInWithEmailAndPassword(
         email: email_controller.text,
         password: password_controller.text,
       );

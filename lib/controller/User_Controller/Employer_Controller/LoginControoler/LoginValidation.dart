@@ -1,10 +1,8 @@
 // ignore_for_file: non_constant_identifier_names, file_names, camel_case_types
 
 import 'package:flutter/cupertino.dart';
-import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
-import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
 
 class Employer_LoginValidation with ChangeNotifier {
   TextEditingController EmailController = TextEditingController();
