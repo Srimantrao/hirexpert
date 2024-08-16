@@ -14,10 +14,7 @@ class Notification_setting extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Notifi = Provider.of<Notification_Controller>(
-      context,
-      listen: false,
-    );
+    final Notifi = Provider.of<Notification_Controller>(context, listen: false);
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(Get.height / 15),
@@ -29,9 +26,7 @@ class Notification_setting extends StatelessWidget {
             width: Get.width,
             decoration: BoxDecoration(
               border: Border(
-                bottom: BorderSide(
-                  color: AppColor.Buttom_color,
-                ),
+                bottom: BorderSide(color: AppColor.Buttom_color),
               ),
             ),
             child: Row(
@@ -46,9 +41,7 @@ class Notification_setting extends StatelessWidget {
                 ),
                 Text(
                   Notification_text.Hedding,
-                  style: TextStyle(
-                    fontSize: Get.width / 20,
-                  ),
+                  style: TextStyle(fontSize: Get.width / 20),
                 ),
                 SizedBox(),
               ],
@@ -74,10 +67,7 @@ class Notification_setting extends StatelessWidget {
                     SizedBox(height: Get.height / 70),
                     Text(
                       Notification_text.subheding,
-                      style: TextStyle(
-                        fontSize: Get.width / 24,
-                        color: AppColor.subcolor,
-                      ),
+                      style: TextStyle(fontSize: Get.width / 24, color: AppColor.subcolor),
                     ),
                     SizedBox(height: Get.height / 50),
 
@@ -110,8 +100,7 @@ class Notification_setting extends StatelessWidget {
 
                     //I'd prefer no job match notifications
                     CheckMark(
-                      rowText: Notification_text
-                          .Id_prefer_no_job_match_notifications,
+                      rowText: Notification_text.Id_prefer_no_job_match_notifications,
                       valueType: Notifi.Id_prefer_no_job_match_notifications,
                       onChanged: (val) {
                         Notifi.Id_prefer_no_job_match_notifications_fun(val);
@@ -120,13 +109,10 @@ class Notification_setting extends StatelessWidget {
 
                     //Update me immediately when new job available
                     CheckMark(
-                      rowText: Notification_text
-                          .Update_me_immediately_when_new_job_available,
-                      valueType:
-                          Notifi.Update_me_immediately_when_new_job_available,
+                      rowText: Notification_text.Update_me_immediately_when_new_job_available,
+                      valueType: Notifi.Update_me_immediately_when_new_job_available,
                       onChanged: (val) {
-                        Notifi.Update_me_immediately_when_new_job_available_fun(
-                            val);
+                        Notifi.Update_me_immediately_when_new_job_available_fun(val);
                       },
                     ),
 
@@ -134,10 +120,7 @@ class Notification_setting extends StatelessWidget {
                     SizedBox(height: Get.height / 50),
                     Text(
                       Notification_text.suhdding_2,
-                      style: TextStyle(
-                        fontSize: Get.width / 24,
-                        color: AppColor.subcolor,
-                      ),
+                      style: TextStyle(fontSize: Get.width / 24, color: AppColor.subcolor),
                     ),
                     SizedBox(height: Get.height / 50),
 
@@ -163,10 +146,7 @@ class Notification_setting extends StatelessWidget {
                     SizedBox(height: Get.height / 50),
                     Text(
                       Notification_text.suhdding_3,
-                      style: TextStyle(
-                        fontSize: Get.width / 24,
-                        color: AppColor.subcolor,
-                      ),
+                      style: TextStyle(fontSize: Get.width / 24, color: AppColor.subcolor),
                     ),
                     SizedBox(height: Get.height / 50),
 

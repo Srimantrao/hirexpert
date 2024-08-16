@@ -461,11 +461,6 @@ class Setting extends StatelessWidget {
                                       InkWell(
                                         onTap: () {
                                           Pass_change.Button_Fuction();
-                                          // sett.Change_Pass.ChangeControllerApiController_Fuction(
-                                          //   Password: Pass_change.new_pass.text,
-                                          //   OldPassword: Pass_change.old_pass.text,
-                                          //   Tokan: sett.Login.option_data['data']['LoginToken'],
-                                          // );
                                           chagepassword.PasswordChange_fuction(
                                               Password: Pass_change.new_pass.text,
                                               OldPassword: Pass_change.old_pass.text,
