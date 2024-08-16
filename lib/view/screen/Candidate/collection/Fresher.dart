@@ -410,9 +410,7 @@ class Fresher extends StatelessWidget {
                                             height: Get.height / 18,
                                             decoration: BoxDecoration(
                                               border: Border(
-                                                bottom: BorderSide(
-                                                  color: AppColor.Bottam_color,
-                                                ),
+                                                bottom: BorderSide(color: AppColor.Bottam_color),
                                               ),
                                             ),
                                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -442,9 +440,7 @@ class Fresher extends StatelessWidget {
                                             height: Get.height / 18,
                                             decoration: BoxDecoration(
                                               border: Border(
-                                                bottom: BorderSide(
-                                                  color: AppColor.Bottam_color,
-                                                ),
+                                                bottom: BorderSide(color: AppColor.Bottam_color),
                                               ),
                                             ),
                                             child: Row(
