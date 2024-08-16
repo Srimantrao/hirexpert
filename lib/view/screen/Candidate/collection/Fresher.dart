@@ -1,10 +1,9 @@
-// ignore_for_file: file_names, non_constant_identifier_names, avoid_print, prefer_const_constructors, unnecessary_brace_in_string_interps, curly_braces_in_flow_control_structures, unnecessary_null_comparison
+// ignore_for_file: file_names, non_constant_identifier_names, avoid_print, prefer_const_constructors, unnecessary_brace_in_string_interps, curly_braces_in_flow_control_structures, unnecessary_null_comparison, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
@@ -23,7 +22,7 @@ class Fresher extends StatelessWidget {
   final String? first_name;
   final String? last_name;
 
-  const Fresher({super.key, this.first_name, this.last_name});
+  Fresher({super.key, this.first_name, this.last_name});
 
   @override
   Widget build(BuildContext context) {

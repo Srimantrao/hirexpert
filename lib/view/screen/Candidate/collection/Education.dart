@@ -66,7 +66,7 @@ class _EducationState extends State<Education> {
                     onTap: () {
                       Con.ConcernApi_fuction(JobId: '1', Comment: JobTitle.JobTitalController.text);
                       if (JobTitle.SelectIndex && Education.select_Eduction && Education.currentValue) {
-                        Get.to(() => const Fresher());
+                        Get.to(() => Fresher());
                       } else {
                         JobTitle.EmptyError();
                       }
