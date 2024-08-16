@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, avoid_print
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, avoid_print, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,54 +7,28 @@ import 'package:provider/provider.dart';
 import '../../../../../controller/API_Controller/Candidate/Collction/Location/preferencetype_API_controller.dart';
 import '../../../../../controller/API_Controller/Candidate/Collction/Pop_Collection/CountryList_pop_controller.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/ButtonsController/SearchButtonsController.dart';
-import '../../../../../controller/User_Controller/Candidate_Controller/DropdownController/PreferenceController.dart';
+import '../../../../../controller/User_Controller/Candidate_Controller/UserJob_Search_listing_Controller/User_Search_Controller.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_color.dart';
 import '../../../../utils/app_icon.dart';
 import 'Search_find.dart';
 
-class Search_location extends StatefulWidget {
+class Search_location extends StatelessWidget {
   final Function(String, String)? onLocationSelected;
 
-  const Search_location({super.key, this.onLocationSelected});
-
-  @override
-  State<Search_location> createState() => _Search_locationState();
-}
-
-class _Search_locationState extends State<Search_location> {
-  final CountrylistPopController country = Get.put(CountrylistPopController());
-  final PreferencetypeApiController Preferencetype = Get.put(PreferencetypeApiController());
-
-  @override
-  void initState() {
-    Future.microtask(() async {
-      await country.CountrylistPopController_fuction();
-    });
-    super.initState();
-  }
-
-  String select = "";
-
-  ValueNotifier<bool> selectboll = ValueNotifier<bool>(false);
-  ValueNotifier<bool> selectmain = ValueNotifier<bool>(false);
-
-  void selectboll_fun() {selectboll.value = true;}
-  void select_main() {selectmain.value = true;}
-
-  bool Savebutton = false;
-
-  var selectedCountryId;
-  var selectedState;
-  List states = [];
+  Search_location({super.key, this.onLocationSelected});
 
   @override
   Widget build(BuildContext context) {
+    context.read<UserSearchController>().onInit(context);
+    final Search = Provider.of<UserSearchController>(context,listen: false);
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
         automaticallyImplyLeading: false,
+        elevation: 0,
+        surfaceTintColor: AppColor.Full_body_color,
         title: Text(Search_text.Search_Jobss, style: TextStyle(fontWeight: FontWeight.w700)),
         actions: [
           InkWell(
@@ -89,7 +63,7 @@ class _Search_locationState extends State<Search_location> {
                     ),
                   ),
                   SizedBox(height: Get.height / 50),
-                  Consumer<SearchButtonsController>(
+                  Consumer<UserSearchController>(
                     builder: (BuildContext context, value, Widget? child) {
                       return GestureDetector(
                         onTap: () {
@@ -97,9 +71,9 @@ class _Search_locationState extends State<Search_location> {
                             context: context,
                             builder: (BuildContext context) {
                               return StatefulBuilder(
-                                builder: (BuildContext context, void Function(void Function()) setState) {
+                                builder: (BuildContext context, inscgange) {
                                   return Container(
-                                    height: Get.height / 1.1,
+                                    height: Get.height / 1,
                                     width: Get.width,
                                     decoration: BoxDecoration(color: AppColor.Full_body_color),
                                     child: Padding(
@@ -112,7 +86,7 @@ class _Search_locationState extends State<Search_location> {
                                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                             children: [
                                               SizedBox(),
-                                              Text('Location', style: TextStyle(fontWeight: FontWeight.w600, fontSize: Get.width / 23)),
+                                              Text(Search_text.Bottam_bar, style: TextStyle(fontWeight: FontWeight.w600, fontSize: Get.width / 23)),
                                               GestureDetector(
                                                 onTap: () {
                                                   Get.back();
@@ -130,15 +104,16 @@ class _Search_locationState extends State<Search_location> {
                                                 SizedBox(
                                                   width: Get.width / 2.5,
                                                   child: ListView.builder(
-                                                    itemCount: country.countrylist['data'].length,
+                                                    itemCount: Search.country.countrylist['data'].length,
                                                     itemBuilder: (BuildContext context, int index) {
-                                                      bool isSelected = selectedCountryId == country.countrylist['data'][index]['CountryId'];
+                                                      bool isSelected = Search.selectedCountryId == Search.country.countrylist['data'][index]['CountryId'];
                                                       return GestureDetector(
                                                         onTap: () {
-                                                          setState(() {
-                                                            selectedCountryId = country.countrylist['data'][index]['CountryId'];
-                                                            states = country.countrylist['data'][index]['ProvinceList'] ?? [];
-                                                            selectedState = '';
+                                                          inscgange(() {
+                                                            Search.updateCountrySelection(
+                                                                countryId: Search.country.countrylist['data'][index]['CountryId'],
+                                                                provinceList: Search.country.countrylist['data'][index]['ProvinceList'] ?? [],
+                                                            );
                                                           });
                                                         },
                                                         child: Container(
@@ -151,7 +126,7 @@ class _Search_locationState extends State<Search_location> {
                                                           ),
                                                           child: Center(
                                                             child: Text(
-                                                              country.countrylist['data'][index]['Country'],
+                                                              Search.country.countrylist['data'][index]['Country'],
                                                               textAlign: TextAlign.center,
                                                               style: TextStyle(
                                                                 fontSize: Get.width / 28,
@@ -165,23 +140,19 @@ class _Search_locationState extends State<Search_location> {
                                                   ),
                                                 ),
                                                 SizedBox(width: Get.width / 30),
-                                                (selectedCountryId != null && states.isNotEmpty)
+                                                (Search.selectedCountryId != null && Search.states.isNotEmpty)
                                                     ? Expanded(
                                                         child: ListView.builder(
-                                                          itemCount: states.length,
+                                                          itemCount: Search.states.length,
                                                           itemBuilder: (BuildContextcontext, int index) {
-                                                            bool isStateSelected = selectedState == states[index]['Name'];
+                                                            bool isStateSelected = Search.selectedState == Search.states[index]['Name'];
                                                             return GestureDetector(
                                                               onTap: () {
-                                                                setState(() {
-                                                                  selectedState = states[index]['Name'];
-                                                                  if (widget.onLocationSelected != null) {
-                                                                    widget.onLocationSelected!(selectedCountryId, selectedState);
+                                                                inscgange(() {
+                                                                  Search.updateStateSelection(Search.states[index]['Name']);
+                                                                  if (onLocationSelected != null) {
+                                                                    onLocationSelected!(Search.selectedCountryId, Search.selectedState);
                                                                   }
-                                                                  select = selectedState;
-                                                                  selectboll.value = true;
-                                                                  selectmain.value = true;
-                                                                  Savebutton = true;
                                                                 });
                                                                  Get.back();
                                                               },
@@ -194,7 +165,7 @@ class _Search_locationState extends State<Search_location> {
                                                                   color: isStateSelected ? AppColor.Button_color : AppColor.Full_body_color,
                                                                 ),
                                                                 child: Center(
-                                                                  child: Text(states[index]['Name'],
+                                                                  child: Text(Search.states[index]['Name'],
                                                                     textAlign: TextAlign.center,
                                                                     style: TextStyle(
                                                                       fontSize: Get.width / 28,
@@ -234,10 +205,10 @@ class _Search_locationState extends State<Search_location> {
                               Icon(Icons.location_on_outlined, color: AppColor.subcolor),
                               SizedBox(width: Get.width / 40),
                               ValueListenableBuilder(
-                                valueListenable: selectboll,
-                                builder: (BuildContext context, value, Widget? child) {
+                                valueListenable: Search.selectboll,
+                                builder: (BuildContext context, bool value, Widget? child) {
                                   return (value)
-                                      ? Text(select, style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 24))
+                                      ? Text(Search.select, style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 24))
                                       : Text(Search_text.Select_Location, style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 24));
                                 },
                               ),
@@ -250,13 +221,13 @@ class _Search_locationState extends State<Search_location> {
                 ],
               ),
               ValueListenableBuilder(
-                valueListenable: selectmain,
+                valueListenable: Search.selectmain,
                 builder: (BuildContext context, value, Widget? child) {
                   return Visibility(
-                 visible: Savebutton,
-                   child:Search_find(onString: select),
-               );
-                },)
+                 visible: Search.Savebutton,
+                   child:Search_find(onString: Search.select),
+               );},
+              )
             ],
           ),
         ),

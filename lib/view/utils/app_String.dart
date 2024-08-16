@@ -150,6 +150,7 @@ class My_Jobs_Screen {
 //Search Screen
 class Search_text {
   static const Search_Jobs = "Search Job Listings";
+  static const Bottam_bar = "Current Working Location";
   static const Search_Jobss = "Search Job";
   static const Location = "Location";
   static const Job = "Job Title, Skills...";

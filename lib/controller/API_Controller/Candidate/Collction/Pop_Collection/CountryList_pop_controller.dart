@@ -11,6 +11,12 @@ class CountrylistPopController extends GetxController {
   var isLoding = false.obs;
   var countrylist;
 
+  @override
+  void onInit() {
+    CountrylistPopController_fuction();
+    super.onInit();
+  }
+
   Future<void> CountrylistPopController_fuction() async {
     try {
       isLoding.value = true;

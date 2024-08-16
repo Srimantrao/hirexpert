@@ -12,35 +12,21 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data= {}.obs;
 
-  Future SearchApiController_fuction({
-    required String Timezone,
-    required String CandidateId,
-    String? Tokan,
+  Future SearchApiController_fuction({required String Timezone, required String CandidateId, String? Tokan,
   }) async {
     try {
       isLoding.value = true;
 
-      if (kDebugMode) {
-        print("Timezone :- $Timezone");
-        print("CandidateId :- $CandidateId");
-      }
+      if (kDebugMode) {print("Timezone :- $Timezone");print("CandidateId :- $CandidateId");}
 
-      Map<String, dynamic> body = {
-        'Timezone': Timezone,
-        'CandidateId': CandidateId,
-      };
+      Map<String, dynamic> body = {'Timezone': Timezone, 'CandidateId': CandidateId,};
 
       if (kDebugMode) {
         print(body);
       }
 
-      final Response = await http.post(
-        Uri.parse(AppUrl.SearchJob),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
-        },
+      final Response = await http.post(Uri.parse(AppUrl.SearchJob),
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
         body: body,
       );
 

@@ -21,6 +21,7 @@ import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Datail
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/OTP_Controller/OTP_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/Document_Info_Controller.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/UserJob_Search_listing_Controller/User_Search_Controller.dart';
 import 'package:hirexpert/view/screen/splash/logo.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
@@ -124,6 +125,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DetailsOffer()),
         ChangeNotifierProvider(create: (_) => DocumentInfoController()),
         ChangeNotifierProvider(create: (_) => Education_Controller()),
+        ChangeNotifierProvider(create: (_) => UserSearchController())
       ],
       child: GetMaterialApp(
         theme: ThemeData(
