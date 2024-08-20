@@ -1,5 +1,5 @@
 
-// ignore_for_file: prefer_final_fields
+// ignore_for_file: prefer_final_fields, non_constant_identifier_names, prefer_typing_uninitialized_variables, file_names
 
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';

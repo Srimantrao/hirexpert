@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, file_names
 
 import 'package:flutter/cupertino.dart';
 
@@ -19,19 +19,13 @@ class ChangePasswordController with ChangeNotifier {
   String _Confarm_Newing = "";
 
   get o_pass => _o_pass;
-
   get n_pass => _n_pass;
-
   get c_pass => _c_pass;
-
   get Old_passing => _Old_passing;
-
   get Olding => _Olding;
-
   get Newing => _Newing;
-
   get Confarm_Newing => _Confarm_Newing;
-
+  
   //obscureText
   //OLd Password
   void OldPassword_Fuction_obx() {
