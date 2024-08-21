@@ -63,20 +63,13 @@ class Profile_info extends StatelessWidget {
                                       children: [
                                         Text(
                                           profile.login.option_data['data']['Username'],
-                                          style: TextStyle(
-                                              fontSize: Get.width / 22,
-                                              fontWeight: FontWeight.w700,
-                                          ),
+                                          style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
                                         ),
                                         SizedBox(
                                           width: Get.width / 2,
                                           child: Text(
                                             profile.login.option_data['data']['UserDetails']['TechName'],
-                                            style: TextStyle(
-                                                fontSize: Get.width / 28,
-                                                fontWeight: FontWeight.w400,
-                                                color: AppColor.subcolor,
-                                            ),
+                                            style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor),
                                           ),
                                         ),
                                       ],
@@ -104,21 +97,24 @@ class Profile_info extends StatelessWidget {
                               },
                               textcolor: Tabb.selectedIndex == 0,
                               tabcolor: Tabb.selectedIndex == 0,
-                              name: Profile_Text.Extra_Info),
+                              name: Profile_Text.Extra_Info,
+                          ),
                           tab(
                               onTap: () {
                                 Tabb.Tabbarcontroler_2();
                               },
                               textcolor: Tabb.selectedIndex == 1,
                               tabcolor: Tabb.selectedIndex == 1,
-                              name: Profile_Text.Company_Name),
+                              name: Profile_Text.My_Profile,
+                          ),
                           tab(
                               onTap: () {
                                 Tabb.Tabbarcontroler_3();
                               },
                               textcolor: Tabb.selectedIndex == 2,
                               tabcolor: Tabb.selectedIndex == 2,
-                              name: Profile_Text.Document),
+                              name: Profile_Text.Document,
+                          ),
                         ],
                       ),
                       SizedBox(height: Get.height / 50),

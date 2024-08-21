@@ -20,14 +20,10 @@ class MY_Profile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: Get.width / 70,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: Get.width / 70),
       child: Container(
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
           child: Column(

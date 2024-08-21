@@ -47,6 +47,10 @@ class AppUrl {
   static const candidateTech = '$Base_location/user/candidateTech';
   static const CountryList = '$Base_location/user/CountryList';
 
+  //Profile
+  static const CandidateUpdate = '$Base_location/user/CandidateUpdate';
+  static const candidateBIO = '$Base_location/user/candidateBIO';
+
   //Employer
   //Collcetion
   static const Employer_Signup = "$Hirexpert/api/v1/user/employerSignup";
