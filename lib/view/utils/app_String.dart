@@ -31,6 +31,7 @@ class Validation_Error {
 //DropDown Menu
 class API_Error {
   static const null_data = "Soory, Your Data Not Found";
+  static const nulll = "Please Wait";
 }
 class Navigator_text {
   static const Next = "Next";

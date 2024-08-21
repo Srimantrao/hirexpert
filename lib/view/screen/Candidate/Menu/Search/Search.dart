@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -15,12 +15,27 @@ import '../../../../utils/common/List/jobSearch.dart';
 import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
-class Search extends StatelessWidget {
+class Search extends StatefulWidget {
+
+  Search({super.key});
+
+  @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
+  @override
+  void initState() {
+    Searchings.Search.SearchApiController_fuction(
+        Timezone: 'asia/kolkata',
+        CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+    );
+    super.initState();
+  }
+
   final SearchHendal Searchings = Get.put(SearchHendal());
   final IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
   final OptionApiController login = Get.put(OptionApiController());
-
-  Search({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +80,7 @@ class Search extends StatelessWidget {
               );
             } else if (Searchings.Search.Search_data.value['data'] == null) {
               return Center(
-                child: Text(API_Error.null_data),
+                child: Text(API_Error.nulll),
               );
             } else {
               return ListView.builder(

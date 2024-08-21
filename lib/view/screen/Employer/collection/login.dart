@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types, must_be_immutable
+// ignore_for_file: non_constant_identifier_names, camel_case_types, must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,14 +23,8 @@ class Employer_Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vis = Provider.of<Employer_VisibilityController>(
-      context,
-      listen: false,
-    );
-    final vail = Provider.of<Employer_LoginValidation>(
-      context,
-      listen: false,
-    );
+    final vis = Provider.of<Employer_VisibilityController>(context, listen: false);
+    final vail = Provider.of<Employer_LoginValidation>(context, listen: false);
     return Scaffold(
       body: Container(
         width: Get.width,
@@ -40,9 +34,7 @@ class Employer_Login extends StatelessWidget {
         ),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 20,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
             child: Consumer<Candidate_LoginValidation>(
               builder: (BuildContext context, value, Widget? child) {
                 return SingleChildScrollView(
@@ -52,19 +44,11 @@ class Employer_Login extends StatelessWidget {
                     children: [
                       SizedBox(height: Get.height / 20),
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Get.width / 6.5,
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
                         child: Image.asset(AppIcons.logo, scale: 5),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(
-                        Login_text.login,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: Get.width / 18,
-                        ),
-                      ),
+                      Text(Login_text.login, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
                       Inputfild(
                         onChanged: (txt) {
@@ -77,10 +61,7 @@ class Employer_Login extends StatelessWidget {
                       (vail.isError)
                           ? Text(
                               vail.isError ? vail.throwErrorEmail : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
+                              style: TextStyle(fontSize: Get.width / 25, color: AppColor.Error_color),
                             )
                           : const SizedBox(),
                       SizedBox(height: Get.height / 20),
@@ -99,8 +80,8 @@ class Employer_Login extends StatelessWidget {
                                 vis.visibilityVis();
                               },
                               child: (vis.isVis)
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                                  ? Icon(Icons.visibility_off)
+                                  : Icon(Icons.visibility),
                             ),
                           );
                         },
@@ -108,10 +89,7 @@ class Employer_Login extends StatelessWidget {
                       (vail.isError)
                           ? Text(
                               vail.isError ? vail.throwErrorPassword : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
+                              style: TextStyle(fontSize: Get.width / 25, color: AppColor.Error_color),
                             )
                           : const SizedBox(),
                       SizedBox(height: Get.height / 50),
@@ -153,13 +131,7 @@ class Employer_Login extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            Login_text.Dont,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                          Text(Login_text.Dont, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w400)),
                           SizedBox(width: Get.width / 60),
                           InkWell(
                             onTap: () {
@@ -179,23 +151,9 @@ class Employer_Login extends StatelessWidget {
                       SizedBox(height: Get.height / 8),
                       Row(
                         children: [
-                          Text(
-                            Login_text.acesss,
-                            style: TextStyle(
-                              fontSize: Get.width / 28,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
+                          Text(Login_text.acesss, style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400)),
                           SizedBox(width: Get.width / 100),
-                          Text(
-                            Login_text.Click_Here,
-                            style: TextStyle(
-                              decoration: TextDecoration.underline,
-                              fontSize: Get.width / 28,
-                              fontWeight: FontWeight.w600,
-                              color: AppColor.Button_color,
-                            ),
-                          ),
+                          Text(Login_text.Click_Here, style: TextStyle(decoration: TextDecoration.underline, fontSize: Get.width / 28, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
                         ],
                       )
                     ],

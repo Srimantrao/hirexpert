@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, invalid_use_of_protected_member
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, invalid_use_of_protected_member, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,10 +16,21 @@ import 'Hired/Show_Hired.dart';
 import 'Interviwe/Show_Interview.dart';
 import 'Offer/Show_Offer.dart';
 
-class Home extends StatelessWidget {
-  final JobcountabaleHedal jobincount = Get.put(JobcountabaleHedal());
+class Home extends StatefulWidget {
 
   Home({super.key});
+
+  @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
+  void initState() {
+    jobincount.jobcount.Jobcountsaccording_fuction();
+    super.initState();
+  }
+      final JobcountabaleHedal jobincount = Get.put(JobcountabaleHedal());
 
   @override
   Widget build(BuildContext context) {
