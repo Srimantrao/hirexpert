@@ -2,9 +2,10 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
-
+import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../screen/Employer/Menu/My_Job/Selection.dart';
 
 class Company_button extends StatefulWidget {
@@ -46,12 +47,12 @@ class _Company_buttonState extends State<Company_button> {
                 });
               },
                 child: (SelectIndex == 0)
-                    ? Icon(Icons.access_alarm)
-                    : Icon(Icons.ac_unit)
+                    ? SvgPicture.asset(AppIcons.open_job, height: Get.height / 32, width: Get.width / 32)
+                    : SvgPicture.asset(AppIcons.Jobs, height: Get.height / 32, width: Get.width / 32),
             ),
-            Icon(Icons.ac_unit),
-            Icon(Icons.ac_unit),
-            Icon(Icons.ac_unit),
+            SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32),
+            SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
+            SvgPicture.asset(AppIcons.Messages, height: Get.height / 32, width: Get.width / 32),
           ],
         ),
       ),
