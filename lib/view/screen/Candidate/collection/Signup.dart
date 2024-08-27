@@ -69,10 +69,7 @@ class candidate_Signup extends StatelessWidget {
                         hint: Signup_text.Enter_First_Name,
                         controller: vail.frist_name_controller,
                       ),
-                      valiadtion_error(
-                        condiation: vail.Frist_name_value,
-                        Error: vail.throwFristnameError,
-                      ),
+                      valiadtion_error(condiation: vail.Frist_name_value, Error: vail.throwFristnameError),
                       SizedBox(height: Get.height / 50),
 
                       //Last Name

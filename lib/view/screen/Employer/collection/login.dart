@@ -7,9 +7,8 @@ import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
+import 'package:hirexpert/view/utils/logic/validation_error.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
-import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
 import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/LoginValidation.dart';
 import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/visibility.dart';
 import '../../../utils/app_icon.dart';
@@ -29,13 +28,11 @@ class Employer_Login extends StatelessWidget {
       body: Container(
         width: Get.width,
         height: Get.height,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
-            child: Consumer<Candidate_LoginValidation>(
+            child: Consumer<Employer_LoginValidation>(
               builder: (BuildContext context, value, Widget? child) {
                 return SingleChildScrollView(
                   scrollDirection: Axis.vertical,
@@ -52,29 +49,24 @@ class Employer_Login extends StatelessWidget {
                       SizedBox(height: Get.height / 20),
                       Inputfild(
                         onChanged: (txt) {
-                          vail.Emailvali(txt);
+                          vail.Email_validation(txt);
                         },
                         labal: Login_text.lebelemail,
                         hint: Login_text.hintemail,
-                        controller: vail.EmailController,
+                        controller: vail.email_controller,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwErrorEmail : "",
-                              style: TextStyle(fontSize: Get.width / 25, color: AppColor.Error_color),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.Email_value, Error: vail.throwEmailnameError),
                       SizedBox(height: Get.height / 20),
-                      Consumer<Candidate_VisibilityController>(
+                      Consumer<Employer_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             onChanged: (textp) {
-                              vail.passwordvali(textp);
+                              vail.Password_validation(textp);
                             },
                             obscureText: vis.isobscr,
                             labal: Login_text.lebelpassword,
                             hint: Login_text.hintpassword,
-                            controller: vail.PasswordController,
+                            controller: vail.password_controller,
                             suffixIcon: InkWell(
                               onTap: () {
                                 vis.visibilityVis();
@@ -86,46 +78,25 @@ class Employer_Login extends StatelessWidget {
                           );
                         },
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwErrorPassword : "",
-                              style: TextStyle(fontSize: Get.width / 25, color: AppColor.Error_color),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.password_value, Error: vail.throwPasswordError),
                       SizedBox(height: Get.height / 50),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           InkWell(
                             onTap: () {
-                              Get.to(() => const Employer_F_Password());
+                              Get.to(() => Employer_F_Password());
                             },
-                            child: Text(
-                              Login_text.Forget_Password,
-                              style: TextStyle(
-                                color: AppColor.Button_color,
-                                fontSize: Get.width / 25,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            child: Text(Login_text.Forget_Password, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 25, fontWeight: FontWeight.w600)),
                           ),
                         ],
                       ),
                       SizedBox(height: Get.height / 20),
                       InkWell(
                         onTap: () {
-                          vail.isEmtey();
-                          vail.loginvalidation();
-                          Employer_login.OptionApiController_fuction(
-                            UserType: 'Company',
-                            Email: vail.EmailController.text,
-                            Password: vail.PasswordController.text,
-                          );
+                          vail.Loginvalidation();
                         },
-                        child: OnButtons(
-                          Button_Color: AppColor.Button_color,
-                          btn_name: Login_text.btn_name,
-                        ),
+                        child: OnButtons(Button_Color: AppColor.Button_color, btn_name: Login_text.btn_name),
                       ),
                       SizedBox(height: Get.height / 40),
                       Row(
@@ -137,14 +108,7 @@ class Employer_Login extends StatelessWidget {
                             onTap: () {
                               Get.to(() => Employer_Signup());
                             },
-                            child: Text(
-                              Login_text.Sinup,
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                fontWeight: FontWeight.w600,
-                                color: AppColor.Button_color,
-                              ),
-                            ),
+                            child: Text(Login_text.Sinup, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
                           ),
                         ],
                       ),

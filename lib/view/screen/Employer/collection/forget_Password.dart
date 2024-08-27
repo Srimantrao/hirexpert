@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/logic/validation_error.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/LoginValidation.dart';
 import '../../../utils/app_String.dart';
@@ -32,50 +33,27 @@ class Employer_F_Password extends StatelessWidget {
               children: [
                 SizedBox(height: Get.height / 20),
                 Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: Get.width / 6.5,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
                   child: Image.asset(AppIcons.logo, scale: 6),
                 ),
                 SizedBox(height: Get.height / 20),
-                Text(
-                  Forget_Password_text.hading,
-                  style: TextStyle(
-                    fontSize: Get.width / 18,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
+                Text(Forget_Password_text.hading, style: TextStyle(fontSize: Get.width / 18, fontWeight: FontWeight.w700)),
                 SizedBox(height: Get.height / 60),
-                Text(
-                  Forget_Password_text.sub,
-                  style: TextStyle(
-                    fontSize: Get.width / 27,
-                    fontWeight: FontWeight.w400,
-                    color: AppColor.subcolor,
-                  ),
-                ),
+                Text(Forget_Password_text.sub, style: TextStyle(fontSize: Get.width / 27, fontWeight: FontWeight.w400, color: AppColor.subcolor)),
                 SizedBox(height: Get.height / 20),
                 Consumer(
                   builder: (BuildContext context, value, Widget? child) {
                     return Inputfild(
                       onChanged: (txt) {
-                        vail.Emailvali(txt);
+                        vail.Email_validation(txt);
                       },
                       labal: Login_text.lebelemail,
                       hint: Login_text.hintemail,
-                      controller: vail.EmailController,
+                      controller: vail.email_controller,
                     );
                   },
                 ),
-                (vail.isError)
-                    ? Text(
-                        vail.isError ? vail.throwErrorEmail : "",
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          color: AppColor.Error_color,
-                        ),
-                      )
-                    : const SizedBox(),
+               valiadtion_error(condiation: vail.Email_value, Error: vail.throwEmailnameError),
                 SizedBox(height: Get.height / 5),
                 InkWell(
                   onTap: () {
@@ -88,19 +66,11 @@ class Employer_F_Password extends StatelessWidget {
                               height: Get.height / 15,
                               width: Get.width / 5,
                               decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(
-                                  Get.width / 50,
-                                ),
+                                borderRadius: BorderRadius.circular(Get.width / 50),
                                 color: AppColor.Button_color,
                               ),
                               child: Center(
-                                child: Text(
-                                  Forget_Password_text.OK,
-                                  style: TextStyle(
-                                    color: AppColor.Full_body_color,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
+                                child: Text(Forget_Password_text.OK, style: TextStyle(color: AppColor.Full_body_color, fontWeight: FontWeight.w600)),
                               ),
                             )
                           ],
@@ -110,31 +80,19 @@ class Employer_F_Password extends StatelessWidget {
                             height: Get.height / 4,
                             width: Get.width,
                             decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(
-                                Get.width / 50,
-                              ),
+                              borderRadius: BorderRadius.circular(Get.width / 50),
                               color: AppColor.Full_body_color,
                             ),
                             child: Column(
                               children: [
                                 Image.asset(AppIcons.Success, scale: 4),
                                 SizedBox(height: Get.height / 80),
-                                Text(
-                                  Forget_Password_text.Success,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w700,
-                                    fontSize: Get.width / 25,
-                                  ),
-                                ),
+                                Text(Forget_Password_text.Success, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 25)),
                                 SizedBox(height: Get.height / 50),
                                 Text(
                                   textAlign: TextAlign.center,
                                   Forget_Password_text.Sub_Suessess,
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: Get.width / 28,
-                                    color: AppColor.subcolor,
-                                  ),
+                                  style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 28, color: AppColor.subcolor),
                                 ),
                               ],
                             ),
@@ -154,26 +112,13 @@ class Employer_F_Password extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      Login_text.Dont,
-                      style: TextStyle(
-                        fontSize: Get.width / 25,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
+                    Text(Login_text.Dont, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w400)),
                     SizedBox(width: Get.width / 60),
                     InkWell(
                       onTap: () {
                         Get.to(() =>Employer_Signup());
                       },
-                      child: Text(
-                        Login_text.Sinup,
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          fontWeight: FontWeight.w600,
-                          color: AppColor.Button_color,
-                        ),
-                      ),
+                      child: Text(Login_text.Sinup, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
                     ),
                   ],
                 ),

@@ -15,17 +15,7 @@ class Inputfild extends StatelessWidget {
   final void Function(String)? onChanged;
   final void Function()? onTap;
 
-  const Inputfild({
-    super.key,
-    required this.labal,
-    required this.hint,
-    this.suffixIcon,
-    required this.controller,
-    this.obscureText,
-    this.keyboardType,
-    this.onChanged,
-    this.onTap,
-  });
+  const Inputfild({super.key, required this.labal, required this.hint, this.suffixIcon, required this.controller, this.obscureText, this.keyboardType, this.onChanged, this.onTap,});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +67,7 @@ class Inputfild extends StatelessWidget {
               ),
             ),
           ),
-        )
+        ),
       ],
     );
   }

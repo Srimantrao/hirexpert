@@ -3,6 +3,7 @@
 class Validation_Error {
   //Input
   static const FristName = "Please Input Your Frist Name";
+  static const CompanyName = "Please Input Your Company Name";
   static const LastName = "Please Input Your Last Name";
   static const Email = "Please Input Your Email Address";
   static const Phone = "Please Input Your Phone Number";
@@ -11,6 +12,7 @@ class Validation_Error {
 
   //vaild
   static const V_FristName = "Please enter a valid Frist name";
+  static const V_CompanyName = "Please enter a valid Company Name";
   static const V_LastName = "Please enter a valid Last name";
   static const V_Email = "Please Input Vaild Email Address";
   static const V_phone = "Please Input Vaild Phone Number";
@@ -118,7 +120,7 @@ class Forget_Password_text {
   static const sub = "Expenses as material breeding insisted buildingto in. Continual so distrusts pronounce by unwillinglistening. Thing do taste on we manor.";
 }
 
-//Sinup Screen
+//Canidate Sinup Screen
 class Signup_text {
   static const Sign_Up = "Sign Up";
   static const Enter_First_Name = "Enter First Name";
@@ -135,6 +137,12 @@ class Signup_text {
   static const Confirm_Password = "Confirm Password";
   static const Have_an_account = "Have an account?";
   static const Sign_In = "Sign In";
+}
+
+//Employer Sinup Screen
+class E_Signup_text{
+  static const company_name = 'Company Name:';
+  static const About_Company = 'About Company:';
 }
 
 //My_Job Screen

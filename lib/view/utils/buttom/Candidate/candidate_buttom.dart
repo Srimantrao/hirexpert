@@ -16,10 +16,7 @@ class Candidate_Bottam extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final nav = Provider.of<MenuNavigationController>(
-      context,
-      listen: false,
-    );
+    final nav = Provider.of<MenuNavigationController>(context, listen: false);
     return Scaffold(
       bottomNavigationBar: Container(
         width: Get.width,
@@ -43,16 +40,8 @@ class Candidate_Bottam extends StatelessWidget {
                     nav.SelectIndex_one();
                   },
                   child: (nav.Selectindex == 0)
-                      ? SvgPicture.asset(
-                          AppIcons.open_job,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        )
-                      : SvgPicture.asset(
-                          AppIcons.Jobs,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        ),
+                      ? SvgPicture.asset(AppIcons.open_job, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Jobs, height: Get.height / 32, width: Get.width / 32),
                 ),
                 InkWell(
                   highlightColor: Colors.transparent,
@@ -61,48 +50,24 @@ class Candidate_Bottam extends StatelessWidget {
                     nav.SelectIndex_two();
                   },
                   child: (nav.Selectindex == 1)
-                      ? SvgPicture.asset(
-                          AppIcons.Search_job,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        )
-                      : SvgPicture.asset(
-                          AppIcons.Search,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        ),
+                      ? SvgPicture.asset(AppIcons.Search_job, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
                 ),
                 InkWell(
                   onTap: () {
                     nav.SelectIndex_three();
                   },
                   child: (nav.Selectindex == 2)
-                      ? SvgPicture.asset(
-                          AppIcons.profile_open,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        )
-                      : SvgPicture.asset(
-                          AppIcons.Profile,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        ),
+                      ? SvgPicture.asset(AppIcons.profile_open, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32),
                 ),
                 InkWell(
                   onTap: () {
                     nav.SelectIndex_four();
                   },
                   child: (nav.Selectindex == 3)
-                      ? SvgPicture.asset(
-                          AppIcons.Messages_Open,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        )
-                      : SvgPicture.asset(
-                          AppIcons.Messages,
-                          height: Get.height / 32,
-                          width: Get.width / 32,
-                        ),
+                      ? SvgPicture.asset(AppIcons.Messages_Open, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Messages, height: Get.height / 32, width: Get.width / 32),
                 ),
               ],
             );

@@ -44,11 +44,7 @@ class EmployerApiSinupController extends GetxController {
 
       final Response = await http.post(
         Uri.parse(AppUrl.Employer_Signup),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Logintoken.token,
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Logintoken.token},
         body: body,
       );
       if (Response.statusCode == 200 || Response.statusCode == 201) {

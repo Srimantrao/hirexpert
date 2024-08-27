@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, file_names
+// ignore_for_file: non_constant_identifier_names, file_names, prefer_const_constructors
 
 import 'package:flutter/cupertino.dart';
 
@@ -14,7 +14,7 @@ class MenuNavigationController with ChangeNotifier {
     Home(),
     Search(),
     Profile_info(),
-    const Message(),
+    Message(),
   ];
 
   Widget Selectitem(int index) {

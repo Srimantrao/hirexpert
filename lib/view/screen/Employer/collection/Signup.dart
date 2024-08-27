@@ -1,32 +1,28 @@
-// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, must_be_immutable
+// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, must_be_immutable, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Employer/Collction/Sinup/employer_API_Sinup_controller.dart';
+import 'package:hirexpert/controller/User_Controller/Employer_Controller/LoginControoler/visibility.dart';
+import 'package:hirexpert/controller/User_Controller/Employer_Controller/SignupController/SinupController.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
+import 'package:hirexpert/view/utils/logic/validation_error.dart';
 import 'package:provider/provider.dart';
-import '../../../../controller/User_Controller/Employer_Controller/LoginControoler/visibility.dart';
-import '../../../../controller/User_Controller/Employer_Controller/SignupController/SinupController.dart';
-import '../../../utils/app_icon.dart';
-import '../../../utils/common/Textfild/Inputfild.dart';
+
 
 class Employer_Signup extends StatelessWidget {
-   Employer_Signup({super.key});
+  Employer_Signup({super.key});
 
   EmployerApiSinupController Employer_Sinup = Get.put(EmployerApiSinupController());
 
   @override
   Widget build(BuildContext context) {
-    final vail = Provider.of<Employer_SinupController>(
-      context,
-      listen: false,
-    );
-    final vis = Provider.of<Employer_VisibilityController>(
-      context,
-      listen: false,
-    );
+    final vail = Provider.of<Employer_SinupController>(context, listen: false);
+    final vis = Provider.of<Employer_VisibilityController>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -34,9 +30,7 @@ class Employer_Signup extends StatelessWidget {
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 20,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Consumer<Employer_SinupController>(
@@ -46,92 +40,99 @@ class Employer_Signup extends StatelessWidget {
                     children: [
                       SizedBox(height: Get.height / 20),
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Get.width / 6.5,
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
                         child: Image.asset(AppIcons.logo, scale: 6),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(
-                        Signup_text.Sign_Up,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: Get.width / 18,
-                        ),
-                      ),
+                      Text(Signup_text.Sign_Up,style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
                       Inputfild(
                         onChanged: (FrisName) {
-                          vail.fristname_vail(FrisName);
+                          vail.Confirm_Password_validation(FrisName);
+                        },
+                        labal: E_Signup_text.company_name,
+                        hint: E_Signup_text.company_name,
+                        controller: vail.Company_name_controller,
+                      ),
+                      valiadtion_error(condiation: vail.Company_Name_value, Error: vail.throwCompanyNameError),
+                      SizedBox(height: Get.height / 50),
+                      RichText(
+                        text: TextSpan(
+                          children: [
+                            TextSpan(
+                              text: E_Signup_text.About_Company,
+                              style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
+                            ),
+                            TextSpan(
+                              text: ' *',
+                              style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: Get.height / 50),
+                      SizedBox(
+                        height: Get.height / 8,
+                        child: TextField(
+                          maxLines: null,
+                          expands: true,
+                          onTap: () {},
+                          textAlignVertical: TextAlignVertical.top,
+                          onChanged: (text) {},
+                          controller: vail.About_Company_controller,
+                          decoration: InputDecoration(
+                            hintText: E_Signup_text.About_Company,
+                            hintStyle: TextStyle(color: AppColor.black_all),
+                            focusedBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: AppColor.offButton_color),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderSide: BorderSide(color: AppColor.offButton_color),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: Get.height / 50),
+                      Inputfild(
+                        onChanged: (FrisName) {
+                          vail.FristName_validation(FrisName);
                         },
                         labal: Signup_text.First_Name,
                         hint: Signup_text.Enter_First_Name,
-                        controller: vail.frist_name,
+                        controller: vail.frist_name_controller,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwFristnameError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.Frist_name_value, Error: vail.throwFristnameError),
                       SizedBox(height: Get.height / 50),
                       Inputfild(
                         onChanged: (Lastname) {
-                          vail.lastname_vail(Lastname);
+                          vail.LastName_validation(Lastname);
                         },
                         labal: Signup_text.Last_Name,
                         hint: Signup_text.Enter_last_Name,
-                        controller: vail.last_name,
+                        controller: vail.last_name_controller,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwLastnameError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.Last_name_value, Error: vail.throwLastnameError),
                       SizedBox(height: Get.height / 50),
                       Inputfild(
                         onChanged: (Email) {
-                          vail.Email_vali(Email);
+                          vail.Email_validation(Email);
                         },
                         labal: Signup_text.Email_Id,
                         hint: Signup_text.Enter_Email_Address,
-                        controller: vail.email,
+                        controller: vail.email_controller,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwEmailnameError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.Email_value, Error: vail.throwEmailnameError),
                       SizedBox(height: Get.height / 50),
                       Inputfild(
                         keyboardType: TextInputType.number,
                         onChanged: (Phonevalue) {
-                          vail.Phone_vail(Phonevalue);
+                          vail.phone_validation(Phonevalue);
                         },
                         labal: Signup_text.Phone_Number,
                         hint: Signup_text.Enter_Phone_Number,
-                        controller: vail.phone,
+                        controller: vail.phone_controller,
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwPhoneNumberError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.phone_value, Error: vail.throwPhoneNumberError),
                       SizedBox(height: Get.height / 50),
                       Consumer<Employer_SinupController>(
                         builder: (BuildContext context, value, Widget? child) {
@@ -141,28 +142,18 @@ class Employer_Signup extends StatelessWidget {
                               onTap: () {
                                 vis.visibilityVis();
                               },
-                              child: (vis.isVis)
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                              child: (vis.isVis) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                             ),
                             onChanged: (valuepassword) {
-                              vail.password_vali(valuepassword);
+                              vail.Password_validation(valuepassword);
                             },
                             labal: Signup_text.Password,
                             hint: Signup_text.Enter_last_Name,
-                            controller: vail.password,
+                            controller: vail.password_controller,
                           );
                         },
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError ? vail.throwPasswordError : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.password_value, Error: vail.throwPasswordError),
                       SizedBox(height: Get.height / 50),
                       Consumer<Employer_SinupController>(
                         builder: (BuildContext context, value, Widget? child) {
@@ -171,45 +162,20 @@ class Employer_Signup extends StatelessWidget {
                               onTap: () {
                                 vis.visibilitycnf();
                               },
-                              child: (vis.isviscnf)
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                              child: (vis.isviscnf) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                             ),
                             obscureText: vis.isobscr,
-                            onChanged: (confirmpassword) {
-                              vail.confirm_password_vail(confirmpassword);
-                            },
                             labal: Signup_text.Confirm_Password,
                             hint: Signup_text.Confirm_Password,
-                            controller: vail.confirm_password,
+                            controller: vail.confirm_password_controller,
                           );
                         },
                       ),
-                      (vail.isError)
-                          ? Text(
-                              vail.isError
-                                  ? vail.throwConfirmPasswordError
-                                  : "",
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                                color: AppColor.Error_color,
-                              ),
-                            )
-                          : const SizedBox(),
+                      valiadtion_error(condiation: vail.confirm_password, Error: vail.throwConfirmPasswordError),
                       SizedBox(height: Get.height / 20),
                       InkWell(
                         onTap: () {
-                          vail.SingupValidation();
-                          Employer_Sinup.EmployerApiSinupController_Fuction(
-                            FirstName: vail.frist_name.text,
-                            LastName: vail.last_name.text,
-                            Email: vail.email.text,
-                            Password: vail.password.text,
-                            ComName: 'WT1',
-                          );
-                          // Get.to(
-                          //   () => const Employer_Specialization(),
-                          // );
+                          vail.SinupValidtion();
                         },
                         child: OnButtons(
                           Button_Color: AppColor.Button_color,
@@ -220,21 +186,9 @@ class Employer_Signup extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            Signup_text.Have_an_account,
-                            style: TextStyle(
-                              fontSize: Get.width / 25,
-                            ),
-                          ),
+                          Text(Signup_text.Have_an_account, style: TextStyle(fontSize: Get.width / 25)),
                           SizedBox(width: Get.width / 80),
-                          Text(
-                            Signup_text.Sign_In,
-                            style: TextStyle(
-                              color: AppColor.Button_color,
-                              fontSize: Get.width / 25,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          Text(Signup_text.Sign_In, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 25, fontWeight: FontWeight.w600)),
                         ],
                       ),
                       SizedBox(height: Get.height / 50),
