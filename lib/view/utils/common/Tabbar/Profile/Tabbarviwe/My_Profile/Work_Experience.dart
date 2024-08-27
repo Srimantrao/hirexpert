@@ -42,11 +42,7 @@ class _Work_ExperienceState extends State<Work_Experience> {
               },
               child: Info(
                 CircleAvatar_color: Change_Circle(
-                  Condition: myProfile.P_fresher == 6 ||
-                      myProfile.P_Years_Selection == 0 &&
-                          myProfile.P_Month_Selection == 1 &&
-                          myProfile.P_Company_Name == 2 &&
-                          myProfile.P_Designation == 3,
+                  Condition: myProfile.P_fresher == 6 || myProfile.P_Years_Selection == 0 && myProfile.P_Month_Selection == 1 && myProfile.P_Company_Name == 2 && myProfile.P_Designation == 3,
                 ),
                 info: Profile_Text.Work_Experience,
                 dropicons: DropIcons(
@@ -67,20 +63,13 @@ class _Work_ExperienceState extends State<Work_Experience> {
                     width: Get.width,
                     decoration: BoxDecoration(
                       border: Border(
-                        bottom: BorderSide(
-                          color: AppColor.select_check_color,
-                        ),
+                        bottom: BorderSide(color: AppColor.select_check_color),
                       ),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          Profile_Text.fresher,
-                          style: TextStyle(
-                            fontSize: Get.width / 24,
-                          ),
-                        ),
+                        Text(Profile_Text.fresher, style: TextStyle(fontSize: Get.width / 24)),
                         GestureDetector(
                           onTap: () {
                             myProfile.Freshers_fun();
@@ -106,13 +95,7 @@ class _Work_ExperienceState extends State<Work_Experience> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          Profile_Text.Total_Experience,
-                          style: TextStyle(
-                            fontSize: Get.width / 24,
-                            color: AppColor.select_check_color,
-                          ),
-                        ),
+                        Text(Profile_Text.Total_Experience, style: TextStyle(fontSize: Get.width / 24, color: AppColor.select_check_color)),
 
                         //Total Experience
                         Row(
@@ -128,8 +111,9 @@ class _Work_ExperienceState extends State<Work_Experience> {
                                 Hadline: Profile_Text.Enter_Year,
                                 Selectedtext: SelectdYear,
                                 onSelectedItemChanged: (int index) {
-                                  SelectdYear = Years[index];
-                                  setState(() {});
+                                  setState(() {
+                                     SelectdYear = Years[index];
+                                  });
                                 },
                                 children: List.generate(
                                   Years.length,
@@ -152,8 +136,9 @@ class _Work_ExperienceState extends State<Work_Experience> {
                                 Hadline: Profile_Text.Enter_Month,
                                 Selectedtext: Selectdmonth,
                                 onSelectedItemChanged: (int index) {
-                                  Selectdmonth = Month[index];
-                                  setState(() {});
+                                  setState(() {
+                                    Selectdmonth = Month[index];
+                                  });
                                 },
                                 children: List.generate(
                                   Month.length,
@@ -182,10 +167,7 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             myProfile.Companys_names_validation(val);
                           },
                         ),
-                        MyProfile_Error(
-                          throww: myProfile.onthrowError,
-                          Error: myProfile.Companys_names,
-                        ),
+                        MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Companys_names),
                         SizedBox(height: Get.height / 50),
 
                         //Designation
@@ -200,20 +182,11 @@ class _Work_ExperienceState extends State<Work_Experience> {
                             myProfile.Designations_validation(val);
                           },
                         ),
-                        MyProfile_Error(
-                          throww: myProfile.onthrowError,
-                          Error: myProfile.Designations,
-                        ),
+                        MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Designations),
                         SizedBox(height: Get.height / 50),
 
                         //Duration
-                        Text(
-                          Profile_Text.Designation,
-                          style: TextStyle(
-                            fontSize: Get.width / 24,
-                            color: AppColor.select_check_color,
-                          ),
-                        ),
+                        Text(Profile_Text.Designation, style: TextStyle(fontSize: Get.width / 24, color: AppColor.select_check_color)),
                         SizedBox(height: Get.height / 50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -257,13 +230,7 @@ class _Work_ExperienceState extends State<Work_Experience> {
                           ],
                         ),
                         SizedBox(height: Get.height / 50),
-                        Text(
-                          Profile_Text.Add_Work_Experience,
-                          style: TextStyle(
-                            fontSize: Get.width / 24,
-                            fontWeight: FontWeight.w600,
-                            color: AppColor.Button_color,
-                          ),
+                        Text(Profile_Text.Add_Work_Experience, style: TextStyle(fontSize: Get.width / 24, fontWeight: FontWeight.w600, color: AppColor.Button_color),
                         ),
                       ],
                     ),

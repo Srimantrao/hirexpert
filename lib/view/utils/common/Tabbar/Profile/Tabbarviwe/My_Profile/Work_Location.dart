@@ -16,10 +16,7 @@ class Work_Location extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myProfile = Provider.of<My_ProfileController>(
-      context,
-      listen: false,
-    );
+    final myProfile = Provider.of<My_ProfileController>(context, listen: false);
     return Consumer<My_ProfileController>(
       builder: (BuildContext context, value, Widget? child) {
         return Column(
@@ -30,16 +27,10 @@ class Work_Location extends StatelessWidget {
               },
               child: Info(
                 CircleAvatar_color: Change_Circle(
-                  Condition: myProfile.P_CTC_Current == 0 &&
-                      myProfile.Preffered_Working == 1 &&
-                      myProfile.Preffered_Work_Working == 2 &&
-                      myProfile.Job_Type_Preferrence == 3 &&
-                      myProfile.Notice_Period == 4,
+                  Condition: myProfile.P_CTC_Current == 0 && myProfile.Preffered_Working == 1 && myProfile.Preffered_Work_Working == 2 && myProfile.Job_Type_Preferrence == 3 && myProfile.Notice_Period == 4,
                 ),
                 info: Profile_Text.Work_Location,
-                dropicons: DropIcons(
-                  conditional_name: myProfile.Work_Location,
-                ),
+                dropicons: DropIcons(conditional_name: myProfile.Work_Location),
               ),
             ),
             Visibility(
@@ -61,10 +52,7 @@ class Work_Location extends StatelessWidget {
                       myProfile.P_CTC_Currents_validation(val);
                     },
                   ),
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.P_CTC_Currents,
-                  ),
+                  MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.P_CTC_Currents),
                   SizedBox(height: Get.height / 50),
 
                   //Preffered Working Location
@@ -115,10 +103,7 @@ class Work_Location extends StatelessWidget {
                       myProfile.Job_Type_Preferrences_validation(val);
                     },
                   ),
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.Job_Type_Preferrences,
-                  ),
+                  MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Job_Type_Preferrences),
                   SizedBox(height: Get.height / 50),
 
                   //Notice Period (days)(Optional)
@@ -133,10 +118,7 @@ class Work_Location extends StatelessWidget {
                       myProfile.Notice_Periods_validation(val);
                     },
                   ),
-                  MyProfile_Error(
-                    throww: myProfile.onthrowError,
-                    Error: myProfile.Notice_Periods,
-                  ),
+                  MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Notice_Periods),
                   SizedBox(height: Get.height / 50),
                 ],
               ),
