@@ -17,24 +17,17 @@ class Option extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final select = Provider.of<SelectButtonsController>(
-      context,
-      listen: false,
-    );
+    final select = Provider.of<SelectButtonsController>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Get.width / 20,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
               child: Consumer<SelectButtonsController>(
                 builder: (BuildContext context, value, Widget? child) {
                   return Column(
@@ -57,9 +50,7 @@ class Option extends StatelessWidget {
                       //Employer
                       InkWell(
                         onTap: () {
-                          option_api.OptionApiController_fuction(
-                            UserType: 'Company',
-                          );
+                          option_api.OptionApiController_fuction(UserType: 'Company');
                           select.Select();
                         },
                         child: WideButton(
@@ -76,9 +67,7 @@ class Option extends StatelessWidget {
                       //Candidate
                       InkWell(
                         onTap: () {
-                          option_api.OptionApiController_fuction(
-                            UserType: 'Candidate',
-                          );
+                          option_api.OptionApiController_fuction(UserType: 'Candidate');
                           select.SelectSecond();
                         },
                         child: WideButton(
