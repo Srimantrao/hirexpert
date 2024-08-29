@@ -44,27 +44,13 @@ class Option extends StatelessWidget {
                       SizedBox(height: Get.height / 10),
                       SizedBox(
                         width: Get.width / 1.2,
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          Option_text.hed,
-                          style: TextStyle(
-                            fontSize: Get.width / 17,
-                            fontWeight: FontWeight.w600,
-                          ),
+                        child: Text(textAlign: TextAlign.center, Option_text.hed, style: TextStyle(fontSize: Get.width / 17, fontWeight: FontWeight.w600),
                         ),
                       ),
                       SizedBox(height: Get.height / 50),
                       SizedBox(
                         width: Get.width / 1.19,
-                        child: Text(
-                          textAlign: TextAlign.center,
-                          Option_text.subhed,
-                          style: TextStyle(
-                            fontSize: Get.width / 27,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.subcolor,
-                          ),
-                        ),
+                        child: Text(textAlign: TextAlign.center, Option_text.subhed, style: TextStyle(fontSize: Get.width / 27, fontWeight: FontWeight.w400, color: AppColor.subcolor)),
                       ),
                       SizedBox(height: Get.height / 20),
 
@@ -77,20 +63,12 @@ class Option extends StatelessWidget {
                           select.Select();
                         },
                         child: WideButton(
-                          Button_color: (select.SelectButton)
-                              ? AppColor.Full_body_color
-                              : AppColor.Button_color,
-                          Button_Boder_color: (select.SelectButton)
-                              ? AppColor.offButton_color
-                              : AppColor.Button_color,
+                          Button_color: (select.SelectButton) ? AppColor.Full_body_color : AppColor.Button_color,
+                          Button_Boder_color: (select.SelectButton) ? AppColor.offButton_color : AppColor.Button_color,
                           text: Option_text.Employer,
                           Icon: AppIcons.Employee,
-                          text_color: (select.SelectButton)
-                              ? AppColor.subcolor
-                              : AppColor.Full_body_color,
-                          Icon_color: (select.SelectButton)
-                              ? AppColor.offButton_color
-                              : AppColor.Full_body_color,
+                          text_color: (select.SelectButton) ? AppColor.subcolor : AppColor.Full_body_color,
+                          Icon_color: (select.SelectButton) ? AppColor.offButton_color : AppColor.Full_body_color,
                         ),
                       ),
                       SizedBox(height: Get.height / 50),
@@ -104,40 +82,20 @@ class Option extends StatelessWidget {
                           select.SelectSecond();
                         },
                         child: WideButton(
-                          Button_color: (select.SelectButtonSecond)
-                              ? AppColor.Full_body_color
-                              : AppColor.Button_color,
-                          Button_Boder_color: (select.SelectButtonSecond)
-                              ? AppColor.offButton_color
-                              : AppColor.Button_color,
+                          Button_color: (select.SelectButtonSecond) ? AppColor.Full_body_color : AppColor.Button_color,
+                          Button_Boder_color: (select.SelectButtonSecond) ? AppColor.offButton_color : AppColor.Button_color,
                           text: Option_text.Candidate,
                           Icon: AppIcons.briefcase,
-                          text_color: (select.SelectButtonSecond)
-                              ? AppColor.subcolor
-                              : AppColor.Full_body_color,
-                          Icon_color: (select.SelectButtonSecond)
-                              ? AppColor.offButton_color
-                              : AppColor.Full_body_color,
+                          text_color: (select.SelectButtonSecond) ? AppColor.subcolor : AppColor.Full_body_color,
+                          Icon_color: (select.SelectButtonSecond) ? AppColor.offButton_color : AppColor.Full_body_color,
                         ),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(
-                        textAlign: TextAlign.center,
-                        Option_text.ThenkYOU,
-                        style: TextStyle(
-                          fontSize: Get.width / 27,
-                          color: AppColor.subcolor,
-                        ),
-                      ),
+                      Text(textAlign: TextAlign.center, Option_text.ThenkYOU, style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor)),
                       SizedBox(height: Get.height / 15),
-                      Text(
-                        (select.Error) ? select.ShowError : "",
-                        style: TextStyle(
-                          fontSize: Get.width / 25,
-                          color: AppColor.Error_color,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      // Text(
+                      //   (select.Error) ? select.ShowError : "", style: TextStyle(fontSize: Get.width / 25, color: AppColor.Error_color, fontWeight: FontWeight.w600),
+                      // ),
                     ],
                   );
                 },

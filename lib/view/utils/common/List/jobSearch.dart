@@ -87,7 +87,7 @@ class JobSearch extends StatelessWidget {
                           ),
                           color: Color_container,
                           image: DecorationImage(
-                              image: NetworkImage(Icon ?? ''),
+                              image: NetworkImage(Icon),
                               fit: BoxFit.fill),
                         ),
                       ),
@@ -99,7 +99,7 @@ class JobSearch extends StatelessWidget {
                         Row(
                           children: [
                             Text(
-                              Job_Tital ?? '',
+                              Job_Tital,
                               style: TextStyle(
                                 color: AppColor.subcolor,
                               ),
@@ -109,7 +109,7 @@ class JobSearch extends StatelessWidget {
                         SizedBox(
                           width: Get.width / 2,
                           child: Text(
-                            Language ?? '',
+                            Language,
                             style: TextStyle(
                               fontSize: size.width / 26,
                               fontWeight: FontWeight.w600,
@@ -117,7 +117,7 @@ class JobSearch extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          Commpany ?? '',
+                          Commpany,
                           style: TextStyle(
                             fontSize: size.width / 26,
                             fontWeight: FontWeight.w400,
@@ -149,7 +149,7 @@ class JobSearch extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              Working ?? '',
+                              Working,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -172,7 +172,7 @@ class JobSearch extends StatelessWidget {
                               padding: EdgeInsets.symmetric(
                                   horizontal: Get.width / 30),
                               child: Text(
-                                Location ?? '',
+                                Location,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -193,7 +193,7 @@ class JobSearch extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              Job_time ?? '',
+                              Job_time,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -218,7 +218,7 @@ class JobSearch extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              Exp ?? '',
+                              Exp,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 35,
@@ -238,7 +238,7 @@ class JobSearch extends StatelessWidget {
                           ),
                           child: Center(
                             child: Text(
-                              lake ?? '',
+                              lake,
                               style: TextStyle(
                                 fontWeight: FontWeight.w600,
                                 fontSize: size.width / 30,
@@ -262,7 +262,7 @@ class JobSearch extends StatelessWidget {
                             child: Center(
                               child: Text(
                                 textAlign: TextAlign.center,
-                                Hybrid ?? '',
+                                Hybrid,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w600,
                                   fontSize: size.width / 30,
@@ -281,7 +281,7 @@ class JobSearch extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      stats ?? '',
+                      stats,
                       style: TextStyle(
                         color: AppColor.subcolor,
                       ),

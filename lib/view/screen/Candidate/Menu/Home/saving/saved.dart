@@ -36,13 +36,9 @@ class Saved extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 50),
           child: (isfavication.isFavration.value.status)
-              ? const Center(
-                  child: Text("File is Empty !"),
-                )
+              ? Center(child: Text("File is Empty !"))
               : Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: size.width / 30,
-                  ),
+                  padding: EdgeInsets.symmetric(horizontal: size.width / 30),
                   child: Seved_List(),
                 ),
         ),

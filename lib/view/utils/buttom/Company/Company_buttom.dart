@@ -2,6 +2,7 @@
 // ignore_for_file: camel_case_types, prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_const_literals_to_create_immutables, file_names, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -17,6 +18,28 @@ class Company_button extends StatefulWidget {
 
 class _Company_buttonState extends State<Company_button> {
 
+   ScrollController scrollController = ScrollController();
+  bool _isVisible = true;
+
+  @override
+  void initState() {
+    super.initState();
+    scrollController.addListener(() {
+      if (scrollController.position.userScrollDirection == ScrollDirection.reverse) {
+        if (_isVisible) setState(() => _isVisible = false);
+      } else if (scrollController.position.userScrollDirection == ScrollDirection.forward) {
+        if (!_isVisible) setState(() => _isVisible = true);
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+
   int SelectIndex = 0;
 
   List<Widget> item = [
@@ -30,33 +53,46 @@ class _Company_buttonState extends State<Company_button> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: Container(
-        height: Get.height/15,
-        width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
-        //
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            GestureDetector(
-              onTap: (){
-                setState(() {
-                   SelectIndex = 0;
-                });
-              },
-                child: (SelectIndex == 0)
-                    ? SvgPicture.asset(AppIcons.open_job, height: Get.height / 32, width: Get.width / 32)
-                    : SvgPicture.asset(AppIcons.Jobs, height: Get.height / 32, width: Get.width / 32),
-            ),
-            SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32),
-            SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
-            SvgPicture.asset(AppIcons.Messages, height: Get.height / 32, width: Get.width / 32),
-          ],
+      bottomNavigationBar: AnimatedContainer(
+        duration: Duration(milliseconds: 300),
+        height: _isVisible ? 60.0 : 0.0,
+        child: Container(
+          height: Get.height/15,
+          width: Get.width,
+          decoration: BoxDecoration(
+            color: AppColor.Full_body_color,
+          ),
+          //
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                     SelectIndex = 0;
+                  });
+                },
+                  child: (SelectIndex == 0)
+                      ? SvgPicture.asset(AppIcons.open_job, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Jobs, height: Get.height / 32, width: Get.width / 32),
+              ),
+              SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32),
+              SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
+              SvgPicture.asset(AppIcons.Messages, height: Get.height / 32, width: Get.width / 32),
+            ],
+          ),
         ),
       ),
-      body: ItemSelect(SelectIndex),
+      body: NotificationListener<UserScrollNotification>(
+        onNotification: (notification) {
+          if (notification.direction == ScrollDirection.reverse) {
+            if (_isVisible) setState(() => _isVisible = false);
+          } else if (notification.direction == ScrollDirection.forward) {
+            if (!_isVisible) setState(() => _isVisible = true);
+          }
+          return true;
+        },
+          child: ItemSelect(SelectIndex)),
     );
   }
 }

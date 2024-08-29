@@ -38,7 +38,7 @@ class Employer_Signup extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Get.height / 20),
+                      SizedBox(height: Get.height / 50),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
                         child: Image.asset(AppIcons.logo, scale: 6),
@@ -83,12 +83,8 @@ class Employer_Signup extends StatelessWidget {
                           decoration: InputDecoration(
                             hintText: E_Signup_text.About_Company,
                             hintStyle: TextStyle(color: AppColor.black_all),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColor.offButton_color),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: AppColor.offButton_color),
-                            ),
+                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.offButton_color)),
+                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.offButton_color)),
                           ),
                         ),
                       ),

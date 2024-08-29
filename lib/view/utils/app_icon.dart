@@ -24,6 +24,7 @@ class AppIcons {
   static const PDF_Icon = "assets/icon/body/PDF_ICon.svg";
   static const interviwe_png = "assets/icon/body/interviwe_png.svg";
   static const AlertDialog = "assets/icon/body/AlertDialog_img.svg";
+  static const Editing = "assets/icon/body/Editing.svg";
 
   //Appbar
   static const dots = 'assets/icon/appbar/dots.svg';
@@ -37,6 +38,7 @@ class AppIcons {
   static const open_job = "assets/icon/bottam/My_Jobs_open.svg";
   static const Search_job = "assets/icon/bottam/Search_Job_open.svg";
   static const profile_open = "assets/icon/bottam/Profile_open.svg";
+  static const profile2 = "assets/icon/bottam/profile2.svg";
 
   //buttons
   static const Employee = "assets/icon/button/Employee.svg";

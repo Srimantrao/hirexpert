@@ -25,7 +25,7 @@ class PasswordChange extends GetxController {
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
+          Logintoken.logintoken: Tokan,
         },
         body: body,
       );

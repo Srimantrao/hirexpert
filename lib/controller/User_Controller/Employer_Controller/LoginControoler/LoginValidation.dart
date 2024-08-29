@@ -7,8 +7,6 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
-import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/buttom/Company/Company_buttom.dart';
 
 class Employer_LoginValidation with ChangeNotifier {

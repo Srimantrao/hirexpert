@@ -18,14 +18,8 @@ class candidate_Signup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final vail = Provider.of<Candidate_SinupController>(
-      context,
-      listen: false,
-    );
-    final vis = Provider.of<Candidate_VisibilityController>(
-      context,
-      listen: false,
-    );
+    final vail = Provider.of<Candidate_SinupController>(context, listen: false);
+    final vis = Provider.of<Candidate_VisibilityController>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
@@ -33,9 +27,7 @@ class candidate_Signup extends StatelessWidget {
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 20,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: Consumer<Candidate_SinupController>(
@@ -43,20 +35,13 @@ class candidate_Signup extends StatelessWidget {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: Get.height / 20),
+                      SizedBox(height: Get.height / 50),
                       Padding(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Get.width / 6.5,
-                        ),
+                        padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
                         child: Image.asset(AppIcons.logo, scale: 6),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(
-                        Signup_text.Sign_Up,
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: Get.width / 18,
-                        ),
+                      Text(Signup_text.Sign_Up, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18),
                       ),
                       SizedBox(height: Get.height / 20),
 
@@ -96,10 +81,7 @@ class candidate_Signup extends StatelessWidget {
                         hint: Signup_text.Enter_Email_Address,
                         controller: vail.email_controller,
                       ),
-                      valiadtion_error(
-                        condiation: vail.Email_value,
-                        Error: vail.throwEmailnameError,
-                      ),
+                      valiadtion_error(condiation: vail.Email_value, Error: vail.throwEmailnameError),
                       SizedBox(height: Get.height / 50),
 
                       //Phone Number
@@ -112,10 +94,7 @@ class candidate_Signup extends StatelessWidget {
                         hint: Signup_text.Enter_Phone_Number,
                         controller: vail.phone_controller,
                       ),
-                      valiadtion_error(
-                        condiation: vail.phone_value,
-                        Error: vail.throwPhoneNumberError,
-                      ),
+                      valiadtion_error(condiation: vail.phone_value, Error: vail.throwPhoneNumberError),
 
                       //Password
                       SizedBox(height: Get.height / 50),
@@ -140,10 +119,7 @@ class candidate_Signup extends StatelessWidget {
                           );
                         },
                       ),
-                      valiadtion_error(
-                        condiation: vail.password_value,
-                        Error: vail.throwPasswordError,
-                      ),
+                      valiadtion_error(condiation: vail.password_value, Error: vail.throwPasswordError),
                       SizedBox(height: Get.height / 50),
 
                       //Canfarim Password
@@ -165,10 +141,7 @@ class candidate_Signup extends StatelessWidget {
                           );
                         },
                       ),
-                      valiadtion_error(
-                        condiation: vail.confirm_password,
-                        Error: vail.throwConfirmPasswordError,
-                      ),
+                      valiadtion_error(condiation: vail.confirm_password, Error: vail.throwConfirmPasswordError),
                       SizedBox(height: Get.height / 20),
 
                       OnButtons(
@@ -191,21 +164,9 @@ class candidate_Signup extends StatelessWidget {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              Signup_text.Have_an_account,
-                              style: TextStyle(
-                                fontSize: Get.width / 25,
-                              ),
-                            ),
+                            Text(Signup_text.Have_an_account, style: TextStyle(fontSize: Get.width / 25)),
                             SizedBox(width: Get.width / 80),
-                            Text(
-                              Signup_text.Sign_In,
-                              style: TextStyle(
-                                color: AppColor.Button_color,
-                                fontSize: Get.width / 25,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                            Text(Signup_text.Sign_In, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 25, fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),

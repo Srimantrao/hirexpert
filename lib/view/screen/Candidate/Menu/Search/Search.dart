@@ -16,7 +16,6 @@ import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
 class Search extends StatefulWidget {
-
   Search({super.key});
 
   @override
@@ -27,8 +26,8 @@ class _SearchState extends State<Search> {
   @override
   void initState() {
     Searchings.Search.SearchApiController_fuction(
-        Timezone: 'asia/kolkata',
-        CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+      Timezone: 'asia/kolkata',
+      CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
     );
     super.initState();
   }
@@ -65,7 +64,19 @@ class _SearchState extends State<Search> {
             child: Icon(Icons.notifications_none, color: AppColor.subcolor, size: 30),
           ),
           SizedBox(width: Get.width / 50),
-          Icon(Icons.more_vert, color: AppColor.subcolor, size: 30),
+          PopupMenuButton(
+              color: AppColor.Full_body_color,
+              onSelected: (value) {
+                print(value);
+              },
+              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                    PopupMenuItem(value: 1, child: Text('All')),
+                    PopupMenuItem(value: 2, child: Text('Last 7 Days')),
+                    PopupMenuItem(value: 3, child: Text('Last 30 Days')),
+                    PopupMenuItem(value: 3, child: Text('Last 6 Months')),
+                    PopupMenuItem(value: 3, child: Text('Last 1 Year')),
+                  ],
+              child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30)),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -73,7 +84,8 @@ class _SearchState extends State<Search> {
         height: Get.height,
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
-        child: Obx(() {
+        child: Obx(
+          () {
             if (Searchings.Search.isLoding.value) {
               return Center(
                 child: Image.asset(AppLoder.infinityloder_without_background),
@@ -93,7 +105,8 @@ class _SearchState extends State<Search> {
                   var isFavourite = jobData['IsFavourite'] == "1";
                   return JobSearch(
                     onTap: () {
-                      Get.to(() => Details(
+                      Get.to(
+                        () => Details(
                           Icon: jobData['ComLogo'],
                           Job_Tital: jobData['JobTitle'],
                           Language: jobData['TechName'],
@@ -115,10 +128,13 @@ class _SearchState extends State<Search> {
                             );
                             if (isfavication.isFavration.value.status) {
                               jobData['IsFavourite'] = newIsLike;
-                              isFavourite = !isFavourite;(context as Element).markNeedsBuild();
+                              isFavourite = !isFavourite;
+                              (context as Element).markNeedsBuild();
                             }
                           },
-                          saving: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
+                          saving: isFavourite
+                              ? SvgPicture.asset(AppIcons.bookmark)
+                              : SvgPicture.asset(AppIcons.save),
                         ),
                       );
                     },
@@ -143,10 +159,13 @@ class _SearchState extends State<Search> {
                       );
                       if (isfavication.isFavration.value.status) {
                         jobData['IsFavourite'] = newIsLike;
-                        isFavourite = !isFavourite;(context as Element).markNeedsBuild();
+                        isFavourite = !isFavourite;
+                        (context as Element).markNeedsBuild();
                       }
                     },
-                    savechild: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
+                    savechild: isFavourite
+                        ? SvgPicture.asset(AppIcons.bookmark)
+                        : SvgPicture.asset(AppIcons.save),
                     top: BorderSide(color: AppColor.Bottam_color),
                   );
                 },

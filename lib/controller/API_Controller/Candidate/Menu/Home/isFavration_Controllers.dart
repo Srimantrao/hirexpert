@@ -47,7 +47,7 @@ class IsfavrationControllers extends GetxController {
 
       final responce = await http.get(
         Uri.parse('${AppUrl.IsFavourite}?CandidateId=$CandidateId&JobId=$JobId&IsLike=$IsLike',),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan},
       );
 
       print("CandidateId :-  $CandidateId");
