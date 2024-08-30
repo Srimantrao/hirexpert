@@ -60,9 +60,12 @@ class _Company_buttonState extends State<Company_button> {
           height: Get.height/15,
           width: Get.width,
           decoration: BoxDecoration(
-            color: AppColor.Full_body_color,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(Get.width / 15),
+                topRight: Radius.circular(Get.width / 15),
+              ),
+              color: AppColor.Buttom_color
           ),
-          //
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
