@@ -63,13 +63,16 @@ class _SelectionState extends State<Selection> {
                             Icon(Icons.monitor_weight_outlined, color: AppColor.select_check_color, size: 30),
                             SizedBox(width: Get.width / 50),
                             PopupMenuButton(
+                                color: AppColor.Full_body_color,
                               onSelected: (value){
                                 print(value);
                               },
                                 itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                                  PopupMenuItem(value: 1, child: Text('Option 1')),
-                                  PopupMenuItem(value: 2, child: Text('Option 2')),
-                                  PopupMenuItem(value: 3, child: Text('Option 3')),
+                                  PopupMenuItem(value: 1, child: Text('All')),
+                                  PopupMenuItem(value: 2, child: Text('Last 7 Days')),
+                                  PopupMenuItem(value: 3, child: Text('Last 30 Days')),
+                                  PopupMenuItem(value: 3, child: Text('Last 6 Months')),
+                                  PopupMenuItem(value: 3, child: Text('Last 1 Year')),
                                 ],
                                 child: SvgPicture.asset(AppIcons.dots)),
                           ],
