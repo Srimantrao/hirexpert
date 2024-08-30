@@ -22,9 +22,10 @@ class _SelectionState extends State<Selection> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: NestedScrollView(
+    return Scaffold(
+      backgroundColor: AppColor.Full_body_color,
+      body: SafeArea(
+        child: NestedScrollView(
           headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return [
               SliverAppBar(

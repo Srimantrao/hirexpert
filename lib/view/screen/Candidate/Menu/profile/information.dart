@@ -26,9 +26,7 @@ class Profile_info extends StatelessWidget {
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
@@ -40,9 +38,7 @@ class Profile_info extends StatelessWidget {
                       Container(
                         height: Get.height / 8,
                         decoration: BoxDecoration(
-                          border: Border(
-                            bottom: BorderSide(color: AppColor.Bottam_color),
-                          ),
+                          border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
                         ),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
