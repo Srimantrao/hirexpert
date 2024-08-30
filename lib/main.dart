@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, prefer_const_constructors
+// ignore_for_file: avoid_print, prefer_const_constructors, deprecated_member_use
 
 // Platform  Firebase App Id
 // web       1:435726694932:web:fe8e283cd3e26528410501
