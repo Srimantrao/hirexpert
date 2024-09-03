@@ -63,12 +63,8 @@ class _Search_locationState extends State<Search_location> {
                       hintText: Search_text.Keyword,
                       hintStyle: TextStyle(color: AppColor.subcolor),
                       prefixIcon: Icon(Icons.search, color: AppColor.subcolor),
-                      enabledBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: AppColor.Bottam_color),
-                      ),
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: AppColor.Bottam_color),
-                      ),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
                     ),
                   ),
                   SizedBox(height: Get.height / 50),
@@ -204,9 +200,7 @@ class _Search_locationState extends State<Search_location> {
                           height: Get.height / 15,
                           width: Get.width,
                           decoration: BoxDecoration(
-                            border: Border(
-                              bottom: BorderSide(color: AppColor.Bottam_color),
-                            ),
+                            border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
                           ),
                           child: Row(
                             children: [

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/Employer/Menu/Candidates/Candidates.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../screen/Employer/Menu/My_Job/Selection.dart';
@@ -42,9 +43,7 @@ class _Company_buttonState extends State<Company_button> {
 
   int SelectIndex = 0;
 
-  List<Widget> item = [
-    Selection(),
-  ];
+  List<Widget> item = [Selection(), Candidates()];
 
   Widget ItemSelect(int index){
     return item[index];
@@ -79,7 +78,16 @@ class _Company_buttonState extends State<Company_button> {
                       ? SvgPicture.asset(AppIcons.open_job, height: Get.height / 32, width: Get.width / 32)
                       : SvgPicture.asset(AppIcons.Jobs, height: Get.height / 32, width: Get.width / 32),
               ),
-              SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    SelectIndex = 1;
+                  });
+                },
+                  child: (SelectIndex == 1)
+                      ? SvgPicture.asset(AppIcons.profile_open, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32)
+              ),
               SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
               SvgPicture.asset(AppIcons.Messages, height: Get.height / 32, width: Get.width / 32),
             ],

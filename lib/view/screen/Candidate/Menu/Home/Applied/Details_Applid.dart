@@ -86,9 +86,7 @@ class Details_Appild extends StatelessWidget {
                           saveonTap: () {
                             Applid.Details_Appild();
                           },
-                          savechild: (Applid.isSeved)
-                              ? SvgPicture.asset(AppIcons.bookmark)
-                              : SvgPicture.asset(AppIcons.save),
+                          savechild: (Applid.isSeved) ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
                           top: BorderSide(color: AppColor.Full_body_color),
                           bottam: BorderSide(color: AppColor.Bottam_color),
                         ),
