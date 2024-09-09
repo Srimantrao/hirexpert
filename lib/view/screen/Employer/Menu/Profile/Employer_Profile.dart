@@ -103,7 +103,7 @@ class _EmployerProfileState extends State<EmployerProfile> {
                   ),
                   SvgPicture.asset(AppIcons.Wallet,width: 25,height: 25),
                   SizedBox(width: Get.width/50),
-                  Text('500',style: TextStyle(fontSize: Get.width/40,fontWeight: FontWeight.w600),)
+                  Text('500',style: TextStyle(fontSize: Get.width/25,fontWeight: FontWeight.w600),)
                 ],
               ),
               SizedBox(height: Get.height / 40),
