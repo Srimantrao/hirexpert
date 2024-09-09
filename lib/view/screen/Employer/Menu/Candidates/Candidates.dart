@@ -206,9 +206,7 @@ class _CandidatesState extends State<Candidates> {
                                                                 ),
                                                                 child:
                                                                 Center(
-                                                                  child: Text(searchController.states[index]['Name'],
-                                                                      textAlign: TextAlign.center,
-                                                                      style: TextStyle(fontSize: Get.width / 28, color: isStateSelected ? AppColor.Full_body_color : AppColor.black_all)
+                                                                  child: Text(searchController.states[index]['Name'], textAlign: TextAlign.center, style: TextStyle(fontSize: Get.width / 28, color: isStateSelected ? AppColor.Full_body_color : AppColor.black_all)
                                                                   ),
                                                                 ),
                                                               ),
