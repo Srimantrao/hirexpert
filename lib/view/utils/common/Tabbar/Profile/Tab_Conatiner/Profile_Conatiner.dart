@@ -21,7 +21,10 @@ class Container_tab extends StatelessWidget {
         color: tabcolor,
       ),
       child: Center(
-        child: Text(text, style: TextStyle(fontSize: Get.width / 27, color: textcolor ?? AppColor.Full_body_color)),
+        child: Text(
+          textAlign: TextAlign.center,
+            text, style: TextStyle(fontSize: Get.width / 27, color: textcolor ?? AppColor.Full_body_color)
+        ),
       ),
     );
   }

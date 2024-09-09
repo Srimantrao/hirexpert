@@ -25,6 +25,7 @@ class AppIcons {
   static const interviwe_png = "assets/icon/body/interviwe_png.svg";
   static const AlertDialog = "assets/icon/body/AlertDialog_img.svg";
   static const Editing = "assets/icon/body/Editing.svg";
+  static const Wallet = "assets/icon/body/Wallet.svg";
 
   //Appbar
   static const dots = 'assets/icon/appbar/dots.svg';

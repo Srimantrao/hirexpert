@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/Candidates/Candidates.dart';
+import 'package:hirexpert/view/screen/Employer/Menu/Profile/Employer_Profile.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../screen/Employer/Menu/My_Job/Selection.dart';
@@ -20,7 +21,7 @@ class Company_button extends StatefulWidget {
 class _Company_buttonState extends State<Company_button> {
 
    ScrollController scrollController = ScrollController();
-  bool _isVisible = true;
+   bool _isVisible = true;
 
   @override
   void initState() {
@@ -40,10 +41,9 @@ class _Company_buttonState extends State<Company_button> {
     super.dispose();
   }
 
-
   int SelectIndex = 0;
 
-  List<Widget> item = [Selection(), Candidates()];
+  List<Widget> item = [Selection(), Candidates(), EmployerProfile()];
 
   Widget ItemSelect(int index){
     return item[index];
@@ -88,7 +88,16 @@ class _Company_buttonState extends State<Company_button> {
                       ? SvgPicture.asset(AppIcons.profile_open, height: Get.height / 32, width: Get.width / 32)
                       : SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32)
               ),
-              SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
+              GestureDetector(
+                onTap: (){
+                  setState(() {
+                    SelectIndex = 2;
+                  });
+                },
+                  child: (SelectIndex == 2)
+                      ? SvgPicture.asset(AppIcons.Search_job, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32)
+              ),
               SvgPicture.asset(AppIcons.Messages, height: Get.height / 32, width: Get.width / 32),
             ],
           ),
