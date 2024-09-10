@@ -20,27 +20,18 @@ class Message extends StatelessWidget {
         elevation: 0,
         surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: const Text(
-          Message_text.Hedding,
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
+        title: Text(Message_text.Hedding,style: TextStyle(fontWeight: FontWeight.w700)),
         actions: [
-          const Icon(Icons.notifications),
+          Icon(Icons.notifications),
           SizedBox(width: Get.width / 50),
         ],
       ),
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: Get.width / 20,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
           child: ListView.builder(
             itemCount: 1,
             itemBuilder: (BuildContext context, int index) {
@@ -68,17 +59,8 @@ class Message extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                Message_text.Sagar_Patil,
-                                style: TextStyle(
-                                  fontSize: Get.width / 20,
-                                ),
-                              ),
-                              Text(
-                                Message_text.Lorem,
-                                style: TextStyle(
-                                  color: AppColor.subcolor,
-                                ),
+                              Text(Message_text.Sagar_Patil, style: TextStyle(fontSize: Get.width / 20)),
+                              Text(Message_text.Lorem, style: TextStyle(color: AppColor.subcolor),
                               )
                             ],
                           )
