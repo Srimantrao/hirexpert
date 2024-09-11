@@ -19,9 +19,7 @@ class Message_sent extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: Get.width / 50,
-        ),
+        padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -30,9 +28,7 @@ class Message_sent extends StatelessWidget {
               height: Get.height / 15,
               width: Get.width / 1.5,
               decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(
-                  Get.width / 60,
-                ),
+                borderRadius: BorderRadius.circular(Get.width / 60),
                 color: AppColor.Textfild_color,
               ),
               child: Padding(
@@ -41,14 +37,10 @@ class Message_sent extends StatelessWidget {
                   controller: sendmessage,
                   decoration: InputDecoration(
                     hintText: Message_text.hint_text,
-                    hintStyle: TextStyle(
-                      color: AppColor.subcolor,
-                    ),
+                    hintStyle: TextStyle(color: AppColor.subcolor),
                     prefixIcon: Padding(
                       padding: EdgeInsets.all(11),
-                      child: SvgPicture.asset(
-                        AppIcons.Write,
-                      ),
+                      child: SvgPicture.asset(AppIcons.Write),
                     ),
                     enabledBorder: InputBorder.none,
                     focusedBorder: InputBorder.none,
