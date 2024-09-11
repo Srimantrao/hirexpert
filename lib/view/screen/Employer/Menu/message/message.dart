@@ -98,39 +98,44 @@ class _MessageState extends State<Message> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
-              child: Row(
+              child: Column(
                 children: [
-                  Expanded(
-                    child: TextField(
-                      controller: textController,
-                      decoration: InputDecoration(
-                        prefixIcon: Padding(
-                          padding: EdgeInsets.all(14),
-                          child: SvgPicture.asset(AppIcons.Write),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: textController,
+                          decoration: InputDecoration(
+                            prefixIcon: Padding(
+                              padding: EdgeInsets.all(14),
+                              child: SvgPicture.asset(AppIcons.Write),
+                            ),
+                            focusedBorder: InputBorder.none,
+                            enabledBorder: InputBorder.none,
+                            disabledBorder: InputBorder.none,
+                            hintText: "Enter your message...",
+                          ),
+                          onSubmitted: sendMessage,
                         ),
-                        focusedBorder: InputBorder.none,
-                        enabledBorder: InputBorder.none,
-                        disabledBorder: InputBorder.none,
-                        hintText: "Enter your message...",
                       ),
-                      onSubmitted: sendMessage,
-                    ),
+                      SizedBox(width: Get.width / 10),
+                      Container(
+                        width: Get.width / 6,
+                        height: Get.height / 16,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(Get.width / 50),
+                          color: AppColor.Button_color,
+                        ),
+                        child: IconButton(
+                          icon: Icon(Icons.send, color: AppColor.Full_body_color),
+                          onPressed: () {
+                            sendMessage(textController.text);
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: Get.width / 10),
-                  Container(
-                    width: Get.width / 6,
-                    height: Get.height / 16,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Get.width / 50),
-                      color: AppColor.Button_color,
-                    ),
-                    child: IconButton(
-                      icon: Icon(Icons.send, color: AppColor.Full_body_color),
-                      onPressed: () {
-                        sendMessage(textController.text);
-                      },
-                    ),
-                  ),
+                  SizedBox(height: Get.height/50),
                 ],
               ),
             ),

@@ -25,92 +25,104 @@ class _AddteamsState extends State<Addteams> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       backgroundColor: AppColor.Full_body_color,
-      body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: Container(
-          height: Get.height,
-          width: Get.width,
-          decoration: BoxDecoration(color: AppColor.Full_body_color),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: Get.height / 50),
-              Text("Team Members", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
-              SizedBox(height: Get.height / 50),
-              Visibility(
-                visible: vis,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Add New Team Members", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
-                    SizedBox(height: Get.height / 50),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SizedBox(
-                          width: Get.width / 2.5,
-                          child: Inputfild(labal: 'Fris tName', hint: 'Frist Name', controller: FristName_Controller),
-                        ),
-                        SizedBox(
-                          width: Get.width / 2.5,
-                          child: Inputfild(labal: 'Last Name', hint: 'Last Name', controller: LastName_Controller),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: Get.height / 50),
-                    Inputfild(labal: 'Email Id', hint: 'Email Address', controller: Email_Controller),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-      bottomNavigationBar: GestureDetector(
-        onTap: () {
-          setState(() {
-            vis = true;
-          });
-        },
-        child: (vis)
-            ? Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Container(
+        height: Get.height,
+        width: Get.width,
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        vis = false;
-                      });
-                    },
-                    child: Container(
-                      height: Get.height / 15,
-                      width: Get.width / 2.5,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.subcolor),
-                        borderRadius: BorderRadius.circular(Get.width / 40),
-                        color: AppColor.Bottam_color,
-                      ),
-                      child: Center(
-                        child: Text('Cancle', style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 25
-
-                        )),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: Get.height / 15,
-                    width: Get.width / 2.5,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(Get.width / 40),
-                      color: AppColor.Button_color,
-                    ),
-                    child: Center(
-                      child: Text('Add Member', style: TextStyle(color: AppColor.Full_body_color, fontSize: Get.width / 25)),
+                  SizedBox(height: Get.height / 50),
+                  Text("Team Members", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
+                  SizedBox(height: Get.height / 50),
+                  Visibility(
+                    visible: vis,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Add New Team Members", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
+                        SizedBox(height: Get.height / 50),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: Get.width / 2.5,
+                              child: Inputfild(labal: 'Fris tName', hint: 'Frist Name', controller: FristName_Controller),
+                            ),
+                            SizedBox(
+                              width: Get.width / 2.5,
+                              child: Inputfild(labal: 'Last Name', hint: 'Last Name', controller: LastName_Controller),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: Get.height / 50),
+                        Inputfild(labal: 'Email Id', hint: 'Email Address', controller: Email_Controller),
+                      ],
                     ),
                   ),
                 ],
-              )
-            : OnButtons(Button_Color: AppColor.Button_color, btn_name: '+ Add Another Member'),
+              ),
+            ),
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  vis = true;
+                });
+              },
+              child: (vis)
+                  ? Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            GestureDetector(
+                              onTap: () {
+                                setState(() {
+                                  vis = false;
+                                });
+                              },
+                              child: Container(
+                                height: Get.height / 15,
+                                width: Get.width / 2.5,
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: AppColor.subcolor),
+                                  borderRadius: BorderRadius.circular(Get.width / 40),
+                                  color: AppColor.Bottam_color,
+                                ),
+                                child: Center(
+                                  child: Text('Cancle', style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 25)),
+                                ),
+                              ),
+                            ),
+                            Container(
+                              height: Get.height / 15,
+                              width: Get.width / 2.5,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(Get.width / 40),
+                                color: AppColor.Button_color,
+                              ),
+                              child: Center(
+                                child: Text('Add Member', style: TextStyle(color: AppColor.Full_body_color, fontSize: Get.width / 25)),
+                              ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: Get.height / 50),
+                      ],
+                    )
+                  : Column(
+                      children: [
+                        OnButtons(Button_Color: AppColor.Button_color, btn_name: '+ Add Another Member'),
+                        SizedBox(height: Get.height / 50),
+                      ],
+                    ),
+            ),
+          ],
+        ),
       ),
     );
   }
