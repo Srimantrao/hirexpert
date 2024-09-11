@@ -34,7 +34,7 @@ class _MyprofileState extends State<Myprofile> {
             children: [
               SizedBox(height: Get.height/50),
               Text("Information", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
-              SizedBox(height: Get.height / 50),
+              SizedBox(height: Get.height / 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

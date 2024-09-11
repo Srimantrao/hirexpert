@@ -40,7 +40,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
             children: [
               SizedBox(height: Get.height/50),
               Text("Company Information", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
-              SizedBox(height: Get.height/50),
+              SizedBox(height: Get.height/30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -110,7 +110,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
                   ),
                 ],
               ),
-              SizedBox(height: Get.height/50),
+              SizedBox(height: Get.height/30),
               Text("About Company", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
               SizedBox(height: Get.height/50),
               SizedBox(

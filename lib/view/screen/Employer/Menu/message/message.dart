@@ -61,7 +61,7 @@ class _MessageState extends State<Message> {
                       itemBuilder: (BuildContext context, int index) {
                         final reverseIndex = snapshot.data!.length - 1 - index;
                         final chatMessage = snapshot.data![reverseIndex]['text']!;
-                        final timeStamp = snapshot.data![reverseIndex]['timestamp']!;
+                        final date = snapshot.data![reverseIndex]['timestamp']!;
                         return Align(
                           alignment: Alignment.centerRight,
                           child: ListTile(
@@ -79,8 +79,13 @@ class _MessageState extends State<Message> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(chatMessage, style: TextStyle(fontSize: 16, color: AppColor.Full_body_color)),
-                                      SizedBox(height: 5),
-                                      Text(timeStamp,style: TextStyle(fontSize: Get.width/50,color: AppColor.subcolor)),
+                                      SizedBox(height: 10),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.end,
+                                        children: [
+                                          Text(date,style: TextStyle(fontSize: Get.width/50,color: AppColor.subcolor)),
+                                        ],
+                                      ),
                                     ],
                                   ),
                                 ),
