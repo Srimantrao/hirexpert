@@ -7,7 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/Candidates/Candidates.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/Profile/Employer_Profile.dart';
-import 'package:hirexpert/view/screen/Employer/Menu/message/message.dart';
+import 'package:hirexpert/view/screen/Employer/Menu/message/nameMessage.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../screen/Employer/Menu/My_Job/Selection.dart';
@@ -43,12 +43,8 @@ class _Company_buttonState extends State<Company_button> {
   }
 
   int SelectIndex = 0;
-
-  List<Widget> item = [Selection(), Candidates(), EmployerProfile(), Message()];
-
-  Widget ItemSelect(int index){
-    return item[index];
-  }
+  List<Widget> item = [Selection(), Candidates(), EmployerProfile(), NameMessage()];
+  Widget ItemSelect(int index){return item[index];}
 
   @override
   Widget build(BuildContext context) {

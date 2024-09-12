@@ -35,13 +35,26 @@ class _MessageState extends State<Message> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: Get.height / 10,
-        backgroundColor: AppColor.Full_body_color,
-        elevation: 0,
-        surfaceTintColor: Colors.transparent,
         automaticallyImplyLeading: false,
-        title: Text(Message_text.Hedding, style: TextStyle(fontWeight: FontWeight.w700)),
-        actions: [Icon(Icons.notifications), SizedBox(width: Get.width / 50)],
+        backgroundColor: AppColor.Button_color,
+        title: Padding(
+          padding: EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              CircleAvatar(radius: 22),
+              SizedBox(width: Get.width / 30),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(Message_text.Sagar_Patil, style: TextStyle(fontSize: Get.width / 25,color: AppColor.subcolor)),
+                  Text(Message_text.Lorem, style: TextStyle(color: AppColor.Full_body_color,fontSize: Get.width / 30),
+                  )
+                ],
+              )
+            ],
+          ),
+        ),
       ),
       body: Container(
         height: Get.height,
@@ -108,22 +121,33 @@ class _MessageState extends State<Message> {
                   Row(
                     children: [
                       Expanded(
-                        child: TextField(
-                          controller: textController,
-                          decoration: InputDecoration(
-                            prefixIcon: Padding(
-                              padding: EdgeInsets.all(14),
-                              child: SvgPicture.asset(AppIcons.Write),
-                            ),
-                            focusedBorder: InputBorder.none,
-                            enabledBorder: InputBorder.none,
-                            disabledBorder: InputBorder.none,
-                            hintText: "Enter your message...",
+                        child: Container(
+                          height: Get.height / 15,
+                          width: Get.width / 1.5,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(Get.width / 60),
+                            color: AppColor.Textfild_color,
                           ),
-                          onSubmitted: sendMessage,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: TextField(
+                              onSubmitted: sendMessage,
+                              controller: textController,
+                              decoration: InputDecoration(
+                                hintText: Message_text.hint_text,
+                                hintStyle: TextStyle(color: AppColor.subcolor),
+                                prefixIcon: Padding(
+                                  padding: EdgeInsets.all(11),
+                                  child: SvgPicture.asset(AppIcons.Write),
+                                ),
+                                enabledBorder: InputBorder.none,
+                                focusedBorder: InputBorder.none,
+                              ),
+                            ),
+                          ),
                         ),
                       ),
-                      SizedBox(width: Get.width / 10),
+                      SizedBox(width: Get.width / 20),
                       Container(
                         width: Get.width / 6,
                         height: Get.height / 16,
