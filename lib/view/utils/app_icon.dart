@@ -26,6 +26,10 @@ class AppIcons {
   static const AlertDialog = "assets/icon/body/AlertDialog_img.svg";
   static const Editing = "assets/icon/body/Editing.svg";
   static const Wallet = "assets/icon/body/Wallet.svg";
+  static const container = "assets/icon/body/container.svg";
+  static const doo = "assets/icon/body/do.svg";
+  static const shopping = "assets/icon/body/shopping.svg";
+  static const left = "assets/icon/body/left.svg";
 
   //Appbar
   static const dots = 'assets/icon/appbar/dots.svg';

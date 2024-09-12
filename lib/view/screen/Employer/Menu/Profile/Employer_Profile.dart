@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/Profile/AddTeams/AddTeams.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/Profile/CompanyProfile/Company_Profile.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/Profile/MyProfile/MyProfile.dart';
+import 'package:hirexpert/view/screen/Employer/Menu/Profile/popupMenu/Hirexpert_Credit.dart';
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -60,12 +61,17 @@ class _EmployerProfileState extends State<EmployerProfile> {
                           onSelected: (value) {
                             print(value);
                           },
-                          itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                            PopupMenuItem(value: 1, child: Text('All')),
-                            PopupMenuItem(value: 2, child: Text('Last 7 Days')),
-                            PopupMenuItem(value: 3, child: Text('Last 30 Days')),
-                            PopupMenuItem(value: 4, child: Text('Last 6 Months')),
-                            PopupMenuItem(value: 5, child: Text('Last 1 Year')),
+                          itemBuilder: (BuildContext context) =>
+                              <PopupMenuEntry>[
+                            PopupMenuItem(
+                              value: 1,
+                              child: GestureDetector(
+                                onTap: (){
+                                  Get.to(()=> HirexpertCredit(),duration: Duration(seconds: 1),transition: Transition.upToDown);
+                                },
+                                  child: Text('Hirexpert Credit'),
+                              ),
+                            ),
                           ],
                           child: SvgPicture.asset(AppIcons.dots),
                         ),
@@ -101,9 +107,9 @@ class _EmployerProfileState extends State<EmployerProfile> {
                       ),
                     ],
                   ),
-                  SvgPicture.asset(AppIcons.Wallet,width: 25,height: 25),
-                  SizedBox(width: Get.width/50),
-                  Text('500',style: TextStyle(fontSize: Get.width/25,fontWeight: FontWeight.w600),)
+                  SvgPicture.asset(AppIcons.Wallet, width: 25, height: 25),
+                  SizedBox(width: Get.width / 50),
+                  Text('500', style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600))
                 ],
               ),
               SizedBox(height: Get.height / 40),

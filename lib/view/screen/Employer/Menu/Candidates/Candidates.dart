@@ -117,9 +117,15 @@ class _CandidatesState extends State<Candidates> {
                                     return StatefulBuilder(
                                       builder: (BuildContext context, setState) {
                                         return Container(
-                                          height: Get.height / 1,
+                                          height: Get.height / 1.18,
                                           width: Get.width,
-                                          decoration: BoxDecoration(color: AppColor.Full_body_color),
+                                          decoration: BoxDecoration(
+                                              color: AppColor.Full_body_color,
+                                            borderRadius: BorderRadius.only(
+                                              topLeft: Radius.circular(Get.width/50),
+                                              topRight: Radius.circular(Get.width/50),
+                                            ),
+                                          ),
                                           child: Padding(
                                             padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
                                             child: Column(
