@@ -49,7 +49,7 @@ class Employer_F_Password extends StatelessWidget {
                       },
                       labal: Login_text.lebelemail,
                       hint: Login_text.hintemail,
-                      controller: vail.email_controller,
+                      controller: vail.Email_controller,
                     );
                   },
                 ),

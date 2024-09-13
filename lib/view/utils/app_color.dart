@@ -21,4 +21,5 @@ class AppColor {
   static Color Small_container_thrd = const Color(0x28FE7C30);
   static Color Textfild_color = const Color(0xffF7F7F7);
   static Color success_color = const Color(0xff4AAB4D);
+  static Color bottamcolor_color = const Color(0xffCDCDCD);
 }

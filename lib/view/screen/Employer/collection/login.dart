@@ -45,7 +45,7 @@ class Employer_Login extends StatelessWidget {
                         child: Image.asset(AppIcons.logo, scale: 5),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(Login_text.login, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
+                      Text(Login_text.login_Emp, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
                       Inputfild(
                         onChanged: (txt) {
@@ -53,7 +53,7 @@ class Employer_Login extends StatelessWidget {
                         },
                         labal: Login_text.lebelemail,
                         hint: Login_text.hintemail,
-                        controller: vail.email_controller,
+                        controller: vail.Email_controller,
                       ),
                       valiadtion_error(condiation: vail.Email_value, Error: vail.throwEmailnameError),
                       SizedBox(height: Get.height / 20),
@@ -66,7 +66,7 @@ class Employer_Login extends StatelessWidget {
                             obscureText: vis.isobscr,
                             labal: Login_text.lebelpassword,
                             hint: Login_text.hintpassword,
-                            controller: vail.password_controller,
+                            controller: vail.Password_controller,
                             suffixIcon: InkWell(
                               onTap: () {
                                 vis.visibilityVis();
@@ -96,7 +96,7 @@ class Employer_Login extends StatelessWidget {
                         onTap: () {
                           vail.Loginvalidation();
                         },
-                        child: OnButtons(Button_Color: AppColor.Button_color, btn_name: Login_text.btn_name),
+                        child: OnButtons(Button_Color: AppColor.Button_color, btn_name: Login_text.login_Emp),
                       ),
                       SizedBox(height: Get.height / 40),
                       Row(

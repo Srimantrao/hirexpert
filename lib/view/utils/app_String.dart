@@ -97,7 +97,8 @@ class Option_text {
 
 //Login Screen
 class Login_text {
-  static const login = "Sign In";
+  static const login = "Sign In Candidate";
+  static const login_Emp = "Sign In Employer";
   static const lebelemail = "Email :";
   static const lebelpassword = "Password :";
   static const hintemail = "Enter Your Email :";

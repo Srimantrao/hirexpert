@@ -37,8 +37,7 @@ class Option extends StatelessWidget {
                       SizedBox(height: Get.height / 10),
                       SizedBox(
                         width: Get.width / 1.2,
-                        child: Text(textAlign: TextAlign.center, Option_text.hed, style: TextStyle(fontSize: Get.width / 17, fontWeight: FontWeight.w600),
-                        ),
+                        child: Text(textAlign: TextAlign.center, Option_text.hed, style: TextStyle(fontSize: Get.width / 17, fontWeight: FontWeight.w600)),
                       ),
                       SizedBox(height: Get.height / 50),
                       SizedBox(

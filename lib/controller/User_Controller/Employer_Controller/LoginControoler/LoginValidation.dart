@@ -15,8 +15,8 @@ class Employer_LoginValidation with ChangeNotifier {
   final OptionApiController login = Get.put(OptionApiController());
   final auth = FirebaseAuth.instance;
 
-  TextEditingController email_controller = TextEditingController();
-  TextEditingController password_controller = TextEditingController();
+  TextEditingController Email_controller = TextEditingController();
+  TextEditingController Password_controller = TextEditingController();
 
   bool _Email_value = false;
   bool _password_value = false;
@@ -30,15 +30,15 @@ class Employer_LoginValidation with ChangeNotifier {
   get throwPasswordError => _throwPasswordError;
 
   void Email_validation(value) {
-    if (email_controller.text.isEmpty) {
+    if (Email_controller.text.isEmpty) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email;
     }
-    else if (email_controller.text.length < 6) {
+    else if (Email_controller.text.length < 6) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email_less;
     }
-    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
+    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(Email_controller.text)) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.V_Email;
     }
@@ -50,27 +50,27 @@ class Employer_LoginValidation with ChangeNotifier {
   }
 
   void Password_validation(value) {
-    if (password_controller.text.isEmpty) {
+    if (Password_controller.text.isEmpty) {
       _password_value = true;
       _throwPasswordError = Validation_Error.password;
     }
-    else if (password_controller.text.length < 8) {
+    else if (Password_controller.text.length < 8) {
       _password_value = true;
       _throwPasswordError = Validation_Error.characters;
     }
-    else if (!RegExp(r'[A-Z]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[A-Z]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.uppercase;
     }
-    else if (!RegExp(r'[a-z]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[a-z]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.lowercase;
     }
-    else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[0-9]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.digit;
     }
-    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.special;
     }
@@ -82,15 +82,15 @@ class Employer_LoginValidation with ChangeNotifier {
   }
 
   void Loginvalidation() {
-    if (email_controller.text.isEmpty) {
+    if (Email_controller.text.isEmpty) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email;
     }
-    else if (email_controller.text.length < 6) {
+    else if (Email_controller.text.length < 6) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.Email_less;
     }
-    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
+    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(Email_controller.text)) {
       _Email_value = true;
       _throwEmailnameError = Validation_Error.V_Email;
     }
@@ -99,27 +99,27 @@ class Employer_LoginValidation with ChangeNotifier {
       _throwEmailnameError = '';
     }
 
-    if (password_controller.text.isEmpty) {
+    if (Password_controller.text.isEmpty) {
       _password_value = true;
       _throwPasswordError = Validation_Error.password;
     }
-    else if (password_controller.text.length < 8) {
+    else if (Password_controller.text.length < 8) {
       _password_value = true;
       _throwPasswordError = Validation_Error.characters;
     }
-    else if (!RegExp(r'[A-Z]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[A-Z]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.uppercase;
     }
-    else if (!RegExp(r'[a-z]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[a-z]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.lowercase;
     }
-    else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[0-9]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.digit;
     }
-    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
+    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(Password_controller.text)) {
       _password_value = true;
       _throwPasswordError = Validation_Error.special;
     }
@@ -134,14 +134,13 @@ class Employer_LoginValidation with ChangeNotifier {
 
   void Loginvalidation_successfully() async {
     if (!_Email_value && !_password_value) {
-      Get.to(() => Company_button(), transition: Transition.circularReveal);
       try {
-        await auth.signInWithEmailAndPassword(
-          email: email_controller.text,
-          password: password_controller.text,
-        );
+        // await auth.signInWithEmailAndPassword(
+        //   email: Email_controller.text,
+        //   password: Password_controller.text,
+        // );
 
-        if (email_controller.text == Email && password_controller.text == Password) {
+        if (Email_controller.text == Email && Password_controller.text == Password) {
           print("Successful");
           pref!.setBool('Login', true);
           islogin = pref!.getBool('Login')!;
@@ -154,8 +153,8 @@ class Employer_LoginValidation with ChangeNotifier {
 
         await login.OptionApiController_fuction(
           UserType: 'Company',
-          Email: email_controller.text,
-          Password: password_controller.text,
+          Email: Email_controller.text,
+          Password: Password_controller.text,
         );
 
         Get.back();

@@ -82,8 +82,8 @@ class _Company_buttonState extends State<Company_button> {
                   });
                 },
                   child: (SelectIndex == 1)
-                      ? SvgPicture.asset(AppIcons.profile_open, height: Get.height / 32, width: Get.width / 32)
-                      : SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32)
+                      ? SvgPicture.asset(AppIcons.Employee, height: Get.height / 32, width: Get.width / 32, color: AppColor.Button_color)
+                      : SvgPicture.asset(AppIcons.Employee, height: Get.height / 32, width: Get.width / 32, color: AppColor.bottamcolor_color)
               ),
               GestureDetector(
                 onTap: (){
@@ -92,8 +92,8 @@ class _Company_buttonState extends State<Company_button> {
                   });
                 },
                   child: (SelectIndex == 2)
-                      ? SvgPicture.asset(AppIcons.Search_job, height: Get.height / 32, width: Get.width / 32)
-                      : SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32)
+                      ? SvgPicture.asset(AppIcons.profile_open, height: Get.height / 32, width: Get.width / 32)
+                      : SvgPicture.asset(AppIcons.Profile, height: Get.height / 32, width: Get.width / 32)
               ),
               GestureDetector(
                 onTap: (){
