@@ -2,7 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 
@@ -14,12 +16,28 @@ class Myprofile extends StatefulWidget {
 }
 
 class _MyprofileState extends State<Myprofile> {
+
+  OptionApiController profile = Get.put(OptionApiController());
+
   TextEditingController FristName_Controller = TextEditingController();
   TextEditingController LastName_Controller = TextEditingController();
   TextEditingController Designation_Controller = TextEditingController();
   TextEditingController Phone_Controller = TextEditingController();
   TextEditingController Email_Controller = TextEditingController();
   TextEditingController Aboutme_Controller = TextEditingController();
+
+
+  @override
+  void initState() {
+    Future.microtask(() async {
+      await profile.OptionApiController_fuction(
+        Email: 'khageshsoni98@gmail.com',
+        Password: Password_main.Pass.text,
+        UserType: 'Company',
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +50,7 @@ class _MyprofileState extends State<Myprofile> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(height: Get.height/50),
+              SizedBox(height: Get.height / 50),
               Text("Information", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
               SizedBox(height: Get.height / 30),
               Row(
@@ -40,11 +58,19 @@ class _MyprofileState extends State<Myprofile> {
                 children: [
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'FristName', hint: 'FristName', controller: FristName_Controller),
+                    child: Inputfild(
+                      labal: 'FristName',
+                      hint: profile.option_data['data']['UserDetails']['FirstName'],
+                      controller: TextEditingController(text: profile.option_data['data']['UserDetails']['FirstName']),
+                    ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'LastName', hint: 'LastName', controller: LastName_Controller),
+                    child: Inputfild(
+                      labal: 'LastName',
+                      hint: profile.option_data['data']['UserDetails']['LastName'],
+                      controller: LastName_Controller,
+                    ),
                   ),
                 ],
               ),
@@ -54,33 +80,64 @@ class _MyprofileState extends State<Myprofile> {
                 children: [
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Designation Name', hint: 'Designation Name', controller: Designation_Controller),
+                    child: Inputfild(
+                      labal: 'Designation Name',
+                      hint: profile.option_data['data']['UserDetails']['ComName'],
+                      controller: Designation_Controller,
+                    ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Phone Number', hint: 'Phone Number', controller: Phone_Controller),
+                    child: Inputfild(
+                      labal: 'Phone Number',
+                      hint: profile.option_data['data']['UserDetails']['Phone'],
+                      controller: Phone_Controller,
+                    ),
                   ),
                 ],
               ),
               SizedBox(height: Get.height / 50),
-              Inputfild(labal: 'Email Id:', hint: 'Email Id:', controller: Email_Controller),
+              Inputfild(
+                labal: 'Email Id:',
+                hint: profile.option_data['data']['UserDetails']['Email'],
+                controller: Email_Controller,
+              ),
               SizedBox(height: Get.height / 30),
               Text("About Me", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
-              SizedBox(height: Get.height/50),
+              SizedBox(height: Get.height / 50),
               SizedBox(
                 height: Get.height / 7,
                 child: TextField(
+                  textAlign: TextAlign.start,
                   maxLines: null,
                   expands: true,
+                  onSubmitted: (value) => profile.option_data['data']['UserDetails']['BIO'],
                   controller: Aboutme_Controller,
                   decoration: InputDecoration(
-                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
-                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
+                    hintText: profile.option_data['data']['UserDetails']['BIO'],
+                    enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColor.Bottam_color)
+                    ),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(color: AppColor.Bottam_color)
+                    ),
                   ),
                 ),
               ),
               SizedBox(height: Get.height / 30),
-              OnButtons(Button_Color: AppColor.Button_color, btn_name: 'Save'),
+              OnButtons(
+                onTap: () {
+                  setState(() {
+                    profile.OptionApiController_fuction(
+                      Email: FristName_Controller.text,
+                      Password: Password_main.Pass.text,
+                      UserType: 'Company',
+                    );
+                  });
+                },
+                Button_Color: AppColor.Button_color,
+                btn_name: 'Save',
+              ),
               SizedBox(height: Get.height / 30),
             ],
           ),

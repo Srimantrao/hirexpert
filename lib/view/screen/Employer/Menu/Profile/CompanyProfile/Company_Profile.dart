@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 
@@ -27,6 +28,20 @@ class _CompanyProfileState extends State<CompanyProfile> {
   TextEditingController SkypeID_Controller = TextEditingController();
   TextEditingController AboutCompany_Controller = TextEditingController();
 
+  OptionApiController profile = Get.put(OptionApiController());
+
+  @override
+  void initState() {
+    Future.microtask(()async{
+      await profile.OptionApiController_fuction(
+        Email: 'khageshsoni98@gmail.com',
+        UserType: 'Company',
+        Password: 'Ilove@2015',
+      );
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,11 +61,19 @@ class _CompanyProfileState extends State<CompanyProfile> {
                 children: [
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Company Name:', hint: 'Company Name:', controller: CompanyName_Controller),
+                    child: Inputfild(
+                        labal: 'Company Name:',
+                        hint: profile.option_data['data']['UserDetails']['ComName'],
+                        controller: CompanyName_Controller,
+                    ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Company Type:', hint: 'Company Type:', controller : CompanyType_Controller),
+                    child: Inputfild(
+                        labal: 'Company Type:',
+                        hint: profile.option_data['data']['UserDetails']['ComName'],
+                        controller : CompanyType_Controller,
+                    ),
                   ),
                 ],
               ),

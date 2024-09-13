@@ -1,4 +1,6 @@
-// ignore_for_file: constant_identifier_names, file_names
+// ignore_for_file: constant_identifier_names, file_names, unused_import
+
+import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 
 class AppUrl {
   static const WebSocket = "wss://echo.websocket.events";
@@ -54,4 +56,7 @@ class AppUrl {
   //Employer
   //Collcetion
   static const Employer_Signup = "$Hirexpert/api/v1/user/employerSignup";
+
+  //Profile
+  static const Employer_profile = "$Hirexpert/user/login";
 }
