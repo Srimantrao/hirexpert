@@ -67,8 +67,7 @@ class _SelectionState extends State<Selection> {
                               SizedBox(width: Get.width / 50),
                               Icon(Icons.monitor_weight_outlined, color: AppColor.select_check_color, size: 30),
                               SizedBox(width: Get.width / 50),
-                              PopupMenuButton(
-                                  color: AppColor.Full_body_color,
+                              PopupMenuButton(color: AppColor.Full_body_color,
                                 onSelected: (value){
                                   print(value);
                                 },
