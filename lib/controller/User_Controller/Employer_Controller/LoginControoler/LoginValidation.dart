@@ -7,6 +7,8 @@ import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/buttom/Company/Company_buttom.dart';
 
 class Employer_LoginValidation with ChangeNotifier {
@@ -28,37 +30,103 @@ class Employer_LoginValidation with ChangeNotifier {
   get throwPasswordError => _throwPasswordError;
 
   void Email_validation(value) {
-    if (email_controller.text.isEmpty) {_Email_value = true;_throwEmailnameError = Validation_Error.Email;}
-    else if (email_controller.text.length < 6) {_Email_value = true;_throwEmailnameError = Validation_Error.Email_less;}
-    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {_Email_value = true;_throwEmailnameError = Validation_Error.V_Email;}
-    else {_Email_value = false;_throwEmailnameError = '';}
+    if (email_controller.text.isEmpty) {
+      _Email_value = true;
+      _throwEmailnameError = Validation_Error.Email;
+    }
+    else if (email_controller.text.length < 6) {
+      _Email_value = true;
+      _throwEmailnameError = Validation_Error.Email_less;
+    }
+    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
+      _Email_value = true;
+      _throwEmailnameError = Validation_Error.V_Email;
+    }
+    else {
+      _Email_value = false;
+      _throwEmailnameError = '';
+    }
     notifyListeners();
   }
 
   void Password_validation(value) {
-    if (password_controller.text.isEmpty) {_password_value = true; _throwPasswordError = Validation_Error.password;}
-    else if (password_controller.text.length < 8) {_password_value = true; _throwPasswordError = Validation_Error.characters;}
-    else if (!RegExp(r'[A-Z]').hasMatch(password_controller.text)) {_password_value = true; _throwPasswordError = Validation_Error.uppercase;}
-    else if (!RegExp(r'[a-z]').hasMatch(password_controller.text)) {_password_value = true; _throwPasswordError = Validation_Error.lowercase;}
-    else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {_password_value = true; _throwPasswordError = Validation_Error.digit;}
-    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {_password_value = true; _throwPasswordError = Validation_Error.special;}
-    else {_password_value = false;_throwPasswordError = "";}
+    if (password_controller.text.isEmpty) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.password;
+    }
+    else if (password_controller.text.length < 8) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.characters;
+    }
+    else if (!RegExp(r'[A-Z]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.uppercase;
+    }
+    else if (!RegExp(r'[a-z]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.lowercase;
+    }
+    else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.digit;
+    }
+    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.special;
+    }
+    else {
+      _password_value = false;
+      _throwPasswordError = "";
+    }
     notifyListeners();
   }
 
   void Loginvalidation() {
-    if (email_controller.text.isEmpty) {_Email_value = true;_throwEmailnameError = Validation_Error.Email;}
-    else if (email_controller.text.length < 6) {_Email_value = true;_throwEmailnameError = Validation_Error.Email_less;}
-    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {_Email_value = true;_throwEmailnameError = Validation_Error.V_Email;}
-    else {_Email_value = false;_throwEmailnameError = '';}
+    if (email_controller.text.isEmpty) {
+      _Email_value = true;
+      _throwEmailnameError = Validation_Error.Email;
+    }
+    else if (email_controller.text.length < 6) {
+      _Email_value = true;
+      _throwEmailnameError = Validation_Error.Email_less;
+    }
+    else if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(email_controller.text)) {
+      _Email_value = true;
+      _throwEmailnameError = Validation_Error.V_Email;
+    }
+    else {
+      _Email_value = false;
+      _throwEmailnameError = '';
+    }
 
-    if (password_controller.text.isEmpty) {_password_value = true;_throwPasswordError = Validation_Error.password;}
-    else if (password_controller.text.length < 8) {_password_value = true;_throwPasswordError = Validation_Error.characters;}
-    else if (!RegExp(r'[A-Z]').hasMatch(password_controller.text)) {_password_value = true;_throwPasswordError = Validation_Error.uppercase;}
-    else if (!RegExp(r'[a-z]').hasMatch(password_controller.text)) {_password_value = true;_throwPasswordError = Validation_Error.lowercase;}
-    else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {_password_value = true;_throwPasswordError = Validation_Error.digit;}
-    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {_password_value = true;_throwPasswordError = Validation_Error.special;}
-    else {_password_value = false;_throwPasswordError = "";}
+    if (password_controller.text.isEmpty) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.password;
+    }
+    else if (password_controller.text.length < 8) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.characters;
+    }
+    else if (!RegExp(r'[A-Z]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.uppercase;
+    }
+    else if (!RegExp(r'[a-z]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.lowercase;
+    }
+    else if (!RegExp(r'[0-9]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.digit;
+    }
+    else if (!RegExp(r'[!@#\$%\^&\*(),.?":{}|<>]').hasMatch(password_controller.text)) {
+      _password_value = true;
+      _throwPasswordError = Validation_Error.special;
+    }
+    else {
+      _password_value = false;
+      _throwPasswordError = "";
+    }
 
     Loginvalidation_successfully();
     notifyListeners();
@@ -67,49 +135,50 @@ class Employer_LoginValidation with ChangeNotifier {
   void Loginvalidation_successfully() async {
     if (!_Email_value && !_password_value) {
       Get.to(() => Company_button(), transition: Transition.circularReveal);
-      // try {
-      //   await auth.signInWithEmailAndPassword(
-      //     email: email_controller.text,
-      //     password: password_controller.text,
-      //   );
-      //
-      //   if (email_controller.text == Email && password_controller.text == Password) {
-      //     print("Successful");
-      //     pref!.setBool('Login', true);
-      //     islogin = pref!.getBool('Login')!;
-      //   }
-      //
-      //   Get.dialog(
-      //     Center(child: Image.asset(AppLoder.infinityloder_without_background)),
-      //     barrierDismissible: false,
-      //   );
-      //
-      //   await login.OptionApiController_fuction(
-      //     UserType: 'Candidate',
-      //     Email: email_controller.text,
-      //     Password: password_controller.text,
-      //   );
-      //
-      //   Get.back();
-      //
-      //   if (login.option_data['status'] == true) {
-      //     Get.to(() => Company_button(), transition: Transition.circularReveal);
-      //   } else {
-      //     Get.showSnackbar(
-      //       GetSnackBar(
-      //         duration: Duration(seconds: 2),
-      //         message: login.option_data['message'] ?? 'An error occurred',
-      //       ),
-      //     );
-      //   }
-      // } on FirebaseAuthException catch (e) {
-      //   Get.showSnackbar(
-      //     GetSnackBar(
-      //       duration: Duration(seconds: 2),
-      //       message: 'Authentication failed: ${e.message}',
-      //     ),
-      //   );
+      try {
+        await auth.signInWithEmailAndPassword(
+          email: email_controller.text,
+          password: password_controller.text,
+        );
+
+        if (email_controller.text == Email && password_controller.text == Password) {
+          print("Successful");
+          pref!.setBool('Login', true);
+          islogin = pref!.getBool('Login')!;
+        }
+
+        Get.dialog(
+          Center(child: Image.asset(AppLoder.infinityloder_without_background)),
+          barrierDismissible: false,
+        );
+
+        await login.OptionApiController_fuction(
+          UserType: 'Company',
+          Email: email_controller.text,
+          Password: password_controller.text,
+        );
+
+        Get.back();
+
+        if (login.option_data['status'] == true) {
+          Get.to(() => Company_button(), transition: Transition.circularReveal);
+        } else {
+          Get.showSnackbar(
+            GetSnackBar(
+              duration: Duration(seconds: 2),
+              message: login.option_data['message'] ?? 'An error occurred',
+            ),
+          );
+        }
+      } on FirebaseAuthException catch (e) {
+        Get.showSnackbar(
+          GetSnackBar(
+            duration: Duration(seconds: 2),
+            message: 'Authentication failed: ${e.message}',
+          ),
+        );
       }
     }
     notifyListeners();
   }
+}

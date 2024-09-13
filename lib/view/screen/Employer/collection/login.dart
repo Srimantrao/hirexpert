@@ -92,7 +92,7 @@ class Employer_Login extends StatelessWidget {
                         ],
                       ),
                       SizedBox(height: Get.height / 20),
-                      InkWell(
+                      GestureDetector(
                         onTap: () {
                           vail.Loginvalidation();
                         },

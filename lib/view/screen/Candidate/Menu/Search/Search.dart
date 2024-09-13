@@ -28,6 +28,7 @@ class _SearchState extends State<Search> {
     Searchings.Search.SearchApiController_fuction(
       Timezone: 'asia/kolkata',
       CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+      Tokan: login.option_data['data']['LoginToken']
     );
     super.initState();
   }

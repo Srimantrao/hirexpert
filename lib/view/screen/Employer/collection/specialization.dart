@@ -17,22 +17,15 @@ class Employer_Specialization extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Cont = Provider.of<Employer_SpecializationController_Collection>(
-      context,
-      listen: false,
-    );
+    final Cont = Provider.of<Employer_SpecializationController_Collection>(context, listen: false);
     return Scaffold(
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: const BoxDecoration(
-          color: Colors.white,
-        ),
+        decoration: const BoxDecoration(color: Colors.white),
         child: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: Get.width / 30,
-            ),
+            padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,36 +57,18 @@ class Employer_Specialization extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                Specialization_text.area,
-                                style: TextStyle(
-                                  fontSize: Get.width / 25,
-                                  color: AppColor.subcolor,
-                                ),
-                              ),
-                              const Employer_Function_area(),
+                              Text(Specialization_text.area, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
+                              Employer_Function_area(),
                               SizedBox(height: Get.height / 50),
 
                               //Interest
-                              Text(
-                                Specialization_text.Search_text,
-                                style: TextStyle(
-                                  fontSize: Get.width / 25,
-                                  color: AppColor.subcolor,
-                                ),
-                              ),
-                              const Employer_Interest(),
+                              Text(Specialization_text.Search_text, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
+                              Employer_Interest(),
                               SizedBox(height: Get.height / 50),
 
                               //Skilled
-                              Text(
-                                Specialization_text.Skillset,
-                                style: TextStyle(
-                                  fontSize: Get.width / 25,
-                                  color: AppColor.subcolor,
-                                ),
-                              ),
-                              const Employer_Skillset(),
+                              Text(Specialization_text.Skillset, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
+                              Employer_Skillset(),
                               SizedBox(height: Get.height / 50),
                             ],
                           ),
@@ -109,16 +84,10 @@ class Employer_Specialization extends StatelessWidget {
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                  Specialization_text.Collection,
-                                  style: TextStyle(
-                                    fontSize: Get.width / 25,
-                                    color: AppColor.subcolor,
-                                  ),
-                                ),
+                                Text(Specialization_text.Collection, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
                               ],
                             ),
-                            const Employer_Collection(),
+                            Employer_Collection(),
                           ],
                         );
                       },
@@ -145,20 +114,14 @@ class Employer_Specialization extends StatelessWidget {
                                 Navigator_text.Next,
                                 style: TextStyle(
                                   fontSize: Get.width / 23,
-                                  fontWeight: (Cont.colloction)
-                                      ? FontWeight.w700
-                                      : FontWeight.w400,
-                                  color: (Cont.colloction)
-                                      ? AppColor.Button_color
-                                      : AppColor.Botton_color_hide,
+                                  fontWeight: (Cont.colloction) ? FontWeight.w700 : FontWeight.w400,
+                                  color: (Cont.colloction) ? AppColor.Button_color : AppColor.Botton_color_hide,
                                 ),
                               ),
                               SizedBox(width: Get.width / 90),
                               SvgPicture.asset(
                                 AppIcons.Go,
-                                color: (Cont.colloction)
-                                    ? AppColor.Button_color
-                                    : AppColor.Botton_color_hide,
+                                color: (Cont.colloction) ? AppColor.Button_color : AppColor.Botton_color_hide,
                               ),
                               SizedBox(height: Get.height / 15),
                             ],

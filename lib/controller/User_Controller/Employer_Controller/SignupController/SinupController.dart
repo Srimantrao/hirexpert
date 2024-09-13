@@ -4,6 +4,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
+import 'package:hirexpert/view/screen/Employer/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import '../../../API_Controller/Employer/Collction/Sinup/employer_API_Sinup_controller.dart';
@@ -267,7 +269,8 @@ class Employer_SinupController with ChangeNotifier {
       _throwConfirmPasswordError = '';
     }
 
-    SinupValidtion_successful();
+    // SinupValidtion_successful();
+    Get.to(()=>Employer_Specialization());
     notifyListeners();
   }
 
@@ -306,12 +309,12 @@ class Employer_SinupController with ChangeNotifier {
         ).then(
           (value) {
             if (Sinup_API.Employer_Sinup['status'] == true) {
-              // Get.to(
-              //   () => Candidate_Specialization(
-              //     first_name: frist_name_controller.text,
-              //     last_name: last_name_controller.text,
-              //   ),
-              // );
+              Get.to(
+                () => Candidate_Specialization(
+                  first_name: frist_name_controller.text,
+                  last_name: last_name_controller.text,
+                ),
+              );
             }
             String message = Sinup_API.Employer_Sinup['message'] ?? "Unknown error occurred";
             Get.showSnackbar(
