@@ -102,9 +102,7 @@ class _SelectionState extends State<Selection> {
                       children: [
                         tab(
                           onTap: () {
-                            setState(() {
-                              selectedIndex = 0;
-                            });
+                            setState(() {selectedIndex = 0;});
                           },
                           textcolor: selectedIndex == 0,
                           tabcolor: selectedIndex == 0,
@@ -112,9 +110,7 @@ class _SelectionState extends State<Selection> {
                         ),
                         tab(
                           onTap: () {
-                            setState(() {
-                              selectedIndex = 1;
-                            });
+                            setState(() {selectedIndex = 1;});
                           },
                           textcolor: selectedIndex == 1,
                           tabcolor: selectedIndex == 1,
@@ -122,9 +118,7 @@ class _SelectionState extends State<Selection> {
                         ),
                         tab(
                           onTap: () {
-                            setState(() {
-                              selectedIndex = 2;
-                            });
+                            setState(() {selectedIndex = 2;});
                           },
                           textcolor: selectedIndex == 2,
                           tabcolor: selectedIndex == 2,
