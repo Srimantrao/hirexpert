@@ -15,19 +15,6 @@ class CompanyProfile extends StatefulWidget {
 }
 
 class _CompanyProfileState extends State<CompanyProfile> {
-
-  TextEditingController CompanyName_Controller = TextEditingController();
-  TextEditingController CompanyType_Controller = TextEditingController();
-  TextEditingController OfficeArea_Controller = TextEditingController();
-  TextEditingController StreetAddress_Controller = TextEditingController();
-  TextEditingController SelectCountry_Controller = TextEditingController();
-  TextEditingController SelectProvince_Controller = TextEditingController();
-  TextEditingController SelectCity_Controller = TextEditingController();
-  TextEditingController PhoneNumber_Controller = TextEditingController();
-  TextEditingController Website_Controller = TextEditingController();
-  TextEditingController SkypeID_Controller = TextEditingController();
-  TextEditingController AboutCompany_Controller = TextEditingController();
-
   OptionApiController profile = Get.put(OptionApiController());
 
   @override
@@ -62,17 +49,19 @@ class _CompanyProfileState extends State<CompanyProfile> {
                   SizedBox(
                     width: Get.width / 2.5,
                     child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
                         labal: 'Company Name:',
                         hint: profile.option_data['data']['UserDetails']['ComName'],
-                        controller: CompanyName_Controller,
+                        controller: TextEditingController(text: profile.option_data['data']['UserDetails']['ComName']),
                     ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
                     child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
                         labal: 'Company Type:',
                         hint: profile.option_data['data']['UserDetails']['ComName'],
-                        controller : CompanyType_Controller,
+                        controller : TextEditingController(text: profile.option_data['data']['UserDetails']['ComName']),
                     ),
                   ),
                 ],
@@ -83,25 +72,21 @@ class _CompanyProfileState extends State<CompanyProfile> {
                 children: [
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Office No./Area:', hint: 'Office No./Area:', controller: OfficeArea_Controller),
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Office No./Area:',
+                        hint: 'Office No./Area:',
+                        controller: TextEditingController(text: profile.option_data['data']['UserDetails']['ComName']),
+                    ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Street Address:', hint: 'Street Address:', controller : StreetAddress_Controller),
-                  ),
-                ],
-              ),
-              SizedBox(height: Get.height/50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SizedBox(
-                    width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Select Country:', hint: 'Select Country:', controller: SelectCountry_Controller),
-                  ),
-                  SizedBox(
-                    width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Select Province:', hint: 'Select Province :', controller : SelectProvince_Controller),
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Street Address:',
+                        hint: 'Street Address:',
+                        controller : TextEditingController(text: profile.option_data['data']['UserDetails']['StreetAddress']),
+                    ),
                   ),
                 ],
               ),
@@ -111,11 +96,21 @@ class _CompanyProfileState extends State<CompanyProfile> {
                 children: [
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Select City:', hint: 'Select City:', controller: SelectCity_Controller),
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Select Country:',
+                        hint: 'Select Country:',
+                        controller: TextEditingController(text: profile.option_data['data']['UserDetails']['CountryName']),
+                    ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Phone Number:', hint: 'Phone Number:', controller : PhoneNumber_Controller),
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Select Province:',
+                        hint: 'Select Province :',
+                        controller : TextEditingController(text: profile.option_data['data']['UserDetails']['ComProvinceName']),
+                    ),
                   ),
                 ],
               ),
@@ -125,11 +120,45 @@ class _CompanyProfileState extends State<CompanyProfile> {
                 children: [
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Website:', hint: 'Website', controller: Website_Controller),
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Select City:',
+                        hint: 'Select City:',
+                        controller: TextEditingController(text: profile.option_data['data']['UserDetails']['ComCityName']),
+                    ),
                   ),
                   SizedBox(
                     width: Get.width / 2.5,
-                    child: Inputfild(labal: 'Skype ID:', hint: 'Skype IDs', controller : SkypeID_Controller),
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Phone Number:',
+                        hint: 'Phone Number:',
+                        controller : TextEditingController(text: profile.option_data['data']['UserDetails']['Phone']),
+                    ),
+                  ),
+                ],
+              ),
+              SizedBox(height: Get.height/50),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    width: Get.width / 2.5,
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Website:',
+                        hint: 'Website',
+                        controller: TextEditingController(text: profile.option_data['data']['UserDetails']['ComWebsite']),
+                    ),
+                  ),
+                  SizedBox(
+                    width: Get.width / 2.5,
+                    child: Inputfild(
+                      style: TextStyle(fontWeight: FontWeight.w600),
+                        labal: 'Skype ID:',
+                        hint: 'Skype IDs',
+                        controller : TextEditingController(text: profile.option_data['data']['UserDetails']['SkypeId']),
+                    ),
                   ),
                 ],
               ),
@@ -139,9 +168,10 @@ class _CompanyProfileState extends State<CompanyProfile> {
               SizedBox(
                 height: Get.height / 7,
                 child: TextField(
+                  style: TextStyle(fontWeight: FontWeight.w600),
                   maxLines: null,
                   expands: true,
-                  controller: AboutCompany_Controller,
+                  controller: TextEditingController(text: profile.option_data['data']['UserDetails']['BIO']),
                   decoration: InputDecoration(
                     enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
                     focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),

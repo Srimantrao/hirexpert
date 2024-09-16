@@ -199,163 +199,160 @@ class LiveJobsDitails extends StatelessWidget {
               },
               body: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
-                child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: Get.width / 50),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: Get.height / 60),
-                      Text(Details_texts.Job_Description, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
-                      SizedBox(height: Get.height / 60),
-                      SizedBox(
-                        height: Get.height / 0.52,
-                        child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: 1,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Html(
-                              data: '''Appling.Detailing.Details_data['data']['JobAbout']''',
-                              style: {
-                                'p': Style(fontSize: FontSize(Get.width / 27)),
-                                'strong': Style(fontSize: FontSize(Get.width / 22)),
-                                'li': Style(fontSize: FontSize(Get.width / 27))
-                              },
-                            );
-                          },
-                        ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: Get.height / 60),
+                    Text(Details_texts.Job_Description, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
+                    SizedBox(height: Get.height / 60),
+                    SizedBox(
+                      height: Get.height / 0.52,
+                      child: ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: 1,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Html(
+                            data: '''Appling.Detailing.Details_data['data']['JobAbout']''',
+                            style: {
+                              'p': Style(fontSize: FontSize(Get.width / 27)),
+                              'strong': Style(fontSize: FontSize(Get.width / 22)),
+                              'li': Style(fontSize: FontSize(Get.width / 27))
+                            },
+                          );
+                        },
                       ),
-                      SizedBox(height: Get.height / 60),
-                      Text(Details_texts.Secondary_Skillset, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
-                      Column(
-                        children: [
-                          SizedBox(height: Get.height / 80),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    ),
+                    SizedBox(height: Get.height / 60),
+                    Text(Details_texts.Secondary_Skillset, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
+                    Column(
+                      children: [
+                        SizedBox(height: Get.height / 80),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Collec(text: Details_texts.Marketing, color: AppColor.Button_color, textcolor: AppColor.Full_body_color),
+                            Collec(text: Details_texts.Field_Sales, color: AppColor.Button_color, textcolor: AppColor.Full_body_color),
+                            Collec(text: Details_texts.Sales, color: AppColor.Button_color, textcolor: AppColor.Full_body_color),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: Get.height / 60),
+
+                    //Benefits Offered
+                    Text(Details_texts.Benefits_Offered, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
+                    SizedBox(height: Get.height / 50),
+                    SizedBox(
+                      height: Get.height / 45,
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: Benefits_Offered.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Collec(text: Details_texts.Marketing, color: AppColor.Button_color, textcolor: AppColor.Full_body_color),
-                              Collec(text: Details_texts.Field_Sales, color: AppColor.Button_color, textcolor: AppColor.Full_body_color),
-                              Collec(text: Details_texts.Sales, color: AppColor.Button_color, textcolor: AppColor.Full_body_color),
+                              SizedBox(
+                                width: 8,
+                                height: 8,
+                                child: CircleAvatar(backgroundColor: AppColor.subcolor),
+                              ),
+                              SizedBox(width: Get.width / 23),
+                              Expanded(
+                                child: Text(Benefits_Offered[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor),
+                                ),
+                              ),
                             ],
-                          ),
-                        ],
+                          );
+                        },
                       ),
-                      SizedBox(height: Get.height / 60),
+                    ),
+                    SizedBox(height: Get.height / 50),
 
-                      //Benefits Offered
-                      Text(Details_texts.Benefits_Offered, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
-                      SizedBox(height: Get.height / 50),
-                      SizedBox(
-                        height: Get.height / 45,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: Benefits_Offered.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 8,
-                                  height: 8,
-                                  child: CircleAvatar(backgroundColor: AppColor.subcolor),
+                    //Suppiement Pay
+                    Text(Details_texts.Supplement_Pay, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
+                    SizedBox(height: Get.height / 50),
+                    SizedBox(
+                      height: Get.width / 10,
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: Supplement_pay.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 8,
+                                height: 8,
+                                child: CircleAvatar(backgroundColor: AppColor.subcolor),
+                              ),
+                              SizedBox(width: Get.width / 23),
+                              Expanded(
+                                child: Text(Supplement_pay[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor),
                                 ),
-                                SizedBox(width: Get.width / 23),
-                                Expanded(
-                                  child: Text(Benefits_Offered[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                      SizedBox(height: Get.height / 50),
+                    ),
+                    SizedBox(height: Get.height / 50),
 
-                      //Suppiement Pay
-                      Text(Details_texts.Supplement_Pay, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
-                      SizedBox(height: Get.height / 50),
-                      SizedBox(
-                        height: Get.width / 10,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: Supplement_pay.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 8,
-                                  height: 8,
-                                  child: CircleAvatar(backgroundColor: AppColor.subcolor),
-                                ),
-                                SizedBox(width: Get.width / 23),
-                                Expanded(
-                                  child: Text(Supplement_pay[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor),
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
+                    //Education Level Requird
+                    Text(Details_texts.Educational_Level_Required, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
+                    SizedBox(height: Get.height / 50),
+                    SizedBox(
+                      height: Get.width / 15,
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: Education_level_Required.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 8,
+                                height: 8,
+                                child: CircleAvatar(backgroundColor: AppColor.subcolor),
+                              ),
+                              SizedBox(width: Get.width / 23),
+                              Expanded(
+                                child: Text(Education_level_Required[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor)),
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                      SizedBox(height: Get.height / 50),
+                    ),
+                    SizedBox(height: Get.height / 50),
 
-                      //Education Level Requird
-                      Text(Details_texts.Educational_Level_Required, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
-                      SizedBox(height: Get.height / 50),
-                      SizedBox(
-                        height: Get.width / 15,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: Education_level_Required.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 8,
-                                  height: 8,
-                                  child: CircleAvatar(backgroundColor: AppColor.subcolor),
-                                ),
-                                SizedBox(width: Get.width / 23),
-                                Expanded(
-                                  child: Text(Education_level_Required[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor)),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
+                    //Added Advantage Skills
+                    Text(Details_texts.Added_Advantage_Skills, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
+                    SizedBox(height: Get.height / 50),
+                    SizedBox(
+                      height: Get.width / 10,
+                      child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: Added_Advantage_Skills.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              SizedBox(
+                                width: 8,
+                                height: 8,
+                                child: CircleAvatar(backgroundColor: AppColor.subcolor),
+                              ),
+                              SizedBox(width: Get.width / 23),
+                              Expanded(
+                                child: Text(Added_Advantage_Skills[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor)),
+                              ),
+                            ],
+                          );
+                        },
                       ),
-                      SizedBox(height: Get.height / 50),
-
-                      //Added Advantage Skills
-                      Text(Details_texts.Added_Advantage_Skills, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
-                      SizedBox(height: Get.height / 50),
-                      SizedBox(
-                        height: Get.width / 10,
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: Added_Advantage_Skills.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(
-                                  width: 8,
-                                  height: 8,
-                                  child: CircleAvatar(backgroundColor: AppColor.subcolor),
-                                ),
-                                SizedBox(width: Get.width / 23),
-                                Expanded(
-                                  child: Text(Added_Advantage_Skills[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor)),
-                                ),
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                      SizedBox(height: Get.height / 50),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: Get.height / 50),
+                  ],
                 ),
               ),
             ),

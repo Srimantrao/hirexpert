@@ -19,14 +19,6 @@ class _MyprofileState extends State<Myprofile> {
 
   OptionApiController profile = Get.put(OptionApiController());
 
-  TextEditingController FristName_Controller = TextEditingController();
-  TextEditingController LastName_Controller = TextEditingController();
-  TextEditingController Designation_Controller = TextEditingController();
-  TextEditingController Phone_Controller = TextEditingController();
-  TextEditingController Email_Controller = TextEditingController();
-  TextEditingController Aboutme_Controller = TextEditingController();
-
-
   @override
   void initState() {
     Future.microtask(() async {
@@ -62,6 +54,7 @@ class _MyprofileState extends State<Myprofile> {
                       labal: 'FristName',
                       hint: profile.option_data['data']['UserDetails']['FirstName'],
                       controller: TextEditingController(text: profile.option_data['data']['UserDetails']['FirstName']),
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                   SizedBox(
@@ -69,7 +62,8 @@ class _MyprofileState extends State<Myprofile> {
                     child: Inputfild(
                       labal: 'LastName',
                       hint: profile.option_data['data']['UserDetails']['LastName'],
-                      controller: LastName_Controller,
+                      controller: TextEditingController(text: profile.option_data['data']['UserDetails']['LastName']),
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
@@ -83,7 +77,8 @@ class _MyprofileState extends State<Myprofile> {
                     child: Inputfild(
                       labal: 'Designation Name',
                       hint: profile.option_data['data']['UserDetails']['ComName'],
-                      controller: Designation_Controller,
+                      controller: TextEditingController(text: profile.option_data['data']['UserDetails']['ComName']),
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                   SizedBox(
@@ -91,7 +86,8 @@ class _MyprofileState extends State<Myprofile> {
                     child: Inputfild(
                       labal: 'Phone Number',
                       hint: profile.option_data['data']['UserDetails']['Phone'],
-                      controller: Phone_Controller,
+                      controller: TextEditingController(text: profile.option_data['data']['UserDetails']['Phone']),
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                   ),
                 ],
@@ -100,7 +96,8 @@ class _MyprofileState extends State<Myprofile> {
               Inputfild(
                 labal: 'Email Id:',
                 hint: profile.option_data['data']['UserDetails']['Email'],
-                controller: Email_Controller,
+                controller: TextEditingController(text: profile.option_data['data']['UserDetails']['Email']),
+                style: TextStyle(fontWeight: FontWeight.w600),
               ),
               SizedBox(height: Get.height / 30),
               Text("About Me", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
@@ -111,30 +108,19 @@ class _MyprofileState extends State<Myprofile> {
                   textAlign: TextAlign.start,
                   maxLines: null,
                   expands: true,
+                  style: TextStyle(fontWeight: FontWeight.w600),
                   onSubmitted: (value) => profile.option_data['data']['UserDetails']['BIO'],
-                  controller: Aboutme_Controller,
+                  controller: TextEditingController(text: profile.option_data['data']['UserDetails']['BIO']),
                   decoration: InputDecoration(
                     hintText: profile.option_data['data']['UserDetails']['BIO'],
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColor.Bottam_color)
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: AppColor.Bottam_color)
-                    ),
+                    enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
+                    focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Bottam_color)),
                   ),
                 ),
               ),
               SizedBox(height: Get.height / 30),
               OnButtons(
-                onTap: () {
-                  setState(() {
-                    profile.OptionApiController_fuction(
-                      Email: FristName_Controller.text,
-                      Password: Password_main.Pass.text,
-                      UserType: 'Company',
-                    );
-                  });
-                },
+                onTap: () {},
                 Button_Color: AppColor.Button_color,
                 btn_name: 'Save',
               ),

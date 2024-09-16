@@ -14,8 +14,20 @@ class Inputfild extends StatelessWidget {
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final void Function()? onTap;
+  final TextStyle? style;
 
-  const Inputfild({super.key, required this.labal, required this.hint, this.suffixIcon, required this.controller, this.obscureText, this.keyboardType, this.onChanged, this.onTap,});
+  const Inputfild({
+    super.key,
+    required this.labal,
+    required this.hint,
+    this.suffixIcon,
+    required this.controller,
+    this.obscureText,
+    this.keyboardType,
+    this.onChanged,
+    this.onTap,
+    this.style,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -50,21 +62,16 @@ class Inputfild extends StatelessWidget {
           obscureText: obscureText ?? false,
           keyboardType: keyboardType,
           controller: controller,
+          style: style,
           decoration: InputDecoration(
             suffixIcon: suffixIcon,
             hintText: hint,
-            hintStyle: TextStyle(
-              color: AppColor.black_all,
-            ),
+            hintStyle: TextStyle(color: AppColor.black_all),
             focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColor.offButton_color,
-              ),
+              borderSide: BorderSide(color: AppColor.offButton_color),
             ),
             enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColor.offButton_color,
-              ),
+              borderSide: BorderSide(color: AppColor.offButton_color),
             ),
           ),
         ),
