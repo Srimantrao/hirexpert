@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:hirexpert/view/screen/Employer/Menu/My_Job/Live_jobs/Candidate_flow/Candidate_flow.dart';
@@ -91,7 +92,7 @@ class _JobIdState extends State<JobId> {
                 SizedBox(height: Get.height / 80),
                 GestureDetector(
                   onTap: (){
-                    Get.to(()=> CandidateFlow());
+                    Get.to(()=> CandidateFlow(),duration: Duration(seconds: 1),transition: Transition.downToUp);
                   },
                   child: Container(
                     height: size.height / 3.8,

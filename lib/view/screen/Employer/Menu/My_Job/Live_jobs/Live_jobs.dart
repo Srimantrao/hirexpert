@@ -20,7 +20,7 @@ class Live_Jobs extends StatelessWidget {
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: GestureDetector(
           onTap: (){
-            Get.to(() => LiveJobsDitails());
+            Get.to(() => LiveJobsDitails(),duration: Duration(seconds: 1),transition: Transition.rightToLeft);
           },
           child: ListView.builder(
             padding: EdgeInsets.zero,
@@ -62,7 +62,7 @@ class Live_Jobs extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Get.to(()=> LiveJobsDitails());
+                            Get.to(()=> LiveJobsDitails(),duration: Duration(seconds: 1),transition: Transition.rightToLeft);
                           },
                             child: SvgPicture.asset(AppIcons.Editing),
                         ),

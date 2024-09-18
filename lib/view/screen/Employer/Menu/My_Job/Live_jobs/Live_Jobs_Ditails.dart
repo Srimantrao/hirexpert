@@ -51,7 +51,7 @@ class LiveJobsDitails extends StatelessWidget {
                     automaticallyImplyLeading: false,
                     flexibleSpace: GestureDetector(
                       onTap: (){
-                          Get.to(()=> JobId());
+                          Get.to(()=> JobId(),duration: Duration(seconds: 1),transition: Transition.rightToLeft);
                       },
                       child: Container(
                         height: size.height / 3.8,
