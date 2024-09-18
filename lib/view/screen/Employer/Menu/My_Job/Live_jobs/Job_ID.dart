@@ -23,6 +23,7 @@ class _JobIdState extends State<JobId> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: AppColor.Full_body_color,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(Get.height / 10),
         child: SafeArea(

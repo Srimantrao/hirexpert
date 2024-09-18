@@ -18,6 +18,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.Full_body_color,
       body: SafeArea(
         child: Container(
           height: Get.height,

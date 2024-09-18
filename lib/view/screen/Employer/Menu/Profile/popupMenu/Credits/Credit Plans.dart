@@ -12,7 +12,9 @@ class Creditplans extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.Full_body_color,
       appBar: AppBar(
+        backgroundColor: AppColor.Full_body_color,
         title: Text('Credit Plans', style: TextStyle(fontWeight: FontWeight.w600)),
         centerTitle: true,
       ),

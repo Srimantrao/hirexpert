@@ -23,6 +23,7 @@ class _CreditTransactionState extends State<CreditTransaction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColor.Full_body_color,
       bottomNavigationBar: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -55,6 +56,7 @@ class _CreditTransactionState extends State<CreditTransaction> {
         ],
       ),
       appBar: AppBar(
+        backgroundColor: AppColor.Full_body_color,
         title: Text('Credit Transaction', style: TextStyle(fontWeight: FontWeight.w600)),
         centerTitle: true,
       ),
