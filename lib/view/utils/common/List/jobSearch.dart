@@ -116,12 +116,15 @@ class JobSearch extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(
-                          Commpany,
-                          style: TextStyle(
-                            fontSize: size.width / 26,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.Button_color,
+                        SizedBox(
+                          width: Get.width/2,
+                          child: Text(
+                            Commpany,
+                            style: TextStyle(
+                              fontSize: size.width / 26,
+                              fontWeight: FontWeight.w400,
+                              color: AppColor.Button_color,
+                            ),
                           ),
                         ),
                       ],

@@ -82,7 +82,7 @@ class Show_Applied extends StatelessWidget {
                         );
                       },
                       child: Container(
-                        height: size.height / 3.8,
+                        height: size.height / 3.5,
                         width: size.width,
                         decoration: BoxDecoration(
                           border: Border(
@@ -124,8 +124,15 @@ class Show_Applied extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Text(Appling.Detailing.Details_data.value['data']["TechName"], style: TextStyle(fontSize: size.width / 23, fontWeight: FontWeight.w600)),
-                                    Text(Appling.Detailing.Details_data.value['data']["ComName"], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color)),
+                                   SizedBox(
+                                     width: Get.width/2.5,
+                                     child: Column(
+                                       children: [
+                                         Text(Appling.Detailing.Details_data.value['data']["TechName"], style: TextStyle(fontSize: size.width / 23, fontWeight: FontWeight.w600)),
+                                         Text(Appling.Detailing.Details_data.value['data']["ComName"], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color)),
+                                       ],
+                                     ),
+                                   )
                                   ],
                                 ),
                                 SizedBox(width: size.width / 4),

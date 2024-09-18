@@ -118,7 +118,7 @@ class Details_Appild extends StatelessWidget {
                               data: Appling.Detailing.Details_data['data']['JobAbout'],
                               style: {
                                 'p': Style(fontSize: FontSize(Get.width / 27)),
-                                'strong': Style(fontSize: FontSize(Get.width / 22)),
+                                'strong': Style(fontSize: FontSize(Get.width / 27)),
                                 'li': Style(fontSize: FontSize(Get.width / 27))
                               },
                             );
