@@ -1,5 +1,5 @@
 
-// ignore_for_file: file_names, camel_case_types
+// ignore_for_file: file_names, camel_case_types, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +26,7 @@ class Paused_jobs extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
               onTap: (){
-                Get.to(()=> LiveJobsDitails());
+                // Get.to(()=> LiveJobsDitails());
               },
               child: Container(
                 height: size.height / 3.8,
@@ -63,7 +63,7 @@ class Paused_jobs extends StatelessWidget {
                         ),
                         GestureDetector(
                           onTap: (){
-                            Get.to(()=> LiveJobsDitails());
+                            // Get.to(()=> LiveJobsDitails());
                           },
                           child: SvgPicture.asset(AppIcons.Editing),
                         ),
