@@ -193,7 +193,7 @@ class Candidate_LoginValidation with ChangeNotifier {
       Get.back();
 
       if (login.option_data['status'] == true) {
-        Get.to(() => Candidate_Bottam(), transition: Transition.circularReveal);
+        Get.to(() => Candidate_Bottam(),duration: Duration(seconds: 1), transition: Transition.circularReveal);
       } else {
         Get.showSnackbar(
           GetBar(

@@ -160,7 +160,7 @@ class Employer_LoginValidation with ChangeNotifier {
         Get.back();
 
         if (login.option_data['status'] == true) {
-          Get.to(() => Company_button(), transition: Transition.circularReveal);
+          Get.to(() => Company_button(),duration: Duration(seconds: 1), transition: Transition.circularReveal);
         } else {
           Get.showSnackbar(
             GetSnackBar(
