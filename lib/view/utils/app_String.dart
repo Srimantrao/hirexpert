@@ -698,3 +698,39 @@ class Candidate_flow_text{
   static const Declined = "Declined";
   static const Hired = "Hired";
 }
+
+class AddTeams{
+  static const Team_Members = "Team Members";
+  static const AddNewTeamMembers = 'Add New Team Members';
+  static const Cancle = 'Cancle';
+  static const Add_Member = 'Add Member';
+  static const Add_Another_Member = '+ Add Another Member';
+  static const FristName = "Frist Name";
+  static const LastName = "Last Name";
+  static const Email = "Email Id";
+}
+
+class Company_Profile_text{
+  static const Company_Information = "Company Information";
+  static const Company_Name = "Company Name:";
+  static const Company_Type = "Company Type:";
+  static const Office_No_Area = "Office No./Area:";
+  static const StreetAddress = "Street Address:";
+  static const Select_Province = "Select Province:";
+  static const Select_City = "Select City:";
+  static const Select_Country = "Select Country:";
+  static const Phone_Number = "Phone Number:";
+  static const Website = "Website:";
+  static const Skype_ID = "Skype ID:";
+  static const About_Company = "About Company:";
+}
+
+class My_Profile_text{
+  static const Information = "Information";
+  static const FristName = "FristName";
+  static const LastName = "LastName";
+  static const Designation_Name = "Designation Name";
+  static const Phone_Number = "Phone Number";
+  static const Email_Id = "Email Id";
+  static const About_Me = "About Me";
+}

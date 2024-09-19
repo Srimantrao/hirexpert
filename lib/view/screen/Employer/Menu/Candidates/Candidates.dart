@@ -58,7 +58,7 @@ class _CandidatesState extends State<Candidates> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Candidates", style: TextStyle(fontSize: Get.height / 40, fontWeight: FontWeight.w600)),
+                            Text(My_Jobes_text.My_Jobs, style: TextStyle(fontSize: Get.height / 40, fontWeight: FontWeight.w600)),
                             Row(
                               children: [
                                 Container(
@@ -69,7 +69,7 @@ class _CandidatesState extends State<Candidates> {
                                     color: AppColor.Button_color,
                                   ),
                                   child: Center(
-                                    child: Text('Post Jobs', style: TextStyle(fontSize: Get.width / 27, color: AppColor.Full_body_color)),
+                                    child: Text(My_Jobes_text.Post_Jobs, style: TextStyle(fontSize: Get.width / 27, color: AppColor.Full_body_color)),
                                   ),
                                 ),
                                 SizedBox(width: Get.width / 50),

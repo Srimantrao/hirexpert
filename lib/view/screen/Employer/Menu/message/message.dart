@@ -48,8 +48,7 @@ class _MessageState extends State<Message> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(Message_text.Sagar_Patil, style: TextStyle(fontSize: Get.width / 25,color: AppColor.subcolor)),
-                  Text(Message_text.Lorem, style: TextStyle(color: AppColor.Full_body_color,fontSize: Get.width / 30),
-                  )
+                  Text(Message_text.Lorem, style: TextStyle(color: AppColor.Full_body_color,fontSize: Get.width / 30))
                 ],
               )
             ],

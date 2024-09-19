@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Buttons/ShortButton.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
@@ -37,30 +38,30 @@ class _AddteamsState extends State<Addteams> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: Get.height / 50),
-                  Text("Team Members", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
+                  Text(AddTeams.Team_Members, style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
                   SizedBox(height: Get.height / 50),
                   Visibility(
                     visible: vis,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text("Add New Team Members", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
+                        Text(AddTeams.AddNewTeamMembers, style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
                         SizedBox(height: Get.height / 50),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             SizedBox(
                               width: Get.width / 2.5,
-                              child: Inputfild(labal: 'Fris tName', hint: 'Frist Name', controller: FristName_Controller),
+                              child: Inputfild(labal: AddTeams.FristName, hint: AddTeams.FristName, controller: FristName_Controller),
                             ),
                             SizedBox(
                               width: Get.width / 2.5,
-                              child: Inputfild(labal: 'Last Name', hint: 'Last Name', controller: LastName_Controller),
+                              child: Inputfild(labal:AddTeams.LastName, hint: AddTeams.LastName, controller: LastName_Controller),
                             ),
                           ],
                         ),
                         SizedBox(height: Get.height / 50),
-                        Inputfild(labal: 'Email Id', hint: 'Email Address', controller: Email_Controller),
+                        Inputfild(labal: AddTeams.Email, hint: AddTeams.Email, controller: Email_Controller),
                       ],
                     ),
                   ),
@@ -94,7 +95,7 @@ class _AddteamsState extends State<Addteams> {
                                   color: AppColor.Bottam_color,
                                 ),
                                 child: Center(
-                                  child: Text('Cancle', style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 25)),
+                                  child: Text(AddTeams.Cancle, style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 25)),
                                 ),
                               ),
                             ),
@@ -106,7 +107,7 @@ class _AddteamsState extends State<Addteams> {
                                 color: AppColor.Button_color,
                               ),
                               child: Center(
-                                child: Text('Add Member', style: TextStyle(color: AppColor.Full_body_color, fontSize: Get.width / 25)),
+                                child: Text(AddTeams.Add_Member, style: TextStyle(color: AppColor.Full_body_color, fontSize: Get.width / 25)),
                               ),
                             ),
                           ],
@@ -116,7 +117,7 @@ class _AddteamsState extends State<Addteams> {
                     )
                   : Column(
                       children: [
-                        OnButtons(Button_Color: AppColor.Button_color, btn_name: '+ Add Another Member'),
+                        OnButtons(Button_Color: AppColor.Button_color, btn_name: AddTeams.Add_Another_Member),
                         SizedBox(height: Get.height / 50),
                       ],
                     ),

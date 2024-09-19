@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
@@ -43,7 +44,7 @@ class _MyprofileState extends State<Myprofile> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: Get.height / 50),
-              Text("Information", style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
+              Text(My_Profile_text.Information, style: TextStyle(fontSize: Get.height / 45, fontWeight: FontWeight.w600)),
               SizedBox(height: Get.height / 30),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,7 +52,7 @@ class _MyprofileState extends State<Myprofile> {
                   SizedBox(
                     width: Get.width / 2.5,
                     child: Inputfild(
-                      labal: 'FristName',
+                      labal: My_Profile_text.FristName,
                       hint: profile.option_data['data']['UserDetails']['FirstName'],
                       controller: TextEditingController(text: profile.option_data['data']['UserDetails']['FirstName']),
                       style: TextStyle(fontWeight: FontWeight.w600),
@@ -60,7 +61,7 @@ class _MyprofileState extends State<Myprofile> {
                   SizedBox(
                     width: Get.width / 2.5,
                     child: Inputfild(
-                      labal: 'LastName',
+                      labal: My_Profile_text.LastName,
                       hint: profile.option_data['data']['UserDetails']['LastName'],
                       controller: TextEditingController(text: profile.option_data['data']['UserDetails']['LastName']),
                       style: TextStyle(fontWeight: FontWeight.w600),
@@ -75,7 +76,7 @@ class _MyprofileState extends State<Myprofile> {
                   SizedBox(
                     width: Get.width / 2.5,
                     child: Inputfild(
-                      labal: 'Designation Name',
+                      labal: My_Profile_text.Designation_Name,
                       hint: profile.option_data['data']['UserDetails']['ComName'],
                       controller: TextEditingController(text: profile.option_data['data']['UserDetails']['ComName']),
                       style: TextStyle(fontWeight: FontWeight.w600),
@@ -84,7 +85,7 @@ class _MyprofileState extends State<Myprofile> {
                   SizedBox(
                     width: Get.width / 2.5,
                     child: Inputfild(
-                      labal: 'Phone Number',
+                      labal: My_Profile_text.Phone_Number,
                       hint: profile.option_data['data']['UserDetails']['Phone'],
                       controller: TextEditingController(text: profile.option_data['data']['UserDetails']['Phone']),
                       style: TextStyle(fontWeight: FontWeight.w600),
@@ -94,7 +95,7 @@ class _MyprofileState extends State<Myprofile> {
               ),
               SizedBox(height: Get.height / 50),
               Inputfild(
-                labal: 'Email Id:',
+                labal: My_Profile_text.Email_Id,
                 hint: profile.option_data['data']['UserDetails']['Email'],
                 controller: TextEditingController(text: profile.option_data['data']['UserDetails']['Email']),
                 style: TextStyle(fontWeight: FontWeight.w600),
