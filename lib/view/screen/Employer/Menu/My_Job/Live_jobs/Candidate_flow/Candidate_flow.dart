@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 
@@ -43,7 +44,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("My Jobs", style: TextStyle(fontSize: Get.height / 40, fontWeight: FontWeight.w600)),
+                          Text(My_Jobes_text.My_Jobs, style: TextStyle(fontSize: Get.height / 40, fontWeight: FontWeight.w600)),
                           Row(
                             children: [
                               Container(
@@ -54,7 +55,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                                   color: AppColor.Button_color,
                                 ),
                                 child: Center(
-                                  child: Text('Post Jobs', style: TextStyle(fontSize: Get.width / 27, color: AppColor.Full_body_color)),
+                                  child: Text(My_Jobes_text.Post_Jobs, style: TextStyle(fontSize: Get.width / 27, color: AppColor.Full_body_color)),
                                 ),
                               ),
                               SizedBox(width: Get.width / 50),
@@ -118,7 +119,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                               borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('Not Actioned (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.Not_Actioned} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),
@@ -131,7 +132,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                               borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('Favourite (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.Favourite} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),
@@ -144,7 +145,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                               borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('First Interview (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.First_Interview} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),
@@ -157,7 +158,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                               borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('Second Interview (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.Second_Interview} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),
@@ -170,7 +171,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                                 borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('Offers (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.Offers} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),
@@ -183,7 +184,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                               borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('Hired (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.Hired} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),
@@ -196,7 +197,7 @@ class _CandidateFlowState extends State<CandidateFlow> {
                               borderRadius: BorderRadius.circular(Get.width / 35),
                             ),
                             child: Center(
-                              child: Text('Declined (0)', textAlign: TextAlign.center),
+                              child: Text('${Candidate_flow_text.Declined} (0)', textAlign: TextAlign.center),
                             ),
                           ),
                         ),

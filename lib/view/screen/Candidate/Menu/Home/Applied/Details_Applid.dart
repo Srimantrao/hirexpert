@@ -109,7 +109,7 @@ class Details_Appild extends StatelessWidget {
                       Text(Details_texts.Job_Description, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
                       SizedBox(height: Get.height / 60),
                       SizedBox(
-                        height: Get.height / 0.52,
+                        height: Get.height / 0.6,
                         child: ListView.builder(
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: 1,
@@ -190,8 +190,7 @@ class Details_Appild extends StatelessWidget {
                                 ),
                                 SizedBox(width: Get.width / 23),
                                 Expanded(
-                                  child: Text(Supplement_pay[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor),
-                                  ),
+                                  child: Text(Supplement_pay[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor)),
                                 ),
                               ],
                             );

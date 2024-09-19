@@ -10,6 +10,8 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 
+import '../../../../utils/app_String.dart';
+
 class Selection extends StatefulWidget {
   const Selection({super.key});
 
@@ -48,7 +50,7 @@ class _SelectionState extends State<Selection> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("My Jobs", style: TextStyle(fontSize: Get.height / 40, fontWeight: FontWeight.w600)),
+                          Text(My_Jobes_text.My_Jobs, style: TextStyle(fontSize: Get.height / 40, fontWeight: FontWeight.w600)),
                           Row(
                             children: [
                               Container(
@@ -59,7 +61,7 @@ class _SelectionState extends State<Selection> {
                                   color: AppColor.Button_color,
                                 ),
                                 child: Center(
-                                  child: Text('Post Jobs', style: TextStyle(fontSize: Get.width / 27, color: AppColor.Full_body_color)),
+                                  child: Text(My_Jobes_text.Post_Jobs, style: TextStyle(fontSize: Get.width / 27, color: AppColor.Full_body_color)),
                                 ),
                               ),
                               SizedBox(width: Get.width / 50),
@@ -106,7 +108,7 @@ class _SelectionState extends State<Selection> {
                           },
                           textcolor: selectedIndex == 0,
                           tabcolor: selectedIndex == 0,
-                          name: 'Live Jobs',
+                          name: My_Jobes_text.Live_Jobs,
                         ),
                         tab(
                           onTap: () {
@@ -114,7 +116,7 @@ class _SelectionState extends State<Selection> {
                           },
                           textcolor: selectedIndex == 1,
                           tabcolor: selectedIndex == 1,
-                          name: 'Paused Jobs',
+                          name: My_Jobes_text.Paused_Jobs,
                         ),
                         tab(
                           onTap: () {
@@ -122,7 +124,7 @@ class _SelectionState extends State<Selection> {
                           },
                           textcolor: selectedIndex == 2,
                           tabcolor: selectedIndex == 2,
-                          name: 'Closed Jobs',
+                          name: My_Jobes_text.Closed_Jobs,
                         ),
                       ],
                     ),
@@ -130,11 +132,7 @@ class _SelectionState extends State<Selection> {
                     Expanded(
                       child: IndexedStack(
                         index: selectedIndex,
-                        children: [
-                          Live_Jobs(),
-                          Paused_jobs(),
-                          Closed_jobs(),
-                        ],
+                        children: [Live_Jobs(), Paused_jobs(), Closed_jobs()],
                       ),
                     ),
                   ],

@@ -66,11 +66,11 @@ class Upload_Yor_CV extends StatelessWidget {
                               children: [
                                 SvgPicture.asset(AppIcons.PDF_Icon),
                                 SizedBox(height: Get.height / 50),
-                                Text(
-                                  textAlign: TextAlign.center,
-                                  cv.login.option_data['data']['UserDetails']['ResumeDetails']['ResumeName'].toString(),
-                                  style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
-                                ),
+                                // Text(
+                                //   textAlign: TextAlign.center,
+                                //   cv.login.option_data['data']['UserDetails']['ResumeDetails']['ResumeName'].toString(),
+                                //   style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
+                                // ),
                               ],
                             ),
                           ),
@@ -88,10 +88,10 @@ class Upload_Yor_CV extends StatelessWidget {
                               SizedBox(width: Get.width / 25),
                               SizedBox(
                                 width: Get.width / 2,
-                                child: Text(
-                                  cv.login.option_data['data']['UserDetails']['ResumeDetails']['UploadName'],
-                                  style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
-                                ),
+                                // child: Text(
+                                //   cv.login.option_data['data']['UserDetails']['ResumeDetails']['UploadName'],
+                                //   style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
+                                // ),
                               ),
                             ],
                           ),

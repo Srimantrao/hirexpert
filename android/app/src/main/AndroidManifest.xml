@@ -97,7 +97,7 @@
     <application
         android:enableOnBackInvokedCallback="true"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/hirexpert"
         android:label="hirexpert">
         <activity
             android:name=".MainActivity"

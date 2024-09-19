@@ -30,6 +30,9 @@ class Validation_Error {
   static const phone_ditit = 'Plese Input 10 ditit Number';
 }
 
+
+
+//Candidates
 //DropDown Menu
 class API_Error {
   static const null_data = "Soory, Your Data Not Found";
@@ -558,11 +561,9 @@ class Location_text {
   static const Any = "Any";
   static const Save = "Save";
 }
-
 class Location_State {
   static const Gujarat = "Gujarat";
 }
-
 class Location_Area {
   static const Surat = "Surat";
 }
@@ -676,4 +677,24 @@ class Message_text {
   static const Sagar_Patil = "Sagar Patil";
   static const Lorem = "Lorem ipsum dolor sit amet";
   static const hint_text = "Write something here...";
+}
+
+
+//Employer
+class My_Jobes_text{
+  static const My_Jobs = "My Jobs";
+  static const Post_Jobs = "Post Jobs";
+  static const Live_Jobs = "Live Jobs";
+  static const Paused_Jobs = "Paused Jobs";
+  static const Closed_Jobs = "Closed Jobs";
+}
+
+class Candidate_flow_text{
+  static const Not_Actioned = "Not Actioned";
+  static const Favourite = "Favourite";
+  static const First_Interview = "First Interview";
+  static const Second_Interview = "Second Interview";
+  static const Offers = "Offers";
+  static const Declined = "Declined";
+  static const Hired = "Hired";
 }

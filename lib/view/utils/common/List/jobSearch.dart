@@ -56,17 +56,12 @@ class JobSearch extends StatelessWidget {
       child: GestureDetector(
         onTap: onTap,
         child: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: size.width / 50,
-          ),
+          padding: EdgeInsets.symmetric(horizontal: size.width / 50),
           child: Container(
             height: size.height / 3.8,
             width: size.width,
             decoration: BoxDecoration(
-              border: Border(
-                top: top,
-
-              ),
+              border: Border(top: top),
               color: AppColor.Full_body_color,
             ),
             child: Column(
@@ -75,20 +70,14 @@ class JobSearch extends StatelessWidget {
                 Row(
                   children: [
                     Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: size.width / 40,
-                      ),
+                      padding: EdgeInsets.symmetric(vertical: size.width / 40),
                       child: Container(
                         width: size.width / 5.5,
                         height: size.height / 12,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(
-                            size.width / 30,
-                          ),
+                          borderRadius: BorderRadius.circular(size.width / 30),
                           color: Color_container,
-                          image: DecorationImage(
-                              image: NetworkImage(Icon),
-                              fit: BoxFit.fill),
+                          image: DecorationImage(image: NetworkImage(Icon), fit: BoxFit.fill),
                         ),
                       ),
                     ),
@@ -98,42 +87,21 @@ class JobSearch extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text(
-                              Job_Tital,
-                              style: TextStyle(
-                                color: AppColor.subcolor,
-                              ),
-                            ),
+                            Text(Job_Tital, style: TextStyle(color: AppColor.subcolor)),
                           ],
                         ),
                         SizedBox(
                           width: Get.width / 2,
-                          child: Text(
-                            Language,
-                            style: TextStyle(
-                              fontSize: size.width / 26,
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
+                          child: Text(Language, style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w600)),
                         ),
                         SizedBox(
                           width: Get.width/2,
-                          child: Text(
-                            Commpany,
-                            style: TextStyle(
-                              fontSize: size.width / 26,
-                              fontWeight: FontWeight.w400,
-                              color: AppColor.Button_color,
-                            ),
-                          ),
+                          child: Text(Commpany, style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color)),
                         ),
                       ],
                     ),
                     SizedBox(width: size.width / 7),
-                    GestureDetector(
-                      onTap: saveonTap,
-                      child: savechild,
-                    ),
+                    GestureDetector(onTap: saveonTap, child: savechild),
                   ],
                 ),
                 Column(
@@ -144,20 +112,9 @@ class JobSearch extends StatelessWidget {
                         Container(
                           width: size.width / 3.2,
                           height: size.height / 25,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 60,
-                            ),
-                            color: AppColor.ditalis_conatiner,
-                          ),
+                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(size.width / 60), color: AppColor.ditalis_conatiner),
                           child: Center(
-                            child: Text(
-                              Working,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: size.width / 30,
-                              ),
-                            ),
+                            child: Text(Working, style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                           ),
                         ),
                         SizedBox(width: size.width / 40),
@@ -165,22 +122,13 @@ class JobSearch extends StatelessWidget {
                           width: size.width / 4,
                           height: size.height / 22,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 60,
-                            ),
+                            borderRadius: BorderRadius.circular(size.width / 60),
                             color: AppColor.ditalis_conatiner,
                           ),
                           child: Center(
                             child: Padding(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: Get.width / 30),
-                              child: Text(
-                                Location,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 30,
-                                ),
-                              ),
+                              padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
+                              child: Text(Location, style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                             ),
                           ),
                         ),
@@ -189,19 +137,11 @@ class JobSearch extends StatelessWidget {
                           width: size.width / 5,
                           height: size.height / 25,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 60,
-                            ),
+                            borderRadius: BorderRadius.circular(size.width / 60),
                             color: AppColor.ditalis_conatiner,
                           ),
                           child: Center(
-                            child: Text(
-                              Job_time,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: size.width / 30,
-                              ),
-                            ),
+                            child: Text(Job_time, style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                           ),
                         ),
                         SizedBox(width: size.width / 40),
@@ -214,19 +154,11 @@ class JobSearch extends StatelessWidget {
                           width: size.width / 5,
                           height: size.height / 25,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 60,
-                            ),
+                            borderRadius: BorderRadius.circular(size.width / 60),
                             color: AppColor.ditalis_conatiner,
                           ),
                           child: Center(
-                            child: Text(
-                              Exp,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: size.width / 35,
-                              ),
-                            ),
+                            child: Text(Exp, style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 35)),
                           ),
                         ),
                         SizedBox(width: size.width / 40),
@@ -234,19 +166,11 @@ class JobSearch extends StatelessWidget {
                           width: size.width / 2.5,
                           height: size.height / 25,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 60,
-                            ),
+                            borderRadius: BorderRadius.circular(size.width / 60),
                             color: AppColor.ditalis_conatiner,
                           ),
                           child: Center(
-                            child: Text(
-                              lake,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: size.width / 30,
-                              ),
-                            ),
+                            child: Text(lake, style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                           ),
                         ),
                         SizedBox(width: size.width / 40),
@@ -254,23 +178,14 @@ class JobSearch extends StatelessWidget {
                           width: size.width / 5,
                           height: size.height / 21,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(
-                              size.width / 60,
-                            ),
+                            borderRadius: BorderRadius.circular(size.width / 60),
                             color: AppColor.ditalis_conatiner,
                           ),
                           child: Padding(
-                            padding: EdgeInsets.symmetric(
-                                horizontal: Get.width / 30),
+                            padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
                             child: Center(
                               child: Text(
-                                textAlign: TextAlign.center,
-                                Hybrid,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w600,
-                                  fontSize: size.width / 30,
-                                ),
-                              ),
+                                textAlign: TextAlign.center, Hybrid, style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30)),
                             ),
                           ),
                         ),
@@ -283,12 +198,7 @@ class JobSearch extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      stats,
-                      style: TextStyle(
-                        color: AppColor.subcolor,
-                      ),
-                    ),
+                    Text(stats, style: TextStyle(color: AppColor.subcolor)),
                   ],
                 ),
               ],
