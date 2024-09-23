@@ -6,22 +6,10 @@ import 'package:get/get.dart';
 import '../../app_color.dart';
 
 class WideButton extends StatelessWidget {
-  final Color Button_color;
-  final Color Button_Boder_color;
   final String text;
-  final Color text_color;
   final String Icon;
-  final Color Icon_color;
 
-  const WideButton({
-    super.key,
-    required this.Button_color,
-    required this.Button_Boder_color,
-    required this.text,
-    required this.Icon,
-    required this.text_color,
-    required this.Icon_color,
-  });
+  const WideButton({super.key, required this.text, required this.Icon});
 
   @override
   Widget build(BuildContext context) {
@@ -29,26 +17,18 @@ class WideButton extends StatelessWidget {
       height: Get.height / 15,
       width: Get.width,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Button_Boder_color,
-          width: 2,
-        ),
-        borderRadius: BorderRadius.circular(
-          Get.width / 45,
-        ),
-        color: Button_color,
+        borderRadius: BorderRadius.circular(Get.width / 45),
+        color: AppColor.Button_color,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          SvgPicture.asset(Icon, color: Icon_color),
+          SvgPicture.asset(Icon, color: AppColor.Full_body_color),
           SizedBox(width: Get.width / 30),
           Text(
             text,
             style: TextStyle(
-              fontSize: Get.width / 26,
-              color: text_color,
-            ),
+                fontSize: Get.width / 26, color: AppColor.Full_body_color),
           )
         ],
       ),

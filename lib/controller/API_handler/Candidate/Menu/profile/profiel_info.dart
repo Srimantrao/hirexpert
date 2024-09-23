@@ -11,7 +11,7 @@ class ProfielInfo extends GetxController {
     Future.microtask(() async {
       await login.OptionApiController_fuction(
         UserType: 'Candidate',
-        Email: login.option_data['data']['Email'],
+        Email: Email,
         Password: Password_main.Pass.text,
       );
     });
@@ -22,7 +22,7 @@ class ProfielInfo extends GetxController {
   void onClose() {
     login.OptionApiController_fuction(
       UserType: 'Candidate',
-      Email: login.option_data['data']['Email'],
+      Email: Email,
       Password: Password_main.Pass.text,
     );
     super.onClose();

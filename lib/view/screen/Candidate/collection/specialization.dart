@@ -64,10 +64,7 @@ class Candidate_Specialization extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         if (Specializations.jobdescirbe && Specializations.specialzation) {
-                          Get.to(() => Collection(
-                            first_name: first_name,
-                            last_name: last_name,
-                          ));
+                          Get.to(() => Collection(first_name: first_name, last_name: last_name));
                         }
                       },
                       child: Row(
@@ -209,10 +206,7 @@ class Candidate_Specialization extends StatelessWidget {
                                                                           style: TextStyle(fontSize: Get.width / 28),
                                                                         ),
                                                                         onTap: () {
-                                                                          Specializations.SpecializationController_Skillset(
-                                                                            text: Jobtypes['QueAnswer'],
-                                                                            id: Jobtypes['QuestionId'],
-                                                                          );
+                                                                          Specializations.SpecializationController_Skillset(text: Jobtypes['QueAnswer'],id: Jobtypes['QuestionId']);
                                                                         },
                                                                       ),
                                                                       SizedBox(height: Get.height / 50),
@@ -222,9 +216,7 @@ class Candidate_Specialization extends StatelessWidget {
                                                               ),
                                                             ),
                                                             hedingtext: Specialization_text.interest,
-                                                            onTabs: () {
-                                                              Get.back();
-                                                            });
+                                                            onTabs: () {Get.back();});
                                                       },
                                                       child: Pop_Container(
                                                         text: Specialization_text.interest,

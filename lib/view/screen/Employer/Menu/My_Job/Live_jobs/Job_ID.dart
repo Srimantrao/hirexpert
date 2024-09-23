@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, file_names, unused_import
+// ignore_for_file: avoid_print, file_names, unused_import, unnecessary_import, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,14 +11,7 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 
-class JobId extends StatefulWidget {
-  const JobId({super.key});
-
-  @override
-  State<JobId> createState() => _JobIdState();
-}
-
-class _JobIdState extends State<JobId> {
+class JobId extends StatelessWidget {JobId({super.key});
   int selectedIndex = 0;
 
   @override

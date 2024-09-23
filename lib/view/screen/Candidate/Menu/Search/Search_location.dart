@@ -10,22 +10,9 @@ import '../../../../utils/app_color.dart';
 import '../../../../utils/app_icon.dart';
 import 'Search_find.dart';
 
-class Search_location extends StatefulWidget {
+class Search_location extends StatelessWidget {
   final Function(String, String)? onLocationSelected;
-
   Search_location({super.key, this.onLocationSelected});
-
-  @override
-  State<Search_location> createState() => _Search_locationState();
-}
-
-class _Search_locationState extends State<Search_location> {
-
-  @override
-  void initState() {
-    context.read<UserSearchController>().onInit(context);
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -155,8 +142,8 @@ class _Search_locationState extends State<Search_location> {
                                                               onTap: () {
                                                                 inscgange(() {
                                                                   Search.updateStateSelection(Search.states[index]['Name']);
-                                                                  if (widget.onLocationSelected != null) {
-                                                                    widget.onLocationSelected!(Search.selectedCountryId, Search.selectedState);
+                                                                  if (onLocationSelected != null) {
+                                                                    onLocationSelected!(Search.selectedCountryId, Search.selectedState);
                                                                   }
                                                                 });
                                                                  Get.back();

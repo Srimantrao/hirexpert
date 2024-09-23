@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/view/screen/Employer/collection/login.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
@@ -26,9 +27,7 @@ class Candidate_Login extends StatelessWidget {
       body: Container(
         width: Get.width,
         height: Get.height,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 20,),
@@ -40,9 +39,7 @@ class Candidate_Login extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: Get.height / 20),
-                      Padding(padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
-                        child: Image.asset(AppIcons.logo, scale: 5),
-                      ),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5), child: Image.asset(AppIcons.logo, scale: 5)),
                       SizedBox(height: Get.height / 20),
                       Text(Login_text.login, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
@@ -72,9 +69,7 @@ class Candidate_Login extends StatelessWidget {
                               onTap: () {
                                 vis.visibilityVis();
                               },
-                              child: (vis.isVis)
-                                  ? Icon(Icons.visibility_off)
-                                  : Icon(Icons.visibility),
+                              child: (vis.isVis) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                             ),
                           );
                         },
@@ -127,7 +122,11 @@ class Candidate_Login extends StatelessWidget {
                         children: [
                           Text(Login_text.acesss, style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400)),
                           SizedBox(width: Get.width / 100),
-                          Text(Login_text.Click_Here, style: TextStyle(decoration: TextDecoration.underline, fontSize: Get.width / 28, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
+                          GestureDetector(
+                            onTap: (){
+                              Get.to(()=> Employer_Login(),duration: Duration(seconds: 1),transition: Transition.rightToLeft,curve: Curves.easeInOutBack);
+                            },
+                              child: Text(Login_text.Click_Here, style: TextStyle(decoration: TextDecoration.underline, fontSize: Get.width / 28, fontWeight: FontWeight.w600, color: AppColor.Button_color))),
                         ],
                       )
                     ],

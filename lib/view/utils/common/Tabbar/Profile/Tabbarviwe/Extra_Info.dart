@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Profile/Extrainfo/candidate_update_controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/Extra_info.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../app_String.dart';
 import '../../../../app_color.dart';
@@ -92,12 +93,14 @@ class Extra_info extends StatelessWidget {
       //Buttons
       floatingActionButton: GestureDetector(
         onTap: () {
-          candidateupdate.Candidate_update_fuction(
-              CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-              FirstName: login.option_data['data']['UserDetails']['FirstName'],
-              UserId: login.option_data['data']['UserDetails']['UserId'],
-              Timezone: 'asia/kolkata'
-          );
+          Get.to(()=> Candidate_Specialization(),duration: Duration(seconds: 1),transition: Transition.upToDown);
+
+          // candidateupdate.Candidate_update_fuction(
+          //     CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+          //     FirstName: login.option_data['data']['UserDetails']['FirstName'],
+          //     UserId: login.option_data['data']['UserDetails']['UserId'],
+          //     Timezone: 'asia/kolkata'
+          // );
         },
         child: Container(
           height: Get.height / 20,

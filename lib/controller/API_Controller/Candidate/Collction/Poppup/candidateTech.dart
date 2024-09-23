@@ -11,19 +11,11 @@ class Candidatetech extends GetxController {
   var isLoding = false.obs;
   var Candidatetech_data= {}.obs;
 
-  Future Candidatetech_fuctions({
-    required String CandidateId,
-    required String TechId,
-    required String Timezone,
-  }) async {
+  Future Candidatetech_fuctions({required String CandidateId, required String TechId, required String Timezone,}) async {
     try {
       isLoding.value = true;
 
-      Map<String, dynamic> body = {
-        'CandidateId': CandidateId,
-        'TechId': TechId,
-        'Timezone': Timezone,
-      };
+      Map<String, dynamic> body = {'CandidateId': CandidateId, 'TechId': TechId, 'Timezone': Timezone,};
 
       print('CandidateId :- $CandidateId');
       print('Techld :- $TechId');
@@ -31,8 +23,7 @@ class Candidatetech extends GetxController {
 
       print(body);
 
-      final responce = await http.post(
-        Uri.parse(AppUrl.candidateTech),
+      final responce = await http.post(Uri.parse(AppUrl.candidateTech),
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,

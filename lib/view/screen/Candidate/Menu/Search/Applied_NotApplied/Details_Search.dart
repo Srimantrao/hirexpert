@@ -154,7 +154,7 @@ class Details extends StatelessWidget {
                                         data: sumit.isApply.isApplingdata['data']['JobAbout'],
                                         style: {
                                           'p': Style(fontSize: FontSize(Get.width / 27)),
-                                          'strong': Style(fontSize: FontSize(Get.width / 22)),
+                                          'strong': Style(fontSize: FontSize(Get.width / 27)),
                                           'li': Style(fontSize: FontSize(Get.width / 27))
                                         },
                                       );

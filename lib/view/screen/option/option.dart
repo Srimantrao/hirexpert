@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
@@ -47,43 +48,30 @@ class Option extends StatelessWidget {
                       SizedBox(height: Get.height / 20),
 
                       //Employer
-                      InkWell(
-                        onTap: () {
-                          option_api.OptionApiController_fuction(UserType: 'Company');
+                     GestureDetector(
+                        onTap: () async{
                           select.Select();
+                          option_api.OptionApiController_fuction(UserType: 'Company');
+                           await pref!.setBool('Login', true);
+                           await pref!.setString('userType', 'Company');
                         },
-                        child: WideButton(
-                          Button_color: (select.SelectButton) ? AppColor.Full_body_color : AppColor.Button_color,
-                          Button_Boder_color: (select.SelectButton) ? AppColor.offButton_color : AppColor.Button_color,
-                          text: Option_text.Employer,
-                          Icon: AppIcons.Employee,
-                          text_color: (select.SelectButton) ? AppColor.subcolor : AppColor.Full_body_color,
-                          Icon_color: (select.SelectButton) ? AppColor.offButton_color : AppColor.Full_body_color,
-                        ),
+                        child: WideButton(text: Option_text.Employer, Icon: AppIcons.Employee),
                       ),
                       SizedBox(height: Get.height / 50),
 
                       //Candidate
-                      InkWell(
-                        onTap: () {
-                          option_api.OptionApiController_fuction(UserType: 'Candidate');
+                      GestureDetector(
+                        onTap: () async{
                           select.SelectSecond();
+                          option_api.OptionApiController_fuction(UserType: 'Candidate');
+                          await pref!.setBool('Login', true);
+                          await pref!.setString('userType', 'Candidate');
                         },
-                        child: WideButton(
-                          Button_color: (select.SelectButtonSecond) ? AppColor.Full_body_color : AppColor.Button_color,
-                          Button_Boder_color: (select.SelectButtonSecond) ? AppColor.offButton_color : AppColor.Button_color,
-                          text: Option_text.Candidate,
-                          Icon: AppIcons.briefcase,
-                          text_color: (select.SelectButtonSecond) ? AppColor.subcolor : AppColor.Full_body_color,
-                          Icon_color: (select.SelectButtonSecond) ? AppColor.offButton_color : AppColor.Full_body_color,
-                        ),
+                        child: WideButton(text: Option_text.Candidate, Icon: AppIcons.briefcase),
                       ),
                       SizedBox(height: Get.height / 20),
                       Text(textAlign: TextAlign.center, Option_text.ThenkYOU, style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor)),
                       SizedBox(height: Get.height / 15),
-                      // Text(
-                      //   (select.Error) ? select.ShowError : "", style: TextStyle(fontSize: Get.width / 25, color: AppColor.Error_color, fontWeight: FontWeight.w600),
-                      // ),
                     ],
                   );
                 },

@@ -1,10 +1,11 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print, prefer_const_constructors_in_immutables
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print, prefer_const_constructors_in_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Search/Search_API_Controller.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_Hendal.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -15,24 +16,8 @@ import '../../../../utils/common/List/jobSearch.dart';
 import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
-class Search extends StatefulWidget {
+class Search extends StatelessWidget {
   Search({super.key});
-
-  @override
-  State<Search> createState() => _SearchState();
-}
-
-class _SearchState extends State<Search> {
-  @override
-  void initState() {
-    Searchings.Search.SearchApiController_fuction(
-      Timezone: 'asia/kolkata',
-      CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-      Tokan: login.option_data['data']['LoginToken']
-    );
-    super.initState();
-  }
-
   final SearchHendal Searchings = Get.put(SearchHendal());
   final IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
   final OptionApiController login = Get.put(OptionApiController());
@@ -77,7 +62,8 @@ class _SearchState extends State<Search> {
                     PopupMenuItem(value: 3, child: Text('Last 6 Months')),
                     PopupMenuItem(value: 3, child: Text('Last 1 Year')),
                   ],
-              child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30)),
+              child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30)
+          ),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -91,34 +77,34 @@ class _SearchState extends State<Search> {
               return Center(
                 child: Image.asset(AppLoder.infinityloder_without_background),
               );
-            } else if (Searchings.Search.Search_data.value['data'] == null) {
+            } else if (Searchings.Search.Search_data['data'] == null) {
               return Center(
                 child: Text(API_Error.nulll),
               );
             } else {
               return ListView.builder(
-                itemCount: Searchings.Search.Search_data.value['data'].length,
+                itemCount:Searchings.Search.Search_data['data'].length,
                 itemBuilder: (BuildContext context, int index) {
                   if (index >= Searchings.Search.Search_data['data'].length || index >= Searchings.Search.Search_data['data'].length) {
                     return SizedBox.shrink();
                   }
-                  var jobData = Searchings.Search.Search_data.value['data'][index];
+                  var jobData = Searchings.Search.Search_data['data'][index];
                   var isFavourite = jobData['IsFavourite'] == "1";
                   return JobSearch(
                     onTap: () {
                       Get.to(
                         () => Details(
-                          Icon: jobData['ComLogo'],
-                          Job_Tital: jobData['JobTitle'],
-                          Language: jobData['TechName'],
-                          Commpany: jobData['ComName'],
-                          Working: jobData['WorkWeek'],
-                          Location: jobData['Location'],
-                          Job_time: jobData['JobType'],
-                          Exp: jobData['Experience'],
-                          lake: jobData['Salary'],
-                          Hybrid: jobData['WorkSet'],
-                          stats: jobData['FormatDt'],
+                          Icon: Searchings.Search.Search_data['data'][index]['ComLogo'],
+                          Job_Tital:Searchings.Search.Search_data['data'][index]['JobTitle'],
+                          Language:Searchings.Search.Search_data['data'][index]['TechName'],
+                          Commpany: Searchings.Search.Search_data['data'][index]['ComName'],
+                          Working: Searchings.Search.Search_data['data'][index]['WorkSet'],
+                          Location: Searchings.Search.Search_data['data'][index]['Location'],
+                          Job_time: Searchings.Search.Search_data['data'][index]['JobType'],
+                          Exp: Searchings.Search.Search_data['data'][index]['Experience'],
+                          lake: Searchings.Search.Search_data['data'][index]['Salary'],
+                          Hybrid: Searchings.Search.Search_data['data'][index]['WorkSet'],
+                          stats: Searchings.Search.Search_data['data'][index]['FormatDt'],
                           saveonTap: () async {
                             var newIsLike = isFavourite ? "0" : "1";
                             await isfavication.IsfavrationControllers_fuction(
@@ -139,17 +125,17 @@ class _SearchState extends State<Search> {
                         ),
                       );
                     },
-                    Icon: jobData['ComLogo'],
-                    Job_Tital: jobData['JobTitle'],
-                    Language: jobData['TechName'],
-                    Commpany: jobData['ComName'],
-                    Working: jobData['WorkWeek'],
-                    Location: jobData['Location'],
-                    Job_time: jobData['JobType'],
-                    Exp: jobData['Experience'],
-                    lake: jobData['Salary'],
-                    Hybrid: jobData['WorkSet'],
-                    stats: jobData['FormatDt'],
+                    Icon: Searchings.Search.Search_data['data'][index]['ComLogo'],
+                    Job_Tital: Searchings.Search.Search_data['data'][index]['JobTitle'],
+                    Language:Searchings.Search.Search_data['data'][index]['TechName'],
+                    Commpany: Searchings.Search.Search_data['data'][index]['ComName'],
+                    Working: Searchings.Search.Search_data['data'][index]['WorkSet'],
+                    Location: Searchings.Search.Search_data['data'][index]['Location'],
+                    Job_time: Searchings.Search.Search_data['data'][index]['JobType'],
+                    Exp: Searchings.Search.Search_data['data'][index]['Experience'],
+                    lake:Searchings.Search.Search_data['data'][index]['Salary'],
+                    Hybrid: Searchings.Search.Search_data['data'][index]['WorkSet'],
+                    stats: Searchings.Search.Search_data['data'][index]['FormatDt'],
                     saveonTap: () async {
                       var newIsLike = isFavourite ? "0" : "1";
                       await isfavication.IsfavrationControllers_fuction(

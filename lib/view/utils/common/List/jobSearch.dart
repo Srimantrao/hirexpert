@@ -58,7 +58,7 @@ class JobSearch extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 50),
           child: Container(
-            height: size.height / 3.8,
+            height: size.height / 3.5,
             width: size.width,
             decoration: BoxDecoration(
               border: Border(top: top),
@@ -87,7 +87,10 @@ class JobSearch extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text(Job_Tital, style: TextStyle(color: AppColor.subcolor)),
+                            SizedBox(
+                              width: Get.width/2,
+                                child: Text(Job_Tital, style: TextStyle(color: AppColor.subcolor)),
+                            ),
                           ],
                         ),
                         SizedBox(

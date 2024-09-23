@@ -12,35 +12,19 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
-  Future SearchApiController_fuction({
-    required String Timezone,
-    required String CandidateId,
-    String? Tokan,
-  }) async {
+  Future SearchApiController_fuction({required String Timezone, required String CandidateId, String? Tokan, String? TechId, String? CurrencyId, String? JobId, String? JobType, String? SalaryType, String? EndSalary, required String IsWeb}) async {
     try {
       isLoding.value = true;
 
-      if (kDebugMode) {
-        print("Timezone :- $Timezone");
-        print("CandidateId :- $CandidateId");
-      }
+      if (kDebugMode) {print("Timezone :- $Timezone");print("CandidateId :- $CandidateId");}
 
-      Map<String, dynamic> body = {
-        'Timezone': Timezone,
-        'CandidateId': CandidateId,
-      };
+      Map<String, dynamic> body = {'Timezone': Timezone, 'CandidateId': CandidateId, 'CurrencyId':CurrencyId ?? '', 'TechId': TechId ?? '', 'JobId' : JobId ?? '', 'SalaryType':SalaryType ?? '', 'EndSalary':EndSalary ?? '', 'JobType':JobType ?? '', 'IsWeb' : IsWeb};
 
-      if (kDebugMode) {
-        print(body);
-      }
+      if (kDebugMode) {print(body);}
 
       final Response = await http.post(
         Uri.parse(AppUrl.SearchJob),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''},
         body: body,
       );
 
@@ -50,18 +34,12 @@ class SearchApiController extends GetxController {
 
       if (Response.statusCode == 200 || Response.statusCode == 201) {
         Search_data.value = jsonDecode(Response.body);
-        if (kDebugMode) {
-          print("Search Job :-  $Search_data");
-        }
+        if (kDebugMode) {print("Search Job :-  $Search_data");}
       } else {
-        throw {
-          " Search Job Error this :- ${Response.statusCode} , ${Response.body} "
-        };
+        throw {" Search Job Error this :- ${Response.statusCode} , ${Response.body} "};
       }
     } catch (e) {
-      if (kDebugMode) {
-        print("Search job this Error :- $e");
-      }
+      if (kDebugMode) {print("Search job this Error :- $e");}
     } finally {
       isLoding.value = false;
     }
