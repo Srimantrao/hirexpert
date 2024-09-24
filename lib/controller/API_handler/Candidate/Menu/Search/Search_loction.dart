@@ -12,6 +12,7 @@ class SearchLoction extends GetxController {
     Future.microtask(() async {
       if (Login.option_data['status'] == true) {
         await Search.SearchApiController_fuction(
+          IsWeb: 'false',
           Timezone: 'asia/kolkata',
           CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
           Tokan: Login.option_data['data']['LoginToken'],
@@ -25,6 +26,7 @@ class SearchLoction extends GetxController {
   @override
   void onClose() {
     Search.SearchApiController_fuction(
+      IsWeb: 'false',
       Timezone: 'asia/kolkata',
       CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
       Tokan: Login.option_data['data']['LoginToken'],

@@ -164,12 +164,8 @@ class Setting extends StatelessWidget {
                                           expands: true,
                                           maxLines: null,
                                           decoration: InputDecoration(
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: AppColor.Buttom_color),
-                                            ),
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(color: AppColor.Buttom_color),
-                                            ),
+                                            focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
+                                            enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                                           ),
                                         ),
                                       ),
@@ -230,9 +226,7 @@ class Setting extends StatelessWidget {
                             },
                           );
                         },
-                        child: const Info_Setting(
-                          info: Profile_Text.Send_Us_Your_Feedback,
-                        ),
+                        child: const Info_Setting(info: Profile_Text.Send_Us_Your_Feedback),
                       );
                     },
                   ),

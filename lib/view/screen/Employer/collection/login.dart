@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/login.dart';
 import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
@@ -117,7 +118,11 @@ class Employer_Login extends StatelessWidget {
                         children: [
                           Text(Login_text.acesss, style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400)),
                           SizedBox(width: Get.width / 100),
-                          Text(Login_text.Click_Here, style: TextStyle(decoration: TextDecoration.underline, fontSize: Get.width / 28, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
+                          GestureDetector(
+                            onTap: (){
+                              Get.to(()=> Candidate_Login(),duration: Duration(seconds: 1),transition: Transition.leftToRight,curve: Curves.easeInOutBack);
+                            },
+                              child: Text(Login_text.Click_Here, style: TextStyle(decoration: TextDecoration.underline, fontSize: Get.width / 28, fontWeight: FontWeight.w600, color: AppColor.Button_color))),
                         ],
                       )
                     ],
