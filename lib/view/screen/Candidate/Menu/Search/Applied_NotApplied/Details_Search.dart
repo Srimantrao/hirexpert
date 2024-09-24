@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, override_on_non_overriding_member, avoid_print, prefer_const_constructors_in_immutables, annotate_overrides, unnecessary_null_comparison
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, override_on_non_overriding_member, avoid_print, prefer_const_constructors_in_immutables, annotate_overrides, unnecessary_null_comparison, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
