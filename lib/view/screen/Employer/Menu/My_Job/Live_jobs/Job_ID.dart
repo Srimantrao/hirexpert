@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, file_names, unused_import
+// ignore_for_file: avoid_print, file_names, unused_import, unnecessary_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';

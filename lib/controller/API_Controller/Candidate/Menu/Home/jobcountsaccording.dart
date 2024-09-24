@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:http/http.dart' as http;
 
 class Jobcountsaccording extends GetxController {
@@ -13,17 +14,12 @@ class Jobcountsaccording extends GetxController {
 
   @override
   void onInit() {
-    Jobcountsaccording_fuction();
+    Jobcountsaccording_fuction(CandidateId: Candidate, Tokan: Tokan ?? '');
     super.onInit();
   }
 
-  Future Jobcountsaccording_fuction({
-    String? Tokan,
-     String? CandidateId,
-  }) async {
-    Map<String, dynamic> body = {
-      'CandidateId': CandidateId,
-    };
+  Future Jobcountsaccording_fuction({String? Tokan, required String CandidateId}) async {
+    Map<String, dynamic> body = {'CandidateId': CandidateId,};
     print("CandidateId :- $CandidateId");
     print(body);
 
@@ -32,11 +28,7 @@ class Jobcountsaccording extends GetxController {
 
       final responce = await http.post(
         Uri.parse(AppUrl.count),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
         body: body,
       );
 

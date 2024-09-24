@@ -2,7 +2,6 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../controller/User_Controller/Candidate_Controller/LoginControoler/LoginValidation.dart';
 
 //Save Login & Password !
@@ -15,6 +14,8 @@ String Phone = "";
 String Password = "";
 String Comfarm_password = "";
 
+String Candidate = '';
+String Tokan = '';
 bool islogin = false;
 
 class Password_main {

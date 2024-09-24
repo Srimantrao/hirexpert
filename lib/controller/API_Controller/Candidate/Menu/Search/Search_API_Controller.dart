@@ -12,41 +12,23 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
-  Future SearchApiController_fuction({
-    required String Timezone,
-    required String CandidateId,
-    String? Tokan,
-  }) async {
+  Future SearchApiController_fuction({required String Timezone, required String CandidateId, String? Tokan, required String IsWeb}) async {
     try {
       isLoding.value = true;
 
-      if (kDebugMode) {
-        print("Timezone :- $Timezone");
-        print("CandidateId :- $CandidateId");
-      }
+      if (kDebugMode) {print("Timezone :- $Timezone"); print("CandidateId :- $CandidateId"); print("IsWeb :- $IsWeb");}
 
-      Map<String, dynamic> body = {
-        'Timezone': Timezone,
-        'CandidateId': CandidateId,
-      };
+      Map<String, dynamic> body = {'Timezone': Timezone, 'CandidateId': CandidateId, 'IsWeb' : IsWeb};
 
-      if (kDebugMode) {
-        print(body);
-      }
+      if (kDebugMode) {print(body);}
 
       final Response = await http.post(
         Uri.parse(AppUrl.SearchJob),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
         body: body,
       );
 
-      if (kDebugMode) {
-        print("Tokan :- $Tokan");
-      }
+      if (kDebugMode) {print("Tokan :- $Tokan");}
 
       if (Response.statusCode == 200 || Response.statusCode == 201) {
         Search_data.value = jsonDecode(Response.body);

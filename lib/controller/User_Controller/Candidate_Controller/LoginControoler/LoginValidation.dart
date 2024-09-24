@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, avoid_print, prefer_const_constructors, deprecated_member_use
+// ignore_for_file: non_constant_identifier_names, file_names, camel_case_types, avoid_print, prefer_const_constructors, deprecated_member_use, unused_import
   // void Loginvalidation_successfully() async {
   //   if (!_Email_value && !_password_value) {
   //     try {
@@ -172,12 +172,6 @@ class Candidate_LoginValidation with ChangeNotifier {
         email: email_controller.text,
         password: password_controller.text,
       );
-
-      if (email_controller.text == Email && password_controller.text == Password) {
-        print("Successful");
-        pref!.setBool('Login', true);
-        islogin = pref!.getBool('Login')!;
-      }
 
       Get.dialog(
         Center(child: Image.asset(AppLoder.infinityloder_without_background)),

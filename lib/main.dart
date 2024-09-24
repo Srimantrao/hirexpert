@@ -69,13 +69,16 @@ Future<void> main() async {
   Phone = pref!.getString('Phone') ?? 'Phone :- ';
   Password = pref!.getString('Password') ?? 'Password :- ';
 
+  Tokan = pref!.getString('Tokan') ?? '';
+  Candidate = pref!.getString('Candidate') ?? '';
   islogin = pref!.getBool("Login") ?? false;
 
   print("FristName :- $Frist_name");
   print("LastName :- $Last_name");
   print("Email :- $Email");
   print("Phone :- $Phone");
-  print("Password :- $Password");
+  print("Candidate :- $Candidate");
+  print("Tokan :- $Tokan");
 
   print("isLogin :- $islogin");
   runApp(const MyApp());

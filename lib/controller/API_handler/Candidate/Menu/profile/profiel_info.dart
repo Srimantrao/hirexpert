@@ -1,4 +1,4 @@
-// ignore_for_file: annotate_overrides
+// ignore_for_file: annotate_overrides, avoid_print, unnecessary_null_comparison
 
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
@@ -9,11 +9,23 @@ class ProfielInfo extends GetxController {
 
   void onInit() {
     Future.microtask(() async {
-      await login.OptionApiController_fuction(
-        UserType: 'Candidate',
-        Email: login.option_data['data']['Email'],
-        Password: Password_main.Pass.text,
-      );
+      if (login.option_data != null && login.option_data['data'] != null) {
+        await login.OptionApiController_fuction(
+          UserType: 'Candidate',
+          Email: login.option_data['data']['Email'],
+          Password: Password_main.Pass.text,
+        );
+        await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
+        await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
+      }else {
+        print("Error: option_data['data'] is null");
+      }
+
+      Tokan = pref!.getString('Tokan')!;
+      Candidate = pref!.getString('Candidate')!;
+
+      print("Tokan{Login} :- $Tokan");
+      print("Candidate{Login} :- $Candidate");
     });
     super.onInit();
   }

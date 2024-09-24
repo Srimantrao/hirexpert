@@ -8,6 +8,7 @@ import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavrat
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_Hendal.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_loder.dart';
@@ -27,8 +28,9 @@ class _SearchState extends State<Search> {
   void initState() {
     Searchings.Search.SearchApiController_fuction(
       Timezone: 'asia/kolkata',
-      CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-      Tokan: login.option_data['data']['LoginToken']
+      CandidateId: Candidate,
+      Tokan: Tokan,
+        IsWeb: 'false'
     );
     super.initState();
   }

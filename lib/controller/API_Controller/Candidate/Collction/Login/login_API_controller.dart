@@ -12,38 +12,18 @@ class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
   var option_data = {}.obs;
 
-  Future OptionApiController_fuction({
-    String? Email,
-    String? Password,
-    String? UserType,
-  }) async {
+  Future OptionApiController_fuction({String? Email, String? Password, String? UserType}) async {
     try {
       isLodingvalue.value = true;
       update();
 
-      if (kDebugMode) {
-        print("Email: $Email");
-        print("Password: $Password");
-        print("UserType: $UserType");
-        print("Timezone: asia/kolkata");
-      }
+      if (kDebugMode) {print("Email: $Email");print("Password: $Password");print("UserType: $UserType");print("Timezone: asia/kolkata");}
 
-      Map<String, dynamic> body = {
-        'Email': Email ?? '',
-        'Password': Password ?? '',
-        'UserType': UserType ?? '',
-        'Timezone': 'asia/kolkata',
-      };
+      Map<String, dynamic> body = {'Email': Email ?? '', 'Password': Password ?? '', 'UserType': UserType ?? '', 'Timezone': 'asia/kolkata',};
 
-      if (kDebugMode) {
-        print(body);
-      }
+      if (kDebugMode) {print(body);}
 
-      final responce = await http.post(
-        Uri.parse(AppUrl.login),
-        body: body,
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip},
-      );
+      final responce = await http.post(Uri.parse(AppUrl.login), body: body, headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip});
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         option_data.value = jsonDecode(responce.body);
         if (kDebugMode) {

@@ -7,6 +7,7 @@ import 'package:hirexpert/view/screen/Candidate/Menu/Home/saving/saved.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Row/homerow.dart';
@@ -27,7 +28,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState() {
-    jobincount.jobcount.Jobcountsaccording_fuction();
+    jobincount.jobcount.Jobcountsaccording_fuction(CandidateId: Candidate , Tokan: Tokan);
     super.initState();
   }
       final JobcountabaleHedal jobincount = Get.put(JobcountabaleHedal());

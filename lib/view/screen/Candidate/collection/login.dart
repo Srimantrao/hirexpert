@@ -26,9 +26,7 @@ class Candidate_Login extends StatelessWidget {
       body: Container(
         width: Get.width,
         height: Get.height,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: SafeArea(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: Get.width / 20,),
@@ -40,17 +38,13 @@ class Candidate_Login extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SizedBox(height: Get.height / 20),
-                      Padding(padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5),
-                        child: Image.asset(AppIcons.logo, scale: 5),
-                      ),
+                      Padding(padding: EdgeInsets.symmetric(horizontal: Get.width / 6.5), child: Image.asset(AppIcons.logo, scale: 5)),
                       SizedBox(height: Get.height / 20),
                       Text(Login_text.login, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
 
                       Inputfild(
-                        onChanged: (Email) {
-                          vail.Email_validation(Email);
-                        },
+                        onChanged: (Email) {vail.Email_validation(Email);},
                         labal: Login_text.lebelemail,
                         hint: Login_text.hintemail,
                         controller: vail.email_controller,
@@ -61,20 +55,14 @@ class Candidate_Login extends StatelessWidget {
                       Consumer<Candidate_VisibilityController>(
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
-                            onChanged: (password) {
-                              vail.Password_validation(password);
-                            },
+                            onChanged: (password) {vail.Password_validation(password);},
                             obscureText: vis.isobscr,
                             labal: Login_text.lebelpassword,
                             hint: Login_text.hintpassword,
                             controller: Password_main.Pass,
                             suffixIcon: InkWell(
-                              onTap: () {
-                                vis.visibilityVis();
-                              },
-                              child: (vis.isVis)
-                                  ? Icon(Icons.visibility_off)
-                                  : Icon(Icons.visibility),
+                              onTap: () {vis.visibilityVis();},
+                              child: (vis.isVis) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                             ),
                           );
                         },
@@ -86,31 +74,38 @@ class Candidate_Login extends StatelessWidget {
                         children: [
                           GestureDetector(
                             onTap: () {
-                              Get.to(
-                                () => Candidate_F_Password(),
-                                transition: Transition.downToUp,
-                                duration: Duration(milliseconds: 500),
-                              );
+                              Get.to(() => Candidate_F_Password(), transition: Transition.downToUp, duration: Duration(milliseconds: 500));
                             },
                             child: Text(Login_text.Forget_Password,style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w600)),
                           ),
                         ],
                       ),
                       SizedBox(height: Get.height / 20),
-                      OnButtons(
-                        onTap: () {
+                      OnButtons(onTap: () async{
+                          print("Successful");
+
+                          await pref!.setString("Email", vail.email_controller.text);
+                          await pref!.setString("Password", Password_main.Pass.text);
+                          await pref!.setBool('Login', true);
+
+                          Email = pref!.getString('Email')!;
+                          Password = pref!.getString('Password')!;
+                          islogin = pref!.getBool('Login')!;
+
+                          print("Email{Login} :- $Email");
+                          print("Password{Login} :- $Password");
+                          print("Login{Login} :- $islogin");
+
                           vail.Loginvalidation();
                         },
-                        Button_Color: AppColor.Button_color,
-                        btn_name: Login_text.login,
+                          Button_Color: AppColor.Button_color, btn_name: Login_text.login,
                       ),
                       SizedBox(height: Get.height / 40),
 
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(Login_text.Dont, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w400),
-                          ),
+                          Text(Login_text.Dont, style: TextStyle(fontSize: Get.width / 25, fontWeight: FontWeight.w400)),
                           SizedBox(width: Get.width / 60),
                           GestureDetector(
                             onTap: () {

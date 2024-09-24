@@ -50,20 +50,15 @@ class JobSearch extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: EdgeInsets.symmetric(
-        horizontal: size.width / 40,
-      ),
+      padding: EdgeInsets.symmetric(horizontal: size.width / 40),
       child: GestureDetector(
         onTap: onTap,
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 50),
           child: Container(
-            height: size.height / 3.8,
+            height: size.height / 3.5,
             width: size.width,
-            decoration: BoxDecoration(
-              border: Border(top: top),
-              color: AppColor.Full_body_color,
-            ),
+            decoration: BoxDecoration(border: Border(top: top), color: AppColor.Full_body_color),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -87,7 +82,9 @@ class JobSearch extends StatelessWidget {
                       children: [
                         Row(
                           children: [
-                            Text(Job_Tital, style: TextStyle(color: AppColor.subcolor)),
+                            SizedBox(width:size.width/2,
+                                child: Text(Job_Tital, style: TextStyle(color: AppColor.subcolor))
+                            ),
                           ],
                         ),
                         SizedBox(
