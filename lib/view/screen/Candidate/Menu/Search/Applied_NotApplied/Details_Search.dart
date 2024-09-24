@@ -2,15 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Button_Apping_handler.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_loction.dart';
-import 'package:hirexpert/controller/State_Controller/Candidate_state/Menu/Search/Searech_location_Save.dart';
 import 'package:hirexpert/modal/Job/Search_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
 import 'package:flutter_html/flutter_html.dart';
+import '../../../../../../controller/Save_Controller/Candidate_state/Menu/Search/Searech_location_Save.dart';
 import '../../../../../utils/app_String.dart';
 
 class Details extends StatelessWidget {

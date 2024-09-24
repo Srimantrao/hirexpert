@@ -2,12 +2,14 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/Save_Controller/Candidate_state/Menu/Profile/statsBar_Controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
 import '../../../../../controller/API_handler/Candidate/Menu/profile/profiel_info.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
+import '../../../../utils/app_constance.dart';
 import '../../../../utils/common/Tabbar/Profile/Tab_Conatiner/Profile_Conatiner.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Document_profile.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
@@ -15,11 +17,14 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile
 import 'Setting.dart';
 
 class Profile_info extends StatelessWidget {
-  final ProfielInfo profile = Get.put(ProfielInfo());
+  StatsbarController Statesbar = Get.put(StatsbarController());
   Profile_info({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Statesbar.profile.login.onInit();
+    Statesbar.profile.onInit();
+    Statesbar.onInit();
     final Tabb = Provider.of<TabbarController>(context, listen: false);
     return Scaffold(
       body: Container(
@@ -43,27 +48,27 @@ class Profile_info extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(() {
-                              if (profile.login.isLodingvalue.value) {
+                              if (Statesbar.profile.login.isLodingvalue.value) {
                                 return Center(child: Image.asset(AppLoder.infinityloder_without_background));
-                              } else if (profile.login.option_data['data'] == null || profile.login.option_data == null) {
+                              } else if (Statesbar.profile.login.option_data['data'] == null || Statesbar.profile.login.option_data == null) {
                                 return Center(child: Text(API_Error.null_data));
                               } else {
                                 return Row(
                                   children: [
-                                    CircleAvatar(radius: 40, backgroundImage: NetworkImage(profile.login.option_data['data']['Profile'])),
+                                    CircleAvatar(radius: 40, backgroundImage: NetworkImage(Statesbar.profile.login.option_data['data']['Profile'])),
                                     SizedBox(width: Get.width / 30),
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          profile.login.option_data['data']['Username'],
+                                          Statesbar.profile.login.option_data['data']['Username'],
                                           style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
                                         ),
                                         SizedBox(
                                           width: Get.width / 2,
                                           child: Text(
-                                            profile.login.option_data['data']['UserDetails']['TechName'],
+                                            Statesbar.profile.login.option_data['data']['UserDetails']['TechName'],
                                             style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor),
                                           ),
                                         ),
