@@ -52,6 +52,7 @@ class Option extends StatelessWidget {
                         onTap: () async{
                           option_api.OptionApiController_fuction(UserType: 'Company');
                           await pref!.setString('usertype', 'Company');
+                          username = pref!.getString('usertype')!;
                           select.Select();
                         },
                         child: WideButton(text: Option_text.Employer, Icon: AppIcons.Employee),
@@ -63,6 +64,7 @@ class Option extends StatelessWidget {
                         onTap: () async{
                           option_api.OptionApiController_fuction(UserType: 'Candidate');
                           await pref!.setString('usertype', 'Candidate');
+                          username = pref!.getString('usertype')!;
                           select.SelectSecond();
                         },
                         child: WideButton(text: Option_text.Candidate, Icon: AppIcons.briefcase),

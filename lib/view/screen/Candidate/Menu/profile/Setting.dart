@@ -42,9 +42,7 @@ class Setting extends StatelessWidget {
                 children: [
                   Container(
                       height: Get.height / 8,
-                      decoration: BoxDecoration(
-                        border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
-                      ),
+                      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Bottam_color))),
                       child: Obx(() {
                         if (sett.Login.isLodingvalue.value) {
                           return Center(child: Image.asset(AppLoder.infinityloder_without_background));
@@ -101,9 +99,7 @@ class Setting extends StatelessWidget {
                                 title: Container(
                                   height: Get.height / 20,
                                   width: Get.width,
-                                  decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: AppColor.Buttom_color)),
-                                  ),
+                                  decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Buttom_color))),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
@@ -113,9 +109,7 @@ class Setting extends StatelessWidget {
                                         highlightColor: Colors.transparent,
                                         splashColor: Colors.transparent,
                                         hoverColor: Colors.transparent,
-                                        onTap: () {
-                                          Get.back();
-                                        },
+                                        onTap: () {Get.back();},
                                         child: SvgPicture.asset(AppIcons.cancel),
                                       ),
                                     ],
@@ -135,22 +129,13 @@ class Setting extends StatelessWidget {
                                             children: [
                                               Row(
                                                 children: [
-                                                  Checkbox(side: BorderSide(color: AppColor.Buttom_color),
-                                                      value: feedback.issues,
-                                                      onChanged: (val) {
-                                                        feedback.Issues_Fuction(val);
-                                                      }),
+                                                  Checkbox(side: BorderSide(color: AppColor.Buttom_color), value: feedback.issues, onChanged: (val) {feedback.Issues_Fuction(val);}),
                                                     Text(My_Archive_text.Issues),
                                                 ],
                                               ),
                                               Row(
                                                 children: [
-                                                  Checkbox(
-                                                      side: BorderSide(color: AppColor.Buttom_color),
-                                                      value: feedback.Suggestions,
-                                                      onChanged: (val) {
-                                                        feedback.Suggestions_Fuction(val);
-                                                      }),
+                                                  Checkbox(side: BorderSide(color: AppColor.Buttom_color), value: feedback.Suggestions, onChanged: (val) {feedback.Suggestions_Fuction(val);}),
                                                    Text(My_Archive_text.Suggestions),
                                                 ],
                                               ),
@@ -201,9 +186,7 @@ class Setting extends StatelessWidget {
                                         child: Text(My_Archive_text.Submit, style: TextStyle(color: AppColor.Full_body_color)),
                                       ),
                                     ),
-                                    onTap: () {
-                                      Get.back();
-                                    },
+                                    onTap: () {Get.back();},
                                   ),
                                   InkWell(
                                     child: Container(
@@ -217,9 +200,7 @@ class Setting extends StatelessWidget {
                                         child: Text(My_Archive_text.Cancel, style: TextStyle(color: AppColor.subcolor)),
                                       ),
                                     ),
-                                    onTap: () {
-                                      Get.back();
-                                    },
+                                    onTap: () {Get.back();},
                                   ),
                                 ],
                               );
@@ -248,18 +229,14 @@ class Setting extends StatelessWidget {
                                 title: Container(
                                   height: Get.height / 20,
                                   width: Get.width,
-                                  decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: AppColor.Buttom_color)),
-                                  ),
+                                  decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Buttom_color)),),
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                     children: [
                                       SizedBox(),
                                       Text(My_Archive_text.Manage_Account, style: TextStyle(fontSize: Get.width / 23)),
                                       InkWell(
-                                        onTap: () {
-                                          Get.back();
-                                        },
+                                        onTap: () {Get.back();},
                                         child: SvgPicture.asset(AppIcons.cancel),
                                       ),
                                     ],
@@ -342,9 +319,7 @@ class Setting extends StatelessWidget {
                                       height: Get.height / 15,
                                       width: Get.width,
                                       decoration: BoxDecoration(
-                                        border: Border(
-                                          bottom: BorderSide(color: AppColor.Buttom_color),
-                                        ),
+                                        border: Border(bottom: BorderSide(color: AppColor.Buttom_color)),
                                       ),
                                       child: Row(
                                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -352,9 +327,7 @@ class Setting extends StatelessWidget {
                                           SizedBox(),
                                           Text(My_Archive_text.Old_Password, style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 23)),
                                           InkWell(
-                                            onTap: () {
-                                              Get.back();
-                                            },
+                                            onTap: () {Get.back();},
                                             child: SvgPicture.asset(AppIcons.cancel),
                                           ),
                                         ],
@@ -363,9 +336,7 @@ class Setting extends StatelessWidget {
                                     content: Container(
                                       width: Get.width,
                                       height: Get.height / 2.8,
-                                      decoration: BoxDecoration(
-                                        color: AppColor.Full_body_color,
-                                      ),
+                                      decoration: BoxDecoration(color: AppColor.Full_body_color),
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Column(
@@ -374,19 +345,13 @@ class Setting extends StatelessWidget {
                                             Text(My_Archive_text.Old_Password, style: TextStyle(fontSize: Get.width / 23, fontWeight: FontWeight.w400, color: AppColor.subcolor)),
                                             TextField(
                                               onTap: () {},
-                                              onChanged: (String val) {
-                                                Pass_change.Old_Password_fuction(val);
-                                              },
+                                              onChanged: (String val) {Pass_change.Old_Password_fuction(val);},
                                               obscureText: Pass_change.o_pass,
                                               controller: Pass_change.old_pass,
                                               decoration: InputDecoration(
                                                 suffixIcon: InkWell(
-                                                  onTap: () {
-                                                    Pass_change.OldPassword_Fuction_obx();
-                                                  },
-                                                  child: (Pass_change.o_pass)
-                                                      ? const Icon(Icons.visibility_off)
-                                                      : const Icon(Icons.visibility),
+                                                  onTap: () {Pass_change.OldPassword_Fuction_obx();},
+                                                  child: (Pass_change.o_pass) ?  Icon(Icons.visibility_off) : Icon(Icons.visibility),
                                                 ),
                                                 hintText: My_Archive_text.Enter_Old_Password,
                                                 enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
@@ -400,19 +365,13 @@ class Setting extends StatelessWidget {
                                             SizedBox(height: Get.height / 50),
                                             Text(My_Archive_text.New_Password, style: TextStyle(fontSize: Get.width / 23, fontWeight: FontWeight.w400, color: AppColor.subcolor)),
                                             TextField(
-                                              onChanged: (String val) {
-                                                Pass_change.new_password_fuction(val);
-                                              },
+                                              onChanged: (String val) {Pass_change.new_password_fuction(val);},
                                               obscureText: Pass_change.n_pass,
                                               controller: Pass_change.new_pass,
                                               decoration: InputDecoration(
                                                 suffixIcon: InkWell(
-                                                  onTap: () {
-                                                    Pass_change.Confirm_Password_obx();
-                                                  },
-                                                  child: (Pass_change.o_pass)
-                                                      ? Icon(Icons.visibility_off)
-                                                      : Icon(Icons.visibility),
+                                                  onTap: () {Pass_change.Confirm_Password_obx();},
+                                                  child: (Pass_change.o_pass) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                                                 ),
                                                 hintText: My_Archive_text.Enter_New_Password,
                                                 enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
@@ -425,19 +384,13 @@ class Setting extends StatelessWidget {
                                             SizedBox(height: Get.height / 50),
                                             Text(My_Archive_text.Confirm_Password, style: TextStyle(fontSize: Get.width / 23, fontWeight: FontWeight.w400, color: AppColor.subcolor)),
                                             TextField(
-                                                onChanged:(String val) {
-                                                  Pass_change.Confirm_Password(val);
-                                                },
+                                                onChanged:(String val) {Pass_change.Confirm_Password(val);},
                                               obscureText: Pass_change.c_pass,
                                               controller: Pass_change.conf_pass,
                                               decoration: InputDecoration(
                                                 suffixIcon: InkWell(
-                                                  onTap: () {
-                                                    Pass_change.Confirm_Password_obx();
-                                                  },
-                                                  child: (Pass_change.c_pass)
-                                                      ? Icon(Icons.visibility_off)
-                                                      : Icon(Icons.visibility),
+                                                  onTap: () {Pass_change.Confirm_Password_obx();},
+                                                  child: (Pass_change.c_pass) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                                                 ),
                                                 hintText: My_Archive_text.Enter_Confirm_Password,
                                                 enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
@@ -455,17 +408,9 @@ class Setting extends StatelessWidget {
                                       InkWell(
                                         onTap: () {
                                           Pass_change.Button_Fuction();
-                                          chagepassword.PasswordChange_fuction(
-                                              Password: Pass_change.new_pass.text,
-                                              OldPassword: Pass_change.old_pass.text,
-                                              Tokan: sett.Login.option_data['data']['LoginToken'],
-                                          );
-                                          setState(() {});
+                                          chagepassword.PasswordChange_fuction(Password: Pass_change.new_pass.text, OldPassword: Pass_change.old_pass.text, Tokan: sett.Login.option_data['data']['LoginToken'],);
                                         },
-                                        child: OnButtons(
-                                          Button_Color: AppColor.Button_color,
-                                          btn_name: Profile_Text.Change,
-                                        ),
+                                        child: OnButtons(Button_Color: AppColor.Button_color, btn_name: Profile_Text.Change),
                                       ),
                                     ],
                                   );

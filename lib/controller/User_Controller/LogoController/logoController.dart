@@ -9,17 +9,7 @@ import '../../../../view/utils/app_constance.dart';
 class Logocontroller extends GetxController {
   void onInit() {
     Future.delayed(Duration(seconds: 3), () {
-      Get.to(()=>Option());
-      // if (islogin) {
-      //   String userType = pref!.getString('userType') ?? 'Candidate'; // Example, default is Candidate
-      //   if (userType == 'Candidate') {
-      //     Get.to(() => Candidate_Bottam()); // Company home screen
-      //   } else {
-      //     Get.to(() => Option()); // Candidate home screen
-      //   }
-      // } else {
-      //   Get.to(() => Option()); // Show login screen if not logged in
-      // }
+      Get.to(()=> (islogin) ? Candidate_Bottam() :Option());
     });
     super.onInit();
   }

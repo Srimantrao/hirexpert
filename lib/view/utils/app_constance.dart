@@ -13,7 +13,7 @@ String Email = "";
 String Phone = "";
 String Password = "";
 String Comfarm_password = "";
-
+String username = '';
 String Candidate = '';
 String Tokan = '';
 bool islogin = false;

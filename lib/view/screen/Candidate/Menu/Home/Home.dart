@@ -2,39 +2,29 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/JobCountabale_hedal.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Home/saving/saved.dart';
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Row/homerow.dart';
+import '../../../../../controller/State_Controller/Candidate_state/Menu/home/My_jobs/State_home.dart';
 import 'Applied/Show_Applied.dart';
 import 'Declined/Show_Declined.dart';
 import 'Hired/Show_Hired.dart';
 import 'Interviwe/Show_Interview.dart';
 import 'Offer/Show_Offer.dart';
 
-class Home extends StatefulWidget {
-
+class Home extends StatelessWidget {
+  HomeState_Controller home_state = Get.put(HomeState_Controller());
   Home({super.key});
 
   @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
-  @override
-  void initState() {
-    jobincount.jobcount.Jobcountsaccording_fuction(CandidateId: Candidate , Tokan: Tokan);
-    super.initState();
-  }
-      final JobcountabaleHedal jobincount = Get.put(JobcountabaleHedal());
-
-  @override
   Widget build(BuildContext context) {
+    home_state.jobincount.jobcount.onInit();
+    home_state.jobincount.onInit();
+    home_state.onInit();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
@@ -54,111 +44,91 @@ class _HomeState extends State<Home> {
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Obx(() {
-            if (jobincount.jobcount.isLoding.value) {
-              return Center(
-                child: Image.asset(AppLoder.infinityloder_without_background),
-              );
-            } else if (jobincount.jobcount.data.value['data'] == null) {
-              return Center(
-                child: Text('Plese wait'),
-              );
+            if (home_state.jobincount.jobcount.isLoding.value) {
+              return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+            } else if (home_state.jobincount.jobcount.data.value['data'] == null) {
+              return Center(child: Text('Plese wait'));
             } else {
               return Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Get.width / 30,
-                ),
+                padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
                 child: Column(
                   children: [
                     //Saved
                     GestureDetector(
-                      onTap: () {
-                        Get.to(() => Saved());
-                      },
+                      onTap: () {Get.to(() => Saved());},
                       child: Jobrow(
                         icon: AppIcons.Seeved,
                         name: My_Jobs_Screen.Saved,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(jobincount.jobcount.data.value['data']['savedJobCnt'].toString()),
+                          child: Text(home_state.jobincount.jobcount.data.value['data']['savedJobCnt'].toString()),
                         ),
                       ),
                     ),
 
                     //Applied
                     GestureDetector(
-                      onTap: () {
-                        Get.to(() => Show_Applied());
-                      },
+                      onTap: () {Get.to(() => Show_Applied());},
                       child: Jobrow(
                         icon: AppIcons.Applid,
                         name: My_Jobs_Screen.Applied,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(jobincount.jobcount.data.value['data']['appliedJobCnt'].toString()),
+                          child: Text(home_state.jobincount.jobcount.data.value['data']['appliedJobCnt'].toString()),
                         ),
                       ),
                     ),
 
                     //Interviwe
                     GestureDetector(
-                      onTap: () {
-                        Get.to(() => Show_Interviwe());
-                      },
+                      onTap: () {Get.to(() => Show_Interviwe());},
                       child: Jobrow(
                         icon: AppIcons.seved,
                         name: My_Jobs_Screen.Interview,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(jobincount.jobcount.data.value['data']['interviewJobCnt'].toString()),
+                          child: Text(home_state.jobincount.jobcount.data.value['data']['interviewJobCnt'].toString()),
                         ),
                       ),
                     ),
 
                     //Offer
                     GestureDetector(
-                      onTap: () {
-                        Get.to(() => Show_Offer());
-                      },
+                      onTap: () {Get.to(() => Show_Offer());},
                       child: Jobrow(
                         icon: AppIcons.rupess,
                         name: My_Jobs_Screen.Offer,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(jobincount.jobcount.data.value['data']['offersJobCnt'].toString()),
+                          child: Text(home_state.jobincount.jobcount.data.value['data']['offersJobCnt'].toString()),
                         ),
                       ),
                     ),
 
                     //Hired
                     GestureDetector(
-                      onTap: () {
-                        Get.to(() => Show_Hired());
-                      },
+                      onTap: () {Get.to(() => Show_Hired());},
                       child: Jobrow(
                         icon: AppIcons.Hired,
                         name: My_Jobs_Screen.Hired,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(jobincount.jobcount.data.value['data']['hiredJobCnt'].toString()),
+                          child: Text(home_state.jobincount.jobcount.data.value['data']['hiredJobCnt'].toString()),
                         ),
                       ),
                     ),
 
                     //Declined
                     GestureDetector(
-                      onTap: () {
-                        Get.to(() => Show_Declined());
-                      },
+                      onTap: () {Get.to(() => Show_Declined());},
                       child: Jobrow(
                         icon: AppIcons.Declind,
                         name: My_Jobs_Screen.Declined,
                         child: CircleAvatar(
                           minRadius: 12,
-                          child: Text(jobincount.jobcount.data.value['data']['declinedJobCnt'].toString()),
+                          child: Text(home_state.jobincount.jobcount.data.value['data']['declinedJobCnt'].toString()),
                         ),
                       ),
                     ),

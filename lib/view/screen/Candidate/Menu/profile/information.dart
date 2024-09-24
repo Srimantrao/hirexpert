@@ -15,9 +15,8 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile
 import 'Setting.dart';
 
 class Profile_info extends StatelessWidget {
-  Profile_info({super.key});
-
   final ProfielInfo profile = Get.put(ProfielInfo());
+  Profile_info({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -75,9 +74,7 @@ class Profile_info extends StatelessWidget {
                               }
                             }),
                             InkWell(
-                              onTap: () {
-                                Get.to(() => Setting());
-                              },
+                              onTap: () {Get.to(() => Setting());},
                               child: Icon(Icons.settings, color: AppColor.Button_color, size: 32),
                             )
                           ],
@@ -88,25 +85,19 @@ class Profile_info extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           tab(
-                              onTap: () {
-                                Tabb.Tabbarcontroler_1();
-                              },
+                              onTap: () {Tabb.Tabbarcontroler_1();},
                               textcolor: Tabb.selectedIndex == 0,
                               tabcolor: Tabb.selectedIndex == 0,
                               name: Profile_Text.Extra_Info,
                           ),
                           tab(
-                              onTap: () {
-                                Tabb.Tabbarcontroler_2();
-                              },
+                              onTap: () {Tabb.Tabbarcontroler_2();},
                               textcolor: Tabb.selectedIndex == 1,
                               tabcolor: Tabb.selectedIndex == 1,
                               name: Profile_Text.My_Profile,
                           ),
                           tab(
-                              onTap: () {
-                                Tabb.Tabbarcontroler_3();
-                              },
+                              onTap: () {Tabb.Tabbarcontroler_3();},
                               textcolor: Tabb.selectedIndex == 2,
                               tabcolor: Tabb.selectedIndex == 2,
                               name: Profile_Text.Document,
@@ -116,14 +107,7 @@ class Profile_info extends StatelessWidget {
                       SizedBox(height: Get.height / 50),
                       SizedBox(
                         height: Get.height / 1.52,
-                        child: IndexedStack(
-                          index: Tabb.selectedIndex,
-                          children: [
-                            Extra_info(),
-                            MY_Profile(),
-                            Documant_Profile(),
-                          ],
-                        ),
+                        child: IndexedStack(index: Tabb.selectedIndex, children: [Extra_info(), MY_Profile(), Documant_Profile()]),
                       ),
                     ],
                   );

@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Button_Apping_handler.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_loction.dart';
+import 'package:hirexpert/controller/State_Controller/Candidate_state/Menu/Search/Searech_location_Save.dart';
 import 'package:hirexpert/modal/Job/Search_list.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
@@ -12,7 +14,7 @@ import 'package:flutter_html/flutter_html.dart';
 import '../../../../../utils/app_String.dart';
 
 class Details extends StatelessWidget {
-  final ButtonAppingHandler sumit = Get.put(ButtonAppingHandler());
+  SearechLocationSave SavingDetails = Get.put(SearechLocationSave());
   final String Icon;
   final Color? Color_container;
   final String Job_Tital;
@@ -58,12 +60,11 @@ class Details extends StatelessWidget {
         scrolledUnderElevation: 0,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text(My_Jobs_Screen.Saved,
-            style: TextStyle(fontWeight: FontWeight.w700)),
+        title: Text(My_Jobs_Screen.Saved, style: TextStyle(fontWeight: FontWeight.w700)),
         actions: [SizedBox(width: Get.width / 50)],
       ),
       body: Obx(() {
-        if (sumit.isApply.isLoding.value) {
+        if (SavingDetails.sumit.isApply.isLoding.value) {
           return Scaffold(
             body: Container(
               height: Get.height,
@@ -76,7 +77,7 @@ class Details extends StatelessWidget {
               ),
             ),
           );
-        } else if (sumit.isApply.isApplingdata['data'] == null || sumit.isApply.isApplingdata == null) {
+        } else if (SavingDetails.sumit.isApply.isApplingdata['data'] == null || SavingDetails.sumit.isApply.isApplingdata == null) {
           return Scaffold(
             body: Container(
               height: Get.height,
@@ -90,7 +91,7 @@ class Details extends StatelessWidget {
             ),
           );
         } else {
-          if (sumit.isApply.isApplingdata['data']['IsApply'] == sumit.valuecheck) {
+          if (SavingDetails.sumit.isApply.isApplingdata['data']['IsApply'] == SavingDetails.sumit.valuecheck) {
             return Container(
               height: Get.height,
               width: Get.width,
@@ -151,7 +152,7 @@ class Details extends StatelessWidget {
                                     itemCount: 1,
                                     itemBuilder: (BuildContext context, int index) {
                                       return Html(
-                                        data: sumit.isApply.isApplingdata['data']['JobAbout'],
+                                        data: SavingDetails.sumit.isApply.isApplingdata['data']['JobAbout'],
                                         style: {
                                           'p': Style(fontSize: FontSize(Get.width / 27)),
                                           'strong': Style(fontSize: FontSize(Get.width / 27)),
@@ -268,10 +269,7 @@ class Details extends StatelessWidget {
                           left: 5,
                           right: 5,
                           bottom: 10,
-                          child: OnButtons(
-                                  Button_Color:  AppColor.success_color ,
-                                  btn_name: 'Applayed',
-                                )
+                          child: OnButtons(Button_Color:  AppColor.success_color , btn_name: 'Applayed')
                         ),
                       ],
                     ),
@@ -346,7 +344,7 @@ class Details extends StatelessWidget {
                                     itemCount: 1,
                                     itemBuilder: (BuildContext context, int index) {
                                       return Html(
-                                        data: sumit.isApply.isApplingdata['data']['JobAbout'],
+                                        data: SavingDetails.sumit.isApply.isApplingdata['data']['JobAbout'],
                                         style: {
                                           'p': Style(fontSize: FontSize(Get.width / 27)),
                                           'strong': Style(fontSize: FontSize(Get.width / 22)),
@@ -460,7 +458,7 @@ class Details extends StatelessWidget {
                           bottom: 10,
                           child: OnButtons(
                             onTap: () {
-                              sumit.Messes(context);
+                              SavingDetails.sumit.Messes(context);
                             },
                             Button_Color: AppColor.Button_color,
                             btn_name: Details_texts.Apply_Now,

@@ -16,7 +16,6 @@ class SearchLoction extends GetxController {
           Timezone: 'asia/kolkata',
           CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
           Tokan: Login.option_data['data']['LoginToken'],
-          IsWeb: '',
         );
       }
     });
@@ -30,7 +29,6 @@ class SearchLoction extends GetxController {
       Timezone: 'asia/kolkata',
       CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
       Tokan: Login.option_data['data']['LoginToken'],
-      IsWeb: 'false',
     );
     super.onClose();
   }
