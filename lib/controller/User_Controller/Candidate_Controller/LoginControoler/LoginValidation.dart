@@ -61,6 +61,7 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
+import 'package:toastification/toastification.dart';
 
 class Candidate_LoginValidation with ChangeNotifier {
   final OptionApiController login = Get.put(OptionApiController());
@@ -174,7 +175,7 @@ class Candidate_LoginValidation with ChangeNotifier {
       );
 
       Get.dialog(
-        Center(child: Image.asset(AppLoder.infinityloder_without_background)),
+        Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250)),
         barrierDismissible: false,
       );
 
@@ -187,21 +188,36 @@ class Candidate_LoginValidation with ChangeNotifier {
       Get.back();
 
       if (login.option_data['status'] == true) {
+        toastification.show(
+          dragToClose: true,
+          description: Text(login.option_data['message'] ?? 'An error occurred'),
+          dismissDirection: DismissDirection.startToEnd,
+          type: ToastificationType.success,
+          style: ToastificationStyle.minimal,
+          autoCloseDuration: Duration(seconds: 5),
+          boxShadow: kElevationToShadow[2],
+        );
         Get.to(() => Candidate_Bottam(),duration: Duration(seconds: 1), transition: Transition.circularReveal);
       } else {
-        Get.showSnackbar(
-          GetBar(
-            duration: Duration(seconds: 2),
-            message: login.option_data['message'] ?? 'An error occurred',
-          ),
+        toastification.show(
+            dragToClose: true,
+            description: Text(login.option_data['message'] ?? 'An error occurred'),
+            dismissDirection: DismissDirection.startToEnd,
+          type: ToastificationType.error,
+          style: ToastificationStyle.minimal,
+          autoCloseDuration: Duration(seconds: 5),
+          boxShadow: kElevationToShadow[2]
         );
       }
     } on FirebaseAuthException catch (e) {
-      Get.showSnackbar(
-        GetBar(
-          duration: Duration(seconds: 2),
-          message: 'Authentication failed: ${e.message}',
-        ),
+      toastification.show(
+        dragToClose: true,
+        description: Text(e.message.toString()),
+        dismissDirection: DismissDirection.startToEnd,
+        type: ToastificationType.error,
+        style: ToastificationStyle.minimal,
+        autoCloseDuration: Duration(seconds: 5),
+        boxShadow: kElevationToShadow[2]
       );
     }
   }

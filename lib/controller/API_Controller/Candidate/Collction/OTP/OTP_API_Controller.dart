@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, file_names, camel_case_types
+// ignore_for_file: non_constant_identifier_names, prefer_typing_uninitialized_variables, file_names, camel_case_types, avoid_print
 
 import 'dart:convert';
 
@@ -12,43 +12,25 @@ class OtpApiController_API extends GetxController {
   var isLoding = false.obs;
   var OTP_data = {}.obs;
 
-  Future OtpApiController_fuction({
-    required String EmailOTP,
-    String? PhoneOTP,
-    required String EntryTerm,
-  }) async {
+  Future OtpApiController_fuction({required String EmailOTP, String? PhoneOTP, required String EntryTerm,}) async {
     try {
       isLoding.value = true;
 
-      if (kDebugMode) {
         print('EmailOTP :  $EmailOTP');
         print('PhoneOTP :  $PhoneOTP');
         print('EntryTerm :  $EntryTerm');
-      }
 
-      Map<String, dynamic> body = {
-        'EmailOTP': EmailOTP,
-        'PhoneOTP': PhoneOTP ?? '',
-        'EntryTerm': EntryTerm,
-      };
-
-      if (kDebugMode) {
-        print(body);
-      }
+      Map<String, dynamic> body = {'EmailOTP': EmailOTP, 'PhoneOTP': PhoneOTP ?? '', 'EntryTerm': EntryTerm,};
+      print(body);
 
       final responce = await http.post(
         Uri.parse(AppUrl.OTP),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip},
         body: body,
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         OTP_data.value = jsonDecode(responce.body);
-        if (kDebugMode) {
-          print("Otpdata :- $OTP_data");
-        }
+        print("Otpdata :- $OTP_data");
       } else {
         throw {
           "OtpData Error this:- ${responce.statusCode} , ${responce.body}"

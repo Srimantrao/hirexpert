@@ -734,3 +734,8 @@ class My_Profile_text{
   static const Email_Id = "Email Id";
   static const About_Me = "About Me";
 }
+
+class OtpScreen_text{
+  static const Phone = "Phone :-";
+  static const Email = "Email :-";
+}

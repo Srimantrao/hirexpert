@@ -24,10 +24,7 @@ class Candidatetech extends GetxController {
       print(body);
 
       final responce = await http.post(Uri.parse(AppUrl.candidateTech),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip},
         body: body,
       );
 

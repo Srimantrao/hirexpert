@@ -27,6 +27,7 @@ import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:toastification/toastification.dart';
 import 'controller/User_Controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 import 'controller/User_Controller/Candidate_Controller/ButtonsController/SearchButtonsController.dart';
 import 'controller/User_Controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
@@ -76,6 +77,7 @@ Future<void> main() async {
 
   print("FristName :- $Frist_name");
   print("LastName :- $Last_name");
+  print("Password :- $Password");
   print("Email :- $Email");
   print("Phone :- $Phone");
   print("Candidate :- $Candidate");
@@ -132,15 +134,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => Education_Controller()),
         ChangeNotifierProvider(create: (_) => UserSearchController())
       ],
-      child: GetMaterialApp(
-        theme: ThemeData(
-          textTheme: GoogleFonts.interTextTheme(textTheme).copyWith(bodyMedium: GoogleFonts.inter(textStyle: textTheme.bodyMedium)),
-          scrollbarTheme: ScrollbarThemeData(
-            thumbColor: MaterialStateProperty.all<Color>(AppColor.Full_body_color),
+      child: ToastificationWrapper(
+        child: GetMaterialApp(
+          theme: ThemeData(
+            textTheme: GoogleFonts.interTextTheme(textTheme).copyWith(bodyMedium: GoogleFonts.inter(textStyle: textTheme.bodyMedium)),
+            scrollbarTheme: ScrollbarThemeData(
+              thumbColor: MaterialStateProperty.all<Color>(AppColor.Full_body_color),
+            ),
           ),
+          debugShowCheckedModeBanner: false,
+          home: Logo(),
         ),
-        debugShowCheckedModeBanner: false,
-        home: Logo(),
       ),
     );
   }

@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Profile/Extrainfo/candidate_update_controller.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/Extra_info.dart';
+import 'package:hirexpert/controller/Save_Controller/Candidate_state/Menu/Profile/Extra_Info/Extra_info.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../app_String.dart';
@@ -13,19 +11,13 @@ import '../../../../app_color.dart';
 import '../../../../app_icon.dart';
 
 class Extra_info extends StatelessWidget {
+  ExtraInfos Extras = Get.put(ExtraInfos());
   Extra_info({super.key});
-
-  final ExtraInfo Extra = Get.put(ExtraInfo());
-
-  TextEditingController whichJob = TextEditingController();
-  TextEditingController Specializationss = TextEditingController();
-  TextEditingController Skillset = TextEditingController();
-
-  OptionApiController login = Get.put(OptionApiController());
-  Candidate_update_controller candidateupdate = Get.put(Candidate_update_controller());
 
   @override
   Widget build(BuildContext context) {
+    Extras.Extra.onInit();
+    Extras.onInit();
     return Scaffold(
       body: Container(
         width: Get.width,
@@ -34,9 +26,9 @@ class Extra_info extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: Get.width / 40),
           child: Obx(
             () {
-              if (Extra.login.isLodingvalue.value) {
-                return Center(child: Image.asset(AppLoder.infinityloder_without_background));
-              } else if (Extra.login.option_data['data'] == null || Extra.login.option_data == null) {
+              if (Extras.Extra.login.isLodingvalue.value) {
+                return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
+              } else if (Extras.Extra.login.option_data['data'] == null || Extras.Extra.login.option_data == null) {
                 return Center(child: Text(API_Error.null_data));
               } else {
                 return Column(
@@ -47,7 +39,7 @@ class Extra_info extends StatelessWidget {
                     //Which of these most closely describe your job !
                     Text(Profile_Text.Moust, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                     TextField(
-                      controller: whichJob,
+                      controller: Extras.whichJob,
                       decoration: InputDecoration(
                         hintText: Profile_Text.Moust_hint,
                         hintStyle: TextStyle(fontSize: Get.width / 24),
@@ -60,7 +52,7 @@ class Extra_info extends StatelessWidget {
                     //Select your Specialization / interest
                     Text(Profile_Text.specializationss, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                     TextField(
-                      controller: Specializationss,
+                      controller: Extras.Specializationss,
                       decoration: InputDecoration(
                         hintText: 'jh',
                         hintStyle: TextStyle(fontSize: Get.width / 24),
@@ -73,7 +65,7 @@ class Extra_info extends StatelessWidget {
                     //What is Your Primary Skilled
                     Text(Profile_Text.What, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                     TextField(
-                      controller: Skillset,
+                      controller: Extras.Skillset,
                       decoration: InputDecoration(
                         hintText: 'jh',
                         // hintText: Extra.login.option_data['data']['UserDetails']['QuestionList'][0]['AnswerArr'][0],
@@ -93,14 +85,7 @@ class Extra_info extends StatelessWidget {
       //Buttons
       floatingActionButton: GestureDetector(
         onTap: () {
-          Get.to(()=> Candidate_Specialization(),duration: Duration(seconds: 1),transition: Transition.upToDown);
-
-          // candidateupdate.Candidate_update_fuction(
-          //     CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-          //     FirstName: login.option_data['data']['UserDetails']['FirstName'],
-          //     UserId: login.option_data['data']['UserDetails']['UserId'],
-          //     Timezone: 'asia/kolkata'
-          // );
+          Get.to(()=> Candidate_Specialization(),duration: Duration(seconds: 1),transition: Transition.upToDown,curve: Curves.easeInOutExpo);
         },
         child: Container(
           height: Get.height / 20,

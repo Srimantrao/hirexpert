@@ -47,7 +47,7 @@ class Home extends StatelessWidget {
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Obx(() {
             if (home_state.jobincount.jobcount.isLoding.value) {
-              return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+              return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
             } else if (home_state.jobincount.jobcount.data.value['data'] == null) {
               return Center(child: Text('Plese wait'));
             } else {

@@ -51,16 +51,6 @@ class Details extends StatelessWidget {
   // final OptionApiController login = Get.put(OptionApiController());
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        toolbarHeight: Get.height / 15,
-        backgroundColor: AppColor.Full_body_color,
-        surfaceTintColor: Colors.transparent,
-        scrolledUnderElevation: 0,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        title: Text(My_Jobs_Screen.Saved, style: TextStyle(fontWeight: FontWeight.w700)),
-        actions: [SizedBox(width: Get.width / 50)],
-      ),
       body: Obx(() {
         if (SavingDetails.sumit.isApply.isLoding.value) {
           return Scaffold(
@@ -71,7 +61,7 @@ class Details extends StatelessWidget {
                 color: AppColor.Full_body_color,
               ),
               child: Center(
-                child: Image.asset(AppLoder.infinityloder_without_background),
+                child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250),
               ),
             ),
           );
@@ -97,7 +87,8 @@ class Details extends StatelessWidget {
               child: SafeArea(
                 child: NestedScrollView(
                   headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-                    return [SliverAppBar(
+                    return [
+                      SliverAppBar(
                         elevation: 0,
                         backgroundColor: AppColor.Full_body_color,
                         forceMaterialTransparency: true,
@@ -125,7 +116,8 @@ class Details extends StatelessWidget {
                             bottam: BorderSide(color: AppColor.Bottam_color),
                           ),
                         ),
-                      ),];
+                      ),
+                    ];
                   },
                   body: Padding(
                     padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
@@ -444,22 +436,17 @@ class Details extends StatelessWidget {
                                     },
                                   ),
                                 ),
-                                SizedBox(height: Get.height / 10),
+                                SizedBox(height: Get.height / 50),
+                                OnButtons(
+                                  onTap: () {
+                                    SavingDetails.sumit.Messes(context);
+                                  },
+                                  Button_Color: AppColor.Button_color,
+                                  btn_name: Details_texts.Apply_Now,
+                                ),
+                                SizedBox(height: Get.height / 50),
                               ],
                             ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 730,
-                          left: 5,
-                          right: 5,
-                          bottom: 10,
-                          child: OnButtons(
-                            onTap: () {
-                              SavingDetails.sumit.Messes(context);
-                            },
-                            Button_Color: AppColor.Button_color,
-                            btn_name: Details_texts.Apply_Now,
                           ),
                         ),
                       ],

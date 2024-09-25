@@ -73,7 +73,7 @@ class Search extends StatelessWidget {
         child: Obx(
           () {
             if (State_Search.Searchings.Search.isLoding.value) {
-              return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+              return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
             } else if (State_Search.Searchings.Search.Search_data.value['data'] == null) {
               return Center(child: Text(API_Error.nulll));
             } else {

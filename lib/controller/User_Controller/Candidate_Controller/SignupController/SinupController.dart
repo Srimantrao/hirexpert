@@ -8,8 +8,9 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Sinup/sinup_API_controller.dart';
-import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
+import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
+import 'package:toastification/toastification.dart';
 
 import '../../../../view/utils/app_constance.dart';
 
@@ -105,7 +106,7 @@ class Candidate_SinupController with ChangeNotifier {
     if (phone_controller.text.isEmpty) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.Phone;
-    } else if (phone_controller.text.length > 9 && phone_controller.text.length < 10) {
+    } else if (phone_controller.text.length != 10) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.phone_ditit;
     } else if (!RegExp(r'^\+?[1-9]\d{1,14}$').hasMatch(phone_controller.text)) {
@@ -190,7 +191,7 @@ class Candidate_SinupController with ChangeNotifier {
     if (phone_controller.text.isEmpty) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.Phone;
-    } else if (phone_controller.text.length > 9 && phone_controller.text.length < 10) {
+    } else if (phone_controller.text.length != 10) {
       _phone_value = true;
       _throwPhoneNumberError = Validation_Error.phone_ditit;
     } else if (!RegExp(r'^\+?[1-9]\d{1,14}$').hasMatch(phone_controller.text)) {
@@ -243,6 +244,7 @@ class Candidate_SinupController with ChangeNotifier {
 
   void SinupValidtion_successful() async {
     if (!_Frist_name_value && !_Last_name_value && !_Email_value && !_phone_value && !_password_value && !_confirm_password) {
+
       try {
         UserCredential userCredential = await auth.createUserWithEmailAndPassword(
           email: email_controller.text,
@@ -276,20 +278,20 @@ class Candidate_SinupController with ChangeNotifier {
         ).then(
           (value) {
             if (Sinup_API.Sinup_data['status'] == true) {
-              Get.to(
-                () => Candidate_Specialization(
-                  first_name: frist_name_controller.text,
-                  last_name: last_name_controller.text,
-                ),
+              toastification.show(
+                title: Text(Sinup_API.Sinup_data['message'] ?? "Unknown error occurred"),
+                type: ToastificationType.success,
+                style: ToastificationStyle.minimal,
+                autoCloseDuration: Duration(seconds: 4),
               );
+              Get.to(() => OTP());
             }
-            String message =
-                Sinup_API.Sinup_data['message'] ?? "Unknown error occurred";
-            Get.showSnackbar(
-              GetBar(
-                duration: Duration(seconds: 2),
-                message: message,
-              ),
+            String message = Sinup_API.Sinup_data['message'] ?? "Unknown error occurred";
+            toastification.show(
+              title: Text(message),
+              type: ToastificationType.error,
+              style: ToastificationStyle.minimal,
+              autoCloseDuration: Duration(seconds: 4),
             );
           },
         );
@@ -302,13 +304,12 @@ class Candidate_SinupController with ChangeNotifier {
           'Password': password_controller.text,
         });
       } on FirebaseException catch (e) {
-        String message = Sinup_API.Sinup_data['message'] ??
-            "Firebase error occurred: ${e.message}";
-        Get.showSnackbar(
-          GetBar(
-            duration: Duration(seconds: 2),
-            message: message,
-          ),
+        String message = Sinup_API.Sinup_data['message'] ?? "Firebase error occurred: ${e.message}";
+        toastification.show(
+          title: Text(message),
+          type: ToastificationType.error,
+          style: ToastificationStyle.minimal,
+          autoCloseDuration: Duration(seconds: 4),
         );
       }
     }

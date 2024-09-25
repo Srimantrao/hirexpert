@@ -17,10 +17,7 @@ class Describeyourjob extends GetxController {
 
       final responce = await http.get(
         Uri.parse(AppUrl.describe_your_job),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-        },
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip},
       );
 
       if (responce.statusCode == 200 || responce.statusCode == 201) {

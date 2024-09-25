@@ -12,6 +12,12 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
+  @override
+  void onInit() {
+    SearchApiController_fuction(Timezone: '', CandidateId: '', IsWeb: '');
+    super.onInit();
+  }
+
   Future SearchApiController_fuction({required String Timezone, required String CandidateId, String? Tokan, required String IsWeb}) async {
     try {
       isLoding.value = true;

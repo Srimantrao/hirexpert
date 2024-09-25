@@ -5,12 +5,19 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:http/http.dart' as http;
 import '../../../../../view/utils/API_Key.dart';
 
 class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
   var option_data = {}.obs;
+
+  @override
+  void onInit() {
+    OptionApiController_fuction(Email: Email ?? '',Password: Password ?? '', Tokan: Tokan ?? '',UserType: username ?? '',CandidateId: Candidate ?? '');
+    super.onInit();
+  }
 
   Future OptionApiController_fuction({String? Tokan, String? CandidateId, String? Email, String? Password, String? UserType}) async {
     try {

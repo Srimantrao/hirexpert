@@ -65,6 +65,7 @@ dependencies:
   flutter_material_pickers: ^3.6.0
   intl: ^0.18.1
   flutter_launcher_icons: ^0.13.1
+  toastification: ^2.3.0
 
 dev_dependencies:
   flutter_test:

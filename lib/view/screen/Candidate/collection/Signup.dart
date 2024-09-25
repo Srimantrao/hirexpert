@@ -41,15 +41,12 @@ class candidate_Signup extends StatelessWidget {
                         child: Image.asset(AppIcons.logo, scale: 6),
                       ),
                       SizedBox(height: Get.height / 20),
-                      Text(Signup_text.Sign_Up, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18),
-                      ),
+                      Text(Signup_text.Sign_Up, style: TextStyle(fontWeight: FontWeight.w900, fontSize: Get.width / 18)),
                       SizedBox(height: Get.height / 20),
 
                       //First Name
                       Inputfild(
-                        onChanged: (FrisName) {
-                          vail.FristName_validation(FrisName);
-                        },
+                        onChanged: (FrisName) {vail.FristName_validation(FrisName);},
                         labal: Signup_text.First_Name,
                         hint: Signup_text.Enter_First_Name,
                         controller: vail.frist_name_controller,
@@ -59,24 +56,17 @@ class candidate_Signup extends StatelessWidget {
 
                       //Last Name
                       Inputfild(
-                        onChanged: (Lastname) {
-                          vail.LastName_validation(Lastname);
-                        },
+                        onChanged: (Lastname) {vail.LastName_validation(Lastname);},
                         labal: Signup_text.Last_Name,
                         hint: Signup_text.Enter_last_Name,
                         controller: vail.last_name_controller,
                       ),
-                      valiadtion_error(
-                        condiation: vail.Last_name_value,
-                        Error: vail.throwLastnameError,
-                      ),
+                      valiadtion_error(condiation: vail.Last_name_value, Error: vail.throwLastnameError),
                       SizedBox(height: Get.height / 50),
 
                       //Email
                       Inputfild(
-                        onChanged: (Email) {
-                          vail.Email_validation(Email);
-                        },
+                        onChanged: (Email) {vail.Email_validation(Email);},
                         labal: Signup_text.Email_Id,
                         hint: Signup_text.Enter_Email_Address,
                         controller: vail.email_controller,
@@ -87,9 +77,7 @@ class candidate_Signup extends StatelessWidget {
                       //Phone Number
                       Inputfild(
                         keyboardType: TextInputType.number,
-                        onChanged: (Phonevalue) {
-                          vail.phone_validation(Phonevalue);
-                        },
+                        onChanged: (Phonevalue) {vail.phone_validation(Phonevalue);},
                         labal: Signup_text.Phone_Number,
                         hint: Signup_text.Enter_Phone_Number,
                         controller: vail.phone_controller,
@@ -103,16 +91,10 @@ class candidate_Signup extends StatelessWidget {
                           return Inputfild(
                             obscureText: vis.isVis,
                             suffixIcon: InkWell(
-                              onTap: () {
-                                vis.visibilityVis();
-                              },
-                              child: (vis.isVis)
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                              onTap: () {vis.visibilityVis();},
+                              child: (vis.isVis) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                             ),
-                            onChanged: (valuepassword) {
-                              vail.Password_validation(valuepassword);
-                            },
+                            onChanged: (valuepassword) {vail.Password_validation(valuepassword);},
                             labal: Signup_text.Password,
                             hint: Signup_text.Enter_last_Name,
                             controller: vail.password_controller,
@@ -127,12 +109,8 @@ class candidate_Signup extends StatelessWidget {
                         builder: (BuildContext context, value, Widget? child) {
                           return Inputfild(
                             suffixIcon: InkWell(
-                              onTap: () {
-                                vis.visibilitycnf();
-                              },
-                              child: (vis.isviscnf)
-                                  ? const Icon(Icons.visibility_off)
-                                  : const Icon(Icons.visibility),
+                              onTap: () {vis.visibilitycnf();},
+                              child: (vis.isviscnf) ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                             ),
                             obscureText: vis.isobscr,
                             labal: Signup_text.Confirm_Password,
@@ -145,9 +123,7 @@ class candidate_Signup extends StatelessWidget {
                       SizedBox(height: Get.height / 20),
 
                       OnButtons(
-                        onTap: () {
-                          vail.SinupValidtion();
-                        },
+                        onTap: () {vail.SinupValidtion();},
                         Button_Color: AppColor.Button_color,
                         btn_name: Signup_text.Sign_Up,
                       ),
@@ -156,9 +132,7 @@ class candidate_Signup extends StatelessWidget {
                       GestureDetector(
                         onTap: () {
                           Get.to(
-                            () => Candidate_Login(),
-                            transition: Transition.leftToRight,
-                            duration: Duration(milliseconds: 500),
+                            () => Candidate_Login(), transition: Transition.leftToRight, duration: Duration(milliseconds: 500),
                           );
                         },
                         child: Row(

@@ -11,8 +11,8 @@ class MenuNavigationController with ChangeNotifier {
   int _selectindex = 0;
 
   final List<Widget> _item = [
-    Home(),
     Search(),
+    Home(),
     Profile_info(),
     Message(),
   ];

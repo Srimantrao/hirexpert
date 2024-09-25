@@ -37,9 +37,9 @@ class Candidate_Bottam extends StatelessWidget {
                   highlightColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   onTap: () {
-                    nav.SelectIndex_one();
+                    nav.SelectIndex_two();
                   },
-                  child: (nav.Selectindex == 0)
+                  child: (nav.Selectindex == 1)
                       ? SvgPicture.asset(AppIcons.open_job, height: Get.height / 32, width: Get.width / 32)
                       : SvgPicture.asset(AppIcons.Jobs, height: Get.height / 32, width: Get.width / 32),
                 ),
@@ -47,9 +47,9 @@ class Candidate_Bottam extends StatelessWidget {
                   highlightColor: Colors.transparent,
                   focusColor: Colors.transparent,
                   onTap: () {
-                    nav.SelectIndex_two();
+                    nav.SelectIndex_one();
                   },
-                  child: (nav.Selectindex == 1)
+                  child: (nav.Selectindex == 0)
                       ? SvgPicture.asset(AppIcons.Search_job, height: Get.height / 32, width: Get.width / 32)
                       : SvgPicture.asset(AppIcons.Search, height: Get.height / 32, width: Get.width / 32),
                 ),

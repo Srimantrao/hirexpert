@@ -49,7 +49,7 @@ class Profile_info extends StatelessWidget {
                           children: [
                             Obx(() {
                               if (Statesbar.profile.login.isLodingvalue.value) {
-                                return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+                                return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
                               } else if (Statesbar.profile.login.option_data['data'] == null || Statesbar.profile.login.option_data == null) {
                                 return Center(child: Text(API_Error.null_data));
                               } else {
@@ -112,7 +112,12 @@ class Profile_info extends StatelessWidget {
                       SizedBox(height: Get.height / 50),
                       SizedBox(
                         height: Get.height / 1.52,
-                        child: IndexedStack(index: Tabb.selectedIndex, children: [Extra_info(), MY_Profile(), Documant_Profile()]),
+                        child: IndexedStack(
+                            index: Tabb.selectedIndex,
+                            children: [
+                              Extra_info(), MY_Profile(), Documant_Profile()
+                            ]
+                        ),
                       ),
                     ],
                   );
