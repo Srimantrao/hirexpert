@@ -57,7 +57,7 @@ class Home extends StatelessWidget {
                   children: [
                     //Saved
                     GestureDetector(
-                      onTap: () {Get.to(() => Saved());},
+                      onTap: () {Get.to(() => Saved(),duration: Duration(milliseconds: 800),transition: Transition.leftToRight,curve: Curves.easeInExpo);},
                       child: Jobrow(
                         icon: AppIcons.Seeved,
                         name: My_Jobs_Screen.Saved,
@@ -70,7 +70,7 @@ class Home extends StatelessWidget {
 
                     //Applied
                     GestureDetector(
-                      onTap: () {Get.to(() => Show_Applied());},
+                      onTap: () {Get.to(() => Show_Applied(),duration: Duration(milliseconds: 800),transition: Transition.leftToRight,curve: Curves.easeInExpo);},
                       child: Jobrow(
                         icon: AppIcons.Applid,
                         name: My_Jobs_Screen.Applied,
@@ -83,7 +83,7 @@ class Home extends StatelessWidget {
 
                     //Interviwe
                     GestureDetector(
-                      onTap: () {Get.to(() => Show_Interviwe());},
+                      onTap: () {Get.to(() => Show_Interviwe(),duration: Duration(milliseconds: 800),transition: Transition.leftToRight,curve: Curves.easeInExpo);},
                       child: Jobrow(
                         icon: AppIcons.seved,
                         name: My_Jobs_Screen.Interview,
@@ -96,7 +96,7 @@ class Home extends StatelessWidget {
 
                     //Offer
                     GestureDetector(
-                      onTap: () {Get.to(() => Show_Offer());},
+                      onTap: () {Get.to(() => Show_Offer(),duration: Duration(milliseconds: 800),transition: Transition.leftToRight,curve: Curves.easeInExpo);},
                       child: Jobrow(
                         icon: AppIcons.rupess,
                         name: My_Jobs_Screen.Offer,
@@ -109,7 +109,7 @@ class Home extends StatelessWidget {
 
                     //Hired
                     GestureDetector(
-                      onTap: () {Get.to(() => Show_Hired());},
+                      onTap: () {Get.to(() => Show_Hired(),duration: Duration(milliseconds: 800),transition: Transition.leftToRight,curve: Curves.easeInExpo);},
                       child: Jobrow(
                         icon: AppIcons.Hired,
                         name: My_Jobs_Screen.Hired,
@@ -122,7 +122,7 @@ class Home extends StatelessWidget {
 
                     //Declined
                     GestureDetector(
-                      onTap: () {Get.to(() => Show_Declined());},
+                      onTap: () {Get.to(() => Show_Declined(),duration: Duration(milliseconds: 800),transition: Transition.leftToRight,curve: Curves.easeInExpo);},
                       child: Jobrow(
                         icon: AppIcons.Declind,
                         name: My_Jobs_Screen.Declined,
