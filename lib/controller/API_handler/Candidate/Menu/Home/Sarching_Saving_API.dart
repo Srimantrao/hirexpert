@@ -16,6 +16,7 @@ class SarchingSavingApi extends GetxController {
         CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
         Timezone: 'asia/kolkata',
         Tokan: login.option_data['data']['LoginToken'],
+        Page: '1',
       );
       await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
       await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
@@ -31,6 +32,7 @@ class SarchingSavingApi extends GetxController {
       CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
       Timezone: 'asia/kolkata',
       Tokan: login.option_data['data']['LoginToken'],
+      Page: '1',
     );
     super.onClose();
   }

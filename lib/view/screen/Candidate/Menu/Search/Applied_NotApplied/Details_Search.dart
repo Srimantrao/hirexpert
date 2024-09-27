@@ -63,7 +63,7 @@ class Details extends StatelessWidget {
               ),
             ),
           );
-        } else if (SavingDetails.sumit.isApply.isApplingdata['data'] == null || SavingDetails.sumit.valuecheck) {
+        } else if (SavingDetails.sumit.isApply.isApplingdata['data'] == null || SavingDetails.sumit.isApply.isApplingdata['data']) {
           return Scaffold(
             body: Container(
               height: Get.height,
@@ -75,7 +75,7 @@ class Details extends StatelessWidget {
             ),
           );
         } else {
-          if (SavingDetails.sumit.isApply.isApplingdata['data']['IsApply'] == 1) {
+          if (SavingDetails.sumit.isApply.isApplingdata['data']['IsApply'] == SavingDetails.sumit.valuecheck) {
             return SafeArea(
               child: Scaffold(
                 backgroundColor: AppColor.Full_body_color,
