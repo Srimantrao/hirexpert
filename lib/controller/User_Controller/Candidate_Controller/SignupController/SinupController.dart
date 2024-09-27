@@ -10,6 +10,8 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Sinup/sinup_API_controller.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_success.dart';
 import 'package:toastification/toastification.dart';
 
 import '../../../../view/utils/app_constance.dart';
@@ -251,24 +253,6 @@ class Candidate_SinupController with ChangeNotifier {
           password: password_controller.text,
         );
 
-        pref!.setString('FristName', frist_name_controller.text);
-        pref!.setString('LastName', last_name_controller.text);
-        pref!.setString('Email', email_controller.text);
-        pref!.setString('Phone', phone_controller.text);
-        pref!.setString('Password', password_controller.text);
-
-        Frist_name = pref!.getString('FristName')!;
-        Last_name = pref!.getString('LastName')!;
-        Email = pref!.getString('Email')!;
-        Phone = pref!.getString('Phone')!;
-        Password = pref!.getString('Password')!;
-
-        print("FristName :- $Frist_name");
-        print("LastName :- $Last_name");
-        print("Email :- $Email");
-        print("Phone :- $Phone");
-        print("Password :- $Password");
-
         Sinup_API.SinupApiController_faction(
           FirstName: frist_name_controller.text,
           LastName: last_name_controller.text,
@@ -278,24 +262,12 @@ class Candidate_SinupController with ChangeNotifier {
         ).then(
           (value) {
             if (Sinup_API.Sinup_data['status'] == true) {
-              toastification.show(
-                title: Text(Sinup_API.Sinup_data['message'] ?? "Unknown error occurred"),
-                type: ToastificationType.success,
-                style: ToastificationStyle.minimal,
-                autoCloseDuration: Duration(seconds: 4),
-              );
+              ToastificationSuccess.Success(Sinup_API.Sinup_data['message'] ?? "Unknown error occurred");
               Get.to(() => OTP());
             }
-            String message = Sinup_API.Sinup_data['message'] ?? "Unknown error occurred";
-            toastification.show(
-              title: Text(message),
-              type: ToastificationType.error,
-              style: ToastificationStyle.minimal,
-              autoCloseDuration: Duration(seconds: 4),
-            );
+            ToastificationError.Error(Sinup_API.Sinup_data['message'] ?? "Unknown error occurred");
           },
         );
-
         await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
           'FristName': frist_name_controller.text,
           'LastName': last_name_controller.text,
@@ -304,13 +276,7 @@ class Candidate_SinupController with ChangeNotifier {
           'Password': password_controller.text,
         });
       } on FirebaseException catch (e) {
-        String message = Sinup_API.Sinup_data['message'] ?? "Firebase error occurred: ${e.message}";
-        toastification.show(
-          title: Text(message),
-          type: ToastificationType.error,
-          style: ToastificationStyle.minimal,
-          autoCloseDuration: Duration(seconds: 4),
-        );
+        ToastificationError.Error(Sinup_API.Sinup_data['message'] ?? "Firebase error occurred: ${e.message}");
       }
     }
     notifyListeners();

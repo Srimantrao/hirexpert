@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/login.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
@@ -123,7 +124,27 @@ class candidate_Signup extends StatelessWidget {
                       SizedBox(height: Get.height / 20),
 
                       OnButtons(
-                        onTap: () {vail.SinupValidtion();},
+                        onTap: () {
+                          pref!.setString('FristName', vail.frist_name_controller.text);
+                          pref!.setString('LastName', vail.last_name_controller.text);
+                          pref!.setString('Email', vail.email_controller.text);
+                          pref!.setString('Phone', vail.phone_controller.text);
+                          pref!.setString('Password', vail.password_controller.text);
+
+                          Frist_name = pref!.getString('FristName')!;
+                          Last_name = pref!.getString('LastName')!;
+                          Email = pref!.getString('Email')!;
+                          Phone = pref!.getString('Phone')!;
+                          Password = pref!.getString('Password')!;
+
+                          print("FristName :- $Frist_name");
+                          print("LastName :- $Last_name");
+                          print("Email :- $Email");
+                          print("Phone :- $Phone");
+                          print("Password :- $Password");
+
+                          vail.SinupValidtion();
+                          },
                         Button_Color: AppColor.Button_color,
                         btn_name: Signup_text.Sign_Up,
                       ),

@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import 'package:http/http.dart' as http;
 
 class Jobcountsaccording extends GetxController {
@@ -32,12 +33,13 @@ class Jobcountsaccording extends GetxController {
         data.value = jsonDecode(responce.body);
         print("Candidatecount :- $data");
       } else {
+        ToastificationError.Error('${responce.body}, ${responce.statusCode}');
         throw {
           "Candidatecount this Error :-  ${responce.body}, ${responce.statusCode}",
         };
       }
     } catch (e) {
-      print("Candiate Error $e");
+      ToastificationError.Error('Candiate Error :- $e');
     } finally {
       isLoding.value = false;
     }

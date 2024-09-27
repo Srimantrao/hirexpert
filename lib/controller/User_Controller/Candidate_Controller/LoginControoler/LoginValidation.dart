@@ -60,7 +60,10 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/buttom/Candidate/candidate_buttom.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import 'package:toastification/toastification.dart';
+
+import '../../../../view/utils/common/Tostification/Toastification_success.dart';
 
 class Candidate_LoginValidation with ChangeNotifier {
   final OptionApiController login = Get.put(OptionApiController());
@@ -187,37 +190,13 @@ class Candidate_LoginValidation with ChangeNotifier {
       Get.back();
 
       if (login.option_data['status'] == true) {
-        toastification.show(
-          dragToClose: true,
-          description: Text(login.option_data['message'] ?? 'An error occurred'),
-          dismissDirection: DismissDirection.startToEnd,
-          type: ToastificationType.success,
-          style: ToastificationStyle.minimal,
-          autoCloseDuration: Duration(seconds: 5),
-          boxShadow: kElevationToShadow[2],
-        );
+        ToastificationSuccess.Success(login.option_data['message'] ?? 'An error occurred');
         Get.to(() => Candidate_Bottam(),duration: Duration(seconds: 1), transition: Transition.circularReveal);
       } else {
-        toastification.show(
-            dragToClose: true,
-            description: Text(login.option_data['message'] ?? 'An error occurred'),
-            dismissDirection: DismissDirection.startToEnd,
-          type: ToastificationType.error,
-          style: ToastificationStyle.minimal,
-          autoCloseDuration: Duration(seconds: 5),
-          boxShadow: kElevationToShadow[2]
-        );
+        ToastificationError.Error(login.option_data['message'] ?? 'An error occurred');
       }
     } on FirebaseAuthException catch (e) {
-      toastification.show(
-        dragToClose: true,
-        description: Text(e.message.toString()),
-        dismissDirection: DismissDirection.startToEnd,
-        type: ToastificationType.error,
-        style: ToastificationStyle.minimal,
-        autoCloseDuration: Duration(seconds: 5),
-        boxShadow: kElevationToShadow[2]
-      );
+      ToastificationError.Error(e.message.toString());
     }
   }
   notifyListeners();
