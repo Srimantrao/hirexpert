@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Apply_now_Controller.dart';
 import '../../../../../view/utils/app_color.dart';
+import '../../../../../view/utils/app_constance.dart';
 import '../../../../../view/utils/common/Buttons/wideButtons.dart';
 import '../../../../API_Controller/Candidate/Menu/Home/isAppling_API_Controller.dart';
 
@@ -24,7 +25,11 @@ class ButtonAppingHandler extends GetxController {
         JobId: '1',
         Timezone: 'asia/kolkata',
       );
+      await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
+      await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
     });
+    Tokan = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
     super.onInit();
   }
 

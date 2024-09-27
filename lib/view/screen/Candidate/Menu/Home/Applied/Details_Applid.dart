@@ -45,7 +45,6 @@ class Details_Appild extends StatelessWidget {
     required this.Hybrid,
     required this.stats,
   });
-
   @override
   Widget build(BuildContext context) {
     final Applid = Provider.of<DetailsAppild>(context, listen: false);
@@ -161,8 +160,7 @@ class Details_Appild extends StatelessWidget {
                                 ),
                                 SizedBox(width: Get.width / 23),
                                 Expanded(
-                                  child: Text(Benefits_Offered[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor),
-                                  ),
+                                  child: Text(Benefits_Offered[index], style: TextStyle(fontSize: 16, color: AppColor.subcolor)),
                                 ),
                               ],
                             );

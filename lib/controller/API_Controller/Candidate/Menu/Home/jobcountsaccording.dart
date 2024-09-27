@@ -5,18 +5,11 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:http/http.dart' as http;
 
 class Jobcountsaccording extends GetxController {
   var isLoding = false.obs;
   var data= {}.obs;
-
-  @override
-  void onInit() {
-    Jobcountsaccording_fuction(CandidateId: Candidate, Tokan: Tokan ?? '');
-    super.onInit();
-  }
 
   Future Jobcountsaccording_fuction({String? Tokan, required String CandidateId}) async {
     Map<String, dynamic> body = {'CandidateId': CandidateId,};

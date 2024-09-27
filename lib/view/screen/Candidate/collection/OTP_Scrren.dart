@@ -1,6 +1,5 @@
  // ignore_for_file: file_names, non_constant_identifier_names, must_be_immutable, avoid_print
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/OTP/OTP_API_Controller.dart';

@@ -188,6 +188,7 @@ class Search_text {
 //Details Screen
 class Details_texts {
   static const Apply_Now = "Apply Now";
+  static const Applyed = "Applyed";
   static const Job_Description = "Job Description";
   static const Description = "We are looking for React Native developer interested in building performant mobile apps on both the iOS &Android platform. You will responsible for architectingand building these applications, as well coordinatingwith teams responsible for other layers of the productinfrastructure. Building a product is highly collaborativeeffort, and as such, a strong team player commitmentto perfection is required.";
   static const Requirements = "Requirements";

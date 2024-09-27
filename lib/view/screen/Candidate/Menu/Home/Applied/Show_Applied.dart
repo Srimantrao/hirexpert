@@ -53,9 +53,7 @@ class Show_Applied extends StatelessWidget {
             return Container(
               height: size.height,
               width: size.width,
-              decoration: BoxDecoration(
-                color: AppColor.Full_body_color,
-              ),
+              decoration: BoxDecoration(color: AppColor.Full_body_color),
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: size.width / 30),
                 child: ListView.builder(

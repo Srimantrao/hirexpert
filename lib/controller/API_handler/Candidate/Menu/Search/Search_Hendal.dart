@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Search/Search_API_Controller.dart';
 
+import '../../../../../view/utils/app_constance.dart';
+
 class SearchHendal extends GetxController {
   OptionApiController Login = Get.put(OptionApiController());
   SearchApiController Search = Get.put(SearchApiController());
@@ -17,7 +19,11 @@ class SearchHendal extends GetxController {
           CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
           Tokan: Login.option_data['data']['LoginToken'],
         );
+        await pref!.setString("Tokan", Login.option_data['data']['LoginToken']);
+        await pref!.setString('Candidate', Login.option_data['data']['UserDetails']['CandidateId']);
       }
+      Tokan = pref!.getString('Tokan')!;
+      Candidate = pref!.getString('Candidate')!;
     });
     super.onInit();
   }

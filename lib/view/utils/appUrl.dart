@@ -2,6 +2,9 @@
 
 import 'package:hirexpert/view/screen/Employer/collection/Signup.dart';
 
+// static const Hirexpert = "https://cidevelop.weingenious.in/hirexpert/"; //Staging
+// static const Hirexpert = "http://192.168.1.123/stage_gohire/";  //Local
+
 class AppUrl {
   static const WebSocket = "wss://echo.websocket.events";
   static const Hirexpert = "https://cidevelop.weingenious.in/hirexpert/";

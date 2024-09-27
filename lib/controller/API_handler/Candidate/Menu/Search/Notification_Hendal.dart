@@ -4,6 +4,8 @@ import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Notification/Notification_API_Controller.dart';
 
+import '../../../../../view/utils/app_constance.dart';
+
 class NotificationHendal extends GetxController {
   OptionApiController login = Get.put(OptionApiController());
   NotificationApiController Notifica = Get.put(NotificationApiController());
@@ -16,7 +18,9 @@ class NotificationHendal extends GetxController {
           Tokan: login.option_data['data']['LoginToken'],
         );
       }
+      await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
     });
+    Tokan = pref!.getString('Tokan')!;
     super.onInit();
   }
 

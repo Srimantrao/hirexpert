@@ -3,6 +3,7 @@
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/Offer_Controller.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 
 class HiredApiHandler extends GetxController {
   OfferController hired = Get.put(OfferController());
@@ -18,7 +19,11 @@ class HiredApiHandler extends GetxController {
         JobStatus: 'Hired',
         Tokan: login.option_data['data']['LoginToken'],
       );
+      await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
+      await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
     });
+    Tokan = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
     super.onInit();
   }
 
