@@ -63,7 +63,7 @@ class Details extends StatelessWidget {
               ),
             ),
           );
-        } else if (SavingDetails.sumit.isApply.isApplingdata['data'] == null || SavingDetails.sumit.isApply.isApplingdata['data']) {
+        } else if (SavingDetails.sumit.isApply.isApplingdata['data'] == null) {
           return Scaffold(
             body: Container(
               height: Get.height,
