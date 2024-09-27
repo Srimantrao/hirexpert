@@ -48,6 +48,8 @@ class Details extends StatelessWidget {
     this.saving,
   });
   Widget build(BuildContext context) {
+    SavingDetails.sumit.onInit();
+    SavingDetails.onInit();
     return Scaffold(
       body: Obx(() {
         if (SavingDetails.sumit.isApply.isLoding.value) {

@@ -14,7 +14,6 @@ class SarchingSavingApi extends GetxController {
     Future.microtask(() async {
       await favourlist.Favouritejob_fuction(
         CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-        Page: '1',
         Timezone: 'asia/kolkata',
         Tokan: login.option_data['data']['LoginToken'],
       );
@@ -30,7 +29,6 @@ class SarchingSavingApi extends GetxController {
   void onClose() {
     favourlist.Favouritejob_fuction(
       CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-      Page: '1',
       Timezone: 'asia/kolkata',
       Tokan: login.option_data['data']['LoginToken'],
     );

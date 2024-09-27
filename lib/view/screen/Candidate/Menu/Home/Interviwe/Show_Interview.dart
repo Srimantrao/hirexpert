@@ -24,39 +24,28 @@ class Show_Interviwe extends StatelessWidget {
         backgroundColor: AppColor.Full_body_color,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: const Text(
-          My_Jobs_Screen.Interview,
-          style: TextStyle(
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        actions: [
-          Icon(Icons.notifications),
-          SizedBox(width: size.width / 50),
-        ],
+        title: Text(My_Jobs_Screen.Interview, style: TextStyle(fontWeight: FontWeight.w700)),
+        actions: [Icon(Icons.notifications), SizedBox(width: size.width / 50)],
       ),
       body: Container(
         height: size.height,
         width: size.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color,),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 30),
           child: Obx(
             () {
               if (Interview.JobInter.isloding.value) {
                 return Center(
-                  child: Image.asset(AppLoder.infinityloder_without_background),
+                  child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250),
                 );
               } else if (Interview.JobInter.JobInterviwe_data.value['data'] == null) {
-                return const Center(
+                return Center(
                   child: Text(API_Error.null_data),
                 );
               } else {
                 return ListView.builder(
-                  itemCount:
-                      Interview.JobInter.JobInterviwe_data['data'].length,
+                  itemCount: Interview.JobInter.JobInterviwe_data['data'].length,
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
@@ -83,12 +72,8 @@ class Show_Interviwe extends StatelessWidget {
                         width: size.width,
                         decoration: BoxDecoration(
                           border: Border(
-                            top: BorderSide(
-                              color: AppColor.Bottam_color,
-                            ),
-                            bottom: const BorderSide(
-                              color: Colors.transparent,
-                            ),
+                            top: BorderSide(color: AppColor.Bottam_color,),
+                            bottom: BorderSide(color: Colors.transparent),
                           ),
                           color: AppColor.Full_body_color,
                         ),
@@ -98,23 +83,17 @@ class Show_Interviwe extends StatelessWidget {
                             Row(
                               children: [
                                 Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: size.width / 40,
-                                  ),
+                                  padding: EdgeInsets.symmetric(vertical: size.width / 40),
                                   child: Container(
                                     width: size.width / 5.5,
                                     height: size.height / 12,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(
-                                        size.width / 30,
-                                      ),
+                                      borderRadius: BorderRadius.circular(size.width / 30),
                                     ),
                                     child: Padding(
-                                      padding: const EdgeInsets.all(15),
+                                      padding: EdgeInsets.all(15),
                                       child: Image.network(
-                                        Interview.JobInter
-                                                .JobInterviwe_data.value['data']
-                                            [index]['ComLogo'],
+                                        Interview.JobInter.JobInterviwe_data.value['data'][index]['ComLogo'],
                                       ),
                                     ),
                                   ),
@@ -128,12 +107,8 @@ class Show_Interviwe extends StatelessWidget {
                                         Row(
                                           children: [
                                             Text(
-                                              Interview.JobInter
-                                                      .JobInterviwe_data.value['data']
-                                                  [index]['TechName'],
-                                              style: TextStyle(
-                                                color: AppColor.subcolor,
-                                              ),
+                                              Interview.JobInter.JobInterviwe_data.value['data'][index]['TechName'],
+                                              style: TextStyle(color: AppColor.subcolor),
                                             ),
                                           ],
                                         ),
@@ -142,24 +117,13 @@ class Show_Interviwe extends StatelessWidget {
                                     SizedBox(
                                       width: Get.width / 2,
                                       child: Text(
-                                        Interview.JobInter
-                                                .JobInterviwe_data.value['data']
-                                            [index]['JobTitle'],
-                                        style: TextStyle(
-                                          fontSize: size.width / 23,
-                                          fontWeight: FontWeight.w600,
-                                        ),
+                                        Interview.JobInter.JobInterviwe_data.value['data'][index]['JobTitle'],
+                                        style: TextStyle(fontSize: size.width / 23, fontWeight: FontWeight.w600),
                                       ),
                                     ),
                                     Text(
-                                      Interview.JobInter
-                                              .JobInterviwe_data.value['data'][index]
-                                          ['ComName'],
-                                      style: TextStyle(
-                                        fontSize: size.width / 26,
-                                        fontWeight: FontWeight.w400,
-                                        color: AppColor.Button_color,
-                                      ),
+                                      Interview.JobInter.JobInterviwe_data.value['data'][index]['ComName'],
+                                      style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color),
                                     ),
                                   ],
                                 ),
@@ -176,20 +140,13 @@ class Show_Interviwe extends StatelessWidget {
                                       width: size.width / 3.2,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Interview.JobInter
-                                                  .JobInterviwe_data.value['data']
-                                              [index]["WorkSet"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Interview.JobInter.JobInterviwe_data.value['data'][index]["WorkSet"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -198,20 +155,13 @@ class Show_Interviwe extends StatelessWidget {
                                       width: size.width / 7,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Interview.JobInter
-                                                  .JobInterviwe_data.value['data']
-                                              [index]["Location"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Interview.JobInter.JobInterviwe_data.value['data'][index]["Location"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -220,20 +170,13 @@ class Show_Interviwe extends StatelessWidget {
                                       width: size.width / 5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Interview.JobInter
-                                                  .JobInterviwe_data.value['data']
-                                              [index]['JobType'],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Interview.JobInter.JobInterviwe_data.value['data'][index]['JobType'],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -246,20 +189,13 @@ class Show_Interviwe extends StatelessWidget {
                                       width: size.width / 5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Interview.JobInter
-                                                  .JobInterviwe_data.value['data']
-                                              [index]["Experience"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 35,
-                                          ),
+                                          Interview.JobInter.JobInterviwe_data.value['data'][index]["Experience"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 35),
                                         ),
                                       ),
                                     ),
@@ -268,20 +204,13 @@ class Show_Interviwe extends StatelessWidget {
                                       width: size.width / 2.5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Interview.JobInter
-                                                  .JobInterviwe_data.value['data']
-                                              [index]["Salary"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Interview.JobInter.JobInterviwe_data.value['data'][index]["Salary"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -290,20 +219,13 @@ class Show_Interviwe extends StatelessWidget {
                                       width: size.width / 5,
                                       height: size.height / 25,
                                       decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(
-                                          size.width / 60,
-                                        ),
+                                        borderRadius: BorderRadius.circular(size.width / 60),
                                         color: AppColor.ditalis_conatiner,
                                       ),
                                       child: Center(
                                         child: Text(
-                                          Interview.JobInter
-                                                  .JobInterviwe_data.value['data']
-                                              [index]["WorkSet"],
-                                          style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            fontSize: size.width / 30,
-                                          ),
+                                          Interview.JobInter.JobInterviwe_data.value['data'][index]["WorkSet"],
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: size.width / 30),
                                         ),
                                       ),
                                     ),
@@ -317,11 +239,8 @@ class Show_Interviwe extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
                                 Text(
-                                  Interview.JobInter.JobInterviwe_data.value['data']
-                                      [index]["FormatDt"],
-                                  style: TextStyle(
-                                    color: AppColor.subcolor,
-                                  ),
+                                  Interview.JobInter.JobInterviwe_data.value['data'][index]["FormatDt"],
+                                  style: TextStyle(color: AppColor.subcolor),
                                 ),
                               ],
                             )

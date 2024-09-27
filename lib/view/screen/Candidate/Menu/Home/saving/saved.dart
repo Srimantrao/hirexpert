@@ -30,9 +30,7 @@ class Saved extends StatelessWidget {
       body: Container(
         width: size.width,
         height: size.height,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: size.width / 50),
           child: (isfavication.isFavration.value.status)

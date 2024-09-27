@@ -21,7 +21,6 @@ class AppUrl {
   //Show All Data
   static const Search_Job = "$Base_location/Advertisedjob/JobFilterList?TechId=3";
   static const SearchJob = "$Base_location/Advertisedjob/SearchJob";
-  static const JobInterviewList = "$Base_location/Advertisedjob/JobInterviewList";
 
   //Collcetion
   static const login = "$Base_location/user/login";
@@ -37,6 +36,7 @@ class AppUrl {
   //Menu
   static const Offer = "$Base_location/Advertisedjob/AdvertiseJob";
   static const IsFavourite = "$Base_location/Advertisedjob/CanFavourite";
+  static const JobInterviewList = "$Base_location/Advertisedjob/JobInterviewList";
   static const Applyed = "$Base_location/Advertisedjob/JobApply";
   static const isApplyed = "$Base_location/Advertisedjob/CanJobDetails";
 

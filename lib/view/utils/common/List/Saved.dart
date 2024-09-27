@@ -1,10 +1,12 @@
-// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member
+// ignore_for_file: file_names, camel_case_types, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print, prefer_const_constructors_in_immutables
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Sarching_Saving_API.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
+import 'package:toastification/toastification.dart';
 import '../../../../modal/Job/jobSearch_list.dart';
 import '../../app_String.dart';
 import '../../app_color.dart';
@@ -12,21 +14,18 @@ import '../../app_icon.dart';
 
 class Seved_List extends StatelessWidget {
   final SarchingSavingApi Saving_Apis = Get.put(SarchingSavingApi());
-
   Seved_List({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Saving_Apis.favourlist.onInit();
+    Saving_Apis.onInit();
     final size = MediaQuery.of(context).size;
     return Obx(() {
       if (Saving_Apis.favourlist.isloding.value) {
-        return Center(
-          child: Image.asset(AppLoder.infinityloder_without_background),
-        );
+        return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
       } else if (Saving_Apis.favourlist.data.value['data'] == null) {
-        return const Center(
-          child: Text(API_Error.null_data),
-        );
+        return const Center(child: Text(API_Error.null_data));
       } else {
         return ListView.builder(
           padding: EdgeInsets.zero,
@@ -52,9 +51,7 @@ class Seved_List extends StatelessWidget {
                         padding: EdgeInsets.symmetric(vertical: size.width / 40),
                         child: Padding(
                           padding: EdgeInsets.all(15),
-                          child: Image.network(
-                            Saving_Apis.favourlist.data.value[index]['ComLogo'],
-                          ),
+                          child: Image.network(Saving_Apis.favourlist.data.value[index]['ComLogo']),
                         ),
                       ),
                       SizedBox(width: size.width / 50),
@@ -63,14 +60,19 @@ class Seved_List extends StatelessWidget {
                         children: [
                           Row(
                             children: [
-                              Text(Saving_Apis.favourlist.data.value[index]['JobTitle'], style: TextStyle(color: AppColor.subcolor)),
+                              SizedBox(
+                                width: Get.width/2,
+                                child: Text(Saving_Apis.favourlist.data.value[index]['JobTitle'], style: TextStyle(color: AppColor.subcolor)),
+                              ),
                             ],
                           ),
                           SizedBox(
                             width: Get.width / 2,
                             child: Text(Saving_Apis.favourlist.data.value[index]['TechName'], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w600)),
                           ),
-                          Text(Saving_Apis.favourlist.data.value[index]['ComName'], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color),
+                          SizedBox(
+                              width: Get.width/2,
+                              child: Text(Saving_Apis.favourlist.data.value[index]['ComName'], style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color))
                           ),
                         ],
                       ),
