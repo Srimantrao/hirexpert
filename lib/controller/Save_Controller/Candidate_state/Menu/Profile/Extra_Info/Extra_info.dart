@@ -15,7 +15,7 @@ class ExtraInfos extends GetxController{
   @override
   void onInit() {
     Future.microtask(()async{
-      await Extra.login.OptionApiController_fuction(Email: Email, Password: Password, UserType: username, Tokan: Tokan, CandidateId: Candidate);
+      await Extra.login.OptionApiController_fuction(Email: Email, Password: Password, UserType: username, Tokan: Tokans, CandidateId: Candidate);
     });
     super.onInit();
   }

@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
@@ -30,13 +31,11 @@ class SearchApiController extends GetxController {
       );
 
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Search_data.value = jsonDecode(Response.body);
-          print("Search Job :-  $Search_data");
+        Search_data.value = jsonDecode(Response.body);print("Search Job :-  $Search_data");
       } else {
-        ToastificationError.Error('${Response.statusCode} , ${Response.body}');
         throw {" Search Job Error this :- ${Response.statusCode} , ${Response.body} "};
       }
-    } catch (e) {ToastificationError.Error('Search job this Error :- $e');
-    } finally {isLoding.value = false;}
+    } catch (e) {print('Search job this Error :- $e');}
+    finally {isLoding.value = false;}
   }
 }

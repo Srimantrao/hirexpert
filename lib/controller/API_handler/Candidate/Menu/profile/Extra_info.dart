@@ -13,8 +13,8 @@ class ExtraInfo extends GetxController {
         Email: login.option_data['data']['Email'],
         Password: Password_main.Pass.text,
         UserType: login.option_data['data']['UserType'],
-        Tokan: Tokan,
-        CandidateId: Candidate,
+        Tokan: login.option_data['data']['LoginToken'],
+        CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
       );
     });
     super.onInit();

@@ -27,7 +27,7 @@ class _CompanyProfileState extends State<CompanyProfile> {
         Email: 'khageshsoni98@gmail.com',
         UserType: 'Company',
         Password: 'Ilove@2015',
-        Tokan: Tokan,
+        Tokan: Tokans,
         CandidateId: Candidate,
       );
     });

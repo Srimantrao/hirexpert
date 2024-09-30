@@ -20,7 +20,7 @@ class NotificationHendal extends GetxController {
       }
       await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
     });
-    Tokan = pref!.getString('Tokan')!;
+    Tokans = pref!.getString('Tokan')!;
     super.onInit();
   }
 

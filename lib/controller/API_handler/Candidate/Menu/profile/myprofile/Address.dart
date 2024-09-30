@@ -14,7 +14,7 @@ class Address_Hendal extends GetxController {
         Email: login.option_data['data']['Email'],
         Password: Password_main.Pass.text,
         UserType: login.option_data['data']['UserType'],
-        Tokan: Tokan,
+        Tokan: Tokans,
         CandidateId: Candidate,
       );
     });

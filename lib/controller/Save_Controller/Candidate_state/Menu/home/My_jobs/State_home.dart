@@ -9,11 +9,7 @@ class HomeState_Controller extends GetxController{
   final JobcountabaleHedal jobincount = Get.put(JobcountabaleHedal());
   @override
   void onInit(){
-    Future.microtask(()async{
-      Tokan = pref!.getString('Tokan')!;
-      Candidate = pref!.getString('Candidate')!;
-      await jobincount.jobcount.Jobcountsaccording_fuction(CandidateId: Candidate , Tokan: Tokan);
-    });
+     jobincount.jobcount.Jobcountsaccording_fuction(CandidateId: Candidate , Tokan: Tokans);
     super.onInit();
   }
 }

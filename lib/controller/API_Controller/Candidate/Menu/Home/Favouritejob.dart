@@ -5,6 +5,7 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import 'package:http/http.dart' as http;
 
 class Favouritejob extends GetxController {
@@ -20,14 +21,14 @@ class Favouritejob extends GetxController {
     try {
       isloding.value = true;
 
-      final responce = await http.get(
+      final responce = await http.post(
         Uri.parse(
           '${AppUrl.savelist}?CandidateId=$CandidateId&Page=$Page&Timezone=$Timezone',
         ),
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,
-          Logintoken.token: Tokan,
+          Logintoken.logintoken: Tokan ?? '',
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
@@ -35,6 +36,7 @@ class Favouritejob extends GetxController {
         print("data :- $data");
       } else {
         throw {
+          ToastificationError.Error('Saving Data Error this :-  ${responce.body}, ${responce.statusCode}'),
           'Saving Data Error this :-  ${responce.body}, ${responce.statusCode}'
         };
       }
@@ -42,6 +44,7 @@ class Favouritejob extends GetxController {
       print(
         'Error this :- $e',
       );
+      ToastificationError.Error( 'Error this :- $e');
     } finally {
       isloding.value = false;
     }

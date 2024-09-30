@@ -16,10 +16,12 @@ import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
 class Search extends StatelessWidget {
+  StateSearch_Controller State_Search = Get.put(StateSearch_Controller());
+  IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
+  OptionApiController login = Get.put(OptionApiController());
+
+
   Search({super.key});
-  final StateSearch_Controller State_Search = Get.put(StateSearch_Controller());
-  final IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
-  final OptionApiController login = Get.put(OptionApiController());
 
   @override
   Widget build(BuildContext context) {

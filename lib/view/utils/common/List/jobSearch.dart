@@ -63,6 +63,7 @@ class JobSearch extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
                       padding: EdgeInsets.symmetric(vertical: size.width / 40),
@@ -76,28 +77,22 @@ class JobSearch extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(width: size.width / 25),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
-                          children: [
-                            SizedBox(width:size.width/2,
-                                child: Text(Job_Tital, style: TextStyle(color: AppColor.subcolor))
-                            ),
-                          ],
+                        SizedBox(
+                            width:size.width/1.6,
+                            child: Text(Job_Tital, style: TextStyle(color: AppColor.subcolor))
                         ),
                         SizedBox(
-                          width: Get.width / 2,
+                          width: Get.width / 1.6,
                           child: Text(Language, style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w600)),
                         ),
                         SizedBox(
-                          width: Get.width/2,
+                          width: Get.width/1.6,
                           child: Text(Commpany, style: TextStyle(fontSize: size.width / 26, fontWeight: FontWeight.w400, color: AppColor.Button_color)),
                         ),
                       ],
                     ),
-                    SizedBox(width: size.width / 7),
                     GestureDetector(onTap: saveonTap, child: savechild),
                   ],
                 ),

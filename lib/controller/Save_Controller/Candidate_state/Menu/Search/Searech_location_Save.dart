@@ -18,7 +18,7 @@ class SearechLocationSave extends GetxController{
   void onInit() {
     Future.microtask(()async{
       await isApply.IsApplingAPIController_fuction(
-        Tokan: Tokan,
+        Tokan: Tokans,
         Candidate: Candidate,
         JobId: '1',
         Timezone: 'asia/kolkata',

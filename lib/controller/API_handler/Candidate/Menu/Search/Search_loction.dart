@@ -21,7 +21,7 @@ class SearchLoction extends GetxController {
       }
       await pref!.setString("Tokan", Login.option_data['data']['LoginToken']);
     });
-    Tokan = pref!.getString('Tokan')!;
+    Tokans = pref!.getString('Tokan')!;
     super.onInit();
   }
 

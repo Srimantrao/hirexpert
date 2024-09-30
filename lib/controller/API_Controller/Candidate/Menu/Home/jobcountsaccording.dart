@@ -29,10 +29,9 @@ class Jobcountsaccording extends GetxController {
         data.value = jsonDecode(responce.body);
         print("Candidatecount :- $data");
       } else {
-        ToastificationError.Error('${responce.body}, ${responce.statusCode}');
         throw {"Candidatecount this Error :-  ${responce.body}, ${responce.statusCode}",};
       }
-    } catch (e) {ToastificationError.Error('Candiate Error :- $e');}
+    } catch (e) {print('Candiate Error :- $e');}
     finally {isLoding.value = false;}
   }
 }

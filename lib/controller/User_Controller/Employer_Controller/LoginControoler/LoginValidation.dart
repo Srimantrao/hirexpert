@@ -155,7 +155,7 @@ class Employer_LoginValidation with ChangeNotifier {
           UserType: 'Company',
           Email: Email_controller.text,
           Password: Password_controller.text,
-          Tokan: Tokan,
+          Tokan: Tokans,
           CandidateId: Candidate,
         );
 

@@ -23,10 +23,10 @@ class ProfielInfo extends GetxController {
         print("Error: option_data['data'] is null");
       }
 
-      Tokan = pref!.getString('Tokan')!;
+      Tokans = pref!.getString('Tokan')!;
       Candidate = pref!.getString('Candidate')!;
 
-      print("Tokan{Login} :- $Tokan");
+      print("Tokan{Login} :- $Tokans");
       print("Candidate{Login} :- $Candidate");
     });
     super.onInit();

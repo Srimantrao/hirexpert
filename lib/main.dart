@@ -12,6 +12,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Declined.dart';
@@ -60,6 +61,8 @@ Future<void> main() async {
     }
   }
 
+  await GetStorage.init();
+
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
   pref = await SharedPreferences.getInstance();
@@ -70,7 +73,7 @@ Future<void> main() async {
   Phone = pref!.getString('Phone') ?? 'Phone :- ';
   Password = pref!.getString('Password') ?? 'Password :- ';
 
-  Tokan = pref!.getString('Tokan') ?? '';
+  Tokans = pref!.getString('Tokan') ?? '';
   Candidate = pref!.getString('Candidate') ?? '';
   username = pref!.getString('usertype') ?? '';
   islogin = pref!.getBool("Login") ?? false;
@@ -81,7 +84,7 @@ Future<void> main() async {
   print("Email :- $Email");
   print("Phone :- $Phone");
   print("Candidate :- $Candidate");
-  print("Tokan :- $Tokan");
+  print("Tokan :- $Tokans");
   print("usertype :- $username");
 
   print("isLogin :- $islogin");

@@ -9,10 +9,8 @@ class StateSearch_Controller extends GetxController{
   final SearchHendal Searchings = Get.put(SearchHendal());
   @override
   void onInit() {
-    Future.microtask(() async {
-      await Searchings.Search.SearchApiController_fuction(Timezone: 'asia/kolkata', CandidateId: Candidate, Tokan: Tokan, IsWeb: 'false');
-    });
-
+    Searchings.onInit();
+    Searchings.Search.SearchApiController_fuction(Timezone: 'asia/kolkata', CandidateId: Candidate, Tokan: Tokans, IsWeb: 'false');
     super.onInit();
   }
 }

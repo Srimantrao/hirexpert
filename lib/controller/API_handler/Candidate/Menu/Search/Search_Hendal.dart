@@ -12,6 +12,7 @@ class SearchHendal extends GetxController {
 
   void onInit() {
     Future.microtask(() async {
+      Search.onInit();
       if (Login.option_data['status'] == true) {
         await Search.SearchApiController_fuction(
           IsWeb: 'false',
@@ -22,7 +23,7 @@ class SearchHendal extends GetxController {
         await pref!.setString("Tokan", Login.option_data['data']['LoginToken']);
         await pref!.setString('Candidate', Login.option_data['data']['UserDetails']['CandidateId']);
       }
-      Tokan = pref!.getString('Tokan')!;
+      Tokans = pref!.getString('Tokan')!;
       Candidate = pref!.getString('Candidate')!;
     });
     super.onInit();

@@ -185,9 +185,13 @@ class Candidate_LoginValidation with ChangeNotifier {
         UserType: 'Candidate',
         Email: email_controller.text,
         Password: password_controller.text,
-         Tokan: Tokan,
-         CandidateId: Candidate,
       );
+
+       pref!.setString("Tokan", login.option_data['data']['LoginToken']);
+       pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
+
+       Tokans = pref!.getString('Tokan')!;
+       Candidate = pref!.getString('Candidate')!;
 
       Get.back();
 

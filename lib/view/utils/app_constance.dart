@@ -15,7 +15,7 @@ String Password = "";
 String Comfarm_password = "";
 String username = '';
 String Candidate = '';
-String Tokan = '';
+String Tokans = '';
 bool islogin = false;
 
 class Password_main {

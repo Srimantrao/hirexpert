@@ -21,19 +21,8 @@ class SarchingSavingApi extends GetxController {
       await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
       await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
     });
-    Tokan = pref!.getString('Tokan')!;
+    Tokans = pref!.getString('Tokan')!;
     Candidate = pref!.getString('Candidate')!;
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    favourlist.Favouritejob_fuction(
-      CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-      Timezone: 'asia/kolkata',
-      Tokan: login.option_data['data']['LoginToken'],
-      Page: '1',
-    );
-    super.onClose();
   }
 }
