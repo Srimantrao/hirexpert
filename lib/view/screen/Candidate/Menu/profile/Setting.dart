@@ -1,11 +1,13 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, unnecessary_null_comparison, deprecated_member_use
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Profile/Setting/password_change.dart';
 import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/seetting.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/SettingController/Setting_Screen_Controller.dart';
+import 'package:hirexpert/view/screen/option/option.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
@@ -13,13 +15,17 @@ import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
 import 'package:hirexpert/view/utils/common/Container/profile_Info.dart';
 import 'package:provider/provider.dart';
+import 'package:restart_app/restart_app.dart';
 import '../../../../../controller/User_Controller/Candidate_Controller/Change_PasswordController/Change_Password_Controller.dart';
+import '../../../../utils/app_constance.dart';
+import '../../../../utils/common/Tostification/Toastification_success.dart';
 import 'Setting_Screen/My_Archive.dart';
 import 'Setting_Screen/Notification_Setting.dart';
 
 class Setting extends StatelessWidget {
   final Seettings sett = Get.put(Seettings());
   final PasswordChange chagepassword = Get.put(PasswordChange());
+  final auth = FirebaseAuth.instance;
 
   Setting({super.key});
 
@@ -424,9 +430,18 @@ class Setting extends StatelessWidget {
                     },
                   ),
                   SizedBox(height: Get.height / 40),
-                  Padding(
-                    padding: EdgeInsets.only(left: Get.width / 32),
-                    child: Text(Profile_Text.Logout, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 25),
+                  GestureDetector(
+                    onTap: () async{
+                      ToastificationSuccess.Success("Successfully logged out.");
+                      await auth.signOut();
+                      await pref!.remove('Login');
+                      await pref!.remove("Tokan");
+                      await pref!.remove("Candidate");
+                      Get.offAll(() => Option());
+                      Restart.restartApp();},
+                    child: Padding(
+                      padding: EdgeInsets.only(left: Get.width / 32),
+                      child: Text(Profile_Text.Logout, style: TextStyle(color: AppColor.Button_color, fontSize: Get.width / 25)),
                     ),
                   ),
                 ],

@@ -15,19 +15,27 @@ import '../../../../utils/common/List/jobSearch.dart';
 import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
-class Search extends StatelessWidget {
-  StateSearch_Controller State_Search = Get.put(StateSearch_Controller());
-  IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
-  OptionApiController login = Get.put(OptionApiController());
-
+class Search extends StatefulWidget {
 
   Search({super.key});
 
   @override
+  State<Search> createState() => _SearchState();
+}
+
+class _SearchState extends State<Search> {
+  final StateSearch_Controller stateSearchController = Get.put(StateSearch_Controller());
+
+  final IsfavrationControllers isFavrationController = Get.put(IsfavrationControllers());
+
+  final OptionApiController loginController = Get.put(OptionApiController());
+
+  @override
   Widget build(BuildContext context) {
-    State_Search.Searchings.Search.onInit();
-    State_Search.Searchings.onInit();
-    State_Search.onInit();
+    stateSearchController.Searchings.Search.onInit();
+    stateSearchController.Searchings.onInit();
+    stateSearchController.onInit();
+
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
@@ -37,7 +45,7 @@ class Search extends StatelessWidget {
         automaticallyImplyLeading: false,
         title: Text(Search_text.Search_Jobs, style: TextStyle(fontWeight: FontWeight.w700)),
         actions: [
-          //Search
+          // Search Button
           GestureDetector(
             onTap: () {
               Get.to(() => Search_location());
@@ -46,7 +54,7 @@ class Search extends StatelessWidget {
           ),
           SizedBox(width: Get.width / 50),
 
-          //Notification
+          // Notification Button
           GestureDetector(
             onTap: () {
               Get.to(() => Notification_Screen());
@@ -54,17 +62,20 @@ class Search extends StatelessWidget {
             child: Icon(Icons.notifications_none, color: AppColor.subcolor, size: 30),
           ),
           SizedBox(width: Get.width / 50),
+
+          // Popup Menu
           PopupMenuButton(
-              color: AppColor.Full_body_color,
-              onSelected: (value) {print(value);},
-              itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-                    PopupMenuItem(value: 1, child: Text('All')),
-                    PopupMenuItem(value: 2, child: Text('Last 7 Days')),
-                    PopupMenuItem(value: 3, child: Text('Last 30 Days')),
-                    PopupMenuItem(value: 3, child: Text('Last 6 Months')),
-                    PopupMenuItem(value: 3, child: Text('Last 1 Year')),
-                  ],
-              child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30)),
+            color: AppColor.Full_body_color,
+            onSelected: (value) { print(value); },
+            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+              PopupMenuItem(value: 1, child: Text('All')),
+              PopupMenuItem(value: 2, child: Text('Last 7 Days')),
+              PopupMenuItem(value: 3, child: Text('Last 30 Days')),
+              PopupMenuItem(value: 4, child: Text('Last 6 Months')),
+              PopupMenuItem(value: 5, child: Text('Last 1 Year')),
+            ],
+            child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30),
+          ),
           SizedBox(width: Get.width / 50),
         ],
       ),
@@ -73,77 +84,77 @@ class Search extends StatelessWidget {
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Obx(
-          () {
-            if (State_Search.Searchings.Search.isLoding.value) {
-              return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
-            } else if (State_Search.Searchings.Search.Search_data.value['data'] == null) {
+              () {
+            if (stateSearchController.Searchings.Search.isLoding.value) {
+              return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
+            } else if (stateSearchController.Searchings.Search.Search_data.value['data'] == null) {
               return Center(child: Text(API_Error.nulll));
             } else {
               return ListView.builder(
-                itemCount: State_Search.Searchings.Search.Search_data.value['data'].length,
+                itemCount: stateSearchController.Searchings.Search.Search_data.value['data'].length,
                 itemBuilder: (BuildContext context, int index) {
-                  if (index >= State_Search.Searchings.Search.Search_data['data'].length || index >= State_Search.Searchings.Search.Search_data['data'].length) {
-                    return SizedBox.shrink();
-                  }
-                  var jobData = State_Search.Searchings.Search.Search_data.value['data'][index];
+                  var jobData = stateSearchController.Searchings.Search.Search_data.value['data'][index];
                   var isFavourite = jobData['IsFavourite'] == "1";
+
                   return JobSearch(
                     onTap: () {
-                      Get.to(
-                        () => Details(
-                          Icon: State_Search.Searchings.Search.Search_data.value['data'][index]['ComLogo'],
-                          Job_Tital: State_Search.Searchings.Search.Search_data.value['data'][index]['JobTitle'],
-                          Language: State_Search.Searchings.Search.Search_data.value['data'][index]['TechName'],
-                          Commpany: State_Search.Searchings.Search.Search_data.value['data'][index]['ComName'],
-                          Working: State_Search.Searchings.Search.Search_data.value['data'][index]['WorkWeek'],
-                          Location: State_Search.Searchings.Search.Search_data.value['data'][index]['Location'],
-                          Job_time: State_Search.Searchings.Search.Search_data.value['data'][index]['JobType'],
-                          Exp: State_Search.Searchings.Search.Search_data.value['data'][index]['Experience'],
-                          lake: State_Search.Searchings.Search.Search_data.value['data'][index]['Salary'],
-                          Hybrid: State_Search.Searchings.Search.Search_data.value['data'][index]['WorkSet'],
-                          stats: State_Search.Searchings.Search.Search_data.value['data'][index]['FormatDt'],
-                          saveonTap: () async {
-                            var newIsLike = isFavourite ? "0" : "1";
-                            await isfavication.IsfavrationControllers_fuction(
-                              CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-                              JobId: '10',
-                              IsLike: newIsLike,
-                              Tokan: login.option_data['data']['LoginToken'],
-                            );
-                            if (isfavication.isFavration.value.status) {
-                              jobData['IsFavourite'] = newIsLike;
-                              isFavourite = !isFavourite;
-                              (context as Element).markNeedsBuild();
-                            }
-                          },
-                          saving: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
-                        ),
-                      );
+                      Get.to(() => Details(
+                        Icon: jobData['ComLogo'],
+                        Job_Tital: jobData['JobTitle'],
+                        Language: jobData['TechName'],
+                        Commpany: jobData['ComName'],
+                        Working: jobData['WorkWeek'],
+                        Location: jobData['Location'],
+                        Job_time: jobData['JobType'],
+                        Exp: jobData['Experience'],
+                        lake: jobData['Salary'],
+                        Hybrid: jobData['WorkSet'],
+                        stats: jobData['FormatDt'],
+                        saveonTap: () async {
+                          var newIsLike = isFavourite ? "0" : "1";
+                          await isFavrationController.IsfavrationControllers_fuction(
+                            CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'],
+                            JobId: jobData['JobId'].toString(),
+                            IsLike: newIsLike,
+                            Tokan: loginController.option_data['data']['LoginToken'],
+                          );
+
+                          if (isFavrationController.isFavration.value.status) {
+                            jobData['IsFavourite'] = newIsLike;
+                            isFavourite = !isFavourite;
+                            (context as Element).markNeedsBuild();
+                          }
+                          setState(() {});
+                        },
+                        saving: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
+                      ));
                     },
-                    Icon: State_Search.Searchings.Search.Search_data.value['data'][index]['ComLogo'],
-                    Job_Tital: State_Search.Searchings.Search.Search_data.value['data'][index]['JobTitle'],
-                    Language: State_Search.Searchings.Search.Search_data.value['data'][index]['TechName'],
-                    Commpany: State_Search.Searchings.Search.Search_data.value['data'][index]['ComName'],
-                    Working: State_Search.Searchings.Search.Search_data.value['data'][index]['WorkWeek'],
-                    Location: State_Search.Searchings.Search.Search_data.value['data'][index]['Location'],
-                    Job_time: State_Search.Searchings.Search.Search_data.value['data'][index]['JobType'],
-                    Exp: State_Search.Searchings.Search.Search_data.value['data'][index]['Experience'],
-                    lake: State_Search.Searchings.Search.Search_data.value['data'][index]['Salary'],
-                    Hybrid: State_Search.Searchings.Search.Search_data.value['data'][index]['WorkSet'],
-                    stats: State_Search.Searchings.Search.Search_data.value['data'][index]['FormatDt'],
+                    Icon: jobData['ComLogo'],
+                    Job_Tital: jobData['JobTitle'],
+                    Language: jobData['TechName'],
+                    Commpany: jobData['ComName'],
+                    Working: jobData['WorkWeek'],
+                    Location: jobData['Location'],
+                    Job_time: jobData['JobType'],
+                    Exp: jobData['Experience'],
+                    lake: jobData['Salary'],
+                    Hybrid: jobData['WorkSet'],
+                    stats: jobData['FormatDt'],
                     saveonTap: () async {
                       var newIsLike = isFavourite ? "0" : "1";
-                      await isfavication.IsfavrationControllers_fuction(
-                        CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-                        JobId: '10',
+                      await isFavrationController.IsfavrationControllers_fuction(
+                        CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'],
+                        JobId: jobData['JobId'].toString(), // Ensure JobId is correct
                         IsLike: newIsLike,
-                        Tokan: login.option_data['data']['LoginToken'],
+                        Tokan: loginController.option_data['data']['LoginToken'],
                       );
-                      if (isfavication.isFavration.value.status) {
-                        jobData['IsFavourite'] = newIsLike;
-                        isFavourite = !isFavourite;
-                        (context as Element).markNeedsBuild();
+
+                      if (isFavrationController.isFavration.value.status) {
+                        jobData['IsFavourite'] = newIsLike; // Update the jobData directly
+                        isFavourite = !isFavourite; // Toggle the favorite state
+                        (context as Element).markNeedsBuild(); // Request UI rebuild
                       }
+                      setState(() {});
                     },
                     savechild: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
                     top: BorderSide(color: AppColor.Bottam_color),
