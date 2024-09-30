@@ -17,24 +17,13 @@ class Seettings extends GetxController {
         UserType: 'Candidate',
         Email: Login.option_data['data']['Email'],
         Password: Password_main.Pass.text,
+        Tokan: Login.option_data['data']['LoginToken'],
+        CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
       );
 
       await Change_Pass.ChangeControllerApiController_Fuction(
         Tokan: Login.option_data['data']['LoginToken'],
       );
     });
-  }
-
-  void onClose() {
-    Login.OptionApiController_fuction(
-      UserType: 'Candidate',
-      Email: Login.option_data['data']['Email'],
-      Password: Password_main.Pass.text,
-    );
-
-    Change_Pass.ChangeControllerApiController_Fuction(
-      Tokan: Login.option_data['data']['LoginToken'],
-    );
-    super.onClose();
   }
 }

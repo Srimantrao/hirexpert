@@ -50,7 +50,7 @@ class Option extends StatelessWidget {
                       //Employer
                       GestureDetector(
                         onTap: () async{
-                          option_api.OptionApiController_fuction(UserType: 'Company');
+                          option_api.OptionApiController_fuction(UserType: 'Company', Tokan: Tokan, CandidateId: Candidate);
                           await pref!.setString('usertype', 'Company');
                           username = pref!.getString('usertype')!;
                           select.Select();
@@ -62,7 +62,7 @@ class Option extends StatelessWidget {
                       //Candidate
                       GestureDetector(
                         onTap: () async{
-                          option_api.OptionApiController_fuction(UserType: 'Candidate');
+                          option_api.OptionApiController_fuction(UserType: 'Candidate', Tokan: Tokan, CandidateId: Candidate);
                           await pref!.setString('usertype', 'Candidate');
                           username = pref!.getString('usertype')!;
                           select.SelectSecond();

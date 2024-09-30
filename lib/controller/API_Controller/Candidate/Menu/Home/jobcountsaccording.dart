@@ -10,11 +10,10 @@ import 'package:http/http.dart' as http;
 
 class Jobcountsaccording extends GetxController {
   var isLoding = false.obs;
-  var data= {}.obs;
+  var data = {}.obs;
 
-  Future Jobcountsaccording_fuction({String? Tokan, required String CandidateId}) async {
+  Future Jobcountsaccording_fuction({required String Tokan, required String CandidateId}) async {
     Map<String, dynamic> body = {'CandidateId': CandidateId,};
-    print("CandidateId :- $CandidateId");
     print(body);
 
     try {
@@ -26,22 +25,14 @@ class Jobcountsaccording extends GetxController {
         body: body,
       );
 
-      print("Tokan :- $Tokan");
-      print("CandidateId :- $CandidateId");
-
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         data.value = jsonDecode(responce.body);
         print("Candidatecount :- $data");
       } else {
         ToastificationError.Error('${responce.body}, ${responce.statusCode}');
-        throw {
-          "Candidatecount this Error :-  ${responce.body}, ${responce.statusCode}",
-        };
+        throw {"Candidatecount this Error :-  ${responce.body}, ${responce.statusCode}",};
       }
-    } catch (e) {
-      ToastificationError.Error('Candiate Error :- $e');
-    } finally {
-      isLoding.value = false;
-    }
+    } catch (e) {ToastificationError.Error('Candiate Error :- $e');}
+    finally {isLoding.value = false;}
   }
 }

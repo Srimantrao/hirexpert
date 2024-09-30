@@ -22,63 +22,60 @@ class Extra_info extends StatelessWidget {
       body: Container(
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: Get.width / 40),
-          child: Obx(
-            () {
-              if (Extras.Extra.login.isLodingvalue.value) {
-                return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
-              } else if (Extras.Extra.login.option_data['data'] == null || Extras.Extra.login.option_data == null) {
-                return Center(child: Text(API_Error.null_data));
-              } else {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: Get.height / 30),
+        child: Obx(
+          () {
+            if (Extras.Extra.login.isLodingvalue.value) {
+              return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
+            } else if (Extras.Extra.login.option_data['data'] == null || Extras.Extra.login.option_data == null) {
+              return Center(child: Text(API_Error.null_data));
+            } else {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: Get.height / 30),
 
-                    //Which of these most closely describe your job !
-                    Text(Profile_Text.Moust, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
-                    TextField(
-                      controller: Extras.whichJob,
-                      decoration: InputDecoration(
-                        hintText: Profile_Text.Moust_hint,
-                        hintStyle: TextStyle(fontSize: Get.width / 24),
-                        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
-                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
-                      ),
+                  //Which of these most closely describe your job !
+                  Text(Profile_Text.Moust, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  TextField(
+                    controller: Extras.whichJob,
+                    decoration: InputDecoration(
+                      hintText: Profile_Text.Moust_hint,
+                      hintStyle: TextStyle(fontSize: Get.width / 24),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                     ),
-                    SizedBox(height: Get.height / 50),
+                  ),
+                  SizedBox(height: Get.height / 50),
 
-                    //Select your Specialization / interest
-                    Text(Profile_Text.specializationss, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
-                    TextField(
-                      controller: Extras.Specializationss,
-                      decoration: InputDecoration(
-                        hintText: 'jh',
-                        hintStyle: TextStyle(fontSize: Get.width / 24),
-                        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color,)),
-                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
-                      ),
+                  //Select your Specialization / interest
+                  Text(Profile_Text.specializationss, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  TextField(
+                    controller: Extras.Specializationss,
+                    decoration: InputDecoration(
+                      hintText: 'jh',
+                      hintStyle: TextStyle(fontSize: Get.width / 24),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color,)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                     ),
-                    SizedBox(height: Get.height / 50),
+                  ),
+                  SizedBox(height: Get.height / 50),
 
-                    //What is Your Primary Skilled
-                    Text(Profile_Text.What, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
-                    TextField(
-                      controller: Extras.Skillset,
-                      decoration: InputDecoration(
-                        hintText: 'jh',
-                        // hintText: Extra.login.option_data['data']['UserDetails']['QuestionList'][0]['AnswerArr'][0],
-                        hintStyle: TextStyle(fontSize: Get.width / 24),
-                        focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
-                        enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
-                      ),
+                  //What is Your Primary Skilled
+                  Text(Profile_Text.What, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  TextField(
+                    controller: Extras.Skillset,
+                    decoration: InputDecoration(
+                      hintText: 'jh',
+                      // hintText: Extra.login.option_data['data']['UserDetails']['QuestionList'][0]['AnswerArr'][0],
+                      hintStyle: TextStyle(fontSize: Get.width / 24),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                     ),
-                  ],
-                );
-              }
-            },
-          ),
+                  ),
+                ],
+              );
+            }
+          },
         ),
       ),
 

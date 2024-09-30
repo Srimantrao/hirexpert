@@ -12,9 +12,7 @@ import 'package:hirexpert/view/screen/Candidate/collection/OTP_Scrren.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_success.dart';
-import 'package:toastification/toastification.dart';
 
-import '../../../../view/utils/app_constance.dart';
 
 class Candidate_SinupController with ChangeNotifier {
   final auth = FirebaseAuth.instance;

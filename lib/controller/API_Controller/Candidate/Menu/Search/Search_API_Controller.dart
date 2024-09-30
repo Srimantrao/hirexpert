@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, prefer_typing_uninitialized_variables, non_constant_identifier_names
+// ignore_for_file: file_names, prefer_typing_uninitialized_variables, non_constant_identifier_names, avoid_print
 
 import 'dart:convert';
 
@@ -13,13 +13,7 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
-  @override
-  void onInit() {
-    SearchApiController_fuction(Timezone: '', CandidateId: '', IsWeb: '');
-    super.onInit();
-  }
-
-  Future SearchApiController_fuction({required String Timezone, required String CandidateId, String? Tokan, required String IsWeb}) async {
+  Future SearchApiController_fuction({required String Timezone, required String CandidateId, required String Tokan, required String IsWeb}) async {
     try {
       isLoding.value = true;
 
@@ -35,23 +29,14 @@ class SearchApiController extends GetxController {
         body: body,
       );
 
-      if (kDebugMode) {print("Tokan :- $Tokan");}
-
       if (Response.statusCode == 200 || Response.statusCode == 201) {
         Search_data.value = jsonDecode(Response.body);
-        if (kDebugMode) {
           print("Search Job :-  $Search_data");
-        }
       } else {
         ToastificationError.Error('${Response.statusCode} , ${Response.body}');
-        throw {
-          " Search Job Error this :- ${Response.statusCode} , ${Response.body} "
-        };
+        throw {" Search Job Error this :- ${Response.statusCode} , ${Response.body} "};
       }
-    } catch (e) {
-        ToastificationError.Error('Search job this Error :- $e');
-    } finally {
-      isLoding.value = false;
-    }
+    } catch (e) {ToastificationError.Error('Search job this Error :- $e');
+    } finally {isLoding.value = false;}
   }
 }

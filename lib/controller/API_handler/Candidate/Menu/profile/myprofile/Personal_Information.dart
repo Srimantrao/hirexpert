@@ -13,18 +13,10 @@ class PersonalInformation extends GetxController {
         UserType: login.option_data['data']['UserType'],
         Password: Password_main.Pass.text,
         Email: login.option_data['data']['Email'],
+        Tokan: Tokan,
+        CandidateId: Candidate,
       );
     });
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    login.OptionApiController_fuction(
-      UserType: login.option_data['data']['UserType'],
-      Password: Password_main.Pass.text,
-      Email: login.option_data['data']['Email'],
-    );
-    super.onClose();
   }
 }

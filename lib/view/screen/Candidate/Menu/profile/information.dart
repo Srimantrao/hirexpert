@@ -41,15 +41,13 @@ class Profile_info extends StatelessWidget {
                     children: [
                       Container(
                         height: Get.height / 8,
-                        decoration: BoxDecoration(
-                          border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
-                        ),
+                        decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Bottam_color))),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(() {
                               if (Statesbar.profile.login.isLodingvalue.value) {
-                                return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
+                                return Center(child: SizedBox());
                               } else if (Statesbar.profile.login.option_data['data'] == null || Statesbar.profile.login.option_data == null) {
                                 return Center(child: Text(API_Error.null_data));
                               } else {
@@ -89,35 +87,15 @@ class Profile_info extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          tab(
-                              onTap: () {Tabb.Tabbarcontroler_1();},
-                              textcolor: Tabb.selectedIndex == 0,
-                              tabcolor: Tabb.selectedIndex == 0,
-                              name: Profile_Text.Extra_Info,
-                          ),
-                          tab(
-                              onTap: () {Tabb.Tabbarcontroler_2();},
-                              textcolor: Tabb.selectedIndex == 1,
-                              tabcolor: Tabb.selectedIndex == 1,
-                              name: Profile_Text.My_Profile,
-                          ),
-                          tab(
-                              onTap: () {Tabb.Tabbarcontroler_3();},
-                              textcolor: Tabb.selectedIndex == 2,
-                              tabcolor: Tabb.selectedIndex == 2,
-                              name: Profile_Text.Document,
-                          ),
+                          tab(onTap: () {Tabb.Tabbarcontroler_1();}, textcolor: Tabb.selectedIndex == 0, tabcolor: Tabb.selectedIndex == 0, name: Profile_Text.Extra_Info),
+                          tab(onTap: () {Tabb.Tabbarcontroler_2();}, textcolor: Tabb.selectedIndex == 1, tabcolor: Tabb.selectedIndex == 1, name: Profile_Text.My_Profile),
+                          tab(onTap: () {Tabb.Tabbarcontroler_3();}, textcolor: Tabb.selectedIndex == 2, tabcolor: Tabb.selectedIndex == 2, name: Profile_Text.Document),
                         ],
                       ),
                       SizedBox(height: Get.height / 50),
                       SizedBox(
                         height: Get.height / 1.52,
-                        child: IndexedStack(
-                            index: Tabb.selectedIndex,
-                            children: [
-                              Extra_info(), MY_Profile(), Documant_Profile()
-                            ]
-                        ),
+                        child: IndexedStack(index: Tabb.selectedIndex, children: [Extra_info(), MY_Profile(), Documant_Profile()]),
                       ),
                     ],
                   );

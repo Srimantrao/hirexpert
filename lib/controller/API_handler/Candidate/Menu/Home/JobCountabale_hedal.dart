@@ -13,7 +13,7 @@ class JobcountabaleHedal extends GetxController {
   @override
   void onInit() {
     Future.microtask(() async {
-      if (login.option_data != null && login.option_data['data'] != null) {
+      if (login.option_data['status'] == true) {
         await jobcount.Jobcountsaccording_fuction(
           Tokan: login.option_data['data']['LoginToken'],
           CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
@@ -31,14 +31,5 @@ class JobcountabaleHedal extends GetxController {
       print("Candidate{Login} :- $Candidate");
     });
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    jobcount.Jobcountsaccording_fuction(
-      Tokan: login.option_data['data']['LoginToken'],
-      CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
-    );
-    super.onClose();
   }
 }

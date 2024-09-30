@@ -72,8 +72,7 @@ class Parsonal_Information extends StatelessWidget {
                           myProfile.JobTitle_validation(val);
                         },
                         labal: Profile_Text.Job_Title,
-                        hint: Parsonal.login.option_data['data']['UserDetails']
-                            ['JobTitle'],
+                        hint: Parsonal.login.option_data['data']['UserDetails']['JobTitle'],
                         controller: myProfile.Job_Titales,
                       ),
                       MyProfile_Error(

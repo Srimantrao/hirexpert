@@ -10,6 +10,8 @@ class HomeState_Controller extends GetxController{
   @override
   void onInit(){
     Future.microtask(()async{
+      Tokan = pref!.getString('Tokan')!;
+      Candidate = pref!.getString('Candidate')!;
       await jobincount.jobcount.Jobcountsaccording_fuction(CandidateId: Candidate , Tokan: Tokan);
     });
     super.onInit();

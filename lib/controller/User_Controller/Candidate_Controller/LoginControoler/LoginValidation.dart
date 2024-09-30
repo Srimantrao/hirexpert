@@ -185,6 +185,8 @@ class Candidate_LoginValidation with ChangeNotifier {
         UserType: 'Candidate',
         Email: email_controller.text,
         Password: password_controller.text,
+         Tokan: Tokan,
+         CandidateId: Candidate,
       );
 
       Get.back();

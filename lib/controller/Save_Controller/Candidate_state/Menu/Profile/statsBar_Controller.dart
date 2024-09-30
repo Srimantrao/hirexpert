@@ -9,7 +9,7 @@ class StatsbarController extends GetxController{
   @override
   void onInit() {
     Future.microtask(()async{
-      await profile.login.OptionApiController_fuction(Email: Email,Password: Password,UserType: username);
+      await profile.login.OptionApiController_fuction(Email: Email,Password: Password,UserType: username, Tokan: Tokan, CandidateId: Candidate);
     });
     super.onInit();
   }

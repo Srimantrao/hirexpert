@@ -308,7 +308,7 @@ class Profile_Text {
   static const Gender = "Gender:";
   static const Male = "Male";
   static const Female = "Female";
-  static const PreferNot_tosay = "Prefer Not to say";
+  static const PreferNot_tosay = "Other";
   static const Date_Of_Birthday = "Date Of Birthday:";
   static const Buttion_name = "Save";
 

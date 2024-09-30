@@ -12,7 +12,7 @@ class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
   var option_data = {}.obs;
 
-  Future OptionApiController_fuction({String? Tokan, String? CandidateId, String? Email, String? Password, String? UserType}) async {
+  Future OptionApiController_fuction({required String Tokan, required String CandidateId, String? Email, String? Password, String? UserType}) async {
     try {
       isLodingvalue.value = true;
       update();

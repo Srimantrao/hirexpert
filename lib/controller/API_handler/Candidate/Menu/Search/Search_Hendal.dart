@@ -27,15 +27,4 @@ class SearchHendal extends GetxController {
     });
     super.onInit();
   }
-
-  @override
-  void onClose() {
-    Search.SearchApiController_fuction(
-      IsWeb: 'false',
-      Timezone: 'asia/kolkata',
-      CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
-      Tokan: Login.option_data['data']['LoginToken'],
-    );
-    super.onClose();
-  }
 }

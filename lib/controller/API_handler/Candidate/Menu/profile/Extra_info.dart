@@ -13,18 +13,10 @@ class ExtraInfo extends GetxController {
         Email: login.option_data['data']['Email'],
         Password: Password_main.Pass.text,
         UserType: login.option_data['data']['UserType'],
+        Tokan: Tokan,
+        CandidateId: Candidate,
       );
     });
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    login.OptionApiController_fuction(
-      Email: login.option_data['data']['Email'],
-      Password: Password_main.Pass.text,
-      UserType: login.option_data['data']['UserType'],
-    );
-    super.onClose();
   }
 }

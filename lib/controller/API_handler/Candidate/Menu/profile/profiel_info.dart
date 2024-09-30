@@ -14,6 +14,8 @@ class ProfielInfo extends GetxController {
           UserType: 'Candidate',
           Email: login.option_data['data']['Email'],
           Password: Password_main.Pass.text,
+          Tokan: login.option_data['data']['LoginToken'],
+          CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
         );
         await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
         await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
@@ -28,15 +30,5 @@ class ProfielInfo extends GetxController {
       print("Candidate{Login} :- $Candidate");
     });
     super.onInit();
-  }
-
-  @override
-  void onClose() {
-    login.OptionApiController_fuction(
-      UserType: 'Candidate',
-      Email: login.option_data['data']['Email'],
-      Password: Password_main.Pass.text,
-    );
-    super.onClose();
   }
 }

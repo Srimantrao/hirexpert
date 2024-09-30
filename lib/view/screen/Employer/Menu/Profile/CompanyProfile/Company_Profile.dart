@@ -8,6 +8,8 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/common/Textfild/Inputfild.dart';
 
+import '../../../../../utils/app_constance.dart';
+
 class CompanyProfile extends StatefulWidget {
   const CompanyProfile({super.key});
 
@@ -25,6 +27,8 @@ class _CompanyProfileState extends State<CompanyProfile> {
         Email: 'khageshsoni98@gmail.com',
         UserType: 'Company',
         Password: 'Ilove@2015',
+        Tokan: Tokan,
+        CandidateId: Candidate,
       );
     });
     super.initState();

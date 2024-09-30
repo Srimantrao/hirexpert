@@ -33,7 +33,7 @@ class Candidate_Specialization extends StatelessWidget {
             width: Get.width,
             decoration: BoxDecoration(color: AppColor.Full_body_color),
             child: Center(
-              child: Image.asset(AppLoder.infinityloder_without_background),
+              child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250),
             ),
           ),
         );
@@ -55,9 +55,7 @@ class Candidate_Specialization extends StatelessWidget {
               bottomNavigationBar: Container(
                 width: Get.width,
                 height: Get.height / 15,
-                decoration: BoxDecoration(
-                  color: AppColor.Full_body_color,
-                ),
+                decoration: BoxDecoration(color: AppColor.Full_body_color),
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
                   child: Center(

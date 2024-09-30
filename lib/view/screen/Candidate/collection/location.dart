@@ -30,9 +30,7 @@ class Location extends StatelessWidget {
       bottomNavigationBar: Container(
         height: Get.height / 20,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Consumer<PreferenceController>(
           builder: (BuildContext context, value, Widget? child) {
             return Padding(
@@ -41,9 +39,7 @@ class Location extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      Get.back();
-                    },
+                    onTap: () {Get.back();},
                     child: Row(
                       children: [
                         SvgPicture.asset(AppIcons.Backarrow),
@@ -79,9 +75,7 @@ class Location extends StatelessWidget {
       body: Container(
         height: Get.height,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Get.width / 30),
           child: Consumer<PreferenceController>(

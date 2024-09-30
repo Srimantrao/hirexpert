@@ -27,6 +27,8 @@ class _MyprofileState extends State<Myprofile> {
         Email: 'khageshsoni98@gmail.com',
         Password: Password_main.Pass.text,
         UserType: 'Company',
+        Tokan: Tokan,
+        CandidateId: Candidate,
       );
     });
     super.initState();
