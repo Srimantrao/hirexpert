@@ -144,15 +144,15 @@ class _SearchState extends State<Search> {
                       var newIsLike = isFavourite ? "0" : "1";
                       await isFavrationController.IsfavrationControllers_fuction(
                         CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'],
-                        JobId: jobData['JobId'].toString(), // Ensure JobId is correct
+                        JobId: jobData['JobId'].toString(),
                         IsLike: newIsLike,
                         Tokan: loginController.option_data['data']['LoginToken'],
                       );
 
                       if (isFavrationController.isFavration.value.status) {
-                        jobData['IsFavourite'] = newIsLike; // Update the jobData directly
-                        isFavourite = !isFavourite; // Toggle the favorite state
-                        (context as Element).markNeedsBuild(); // Request UI rebuild
+                        jobData['IsFavourite'] = newIsLike;
+                        isFavourite = !isFavourite;
+                        (context as Element).markNeedsBuild();
                       }
                       setState(() {});
                     },

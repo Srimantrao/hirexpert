@@ -42,6 +42,7 @@ class AppUrl {
 
   //Details
   static const details = "$Base_location/Advertisedjob/JobDetails";
+  static const ApplyJobList = "$Base_location/Advertisedjob/ApplyJobList";
 
   //Notification
   static const Notification = "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";

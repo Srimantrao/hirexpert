@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +20,6 @@ import '../../../../Container/profile_Info.dart';
 import '../../../../Selection/Information_Date.dart';
 import '../../../../Selection/Information_Selection.dart';
 import '../../../../Textfild/Inputfild.dart';
-import 'Address.dart';
-import 'Educational_Details.dart';
-import 'Personal_Information.dart';
-import 'Salary.dart';
-import 'Upload_Your_CV.dart';
-import 'Work_Experience.dart';
-import 'Work_Location.dart';
 
 class MY_Profile extends StatefulWidget {
   MY_Profile({super.key});

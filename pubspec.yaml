@@ -68,6 +68,7 @@ dependencies:
   toastification: ^2.3.0
   get_storage: ^2.1.1
   restart_app: ^1.2.1
+  connectivity_plus: ^2.3.3
 
 dev_dependencies:
   flutter_test:

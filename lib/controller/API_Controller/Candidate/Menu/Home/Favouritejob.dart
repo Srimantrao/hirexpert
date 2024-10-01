@@ -12,38 +12,27 @@ class Favouritejob extends GetxController {
   var isloding = false.obs;
   var data= {}.obs;
 
-  Future Favouritejob_fuction({
-    required String CandidateId,
-    required String Page,
-    required String Timezone,
-    required String Tokan,
-  }) async {
+  Future Favouritejob_fuction({required String CandidateId, required String Page, required String Timezone, required String Tokan,})
+  async {
     try {
       isloding.value = true;
 
-      final responce = await http.post(
-        Uri.parse(
-          '${AppUrl.savelist}?CandidateId=$CandidateId&Page=$Page&Timezone=$Timezone',
-        ),
-        headers: {
-          API_KEY.api_key: API_KEY.key,
-          Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan ?? '',
-        },
+      final responce = await http.get(
+        Uri.parse('${AppUrl.savelist}?CandidateId=$CandidateId&Page=$Page&Timezone=$Timezone'),
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         data.value = jsonDecode(responce.body);
         print("data :- $data");
       } else {
         throw {
-          ToastificationError.Error('Saving Data Error this :-  ${responce.body}, ${responce.statusCode}'),
+          ToastificationError.Error('${responce.statusCode}'),
+          ToastificationError.Error(responce.body),
           'Saving Data Error this :-  ${responce.body}, ${responce.statusCode}'
         };
       }
     } catch (e) {
-      print(
-        'Error this :- $e',
-      );
+      print('Error this :- $e',);
       ToastificationError.Error( 'Error this :- $e');
     } finally {
       isloding.value = false;

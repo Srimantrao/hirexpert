@@ -2,17 +2,13 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Search/Search_Hendal.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/common/List/Saved.dart';
 
 class Saved extends StatelessWidget {
-  final SearchHendal Searchings = Get.put(SearchHendal());
   final IsfavrationControllers isfavication = Get.put(IsfavrationControllers());
-  final OptionApiController login = Get.put(OptionApiController());
   Saved({super.key});
 
   @override
@@ -31,15 +27,9 @@ class Saved extends StatelessWidget {
         width: size.width,
         height: size.height,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: size.width / 50),
-          child: (isfavication.isFavration.value.status)
-              ? Center(child: Text("File is Empty !"))
-              : Padding(
-                  padding: EdgeInsets.symmetric(horizontal: size.width / 30),
-                  child: Seved_List(),
-                ),
-        ),
+        child: (isfavication.isFavration.value.status)
+            ? Center(child: Text("File is Empty !"))
+            : Seved_List(),
       ),
     );
   }

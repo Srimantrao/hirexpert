@@ -247,7 +247,7 @@ class Details extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(height: Get.height / 50),
-                                  OnButtons(Button_Color: AppColor.success_color, btn_name: Details_texts.Applyed),
+                                  OnButtons(Boder_Button_Color: AppColor.success_color,Button_Color: AppColor.success_color, btn_name: Details_texts.Applyed),
                                   SizedBox(height: Get.height / 50),
                                 ],
                               ),
@@ -427,7 +427,14 @@ class Details extends StatelessWidget {
                                     ),
                                   ),
                                   SizedBox(height: Get.height / 50),
-                                  OnButtons(
+                                  (SavingDetails.sumit.isApply.isApplingdata['data']['IsApply'] == SavingDetails.sumit.valuecheck)
+                                      ? OnButtons(
+                                    onTap: () {SavingDetails.sumit.Messes(context);},
+                                    Boder_Button_Color: AppColor.success_color,
+                                    Button_Color: AppColor.success_color,
+                                    btn_name: Details_texts.Applyed,
+                                  )
+                                      : OnButtons(
                                     onTap: () {
                                       SavingDetails.sumit.Messes(context);
                                     },

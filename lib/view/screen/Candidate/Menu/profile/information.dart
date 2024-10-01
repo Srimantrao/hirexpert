@@ -17,8 +17,10 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile
 import 'Setting.dart';
 
 class Profile_info extends StatelessWidget {
-  StatsbarController Statesbar = Get.put(StatsbarController());
+final StatsbarController Statesbar = Get.put(StatsbarController());
   Profile_info({super.key});
+
+
 
   @override
   Widget build(BuildContext context) {

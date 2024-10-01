@@ -29,6 +29,7 @@ import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:toastification/toastification.dart';
+import 'controller/Internet_Controller/Internet_Controller.dart';
 import 'controller/User_Controller/Candidate_Controller/BottamController/MenuNavigationController.dart';
 import 'controller/User_Controller/Candidate_Controller/ButtonsController/SearchButtonsController.dart';
 import 'controller/User_Controller/Candidate_Controller/ButtonsController/SearchJobController.dart';
@@ -107,6 +108,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DropdownController()),
         ChangeNotifierProvider(create: (_) => Collectionpart()),
         ChangeNotifierProvider(create: (_) => JobTitle_Controller()),
+        ChangeNotifierProvider(create: (_) => InternetController()),
         ChangeNotifierProvider(create: (_) => FreherController()),
         ChangeNotifierProvider(create: (_) => PreferenceController()),
         ChangeNotifierProvider(create: (_) => SearchJobController()),
