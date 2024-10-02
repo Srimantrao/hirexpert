@@ -16,8 +16,6 @@ import '../../../../utils/common/Tostification/Toastification_success.dart';
 import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
-
-
 class Search extends StatefulWidget {
   Search({super.key});
 
