@@ -8,6 +8,8 @@ import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import 'package:http/http.dart' as http;
 
+import '../../../../../view/utils/common/Tostification/Toastification_success.dart';
+
 class ApplyjoblistController extends GetxController {
   var isLoding = false.obs;
   var ApplyJobList_data={}.obs;
@@ -26,6 +28,7 @@ class ApplyjoblistController extends GetxController {
           });
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         ApplyJobList_data.value = jsonDecode(responce.body);
+        ToastificationSuccess.Success('Saved data Successfully');
         print('ApplyJobList_data : - $ApplyJobList_data');
       } else {
         throw {

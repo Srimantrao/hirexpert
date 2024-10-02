@@ -319,7 +319,7 @@ class Details extends StatelessWidget {
                                   Text(Details_texts.Job_Description, style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22)),
                                   SizedBox(height: Get.height / 60),
                                   SizedBox(
-                                    height: Get.height / 0.60,
+                                    height: Get.height / 0.58,
                                     child: ListView.builder(
                                       physics: NeverScrollableScrollPhysics(),
                                       itemCount: 1,

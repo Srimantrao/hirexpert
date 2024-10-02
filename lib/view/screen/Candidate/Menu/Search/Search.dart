@@ -1,4 +1,37 @@
 // ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, invalid_use_of_protected_member, avoid_print, prefer_const_constructors_in_immutables, override_on_non_overriding_member
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
+import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
+import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:provider/provider.dart';
+import '../../../../../controller/API_handler/Candidate/Menu/Home/Sarching_Saving_API.dart';
+import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
+import '../../../../../controller/User_Controller/Candidate_Controller/SearchScreenController/SavingData_Controller.dart';
+import '../../../../utils/app_String.dart';
+import '../../../../utils/app_loder.dart';
+import '../../../../utils/common/List/jobSearch.dart';
+import '../../../../utils/common/Tostification/Toastification_success.dart';
+import 'Applied_NotApplied/Details_Search.dart';
+import 'Search_location.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
+import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
+import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_icon.dart';
+import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
+import '../../../../utils/app_String.dart';
+import '../../../../utils/app_loder.dart';
+import '../../../../utils/common/List/jobSearch.dart';
+import 'Applied_NotApplied/Details_Search.dart';
+import 'Search_location.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,7 +49,6 @@ import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
 class Search extends StatefulWidget {
-
   Search({super.key});
 
   @override
@@ -25,10 +57,9 @@ class Search extends StatefulWidget {
 
 class _SearchState extends State<Search> {
   final StateSearch_Controller stateSearchController = Get.put(StateSearch_Controller());
-
   final IsfavrationControllers isFavrationController = Get.put(IsfavrationControllers());
-
   final OptionApiController loginController = Get.put(OptionApiController());
+  final SarchingSavingApi Saving_Apis = Get.put(SarchingSavingApi());
 
   @override
   Widget build(BuildContext context) {
@@ -83,8 +114,7 @@ class _SearchState extends State<Search> {
         height: Get.height,
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
-        child: Obx(
-              () {
+        child: Obx(() {
             if (stateSearchController.Searchings.Search.isLoding.value) {
               return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
             } else if (stateSearchController.Searchings.Search.Search_data.value['data'] == null) {
@@ -95,7 +125,6 @@ class _SearchState extends State<Search> {
                 itemBuilder: (BuildContext context, int index) {
                   var jobData = stateSearchController.Searchings.Search.Search_data.value['data'][index];
                   var isFavourite = jobData['IsFavourite'] == "1";
-
                   return JobSearch(
                     onTap: () {
                       Get.to(() => Details(
@@ -142,18 +171,13 @@ class _SearchState extends State<Search> {
                     stats: jobData['FormatDt'],
                     saveonTap: () async {
                       var newIsLike = isFavourite ? "0" : "1";
-                      await isFavrationController.IsfavrationControllers_fuction(
-                        CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'],
-                        JobId: jobData['JobId'].toString(),
-                        IsLike: newIsLike,
-                        Tokan: loginController.option_data['data']['LoginToken'],
-                      );
+                      await isFavrationController.IsfavrationControllers_fuction(CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'], JobId: jobData['JobId'].toString(), IsLike: newIsLike, Tokan: loginController.option_data['data']['LoginToken']);
+                      if (isFavrationController.isFavration.value.status) {jobData['IsFavourite'] = newIsLike;isFavourite = !isFavourite;(context as Element).markNeedsBuild();}
+                      if (!isFavourite) {ToastificationSuccess.Success('${jobData['TechName']} is Saved SuccessFully');}
+                      if (isFavourite) {ToastificationSuccess.Success('${jobData['TechName']} is Removed SuccessFully');}
 
-                      if (isFavrationController.isFavration.value.status) {
-                        jobData['IsFavourite'] = newIsLike;
-                        isFavourite = !isFavourite;
-                        (context as Element).markNeedsBuild();
-                      }
+                      Saving_Apis.favourlist.data.addAll(jobData);
+
                       setState(() {});
                     },
                     savechild: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
@@ -168,3 +192,6 @@ class _SearchState extends State<Search> {
     );
   }
 }
+
+//Saveings.SavingData(jobData['JobId'], jobData);
+//Saveings.isFavourite = jobData['IsFavourite'] == "1";

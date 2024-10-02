@@ -20,8 +20,6 @@ class Profile_info extends StatelessWidget {
 final StatsbarController Statesbar = Get.put(StatsbarController());
   Profile_info({super.key});
 
-
-
   @override
   Widget build(BuildContext context) {
     Statesbar.profile.login.onInit();

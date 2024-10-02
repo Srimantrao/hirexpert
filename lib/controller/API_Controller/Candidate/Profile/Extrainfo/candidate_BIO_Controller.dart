@@ -12,7 +12,7 @@ class candidate_BIO_Controller extends GetxController {
   var isLoding = false.obs;
   var candidate_BIO_data;
 
-  Future candi_candidate_fuction({
+  Future<void> candi_candidate_fuction({
     required String CandidateId,
     required String BIO,
     required String Timezone,

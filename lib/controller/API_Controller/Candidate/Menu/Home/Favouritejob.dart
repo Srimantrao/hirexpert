@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_success.dart';
 import 'package:http/http.dart' as http;
 
 class Favouritejob extends GetxController {
@@ -23,6 +24,7 @@ class Favouritejob extends GetxController {
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         data.value = jsonDecode(responce.body);
+        ToastificationSuccess.Success('Saved data Successfully');
         print("data :- $data");
       } else {
         throw {
