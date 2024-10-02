@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
@@ -6,6 +8,7 @@ import '../../../../../../modal/Job/Search_list.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
 import '../../../../../utils/app_loder.dart';
+// ignore: unused_import
 import '../../../../../utils/common/Buttons/wideButtons.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 

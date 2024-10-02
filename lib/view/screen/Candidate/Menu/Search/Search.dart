@@ -7,10 +7,8 @@ import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavrat
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
-import 'package:provider/provider.dart';
 import '../../../../../controller/API_handler/Candidate/Menu/Home/Sarching_Saving_API.dart';
 import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
-import '../../../../../controller/User_Controller/Candidate_Controller/SearchScreenController/SavingData_Controller.dart';
 import '../../../../utils/app_String.dart';
 import '../../../../utils/app_loder.dart';
 import '../../../../utils/common/List/jobSearch.dart';
@@ -18,35 +16,7 @@ import '../../../../utils/common/Tostification/Toastification_success.dart';
 import 'Applied_NotApplied/Details_Search.dart';
 import 'Search_location.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
-import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
-import 'package:hirexpert/view/utils/app_color.dart';
-import 'package:hirexpert/view/utils/app_icon.dart';
-import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
-import '../../../../utils/app_String.dart';
-import '../../../../utils/app_loder.dart';
-import '../../../../utils/common/List/jobSearch.dart';
-import 'Applied_NotApplied/Details_Search.dart';
-import 'Search_location.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavration_Controllers.dart';
-import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
-import 'package:hirexpert/view/utils/app_color.dart';
-import 'package:hirexpert/view/utils/app_icon.dart';
-import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
-import '../../../../utils/app_String.dart';
-import '../../../../utils/app_loder.dart';
-import '../../../../utils/common/List/jobSearch.dart';
-import 'Applied_NotApplied/Details_Search.dart';
-import 'Search_location.dart';
 
 class Search extends StatefulWidget {
   Search({super.key});

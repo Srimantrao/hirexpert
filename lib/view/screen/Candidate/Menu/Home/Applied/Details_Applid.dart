@@ -1,20 +1,14 @@
-// ignore_for_file: camel_case_types, non_constant_identifier_names, file_names, prefer_const_constructors
+// ignore_for_file: camel_case_types, non_constant_identifier_names, file_names, prefer_const_constructors, must_be_immutable, annotate_overrides
 
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Appling_API_handler.dart';
-import 'package:hirexpert/controller/User_Controller/Candidate_Controller/DatailsController/Details_Appild.dart';
-import 'package:provider/provider.dart';
 import '../../../../../../controller/Save_Controller/Candidate_state/Menu/Search/Searech_location_Save.dart';
 import '../../../../../../modal/Job/Search_list.dart';
 import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
-import '../../../../../utils/app_icon.dart';
 import '../../../../../utils/app_loder.dart';
 import '../../../../../utils/common/Buttons/wideButtons.dart';
-import '../../../../../utils/common/Container/Option.dart';
 import '../../../../../utils/common/List/jobSearch.dart';
 
 class Details_Appild extends StatelessWidget {

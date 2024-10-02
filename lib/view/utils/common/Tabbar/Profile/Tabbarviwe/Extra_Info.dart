@@ -1,13 +1,11 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, unnecessary_null_comparison, prefer_const_constructors_in_immutables
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors, must_be_immutable, unnecessary_null_comparison, prefer_const_constructors_in_immutables, unused_import
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/ApplyJobList_Controller.dart';
 import 'package:hirexpert/controller/Save_Controller/Candidate_state/Menu/Profile/Extra_Info/Extra_info.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../../controller/API_Controller/Candidate/Profile/Details_profile/Details_Profile.dart';
 import '../../../../app_String.dart';
