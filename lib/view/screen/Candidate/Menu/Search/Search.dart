@@ -10,6 +10,7 @@ import 'package:hirexpert/view/utils/app_icon.dart';
 import '../../../../../controller/API_handler/Candidate/Menu/Home/Sarching_Saving_API.dart';
 import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
 import '../../../../utils/app_String.dart';
+import '../../../../utils/app_constance.dart';
 import '../../../../utils/app_loder.dart';
 import '../../../../utils/common/List/jobSearch.dart';
 import '../../../../utils/common/Tostification/Toastification_success.dart';
@@ -24,6 +25,13 @@ class Search extends StatefulWidget {
 }
 
 class _SearchState extends State<Search> {
+  @override
+  void initState() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
+    super.initState();
+  }
+
   final StateSearch_Controller stateSearchController = Get.put(StateSearch_Controller());
   final IsfavrationControllers isFavrationController = Get.put(IsfavrationControllers());
   final OptionApiController loginController = Get.put(OptionApiController());

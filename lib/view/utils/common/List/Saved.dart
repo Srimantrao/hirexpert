@@ -25,9 +25,7 @@ class Seved_List extends StatelessWidget {
 
     return Obx(() {
       if (Saving_Apis.favourlist.isloding.value) {
-        return Center(child: Image.asset(
-            AppLoder.infinityloder_without_background,
-            scale: Get.width / 250),);
+        return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
       } else if (Saving_Apis.favourlist.data.value['data'] == null) {
         return Center(child: Text(API_Error.null_data));
       } else {
@@ -57,7 +55,8 @@ class Seved_List extends StatelessWidget {
                         Hybrid: jobData['WorkSet'],
                         stats: jobData['FormatDt'],
                           saving: SvgPicture.asset(AppIcons.bookmark),
-                      ),);
+                      ),
+                  );
                 },
                 Icon: jobData['ComLogo'],
                 Job_Tital: jobData['JobTitle'],

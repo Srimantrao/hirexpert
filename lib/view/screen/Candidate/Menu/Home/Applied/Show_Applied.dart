@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/ApplyJobList_Controller.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
@@ -23,9 +24,9 @@ class _Show_AppliedState extends State<Show_Applied> {
   @override
   void initState() {
     Applay.ApplyjoblistController_Fuction(
-        CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+        CandidateId: Candidate,
         Timezone: 'Asia/Calcutta',
-        Tokan: login.option_data['data']['LoginToken']);
+        Tokan: Tokans);
     super.initState();
   }
 

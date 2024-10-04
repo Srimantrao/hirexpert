@@ -13,7 +13,6 @@ class DetailsProfile_Controls extends GetxController {
   Future<void> DetailsProfile_Controls_Fuction({required String JobId, required String Timezone, required String CandidateId, required String IsInterview,required String Tokan}) async {
     try {
       isloding.value = true;
-      update();
 
       final responce = await http.get(Uri.parse('${AppUrl.CanJobDetails}?JobId=$JobId&Timezone=$Timezone&CandidateId=$CandidateId&IsInterview=$IsInterview'),
           headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''});
@@ -28,7 +27,7 @@ class DetailsProfile_Controls extends GetxController {
       "DetailsProfile Controllers Error :- $e";
     } finally {
       isloding.value = false;
-      update();
+
     }
   }
 }

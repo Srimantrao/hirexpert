@@ -1,24 +1,27 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use, avoid_print
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Profile/My_Profile/Candidate_Update_Controllers.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
+import '../../../../../../../controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import '../../../../../../../controller/API_Controller/Candidate/Menu/Home/Candidate_Details_Controllres.dart';
 import '../../../../../../../controller/API_handler/Candidate/Menu/profile/myprofile/Personal_Information.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/CircleAvatar_Color/(My_Profile)Circle_color.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Navi_Icons/(My_Profile)_Navi_Icons.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/Logic_Conroller/Screen_Logic/Profile_Logic/My_Profile_Logic(Tabbar)/Pass_Error/(My_Profile)_Pass_Error.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/MY_ProfileController/My_ProfileController.dart';
-import '../../../../../../../modal/Dropdowns/drops.dart';
 import '../../../../../app_icon.dart';
 import '../../../../../app_loder.dart';
 import '../../../../Container/profile_Info.dart';
 import '../../../../Selection/Information_Date.dart';
-import '../../../../Selection/Information_Selection.dart';
 import '../../../../Textfild/Inputfild.dart';
 
 class MY_Profile extends StatefulWidget {
@@ -29,9 +32,99 @@ class MY_Profile extends StatefulWidget {
 }
 
 class _MY_ProfileState extends State<MY_Profile> {
+
+  bool setectpasing = false;
+  ValueNotifier<int> passYearNotifier = ValueNotifier<int>(2001);
+
   String SelectdYear = "";
   String Selectdmonth = "";
   final PersonalInformation Parsonal = Get.put(PersonalInformation());
+
+  CandidatedetailsControllers_Controllrs Candidatedetails = Get.put(CandidatedetailsControllers_Controllrs());
+  OptionApiController login = Get.put(OptionApiController());
+  CandidateUpdateControllers CandidateUpdate = Get.put(CandidateUpdateControllers());
+
+  //Personal Information
+  TextEditingController? JobTitle_Controllers;
+  TextEditingController? FirstName_Controllers;
+  TextEditingController? LastName_Controllers;
+  TextEditingController? Email_Controllers;
+  TextEditingController? Phone_Controllers;
+  TextEditingController? DOB_Controllers;
+
+  //Address
+  TextEditingController? Street_Controllers;
+  TextEditingController? Post_Controllers;
+  TextEditingController? SelectProvince_Controllers;
+  TextEditingController? SelectCity_Controllers;
+
+  //Education Details
+  TextEditingController? Degree_Controllers;
+  TextEditingController? Specialsation_Controllers;
+  TextEditingController? Institute_Controllers;
+
+  //Work Experience
+  TextEditingController? CompanyName_Controllers;
+  TextEditingController? Designation_Controllers;
+
+  //Salary
+  TextEditingController? CurrentSalary_Controllers;
+  TextEditingController? CurrentExpented_Controllers;
+
+  //Work Location
+  TextEditingController? CurrentSalarywork_Controllers;
+  TextEditingController? PrefferedSalary_Controllers;
+  TextEditingController? Prefferedwork_Controllers;
+  TextEditingController? JobType_Controllers;
+  TextEditingController? NoticePeriod_Controllers;
+
+  @override
+  void initState() {
+    Future.microtask(()async{
+      Candidatedetails.CandidatedetailsControllers_Fuction(
+        CandidateId: Candidate,
+        Timezone: 'asia/kolkata',
+        IsLabel: '1',
+        CompanyId: '1',
+        Tokan: Tokans,
+      );
+
+      //Personal Infromation
+      JobTitle_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['JobTitle']);
+      FirstName_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['FirstName']);
+      LastName_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['LastName']);
+      Email_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['Email']);
+      Phone_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['Phone']);
+      DOB_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['DOB'].toString());
+
+      //Address
+      Street_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['StreetAddress']);
+      Post_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['PostCode']);
+      SelectProvince_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['ProvinceName']);
+      SelectCity_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CityName']);
+
+      //Educational Details
+      Degree_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['DegreeName']);
+      Specialsation_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['QuestionList'][0]['Answer'][0]);
+      Institute_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['DegreeName']);
+
+      //Work Experience
+      CompanyName_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CompanyName']);
+      Designation_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['Designation']);
+
+      //Salary
+      CurrentSalary_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['Salary']);
+      CurrentExpented_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['ExpectedSalaryTo']);
+
+      //Work Location
+      CurrentSalarywork_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['Salary']);
+      PrefferedSalary_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CurrentLocation']);
+      Prefferedwork_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork']);
+      JobType_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork']);
+      NoticePeriod_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['NoticePeriod']);
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,15 +133,15 @@ class _MY_ProfileState extends State<MY_Profile> {
       height: Get.height,
       width: Get.width,
       decoration: BoxDecoration(color: AppColor.Full_body_color),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.vertical,
-        child: Obx(() {
-          if (Parsonal.login.isLodingvalue.value) {
-            return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
-          } else if (Parsonal.login.option_data['data'] == null || Parsonal.login.option_data == null) {
-            return Center(child: Text(API_Error.null_data));
-          } else {
-            return Column(
+      child: Obx(() {
+        if (Candidatedetails.isLoding.value) {
+          return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
+        } else if (Candidatedetails.Candidatedetails_data['data'] == null || Candidatedetails.Candidatedetails_data == null) {
+          return Center(child: Text(API_Error.null_data));
+        } else {
+          return SingleChildScrollView(
+            scrollDirection: Axis.vertical,
+            child: Column(
               children: [
                 //Parsonal_Information
                 Consumer<My_ProfileController>(
@@ -85,11 +178,11 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       children: [
                                         SvgPicture.asset(AppIcons.PDF_Icon),
                                         SizedBox(height: Get.height / 50),
-                                        // Text(
-                                        //   textAlign: TextAlign.center,
-                                        //   cv.login.option_data['data']['UserDetails']['ResumeDetails']['ResumeName'].toString(),
-                                        //   style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
-                                        // ),
+                                        Text(
+                                          textAlign: TextAlign.center,
+                                          Candidatedetails.Candidatedetails_data['data']['ResumeDetails'].toString(),
+                                          style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -107,10 +200,10 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       SizedBox(width: Get.width / 25),
                                       SizedBox(
                                         width: Get.width / 2,
-                                        // child: Text(
-                                        //   cv.login.option_data['data']['UserDetails']['ResumeDetails']['UploadName'],
-                                        //   style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
-                                        // ),
+                                        child: Text(
+                                          Candidatedetails.Candidatedetails_data['ResumeDetails'] ?? '',
+                                          style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -141,8 +234,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 onTap: () {myProfile.P_Job_Title_fun();},
                                 onChanged: (val) {myProfile.JobTitle_validation(val);},
                                 labal: Profile_Text.Job_Title,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['JobTitle'],
-                                controller: myProfile.Job_Titales,
+                                hint: Candidatedetails.Candidatedetails_data['data']['JobTitle'],
+                                controller: JobTitle_Controllers!,
                               ),
                               MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.JobTitle),
                               SizedBox(height: Get.height / 60),
@@ -158,8 +251,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                           onTap: () {myProfile.P_Frist_Name_fun();},
                                           onChanged: (val) {myProfile.FristName_validation(val);},
                                           labal: Profile_Text.First_Name,
-                                          hint: Parsonal.login.option_data['data']['UserDetails']['FirstName'],
-                                          controller: myProfile.Frist_Name_Profile,
+                                          hint: Candidatedetails.Candidatedetails_data['data']['FirstName'],
+                                          controller: FirstName_Controllers!,
                                         ),
                                       ),
                                       SizedBox(
@@ -178,8 +271,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                           onTap: () {myProfile.P_Last_Name_fun();},
                                           onChanged: (val) {myProfile.LastName_validation(val);},
                                           labal: Profile_Text.Last_Name,
-                                          hint: Parsonal.login.option_data['data']['UserDetails']['LastName'],
-                                          controller: myProfile.Last_Name_Profile,
+                                          hint: Candidatedetails.Candidatedetails_data['data']['LastName'],
+                                          controller: LastName_Controllers!,
                                         ),
                                       ),
                                       SizedBox(
@@ -195,8 +288,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Email ID
                               Inputfild(
                                 labal: Profile_Text.Email_Id,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['Email'],
-                                controller: myProfile.Email_id_Profile,
+                                hint: Candidatedetails.Candidatedetails_data['data']['Email'],
+                                controller: Email_Controllers!,
                                 onTap: () {myProfile.P_Email_ID_fun();},
                                 onChanged: (val) {myProfile.Email_ID_validation(val);},
                               ),
@@ -208,8 +301,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               Inputfild(
                                 keyboardType: TextInputType.number,
                                 labal: Profile_Text.Mobile_Number,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['Phone'],
-                                controller: myProfile.Mobile_Numbres,
+                                hint: Candidatedetails.Candidatedetails_data['data']['Phone'],
+                                controller: Phone_Controllers!,
                                 onTap: () {myProfile.P_Mobile_Numbres_fun();},
                                 onChanged: (val) {myProfile.Mobile_Numbress_validation(val);},
                               ),
@@ -259,8 +352,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Date Of Birthday
                               Inputfild(
                                 labal: Profile_Text.Date_Of_Birthday,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['DOB'],
-                                controller: myProfile.BirthDay,
+                                hint: Candidatedetails.Candidatedetails_data['data']['DOB'].toString(),
+                                controller: DOB_Controllers!,
                                 onTap: () {myProfile.P_Birthday_fun();},
                                 onChanged: (val) {myProfile.Date_OF_Bithday_validation(val);},
                               ),
@@ -288,8 +381,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Street Address
                               Inputfild(
                                 labal: Profile_Text.Street_Address,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['Address'],
-                                controller: myProfile.Street_Address,
+                                hint: Candidatedetails.Candidatedetails_data['data']['StreetAddress'],
+                                controller: Street_Controllers!,
                                 onTap: () {myProfile.P_Street_Adress_Fun();},
                                 onChanged: (val) {myProfile.Street_Adress_validation(val);},
                               ),
@@ -299,8 +392,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Post Code
                               Inputfild(
                                 labal: Profile_Text.Post_Code,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['PostCode'],
-                                controller: myProfile.Post_Code,
+                                hint: Candidatedetails.Candidatedetails_data['data']['PostCode'],
+                                controller: Post_Controllers!,
                                 onTap: () {myProfile.P_Post_Code_Fun();},
                                 onChanged: (val) {myProfile.Post_Codes_validation(val);},
                               ),
@@ -310,8 +403,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Select Province
                               Inputfild(
                                 labal: Profile_Text.Select_Province,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['ProvinceId'],
-                                controller: myProfile.Select_Province,
+                                hint: Candidatedetails.Candidatedetails_data['data']['ProvinceName'],
+                                controller: SelectProvince_Controllers!,
                                 onTap: () {myProfile.P_Select_Province_Fun();},
                                 onChanged: (val) {myProfile.Select_Provinces_validation(val);},
                               ),
@@ -321,8 +414,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Select city
                               Inputfild(
                                 labal: Profile_Text.Select_City,
-                                hint: Parsonal.login.option_data['data']['UserDetails']['CityName'],
-                                controller: myProfile.Select_City,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CityName'],
+                                controller: SelectCity_Controllers!,
                                 onTap: () {myProfile.P_Select_City_Fun();},
                                 onChanged: (val) {myProfile.Select_Citys_validation(val);},
                               ),
@@ -353,8 +446,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Degree
                               Inputfild(
                                 labal: EditProfile_text.Degree,
-                                hint: Profile_Text.Degree,
-                                controller: myProfile.Degree,
+                                hint: Candidatedetails.Candidatedetails_data['data']['DegreeName'],
+                                controller: Degree_Controllers!,
                                 onTap: () {myProfile.P_Degree_fun();},
                                 onChanged: (val) {myProfile.Degree_validation(val);},
                               ),
@@ -364,8 +457,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Specialisation
                               Inputfild(
                                 labal: EditProfile_text.Specialisation,
-                                hint: Profile_Text.Specialisation,
-                                controller: myProfile.Specialisation,
+                                hint: Candidatedetails.Candidatedetails_data['data']['QuestionList'][0]['Answer'][0],
+                                controller: Specialsation_Controllers!,
                                 onTap: () {myProfile.P_Specialisation_fun();},
                                 onChanged: (val) {myProfile.Specialisation_validation(val);},
                               ),
@@ -375,45 +468,99 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Institute Name
                               Inputfild(
                                 labal: EditProfile_text.Institute_Name,
-                                hint: Profile_Text.Institute_Name,
-                                controller: myProfile.Institute_Name,
+                                hint: Candidatedetails.Candidatedetails_data['data']['DegreeName'],
+                                controller: Institute_Controllers!,
                                 onTap: () {myProfile.P_Instiute_name_fun();},
                                 onChanged: (val) {myProfile.Institute_name_validation(val);},
                               ),
                               MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Institute_names),
-                              SizedBox(height: Get.height / 50),
+                              SizedBox(height: Get.height / 70),
 
                               //Passing Year
-                              Infromation_Selection(
-                                name: EditProfile_text.Passing_Yea,
-                                Hadline: Profile_Text.Select_City,
-                                Selectedtext: myProfile.selectedYear,
-                                children: List.generate(
-                                  Years.length,
-                                  (index) => Text(
-                                    Years[index],
-                                    style: TextStyle(fontSize: Get.width / 20),
-                                  ),
-                                ),
-                                onSelectedItemChanged: (int index) {
-                                  myProfile.onSelectedItemChanged(index);
-                                },
-                                SelectonTap_Button: () {
-                                  myProfile.P_Passing_Year_fun();
-                                  Get.back();
-                                },
+
+                              // Infromation_Selection(
+                              //   name: EditProfile_text.Passing_Yea,
+                              //   Hadline: Profile_Text.Select_City,
+                              //   Selectedtext: myProfile.selectedYear,
+                              //   children: List.generate(Years.length, (index) => Text(Years[index], style: TextStyle(fontSize: Get.width / 20))),
+                              //   onSelectedItemChanged: (int index) {myProfile.onSelectedItemChanged(index);},
+                              //   SelectonTap_Button: () {myProfile.P_Passing_Year_fun();Get.back();},
+                              // ),
+                              Text(
+                                EditProfile_text.Passing_Yea,
+                                style: TextStyle(fontSize: Get.width / 24, color: AppColor.select_check_color),
                               ),
-                              SizedBox(height: Get.height / 50),
+                              GestureDetector(
+                                onTap: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return StatefulBuilder(
+                                        builder: (BuildContext context, inchange) {
+                                          return AlertDialog(
+                                            backgroundColor: AppColor.Full_body_color,
+                                            content: Container(
+                                              height: Get.height / 4,
+                                              width: Get.width,
+                                              decoration: BoxDecoration(color: AppColor.Full_body_color),
+                                              child: NumberPicker(
+                                                step: 1,
+                                                minValue: passYearNotifier.value,
+                                                maxValue: 2025,
+                                                itemHeight: Get.height / 12,
+                                                selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 20),
+                                                decoration: BoxDecoration(
+                                                  border: Border(
+                                                    top: BorderSide(color: AppColor.subcolor),
+                                                    bottom: BorderSide(color: AppColor.subcolor),
+                                                  ),
+                                                ),
+                                                value: passYearNotifier.value,
+                                                onChanged: (value) {
+                                                  passYearNotifier.value = value;
+                                                  setectpasing = true;
+                                                  inchange(() {});
+                                                },
+                                              ),
+                                            ),
+                                            actions: [
+                                              OnButtons(
+                                                  onTap: (){
+                                                    Get.back();
+                                                  },
+                                                  Button_Color: AppColor.Button_color, btn_name: 'Save'),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                                child: ValueListenableBuilder(
+                                  valueListenable: passYearNotifier,
+                                  builder: (BuildContext context, value, Widget? child) {
+                                    return Container(
+                                      height: Get.height / 20,
+                                      width: Get.width,
+                                      decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: AppColor.select_check_color)),
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        children: [
+                                          Text((setectpasing) ? value.toString() : EditProfile_text.Passing_Yea),
+                                        ],
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              SizedBox(height: Get.height / 30),
 
                               //Add Education Details
-                              Text(
-                                Profile_Text.Add_Educational_Details,
-                                style: TextStyle(
-                                  fontSize: Get.width / 24,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColor.Button_color,
-                                ),
-                              ),
+                              Text(Profile_Text.Add_Educational_Details, style: TextStyle(fontSize: Get.width / 24, fontWeight: FontWeight.w600, color: AppColor.Button_color)),
+                              SizedBox(height: Get.height / 30),
                             ],
                           ),
                         ),
@@ -467,61 +614,154 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     Text(Profile_Text.Total_Experience, style: TextStyle(fontSize: Get.width / 24, color: AppColor.select_check_color)),
 
                                     //Total Experience
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SizedBox(
-                                          width: Get.width / 2.5,
-                                          child: Infromation_Selection(
-                                            SelectonTap_Button: () {
-                                              myProfile.P_Years_Selection_fun();
-                                              Get.back();
-                                            },
-                                            Hadline: Profile_Text.Enter_Year,
-                                            Selectedtext: SelectdYear,
-                                            onSelectedItemChanged: (int index) {
-                                              setState(() {
-                                                SelectdYear = Years[index];
-                                              });
-                                            },
-                                            children: List.generate(
-                                              Years.length,
-                                              (index) => Text(Years[index], style: TextStyle(fontSize: Get.width / 20)),
-                                            ),
-                                          ),
-                                        ),
-                                        SizedBox(
-                                          width: Get.width / 2.5,
-                                          child: Infromation_Selection(
-                                            SelectonTap_Button: () {
-                                              myProfile.P_Month_Selection_fun();
-                                              Get.back();
-                                            },
-                                            Hadline: Profile_Text.Enter_Month,
-                                            Selectedtext: Selectdmonth,
-                                            onSelectedItemChanged: (int index) {
-                                              setState(() {
-                                                Selectdmonth = Month[index];
-                                              });
-                                            },
-                                            children: List.generate(
-                                              Month.length,
-                                              (index) => Text(Month[index], style: TextStyle(fontSize: Get.width / 20)),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    SizedBox(height: Get.height / 50),
+                                    // Row(
+                                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    //   children: [
+                                    //     SizedBox(
+                                    //       width: Get.width / 2.5,
+                                    //       child: Infromation_Selection(
+                                    //         SelectonTap_Button: () {
+                                    //           myProfile.P_Years_Selection_fun();
+                                    //           Get.back();
+                                    //         },
+                                    //         Hadline: Profile_Text.Enter_Year,
+                                    //         Selectedtext: SelectdYear,
+                                    //         onSelectedItemChanged: (int index) {
+                                    //           setState(() {
+                                    //             SelectdYear = Years[index];
+                                    //           });
+                                    //         },
+                                    //         children: List.generate(
+                                    //           Years.length,
+                                    //           (index) => Text(Years[index], style: TextStyle(fontSize: Get.width / 20)),
+                                    //         ),
+                                    //       ),
+                                    //     ),
+                                    //     SizedBox(
+                                    //       width: Get.width / 2.5,
+                                    //       child: Infromation_Selection(
+                                    //         SelectonTap_Button: () {
+                                    //           myProfile.P_Month_Selection_fun();
+                                    //           Get.back();
+                                    //         },
+                                    //         Hadline: Profile_Text.Enter_Month,
+                                    //         Selectedtext: Selectdmonth,
+                                    //         onSelectedItemChanged: (int index) {
+                                    //           setState(() {
+                                    //             Selectdmonth = Month[index];
+                                    //           });
+                                    //         },
+                                    //         children: List.generate(
+                                    //           Month.length,
+                                    //           (index) => Text(Month[index], style: TextStyle(fontSize: Get.width / 20)),
+                                    //         ),
+                                    //       ),
+                                    //     ),
+                                    //   ],
+                                    // ),
+                                    // SizedBox(height: Get.height / 50),
 
                                     //Company Name
+                                    GestureDetector(
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return StatefulBuilder(
+                                              builder: (BuildContext context, inchange) {
+                                                return AlertDialog(
+                                                  backgroundColor: AppColor.Full_body_color,
+                                                  content: Container(
+                                                    height: Get.height / 3,
+                                                    width: Get.width,
+                                                    decoration: BoxDecoration(color: AppColor.Full_body_color),
+                                                    child: Row(
+                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                      children: [
+                                                        SizedBox(
+                                                          width: Get.width/3.04,
+                                                          child: NumberPicker(
+                                                            step: 1,
+                                                            minValue: passYearNotifier.value,
+                                                            maxValue: 2025,
+                                                            itemHeight: Get.height / 12,
+                                                            selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 20),
+                                                            decoration: BoxDecoration(
+                                                              border: Border(
+                                                                top: BorderSide(color: AppColor.subcolor),
+                                                                bottom: BorderSide(color: AppColor.subcolor),
+                                                              ),
+                                                            ),
+                                                            value: passYearNotifier.value,
+                                                            onChanged: (value) {
+                                                              passYearNotifier.value = value;
+                                                              setectpasing = true;
+                                                              inchange(() {});
+                                                            },
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: Get.width/3.04,
+                                                          child: NumberPicker(
+                                                            step: 1,
+                                                            minValue: passYearNotifier.value,
+                                                            maxValue: 2025,
+                                                            itemHeight: Get.height / 12,
+                                                            selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 20),
+                                                            decoration: BoxDecoration(
+                                                              border: Border(
+                                                                top: BorderSide(color: AppColor.subcolor),
+                                                                bottom: BorderSide(color: AppColor.subcolor),
+                                                              ),
+                                                            ),
+                                                            value: passYearNotifier.value,
+                                                            onChanged: (value) {
+                                                              passYearNotifier.value = value;
+                                                              setectpasing = true;
+                                                              inchange(() {});
+                                                            },
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  actions: [
+                                                    OnButtons(onTap: (){Get.back();}, Button_Color: AppColor.Button_color, btn_name: 'Save'),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          },
+                                        );
+                                      },
+                                      child: ValueListenableBuilder(
+                                        valueListenable: passYearNotifier,
+                                        builder: (BuildContext context, value, Widget? child) {
+                                          return Container(
+                                            height: Get.height / 20,
+                                            width: Get.width,
+                                            decoration: BoxDecoration(
+                                              border: Border(bottom: BorderSide(color: AppColor.select_check_color)),
+                                            ),
+                                            child: Column(
+                                              crossAxisAlignment: CrossAxisAlignment.start,
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: [
+                                                Text((setectpasing) ? value.toString() : EditProfile_text.Passing_Yea),
+                                              ],
+                                            ),
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                    SizedBox(height: Get.height / 30),
+
                                     Inputfild(
                                       labal: Profile_Text.Company_Name,
-                                      hint: Profile_Text.Enter_The_Comppany_name,
-                                      controller: myProfile.Enter_The_Comppany_name,
+                                      hint: Candidatedetails.Candidatedetails_data['data']['CompanyName'],
+                                      controller: CompanyName_Controllers!,
                                       onTap: () {myProfile.P_Company_Name_fun();},
-                                      onChanged: (val) {myProfile.Companys_names_validation(val);
-                                      },
+                                      onChanged: (val) {myProfile.Companys_names_validation(val);},
                                     ),
                                     MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Companys_names),
                                     SizedBox(height: Get.height / 50),
@@ -529,8 +769,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     //Designation
                                     Inputfild(
                                       labal: Profile_Text.Designation,
-                                      hint: Profile_Text.Enter_The_Designation,
-                                      controller: myProfile.Designation,
+                                      hint: Candidatedetails.Candidatedetails_data['data']['Designation'],
+                                      controller: Designation_Controllers!,
                                       onTap: () {myProfile.P_Designation_fun();},
                                       onChanged: (val) {myProfile.Designations_validation(val);},
                                     ),
@@ -610,8 +850,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //CTC
                               Inputfild(
                                 labal: Profile_Text.CTC,
-                                hint: Profile_Text.Enter_CTC,
-                                controller: myProfile.CTCss,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentCTC'],
+                                controller: CurrentSalary_Controllers!,
                                 onTap: () {myProfile.CTC_Fun();},
                                 onChanged: (val) {myProfile.CTCs_Validation(val);},
                               ),
@@ -621,8 +861,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Expected
                               Inputfild(
                                 labal: Profile_Text.CTC,
-                                hint: Profile_Text.Enter_Expected,
-                                controller: myProfile.Expanded,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentCTC'],
+                                controller: CurrentExpented_Controllers!,
                                 onTap: () {myProfile.Expected_Fun();},
                                 onChanged: (val) {myProfile.Expected_Validation(val);},
                               ),
@@ -651,8 +891,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //CTC
                               Inputfild(
                                 labal: Profile_Text.Current_CTC_per_annum,
-                                hint: Profile_Text.Enter_CTC,
-                                controller: myProfile.CTC2_text,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentCTC'],
+                                controller: CurrentSalarywork_Controllers!,
                                 onTap: () {myProfile.P_CTC_Current_fun();},
                                 onChanged: (val) {myProfile.P_CTC_Currents_validation(val);},
                               ),
@@ -662,8 +902,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Preffered Working Location
                               Inputfild(
                                 labal: Profile_Text.Preffered_Working_Location,
-                                hint: Profile_Text.Enter_Preffered_Working_location,
-                                controller: myProfile.Preffered_Working_Location_text,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentLocation'],
+                                controller: PrefferedSalary_Controllers!,
                                 onTap: () {myProfile.Preffered_Working_fun();},
                                 onChanged: (val) {myProfile.Preffered_Workings_validation(val);
                                 },
@@ -674,8 +914,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Preffered Working Setup
                               Inputfild(
                                 labal: Profile_Text.Preffered_Work_Setup,
-                                hint: Profile_Text.Enter_the_Preffered_Work_Setup,
-                                controller: myProfile.Preffered_Work_Setup_text,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork'],
+                                controller: Prefferedwork_Controllers!,
                                 onTap: () {myProfile.Preffered_Work_Working_fun();},
                                 onChanged: (val) {myProfile.Preffered_Work_Workings_validation(val);
                                 },
@@ -686,8 +926,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Job Type Preferrence
                               Inputfild(
                                 labal: Profile_Text.Job_Type_Preferrence,
-                                hint: Profile_Text.Job_Type_Preferrence,
-                                controller: myProfile.Job_Type_Preferrence_text,
+                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork'],
+                                controller: JobType_Controllers!,
                                 onTap: () {myProfile.Job_Type_Preferrence_fun();},
                                 onChanged: (val) {myProfile.Job_Type_Preferrences_validation(val);},
                               ),
@@ -697,8 +937,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Notice Period (days)(Optional)
                               Inputfild(
                                 labal: Profile_Text.Notice_Period_days_Optional,
-                                hint: Profile_Text.Enter_Notice_Period,
-                                controller: myProfile.Enter_Notice_Period_text,
+                                hint: Candidatedetails.Candidatedetails_data['data']['NoticePeriod'],
+                                controller: NoticePeriod_Controllers!,
                                 onTap: () {myProfile.Notice_Period_fun();},
                                 onChanged: (val) {myProfile.Notice_Periods_validation(val);},
                               ),
@@ -714,12 +954,22 @@ class _MY_ProfileState extends State<MY_Profile> {
                 SizedBox(height: Get.height / 10),
 
                 //Buttons
-                OnButtons(Button_Color: AppColor.Button_color, btn_name: Profile_Text.Buttion_name),
+                OnButtons(
+                  onTap: () {
+                    CandidateUpdate.CandidateUpdateControllers_Fuction(
+                        CandidateId: Candidate,
+                        FirstName: FirstName_Controllers.toString(),
+                        UserId: Candidatedetails.Candidatedetails_data['data']['UserId'],
+                        Timezone: 'asia/kolkata',
+                    );
+                  },
+                    Button_Color: AppColor.Button_color, btn_name: Profile_Text.Buttion_name,
+                ),
               ],
-            );
-          }
-        }),
-      ),
+            ),
+          );
+        }
+      }),
     );
   }
 }

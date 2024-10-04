@@ -27,9 +27,9 @@ class _Extra_infoState extends State<Extra_info> {
       Details.DetailsProfile_Controls_Fuction(
         JobId: '7',
         Timezone: 'asia/kolkata',
-        CandidateId: login.option_data['data']['UserDetails']['CandidateId'],
+        CandidateId: login.option_data['data']?['UserDetails']?['CandidateId'] ?? '',
         IsInterview: '0',
-        Tokan: login.option_data['data']['LoginToken'],
+        Tokan: login.option_data['data']?['LoginToken'] ?? '',
       );
     });
     super.initState();
@@ -48,7 +48,7 @@ class _Extra_infoState extends State<Extra_info> {
         child: Obx(() {
             if (Details.isloding.value) {
               return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
-            } else if (Details.DetailsProfile_data['data'] == null || Details.DetailsProfile_data == null) {
+            } else if (Details.DetailsProfile_data['data']! == null || Details.DetailsProfile_data == null) {
               return Center(child: Text(API_Error.null_data));
             } else {
               return Column(
@@ -71,12 +71,12 @@ class _Extra_infoState extends State<Extra_info> {
                   SizedBox(height: Get.height / 50),
 
                   //Select your Specialization / interest
-                  Text(Details.DetailsProfile_data['data']['QuestionList'][0]['LabelName'], style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  Text(Details.DetailsProfile_data['data']?['QuestionList']?[0]?['LabelName']!, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                   TextField(
                     readOnly: true,
                     controller: TextEditingController(text: Details.DetailsProfile_data['data']['QuestionList'][0]['Answer'][0]),
                     decoration: InputDecoration(
-                      hintText: Details.DetailsProfile_data['data']['QuestionList'][0]['Answer'][0],
+                      hintText: Details.DetailsProfile_data['data']?['QuestionList']?[0]?['Answer']?[0]!,
                       hintStyle: TextStyle(fontSize: Get.width / 24),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
@@ -85,12 +85,12 @@ class _Extra_infoState extends State<Extra_info> {
                   SizedBox(height: Get.height / 50),
 
                   //What is Your Primary Skilled
-                  Text(Details.DetailsProfile_data['data']['QuestionList'][1]['LabelName'], style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  Text(Details.DetailsProfile_data['data']?['QuestionList']?[1]?['LabelName']!, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                   TextField(
                     readOnly: true,
-                    controller: TextEditingController(text: Details.DetailsProfile_data['data']['QuestionList'][1]['Answer'][0]),
+                    controller: TextEditingController(text: Details.DetailsProfile_data['data']?['QuestionList']?[1]?['Answer']?[0]!),
                     decoration: InputDecoration(
-                      hintText: Details.DetailsProfile_data['data']['QuestionList'][1]['Answer'][0],
+                      hintText: Details.DetailsProfile_data['data']?['QuestionList'][1]?['Answer']?[0]!,
                       hintStyle: TextStyle(fontSize: Get.width / 24),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color,)),
                       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),

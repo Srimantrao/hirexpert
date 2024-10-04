@@ -44,6 +44,8 @@ class AppUrl {
   static const details = "$Base_location/Advertisedjob/JobDetails";
   static const ApplyJobList = "$Base_location/Advertisedjob/ApplyJobList";
   static const CanJobDetails = "$Base_location/Advertisedjob/CanJobDetails";
+  static const CandidateDetails = "$Base_location/user/CandidateDetails";
+  static const CandidateUpdate = "$Base_location/user/CandidateUpdate";
 
   //Notification
   static const Notification = "$Hirexpert/api/v1/user/notificationList?UserType=Candidate";
@@ -55,7 +57,7 @@ class AppUrl {
   static const CountryList = '$Base_location/user/CountryList';
 
   //Profile
-  static const CandidateUpdate = '$Base_location/user/CandidateUpdate';
+  static const CandidateUpdates = '$Base_location/user/CandidateUpdate';
   static const candidateBIO = '$Base_location/user/candidateBIO';
 
   //Employer
