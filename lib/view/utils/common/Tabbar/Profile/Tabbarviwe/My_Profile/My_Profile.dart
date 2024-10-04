@@ -955,13 +955,20 @@ class _MY_ProfileState extends State<MY_Profile> {
 
                 //Buttons
                 OnButtons(
-                  onTap: () {
-                    CandidateUpdate.CandidateUpdateControllers_Fuction(
+                  onTap: () async {
+                   await CandidateUpdate.CandidateUpdateControllers_Fuction(
                         CandidateId: Candidate,
-                        FirstName: FirstName_Controllers.toString(),
+                        Tokan: Tokans,
+                        FirstName: FirstName_Controllers!.text,
                         UserId: Candidatedetails.Candidatedetails_data['data']['UserId'],
                         Timezone: 'asia/kolkata',
+                        JobTitle: JobTitle_Controllers!.text,
+                        Phone: Phone_Controllers!.text,
+                        DOB: DOB_Controllers!.text,
+                        Gender: myProfile.selectedCheckboxIndex.toString(),
                     );
+                   print(Candidate);
+                   setState(() {});
                   },
                     Button_Color: AppColor.Button_color, btn_name: Profile_Text.Buttion_name,
                 ),
