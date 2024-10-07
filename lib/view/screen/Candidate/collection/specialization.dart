@@ -63,7 +63,7 @@ class Candidate_Specialization extends StatelessWidget {
                     child: GestureDetector(
                       onTap: () {
                         if (Specializations.jobdescirbe && Specializations.specialzation) {
-                          Get.to(() => Collection(first_name: first_name, last_name: last_name));
+                          Get.to(() => Collection(first_name: first_name, last_name: last_name),transition: Transition.rightToLeft,duration: Duration(seconds: 1),curve: Curves.fastLinearToSlowEaseIn);
                         }
                       },
                       child: Row(

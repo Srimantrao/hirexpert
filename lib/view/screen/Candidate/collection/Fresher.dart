@@ -31,9 +31,7 @@ class Fresher extends StatelessWidget {
       bottomNavigationBar: Container(
         width: Get.width,
         height: Get.height / 10,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Consumer<FreherController>(
           builder: (BuildContext context, value, Widget? child) {
             return Padding(
@@ -45,9 +43,7 @@ class Fresher extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {
-                          Get.back();
-                        },
+                        onTap: () {Get.back();},
                         child: Row(
                           children: [
                             SvgPicture.asset(AppIcons.Backarrow),
@@ -75,16 +71,12 @@ class Fresher extends StatelessWidget {
                               },
                               child: Row(
                                 children: [
-                                  NextThow(
-                                    text: Navigator_text.Next,
-                                    fontweight: E_Salary.Expected,
-                                    fontcolor: E_Salary.Expected,
-                                  ),
+                                  NextThow(text: Navigator_text.Next, fontweight: E_Salary.Expected, fontcolor: E_Salary.Expected),
                                   SizedBox(width: Get.width / 80),
                                   NextArrow(arrowcolor: E_Salary.Expected),
                                 ],
                               ),
-                            )
+                            ),
                     ],
                   ),
                 ],
@@ -126,9 +118,7 @@ class Fresher extends StatelessWidget {
                   Container(
                     height: Get.height / 25,
                     width: Get.width,
-                    decoration: BoxDecoration(
-                      border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
-                    ),
+                    decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Bottam_color))),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -162,64 +152,62 @@ class Fresher extends StatelessWidget {
                             Showdialog.showdialod(
                                 height: Get.height / 4,
                                 context: context,
-                                colamWidget: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
-                                  child: StatefulBuilder(
-                                    builder: (BuildContext context, inChage) {
-                                      return Row(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              Text(Experience_text.Years, style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22)),
-                                              NumberPicker(
-                                                haptics: true,
-                                                minValue: 0,
-                                                maxValue: 15,
-                                                itemHeight: Get.height / 13,
-                                                selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                    top: BorderSide(color: AppColor.subcolor),
-                                                    bottom: BorderSide(color: AppColor.subcolor),
-                                                  ),
+                                colamWidget: StatefulBuilder(
+                                  builder: (BuildContext context, inChage) {
+                                    return Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text(Experience_text.Years, style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22)),
+                                            NumberPicker(
+                                              haptics: true,
+                                              minValue: 0,
+                                              maxValue: 15,
+                                              itemHeight: Get.height / 13,
+                                              selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
+                                              decoration: BoxDecoration(
+                                                border: Border(
+                                                  top: BorderSide(color: AppColor.subcolor),
+                                                  bottom: BorderSide(color: AppColor.subcolor),
                                                 ),
-                                                value: E_Salary.selectedYear,
-                                                onChanged: (value) {
-                                                  E_Salary.Experience_fuction(value);
-                                                  inChage(() {});
-                                                },
                                               ),
-                                            ],
-                                          ),
-                                          Column(
-                                            children: [
-                                              Text(
-                                                Experience_text.Months,
-                                                style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22),),
-                                              NumberPicker(
-                                                haptics: true,
-                                                minValue: 0,
-                                                maxValue: 15,
-                                                itemHeight: Get.height / 13,
-                                                selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                    top: BorderSide(color: AppColor.subcolor),
-                                                    bottom: BorderSide(color: AppColor.subcolor),
-                                                  ),
+                                              value: E_Salary.selectedYear,
+                                              onChanged: (value) {
+                                                E_Salary.Experience_fuction(value);
+                                                inChage(() {});
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              Experience_text.Months,
+                                              style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22),),
+                                            NumberPicker(
+                                              haptics: true,
+                                              minValue: 0,
+                                              maxValue: 15,
+                                              itemHeight: Get.height / 13,
+                                              selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
+                                              decoration: BoxDecoration(
+                                                border: Border(
+                                                  top: BorderSide(color: AppColor.subcolor),
+                                                  bottom: BorderSide(color: AppColor.subcolor),
                                                 ),
-                                                value: E_Salary.selectMonth,
-                                                onChanged: (value) {
-                                                  E_Salary.Experience2_fuction(value);
-                                                  inChage(() {});
-                                                },
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  ),
+                                              value: E_Salary.selectMonth,
+                                              onChanged: (value) {
+                                                E_Salary.Experience2_fuction(value);
+                                                inChage(() {});
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
                                 actions: [
                                   OnButtons_short(
@@ -231,6 +219,7 @@ class Fresher extends StatelessWidget {
                                     Border_color: AppColor.Button_color,
                                     btn_color: AppColor.Button_color,
                                     text_color: AppColor.Full_body_color,
+                                    width: Get.width/2,
                                   )
                                 ],
                                 hedingtext: Specialization_text.Praduation,
@@ -254,13 +243,13 @@ class Fresher extends StatelessWidget {
                       Showdialog.showdialod(
                           height: Get.height / 4,
                           context: context,
-                          colamWidget: Padding(
-                            padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
-                            child: StatefulBuilder(
-                              builder: (BuildContext context, inChage) {
-                                return Row(
-                                  children: [
-                                    Column(
+                          colamWidget: StatefulBuilder(
+                            builder: (BuildContext context, inChage) {
+                              return Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  SizedBox(
+                                    child: Column(
                                       children: [
                                         Text(Experience_text.Lacks, style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22)),
                                         NumberPicker(
@@ -283,7 +272,9 @@ class Fresher extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    Column(
+                                  ),
+                                  SizedBox(
+                                    child: Column(
                                       children: [
                                         Text(
                                           Experience_text.Thousands,
@@ -309,10 +300,10 @@ class Fresher extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                  ],
-                                );
-                              },
-                            ),
+                                  ),
+                                ],
+                              );
+                            },
                           ),
                           actions: [
                             OnButtons_short(
@@ -324,6 +315,7 @@ class Fresher extends StatelessWidget {
                               Border_color: AppColor.Button_color,
                               btn_color: AppColor.Button_color,
                               text_color: AppColor.Full_body_color,
+                              width: Get.width/2,
                             )
                           ],
                           hedingtext: Specialization_text.Praduation,
@@ -360,10 +352,7 @@ class Fresher extends StatelessWidget {
                                     controller: E_Salary.company_name,
                                   ),
                                 ),
-                                valiadtion_error(
-                                  condiation: E_Salary.companynames,
-                                  Error: E_Salary.companyname_value,
-                                ),
+                                valiadtion_error(condiation: E_Salary.companynames, Error: E_Salary.companyname_value),
                               ],
                             ),
                             Column(
@@ -379,15 +368,13 @@ class Fresher extends StatelessWidget {
                                     controller: E_Salary.designation,
                                   ),
                                 ),
-                                valiadtion_error(
-                                  condiation: E_Salary.designations,
-                                  Error: E_Salary.Designtion_value,
-                                ),
+                                valiadtion_error(condiation: E_Salary.designations, Error: E_Salary.Designtion_value),
                               ],
                             ),
                           ],
                         ),
                         SizedBox(height: Get.height / 50),
+
                         (E_Salary.valuecheck)
                             ? SizedBox()
                             : Column(
@@ -408,9 +395,7 @@ class Fresher extends StatelessWidget {
                                             width: Get.width / 2.5,
                                             height: Get.height / 18,
                                             decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(color: AppColor.Bottam_color),
-                                              ),
+                                              border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
                                             ),
                                             child: Row(mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                               children: [
@@ -438,9 +423,7 @@ class Fresher extends StatelessWidget {
                                             width: Get.width / 2.5,
                                             height: Get.height / 18,
                                             decoration: BoxDecoration(
-                                              border: Border(
-                                                bottom: BorderSide(color: AppColor.Bottam_color),
-                                              ),
+                                              border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
                                             ),
                                             child: Row(
                                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -486,67 +469,65 @@ class Fresher extends StatelessWidget {
                             Showdialog.showdialod(
                                 height: Get.height / 4,
                                 context: context,
-                                colamWidget: Padding(
-                                  padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
-                                  child: StatefulBuilder(
-                                    builder: (BuildContext context, inChage) {
-                                      return Row(
-                                        children: [
-                                          Column(
-                                            children: [
-                                              Text(
-                                                Experience_text.Lacks,
-                                                style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22)),
-                                              NumberPicker(
-                                                haptics: true,
-                                                minValue: 0,
-                                                maxValue: 15,
-                                                itemHeight: Get.height / 13,
-                                                selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                    top: BorderSide(color: AppColor.subcolor),
-                                                    bottom: BorderSide(color: AppColor.subcolor),
-                                                  ),
+                                colamWidget: StatefulBuilder(
+                                  builder: (BuildContext context, inChage) {
+                                    return Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          children: [
+                                            Text(
+                                              Experience_text.Lacks,
+                                              style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22)),
+                                            NumberPicker(
+                                              haptics: true,
+                                              minValue: 0,
+                                              maxValue: 15,
+                                              itemHeight: Get.height / 13,
+                                              selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
+                                              decoration: BoxDecoration(
+                                                border: Border(
+                                                  top: BorderSide(color: AppColor.subcolor),
+                                                  bottom: BorderSide(color: AppColor.subcolor),
                                                 ),
-                                                value: E_Salary.selectLack2,
-                                                onChanged: (value) {
-                                                  E_Salary.CTC_fuction(value);
-                                                  inChage(() {});
-                                                },
                                               ),
-                                            ],
-                                          ),
-                                          Column(
-                                            children: [
-                                              Text(
-                                                Experience_text.Thousands,
-                                                style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22),
-                                              ),
-                                              NumberPicker(
-                                                haptics: true,
-                                                minValue: 0,
-                                                maxValue: 98,
-                                                itemHeight: Get.height / 13,
-                                                selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
-                                                decoration: BoxDecoration(
-                                                  border: Border(
-                                                    top: BorderSide(color: AppColor.subcolor),
-                                                    bottom: BorderSide(color: AppColor.subcolor),
-                                                  ),
+                                              value: E_Salary.selectLack2,
+                                              onChanged: (value) {
+                                                E_Salary.CTC_fuction(value);
+                                                inChage(() {});
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          children: [
+                                            Text(
+                                              Experience_text.Thousands,
+                                              style: TextStyle(color: AppColor.subcolor, fontSize: Get.width / 22),
+                                            ),
+                                            NumberPicker(
+                                              haptics: true,
+                                              minValue: 0,
+                                              maxValue: 98,
+                                              itemHeight: Get.height / 13,
+                                              selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
+                                              decoration: BoxDecoration(
+                                                border: Border(
+                                                  top: BorderSide(color: AppColor.subcolor),
+                                                  bottom: BorderSide(color: AppColor.subcolor),
                                                 ),
-                                                value: E_Salary.selectThousand2,
-                                                onChanged: (value) {
-                                                  E_Salary.CTC2_fuction(value);
-                                                  inChage(() {});
-                                                },
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  ),
+                                              value: E_Salary.selectThousand2,
+                                              onChanged: (value) {
+                                                E_Salary.CTC2_fuction(value);
+                                                inChage(() {});
+                                              },
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    );
+                                  },
                                 ),
                                 actions: [
                                   OnButtons_short(
@@ -558,6 +539,7 @@ class Fresher extends StatelessWidget {
                                     Border_color: AppColor.Button_color,
                                     btn_color: AppColor.Button_color,
                                     text_color: AppColor.Full_body_color,
+                                    width: Get.width/2,
                                   )
                                 ],
                                 hedingtext: Specialization_text.Praduation,

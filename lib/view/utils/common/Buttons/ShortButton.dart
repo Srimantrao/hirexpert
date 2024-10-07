@@ -31,20 +31,12 @@ class OnButtons_short extends StatelessWidget {
         height: Get.height / 16,
         width: width ?? Get.width / 1.5,
         decoration: BoxDecoration(
-          border: Border.all(
-            color: Border_color,
-          ),
+          border: Border.all(color: Border_color,),
           borderRadius: BorderRadius.circular(Get.width / 30),
           color: btn_color,
         ),
         child: Center(
-          child: Text(
-            btn_name,
-            style: TextStyle(
-              fontSize: Get.width / 25,
-              color: text_color,
-            ),
-          ),
+          child: Text(btn_name, style: TextStyle(fontSize: Get.width / 25, color: text_color)),
         ),
       ),
     );

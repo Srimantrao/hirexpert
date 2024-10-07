@@ -51,7 +51,7 @@ class Location extends StatelessWidget {
                   Obx(() => GestureDetector(
                     onTap: () {
                       if(next.preferences.value && next.working_location.value && next.work_setup.value && next.work_location.value){
-                        Get.to(()=> Choose());
+                        Get.to(()=> Choose(),transition: Transition.rightToLeft,duration: Duration(seconds: 1),curve: Curves.fastLinearToSlowEaseIn);
                       }
                     },
                     child: Row(

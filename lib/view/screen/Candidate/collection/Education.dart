@@ -40,9 +40,7 @@ class _EducationState extends State<Education> {
       bottomNavigationBar: Container(
         height: Get.height / 20,
         width: Get.width,
-        decoration: BoxDecoration(
-          color: AppColor.Full_body_color,
-        ),
+        decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
           child: Row(
@@ -66,7 +64,7 @@ class _EducationState extends State<Education> {
                     onTap: () {
                       Con.ConcernApi_fuction(JobId: '1', Comment: JobTitle.JobTitalController.text);
                       if (JobTitle.SelectIndex && Education.select_Eduction && Education.currentValue) {
-                        Get.to(() => Fresher());
+                        Get.to(() => Fresher(),transition: Transition.rightToLeft,duration: Duration(seconds: 1),curve: Curves.fastLinearToSlowEaseIn);
                       } else {
                         JobTitle.EmptyError();
                       }
@@ -95,13 +93,9 @@ class _EducationState extends State<Education> {
           return Container(
             width: Get.width,
             height: Get.height,
-            decoration: BoxDecoration(
-              color: AppColor.Full_body_color,
-            ),
+            decoration: BoxDecoration(color: AppColor.Full_body_color),
             child: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: Get.width / 20,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: Get.width / 20),
               child: SingleChildScrollView(
                 scrollDirection: Axis.vertical,
                 child: Column(
@@ -165,42 +159,33 @@ class _EducationState extends State<Education> {
                     SizedBox(height: Get.height / 50),
 
                     //Passsing Year
-                    Text(
-                      Specialization_text.graduation,
-                      style: TextStyle(
-                        fontSize: Get.width / 25,
-                        color: AppColor.subcolor,
-                      ),
-                    ),
+                    Text(Specialization_text.graduation, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
                     GestureDetector(
                       onTap: () {
                         Showdialog.showdialod(
                             height: Get.height / 4,
                             context: context,
-                            colamWidget: Padding(
-                              padding: EdgeInsets.symmetric(horizontal: Get.width / 10),
-                              child: StatefulBuilder(
-                                builder: (BuildContext context, void Function(void Function()) setState) {
-                                  return NumberPicker(
-                                    haptics: true,
-                                    minValue: 2000,
-                                    maxValue: 2050,
-                                    itemHeight: Get.height / 13,
-                                    selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
-                                    decoration: BoxDecoration(
-                                      border: Border(
-                                        top: BorderSide(color: AppColor.subcolor),
-                                        bottom: BorderSide(color: AppColor.subcolor),
-                                      ),
+                            colamWidget: StatefulBuilder(
+                              builder: (BuildContext context, void Function(void Function()) setState) {
+                                return NumberPicker(
+                                  haptics: true,
+                                  minValue: 2000,
+                                  maxValue: 2050,
+                                  itemHeight: Get.height / 13,
+                                  selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 22),
+                                  decoration: BoxDecoration(
+                                    border: Border(
+                                      top: BorderSide(color: AppColor.subcolor),
+                                      bottom: BorderSide(color: AppColor.subcolor),
                                     ),
-                                    value: Education.currentIntValue,
-                                    onChanged: (value) {
-                                      Education.graduation_passing(value);
-                                      setState(() {});
-                                    },
-                                  );
-                                },
-                              ),
+                                  ),
+                                  value: Education.currentIntValue,
+                                  onChanged: (value) {
+                                    Education.graduation_passing(value);
+                                    setState(() {});
+                                  },
+                                );
+                              },
                             ),
                             actions: [
                               OnButtons_short(
@@ -212,7 +197,8 @@ class _EducationState extends State<Education> {
                                 Border_color: AppColor.Button_color,
                                 btn_color: AppColor.Button_color,
                                 text_color: AppColor.Full_body_color,
-                              )
+                                width: Get.width/2,
+                              ),
                             ],
                             hedingtext: Specialization_text.Praduation,
                             onTabs: () {

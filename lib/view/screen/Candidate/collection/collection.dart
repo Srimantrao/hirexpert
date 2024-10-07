@@ -51,7 +51,7 @@ class Collection extends StatelessWidget {
               GestureDetector(
                 onTap: () {
                   if (collection.showSelectedItems.value) {
-                    Get.to(Education());
+                    Get.to(Education(),transition: Transition.rightToLeft,duration: Duration(seconds: 1),curve: Curves.fastLinearToSlowEaseIn);
                   }
                 },
                 child: Row(

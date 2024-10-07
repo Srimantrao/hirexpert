@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get_navigation/src/routes/transitions_type.dart';
 import 'package:hirexpert/view/screen/Candidate/collection/location.dart';
 import 'package:intl/intl.dart';
 import '../../../../view/utils/app_String.dart';
@@ -102,7 +103,7 @@ class FreherController with ChangeNotifier {
 
   void next_viwe(){
     if(Expected){
-      Get.to(()=> Location());
+      Get.to(()=> Location(),transition: Transition.rightToLeft,duration: Duration(seconds: 1),curve: Curves.fastLinearToSlowEaseIn);
     }
   }
 
