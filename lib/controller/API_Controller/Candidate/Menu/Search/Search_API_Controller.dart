@@ -12,13 +12,24 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
-  Future SearchApiController_fuction({required String Timezone, required String CandidateId, required String Tokan, required String IsWeb}) async {
+  Future SearchApiController_fuction({
+    required String Timezone,
+    required String CandidateId,
+    required String Tokan,
+    required String IsWeb,
+    required String TechId,
+  }) async {
     try {
       isLoding.value = true;
 
       if (kDebugMode) {print("Timezone :- $Timezone"); print("CandidateId :- $CandidateId"); print("IsWeb :- $IsWeb");}
 
-      Map<String, dynamic> body = {'Timezone': Timezone, 'CandidateId': CandidateId, 'IsWeb' : IsWeb};
+      Map<String, dynamic> body = {
+        'Timezone': Timezone,
+        'CandidateId': CandidateId,
+        'IsWeb' : IsWeb,
+        'TechId' : TechId,
+      };
 
       if (kDebugMode) {print(body);}
 

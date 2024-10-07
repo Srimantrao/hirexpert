@@ -7,6 +7,7 @@ import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Signup
 import 'package:hirexpert/view/utils/aap_image.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:provider/provider.dart';
 import '../../../../controller/User_Controller/Candidate_Controller/AnimationControllers/AnimationControllers.dart';
@@ -151,8 +152,8 @@ class Candidate_Specialization extends StatelessWidget {
                                                                 id: jobdata['TechId'],
                                                               );
                                                               Specialization.candidate.Candidatetech_fuctions(
-                                                                CandidateId: '19',
-                                                                TechId: '2',
+                                                                CandidateId: Candidate,
+                                                                TechId: TechId,
                                                                 Timezone: 'asia/kolkata',
                                                               );
                                                             },

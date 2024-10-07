@@ -189,9 +189,11 @@ class Candidate_LoginValidation with ChangeNotifier {
 
        pref!.setString("Tokan", login.option_data['data']['LoginToken']);
        pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
+       pref!.setString('TechId', login.option_data['data']['UserDetails']['TechId']);
 
        Tokans = pref!.getString('Tokan')!;
        Candidate = pref!.getString('Candidate')!;
+       TechId = pref!.getString('TechId')!;
 
       Get.back();
 

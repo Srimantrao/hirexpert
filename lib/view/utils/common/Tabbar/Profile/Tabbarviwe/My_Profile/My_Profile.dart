@@ -1026,6 +1026,12 @@ class _MY_ProfileState extends State<MY_Profile> {
                         ExpectedSalary: CurrentExpented_Controllers!.text,
                       );
                     });
+
+                    if(CandidateUpdate.CandidateUpdate['status'] == true){
+                      ToastificationSuccess.Success(CandidateUpdate.CandidateUpdate['message']);
+                    }else{
+                      ToastificationError.Error(CandidateUpdate.CandidateUpdate['message']);
+                    }
                   },
                     Button_Color: AppColor.Button_color,
                     btn_name: Profile_Text.Buttion_name,

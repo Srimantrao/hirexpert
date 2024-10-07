@@ -10,7 +10,13 @@ class StateSearch_Controller extends GetxController{
   @override
   void onInit() {
     Searchings.onInit();
-    Searchings.Search.SearchApiController_fuction(Timezone: 'asia/kolkata', CandidateId: Candidate, Tokan: Tokans, IsWeb: 'false');
+    Searchings.Search.SearchApiController_fuction(
+        Timezone: 'asia/kolkata',
+        CandidateId: Candidate,
+        Tokan: Tokans,
+        IsWeb: 'false',
+        TechId: '',
+    );
     super.onInit();
   }
 }

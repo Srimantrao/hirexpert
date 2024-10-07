@@ -5,6 +5,7 @@ import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/lo
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Poppup/candidateTech.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Poppup/describeyourjob.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/AnimationControllers/AnimationControllers.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 
 class Specializations extends GetxController {
   final Animationcontrollers Animations = Get.put(Animationcontrollers());
@@ -17,8 +18,8 @@ class Specializations extends GetxController {
     Future.microtask(() async {
       await job.Describeyourjob_fuction();
       await candidate.Candidatetech_fuctions(
-        CandidateId: '0',
-        TechId: '0',
+        CandidateId: Candidate,
+        TechId: TechId,
         Timezone: 'asia/kolkata',
       );
     });
@@ -29,8 +30,8 @@ class Specializations extends GetxController {
   void onClose() {
     job.Describeyourjob_fuction();
     candidate.Candidatetech_fuctions(
-      CandidateId: '0',
-      TechId: '0',
+      CandidateId: Candidate,
+      TechId: '6',
       Timezone: 'asia/kolkata',
     );
     super.onClose();

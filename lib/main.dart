@@ -78,6 +78,7 @@ Future<void> main() async {
   Tokans = pref!.getString('Tokan') ?? '';
   Candidate = pref!.getString('Candidate') ?? '';
   username = pref!.getString('usertype') ?? '';
+  TechId = pref!.getString('TechId') ?? '';
   islogin = pref!.getBool("Login") ?? false;
 
   savedIndex = pref!.getInt('selectedCheckboxIndex') ?? 0;
@@ -88,6 +89,7 @@ Future<void> main() async {
   print("Email :- $Email");
   print("Phone :- $Phone");
   print("Candidate :- $Candidate");
+  print("TechId :- $TechId");
   print("Tokan :- $Tokans");
   print("usertype :- $username");
 

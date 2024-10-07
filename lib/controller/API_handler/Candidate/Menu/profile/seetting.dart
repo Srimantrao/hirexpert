@@ -15,7 +15,7 @@ class Seettings extends GetxController {
     Future.microtask(() async {
       await Login.OptionApiController_fuction(
         UserType: username,
-        Email: Login.option_data['data']['Email'],
+        Email: Email,
         Password: Password_main.Pass.text,
         Tokan: Tokans,
         CandidateId: Candidate,
