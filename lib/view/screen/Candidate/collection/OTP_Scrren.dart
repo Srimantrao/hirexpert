@@ -13,9 +13,16 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-class OTP extends StatelessWidget {
-  OtpApiController_API OTP_API = Get.put(OtpApiController_API());
+class OTP extends StatefulWidget {
+
   OTP({super.key});
+
+  @override
+  State<OTP> createState() => _OTPState();
+}
+
+class _OTPState extends State<OTP> {
+  OtpApiController_API OTP_API = Get.put(OtpApiController_API());
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +120,9 @@ class OTP extends StatelessWidget {
                                 autoCloseDuration: Duration(seconds: 5),
                               );
                               OTP_API.OtpApiController_fuction(EmailOTP: Otp.Email_pincodering.text, PhoneOTP: Otp.Phone_pincodering.text, EntryTerm: '127.0.0.1');
-                              Get.to(()=> Candidate_Specialization(),curve: Curves.easeOutQuad,transition: Transition.circularReveal,duration: Duration(seconds: 4));
+                              Get.to(()=> Candidate_Specialization(
+
+                              ),curve: Curves.easeOutQuad,transition: Transition.circularReveal,duration: Duration(seconds: 4));
                             }
                             String message = OTP_API.OTP_data['message'] ?? "Unknown error occurred";
                             toastification.show(

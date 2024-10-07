@@ -115,7 +115,10 @@ class _Extra_infoState extends State<Extra_info> {
         } else{
           return GestureDetector(
             onTap: () {
-              Get.to(()=> Candidate_Specialization(),duration: Duration(seconds: 1),transition: Transition.upToDown,curve: Curves.easeInOutExpo);
+              Get.to(()=> Candidate_Specialization(
+                first_name: Details.DetailsProfile_data['data']['FirstName'],
+                last_name: Details.DetailsProfile_data['data']['LastName'],
+              ),duration: Duration(seconds: 1),transition: Transition.upToDown,curve: Curves.easeInOutExpo);
             },
             child: Container(
               height: Get.height / 20,

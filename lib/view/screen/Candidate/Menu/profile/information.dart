@@ -104,10 +104,16 @@ class _Profile_infoState extends State<Profile_info> {
                                 );
                               }
                             }),
-                            InkWell(
-                              onTap: () {Get.to(() => Setting());},
-                              child: Icon(Icons.settings, color: AppColor.Button_color, size: 32),
-                            )
+                            Obx((){
+                              if(Candidatedetails.isLoding.value){
+                                return SizedBox();
+                              }else{
+                                return InkWell(
+                                  onTap: () {Get.to(() => Setting());},
+                                  child: Icon(Icons.settings, color: AppColor.Button_color, size: 32),
+                                );
+                              }
+                            }),
                           ],
                         ),
                       ),
