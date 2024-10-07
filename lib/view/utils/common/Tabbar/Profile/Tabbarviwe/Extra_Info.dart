@@ -27,15 +27,13 @@ class _Extra_infoState extends State<Extra_info> {
     Tokans = pref!.getString('Tokan')!;
     Candidate = pref!.getString('Candidate')!;
 
-    Future.microtask(()async{
       Details.DetailsProfile_Controls_Fuction(
         JobId: '7',
         Timezone: 'asia/kolkata',
-        CandidateId: login.option_data['data']?['UserDetails']?['CandidateId'] ?? '',
+        CandidateId: Candidate,
         IsInterview: '0',
-        Tokan: login.option_data['data']?['LoginToken'] ?? '',
+        Tokan: Tokans,
       );
-    });
     super.initState();
   }
 

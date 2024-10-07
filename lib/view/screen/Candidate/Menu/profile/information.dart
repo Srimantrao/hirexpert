@@ -25,25 +25,19 @@ class Profile_info extends StatefulWidget {
 }
 
 class _Profile_infoState extends State<Profile_info> {
-
-  DetailsProfile_Controls Details = Get.put(DetailsProfile_Controls());
-  OptionApiController login = Get.put(OptionApiController());
-
   CandidatedetailsControllers_Controllrs Candidatedetails = Get.put(CandidatedetailsControllers_Controllrs());
 
   @override
   void initState() {
     Tokans = pref!.getString('Tokan')!;
     Candidate = pref!.getString('Candidate')!;
-    Future.microtask(()async{
       Candidatedetails.CandidatedetailsControllers_Fuction(
-        CandidateId: login.option_data['data']?['UserDetails']?['CandidateId'] ?? Candidate,
+        CandidateId: Candidate,
         Timezone: 'asia/kolkata',
         IsLabel: '1',
         CompanyId: '1',
-        Tokan: login.option_data['data']['LoginToken'] ?? Tokans,
+        Tokan: Tokans,
       );
-    });
     super.initState();
   }
 
@@ -70,11 +64,11 @@ class _Profile_infoState extends State<Profile_info> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(() {
-                              if (Details.isloding.value) {
+                              if (Candidatedetails.isLoding.value) {
                                 return Center(child: SizedBox());
-                              } else if (Details.DetailsProfile_data == null || Details.DetailsProfile_data['data'] == null) {
+                              } else if (Candidatedetails.Candidatedetails_data['data'] == null || Candidatedetails.Candidatedetails_data == null) {
                                 return Center(child: Text(API_Error.null_data));
-                              } else if (Details.DetailsProfile_data['data']['QuestionList'] == null || Details.DetailsProfile_data['data']['QuestionList'].isEmpty) {
+                              } else if (Candidatedetails.Candidatedetails_data['data']['QuestionList'] == null || Candidatedetails.Candidatedetails_data['data']['QuestionList'].isEmpty) {
                                 return Center(child: Text("No questions available"));
                               } else {
                                 return Row(

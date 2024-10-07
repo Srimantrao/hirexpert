@@ -29,6 +29,7 @@ class _SearchState extends State<Search> {
   void initState() {
     Tokans = pref!.getString('Tokan')!;
     Candidate = pref!.getString('Candidate')!;
+    TechId = pref!.getString('TechId')!;
     super.initState();
   }
 
