@@ -20,7 +20,7 @@ class Jobcountsaccording extends GetxController {
 
       final responce = await http.post(
         Uri.parse(AppUrl.count),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan,},
         body: body,
       );
 

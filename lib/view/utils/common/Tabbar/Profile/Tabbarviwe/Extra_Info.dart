@@ -10,6 +10,7 @@ import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../../controller/API_Controller/Candidate/Profile/Details_profile/Details_Profile.dart';
 import '../../../../app_String.dart';
 import '../../../../app_color.dart';
+import '../../../../app_constance.dart';
 import '../../../../app_icon.dart';
 
 class Extra_info extends StatefulWidget {
@@ -23,6 +24,9 @@ class Extra_info extends StatefulWidget {
 class _Extra_infoState extends State<Extra_info> {
   @override
   void initState() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
+
     Future.microtask(()async{
       Details.DetailsProfile_Controls_Fuction(
         JobId: '7',
@@ -46,11 +50,13 @@ class _Extra_infoState extends State<Extra_info> {
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Obx(() {
-            if (Details.isloding.value) {
-              return Center(child: Image.asset(AppLoder.infinityloder_without_background,scale: Get.width/250));
-            } else if (Details.DetailsProfile_data['data']! == null || Details.DetailsProfile_data == null) {
-              return Center(child: Text(API_Error.null_data));
-            } else {
+           if (Details.isloding.value) {
+             return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
+           } else if (Details.DetailsProfile_data == null || Details.DetailsProfile_data['data'] == null) {
+             return Center(child: Text(API_Error.null_data));
+           } else if (Details.DetailsProfile_data['data']['QuestionList'] == null || Details.DetailsProfile_data['data']['QuestionList'].isEmpty) {
+             return Center(child: Text("No questions available"));
+           } else {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -105,26 +111,32 @@ class _Extra_infoState extends State<Extra_info> {
       ),
 
       //Buttons
-      floatingActionButton: GestureDetector(
-        onTap: () {
-          Get.to(()=> Candidate_Specialization(),duration: Duration(seconds: 1),transition: Transition.upToDown,curve: Curves.easeInOutExpo);
-        },
-        child: Container(
-          height: Get.height / 20,
-          width: Get.width / 4,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(Get.height / 80),
-            color: AppColor.Button_color,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              SvgPicture.asset(AppIcons.Edit),
-              Text("Edit", style: TextStyle(color: AppColor.Full_body_color)),
-            ],
-          ),
-        ),
-      ),
+      floatingActionButton: Obx((){
+        if (Details.isloding.value) {
+          return Center(child: SizedBox());
+        } else{
+          return GestureDetector(
+            onTap: () {
+              Get.to(()=> Candidate_Specialization(),duration: Duration(seconds: 1),transition: Transition.upToDown,curve: Curves.easeInOutExpo);
+            },
+            child: Container(
+              height: Get.height / 20,
+              width: Get.width / 4,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Get.height / 80),
+                color: AppColor.Button_color,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  SvgPicture.asset(AppIcons.Edit),
+                  Text("Edit", style: TextStyle(color: AppColor.Full_body_color)),
+                ],
+              ),
+            ),
+          );
+        }
+      }),
       backgroundColor: AppColor.Full_body_color,
     );
   }

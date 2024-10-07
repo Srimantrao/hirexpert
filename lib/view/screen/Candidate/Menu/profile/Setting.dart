@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, unnecessary_null_comparison, deprecated_member_use
+// ignore_for_file: file_names, non_constant_identifier_names, prefer_const_constructors, unnecessary_null_comparison, deprecated_member_use, prefer_const_constructors_in_immutables, unused_import
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -22,12 +22,25 @@ import '../../../../utils/common/Tostification/Toastification_success.dart';
 import 'Setting_Screen/My_Archive.dart';
 import 'Setting_Screen/Notification_Setting.dart';
 
-class Setting extends StatelessWidget {
+class Setting extends StatefulWidget {
+  Setting({super.key});
+
+  @override
+  State<Setting> createState() => _SettingState();
+}
+
+class _SettingState extends State<Setting> {
+
+  @override
+  void initState() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
+    super.initState();
+  }
+
   final Seettings sett = Get.put(Seettings());
   final PasswordChange chagepassword = Get.put(PasswordChange());
   final auth = FirebaseAuth.instance;
-
-  Setting({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +64,7 @@ class Setting extends StatelessWidget {
                       decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Bottam_color))),
                       child: Obx(() {
                         if (sett.Login.isLodingvalue.value) {
-                          return Center(child: Image.asset(AppLoder.infinityloder_without_background));
+                          return Center(child: SizedBox());
                         } else if (sett.Login.option_data == null || sett.Login.option_data['data'] == null) {
                           return Text(API_Error.null_data);
                         } else {

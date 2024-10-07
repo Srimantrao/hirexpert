@@ -24,7 +24,7 @@ class SearchApiController extends GetxController {
 
       final Response = await http.post(
         Uri.parse(AppUrl.SearchJob),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan,},
         body: body,
       );
 

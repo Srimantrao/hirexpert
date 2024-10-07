@@ -50,39 +50,63 @@ class _SearchState extends State<Search> {
         surfaceTintColor: Colors.transparent,
         elevation: 0,
         automaticallyImplyLeading: false,
-        title: Text(Search_text.Search_Jobs, style: TextStyle(fontWeight: FontWeight.w700)),
+        title: Obx((){
+          if(stateSearchController.Searchings.Search.isLoding.value){
+            return SizedBox();
+          }else{
+            return Text(Search_text.Search_Jobs, style: TextStyle(fontWeight: FontWeight.w700));
+          }
+        }),
         actions: [
           // Search Button
-          GestureDetector(
-            onTap: () {
-              Get.to(() => Search_location());
-            },
-            child: Icon(Icons.search, color: AppColor.subcolor, size: 30),
-          ),
+          Obx((){
+            if(stateSearchController.Searchings.Search.isLoding.value){
+              return SizedBox();
+            }else{
+              return GestureDetector(
+                onTap: () {
+                  Get.to(() => Search_location());
+                },
+                child: Icon(Icons.search, color: AppColor.subcolor, size: 30),
+              );
+            }
+          }),
           SizedBox(width: Get.width / 50),
 
           // Notification Button
-          GestureDetector(
-            onTap: () {
-              Get.to(() => Notification_Screen());
-            },
-            child: Icon(Icons.notifications_none, color: AppColor.subcolor, size: 30),
-          ),
+          Obx((){
+            if(stateSearchController.Searchings.Search.isLoding.value){
+              return SizedBox();
+            }else{
+              return GestureDetector(
+                onTap: () {
+                  Get.to(() => Notification_Screen());
+                },
+                child: Icon(Icons.notifications_none, color: AppColor.subcolor, size: 30),
+              );
+            }
+          }),
           SizedBox(width: Get.width / 50),
 
           // Popup Menu
-          PopupMenuButton(
-            color: AppColor.Full_body_color,
-            onSelected: (value) { print(value); },
-            itemBuilder: (BuildContext context) => <PopupMenuEntry>[
-              PopupMenuItem(value: 1, child: Text('All')),
-              PopupMenuItem(value: 2, child: Text('Last 7 Days')),
-              PopupMenuItem(value: 3, child: Text('Last 30 Days')),
-              PopupMenuItem(value: 4, child: Text('Last 6 Months')),
-              PopupMenuItem(value: 5, child: Text('Last 1 Year')),
-            ],
-            child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30),
-          ),
+          Obx((){
+            if(stateSearchController.Searchings.Search.isLoding.value){
+              return SizedBox();
+            }else{
+              return PopupMenuButton(
+                color: AppColor.Full_body_color,
+                onSelected: (value) { print(value); },
+                itemBuilder: (BuildContext context) => <PopupMenuEntry>[
+                  PopupMenuItem(value: 1, child: Text('All')),
+                  PopupMenuItem(value: 2, child: Text('Last 7 Days')),
+                  PopupMenuItem(value: 3, child: Text('Last 30 Days')),
+                  PopupMenuItem(value: 4, child: Text('Last 6 Months')),
+                  PopupMenuItem(value: 5, child: Text('Last 1 Year')),
+                ],
+                child: Icon(Icons.more_vert, color: AppColor.subcolor, size: 30),
+              );
+            }
+          }),
           SizedBox(width: Get.width / 50),
         ],
       ),

@@ -80,6 +80,8 @@ Future<void> main() async {
   username = pref!.getString('usertype') ?? '';
   islogin = pref!.getBool("Login") ?? false;
 
+  savedIndex = pref!.getInt('selectedCheckboxIndex') ?? 0;
+
   print("FristName :- $Frist_name");
   print("LastName :- $Last_name");
   print("Password :- $Password");
@@ -88,6 +90,8 @@ Future<void> main() async {
   print("Candidate :- $Candidate");
   print("Tokan :- $Tokans");
   print("usertype :- $username");
+
+  print('selectedCheckboxIndex :- $savedIndex');
 
   print("isLogin :- $islogin");
   runApp(const MyApp());

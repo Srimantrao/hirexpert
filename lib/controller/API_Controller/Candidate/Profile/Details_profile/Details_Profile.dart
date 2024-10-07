@@ -4,18 +4,26 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:http/http.dart' as http;
 
 class DetailsProfile_Controls extends GetxController {
   var isloding = false.obs;
   var DetailsProfile_data;
 
+  @override
+  void onInit() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
+    super.onInit();
+  }
+
   Future<void> DetailsProfile_Controls_Fuction({required String JobId, required String Timezone, required String CandidateId, required String IsInterview,required String Tokan}) async {
     try {
       isloding.value = true;
 
       final responce = await http.get(Uri.parse('${AppUrl.CanJobDetails}?JobId=$JobId&Timezone=$Timezone&CandidateId=$CandidateId&IsInterview=$IsInterview'),
-          headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''});
+          headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan});
 
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         DetailsProfile_data = jsonDecode(responce.body);
@@ -27,7 +35,6 @@ class DetailsProfile_Controls extends GetxController {
       "DetailsProfile Controllers Error :- $e";
     } finally {
       isloding.value = false;
-
     }
   }
 }

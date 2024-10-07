@@ -1,16 +1,20 @@
-// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use, avoid_print
+// ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use, avoid_print, unused_import
 
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Profile/My_Profile/Candidate_Update_Controllers.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_success.dart';
 import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../../controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
 import '../../../../../../../controller/API_Controller/Candidate/Menu/Home/Candidate_Details_Controllres.dart';
 import '../../../../../../../controller/API_handler/Candidate/Menu/profile/myprofile/Personal_Information.dart';
@@ -80,6 +84,17 @@ class _MY_ProfileState extends State<MY_Profile> {
 
   @override
   void initState() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
+
+
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() {
+        pref = prefs;
+        savedIndex = pref!.getInt('selectedCheckboxIndex') ?? -1;
+      });
+    });
+
     Future.microtask(()async{
       Candidatedetails.CandidatedetailsControllers_Fuction(
         CandidateId: Candidate,
@@ -89,39 +104,41 @@ class _MY_ProfileState extends State<MY_Profile> {
         Tokan: Tokans,
       );
 
+      var candidateData = Candidatedetails.Candidatedetails_data['data'];
+
       //Personal Infromation
-      JobTitle_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['JobTitle']);
-      FirstName_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['FirstName']);
-      LastName_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['LastName']);
-      Email_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['Email']);
-      Phone_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['Phone']);
-      DOB_Controllers = TextEditingController(text:  Candidatedetails.Candidatedetails_data['data']['DOB'].toString());
+      JobTitle_Controllers = TextEditingController(text:  candidateData['JobTitle']);
+      FirstName_Controllers = TextEditingController(text:  candidateData['FirstName']);
+      LastName_Controllers = TextEditingController(text:  candidateData['LastName']);
+      Email_Controllers = TextEditingController(text:  candidateData['Email']);
+      Phone_Controllers = TextEditingController(text:  candidateData['Phone']);
+      DOB_Controllers = TextEditingController(text:  candidateData['DOB'].toString());
 
       //Address
-      Street_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['StreetAddress']);
-      Post_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['PostCode']);
-      SelectProvince_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['ProvinceName']);
-      SelectCity_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CityName']);
+      Street_Controllers = TextEditingController(text: candidateData['StreetAddress']);
+      Post_Controllers = TextEditingController(text: candidateData['PostCode']);
+      SelectProvince_Controllers = TextEditingController(text: candidateData['ProvinceName']);
+      SelectCity_Controllers = TextEditingController(text: candidateData['CityName']);
 
       //Educational Details
-      Degree_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['DegreeName']);
-      Specialsation_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['QuestionList'][0]['Answer'][0]);
-      Institute_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['DegreeName']);
+      Degree_Controllers = TextEditingController(text: candidateData['DegreeName']);
+      Specialsation_Controllers = TextEditingController(text: candidateData['QuestionList'][0]['Answer'][0]);
+      Institute_Controllers = TextEditingController(text: candidateData['DegreeName']);
 
       //Work Experience
-      CompanyName_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CompanyName']);
-      Designation_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['Designation']);
+      CompanyName_Controllers = TextEditingController(text: candidateData['CompanyName']);
+      Designation_Controllers = TextEditingController(text: candidateData['Designation']);
 
       //Salary
-      CurrentSalary_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['Salary']);
-      CurrentExpented_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['ExpectedSalaryTo']);
+      CurrentSalary_Controllers = TextEditingController(text: candidateData['CurrentCTC']);
+      CurrentExpented_Controllers = TextEditingController(text: candidateData['ExpectedSalaryTo']);
 
       //Work Location
-      CurrentSalarywork_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['Salary']);
-      PrefferedSalary_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CurrentLocation']);
-      Prefferedwork_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork']);
-      JobType_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork']);
-      NoticePeriod_Controllers = TextEditingController(text: Candidatedetails.Candidatedetails_data['data']['NoticePeriod']);
+      CurrentSalarywork_Controllers = TextEditingController(text: candidateData['Salary']);
+      PrefferedSalary_Controllers = TextEditingController(text: candidateData['CurrentLocation']);
+      Prefferedwork_Controllers = TextEditingController(text: candidateData['CurrentlyWork']);
+      JobType_Controllers = TextEditingController(text: candidateData['CurrentlyWork']);
+      NoticePeriod_Controllers = TextEditingController(text: candidateData['NoticePeriod']);
     });
     super.initState();
   }
@@ -134,16 +151,18 @@ class _MY_ProfileState extends State<MY_Profile> {
       width: Get.width,
       decoration: BoxDecoration(color: AppColor.Full_body_color),
       child: Obx(() {
-        if (Candidatedetails.isLoding.value) {
-          return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
-        } else if (Candidatedetails.Candidatedetails_data['data'] == null || Candidatedetails.Candidatedetails_data == null) {
-          return Center(child: Text(API_Error.null_data));
-        } else {
+      if (Candidatedetails.isLoding.value) {
+        return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
+      } else if (Candidatedetails.Candidatedetails_data == null || Candidatedetails.Candidatedetails_data['data'] == null) {
+        return Center(child: Text(API_Error.null_data));
+      } else {
+        var candidateData = Candidatedetails.Candidatedetails_data['data'];
+        if (candidateData == null) {return Center(child: Text(API_Error.null_data));}
+        else {
           return SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                //Parsonal_Information
                 Consumer<My_ProfileController>(
                   builder: (BuildContext context, value, Widget? child) {
                     return Column(
@@ -180,7 +199,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                         SizedBox(height: Get.height / 50),
                                         Text(
                                           textAlign: TextAlign.center,
-                                          Candidatedetails.Candidatedetails_data['data']['ResumeDetails'].toString(),
+                                          candidateData['ResumeDetails'].toString(),
                                           style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
                                         ),
                                       ],
@@ -201,7 +220,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                       SizedBox(
                                         width: Get.width / 2,
                                         child: Text(
-                                          Candidatedetails.Candidatedetails_data['ResumeDetails'] ?? '',
+                                          candidateData['ResumeDetails'].toString(),
                                           style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
                                         ),
                                       ),
@@ -218,7 +237,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           onTap: () {myProfile.Personal_Information_fun();},
                           child: Info(
                             info: Profile_Text.Personal_Information,
-                            CircleAvatar_color: Change_Circle(Condition: myProfile.P_Job_Title == 0 && myProfile.P_Frist_Name == 1 && myProfile.P_Last_Name == 2 && myProfile.P_Email_Id == 3 && myProfile.P_Mobile_Numbres == 4 && myProfile.P_Birthday == 5),
+                            CircleAvatar_color: Change_Circle(Condition: JobTitle_Controllers!.text.isNotEmpty && FirstName_Controllers!.text.isNotEmpty && LastName_Controllers!.text.isNotEmpty && Email_Controllers!.text.isNotEmpty && Phone_Controllers!.text.isNotEmpty && DOB_Controllers!.text.isNotEmpty && myProfile.selectedCheckboxIndex.toString().isNotEmpty),
                             dropicons: DropIcons(conditional_name: myProfile.Personal_Information),
                           ),
                         ),
@@ -251,7 +270,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                           onTap: () {myProfile.P_Frist_Name_fun();},
                                           onChanged: (val) {myProfile.FristName_validation(val);},
                                           labal: Profile_Text.First_Name,
-                                          hint: Candidatedetails.Candidatedetails_data['data']['FirstName'],
+                                          hint: candidateData['FirstName'],
                                           controller: FirstName_Controllers!,
                                         ),
                                       ),
@@ -271,7 +290,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                           onTap: () {myProfile.P_Last_Name_fun();},
                                           onChanged: (val) {myProfile.LastName_validation(val);},
                                           labal: Profile_Text.Last_Name,
-                                          hint: Candidatedetails.Candidatedetails_data['data']['LastName'],
+                                          hint: candidateData['LastName'],
                                           controller: LastName_Controllers!,
                                         ),
                                       ),
@@ -288,7 +307,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Email ID
                               Inputfild(
                                 labal: Profile_Text.Email_Id,
-                                hint: Candidatedetails.Candidatedetails_data['data']['Email'],
+                                hint: candidateData['Email'],
                                 controller: Email_Controllers!,
                                 onTap: () {myProfile.P_Email_ID_fun();},
                                 onChanged: (val) {myProfile.Email_ID_validation(val);},
@@ -301,7 +320,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               Inputfild(
                                 keyboardType: TextInputType.number,
                                 labal: Profile_Text.Mobile_Number,
-                                hint: Candidatedetails.Candidatedetails_data['data']['Phone'],
+                                hint: candidateData['Phone'],
                                 controller: Phone_Controllers!,
                                 onTap: () {myProfile.P_Mobile_Numbres_fun();},
                                 onChanged: (val) {myProfile.Mobile_Numbress_validation(val);},
@@ -316,33 +335,59 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 children: [
                                   Row(
                                     children: [
-                                      Checkbox(
-                                          side: BorderSide(color: AppColor.Buttom_color),
-                                          activeColor: AppColor.Button_color,
-                                          value: myProfile.selectedCheckboxIndex == 0,
-                                          onChanged: (val) {myProfile.handleCheckboxValueChanged(0);}),
-                                      Text(Profile_Text.Male, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      Checkbox(
-                                        side: BorderSide(color: AppColor.Buttom_color),
-                                        activeColor: AppColor.Button_color,
-                                        value: myProfile.selectedCheckboxIndex == 1,
-                                        onChanged: (val) {myProfile.handleCheckboxValueChanged(1);},
+                                      Radio<int>(
+                                        value: 0,
+                                        groupValue: savedIndex,
+                                        onChanged: (int? value) {
+                                          setState(() {
+                                            savedIndex = value ?? -1;
+                                          });
+                                          pref!.setInt('selectedCheckboxIndex', savedIndex!);
+                                        },
+                                        activeColor: AppColor.Button_color,  // Set active color for "Male"
                                       ),
-                                      Text(Profile_Text.Female, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor)),
+                                      Text(
+                                        Profile_Text.Male,
+                                        style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
                                     ],
                                   ),
                                   Row(
                                     children: [
-                                      Checkbox(
-                                          side: BorderSide(color: AppColor.Buttom_color),
-                                          activeColor: AppColor.Button_color,
-                                          value: myProfile.selectedCheckboxIndex == 2,
-                                          onChanged: (val) {myProfile.handleCheckboxValueChanged(2);}),
-                                      Text(Profile_Text.PreferNot_tosay, style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor,)),
+                                      Radio<int>(
+                                        value: 1,
+                                        groupValue: savedIndex,
+                                        onChanged: (int? value) {
+                                          setState(() {
+                                            savedIndex = value ?? -1;
+                                          });
+                                          pref!.setInt('selectedCheckboxIndex', savedIndex!);
+                                        },
+                                        activeColor: AppColor.Button_color,  // Set active color for "Female"
+                                      ),
+                                      Text(
+                                        Profile_Text.Female,
+                                        style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Radio<int>(
+                                        value: 2,
+                                        groupValue: savedIndex,
+                                        onChanged: (int? value) {
+                                          setState(() {
+                                            savedIndex = value ?? -1;
+                                          });
+                                          pref!.setInt('selectedCheckboxIndex', savedIndex!);
+                                        },
+                                        activeColor: AppColor.Button_color,  // Set active color for "Prefer Not to Say"
+                                      ),
+                                      Text(
+                                        Profile_Text.PreferNot_tosay,
+                                        style: TextStyle(fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -352,7 +397,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Date Of Birthday
                               Inputfild(
                                 labal: Profile_Text.Date_Of_Birthday,
-                                hint: Candidatedetails.Candidatedetails_data['data']['DOB'].toString(),
+                                hint: candidateData['DOB'].toString(),
                                 controller: DOB_Controllers!,
                                 onTap: () {myProfile.P_Birthday_fun();},
                                 onChanged: (val) {myProfile.Date_OF_Bithday_validation(val);},
@@ -366,7 +411,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                         GestureDetector(
                           onTap: () {myProfile.Address_fun();},
                           child: Info(
-                            CircleAvatar_color: Change_Circle(Condition: myProfile.P_Street_Adress == 0 && myProfile.P_Post_Code == 1 && myProfile.P_Select_Province == 2 && myProfile.P_Select_City == 3),
+                            CircleAvatar_color: Change_Circle(Condition: Street_Controllers!.text.isNotEmpty && Post_Controllers!.text.isNotEmpty && SelectProvince_Controllers!.text.isNotEmpty && SelectCity_Controllers!.text.isNotEmpty),
                             info: Profile_Text.Address,
                             dropicons: DropIcons(conditional_name: myProfile.Address),
                           ),
@@ -381,7 +426,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Street Address
                               Inputfild(
                                 labal: Profile_Text.Street_Address,
-                                hint: Candidatedetails.Candidatedetails_data['data']['StreetAddress'],
+                                hint: candidateData['StreetAddress'],
                                 controller: Street_Controllers!,
                                 onTap: () {myProfile.P_Street_Adress_Fun();},
                                 onChanged: (val) {myProfile.Street_Adress_validation(val);},
@@ -392,7 +437,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Post Code
                               Inputfild(
                                 labal: Profile_Text.Post_Code,
-                                hint: Candidatedetails.Candidatedetails_data['data']['PostCode'],
+                                hint: candidateData['PostCode'],
                                 controller: Post_Controllers!,
                                 onTap: () {myProfile.P_Post_Code_Fun();},
                                 onChanged: (val) {myProfile.Post_Codes_validation(val);},
@@ -403,7 +448,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Select Province
                               Inputfild(
                                 labal: Profile_Text.Select_Province,
-                                hint: Candidatedetails.Candidatedetails_data['data']['ProvinceName'],
+                                hint: candidateData['ProvinceName'],
                                 controller: SelectProvince_Controllers!,
                                 onTap: () {myProfile.P_Select_Province_Fun();},
                                 onChanged: (val) {myProfile.Select_Provinces_validation(val);},
@@ -414,7 +459,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Select city
                               Inputfild(
                                 labal: Profile_Text.Select_City,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CityName'],
+                                hint: candidateData['CityName'],
                                 controller: SelectCity_Controllers!,
                                 onTap: () {myProfile.P_Select_City_Fun();},
                                 onChanged: (val) {myProfile.Select_Citys_validation(val);},
@@ -431,7 +476,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                             myProfile.Education_Details_fun();
                           },
                           child: Info(
-                            CircleAvatar_color: Change_Circle(Condition: myProfile.P_Degree == 0 && myProfile.P_Specialisation == 1 && myProfile.P_Instiute_name == 2 && myProfile.P_Passing_Year == 3),
+                            CircleAvatar_color: Change_Circle(Condition: Degree_Controllers!.text.isNotEmpty && Specialsation_Controllers!.text.isNotEmpty  && Institute_Controllers!.text.isNotEmpty && passYearNotifier.value.toString() == value.toString()),
                             info: Profile_Text.Educational_Detailss,
                             dropicons: DropIcons(conditional_name: myProfile.Education_Details),
                           ),
@@ -457,7 +502,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Specialisation
                               Inputfild(
                                 labal: EditProfile_text.Specialisation,
-                                hint: Candidatedetails.Candidatedetails_data['data']['QuestionList'][0]['Answer'][0],
+                                hint: candidateData['QuestionList'][0]['Answer'][0],
                                 controller: Specialsation_Controllers!,
                                 onTap: () {myProfile.P_Specialisation_fun();},
                                 onChanged: (val) {myProfile.Specialisation_validation(val);},
@@ -468,7 +513,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Institute Name
                               Inputfild(
                                 labal: EditProfile_text.Institute_Name,
-                                hint: Candidatedetails.Candidatedetails_data['data']['DegreeName'],
+                                hint: candidateData['DegreeName'],
                                 controller: Institute_Controllers!,
                                 onTap: () {myProfile.P_Instiute_name_fun();},
                                 onChanged: (val) {myProfile.Institute_name_validation(val);},
@@ -758,7 +803,7 @@ class _MY_ProfileState extends State<MY_Profile> {
 
                                     Inputfild(
                                       labal: Profile_Text.Company_Name,
-                                      hint: Candidatedetails.Candidatedetails_data['data']['CompanyName'],
+                                      hint: candidateData['CompanyName'],
                                       controller: CompanyName_Controllers!,
                                       onTap: () {myProfile.P_Company_Name_fun();},
                                       onChanged: (val) {myProfile.Companys_names_validation(val);},
@@ -769,7 +814,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     //Designation
                                     Inputfild(
                                       labal: Profile_Text.Designation,
-                                      hint: Candidatedetails.Candidatedetails_data['data']['Designation'],
+                                      hint: candidateData['Designation'],
                                       controller: Designation_Controllers!,
                                       onTap: () {myProfile.P_Designation_fun();},
                                       onChanged: (val) {myProfile.Designations_validation(val);},
@@ -835,7 +880,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                             myProfile.Salary_fun();
                           },
                           child: Info(
-                            CircleAvatar_color: Change_Circle(Condition: myProfile.CTC == 0 && myProfile.Expected == 1),
+                            CircleAvatar_color: Change_Circle(Condition: CurrentSalary_Controllers!.text.isNotEmpty && CurrentExpented_Controllers!.text.isNotEmpty),
                             info: Profile_Text.Salarys,
                             dropicons: DropIcons(conditional_name: myProfile.Salary),
                           ),
@@ -850,7 +895,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //CTC
                               Inputfild(
                                 labal: Profile_Text.CTC,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentCTC'],
+                                hint: candidateData['CurrentCTC'],
                                 controller: CurrentSalary_Controllers!,
                                 onTap: () {myProfile.CTC_Fun();},
                                 onChanged: (val) {myProfile.CTCs_Validation(val);},
@@ -861,7 +906,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Expected
                               Inputfild(
                                 labal: Profile_Text.CTC,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentCTC'],
+                                hint: candidateData['ExpectedSalaryTo'],
                                 controller: CurrentExpented_Controllers!,
                                 onTap: () {myProfile.Expected_Fun();},
                                 onChanged: (val) {myProfile.Expected_Validation(val);},
@@ -891,7 +936,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //CTC
                               Inputfild(
                                 labal: Profile_Text.Current_CTC_per_annum,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentCTC'],
+                                hint: candidateData['CurrentCTC'],
                                 controller: CurrentSalarywork_Controllers!,
                                 onTap: () {myProfile.P_CTC_Current_fun();},
                                 onChanged: (val) {myProfile.P_CTC_Currents_validation(val);},
@@ -902,7 +947,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Preffered Working Location
                               Inputfild(
                                 labal: Profile_Text.Preffered_Working_Location,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentLocation'],
+                                hint: candidateData['CurrentLocation'],
                                 controller: PrefferedSalary_Controllers!,
                                 onTap: () {myProfile.Preffered_Working_fun();},
                                 onChanged: (val) {myProfile.Preffered_Workings_validation(val);
@@ -914,7 +959,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Preffered Working Setup
                               Inputfild(
                                 labal: Profile_Text.Preffered_Work_Setup,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork'],
+                                hint: candidateData['CurrentlyWork'],
                                 controller: Prefferedwork_Controllers!,
                                 onTap: () {myProfile.Preffered_Work_Working_fun();},
                                 onChanged: (val) {myProfile.Preffered_Work_Workings_validation(val);
@@ -926,7 +971,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Job Type Preferrence
                               Inputfild(
                                 labal: Profile_Text.Job_Type_Preferrence,
-                                hint: Candidatedetails.Candidatedetails_data['data']['CurrentlyWork'],
+                                hint: candidateData['CurrentlyWork'],
                                 controller: JobType_Controllers!,
                                 onTap: () {myProfile.Job_Type_Preferrence_fun();},
                                 onChanged: (val) {myProfile.Job_Type_Preferrences_validation(val);},
@@ -937,7 +982,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                               //Notice Period (days)(Optional)
                               Inputfild(
                                 labal: Profile_Text.Notice_Period_days_Optional,
-                                hint: Candidatedetails.Candidatedetails_data['data']['NoticePeriod'],
+                                hint: candidateData['NoticePeriod'],
                                 controller: NoticePeriod_Controllers!,
                                 onTap: () {myProfile.Notice_Period_fun();},
                                 onChanged: (val) {myProfile.Notice_Periods_validation(val);},
@@ -955,28 +1000,41 @@ class _MY_ProfileState extends State<MY_Profile> {
 
                 //Buttons
                 OnButtons(
-                  onTap: () async {
-                   await CandidateUpdate.CandidateUpdateControllers_Fuction(
+                  onTap: () {
+                    setState(() {
+                      CandidateUpdate.CandidateUpdateControllers_Fuction(
                         CandidateId: Candidate,
                         Tokan: Tokans,
-                        FirstName: FirstName_Controllers!.text,
                         UserId: Candidatedetails.Candidatedetails_data['data']['UserId'],
                         Timezone: 'asia/kolkata',
+
+                        //Personal Information
+                        FirstName: FirstName_Controllers!.text,
                         JobTitle: JobTitle_Controllers!.text,
                         Phone: Phone_Controllers!.text,
                         DOB: DOB_Controllers!.text,
                         Gender: myProfile.selectedCheckboxIndex.toString(),
-                    );
-                   print(Candidate);
-                   setState(() {});
+
+                        //Address
+                        StreetAddress: Street_Controllers!.text,
+                        PostCode: Post_Controllers!.text,
+                        ProvinceId: SelectProvince_Controllers!.text,
+                        CityId: SelectCity_Controllers!.text,
+
+                        //Salary
+                        CurrentCTC: CurrentSalary_Controllers!.text,
+                        ExpectedSalary: CurrentExpented_Controllers!.text,
+                      );
+                    });
                   },
-                    Button_Color: AppColor.Button_color, btn_name: Profile_Text.Buttion_name,
+                    Button_Color: AppColor.Button_color,
+                    btn_name: Profile_Text.Buttion_name,
                 ),
               ],
             ),
           );
         }
-      }),
+      }}),
     );
   }
 }

@@ -2,8 +2,6 @@
 
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
-
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
@@ -23,16 +21,34 @@ class CandidateUpdateControllers extends GetxController{
     String? Tokan,
     String? DOB,
     String? Gender,
+    String? StreetAddress,
+    String? PostCode,
+    String? ProvinceId,
+    String? CityId,
+    String? CurrentCTC,
+    String? ExpectedSalary,
   })async{
     Map<String, dynamic> body = {
       'Timezone': Timezone,
       'CandidateId': CandidateId,
+
+      //Personal Information
       'FirstName' : FirstName,
       'UserId' : UserId,
       'JobTitle' : JobTitle,
       'Phone' : Phone,
       'DOB' : DOB,
       'Gender' : Gender,
+
+      //Address
+      'StreetAddress' : StreetAddress,
+      'PostCode' : PostCode,
+      'ProvinceId' : ProvinceId,
+      'CityId' : CityId,
+
+      //Salary
+      'CurrentCTC' : CurrentCTC,
+      'ExpectedSalary' : ExpectedSalary,
     };
 
     print(body);

@@ -14,15 +14,15 @@ class Seettings extends GetxController {
     super.onInit();
     Future.microtask(() async {
       await Login.OptionApiController_fuction(
-        UserType: 'Candidate',
+        UserType: username,
         Email: Login.option_data['data']['Email'],
         Password: Password_main.Pass.text,
-        Tokan: Login.option_data['data']['LoginToken'],
-        CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
+        Tokan: Tokans,
+        CandidateId: Candidate,
       );
 
       await Change_Pass.ChangeControllerApiController_Fuction(
-        Tokan: Login.option_data['data']['LoginToken'],
+        Tokan: Tokans,
       );
     });
   }

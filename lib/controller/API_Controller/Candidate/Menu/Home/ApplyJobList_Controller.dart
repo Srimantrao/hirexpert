@@ -24,7 +24,7 @@ class ApplyjoblistController extends GetxController {
           headers: {
             API_KEY.api_key: API_KEY.key,
             Clientip.clientip: Clientip.ip,
-            Logintoken.logintoken: Tokan ?? '',
+            Logintoken.logintoken: Tokan,
           });
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         ApplyJobList_data.value = jsonDecode(responce.body);

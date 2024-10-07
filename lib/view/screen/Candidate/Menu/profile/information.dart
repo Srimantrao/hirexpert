@@ -33,6 +33,8 @@ class _Profile_infoState extends State<Profile_info> {
 
   @override
   void initState() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
     Future.microtask(()async{
       Candidatedetails.CandidatedetailsControllers_Fuction(
         CandidateId: login.option_data['data']?['UserDetails']?['CandidateId'] ?? Candidate,
@@ -68,10 +70,12 @@ class _Profile_infoState extends State<Profile_info> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(() {
-                              if (Candidatedetails.isLoding.value) {
+                              if (Details.isloding.value) {
                                 return Center(child: SizedBox());
-                              } else if (Candidatedetails.Candidatedetails_data['data'] == null || Candidatedetails.Candidatedetails_data == null) {
+                              } else if (Details.DetailsProfile_data == null || Details.DetailsProfile_data['data'] == null) {
                                 return Center(child: Text(API_Error.null_data));
+                              } else if (Details.DetailsProfile_data['data']['QuestionList'] == null || Details.DetailsProfile_data['data']['QuestionList'].isEmpty) {
+                                return Center(child: Text("No questions available"));
                               } else {
                                 return Row(
                                   children: [

@@ -18,6 +18,10 @@ String Candidate = '';
 String Tokans = '';
 bool islogin = false;
 
+int? savedIndex;
+int? newIndex;
+
+
 class Password_main {
   static TextEditingController Pass = Candidate_LoginValidation.password_controller = TextEditingController();
 }

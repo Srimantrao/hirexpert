@@ -5,19 +5,26 @@ import 'dart:convert';
 import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/API_Key.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
+import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:http/http.dart' as http;
 
 class CandidatedetailsControllers_Controllrs extends GetxController {
   var isLoding = false.obs;
   var Candidatedetails_data;
 
-  // ignore: non_constant_identifier_names
+  @override
+  void onInit() {
+    Tokans = pref!.getString('Tokan')!;
+    Candidate = pref!.getString('Candidate')!;
+    super.onInit();
+  }
+
   Future CandidatedetailsControllers_Fuction({required String CandidateId, required String Timezone, required String IsLabel, required String CompanyId, required String Tokan}) async {
     try{
       isLoding.value = true;
       final responce = await http.get(
           Uri.parse('${AppUrl.CandidateDetails}?CandidateId=6&Timezone=asia/kolkata&IsLabel=1&CompanyId=1'),
-          headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''});
+          headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan});
       if(responce.statusCode == 200 || responce.statusCode == 201){
         Candidatedetails_data = jsonDecode(responce.body);
         print(Candidatedetails_data);

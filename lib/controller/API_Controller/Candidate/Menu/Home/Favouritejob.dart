@@ -20,7 +20,7 @@ class Favouritejob extends GetxController {
 
       final responce = await http.get(
         Uri.parse('${AppUrl.savelist}?CandidateId=$CandidateId&Page=$Page&Timezone=$Timezone'),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? '',},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan,},
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {
         data.value = jsonDecode(responce.body);

@@ -30,14 +30,26 @@ class Home extends StatelessWidget {
         toolbarHeight: Get.height / 10,
         backgroundColor: AppColor.Full_body_color,
         automaticallyImplyLeading: false,
-        title: Text(My_Jobs_Screen.My_Jobs, style: TextStyle(fontWeight: FontWeight.w700)),
+        title: Obx((){
+          if(home_state.jobincount.jobcount.isLoding.value){
+            return SizedBox();
+          }else{
+            return Text(My_Jobs_Screen.My_Jobs, style: TextStyle(fontWeight: FontWeight.w700));
+          }
+        }),
         actions: [
-          GestureDetector(
-            onTap: () {
-              Get.to(() => Notification_Screen());
-            },
-            child: Icon(Icons.notifications),
-          ),
+          Obx((){
+            if(home_state.jobincount.jobcount.isLoding.value){
+              return SizedBox();
+            }else{
+              return GestureDetector(
+                onTap: () {
+                  Get.to(() => Notification_Screen());
+                },
+                child: Icon(Icons.notifications),
+              );
+            }
+          }),
           SizedBox(width: Get.width / 50),
         ],
       ),

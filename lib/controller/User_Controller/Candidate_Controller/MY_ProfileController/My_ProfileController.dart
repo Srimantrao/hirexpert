@@ -38,15 +38,13 @@ class My_ProfileController with ChangeNotifier {
 
   //Work Location
   TextEditingController CTC2_text = TextEditingController();
-  TextEditingController Preffered_Working_Location_text =
-      TextEditingController();
+  TextEditingController Preffered_Working_Location_text = TextEditingController();
   TextEditingController Preffered_Work_Setup_text = TextEditingController();
   TextEditingController Job_Type_Preferrence_text = TextEditingController();
   TextEditingController Enter_Notice_Period_text = TextEditingController();
 
   //File
   PlatformFile? _file;
-
   PlatformFile? get file => _file;
 
   int _selectedCheckboxIndex = -1;
@@ -152,115 +150,77 @@ class My_ProfileController with ChangeNotifier {
   //Check Conditon
   //Personal Information
   int get P_Job_Title => _P_Job_Title;
-
   int get P_Frist_Name => _P_Frist_Name;
-
   int get P_Last_Name => _P_Last_Name;
-
   int get P_Email_Id => _P_Email_Id;
-
   int get P_Mobile_Numbres => _P_Mobile_Numbres;
-
   int get P_Birthday => _P_Birthday;
 
   //Address
   int get P_Street_Adress => _P_Street_Adress;
-
   int get P_Post_Code => _P_Post_Code;
-
   int get P_Select_Province => _P_Select_Province;
-
   int get P_Select_City => _P_Select_City;
 
   //Educational Details
   int get P_Degree => _P_Degree;
-
   int get P_Specialisation => _P_Specialisation;
-
   int get P_Instiute_name => _P_Instiute_name;
-
   int get P_Passing_Year => _P_Passing_Year;
 
   //Work Experience
   int get P_fresher => _P_fresher;
-
   int get P_Years_Selection => _P_Years_Selection;
-
   int get P_Month_Selection => _P_Month_Selection;
-
   int get P_Company_Name => _P_Company_Name;
-
   int get P_Designation => _P_Designation;
-
   int get P_Entry_Date => _P_Entry_Date;
-
   int get P_Last_Date => _P_Last_Date;
 
   //Salary
   int get CTC => _CTC;
-
   int get Expected => _Expected;
 
   //Working Location
   int get P_CTC_Current => _P_CTC_Current;
-
   int get Preffered_Working => _Preffered_Working;
-
   int get Preffered_Work_Working => _Preffered_Work_Working;
-
   int get Job_Type_Preferrence => _Job_Type_Preferrence;
-
   int get Notice_Period => _Notice_Period;
 
   //Show Error
   //Personal Information
   String get JobTitle => _Job_Title;
-
   String get FristName => _Frist_name;
-
   String get LastName => _Last_name;
-
   String get Email_Id => _Email_Id;
-
   String get Mobile_Numbress => _Mobile_Numbress;
-
   String get Date_Of_Birth => _Date_Of_Birth;
 
   //Adress
   String get Street_Adress => _Street_Adress;
-
   String get Post_Codes => _Post_Codes;
-
   String get Select_Provinces => _Select_Provinces;
-
   String get Select_Citys => _Select_Citys;
 
   //Educational Details
   String get Degrees => _Degrees;
-
   String get Specialisations => _Specialisations;
-
   String get Institute_names => _Institute_names;
 
   //Work Experience
   String get Companys_names => _Companys_names;
-
   String get Designations => _Designations;
 
   //Salary
   String get CTCS => _CTCS;
-
   String get Expecteds => _Expecteds;
 
   //Work Location
   String get P_CTC_Currents => _P_CTC_Currents;
-
   String get Preffered_Workings => _Preffered_Workings;
-
   String get PPreffered_Work_Workings => _Preffered_Work_Workings;
-
   String get Job_Type_Preferrences => _Job_Type_Preferrences;
-
   String get Notice_Periods => _Notice_Periods;
 
   //Error Throw
@@ -268,17 +228,11 @@ class My_ProfileController with ChangeNotifier {
 
   //Visibility
   bool get Upload_lock => _Upload_lock;
-
   bool get Personal_Information => _Personal_Information;
-
   bool get Address => _Address;
-
   bool get Education_Details => _Education_Details;
-
   bool get Work_Experience => _Work_Experience;
-
   bool get Salary => _Salary;
-
   bool get Work_Location => _Work_Location;
 
   //Switch
@@ -295,46 +249,16 @@ class My_ProfileController with ChangeNotifier {
   String get selectedYear => _selectedYear;
 
   //Visibility
-  void Upload_lock_fun() {
-    _Upload_lock = !_Upload_lock;
-    notifyListeners();
-  }
-
-  void Personal_Information_fun() {
-    _Personal_Information = !_Personal_Information;
-    notifyListeners();
-  }
-
-  void Address_fun() {
-    _Address = !_Address;
-    notifyListeners();
-  }
-
-  void Education_Details_fun() {
-    _Education_Details = !_Education_Details;
-    notifyListeners();
-  }
-
-  void Work_Experience_fun() {
-    _Work_Experience = !_Work_Experience;
-    notifyListeners();
-  }
-
-  void Salary_fun() {
-    _Salary = !_Salary;
-    notifyListeners();
-  }
-
-  void Work_Location_fun() {
-    _Work_Location = !_Work_Location;
-    notifyListeners();
-  }
+  void Upload_lock_fun() {_Upload_lock = !_Upload_lock;notifyListeners();}
+  void Personal_Information_fun() {_Personal_Information = !_Personal_Information;notifyListeners();}
+  void Address_fun() {_Address = !_Address;notifyListeners();}
+  void Education_Details_fun() {_Education_Details = !_Education_Details;notifyListeners();}
+  void Work_Experience_fun() {_Work_Experience = !_Work_Experience;notifyListeners();}
+  void Salary_fun() {_Salary = !_Salary;notifyListeners();}
+  void Work_Location_fun() {_Work_Location = !_Work_Location;notifyListeners();}
 
   //I'm Not a Fresher
-  void Fresher_fun(val) {
-    _fresher = val;
-    notifyListeners();
-  }
+  void Fresher_fun(val) {_fresher = val;notifyListeners();}
 
   //file Uplode
   Future<void> picksinglefile() async {
@@ -349,155 +273,50 @@ class My_ProfileController with ChangeNotifier {
   //Check Conditon
 
   //Personal Information
-  void P_Job_Title_fun() {
-    _P_Job_Title = 0;
-    notifyListeners();
-  }
-
-  void P_Frist_Name_fun() {
-    _P_Frist_Name = 1;
-    notifyListeners();
-  }
-
-  void P_Last_Name_fun() {
-    _P_Last_Name = 2;
-    notifyListeners();
-  }
-
-  void P_Email_ID_fun() {
-    _P_Email_Id = 3;
-    notifyListeners();
-  }
-
-  void P_Mobile_Numbres_fun() {
-    _P_Mobile_Numbres = 4;
-    notifyListeners();
-  }
-
-  void P_Birthday_fun() {
-    _P_Birthday = 5;
-    notifyListeners();
-  }
+  void P_Job_Title_fun() {_P_Job_Title = 0;notifyListeners();}
+  void P_Frist_Name_fun() {_P_Frist_Name = 1;notifyListeners();}
+  void P_Last_Name_fun() {_P_Last_Name = 2;notifyListeners();}
+  void P_Email_ID_fun() {_P_Email_Id = 3;notifyListeners();}
+  void P_Mobile_Numbres_fun() {_P_Mobile_Numbres = 4;notifyListeners();}
+  void P_Birthday_fun() {_P_Birthday = 5;notifyListeners();}
 
   //Adress
-  void P_Street_Adress_Fun() {
-    _P_Street_Adress = 0;
-    notifyListeners();
-  }
-
-  void P_Post_Code_Fun() {
-    _P_Post_Code = 1;
-    notifyListeners();
-  }
-
-  void P_Select_Province_Fun() {
-    _P_Select_Province = 2;
-    notifyListeners();
-  }
-
-  void P_Select_City_Fun() {
-    _P_Select_City = 3;
-    notifyListeners();
-  }
+  void P_Street_Adress_Fun() {_P_Street_Adress = 0;notifyListeners();}
+  void P_Post_Code_Fun() {_P_Post_Code = 1;notifyListeners();}
+  void P_Select_Province_Fun() {_P_Select_Province = 2;notifyListeners();}
+  void P_Select_City_Fun() {_P_Select_City = 3;notifyListeners();}
 
   //Educational Details
-  void P_Degree_fun() {
-    _P_Degree = 0;
-    notifyListeners();
-  }
-
-  void P_Specialisation_fun() {
-    _P_Specialisation = 1;
-    notifyListeners();
-  }
-
-  void P_Instiute_name_fun() {
-    _P_Instiute_name = 2;
-    notifyListeners();
-  }
-
-  void P_Passing_Year_fun() {
-    _P_Passing_Year = 3;
-    notifyListeners();
-  }
+  void P_Degree_fun() {_P_Degree = 0;notifyListeners();}
+  void P_Specialisation_fun() {_P_Specialisation = 1;notifyListeners();}
+  void P_Instiute_name_fun() {_P_Instiute_name = 2;notifyListeners();}
+  void P_Passing_Year_fun() {_P_Passing_Year = 3;notifyListeners();}
 
   //Work Experience
-  void P_Years_Selection_fun() {
-    _P_Years_Selection = 0;
-    notifyListeners();
-  }
-
-  void P_Month_Selection_fun() {
-    _P_Month_Selection = 1;
-    notifyListeners();
-  }
-
-  void P_Company_Name_fun() {
-    _P_Company_Name = 2;
-    notifyListeners();
-  }
-
-  void P_Designation_fun() {
-    _P_Designation = 3;
-    notifyListeners();
-  }
-
-  void P_Entry_Date_fun() {
-    _P_Entry_Date = 4;
-    notifyListeners();
-  }
-
-  void P_Last_Date_fun() {
-    _P_Last_Date = 5;
-    notifyListeners();
-  }
-
-  void Freshers_fun() {
-    _P_fresher = 6;
-    notifyListeners();
-  }
+  void P_Years_Selection_fun() {_P_Years_Selection = 0;notifyListeners();}
+  void P_Month_Selection_fun() {_P_Month_Selection = 1;notifyListeners();}
+  void P_Company_Name_fun() {_P_Company_Name = 2;notifyListeners();}
+  void P_Designation_fun() {_P_Designation = 3;notifyListeners();}
+  void P_Entry_Date_fun() {_P_Entry_Date = 4;notifyListeners();}
+  void P_Last_Date_fun() {_P_Last_Date = 5;notifyListeners();}
+  void Freshers_fun() {_P_fresher = 6;notifyListeners();}
 
   //Salary
-  void CTC_Fun() {
-    _CTC = 0;
-    notifyListeners();
-  }
-
-  void Expected_Fun() {
-    _Expected = 1;
-    notifyListeners();
-  }
+  void CTC_Fun() {_CTC = 0;notifyListeners();}
+  void Expected_Fun() {_Expected = 1;notifyListeners();}
 
   //Work Location
-  void P_CTC_Current_fun() {
-    _P_CTC_Current = 0;
-    notifyListeners();
-  }
+  void P_CTC_Current_fun() {_P_CTC_Current = 0;notifyListeners();}
+  void Preffered_Working_fun() {_Preffered_Working = 1;notifyListeners();}
+  void Preffered_Work_Working_fun() {_Preffered_Work_Working = 2;notifyListeners();}
+  void Job_Type_Preferrence_fun() {_Job_Type_Preferrence = 3;notifyListeners();}
 
-  void Preffered_Working_fun() {
-    _Preffered_Working = 1;
-    notifyListeners();
-  }
-
-  void Preffered_Work_Working_fun() {
-    _Preffered_Work_Working = 2;
-    notifyListeners();
-  }
-
-  void Job_Type_Preferrence_fun() {
-    _Job_Type_Preferrence = 3;
-    notifyListeners();
-  }
-
-  void Notice_Period_fun() {
-    _Notice_Period = 4;
-    notifyListeners();
-  }
+  void Notice_Period_fun() {_Notice_Period = 4;notifyListeners();}
 
   //Checkmark is a male or female
   void handleCheckboxValueChanged(int index) {
     if (_selectedCheckboxIndex == index) {
-      _selectedCheckboxIndex = -1;
+      _selectedCheckboxIndex = index;
     } else {
       _selectedCheckboxIndex = index;
     }
@@ -748,15 +567,9 @@ class My_ProfileController with ChangeNotifier {
 
   //Educational Details
   //Select Year
-  void onSelectedItemChanged(int index) {
-    _selectedYear = Years[index];
-    notifyListeners();
-  }
+  void onSelectedItemChanged(int index) {_selectedYear = Years[index];notifyListeners();}
 
   //Work Experience
   //Check Box
-  void Work_Check(val) {
-    _I_currently_workhere = val!;
-    notifyListeners();
-  }
+  void Work_Check(val) {_I_currently_workhere = val!;notifyListeners();}
 }
