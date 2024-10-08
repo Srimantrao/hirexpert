@@ -18,6 +18,7 @@ String Candidate = '';
 String TechId = '';
 String Tokans = '';
 bool islogin = false;
+String province = '';
 
 int? savedIndex;
 int? newIndex;

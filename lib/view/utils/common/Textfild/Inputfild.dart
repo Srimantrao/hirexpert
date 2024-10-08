@@ -11,6 +11,7 @@ class Inputfild extends StatelessWidget {
   final Widget? suffixIcon;
   final TextEditingController controller;
   final bool? obscureText;
+  final bool? readOnly;
   final TextInputType? keyboardType;
   final void Function(String)? onChanged;
   final void Function()? onTap;
@@ -27,6 +28,7 @@ class Inputfild extends StatelessWidget {
     this.onChanged,
     this.onTap,
     this.style,
+    this.readOnly,
   });
 
   @override
@@ -39,24 +41,17 @@ class Inputfild extends StatelessWidget {
             children: [
               TextSpan(
                 text: labal,
-                style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  fontSize: Get.width / 25,
-                  color: AppColor.subcolor,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
               ),
               TextSpan(
                 text: ' *',
-                style: TextStyle(
-                  fontWeight: FontWeight.w700,
-                  fontSize: Get.width / 22,
-                  color: AppColor.Error_color,
-                ),
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
               ),
             ],
           ),
         ),
         TextField(
+          readOnly: readOnly ?? false,
           onTap: onTap,
           onChanged: onChanged,
           obscureText: obscureText ?? false,
@@ -67,12 +62,8 @@ class Inputfild extends StatelessWidget {
             suffixIcon: suffixIcon,
             hintText: hint,
             hintStyle: TextStyle(color: AppColor.black_all),
-            focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColor.offButton_color),
-            ),
-            enabledBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: AppColor.offButton_color),
-            ),
+            focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.offButton_color)),
+            enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.offButton_color)),
           ),
         ),
       ],

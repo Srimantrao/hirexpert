@@ -37,9 +37,9 @@ class _Extra_infoState extends State<Extra_info> {
     super.initState();
   }
 
-  ExtraInfos Extras = Get.put(ExtraInfos());
+  // ExtraInfos Extras = Get.put(ExtraInfos());
   DetailsProfile_Controls Details = Get.put(DetailsProfile_Controls());
-  OptionApiController login = Get.put(OptionApiController());
+  // OptionApiController login = Get.put(OptionApiController());
 
   @override
   Widget build(BuildContext context) {
@@ -64,7 +64,6 @@ class _Extra_infoState extends State<Extra_info> {
                   Text(Profile_Text.Moust, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                   TextField(
                     readOnly: true,
-                    controller: Extras.whichJob,
                     decoration: InputDecoration(
                       hintText: Profile_Text.Moust_hint,
                       hintStyle: TextStyle(fontSize: Get.width / 24),

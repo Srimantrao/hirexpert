@@ -10,7 +10,7 @@ class PersonalInformation extends GetxController {
   void onInit() {
     Future.microtask(() async {
       await login.OptionApiController_fuction(
-        UserType: login.option_data['data']['UserType'],
+        UserType: username,
         Password: Password_main.Pass.text,
         Email: login.option_data['data']['Email'],
         Tokan: Tokans,

@@ -13,16 +13,12 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:provider/provider.dart';
 import 'package:toastification/toastification.dart';
 
-class OTP extends StatefulWidget {
+import '../../../../controller/API_Controller/Candidate/Menu/Home/Candidate_Details_Controllres.dart';
 
-  OTP({super.key});
-
-  @override
-  State<OTP> createState() => _OTPState();
-}
-
-class _OTPState extends State<OTP> {
+class OTP extends StatelessWidget {
   OtpApiController_API OTP_API = Get.put(OtpApiController_API());
+  CandidatedetailsControllers_Controllrs Candidatedetails = Get.put(CandidatedetailsControllers_Controllrs());
+  OTP({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +68,7 @@ class _OTPState extends State<OTP> {
                         borderRadius: BorderRadius.circular(5),
                         fieldHeight: 50,
                         fieldWidth: 40,
-                        activeFillColor:
-                            Otp.hasError ? Colors.redAccent : Colors.white,
+                        activeFillColor: Otp.hasError ? Colors.redAccent : Colors.white,
                       ),
                       onCompleted: (v) {print("Completed: $v");},
                     ),
@@ -121,7 +116,8 @@ class _OTPState extends State<OTP> {
                               );
                               OTP_API.OtpApiController_fuction(EmailOTP: Otp.Email_pincodering.text, PhoneOTP: Otp.Phone_pincodering.text, EntryTerm: '127.0.0.1');
                               Get.to(()=> Candidate_Specialization(
-
+                                first_name: Candidatedetails.Candidatedetails_data['data']['FirstName'],
+                                last_name: Candidatedetails.Candidatedetails_data['data']['LastName'],
                               ),curve: Curves.easeOutQuad,transition: Transition.circularReveal,duration: Duration(seconds: 4));
                             }
                             String message = OTP_API.OTP_data['message'] ?? "Unknown error occurred";

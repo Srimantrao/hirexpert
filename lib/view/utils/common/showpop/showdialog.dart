@@ -82,40 +82,16 @@ class Pop_Container extends StatelessWidget {
     return Container(
       width: Get.width,
       height: Get.height / 20,
-      decoration: BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: AppColor.Bottam_color,
-          ),
-        ),
-      ),
+      decoration: BoxDecoration(border: Border(bottom: BorderSide(color: AppColor.Bottam_color))),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           (condition ?? false)
-              ? Text(
-                  text2 ?? '',
-                  style: TextStyle(
-                    color: AppColor.black_all,
-                    fontSize: Get.width / 27,
-                  ),
-                )
-              : Text(
-                  text,
-                  style: TextStyle(
-                    color: AppColor.black_all,
-                    fontSize: Get.width / 27,
-                  ),
-                ),
+              ? Text(text2 ?? '', style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 27))
+              : Text(text, style: TextStyle(color: AppColor.black_all, fontSize: Get.width / 27)),
           (condition ?? false)
-              ? SvgPicture.asset(
-                  AppIcons.Right,
-                  color: AppColor.subcolor,
-                )
-              : SvgPicture.asset(
-                  AppIcons.down,
-                  color: AppColor.subcolor,
-                ),
+              ? SvgPicture.asset(AppIcons.Right, color: AppColor.subcolor)
+              : SvgPicture.asset(AppIcons.down, color: AppColor.subcolor),
         ],
       ),
     );
