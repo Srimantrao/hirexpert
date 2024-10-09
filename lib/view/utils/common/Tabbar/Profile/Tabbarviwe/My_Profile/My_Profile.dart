@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use, avoid_print, unused_import
 
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -53,9 +54,39 @@ class _MY_ProfileState extends State<MY_Profile> {
   String selectprovince = '';
   ValueNotifier<bool> selectstate = ValueNotifier<bool>(false);
 
-  bool cityselect = false;
+  ValueNotifier<bool> cityselect = ValueNotifier<bool>(false);
   int? cityid;
   String cityname = '';
+
+  void showCitySelectionDialog(BuildContext context, List cityList) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Select City"),
+          content: Container(
+            height: 300,
+            width: 300,
+            child: ListView.builder(
+              itemCount: cityList.length,
+              itemBuilder: (context, cityIndex) {
+                return ListTile(
+                  title: Text(cityList[cityIndex]['CityName']),
+                  onTap: () {
+                    // Set selected city ID and name
+                    cityid = cityList[cityIndex]['CityId'];
+                    cityname = cityList[cityIndex]['CityName'];
+                    print('Selected City: $cityid, Name: $cityname');
+                    Navigator.of(context).pop(); // Close the city dialog
+                  },
+                );
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
 
 
   final PersonalInformation Parsonal = Get.put(PersonalInformation());
@@ -663,10 +694,16 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                                         setState(() {
                                                                           selectstate.value = true;
                                                                           selectedProvinceIndex = provinceIndex;
-                                                                          selectedProvinceIndex == Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['ProvinceId'];
                                                                           selectprovince = Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['Name'];
+
+                                                                          // Get the list of cities for the selected province
+                                                                          List cityList = Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['CityList'];
+
+                                                                          // Print selected province details
                                                                           print('Selected Province: ${Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['ProvinceId']}');
-                                                                          Get.back();
+
+                                                                          // Show city selection dialog
+                                                                          showCitySelectionDialog(context, cityList);
                                                                         });
                                                                       },
                                                                       child: Container(
@@ -729,12 +766,74 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 SizedBox(height: Get.height / 50),
 
                                 //Select city
-                                Inputfild(
-                                  labal: Profile_Text.Select_City,
-                                  hint: candidateData['CityName'] ?? '',
-                                  controller: SelectCity_Controllers!,
-                                  onTap: () {myProfile.P_Select_City_Fun();},
-                                  onChanged: (val) {myProfile.Select_Citys_validation(val);},
+                                // Inputfild(
+                                //   labal: Profile_Text.Select_City,
+                                //   hint: candidateData['CityName'] ?? '',
+                                //   controller: SelectCity_Controllers!,
+                                //   onTap: () {myProfile.P_Select_City_Fun();},
+                                //   onChanged: (val) {myProfile.Select_Citys_validation(val);},
+                                // ),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: Profile_Text.Select_City,
+                                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    showDialog(
+                                        context: context,
+                                        builder: (BuildContext context) {
+                                          return AlertDialog(
+                                            title: Row(
+                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                              children: [
+                                                Text(Profile_Text.Select_City),
+                                                GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset(AppIcons.cancel)),
+                                              ],
+                                            ),
+                                            content: Container(
+                                              height: Get.height/3,
+                                              width: Get.width,
+                                              decoration: BoxDecoration(
+                                                color: AppColor.Full_body_color,
+                                              ),
+                                              child: ListView.builder(
+                                                itemCount: Countrylist.countrylist?['data']!.length,
+                                                itemBuilder: (BuildContext context, int countryindex) {
+                                                  return ListView.builder(
+                                                    itemCount: Countrylist.countrylist['data']?[countryindex]?['ProvinceList'].length,
+                                                    itemBuilder: (BuildContext context, int provinceindex) {
+                                                      return ListView.builder(
+                                                        itemCount: Countrylist.countrylist['data']?[countryindex]?['ProvinceList']?[provinceindex].length,
+                                                        itemBuilder: (BuildContext context, int CityListindex) {
+                                                            return Text(Countrylist.countrylist['data']?[countryindex]?['ProvinceList']?[provinceindex]['CityList']?[CityListindex]!);
+                                                      },
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              ),
+                                            ),
+                                          );
+                                        });
+                                  },
+                                  child: Container(
+                                    width: Get.width,
+                                    height: Get.height/15,
+                                    decoration: BoxDecoration(
+                                        border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                        color: AppColor.Textfild_color,
+                                    ),
+                                  ),
                                 ),
                                 MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Select_Citys),
                                 SizedBox(height: Get.height / 50),
