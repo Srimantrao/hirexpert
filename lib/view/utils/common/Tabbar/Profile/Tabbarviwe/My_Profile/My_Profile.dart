@@ -58,36 +58,11 @@ class _MY_ProfileState extends State<MY_Profile> {
   int? cityid;
   String cityname = '';
 
-  void showCitySelectionDialog(BuildContext context, List cityList) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text("Select City"),
-          content: Container(
-            height: 300,
-            width: 300,
-            child: ListView.builder(
-              itemCount: cityList.length,
-              itemBuilder: (context, cityIndex) {
-                return ListTile(
-                  title: Text(cityList[cityIndex]['CityName']),
-                  onTap: () {
-                    // Set selected city ID and name
-                    cityid = cityList[cityIndex]['CityId'];
-                    cityname = cityList[cityIndex]['CityName'];
-                    print('Selected City: $cityid, Name: $cityname');
-                    Navigator.of(context).pop(); // Close the city dialog
-                  },
-                );
-              },
-            ),
-          ),
-        );
-      },
-    );
-  }
+  String? selectedProvince;
+  String? selectedcountry;
 
+  String? selectedCity;
+  List<String> cityList = [];
 
   final PersonalInformation Parsonal = Get.put(PersonalInformation());
 
@@ -463,7 +438,6 @@ class _MY_ProfileState extends State<MY_Profile> {
                                   onChanged: (val) {myProfile.Street_Adress_validation(val);},
                                 ),
                                 MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Street_Adress),
-                                SizedBox(height: Get.height / 50),
 
                                 //Post Code
                                 Inputfild(
@@ -474,135 +448,52 @@ class _MY_ProfileState extends State<MY_Profile> {
                                   onChanged: (val) {myProfile.Post_Codes_validation(val);},
                                 ),
                                 MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Post_Codes),
+
+                                //Country
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: Profile_Text.Select_Country,
+                                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                Container(
+                                  width: Get.width,
+                                  height: Get.height/15,
+                                  decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                      color: AppColor.Textfild_color,
+                                  ),
+                                  child: DropdownButton<String>(
+                                    items: Countrylist.countrylist['data'].map<DropdownMenuItem<String>>((value) {
+                                      return DropdownMenuItem<String>(
+                                        value: value['Country'], // Assuming 'Country' is the key containing country names
+                                        child: Text(value['Country']), // Display the country name
+                                      );
+                                    }).toList(),
+                                    onChanged: (vals) {
+                                      setState(() {
+                                        selectedcountry = vals;
+                                        print("Selected value: $val");
+                                      });
+                                    },
+                                    icon: SizedBox(),
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: Text("Select Country"),
+                                    value: selectedcountry,
+                                  ),
+                                ),
                                 SizedBox(height: Get.height / 50),
 
-                                // Select Province
-                                // Inputfild(
-                                //   readOnly: true,
-                                //   labal: Profile_Text.Select_Province,
-                                //   hint: candidateData['ProvinceName'],
-                                //   onTap: () {
-                                //     showBottomSheet(
-                                //       context: context,
-                                //       builder: (BuildContext context) {
-                                //         return StatefulBuilder(
-                                //           builder: (BuildContext context, void Function(void Function()) setState) {
-                                //             return Container(
-                                //               height: Get.height / 1.2,
-                                //               width: Get.width,
-                                //               decoration: BoxDecoration(color: AppColor.Full_body_color),
-                                //               child: Padding(
-                                //                 padding: EdgeInsets.symmetric(horizontal: Get.width / 25),
-                                //                 child: Column(
-                                //                   children: [
-                                //                     SizedBox(height: Get.height / 60),
-                                //                     Row(
-                                //                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                //                       children: [
-                                //                         SizedBox(),
-                                //                         Text(Profile_Text.Select_Province, style: TextStyle(fontSize: Get.width / 25)),
-                                //                         GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset(AppIcons.cancel)),
-                                //                       ],
-                                //                     ),
-                                //                     Divider(color: AppColor.Textfild_color),
-                                //                     SizedBox(height: Get.height / 60),
-                                //                     Expanded(
-                                //                       child: Row(
-                                //                         children: [
-                                //                           Expanded(
-                                //                             child: ListView.builder(
-                                //                               itemCount: Countrylist.countrylist['data'].length,
-                                //                               itemBuilder: (BuildContext context, int index) {
-                                //                                 return GestureDetector(
-                                //                                   onTap: (){
-                                //                                     selectcountry = !selectcountry;
-                                //                                     setState((){});
-                                //                                   },
-                                //                                   child: Container(
-                                //                                     height: Get.height / 15,
-                                //                                     width: Get.width / 3,
-                                //                                     decoration: BoxDecoration(
-                                //                                         borderRadius: BorderRadiusDirectional.circular(Get.width / 50),
-                                //                                         color: (selectcountry)
-                                //                                             ? AppColor.Button_color
-                                //                                             : AppColor.Full_body_color
-                                //                                     ),
-                                //                                     child: Center(
-                                //                                       child: Text(
-                                //                                         Countrylist.countrylist['data'][index]['Country'],
-                                //                                         style: TextStyle(
-                                //                                           color: (selectcountry)
-                                //                                               ? AppColor.Full_body_color
-                                //                                               : AppColor.black_all,
-                                //                                         ),
-                                //                                       ),
-                                //                                     ),
-                                //                                   ),
-                                //                                 );
-                                //                               },
-                                //                             ),
-                                //                           ),
-                                //                           (selectcountry) ? Expanded(
-                                //                             child: ListView.builder(
-                                //                               itemCount: Countrylist.countrylist['data'].length,
-                                //                               itemBuilder: (context, countryIndex) {
-                                //                                 return ListView.builder(
-                                //                                   shrinkWrap: true,
-                                //                                   physics: NeverScrollableScrollPhysics(),
-                                //                                   itemCount: Countrylist.countrylist['data'][countryIndex]['ProvinceList'].length,
-                                //                                   itemBuilder: (context, provinceIndex) {
-                                //                                     return GestureDetector(
-                                //                                       onTap: () {
-                                //                                         setState(() {
-                                //                                           selectedProvinceIndex = provinceIndex;
-                                //                                           SelectProvince_Controllers!.text == Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['Name'];
-                                //                                           print('Selected Province: ${Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['Name']}');
-                                //                                           Get.back();
-                                //                                         });
-                                //                                       },
-                                //                                       child: Container(
-                                //                                         width: Get.width,
-                                //                                         height: Get.height / 15,
-                                //                                         decoration: BoxDecoration(
-                                //                                           borderRadius: BorderRadius.circular(Get.width / 50),
-                                //                                           color: (selectedProvinceIndex == provinceIndex)
-                                //                                               ? AppColor.Button_color
-                                //                                               : AppColor.Full_body_color,
-                                //                                         ),
-                                //                                         child: Center( // Center the text
-                                //                                           child: Text(
-                                //                                             Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['Name'],
-                                //                                             textAlign: TextAlign.center,
-                                //                                             style: TextStyle(
-                                //                                               color: (selectedProvinceIndex == provinceIndex)
-                                //                                                   ? AppColor.Full_body_color
-                                //                                                   : AppColor.black_all,
-                                //                                             ),
-                                //                                           ),
-                                //                                         ),
-                                //                                       ),
-                                //                                     );
-                                //                                   },
-                                //                                 );
-                                //                               },
-                                //                             ),
-                                //                           ) : SizedBox(),
-                                //                         ],
-                                //                       ),
-                                //                     ),
-                                //                   ],
-                                //                 ),
-                                //               ),
-                                //             );
-                                //           },
-                                //         );
-                                //       },
-                                //     );
-                                //     myProfile.P_Select_Province_Fun();
-                                //   },
-                                //   controller: SelectProvince_Controllers!,
-                                //   onChanged: (val) {myProfile.Select_Provinces_validation(val);},
-                                // ),
+                                //Province
                                 RichText(
                                   text: TextSpan(
                                     children: [
@@ -617,162 +508,38 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: Get.height/60),
-                                GestureDetector(
-                                  onTap: (){
-                                    showBottomSheet(
-                                      context: context,
-                                      builder: (BuildContext context) {
-                                        return StatefulBuilder(
-                                          builder: (BuildContext context, void Function(void Function()) setState) {
-                                            return Container(
-                                              height: Get.height / 1.2,
-                                              width: Get.width,
-                                              decoration: BoxDecoration(color: AppColor.Full_body_color),
-                                              child: Padding(
-                                                padding: EdgeInsets.symmetric(horizontal: Get.width / 25),
-                                                child: Column(
-                                                  children: [
-                                                    SizedBox(height: Get.height / 60),
-                                                    Row(
-                                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                                      children: [
-                                                        SizedBox(),
-                                                        Text(Profile_Text.Select_Province, style: TextStyle(fontSize: Get.width / 25)),
-                                                        GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset(AppIcons.cancel)),
-                                                      ],
-                                                    ),
-                                                    Divider(color: AppColor.Textfild_color),
-                                                    SizedBox(height: Get.height / 60),
-                                                    Expanded(
-                                                      child: Row(
-                                                        children: [
-                                                          Expanded(
-                                                            child: ListView.builder(
-                                                              itemCount: Countrylist.countrylist['data'].length,
-                                                              itemBuilder: (BuildContext context, int index) {
-                                                                return GestureDetector(
-                                                                  onTap: (){
-                                                                    selectcountry = !selectcountry;
-                                                                    setState((){});
-                                                                  },
-                                                                  child: Container(
-                                                                    height: Get.height / 15,
-                                                                    width: Get.width / 3,
-                                                                    decoration: BoxDecoration(
-                                                                        borderRadius: BorderRadiusDirectional.circular(Get.width / 50),
-                                                                        color: (selectcountry)
-                                                                            ? AppColor.Button_color
-                                                                            : AppColor.Full_body_color
-                                                                    ),
-                                                                    child: Center(
-                                                                      child: Text(
-                                                                        Countrylist.countrylist['data'][index]['Country'],
-                                                                        style: TextStyle(
-                                                                          color: (selectcountry)
-                                                                              ? AppColor.Full_body_color
-                                                                              : AppColor.black_all,
-                                                                        ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                );
-                                                              },
-                                                            ),
-                                                          ),
-                                                          (selectcountry) ? Expanded(
-                                                            child: ListView.builder(
-                                                              itemCount: Countrylist.countrylist['data'].length,
-                                                              itemBuilder: (context, countryIndex) {
-                                                                return ListView.builder(
-                                                                  shrinkWrap: true,
-                                                                  physics: NeverScrollableScrollPhysics(),
-                                                                  itemCount: Countrylist.countrylist['data'][countryIndex]['ProvinceList'].length,
-                                                                  itemBuilder: (context, provinceIndex) {
-                                                                    return GestureDetector(
-                                                                      onTap: () {
-                                                                        setState(() {
-                                                                          selectstate.value = true;
-                                                                          selectedProvinceIndex = provinceIndex;
-                                                                          selectprovince = Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['Name'];
-
-                                                                          // Get the list of cities for the selected province
-                                                                          List cityList = Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['CityList'];
-
-                                                                          // Print selected province details
-                                                                          print('Selected Province: ${Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['ProvinceId']}');
-
-                                                                          // Show city selection dialog
-                                                                          showCitySelectionDialog(context, cityList);
-                                                                        });
-                                                                      },
-                                                                      child: Container(
-                                                                        width: Get.width,
-                                                                        height: Get.height / 15,
-                                                                        decoration: BoxDecoration(
-                                                                          borderRadius: BorderRadius.circular(Get.width / 50),
-                                                                          color: (selectedProvinceIndex == provinceIndex)
-                                                                              ? AppColor.Button_color
-                                                                              : AppColor.Full_body_color,
-                                                                        ),
-                                                                        child: Center( // Center the text
-                                                                          child: Text(
-                                                                            Countrylist.countrylist['data'][countryIndex]['ProvinceList'][provinceIndex]['Name'],
-                                                                            textAlign: TextAlign.center,
-                                                                            style: TextStyle(
-                                                                              color: (selectedProvinceIndex == provinceIndex)
-                                                                                  ? AppColor.Full_body_color
-                                                                                  : AppColor.black_all,
-                                                                            ),
-                                                                          ),
-                                                                        ),
-                                                                      ),
-                                                                    );
-                                                                  },
-                                                                );
-                                                              },
-                                                            ),
-                                                          ) : SizedBox(),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            );
-                                          },
-                                        );
-                                      },
-                                    );
-                                  },
-                                  child: ValueListenableBuilder(
-                                    valueListenable: selectstate,
-                                    builder: (BuildContext context, bool value, Widget? child) { 
-                                      return Container(
-                                        width: Get.width,
-                                        height: Get.height/15,
-                                        decoration: BoxDecoration(
-                                          border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
-                                          color: AppColor.Textfild_color,
-                                        ),
-                                        child: (selectstate.value)
-                                            ? Text(selectprovince,style: TextStyle(fontSize: Get.width/23))
-                                            : Text(candidateData['ProvinceName'],style: TextStyle(fontSize: Get.width/23)),
+                                Container(
+                                  width: Get.width,
+                                  height: Get.height/15,
+                                  decoration: BoxDecoration(
+                                    color: AppColor.Textfild_color,
+                                    border: Border(bottom: BorderSide(color: AppColor.Textfild_color))
+                                  ),
+                                  child: DropdownButton<String>(
+                                    items: Countrylist.countrylist['data'][0]['ProvinceList'].map<DropdownMenuItem<String>>((province) {
+                                      return DropdownMenuItem<String>(
+                                        value: province['Name'] as String,
+                                        child: Text(province['Name'] as String),
                                       );
+                                    }).toList(),
+                                    onChanged: (val) {
+                                      setState(() {
+                                        selectedProvince = val;
+                                        cityList = (Countrylist.countrylist['data'][0]['ProvinceList'].firstWhere((province) => province['Name'] == val)['CityList'] as List).map<String>((city) => city['CityName'] as String).toList();
+                                        selectedCity = null; // Reset selected city
+                                      });
+                                      print("Selected Province: $val");
                                     },
+                                    icon: SizedBox(),
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: Text("Select Province"),
+                                    value: selectedProvince,
                                   ),
                                 ),
-                                MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Select_Provinces,),
-                                SizedBox(height: Get.height / 50),
+                                SizedBox(height: Get.height/60),
 
-                                //Select city
-                                // Inputfild(
-                                //   labal: Profile_Text.Select_City,
-                                //   hint: candidateData['CityName'] ?? '',
-                                //   controller: SelectCity_Controllers!,
-                                //   onTap: () {myProfile.P_Select_City_Fun();},
-                                //   onChanged: (val) {myProfile.Select_Citys_validation(val);},
-                                // ),
+                                //City
                                 RichText(
                                   text: TextSpan(
                                     children: [
@@ -787,55 +554,33 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     ],
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: (){
-                                    showDialog(
-                                        context: context,
-                                        builder: (BuildContext context) {
-                                          return AlertDialog(
-                                            title: Row(
-                                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                              children: [
-                                                Text(Profile_Text.Select_City),
-                                                GestureDetector(onTap: () => Get.back(), child: SvgPicture.asset(AppIcons.cancel)),
-                                              ],
-                                            ),
-                                            content: Container(
-                                              height: Get.height/3,
-                                              width: Get.width,
-                                              decoration: BoxDecoration(
-                                                color: AppColor.Full_body_color,
-                                              ),
-                                              child: ListView.builder(
-                                                itemCount: Countrylist.countrylist?['data']!.length,
-                                                itemBuilder: (BuildContext context, int countryindex) {
-                                                  return ListView.builder(
-                                                    itemCount: Countrylist.countrylist['data']?[countryindex]?['ProvinceList'].length,
-                                                    itemBuilder: (BuildContext context, int provinceindex) {
-                                                      return ListView.builder(
-                                                        itemCount: Countrylist.countrylist['data']?[countryindex]?['ProvinceList']?[provinceindex].length,
-                                                        itemBuilder: (BuildContext context, int CityListindex) {
-                                                            return Text(Countrylist.countrylist['data']?[countryindex]?['ProvinceList']?[provinceindex]['CityList']?[CityListindex]!);
-                                                      },
-                                                      );
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ),
-                                          );
-                                        });
-                                  },
-                                  child: Container(
-                                    width: Get.width,
-                                    height: Get.height/15,
-                                    decoration: BoxDecoration(
-                                        border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
-                                        color: AppColor.Textfild_color,
-                                    ),
+                                Container(
+                                  width: Get.width,
+                                  height: Get.height/15,
+                                  decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                      color: AppColor.Textfild_color,
+                                  ),
+                                  child: DropdownButton<String>(
+                                    items: cityList.map<DropdownMenuItem<String>>((cityName) {
+                                      return DropdownMenuItem<String>(
+                                        value: cityName,
+                                        child: Text(cityName),
+                                      );
+                                    }).toList(),
+                                    onChanged: (val) {
+                                      setState(() {
+                                        selectedCity = val;
+                                      });
+                                      print("Selected City: $val");
+                                    },
+                                    icon: SizedBox(),
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: Text("Select City"),
+                                    value: selectedCity,
                                   ),
                                 ),
-                                MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Select_Citys),
                                 SizedBox(height: Get.height / 50),
                               ],
                             ),
