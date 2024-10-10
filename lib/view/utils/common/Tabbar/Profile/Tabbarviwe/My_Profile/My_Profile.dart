@@ -1319,7 +1319,7 @@ class _MY_ProfileState extends State<MY_Profile> {
 
                           //Educational Details
                           DegreeIdProfile: Degree_pop_ID,
-                          GraduationYear: GraduationYears.toString(),
+                          GraduationYear: GraduationYears,
 
                           //Salary
                           CurrentCTC: CurrentSalary_Controllers!.text,
