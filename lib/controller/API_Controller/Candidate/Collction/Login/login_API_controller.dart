@@ -7,12 +7,25 @@ import 'package:get/get.dart';
 import 'package:hirexpert/view/utils/appUrl.dart';
 import 'package:http/http.dart' as http;
 import '../../../../../view/utils/API_Key.dart';
+import '../../../../../view/utils/app_constance.dart';
 
 class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
   var option_data = {}.obs;
 
-  Future OptionApiController_fuction({String? Tokan, String? CandidateId, String? Email, String? Password, String? UserType}) async {
+  @override
+  void onInit() {
+    OptionApiController_fuction(
+      Email: Email,
+      Password: Password,
+      Tokan: Tokans,
+      CandidateId: Candidate,
+      UserType: username,
+    );
+    super.onInit();
+  }
+
+  Future<void> OptionApiController_fuction({String? Tokan, String? CandidateId, String? Email, String? Password, String? UserType}) async {
     try {
       isLodingvalue.value = true;
 

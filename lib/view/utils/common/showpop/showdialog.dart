@@ -18,11 +18,7 @@ class Showdialog {
             height: Get.height / 15,
             width: Get.width,
             decoration: BoxDecoration(
-              border: Border(
-                bottom: BorderSide(
-                  color: AppColor.Bottam_color,
-                ),
-              ),
+              border: Border(bottom: BorderSide(color: AppColor.Bottam_color)),
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -30,14 +26,7 @@ class Showdialog {
                 SizedBox(),
                 SizedBox(
                   width: Get.width / 2,
-                  child: Text(
-                    textAlign: TextAlign.center,
-                    hedingtext,
-                    style: TextStyle(
-                      fontSize: Get.width / 24,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
+                  child: Text(textAlign: TextAlign.center, hedingtext, style: TextStyle(fontSize: Get.width / 24, fontWeight: FontWeight.w600)),
                 ),
                 GestureDetector(
                   onTap: onTabs,
@@ -49,9 +38,7 @@ class Showdialog {
           content: Container(
             height: height ?? Get.height / 5,
             width: Get.width,
-            decoration: BoxDecoration(
-              color: AppColor.Full_body_color,
-            ),
+            decoration: BoxDecoration(color: AppColor.Full_body_color),
             child: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               child: colamWidget,

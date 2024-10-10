@@ -18,8 +18,6 @@ class SarchingSavingApi extends GetxController {
         Tokan: Tokans,
         Page: '1',
       );
-      await pref!.setString("Tokan", login.option_data['data']['LoginToken']);
-      await pref!.setString('Candidate', login.option_data['data']['UserDetails']['CandidateId']);
     });
     Tokans = pref!.getString('Tokan')!;
     Candidate = pref!.getString('Candidate')!;
