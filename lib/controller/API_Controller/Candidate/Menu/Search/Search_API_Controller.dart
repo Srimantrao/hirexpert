@@ -12,18 +12,12 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
-  @override
-  void onInit() {
-    SearchApiController_fuction();
-    super.onInit();
-  }
-
   Future SearchApiController_fuction({
-     String? Timezone,
-     String? CandidateId,
-     String? Tokan,
-     String? IsWeb,
-     String? TechId,
+    required String Timezone,
+    required String CandidateId,
+    required String Tokan,
+    required String IsWeb,
+    required String TechId,
   }) async {
     try {
       isLoding.value = true;
@@ -41,7 +35,7 @@ class SearchApiController extends GetxController {
 
       final Response = await http.post(
         Uri.parse(AppUrl.SearchJob),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan,},
         body: body,
       );
 

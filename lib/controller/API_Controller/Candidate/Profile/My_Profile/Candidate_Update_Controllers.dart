@@ -27,6 +27,9 @@ class CandidateUpdateControllers extends GetxController{
     String? CityId,
     String? CurrentCTC,
     String? ExpectedSalary,
+    String? SpecialisationProfile,
+    String? DegreeIdProfile,
+    String? GraduationYear,
   })async{
     Map<String, dynamic> body = {
       'Timezone': Timezone,
@@ -40,6 +43,10 @@ class CandidateUpdateControllers extends GetxController{
       'DOB' : DOB,
       'Gender' : Gender,
 
+      //Educational Details
+      'DegreeIdProfile' : DegreeIdProfile,
+      'GraduationYear' : GraduationYear,
+
       //Address
       'StreetAddress' : StreetAddress,
       'PostCode' : PostCode,
@@ -49,6 +56,7 @@ class CandidateUpdateControllers extends GetxController{
       //Salary
       'CurrentCTC' : CurrentCTC,
       'ExpectedSalary' : ExpectedSalary,
+      'SpecialisationProfile' : SpecialisationProfile,
     };
 
     print(body);

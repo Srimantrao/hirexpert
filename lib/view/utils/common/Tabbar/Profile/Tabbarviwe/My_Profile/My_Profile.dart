@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Collection/CountryList_pop_controller.dart';
+import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Collection/DegreeList_pop_Controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Profile/My_Profile/Candidate_Update_Controllers.dart';
 import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/MyProfile_Controller/Address_Controller/Address_Controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
@@ -18,6 +19,7 @@ import 'package:numberpicker/numberpicker.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../../../../../../controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
+import '../../../../../../../controller/API_Controller/Candidate/Collction/Poppup/candidateTech.dart';
 import '../../../../../../../controller/API_Controller/Candidate/Menu/Home/Candidate_Details_Controllres.dart';
 import '../../../../../../../controller/API_handler/Candidate/Menu/profile/myprofile/Personal_Information.dart';
 import '../../../../../../../controller/User_Controller/Candidate_Controller/DropdownController/PreferenceController.dart';
@@ -66,12 +68,24 @@ class _MY_ProfileState extends State<MY_Profile> {
   String? selectedCity;
   String? provinceId;
   List<String> cityList = [];
+  
+  bool Specialization_pop_bool = false;
+  String Specialization_pop_ID = '';
+  String Specialization_pop_name = '';
+  String Specialization_post = '';
 
-  final PersonalInformation Parsonal = Get.put(PersonalInformation());
+  bool Degree_pop_bool = false;
+  String Degree_pop_ID  = '';
+  String Degree_pop_name  = '';
+  String Degree_pop_post  = '';
+
+  String? GraduationYears;
 
   CandidatedetailsControllers_Controllrs Candidatedetails = Get.put(CandidatedetailsControllers_Controllrs());
   CandidateUpdateControllers CandidateUpdate = Get.put(CandidateUpdateControllers());
   CountrylistPopController Countrylist = Get.put(CountrylistPopController());
+  Candidatetech candidate = Get.put(Candidatetech());
+  DegreelistPopController Degree = Get.put(DegreelistPopController());
 
   AddressProvider Address_hendals = Get.put(AddressProvider());
 
@@ -129,6 +143,18 @@ class _MY_ProfileState extends State<MY_Profile> {
       IsLabel: '1',
       CompanyId: '1',
       Tokan: Tokans,
+    );
+
+    candidate.Candidatetech_fuctions(
+        CandidateId: Candidate,
+        TechId: TechId,
+        Timezone: 'asia/kolkata'
+    );
+
+    Degree.DegreelistPopController_Fuction(
+      CandidateId: Candidate,
+      TechId: TechId,
+      Timezone: 'asia/kolkata',
     );
 
     var candidateData = Candidatedetails.Candidatedetails_data['data'];
@@ -619,7 +645,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           GestureDetector(
                             onTap: () {myProfile.Education_Details_fun();},
                             child: Info(
-                              CircleAvatar_color: Change_Circle(Condition: Degree_Controllers!.text.isNotEmpty && Specialsation_Controllers!.text.isNotEmpty && Institute_Controllers!.text.isNotEmpty && passYearNotifier.value.toString() == value.toString()),
+                              CircleAvatar_color: Change_Circle(Condition: Degree_pop_name.isNotEmpty && Specialization_pop_name.isNotEmpty && Institute_Controllers!.text.isNotEmpty && passYearNotifier.value.toString() == value.toString()),
                               info: Profile_Text.Educational_Detailss,
                               dropicons: DropIcons(conditional_name: myProfile.Education_Details),
                             ),
@@ -632,24 +658,164 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 SizedBox(height: Get.height / 50),
 
                                 //Degree
-                                Inputfild(
-                                  labal: EditProfile_text.Degree,
-                                  hint: Candidatedetails.Candidatedetails_data['data']['DegreeName'],
-                                  controller: Degree_Controllers!,
-                                  onTap: () {myProfile.P_Degree_fun();},
-                                  onChanged: (val) {myProfile.Degree_validation(val);},
+                                // Inputfild(
+                                //   labal: EditProfile_text.Degree,
+                                //   hint: Candidatedetails.Candidatedetails_data['data']['DegreeName'],
+                                //   controller: Degree_Controllers!,
+                                //   onTap: () {myProfile.P_Degree_fun();},
+                                //   onChanged: (val) {myProfile.Degree_validation(val);},
+                                // ),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: EditProfile_text.Degree,
+                                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    Showdialog.showdialod(
+                                      height: Get.height/2,
+                                        context: context,
+                                        colamWidget: SizedBox(
+                                          height: Get.height/1.5,
+                                          child: ListView.builder(
+                                            itemCount: Degree.Degree_data['data'].length,
+                                            itemBuilder: (BuildContext context, int index) { 
+                                              return GestureDetector(
+                                                onTap: (){
+                                                  setState(() {
+                                                    Degree_pop_bool = true;
+                                                    Degree_pop_post = Candidatedetails.Candidatedetails_data['data']['DegreeName'].toString();
+                                                    Degree_pop_ID = Degree.Degree_data['data'][index]['DegreeId'];
+                                                    Degree_pop_name = Degree.Degree_data['data'][index]['Name'];
+                                                    ToastificationSuccess.Success('$Degree_pop_name, $Degree_pop_ID');
+                                                    print('$Degree_pop_name, $Degree_pop_ID');
+                                                    Degree_pop_post = Degree_pop_name;
+                                                    Get.back();
+                                                  });
+                                                },
+                                                child: SizedBox(
+                                                  height: Get.height/20,
+                                                    child: Text(Degree.Degree_data['data'][index]['Name'],
+                                                    style: TextStyle(fontSize: Get.width/25)
+                                                    ),
+                                                ),
+                                              );
+                                            }),
+                                        ),
+                                        hedingtext: EditProfile_text.Degree,
+                                        onTabs: () => Get.back(),
+                                    );
+                                  },
+                                  child: Container(
+                                    width: Get.width,
+                                    height: Get.height/15,
+                                    decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                      color: AppColor.Textfild_color,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: Get.height/50),
+                                        (Degree_pop_bool)
+                                        ? Text(Degree_pop_name,style: TextStyle(fontSize: Get.width/25))
+                                        : Text(Candidatedetails.Candidatedetails_data['data']['DegreeName'].toString(),style: TextStyle(fontSize: Get.width/25)),
+                                      ],
+                                    ),
+                                  ),
                                 ),
                                 MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Degrees),
                                 SizedBox(height: Get.height / 50),
 
                                 //Specialisation
-                                Inputfild(
-                                  labal: EditProfile_text.Specialisation,
-                                  hint: candidateData['QuestionList'][0]['Answer'][0] ?? '',
-                                  controller: Specialsation_Controllers!,
-                                  onTap: () {myProfile.P_Specialisation_fun();},
-                                  onChanged: (val) {myProfile.Specialisation_validation(val);
+                                // Inputfild(
+                                //   labal: EditProfile_text.Specialisation,
+                                //   hint: candidateData['QuestionList'][0]['Answer'][0] ?? '',
+                                //   controller: Specialsation_Controllers!,
+                                //   onTap: () {myProfile.P_Specialisation_fun();},
+                                //   onChanged: (val) {myProfile.Specialisation_validation(val);
+                                //   },
+                                // ),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: EditProfile_text.Specialisation,
+                                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                                GestureDetector(
+                                  onTap: (){
+                                    Showdialog.showdialod(
+                                      height: Get.height/2,
+                                       context: context,
+                                        colamWidget: SizedBox(
+                                          height: Get.height/1.5,
+                                          child: ListView.builder(
+                                              itemCount: candidate.Candidatetech_data['data']['OptionList'].length,
+                                              itemBuilder: (BuildContext context, int index) {
+                                                if (index < candidate.Candidatetech_data['data']['OptionList'].length) {
+                                                  return GestureDetector(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        Specialization_pop_bool = true;
+                                                        Specialization_pop_ID = candidate.Candidatetech_data['data']['OptionList'][index]['QDetailId'];
+                                                        Specialization_pop_name = candidate.Candidatetech_data['data']['OptionList'][index]['QueAnswer'];
+                                                        Specialization_post = Specialization_pop_name;
+                                                        Get.back();
+                                                        ToastificationSuccess.Success('$Specialization_pop_ID, $Specialization_pop_name');
+                                                      });
+                                                    },
+                                                    child: SizedBox(
+                                                      height: Get.height / 20,
+                                                      child: Text(
+                                                        candidate.Candidatetech_data['data']['OptionList'][index]['QueAnswer'],
+                                                        style: TextStyle(fontSize: Get.width / 25),
+                                                      ),
+                                                    ),
+                                                  );
+                                                } else {
+                                                  return Container(); // Or some placeholder widget
+                                                }
+                                              }
+                                          ),
+                                        ),
+                                        hedingtext: EditProfile_text.Specialisation,
+                                        onTabs: () => Get.back(),
+                                    );
                                   },
+                                  child: Container(
+                                    width: Get.width,
+                                    height: Get.height/15,
+                                    decoration: BoxDecoration(
+                                      border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                      color: AppColor.Textfild_color,
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        SizedBox(height: Get.height/50),
+                                        (Specialization_pop_bool)
+                                            ? Text(Specialization_pop_name,style: TextStyle(fontSize: Get.width/25))
+                                            : Text(candidateData['QuestionList'][0]['Answer'].toString() ,style: TextStyle(fontSize: Get.width/25)),
+                                      ],
+                                    )
+                                  ),
                                 ),
                                 MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Specialisations),
                                 SizedBox(height: Get.height / 50),
@@ -666,26 +832,37 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 MyProfile_Error(throww: myProfile.onthrowError, Error: myProfile.Institute_names),
                                 SizedBox(height: Get.height / 70),
 
-                                Text(
-                                  EditProfile_text.Passing_Yea,
-                                  style: TextStyle(fontSize: Get.width / 24, color: AppColor.select_check_color),
+                                RichText(
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: EditProfile_text.Passing_Yea,
+                                        style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 25, color: AppColor.subcolor),
+                                      ),
+                                      TextSpan(
+                                        text: ' *',
+                                        style: TextStyle(fontWeight: FontWeight.w700, fontSize: Get.width / 22, color: AppColor.Error_color),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                                 GestureDetector(
                                   onTap: () {
                                     showDialog(
                                       context: context,
-                                      builder: (BuildContext context) {
-                                        return StatefulBuilder(
-                                          builder: (BuildContext context, inchange) {
-                                            return AlertDialog(
-                                              backgroundColor: AppColor.Full_body_color,
-                                              content: Container(
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          backgroundColor: AppColor.Full_body_color,
+                                          content: ValueListenableBuilder(
+                                            valueListenable: passYearNotifier,
+                                            builder: (context, int value, child) {
+                                              return Container(
                                                 height: Get.height / 4,
                                                 width: Get.width,
                                                 decoration: BoxDecoration(color: AppColor.Full_body_color),
                                                 child: NumberPicker(
                                                   step: 1,
-                                                  minValue: passYearNotifier.value,
+                                                  minValue: 1900, // Specify a minimum value for the picker
                                                   maxValue: 2025,
                                                   itemHeight: Get.height / 12,
                                                   selectedTextStyle: TextStyle(color: AppColor.black_all, fontSize: Get.width / 20),
@@ -695,27 +872,27 @@ class _MY_ProfileState extends State<MY_Profile> {
                                                       bottom: BorderSide(color: AppColor.subcolor),
                                                     ),
                                                   ),
-                                                  value: passYearNotifier.value,
-                                                  onChanged: (value) {
-                                                    passYearNotifier.value = value;
+                                                  value: value,
+                                                  onChanged: (newValue) {
                                                     setectpasing = true;
-                                                    inchange(() {});
-                                                  },
+                                                    passYearNotifier.value = newValue;
+                                                  }
                                                 ),
-                                              ),
-                                              actions: [
-                                                OnButtons(onTap: () {Get.back();}, Button_Color: AppColor.Button_color, btn_name: 'Save'),
-                                              ],
-                                            );
-                                          },
+                                              );
+                                            },
+                                          ),
+                                          actions: [
+                                            OnButtons(onTap: () {
+                                              GraduationYears = Candidatedetails.Candidatedetails_data['data']['GraduationYears'];
+                                              Get.back();}, Button_Color: AppColor.Button_color, btn_name: 'Save'),
+                                          ],
                                         );
                                       },
                                     );
                                   },
                                   child: ValueListenableBuilder(
                                     valueListenable: passYearNotifier,
-                                    builder: (BuildContext context, value,
-                                        Widget? child) {
+                                    builder: (BuildContext context, value, Widget? child) {
                                       return Container(
                                         height: Get.height / 20,
                                         width: Get.width,
@@ -724,7 +901,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                           crossAxisAlignment: CrossAxisAlignment.start,
                                           mainAxisAlignment: MainAxisAlignment.center,
                                           children: [
-                                            Text((setectpasing) ? value.toString() : EditProfile_text.Passing_Yea),
+                                            Text((setectpasing) ? value.toString() : Candidatedetails.Candidatedetails_data['data']['GraduationYears'].toString() ?? '',style: TextStyle(fontSize: Get.width/23)),
                                           ],
                                         ),
                                       );
@@ -1139,9 +1316,14 @@ class _MY_ProfileState extends State<MY_Profile> {
                           ProvinceId: provinceId.toString(),
                           CityId: selectedCityId.toString(),
 
+                          //Educational Details
+                          DegreeIdProfile: Degree_pop_ID,
+                          GraduationYear: GraduationYears,
+
                           //Salary
                           CurrentCTC: CurrentSalary_Controllers!.text,
                           ExpectedSalary: CurrentExpented_Controllers!.text,
+                          SpecialisationProfile: Specialization_pop_name.toString(),
                         );
                       });
 

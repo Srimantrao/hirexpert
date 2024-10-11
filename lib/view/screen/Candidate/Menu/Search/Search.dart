@@ -7,6 +7,7 @@ import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/isFavrat
 import 'package:hirexpert/view/screen/Candidate/Menu/Search/Notification.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
+import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import '../../../../../controller/API_handler/Candidate/Menu/Home/Sarching_Saving_API.dart';
 import '../../../../../controller/Save_Controller/Candidate_state/Menu/Search/State_Search.dart';
 import '../../../../utils/app_String.dart';
@@ -118,7 +119,7 @@ class _SearchState extends State<Search> {
             if (stateSearchController.Searchings.Search.isLoding.value) {
               return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
             } else if (stateSearchController.Searchings.Search.Search_data.value['data'] == null) {
-              return Center(child: Text(API_Error.nulll));
+              return Center(child: Text(stateSearchController.Searchings.Search.Search_data['message']));
             } else {
               return ListView.builder(
                 itemCount: stateSearchController.Searchings.Search.Search_data.value['data'].length,
