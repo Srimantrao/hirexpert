@@ -18,7 +18,7 @@ class SearchHendal extends GetxController {
           IsWeb: 'false',
           Timezone: 'asia/kolkata',
           CandidateId: Login.option_data['data']['UserDetails']['CandidateId'],
-          Tokan: Login.option_data['data']['LoginToken'],
+          Tokan: Login.option_data['data']['LoginToken'], TechId: TechId,
         );
         await pref!.setString("Tokan", Login.option_data['data']['LoginToken']);
         await pref!.setString('Candidate', Login.option_data['data']['UserDetails']['CandidateId']);
