@@ -8,51 +8,29 @@ import 'package:hirexpert/controller/Save_Controller/Candidate_state/Menu/Profil
 import 'package:hirexpert/view/screen/Candidate/collection/specialization.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import '../../../../../../controller/API_Controller/Candidate/Profile/Details_profile/Details_Profile.dart';
+import '../../../../../../controller/API_handler/Candidate/Menu/profile/Extra_info.dart';
 import '../../../../app_String.dart';
 import '../../../../app_color.dart';
 import '../../../../app_constance.dart';
 import '../../../../app_icon.dart';
 
-class Extra_info extends StatefulWidget {
-
+class Extra_info extends StatelessWidget {
+  ExtraHandaler Extra = Get.put(ExtraHandaler());
   Extra_info({super.key});
 
   @override
-  State<Extra_info> createState() => _Extra_infoState();
-}
-
-class _Extra_infoState extends State<Extra_info> {
-  @override
-  void initState() {
-    Tokans = pref!.getString('Tokan')!;
-    Candidate = pref!.getString('Candidate')!;
-
-      Details.DetailsProfile_Controls_Fuction(
-        JobId: '7',
-        Timezone: 'asia/kolkata',
-        CandidateId: Candidate,
-        IsInterview: '0',
-        Tokan: Tokans,
-      );
-    super.initState();
-  }
-
-  // ExtraInfos Extras = Get.put(ExtraInfos());
-  DetailsProfile_Controls Details = Get.put(DetailsProfile_Controls());
-  // OptionApiController login = Get.put(OptionApiController());
-
-  @override
   Widget build(BuildContext context) {
+    Extra.onInit();
     return Scaffold(
       body: Container(
         width: Get.width,
         decoration: BoxDecoration(color: AppColor.Full_body_color),
         child: Obx(() {
-           if (Details.isloding.value) {
+           if (Extra.Details.isloding.value) {
              return Center(child: Image.asset(AppLoder.infinityloder_without_background, scale: Get.width / 250));
-           } else if (Details.DetailsProfile_data == null || Details.DetailsProfile_data['data'] == null) {
+           } else if (Extra.Details.DetailsProfile_data == null || Extra.Details.DetailsProfile_data['data'] == null) {
              return Center(child: Text(API_Error.null_data));
-           } else if (Details.DetailsProfile_data['data']['QuestionList'] == null || Details.DetailsProfile_data['data']['QuestionList'].isEmpty) {
+           } else if (Extra.Details.DetailsProfile_data['data']['QuestionList'] == null || Extra.Details.DetailsProfile_data['data']['QuestionList'].isEmpty) {
              return Center(child: Text("No questions available"));
            } else {
               return Column(
@@ -74,12 +52,12 @@ class _Extra_infoState extends State<Extra_info> {
                   SizedBox(height: Get.height / 50),
 
                   //Select your Specialization / interest
-                  Text(Details.DetailsProfile_data['data']?['QuestionList']?[0]?['LabelName']!, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  Text(Extra.Details.DetailsProfile_data['data']?['QuestionList']?[0]?['LabelName']!, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                   TextField(
                     readOnly: true,
-                    controller: TextEditingController(text: Details.DetailsProfile_data['data']['QuestionList'][0]['Answer'][0]),
+                    controller: TextEditingController(text: Extra.Details.DetailsProfile_data['data']['QuestionList'][0]['Answer'][0]),
                     decoration: InputDecoration(
-                      hintText: Details.DetailsProfile_data['data']?['QuestionList']?[0]?['Answer']?[0]!,
+                      hintText: Extra.Details.DetailsProfile_data['data']?['QuestionList']?[0]?['Answer']?[0]!,
                       hintStyle: TextStyle(fontSize: Get.width / 24),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
                       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
@@ -88,12 +66,12 @@ class _Extra_infoState extends State<Extra_info> {
                   SizedBox(height: Get.height / 50),
 
                   //What is Your Primary Skilled
-                  Text(Details.DetailsProfile_data['data']?['QuestionList']?[1]?['LabelName']!, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
+                  Text(Extra.Details.DetailsProfile_data['data']?['QuestionList']?[1]?['LabelName']!, style: TextStyle(fontWeight: FontWeight.w400, fontSize: Get.width / 24, color: AppColor.subcolor)),
                   TextField(
                     readOnly: true,
-                    controller: TextEditingController(text: Details.DetailsProfile_data['data']?['QuestionList']?[1]?['Answer']?[0]!),
+                    controller: TextEditingController(text: Extra.Details.DetailsProfile_data['data']?['QuestionList']?[1]?['Answer']?[0]!),
                     decoration: InputDecoration(
-                      hintText: Details.DetailsProfile_data['data']?['QuestionList'][1]?['Answer']?[0]!,
+                      hintText: Extra.Details.DetailsProfile_data['data']?['QuestionList'][1]?['Answer']?[0]!,
                       hintStyle: TextStyle(fontSize: Get.width / 24),
                       focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color,)),
                       enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: AppColor.Buttom_color)),
@@ -109,14 +87,14 @@ class _Extra_infoState extends State<Extra_info> {
 
       //Buttons
       floatingActionButton: Obx((){
-        if (Details.isloding.value) {
+        if (Extra.Details.isloding.value) {
           return Center(child: SizedBox());
         } else{
           return GestureDetector(
             onTap: () {
               Get.to(()=> Candidate_Specialization(
-                first_name: Details.DetailsProfile_data['data']['FirstName'],
-                last_name: Details.DetailsProfile_data['data']['LastName'],
+                first_name: Extra.Details.DetailsProfile_data['data']['FirstName'],
+                last_name: Extra.Details.DetailsProfile_data['data']['LastName'],
               ),duration: Duration(seconds: 1),transition: Transition.upToDown,curve: Curves.easeInOutExpo);
             },
             child: Container(

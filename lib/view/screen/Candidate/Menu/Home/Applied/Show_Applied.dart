@@ -3,9 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Login/login_API_controller.dart';
-import 'package:hirexpert/controller/API_Controller/Candidate/Menu/Home/ApplyJobList_Controller.dart';
-import 'package:hirexpert/view/utils/app_constance.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/Home/Appling_API_handler.dart';
 import 'package:hirexpert/view/utils/app_icon.dart';
 import 'package:hirexpert/view/utils/app_loder.dart';
 import 'package:hirexpert/view/utils/common/List/jobSearch.dart';
@@ -13,28 +11,14 @@ import '../../../../../utils/app_String.dart';
 import '../../../../../utils/app_color.dart';
 import 'Details_Applid.dart';
 
-class Show_Applied extends StatefulWidget {
+// ignore: must_be_immutable
+class Show_Applied extends StatelessWidget {
+  Appling_Handaling Applay = Get.put(Appling_Handaling());
   Show_Applied({super.key});
 
   @override
-  State<Show_Applied> createState() => _Show_AppliedState();
-}
-
-class _Show_AppliedState extends State<Show_Applied> {
-  @override
-  void initState() {
-    Applay.ApplyjoblistController_Fuction(
-        CandidateId: Candidate,
-        Timezone: 'Asia/Calcutta',
-        Tokan: Tokans);
-    super.initState();
-  }
-
-  ApplyjoblistController Applay = Get.put(ApplyjoblistController());
-  OptionApiController login = Get.put(OptionApiController());
-
-  @override
   Widget build(BuildContext context) {
+    Applay.onInit();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
@@ -46,7 +30,7 @@ class _Show_AppliedState extends State<Show_Applied> {
         actions: [Icon(Icons.notifications), SizedBox(width: Get.width / 50)],
       ),
       body: Obx(() {
-          if (Applay.isLoding.value) {
+          if (Applay.Applay.isLoding.value) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -55,7 +39,7 @@ class _Show_AppliedState extends State<Show_Applied> {
                 child: Center(child: Image.asset(AppLoder.infinityloder_without_background)),
               ),
             );
-          } else if (Applay.ApplyJobList_data == null) {
+          } else if (Applay.Applay.ApplyJobList_data == null) {
             return Scaffold(
               body: Container(
                 height: Get.height,
@@ -74,10 +58,10 @@ class _Show_AppliedState extends State<Show_Applied> {
               child: ListView.builder(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
-                itemCount: Applay.ApplyJobList_data.value['data'] != null ? Applay.ApplyJobList_data.value['data'].length : 0,
+                itemCount: Applay.Applay.ApplyJobList_data.value['data'] != null ? Applay.Applay.ApplyJobList_data.value['data'].length : 0,
                 itemBuilder: (BuildContext context, int index) {
-                  if (Applay.ApplyJobList_data.value['data'] != null && index < Applay.ApplyJobList_data.value['data'].length) {
-                    var jobData = Applay.ApplyJobList_data.value['data'][index];
+                  if (Applay.Applay.ApplyJobList_data.value['data'] != null && index < Applay.Applay.ApplyJobList_data.value['data'].length) {
+                    var jobData = Applay.Applay.ApplyJobList_data.value['data'][index];
                     return JobSearch(
                       onTap: () {
                         Get.to(

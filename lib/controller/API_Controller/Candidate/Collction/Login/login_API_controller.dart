@@ -12,6 +12,12 @@ class OptionApiController extends GetxController {
   var isLodingvalue = false.obs;
   var option_data = {}.obs;
 
+  @override
+  void onInit() {
+    OptionApiController_fuction();
+    super.onInit();
+  }
+
   Future OptionApiController_fuction({String? Tokan, String? CandidateId, String? Email, String? Password, String? UserType}) async {
     try {
       isLodingvalue.value = true;

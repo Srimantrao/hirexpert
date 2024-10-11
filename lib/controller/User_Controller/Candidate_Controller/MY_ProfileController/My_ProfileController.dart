@@ -502,6 +502,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _CTCS = "";
     }
+    notifyListeners();
   }
 
   void Expected_Validation(String val) {
@@ -512,6 +513,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _Expecteds = "";
     }
+    notifyListeners();
   }
 
   //Work Location
@@ -523,6 +525,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _P_CTC_Currents = "";
     }
+    notifyListeners();
   }
 
   void Preffered_Workings_validation(String val) {
@@ -533,6 +536,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _Preffered_Workings = "";
     }
+    notifyListeners();
   }
 
   void Preffered_Work_Workings_validation(String val) {
@@ -543,6 +547,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _Preffered_Work_Workings = "";
     }
+    notifyListeners();
   }
 
   void Job_Type_Preferrences_validation(String val) {
@@ -553,6 +558,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _Job_Type_Preferrences = "";
     }
+    notifyListeners();
   }
 
   void Notice_Periods_validation(String val) {
@@ -563,6 +569,7 @@ class My_ProfileController with ChangeNotifier {
       _onthrowError = true;
       _Notice_Periods = "";
     }
+    notifyListeners();
   }
 
   //Educational Details

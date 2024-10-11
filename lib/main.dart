@@ -45,7 +45,6 @@ import 'controller/User_Controller/Candidate_Controller/LoginControoler/LoginVal
 import 'controller/User_Controller/Candidate_Controller/LoginControoler/visibility.dart';
 import 'controller/User_Controller/Candidate_Controller/MY_ProfileController/My_ProfileController.dart';
 import 'controller/User_Controller/Candidate_Controller/SearchScreenController/DropdownConroller.dart';
-import 'controller/User_Controller/Candidate_Controller/SearchScreenController/SavingData_Controller.dart';
 import 'controller/User_Controller/Candidate_Controller/SignupController/SinupController.dart';
 import 'controller/User_Controller/Candidate_Controller/TabbarController/Tabcontroller.dart';
 import 'controller/User_Controller/Employer_Controller/DropdownController/SpecializationController.dart';
@@ -111,7 +110,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SelectButtonsController()),
         ChangeNotifierProvider(create: (_) => Candidate_VisibilityController()),
-        ChangeNotifierProvider(create: (_) => FavouriteProvider()),
         ChangeNotifierProvider(create: (_) => Candidate_LoginValidation()),
         ChangeNotifierProvider(create: (_) => Candidate_SinupController()),
         ChangeNotifierProvider(create: (_) => MenuNavigationController()),

@@ -1,13 +1,13 @@
 // ignore_for_file: camel_case_types, file_names, non_constant_identifier_names, prefer_const_constructors_in_immutables, unnecessary_null_comparison, deprecated_member_use, avoid_print, unused_import
 
 import 'package:dotted_border/dotted_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Collction/Pop_Collection/CountryList_pop_controller.dart';
 import 'package:hirexpert/controller/API_Controller/Candidate/Profile/My_Profile/Candidate_Update_Controllers.dart';
+import 'package:hirexpert/controller/User_Controller/Candidate_Controller/Profile_Info_Controller/MyProfile_Controller/Address_Controller/Address_Controller.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
@@ -73,6 +73,8 @@ class _MY_ProfileState extends State<MY_Profile> {
   CandidateUpdateControllers CandidateUpdate = Get.put(CandidateUpdateControllers());
   CountrylistPopController Countrylist = Get.put(CountrylistPopController());
 
+  AddressProvider Address_hendals = Get.put(AddressProvider());
+
   //Personal Information
   TextEditingController? JobTitle_Controllers;
   TextEditingController? FirstName_Controllers;
@@ -137,7 +139,7 @@ class _MY_ProfileState extends State<MY_Profile> {
     LastName_Controllers = TextEditingController(text: candidateData['LastName'] ?? '');
     Email_Controllers = TextEditingController(text: candidateData['Email'] ?? '');
     Phone_Controllers = TextEditingController(text: candidateData['Phone'] ?? '');
-    DOB_Controllers = TextEditingController(text: candidateData['DOB'].toString() ?? '');
+    DOB_Controllers = TextEditingController(text: candidateData['DOB'].toString());
 
     //Address
     Street_Controllers = TextEditingController(text: candidateData['StreetAddress'] ?? '');
@@ -225,7 +227,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                           SvgPicture.asset(AppIcons.PDF_Icon),
                                           SizedBox(height: Get.height / 50),
                                           Text(textAlign: TextAlign.center,
-                                            candidateData['ResumeDetails'].toString() ?? '',
+                                            candidateData['ResumeDetails'].toString(),
                                             style: TextStyle(fontSize: Get.width / 27, color: AppColor.subcolor),
                                           ),
                                         ],
@@ -243,7 +245,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                         SizedBox(
                                           width: Get.width / 2,
                                           child: Text(
-                                            candidateData['ResumeDetails'].toString() ?? '',
+                                            candidateData['ResumeDetails'].toString(),
                                             style: TextStyle(color: AppColor.Button_color, decoration: TextDecoration.underline, fontSize: Get.width / 26, fontWeight: FontWeight.w600, fontStyle: FontStyle.italic),
                                           ),
                                         ),
@@ -406,7 +408,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 //Date Of Birthday
                                 Inputfild(
                                   labal: Profile_Text.Date_Of_Birthday,
-                                  hint: candidateData['DOB'].toString() ?? '',
+                                  hint: candidateData['DOB'].toString(),
                                   controller: DOB_Controllers!,
                                   onTap: () {myProfile.P_Birthday_fun();},
                                   onChanged: (val) {myProfile.Date_OF_Bithday_validation(val);},
@@ -511,52 +513,47 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     ],
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: (){
-                                    selectedProvince_bool = true;
-                                  },
-                                  child: Container(
-                                    width: Get.width,
-                                    height: Get.height/15,
-                                    decoration: BoxDecoration(
-                                      color: AppColor.Textfild_color,
-                                      border: Border(bottom: BorderSide(color: AppColor.Textfild_color))
-                                    ),
-                                    child: (selectedProvince_bool) ? DropdownButton<String>(
-                                      items: Countrylist.countrylist['data'][0]['ProvinceList'].map<DropdownMenuItem<String>>((province) {
-                                        String value = "${province['ProvinceId']} : ${province['Name']}";
-                                        return DropdownMenuItem<String>(
-                                          value: value,
-                                          child: Text(province['Name']),
-                                        );
-                                      }).toList(),
-                                      onChanged: (val) {
-                                        setState(() {
-                                          selectedProvince = val;
-                                          if (selectedProvince != null) {
-                                            List<String> parts = selectedProvince!.split(':');
-                                            provinceId = parts[0].trim();
-                                            cityList = (Countrylist.countrylist['data'][0]['ProvinceList'].firstWhere((province) => province['ProvinceId'] == provinceId)['CityList'] as List).map<String>((city) => "${city['CityId']} : ${city['CityName']}").toList();
-                                          }
-                                          selectedCityId = null; // Reset selected city
-                                        });
-                                        print("Selected Province: $val");
-                                      },
-                                      icon: SizedBox(),
-                                      autofocus: false,
-                                      isExpanded: true,
-                                      hint: Text("Select Province"),
-                                      value: selectedProvince,
-                                    ) :
-                                    Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: Get.height/70),
-                                        Text(candidateData['ProvinceName'],style: TextStyle(fontSize: Get.width/23)),
-                                      ],
-                                    ),
+                              Obx(() => GestureDetector(
+                                onTap: Address_hendals.toggleProvinceSelection,
+                                child: Container(
+                                  width: Get.width,
+                                  height: Get.height / 15,
+                                  decoration: BoxDecoration(
+                                    color: AppColor.Textfild_color,
+                                    border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                  ),
+                                  child: Address_hendals.selectedProvinceBool.value
+                                      ? DropdownButton<String>(
+                                    items: Countrylist.countrylist['data'][0]['ProvinceList']
+                                        .map<DropdownMenuItem<String>>((province) {
+                                      String value = "${province['ProvinceId']} : ${province['Name']}";
+                                      return DropdownMenuItem<String>(
+                                        value: value,
+                                        child: Text(province['Name']),
+                                      );
+                                    }).toList(),
+                                    onChanged: (val) {
+                                      Address_hendals.setSelectedProvince(val!);
+                                      print("Selected Province: $val");
+                                    },
+                                    icon: SizedBox(),
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: Text("Select Province"),
+                                    value: Address_hendals.selectedProvince.value.isNotEmpty
+                                        ? Address_hendals.selectedProvince.value
+                                        : null,
+                                  )
+                                      : Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: Get.height / 70),
+                                      Text(candidateData['ProvinceName'],
+                                          style: TextStyle(fontSize: Get.width / 23)),
+                                    ],
                                   ),
                                 ),
+                              )),
                                 SizedBox(height: Get.height/60),
 
                                 //City
@@ -577,6 +574,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                 GestureDetector(
                                   onTap: (){
                                     selectedProvince_bool = true;
+                                    setState(() {});
                                   },
                                   child: Container(
                                     width: Get.width,

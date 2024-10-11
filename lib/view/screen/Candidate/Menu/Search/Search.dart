@@ -43,7 +43,6 @@ class _SearchState extends State<Search> {
     stateSearchController.Searchings.Search.onInit();
     stateSearchController.Searchings.onInit();
     stateSearchController.onInit();
-
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: Get.height / 10,
@@ -142,18 +141,8 @@ class _SearchState extends State<Search> {
                         stats: jobData['FormatDt'],
                         saveonTap: () async {
                           var newIsLike = isFavourite ? "0" : "1";
-                          await isFavrationController.IsfavrationControllers_fuction(
-                            CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'],
-                            JobId: jobData['JobId'].toString(),
-                            IsLike: newIsLike,
-                            Tokan: loginController.option_data['data']['LoginToken'],
-                          );
-
-                          if (isFavrationController.isFavration.value.status) {
-                            jobData['IsFavourite'] = newIsLike;
-                            isFavourite = !isFavourite;
-                            (context as Element).markNeedsBuild();
-                          }
+                          await isFavrationController.IsfavrationControllers_fuction(CandidateId: Candidate, JobId: jobData['JobId'].toString(), IsLike: newIsLike, Tokan: Tokans);
+                          if (isFavrationController.isFavration.value.status) {jobData['IsFavourite'] = newIsLike;isFavourite = !isFavourite;(context as Element).markNeedsBuild();}
                           setState(() {});
                         },
                         saving: isFavourite ? SvgPicture.asset(AppIcons.bookmark) : SvgPicture.asset(AppIcons.save),
@@ -172,7 +161,7 @@ class _SearchState extends State<Search> {
                     stats: jobData['FormatDt'],
                     saveonTap: () async {
                       var newIsLike = isFavourite ? "0" : "1";
-                      await isFavrationController.IsfavrationControllers_fuction(CandidateId: loginController.option_data['data']['UserDetails']['CandidateId'], JobId: jobData['JobId'].toString(), IsLike: newIsLike, Tokan: loginController.option_data['data']['LoginToken']);
+                      await isFavrationController.IsfavrationControllers_fuction(CandidateId: Candidate, JobId: jobData['JobId'].toString(), IsLike: newIsLike, Tokan: Tokans);
                       if (isFavrationController.isFavration.value.status) {jobData['IsFavourite'] = newIsLike;isFavourite = !isFavourite;(context as Element).markNeedsBuild();}
                       if (!isFavourite) {ToastificationSuccess.Success('${jobData['TechName']} is Saved SuccessFully');}
                       if (isFavourite) {ToastificationSuccess.Success('${jobData['TechName']} is Removed SuccessFully');}

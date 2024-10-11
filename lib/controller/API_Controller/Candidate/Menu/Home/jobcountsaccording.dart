@@ -11,7 +11,16 @@ class Jobcountsaccording extends GetxController {
   var isLoding = false.obs;
   var data = {}.obs;
 
-  Future Jobcountsaccording_fuction({required String Tokan, required String CandidateId}) async {
+  @override
+  void onInit() {
+      Jobcountsaccording_fuction();
+    super.onInit();
+  }
+
+  Future Jobcountsaccording_fuction({
+     String? Tokan,
+     String? CandidateId,
+  }) async {
     Map<String, dynamic> body = {'CandidateId': CandidateId,};
     print(body);
 
@@ -20,7 +29,7 @@ class Jobcountsaccording extends GetxController {
 
       final responce = await http.post(
         Uri.parse(AppUrl.count),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan,},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''},
         body: body,
       );
 

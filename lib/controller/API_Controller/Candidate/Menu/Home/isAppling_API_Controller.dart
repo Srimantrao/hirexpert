@@ -13,11 +13,17 @@ class IsapplingApiController extends GetxController {
   var isApplingdata= {}.obs;
   var appling = 0.obs;
 
+  @override
+  void onInit() {
+    IsApplingAPIController_fuction();
+    super.onInit();
+  }
+
   Future IsApplingAPIController_fuction({
-    required String Tokan,
-    required String Candidate,
-    required String JobId,
-    required String Timezone,
+     String? Tokan,
+     String? Candidate,
+     String? JobId,
+     String? Timezone,
   }) async {
     try {
       isLoding.value = true;
@@ -32,7 +38,7 @@ class IsapplingApiController extends GetxController {
         headers: {
           API_KEY.api_key: API_KEY.key,
           Clientip.clientip: Clientip.ip,
-          Logintoken.logintoken: Tokan
+          Logintoken.logintoken: Tokan ?? '',
         },
       );
       if (responce.statusCode == 200 || responce.statusCode == 201) {

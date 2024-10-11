@@ -1,7 +1,8 @@
-// ignore_for_file: non_constant_identifier_names, camel_case_types, prefer_const_constructors_in_immutables, unused_import
+// ignore_for_file: non_constant_identifier_names, camel_case_types, prefer_const_constructors_in_immutables, unused_import, must_be_immutable
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hirexpert/controller/API_handler/Candidate/Menu/profile/information_handler.dart';
 import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:provider/provider.dart';
@@ -16,33 +17,13 @@ import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/Extra_Info.dart';
 import '../../../../utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/My_Profile.dart';
 import 'Setting.dart';
 
-class Profile_info extends StatefulWidget {
-
+class Profile_info extends StatelessWidget {
+  InformationHandler Infoem = Get.put(InformationHandler());
   Profile_info({super.key});
 
   @override
-  State<Profile_info> createState() => _Profile_infoState();
-}
-
-class _Profile_infoState extends State<Profile_info> {
-  CandidatedetailsControllers_Controllrs Candidatedetails = Get.put(CandidatedetailsControllers_Controllrs());
-
-  @override
-  void initState() {
-    Tokans = pref!.getString('Tokan')!;
-    Candidate = pref!.getString('Candidate')!;
-      Candidatedetails.CandidatedetailsControllers_Fuction(
-        CandidateId: Candidate,
-        Timezone: 'asia/kolkata',
-        IsLabel: '1',
-        CompanyId: '1',
-        Tokan: Tokans,
-      );
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    Infoem.onInit();
     final Tabb = Provider.of<TabbarController>(context, listen: false);
     return Scaffold(
       body: Container(
@@ -64,16 +45,16 @@ class _Profile_infoState extends State<Profile_info> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Obx(() {
-                              if (Candidatedetails.isLoding.value) {
+                              if (Infoem.Candidatedetails.isLoding.value) {
                                 return Center(child: SizedBox());
-                              } else if (Candidatedetails.Candidatedetails_data['data'] == null || Candidatedetails.Candidatedetails_data == null) {
+                              } else if (Infoem.Candidatedetails.Candidatedetails_data['data'] == null || Infoem.Candidatedetails.Candidatedetails_data == null) {
                                 return Center(child: Text(API_Error.null_data));
-                              } else if (Candidatedetails.Candidatedetails_data['data']['QuestionList'] == null || Candidatedetails.Candidatedetails_data['data']['QuestionList'].isEmpty) {
+                              } else if (Infoem.Candidatedetails.Candidatedetails_data['data']['QuestionList'] == null || Infoem.Candidatedetails.Candidatedetails_data['data']['QuestionList'].isEmpty) {
                                 return Center(child: Text("No questions available"));
                               } else {
                                 return Row(
                                   children: [
-                                    CircleAvatar(radius: 40, backgroundImage: NetworkImage(Candidatedetails.Candidatedetails_data['data']['Profile']!)),
+                                    CircleAvatar(radius: 40, backgroundImage: NetworkImage(Infoem.Candidatedetails.Candidatedetails_data['data']['Profile']!)),
                                     SizedBox(width: Get.width / 30),
                                     Column(
                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -82,11 +63,11 @@ class _Profile_infoState extends State<Profile_info> {
                                         Row(
                                           children: [
                                             Text(
-                                              Candidatedetails.Candidatedetails_data['data']?['FirstName']!,
+                                              Infoem.Candidatedetails.Candidatedetails_data['data']?['FirstName']!,
                                               style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
                                             ),
                                             Text(
-                                              Candidatedetails.Candidatedetails_data['data']?['LastName']!,
+                                              Infoem.Candidatedetails.Candidatedetails_data['data']?['LastName']!,
                                               style: TextStyle(fontSize: Get.width / 22, fontWeight: FontWeight.w700),
                                             ),
                                           ],
@@ -94,7 +75,7 @@ class _Profile_infoState extends State<Profile_info> {
                                         SizedBox(
                                           width: Get.width / 2,
                                           child: Text(
-                                            Candidatedetails.Candidatedetails_data['data']?['Email'],
+                                            Infoem.Candidatedetails.Candidatedetails_data['data']?['Email'],
                                             style: TextStyle(fontSize: Get.width / 28, fontWeight: FontWeight.w400, color: AppColor.subcolor),
                                           ),
                                         ),
@@ -105,7 +86,7 @@ class _Profile_infoState extends State<Profile_info> {
                               }
                             }),
                             Obx((){
-                              if(Candidatedetails.isLoding.value){
+                              if(Infoem.Candidatedetails.isLoding.value){
                                 return SizedBox();
                               }else{
                                 return InkWell(
@@ -119,7 +100,7 @@ class _Profile_infoState extends State<Profile_info> {
                       ),
                       SizedBox(height: Get.height / 50),
                       Obx((){
-                        if(Candidatedetails.isLoding.value){
+                        if(Infoem.Candidatedetails.isLoding.value){
                           return SizedBox();
                         }else{
                           return Row(
