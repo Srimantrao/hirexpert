@@ -6,11 +6,13 @@ import '../../../../../API_Controller/Candidate/Collction/Pop_Collection/Country
 class AddressProvider extends GetxController {
   CountrylistPopController Countrylist = Get.put(CountrylistPopController());
 
-  var selectedProvince = ''.obs; // Observable for selected province
-  var provinceId = ''.obs; // Observable for province ID
-  var cityList = <String>[].obs; // Observable for city list
-  var selectedCityId = ''.obs; // Observable for selected city ID
-  var selectedProvinceBool = false.obs; // Observable for toggle state
+  var selectedProvince = ''.obs;
+  var provinceId = ''.obs;
+  var cityList = <String>[].obs;
+  var selectedCityId = ''.obs;
+  var selectedProvinceBool = false.obs;
+  var selectedCountry = ''.obs;
+
 
   void toggleProvinceSelection() {
     selectedProvinceBool.value = !selectedProvinceBool.value;
@@ -20,13 +22,19 @@ class AddressProvider extends GetxController {
     selectedProvince.value = value;
     List<String> parts = value.split(':');
     provinceId.value = parts[0].trim();
+    cityList.value = (Countrylist.countrylist['data'][0]['ProvinceList'].firstWhere((province) => province['ProvinceId'] == provinceId.value)['CityList'] as List).map<String>((city) => "${city['CityId']} : ${city['CityName']}").toList();
+    selectedCityId.value = '';
+  }
 
-    // Assuming `Countrylist.countrylist` is accessible
-    cityList.value = (Countrylist.countrylist['data'][0]['ProvinceList']
-        .firstWhere((province) => province['ProvinceId'] == provinceId.value)['CityList'] as List)
-        .map<String>((city) => "${city['CityId']} : ${city['CityName']}")
-        .toList();
+  void toggleCitySelection() {
+    selectedProvinceBool.value = !selectedProvinceBool.value;
+  }
 
-    selectedCityId.value = ''; // Reset selected city
+  void setSelectedCity(String city) {
+    selectedCityId.value = city;
+  }
+
+  void setSelectedCountry(String country) {
+    selectedCountry.value = country;
   }
 }

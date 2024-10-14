@@ -15,15 +15,7 @@ class Change_Circle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return (Condition)
-        ? SvgPicture.asset(
-            AppIcons.select,
-            height: Get.height / 33,
-            width: Get.width / 33,
-          )
-        : SvgPicture.asset(
-            AppIcons.Unselect,
-            height: Get.height / 33,
-            width: Get.width / 33,
-          );
+        ? SvgPicture.asset(AppIcons.select, height: Get.height / 33, width: Get.width / 33)
+        : SvgPicture.asset(AppIcons.Unselect, height: Get.height / 33, width: Get.width / 33);
   }
 }

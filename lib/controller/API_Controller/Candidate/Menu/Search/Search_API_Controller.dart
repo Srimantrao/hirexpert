@@ -12,35 +12,49 @@ class SearchApiController extends GetxController {
   var isLoding = false.obs;
   var Search_data = {}.obs;
 
+  @override
+  void onInit() {
+    SearchApiController_fuction();
+    super.onInit();
+  }
+
   Future SearchApiController_fuction({
-    required String Timezone,
-    required String CandidateId,
-    required String Tokan,
-    required String IsWeb,
-    required String TechId,
+     String? Timezone,
+     String? CandidateId,
+     String? Tokan,
+     String? IsWeb,
+     String? TechId,
+     String? JobType,
   }) async {
     try {
       isLoding.value = true;
 
-      if (kDebugMode) {print("Timezone :- $Timezone"); print("CandidateId :- $CandidateId"); print("IsWeb :- $IsWeb");}
+      if (kDebugMode) {
+        print("Timezone :- $Timezone");
+        print("CandidateId :- $CandidateId");
+        print("IsWeb :- $IsWeb");
+        print('JobType :- $JobType');
+      }
 
       Map<String, dynamic> body = {
         'Timezone': Timezone,
         'CandidateId': CandidateId,
         'IsWeb' : IsWeb,
         'TechId' : TechId,
+        'JobType' : JobType,
       };
 
       if (kDebugMode) {print(body);}
 
       final Response = await http.post(
         Uri.parse(AppUrl.SearchJob),
-        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan,},
+        headers: {API_KEY.api_key: API_KEY.key, Clientip.clientip: Clientip.ip, Logintoken.logintoken: Tokan ?? ''},
         body: body,
       );
 
       if (Response.statusCode == 200 || Response.statusCode == 201) {
-        Search_data.value = jsonDecode(Response.body);print("Search Job :-  $Search_data");
+        Search_data.value = jsonDecode(Response.body);
+        print("Search Job :-  $Search_data");
       } else {
         throw {" Search Job Error this :- ${Response.statusCode} , ${Response.body} "};
       }

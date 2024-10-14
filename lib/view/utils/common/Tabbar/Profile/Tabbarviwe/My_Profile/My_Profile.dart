@@ -13,6 +13,7 @@ import 'package:hirexpert/view/utils/app_String.dart';
 import 'package:hirexpert/view/utils/app_color.dart';
 import 'package:hirexpert/view/utils/app_constance.dart';
 import 'package:hirexpert/view/utils/common/Buttons/wideButtons.dart';
+import 'package:hirexpert/view/utils/common/Tabbar/Profile/Tabbarviwe/My_Profile/Address.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_error.dart';
 import 'package:hirexpert/view/utils/common/Tostification/Toastification_success.dart';
 import 'package:numberpicker/numberpicker.dart';
@@ -48,26 +49,6 @@ class _MY_ProfileState extends State<MY_Profile> {
 
   String SelectdYear = "";
   String Selectdmonth = "";
-
-  bool selectcountry = false;
-
-  // bool selectstate = false;
-  int? selectedProvinceIndex;
-  String selectprovince = '';
-  ValueNotifier<bool> selectstate = ValueNotifier<bool>(false);
-
-  ValueNotifier<bool> cityselect = ValueNotifier<bool>(false);
-  int? cityid;
-  String cityname = '';
-
-  bool selectedProvince_bool = false;
-  String? selectedProvince;
-  String? selectedcountry;
-
-  String? selectedCityId;
-  String? selectedCity;
-  String? provinceId;
-  List<String> cityList = [];
   
   bool Specialization_pop_bool = false;
   String Specialization_pop_ID = '';
@@ -171,7 +152,6 @@ class _MY_ProfileState extends State<MY_Profile> {
     Street_Controllers = TextEditingController(text: candidateData['StreetAddress'] ?? '');
     Post_Controllers = TextEditingController(text: candidateData['PostCode'] ?? '');
     SelectProvince_Controllers = TextEditingController(text: candidateData['ProvinceName'] ?? '');
-    selectedProvinceIndex = -1;
     SelectCity_Controllers = TextEditingController(text: candidateData['CityName'] ?? '');
 
     //Educational Details
@@ -447,11 +427,11 @@ class _MY_ProfileState extends State<MY_Profile> {
                           //Address
                           GestureDetector(
                             onTap: () {myProfile.Address_fun();},
-                            child: Info(
-                              CircleAvatar_color: Change_Circle(Condition: Street_Controllers!.text.isNotEmpty && Post_Controllers!.text.isNotEmpty && selectedProvince.toString().isNotEmpty && selectedCity.toString().isNotEmpty),
+                            child: Obx(()=>Info(
+                              CircleAvatar_color: Change_Circle(Condition: Street_Controllers!.text.isNotEmpty && Post_Controllers!.text.isNotEmpty && Address_hendals.selectedProvince.value.isNotEmpty && Address_hendals.selectedCityId.value.isNotEmpty),
                               info: Profile_Text.Address,
                               dropicons: DropIcons(conditional_name: myProfile.Address),
-                            ),
+                            )),
                           ),
                           Visibility(
                             visible: myProfile.Address,
@@ -495,33 +475,36 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     ],
                                   ),
                                 ),
-                                Container(
-                                  width: Get.width,
-                                  height: Get.height/15,
-                                  decoration: BoxDecoration(
-                                    border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
-                                      color: AppColor.Textfild_color,
-                                  ),
-                                  child: DropdownButton<String>(
-                                    items: Countrylist.countrylist['data'].map<DropdownMenuItem<String>>((value) {
-                                      return DropdownMenuItem<String>(
-                                        value: value['Country'],
-                                        child: Text(value['Country']),
-                                      );
-                                    }).toList(),
-                                    onChanged: (vals) {
-                                      setState(() {
-                                        selectedcountry = vals;
-                                        print("Selected value: $val");
-                                      });
-                                    },
-                                    icon: SizedBox(),
-                                    autofocus: false,
-                                    isExpanded: true,
-                                    hint: Text("India"),
-                                    value: selectedcountry,
-                                  ),
+                              Obx(() => Container(
+                                width: Get.width,
+                                height: Get.height / 15,
+                                decoration: BoxDecoration(
+                                  border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                  color: AppColor.Textfild_color,
                                 ),
+                                child: DropdownButton<String>(
+                                  items: Countrylist.countrylist['data']
+                                      .map<DropdownMenuItem<String>>((value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value['Country'],
+                                      child: Text(value['Country']),
+                                    );
+                                  }).toList(),
+                                  onChanged: (val) {
+                                    if (val != null) {
+                                      Address_hendals.setSelectedCountry(val); // Set the selected country
+                                      print("Selected value: $val");
+                                    }
+                                  },
+                                  icon: Icon(Icons.arrow_drop_down, size: 24), // Dropdown arrow
+                                  autofocus: false,
+                                  isExpanded: true,
+                                  hint: Text("Select Country"),
+                                  value: Address_hendals.selectedCountry.value.isNotEmpty
+                                      ? Address_hendals.selectedCountry.value
+                                      : null, // Bind to the selected country value
+                                ),
+                              )),
                                 SizedBox(height: Get.height / 50),
 
                                 //Province
@@ -548,10 +531,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     color: AppColor.Textfild_color,
                                     border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
                                   ),
-                                  child: Address_hendals.selectedProvinceBool.value
-                                      ? DropdownButton<String>(
-                                    items: Countrylist.countrylist['data'][0]['ProvinceList']
-                                        .map<DropdownMenuItem<String>>((province) {
+                                  child: (Address_hendals.selectedProvinceBool.value) ? DropdownButton<String>(
+                                    items: Countrylist.countrylist['data'][0]['ProvinceList'].map<DropdownMenuItem<String>>((province) {
                                       String value = "${province['ProvinceId']} : ${province['Name']}";
                                       return DropdownMenuItem<String>(
                                         value: value,
@@ -566,7 +547,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     autofocus: false,
                                     isExpanded: true,
                                     hint: Text("Select Province"),
-                                    value: Address_hendals.selectedProvince.value.isNotEmpty
+                                    value: (Address_hendals.selectedProvince.value.isNotEmpty)
                                         ? Address_hendals.selectedProvince.value
                                         : null,
                                   )
@@ -574,8 +555,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       SizedBox(height: Get.height / 70),
-                                      Text(candidateData['ProvinceName'],
-                                          style: TextStyle(fontSize: Get.width / 23)),
+                                      Text(candidateData['ProvinceName'], style: TextStyle(fontSize: Get.width / 23)),
                                     ],
                                   ),
                                 ),
@@ -597,45 +577,46 @@ class _MY_ProfileState extends State<MY_Profile> {
                                     ],
                                   ),
                                 ),
-                                GestureDetector(
-                                  onTap: (){
-                                    selectedProvince_bool = true;
-                                    setState(() {});
-                                  },
-                                  child: Container(
-                                    width: Get.width,
-                                    height: Get.height/15,
-                                    decoration: BoxDecoration(
-                                      border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
-                                      color: AppColor.Textfild_color,
-                                    ),
-                                    child: (selectedProvince_bool) ? DropdownButton<String>(
-                                      items: cityList.map<DropdownMenuItem<String>>((city) {
-                                        return DropdownMenuItem<String>(
-                                          value: city,
-                                          child: Text(city.split(':')[1].trim()), // Display city name
-                                        );
-                                      }).toList(),
-                                      onChanged: (val) {
-                                        setState(() {
-                                          selectedCityId = val;
-                                        });
+                              Obx(() => GestureDetector(
+                                onTap: Address_hendals.toggleCitySelection, // Toggle the dropdown
+                                child: Container(
+                                  width: Get.width,
+                                  height: Get.height / 15,
+                                  decoration: BoxDecoration(
+                                    border: Border(bottom: BorderSide(color: AppColor.Textfild_color)),
+                                    color: AppColor.Textfild_color,
+                                  ),
+                                  // Display the Dropdown or City Name based on `selectedProvinceBool`
+                                  child: (Address_hendals.selectedProvinceBool.value) ? DropdownButton<String>(
+                                    items: Address_hendals.cityList.map<DropdownMenuItem<String>>((city) {
+                                      return DropdownMenuItem<String>(
+                                        value: city,
+                                        child: Text(city.split(':')[1].trim()), // Display city name
+                                      );
+                                    }).toList(),
+                                    onChanged: (val) {
+                                      if (val != null) {
+                                        Address_hendals.setSelectedCity(val); // Set the selected city
                                         print("Selected City: $val");
-                                      },
-                                      icon: SizedBox(),
-                                      autofocus: false,
-                                      isExpanded: true,
-                                      hint: Text("Select City"),
-                                      value: selectedCityId,
-                                    ) : Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        SizedBox(height: Get.height/70),
-                                        Text(candidateData['CityName'],style: TextStyle(fontSize: Get.width/23)),
-                                      ],
-                                    ),
+                                      }
+                                    },
+                                    icon: SizedBox(),
+                                    autofocus: false,
+                                    isExpanded: true,
+                                    hint: Text("Select City"),
+                                    value: (Address_hendals.selectedCityId.value.isNotEmpty)
+                                        ? Address_hendals.selectedCityId.value
+                                        : null, // Bind selected city
+                                  )
+                                      : Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(height: Get.height / 70),
+                                      Text(candidateData['CityName'], style: TextStyle(fontSize: Get.width / 23)),
+                                    ],
                                   ),
                                 ),
+                              )),
                                 SizedBox(height: Get.height / 50),
                               ],
                             ),
@@ -1313,8 +1294,8 @@ class _MY_ProfileState extends State<MY_Profile> {
                           //Address
                           StreetAddress: Street_Controllers!.text,
                           PostCode: Post_Controllers!.text,
-                          ProvinceId: provinceId.toString(),
-                          CityId: selectedCityId.toString(),
+                          ProvinceId: Address_hendals.provinceId.value.toString(),
+                          CityId: Address_hendals.selectedCityId.value.toString(),
 
                           //Educational Details
                           DegreeIdProfile: Degree_pop_ID,
@@ -1326,12 +1307,7 @@ class _MY_ProfileState extends State<MY_Profile> {
                           SpecialisationProfile: Specialization_pop_name.toString(),
                         );
                       });
-
-                      if (CandidateUpdate.CandidateUpdate['status'] == true) {
                         ToastificationSuccess.Success(CandidateUpdate.CandidateUpdate['message']);
-                      } else {
-                        ToastificationError.Error(CandidateUpdate.CandidateUpdate['message']);
-                      }
                     },
                     Button_Color: AppColor.Button_color,
                     btn_name: Profile_Text.Buttion_name,

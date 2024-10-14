@@ -15,7 +15,6 @@ class StateSearch_Controller extends GetxController{
         CandidateId: Candidate,
         Tokan: Tokans,
         IsWeb: 'false',
-        TechId: TechId,
     );
     super.onInit();
   }
